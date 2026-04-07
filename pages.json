@@ -1,0 +1,55 @@
+{
+    "news": [
+        {
+            "slug": "news/new-2026",
+            "title": "2026 Industry Trends & Company Updates",
+            "date": "2026-03-15",
+            "summary": "Explore the latest developments in fastener technology and WT Fasteners' strategic expansion plans for 2026.",
+            "icon": "images/news-2026.jpg"
+        }
+    ],
+    "products": [
+        {
+            "category": "Bolts",
+            "icon": "images/category-bolts.jpg",
+            "items": [
+                {
+                    "slug": "products/hex-bolts",
+                    "title": "Hex Bolts",
+                    "summary": "Full and partial thread hex bolts in DIN 931/933, ISO 4014/4017. Grades 4.8 to 12.9, sizes M4–M64.",
+                    "icon": "images/image.png"
+                },
+                {
+                    "slug": "products/flange-bolts",
+                    "title": "Flange Bolts",
+                    "summary": "Serrated and non-serrated flange bolts per DIN 6921 / ISO 1665. Built-in washer face for vibration resistance.",
+                    "icon": "images/flange-bolts.jpg"
+                },
+                {
+                    "slug": "products/anchor-bolts",
+                    "title": "Anchor Bolts",
+                    "summary": "Expansion anchors, wedge anchors, and chemical anchor bolts for concrete and masonry.",
+                    "icon": "images/anchor-bolts.jpg"
+                }
+            ]
+        },
+        {
+            "category": "Washers",
+            "icon": "images/category-washers.jpg",
+            "items": [
+                {
+                    "slug": "products/standard-washers",
+                    "title": "Standard Flat Washers",
+                    "summary": "DIN 125 / ISO 7089 flat washers in all common sizes. Zinc plated, galvanized, or plain finish.",
+                    "icon": "images/standard-washers.jpg"
+                },
+                {
+                    "slug": "products/custom-washers",
+                    "title": "Custom Washers",
+                    "summary": "OEM and ODM washers made to your drawings. Special dimensions, materials, coatings, and packaging.",
+                    "icon": "images/custom-washers.jpg"
+                }
+            ]
+        }
+    ]
+}
