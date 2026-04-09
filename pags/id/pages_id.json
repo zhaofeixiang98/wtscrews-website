@@ -12,7 +12,7 @@
       "title": "Tren Industri 2026 & Update Perusahaan",
       "date": "2026-03-15",
       "summary": "Pengembangan terbaru teknologi fastener dan rencana ekspansi strategis WT tahun 2026.",
-      "icon": "images/news-2026.jpg"
+      "icon": "../../images/news-2026.jpg"
     }
   ],
   "products": [
@@ -24,31 +24,31 @@
           "slug": "products/hex-bolts",
           "title": "Baut Segienam",
           "summary": "Baut segienam ulir penuh dan parsial sesuai DIN 931/933, ISO 4014/4017. Grade 4.8 hingga 12.9, ukuran M4-M64. Stok luas, pengiriman cepat dari gudang lokal.",
-          "icon": "images/products/bolts/Hex Bolt0.webp"
+          "icon": "../../images/products/bolts/Hex Bolt0.webp"
         },
         {
           "slug": "products/flange-bolts",
           "title": "Baut Flange",
           "summary": "Baut flange bergerigi dan non-bergerigi sesuai DIN 6921 / ISO 1665. Tersedia stok lokal untuk pengiriman cepat.",
-          "icon": "images/products/bolts/Flange Bolt1.webp"
+          "icon": "../../images/products/bolts/Flange Bolt1.webp"
         },
         {
           "slug": "products/anchor-bolts",
           "title": "Baut Jangkar",
           "summary": "Baut jangkar ekspansi, baut jangkar baji, dan baut jangkar kimia untuk beton dan mason. Stok gudang lokal, pengiriman 3-7 hari kerja.",
-          "icon": "images/products/bolts/Anchor Bolt1.webp"
+          "icon": "../../images/products/bolts/Anchor Bolt1.webp"
         },
         {
           "slug": "products/high-strength-bolts",
           "title": "High Strength Bolts",
           "summary": "High strength structural bolts for heavy-duty applications. Grade 8.8, 10.9, 12.9 available.",
-          "icon": "images/products/bolts/High Strength Bolt1.webp"
+          "icon": "../../images/products/bolts/High Strength Bolt1.webp"
         },
         {
           "slug": "products/t-bolts",
           "title": "T Bolts",
           "summary": "T-shaped bolts for T-slot profiles and structural applications. Various sizes and materials.",
-          "icon": "images/products/bolts/T Bolt4.webp"
+          "icon": "../../images/products/bolts/T Bolt4.webp"
         }
       ]
     },
@@ -60,31 +60,31 @@
           "slug": "products/hex-nuts",
           "title": "Hex Nuts",
           "summary": "Standard hex nuts per DIN 934 / ISO 4032. Sizes M4–M64, grades 4, 6, 8, 10.",
-          "icon": "images/products/nuts/Hex Nut1.webp"
+          "icon": "../../images/products/nuts/Hex Nut1.webp"
         },
         {
           "slug": "products/flange-nuts",
           "title": "Flange Nuts",
           "summary": "Serrated flange nuts with built-in washer face for vibration resistance. DIN 6923.",
-          "icon": "images/products/nuts/Flange Nut.webp"
+          "icon": "../../images/products/nuts/Flange Nut.webp"
         },
         {
           "slug": "products/nyloc-nuts",
           "title": "Nyloc Nuts",
           "summary": "Nylon insert lock nuts for prevailing torque resistance. DIN 985 / ISO 10511.",
-          "icon": "images/products/nuts/Nyloc Nut3.webp"
+          "icon": "../../images/products/nuts/Nyloc Nut3.webp"
         },
         {
           "slug": "products/weld-nuts",
           "title": "Weld Nuts",
           "summary": "Projection weld nuts for automated welding. Square and hexagonal types available.",
-          "icon": "images/products/nuts/Weld Nut 5.webp"
+          "icon": "../../images/products/nuts/Weld Nut 5.webp"
         },
         {
           "slug": "products/wing-nuts",
           "title": "Wing Nuts",
           "summary": "Hand-operated wing nuts for quick assembly and disassembly. Various sizes.",
-          "icon": "images/products/nuts/Wing Nut7.webp"
+          "icon": "../../images/products/nuts/Wing Nut7.webp"
         }
       ]
     },
@@ -96,25 +96,25 @@
           "slug": "products/flat-washers",
           "title": "Flat Washers",
           "summary": "Standard flat washers per DIN 125 / ISO 7089. Zinc plated, galvanized, or plain finish.",
-          "icon": "images/products/washers/Flat Washer4.webp"
+          "icon": "../../images/products/washers/Flat Washer4.webp"
         },
         {
           "slug": "products/lock-washers",
           "title": "Lock Washers",
           "summary": "Split lock washers for vibration resistance. DIN 127 / ISO 7092.",
-          "icon": "images/products/washers/Lock Washer2.webp"
+          "icon": "../../images/products/washers/Lock Washer2.webp"
         },
         {
           "slug": "products/spring-washers",
           "title": "Spring Washers",
           "summary": "Conical spring washers for dynamic load applications. DIN 2093.",
-          "icon": "images/products/washers/Spring Washer4.webp"
+          "icon": "../../images/products/washers/Spring Washer4.webp"
         },
         {
           "slug": "products/square-washers",
           "title": "Square Washers",
           "summary": "Square flat washers for structural applications. DIN 436.",
-          "icon": "images/products/washers/Square Washer1.webp"
+          "icon": "../../images/products/washers/Square Washer1.webp"
         }
       ]
     },
@@ -126,25 +126,25 @@
           "slug": "products/machine-screws",
           "title": "Machine Screws",
           "summary": "Pan head, hex head, and countersunk machine screws. DIN 963, 964, 965, 966.",
-          "icon": "images/products/screws/Machine Screw2.webp"
+          "icon": "../../images/products/screws/Machine Screw2.webp"
         },
         {
           "slug": "products/self-drilling-screws",
           "title": "Self Drilling Screws",
           "summary": "Tek screws with drill point for metal and steel applications. Various head types.",
-          "icon": "images/products/screws/Self Drilling Screw3.webp"
+          "icon": "../../images/products/screws/Self Drilling Screw3.webp"
         },
         {
           "slug": "products/wood-screws",
           "title": "Wood Screws",
           "summary": "Flat head and round head wood screws. Various sizes and materials.",
-          "icon": "images/products/screws/Wood Screw3.webp"
+          "icon": "../../images/products/screws/Wood Screw3.webp"
         },
         {
           "slug": "products/drywall-screws",
           "title": "Drywall Screws",
           "summary": "Fine and coarse thread drywall screws for gypsum board applications.",
-          "icon": "images/products/screws/Drywall Screw1.webp"
+          "icon": "../../images/products/screws/Drywall Screw1.webp"
         }
       ]
     },
@@ -156,13 +156,13 @@
           "slug": "products/threaded-rods",
           "title": "Threaded Rods",
           "summary": "Full thread and partially threaded rods. DIN 975, M4–M30, various lengths.",
-          "icon": "images/products/studs/Threaded Rod6.webp"
+          "icon": "../../images/products/studs/Threaded Rod6.webp"
         },
         {
           "slug": "products/double-end-studs",
           "title": "Double End Studs",
           "summary": "Stud bolts with threads on both ends. For flanges, valve fittings, and pipe systems.",
-          "icon": "images/products/studs/Double End Stud1.webp"
+          "icon": "../../images/products/studs/Double End Stud1.webp"
         }
       ]
     },
@@ -174,13 +174,13 @@
           "slug": "products/cotter-pins",
           "title": "Cotter Pins",
           "summary": "Standard cotter pins for secure fastening. DIN 94 / ISO 1234.",
-          "icon": "images/products/pins/Cotter Pin3.webp"
+          "icon": "../../images/products/pins/Cotter Pin3.webp"
         },
         {
           "slug": "products/dowel-pins",
           "title": "Dowel Pins",
           "summary": "Parallel pins for precise alignment. DIN 7 / ISO 2338, hardened steel.",
-          "icon": "images/products/pins/Dowel Pin3.webp"
+          "icon": "../../images/products/pins/Dowel Pin3.webp"
         }
       ]
     },
@@ -192,19 +192,19 @@
           "slug": "products/wedge-anchors",
           "title": "Wedge Anchors",
           "summary": "Zinc-plated wedge anchors for concrete and masonry. Heavy-duty applications.",
-          "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+          "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
         },
         {
           "slug": "products/expansion-bolts",
           "title": "Expansion Bolts",
           "summary": "Expansion anchors for secure anchoring in concrete, brick, and stone.",
-          "icon": "images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+          "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
         },
         {
           "slug": "products/drop-in-anchors",
           "title": "Drop-in Anchors",
           "summary": "Drop-in anchors for use with threaded rods and concrete applications.",
-          "icon": "images/products/anchors-fastening/Drop-in Anchor1.webp"
+          "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
         }
       ]
     },
@@ -216,37 +216,37 @@
           "slug": "products/solid-rivets",
           "title": "Solid Rivets",
           "summary": "Solid rivets for permanent fastening. Various head types and materials.",
-          "icon": "images/products/others/Solid Rivet1.webp"
+          "icon": "../../images/products/others/Solid Rivet1.webp"
         },
         {
           "slug": "products/blind-rivets",
           "title": "Blind Rivets",
           "summary": "Pop rivets for applications where access is limited to one side.",
-          "icon": "images/products/others/Blind Rivet1.webp"
+          "icon": "../../images/products/others/Blind Rivet1.webp"
         },
         {
           "slug": "products/semi-tubular-rivets",
           "title": "Semi-tubular Rivets",
           "summary": "Semi-tubular rivets with partial hole for clinching applications.",
-          "icon": "images/products/others/Semi-tubular Rivet1.webp"
+          "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
         },
         {
           "slug": "products/u-bolts",
           "title": "U Bolts",
           "summary": "U-bolts for pipe and tube mounting. Various sizes and materials.",
-          "icon": "images/products/others/U Bolt1.webp"
+          "icon": "../../images/products/others/U Bolt1.webp"
         },
         {
           "slug": "products/circlips",
           "title": "External Circlips",
           "summary": "External retaining rings for shaft applications. DIN 471.",
-          "icon": "images/products/others/External Circlip2.webp"
+          "icon": "../../images/products/others/External Circlip2.webp"
         },
         {
           "slug": "products/fastener-kits",
           "title": "Fastener Kits",
           "summary": "Assorted fastener kits for repair and maintenance. Custom packaging available.",
-          "icon": "images/products/others/Fastener Kits4.webp"
+          "icon": "../../images/products/others/Fastener Kits4.webp"
         }
       ]
     }
