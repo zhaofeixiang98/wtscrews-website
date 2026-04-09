@@ -127,7 +127,7 @@
 
             var imageWrap = document.createElement('figure');
             imageWrap.className = 'card-image';
-            if (item.icon && item.icon.indexOf('images/') === 0) {
+            if (item.icon && item.icon.indexOf('images/') !== -1) {
               var img = document.createElement('img');
               img.src = '../' + item.icon;
               img.alt = item.title;
@@ -209,7 +209,7 @@
           /* Image area */
           var imageWrap = document.createElement('figure');
           imageWrap.className = 'card-image';
-          if (item.icon && item.icon.indexOf('images/') === 0) {
+          if (item.icon && item.icon.indexOf('images/') !== -1) {
             var img = document.createElement('img');
             var basePath = pagesJsonPath.substring(0, pagesJsonPath.lastIndexOf('/') + 1); img.src = basePath + item.icon;
             img.alt = item.title;

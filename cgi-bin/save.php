@@ -30,7 +30,7 @@ foreach ($possibleDirs as $dir) {
 // 如果所有目录都不存在，使用本地目录
 if (!$save_dir) {
     $save_dir = __DIR__ . '/../users/';
-    if (!is_dir($save_dir)) {
+    if (!is_dir($save_dir)) { 
         mkdir($save_dir, 0755, true);
     }
 }
