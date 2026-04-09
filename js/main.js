@@ -85,7 +85,10 @@
   }
 
   function loadCategorizedProducts(container, countEl) {
-    var pagesJsonPath = '../pages.json';
+    var path = window.location.pathname;
+    var lang = path.indexOf('/zh/') !== -1 ? 'zh' : path.indexOf('/id/') !== -1 ? 'id' : 'en';
+    var inSubdir = path.indexOf('/products/') !== -1 || path.indexOf('/news/') !== -1;
+    var pagesJsonPath = (inSubdir ? '../' : './') + 'pages_' + lang + '.json';
 
     fetch(pagesJsonPath)
       .then(function (res) { return res.json(); })
@@ -169,10 +172,10 @@
 
   function loadPages(type, container, countEl) {
     var path = window.location.pathname;
-    var pagesJsonPath = '../pages.json';
-    if (path.indexOf('/products/') !== -1 || path.indexOf('/news/') !== -1) {
-      pagesJsonPath = '../../pages.json';
-    }
+    var lang = path.indexOf('/zh/') !== -1 ? 'zh' : path.indexOf('/id/') !== -1 ? 'id' : 'en';
+    var inSubdir = path.indexOf('/products/') !== -1 || path.indexOf('/news/') !== -1;
+    var pagesJsonPath = (inSubdir ? '../' : './') + 'pages_' + lang + '.json';
+
 
     fetch(pagesJsonPath)
       .then(function (res) {
@@ -208,7 +211,7 @@
           imageWrap.className = 'card-image';
           if (item.icon && item.icon.indexOf('images/') === 0) {
             var img = document.createElement('img');
-            img.src = pagesJsonPath.replace('pages.json', '') + item.icon;
+            var basePath = pagesJsonPath.substring(0, pagesJsonPath.lastIndexOf('/') + 1); img.src = basePath + item.icon;
             img.alt = item.title;
             img.loading = 'lazy';
             imageWrap.appendChild(img);

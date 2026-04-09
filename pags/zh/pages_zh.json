@@ -1,0 +1,254 @@
+{
+  "news": [
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "2026年紧固件行业展望",
+      "date": "2026-04-07",
+      "summary": "新能源汽车、可再生能源、智能制造领域的关键增长板块与市场机遇。",
+      "icon": ""
+    },
+    {
+      "slug": "news/new-2026",
+      "title": "2026行业趋势与公司动态",
+      "date": "2026-03-15",
+      "summary": "紧固件技术最新发展及WT 2026年战略扩张计划。",
+      "icon": "images/news-2026.jpg"
+    }
+  ],
+  "products": [
+    {
+      "category": "螺栓",
+      "icon": "images/products/bolts/Hex Bolt0.webp",
+      "items": [
+        {
+          "slug": "products/hex-bolts",
+          "title": "六角螺栓",
+          "summary": "全螺纹/半螺纹六角螺栓，符合DIN 931/933、ISO 4014/4017标准。等级4.8至12.9，尺寸M4-M64。工厂直供，可定制。",
+          "icon": "images/products/bolts/Hex Bolt0.webp"
+        },
+        {
+          "slug": "products/flange-bolts",
+          "title": "法兰螺栓",
+          "summary": "带齿和无齿法兰螺栓，符合DIN 6921/ISO 1665。内置垫圈面，抗振性能优异。广泛应用于汽车、机械设备。",
+          "icon": "images/products/bolts/Flange Bolt1.webp"
+        },
+        {
+          "slug": "products/anchor-bolts",
+          "title": "锚栓",
+          "summary": "膨胀螺栓、楔形锚栓和化学锚栓，适用于混凝土和砖石结构。规格M6-M24，支持定制。",
+          "icon": "images/products/bolts/Anchor Bolt1.webp"
+        },
+        {
+          "slug": "products/high-strength-bolts",
+          "title": "高强度螺栓",
+          "summary": "高强度结构螺栓，适用于重载连接。等级8.8、10.9、12.9可选，品质保证。",
+          "icon": "images/products/bolts/High Strength Bolt1.webp"
+        },
+        {
+          "slug": "products/t-bolts",
+          "title": "T型螺栓",
+          "summary": "T型螺栓，适用于T型槽和结构连接。多种尺寸和材质，支持非标定制。",
+          "icon": "images/products/bolts/T Bolt4.webp"
+        }
+      ]
+    },
+    {
+      "category": "螺母",
+      "icon": "images/products/nuts/Hex Nut1.webp",
+      "items": [
+        {
+          "slug": "products/hex-nuts",
+          "title": "六角螺母",
+          "summary": "标准六角螺母，符合DIN 934/ISO 4032。尺寸M4-M64，等级4/6/8/10。",
+          "icon": "images/products/nuts/Hex Nut1.webp"
+        },
+        {
+          "slug": "products/flange-nuts",
+          "title": "法兰螺母",
+          "summary": "带齿法兰螺母，内置垫圈面抗振动。符合DIN 6923。",
+          "icon": "images/products/nuts/Flange Nut.webp"
+        },
+        {
+          "slug": "products/nyloc-nuts",
+          "title": "尼龙锁紧螺母",
+          "summary": "尼龙嵌入锁紧螺母，防松效果好。符合DIN 985/ISO 10511。",
+          "icon": "images/products/nuts/Nyloc Nut3.webp"
+        },
+        {
+          "slug": "products/weld-nuts",
+          "title": "焊接螺母",
+          "summary": "凸焊螺母，适合自动化焊接。方形和六角形可选。",
+          "icon": "images/products/nuts/Weld Nut 5.webp"
+        },
+        {
+          "slug": "products/wing-nuts",
+          "title": "蝶形螺母",
+          "summary": "蝶形螺母，手动即可拧紧，无需工具。",
+          "icon": "images/products/nuts/Wing Nut7.webp"
+        }
+      ]
+    },
+    {
+      "category": "垫圈",
+      "icon": "images/products/washers/Flat Washer4.webp",
+      "items": [
+        {
+          "slug": "products/flat-washers",
+          "title": "平垫圈",
+          "summary": "平垫圈，分布压力保护工件表面。符合DIN 125/ISO 7089。",
+          "icon": "images/products/washers/Flat Washer4.webp"
+        },
+        {
+          "slug": "products/lock-washers",
+          "title": "锁紧垫圈",
+          "summary": "锁紧垫圈，防止螺栓松动。多种型号可选。",
+          "icon": "images/products/washers/Lock Washer2.webp"
+        },
+        {
+          "slug": "products/spring-washers",
+          "title": "弹簧垫圈",
+          "summary": "弹簧垫圈，抗振动。符合DIN 127/128。",
+          "icon": "images/products/washers/Spring Washer4.webp"
+        },
+        {
+          "slug": "products/square-washers",
+          "title": "方垫圈",
+          "summary": "方垫圈，适用于方形法兰面。",
+          "icon": "images/products/washers/Square Washer1.webp"
+        }
+      ]
+    },
+    {
+      "category": "螺钉",
+      "icon": "images/products/screws/Machine Screw2.webp",
+      "items": [
+        {
+          "slug": "products/machine-screws",
+          "title": "机螺钉",
+          "summary": "机螺钉，配合螺母使用。规格齐全，碳钢/不锈钢可选。",
+          "icon": "images/products/screws/Machine Screw2.webp"
+        },
+        {
+          "slug": "products/self-drilling-screws",
+          "title": "Self Drilling Screws",
+          "summary": "Tek screws with drill point for metal and steel applications. Various head types.",
+          "icon": "images/products/screws/Self Drilling Screw3.webp"
+        },
+        {
+          "slug": "products/wood-screws",
+          "title": "木螺钉",
+          "summary": "木螺钉，适用于木材和塑料。多种头型和规格。",
+          "icon": "images/products/screws/Wood Screw3.webp"
+        },
+        {
+          "slug": "products/drywall-screws",
+          "title": "干墙螺钉",
+          "summary": "干墙螺钉，专用于石膏板固定。",
+          "icon": "images/products/screws/Drywall Screw1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Studs & Threaded Rods",
+      "icon": "images/products/studs/Threaded Rod6.webp",
+      "items": [
+        {
+          "slug": "products/threaded-rods",
+          "title": "螺杆",
+          "summary": "全牙螺杆，可任意切割。符合DIN 975/976，尺寸M3-M48。",
+          "icon": "images/products/studs/Threaded Rod6.webp"
+        },
+        {
+          "slug": "products/double-end-studs",
+          "title": "Double End Studs",
+          "summary": "Stud bolts with threads on both ends. For flanges, valve fittings, and pipe systems.",
+          "icon": "images/products/studs/Double End Stud1.webp"
+        }
+      ]
+    },
+    {
+      "category": "销类",
+      "icon": "images/products/pins/Cotter Pin3.webp",
+      "items": [
+        {
+          "slug": "products/cotter-pins",
+          "title": "开口销",
+          "summary": "标准开口销，用于轴向定位。多种规格可选。",
+          "icon": "images/products/pins/Cotter Pin3.webp"
+        },
+        {
+          "slug": "products/dowel-pins",
+          "title": "定位销",
+          "summary": "圆柱定位销，用于精密定位。标准件，支持定制。",
+          "icon": "images/products/pins/Dowel Pin3.webp"
+        }
+      ]
+    },
+    {
+      "category": "Anchors & Fastening",
+      "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
+      "items": [
+        {
+          "slug": "products/wedge-anchors",
+          "title": "楔形锚栓",
+          "summary": "楔形锚栓，高强度固定。适用于承重安装。",
+          "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+        },
+        {
+          "slug": "products/expansion-bolts",
+          "title": "膨胀螺栓",
+          "summary": "膨胀螺栓，适用于固定支架、栏杆等。安装方便。",
+          "icon": "images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+        },
+        {
+          "slug": "products/drop-in-anchors",
+          "title": "Drop-in Anchors",
+          "summary": "Drop-in anchors for use with threaded rods and concrete applications.",
+          "icon": "images/products/anchors-fastening/Drop-in Anchor1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Other Fasteners",
+      "icon": "images/products/others/Solid Rivet1.webp",
+      "items": [
+        {
+          "slug": "products/solid-rivets",
+          "title": "实心铆钉",
+          "summary": "实心铆钉，高强度连接。传统工艺，质量可靠。",
+          "icon": "images/products/others/Solid Rivet1.webp"
+        },
+        {
+          "slug": "products/blind-rivets",
+          "title": "抽芯铆钉",
+          "summary": "抽芯铆钉，适合薄板连接。单面操作，使用方便。",
+          "icon": "images/products/others/Blind Rivet1.webp"
+        },
+        {
+          "slug": "products/semi-tubular-rivets",
+          "title": "半空心铆钉",
+          "summary": "半空心铆钉，成本效益好。适合轻量化连接。",
+          "icon": "images/products/others/Semi-tubular Rivet1.webp"
+        },
+        {
+          "slug": "products/u-bolts",
+          "title": "U Bolts",
+          "summary": "U-bolts for pipe and tube mounting. Various sizes and materials.",
+          "icon": "images/products/others/U Bolt1.webp"
+        },
+        {
+          "slug": "products/circlips",
+          "title": "卡簧",
+          "summary": "弹性卡簧，用于轴向定位。符合DIN 471/472。",
+          "icon": "images/products/others/External Circlip2.webp"
+        },
+        {
+          "slug": "products/fastener-kits",
+          "title": "紧固件套装",
+          "summary": "多规格紧固件组合装，适合维修和日常使用。",
+          "icon": "images/products/others/Fastener Kits4.webp"
+        }
+      ]
+    }
+  ]
+}
