@@ -11,7 +11,7 @@
   }
 
   var lineUrl = 'https://line.me/ti/p/StdQJteUYQ';
-  var whatsappUrl = 'https://wa.me/8619333231751?text=' + encodeURIComponent('Hi, I\'m interested in your fastener products. Could you send me a catalog and price list?');
+  var whatsappUrl = 'https://wa.me/8615175432812?text=' + encodeURIComponent('Hi, I\'m interested in your fastener products. Could you send me a catalog and price list?');
 
   var html;
   if (isMobile) {

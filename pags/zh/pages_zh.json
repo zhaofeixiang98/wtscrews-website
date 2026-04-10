@@ -1,254 +1,247 @@
 {
-  "news": [
-    {
-      "slug": "news/industry-outlook-2026",
-      "title": "Fastener Industry Outlook 2026",
-      "date": "2026-04-07",
-      "summary": "Key growth sectors and market opportunities in EV, renewable energy, and smart manufacturing shaping the year ahead.",
-      "icon": ""
-    },
-    {
-      "slug": "news/new-2026",
-      "title": "2026 Industry Trends & Company Updates",
-      "date": "2026-03-15",
-      "summary": "Explore the latest developments in fastener technology and WT Fasteners' strategic expansion plans for 2026.",
-      "icon": "../../images/news-2026.jpg"
-    }
-  ],
-  "products": [
-    {
-      "category": "Bolts",
-      "icon": "images/products/bolts/Hex Bolt0.webp",
-      "items": [
+    "news": [
         {
-          "slug": "products/hex-bolts",
-          "title": "Hex Bolts",
-          "summary": "Full and partial thread hex bolts in DIN 931/933, ISO 4014/4017. Grades 4.8 to 12.9, sizes M4–M64.",
-          "icon": "../../images/products/bolts/Hex Bolt0.webp"
-        },
-        {
-          "slug": "products/flange-bolts",
-          "title": "Flange Bolts",
-          "summary": "Serrated and non-serrated flange bolts per DIN 6921 / ISO 1665. Built-in washer face for vibration resistance.",
-          "icon": "../../images/products/bolts/Flange Bolt1.webp"
-        },
-        {
-          "slug": "products/anchor-bolts",
-          "title": "Anchor Bolts",
-          "summary": "Expansion anchors, wedge anchors, and chemical anchor bolts for concrete and masonry.",
-          "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-        },
-        {
-          "slug": "products/high-strength-bolts",
-          "title": "High Strength Bolts",
-          "summary": "High strength structural bolts for heavy-duty applications. Grade 8.8, 10.9, 12.9 available.",
-          "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-        },
-        {
-          "slug": "products/t-bolts",
-          "title": "T Bolts",
-          "summary": "T-shaped bolts for T-slot profiles and structural applications. Various sizes and materials.",
-          "icon": "../../images/products/bolts/T Bolt4.webp"
+            "slug": "news/industry-outlook-2026",
+            "title": "2026年紧固件行业展望",
+            "date": "2026-04-07",
+            "summary": "电动汽车、可再生能源、智能制造领域的核心增长板块与市场机遇，将塑造新一年行业格局。",
+            "icon": "../../images/logo.jpg"
         }
-      ]
-    },
-    {
-      "category": "Nuts",
-      "icon": "images/products/nuts/Hex Nut1.webp",
-      "items": [
+    ],
+    "products": [
         {
-          "slug": "products/hex-nuts",
-          "title": "Hex Nuts",
-          "summary": "Standard hex nuts per DIN 934 / ISO 4032. Sizes M4–M64, grades 4, 6, 8, 10.",
-          "icon": "../../images/products/nuts/Hex Nut1.webp"
+            "category": "螺栓",
+            "icon": "images/products/bolts/Hex Bolt0.webp",
+            "items": [
+                {
+                    "slug": "products/hex-bolts",
+                    "title": "六角螺栓",
+                    "summary": "全螺纹/半螺纹六角螺栓，符合DIN 931/933、ISO 4014/4017标准；强度等级4.8-12.9，规格M4-M64。",
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
+                },
+                {
+                    "slug": "products/flange-bolts",
+                    "title": "法兰面螺栓",
+                    "summary": "带齿/无齿法兰面螺栓，符合DIN 6921/ISO 1665标准；一体式垫圈结构，具备抗震防松性能。",
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
+                },
+                {
+                    "slug": "products/anchor-bolts",
+                    "title": "地脚螺栓",
+                    "summary": "适用于混凝土和砖石结构的膨胀锚栓、楔型锚栓及化学锚栓。",
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
+                },
+                {
+                    "slug": "products/high-strength-bolts",
+                    "title": "高强度螺栓",
+                    "summary": "重载工程用高强度结构螺栓，提供8.8、10.9、12.9级规格。",
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
+                },
+                {
+                    "slug": "products/t-bolts",
+                    "title": "T型螺栓",
+                    "summary": "用于T型槽型材及结构件的T型螺栓，多规格、多材质可选。",
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
+                }
+            ]
         },
         {
-          "slug": "products/flange-nuts",
-          "title": "Flange Nuts",
-          "summary": "Serrated flange nuts with built-in washer face for vibration resistance. DIN 6923.",
-          "icon": "../../images/products/nuts/Flange Nut.webp"
+            "category": "螺母",
+            "icon": "images/products/nuts/Hex Nut1.webp",
+            "items": [
+                {
+                    "slug": "products/hex-nuts",
+                    "title": "六角螺母",
+                    "summary": "标准六角螺母，符合DIN 934/ISO 4032标准；规格M4-M64，强度等级4、6、8、10级。",
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
+                },
+                {
+                    "slug": "products/flange-nuts",
+                    "title": "法兰面螺母",
+                    "summary": "带齿法兰面螺母，一体式垫圈结构，抗震防松，符合DIN 6923标准。",
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
+                },
+                {
+                    "slug": "products/nyloc-nuts",
+                    "title": "尼龙锁紧螺母",
+                    "summary": "尼龙嵌件防松螺母，具备有效锁紧力矩，符合DIN 985/ISO 10511标准。",
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
+                },
+                {
+                    "slug": "products/weld-nuts",
+                    "title": "焊接螺母",
+                    "summary": "自动化焊接用凸焊螺母，提供方形、六角形两种类型。",
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
+                },
+                {
+                    "slug": "products/wing-nuts",
+                    "title": "蝶形螺母",
+                    "summary": "手动操作蝶形螺母，可快速拆装，多规格可选。",
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
+                }
+            ]
         },
         {
-          "slug": "products/nyloc-nuts",
-          "title": "Nyloc Nuts",
-          "summary": "Nylon insert lock nuts for prevailing torque resistance. DIN 985 / ISO 10511.",
-          "icon": "../../images/products/nuts/Nyloc Nut3.webp"
+            "category": "垫圈",
+            "icon": "images/products/washers/Flat Washer4.webp",
+            "items": [
+                {
+                    "slug": "products/flat-washers",
+                    "title": "平垫圈",
+                    "summary": "标准平垫圈，符合DIN 125/ISO 7089标准；表面处理可选镀锌、热镀锌或本色。",
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
+                },
+                {
+                    "slug": "products/lock-washers",
+                    "title": "防松垫圈",
+                    "summary": "开口防松垫圈，具备抗震性能，符合DIN 127/ISO 7092标准。",
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
+                },
+                {
+                    "slug": "products/spring-washers",
+                    "title": "弹簧垫圈",
+                    "summary": "动载荷应用用锥形弹簧垫圈，符合DIN 2093标准。",
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
+                },
+                {
+                    "slug": "products/square-washers",
+                    "title": "方形垫圈",
+                    "summary": "结构件用方形平垫圈，符合DIN 436标准。",
+                    "icon": "../../images/products/washers/Square Washer1.webp"
+                }
+            ]
         },
         {
-          "slug": "products/weld-nuts",
-          "title": "Weld Nuts",
-          "summary": "Projection weld nuts for automated welding. Square and hexagonal types available.",
-          "icon": "../../images/products/nuts/Weld Nut 5.webp"
+            "category": "螺钉",
+            "icon": "images/products/screws/Machine Screw2.webp",
+            "items": [
+                {
+                    "slug": "products/machine-screws",
+                    "title": "机螺钉",
+                    "summary": "盘头、六角头、沉头机螺钉，符合DIN 963、964、965、966标准。",
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
+                },
+                {
+                    "slug": "products/self-drilling-screws",
+                    "title": "自钻螺钉",
+                    "summary": "带钻尖的自钻螺钉，适用于金属板材，多头部款式可选。",
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
+                },
+                {
+                    "slug": "products/wood-screws",
+                    "title": "木螺钉",
+                    "summary": "沉头、圆头木螺钉，多规格、多材质可选。",
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
+                },
+                {
+                    "slug": "products/drywall-screws",
+                    "title": "干壁钉",
+                    "summary": "细牙/粗牙干壁钉，适用于石膏板安装。",
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
+                }
+            ]
         },
         {
-          "slug": "products/wing-nuts",
-          "title": "Wing Nuts",
-          "summary": "Hand-operated wing nuts for quick assembly and disassembly. Various sizes.",
-          "icon": "../../images/products/nuts/Wing Nut7.webp"
+            "category": "螺柱与牙条",
+            "icon": "images/products/studs/Threaded Rod6.webp",
+            "items": [
+                {
+                    "slug": "products/threaded-rods",
+                    "title": "全牙螺杆",
+                    "summary": "全螺纹/半螺纹牙条，符合DIN 975标准，规格M4-M30，多种长度可选。",
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
+                },
+                {
+                    "slug": "products/double-end-studs",
+                    "title": "双头螺柱",
+                    "summary": "两端螺纹螺柱，适用于法兰、阀门管件及管道系统。",
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
+                }
+            ]
+        },
+        {
+            "category": "销钉",
+            "icon": "images/products/pins/Cotter Pin3.webp",
+            "items": [
+                {
+                    "slug": "products/cotter-pins",
+                    "title": "开口销",
+                    "summary": "标准开口销，用于安全紧固，符合DIN 94/ISO 1234标准。",
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
+                },
+                {
+                    "slug": "products/dowel-pins",
+                    "title": "定位销",
+                    "summary": "精密定位用圆柱销，符合DIN 7/ISO 2338标准，材质为淬火钢。",
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
+                }
+            ]
+        },
+        {
+            "category": "锚栓与紧固配件",
+            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
+            "items": [
+                {
+                    "slug": "products/wedge-anchors",
+                    "title": "楔型锚栓",
+                    "summary": "镀锌楔型锚栓，适用于混凝土和砖石结构，重载工况专用。",
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                },
+                {
+                    "slug": "products/expansion-bolts",
+                    "title": "膨胀螺栓",
+                    "summary": "膨胀锚栓，适用于混凝土、砖体、石材的牢固锚固。",
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                },
+                {
+                    "slug": "products/drop-in-anchors",
+                    "title": "内爆锚栓",
+                    "summary": "内爆式锚栓，搭配全牙螺杆使用，适用于混凝土工程。",
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
+                }
+            ]
+        },
+        {
+            "category": "其他紧固件",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/solid-rivets",
+                    "title": "实心铆钉",
+                    "summary": "永久性紧固用实心铆钉，多头部款式、多材质可选。",
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
+                },
+                {
+                    "slug": "products/blind-rivets",
+                    "title": "抽芯铆钉",
+                    "summary": "拉铆钉，适用于单侧操作受限的安装场景。",
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
+                },
+                {
+                    "slug": "products/semi-tubular-rivets",
+                    "title": "半空心铆钉",
+                    "summary": "半空心结构铆钉，适用于压铆工艺。",
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
+                },
+                {
+                    "slug": "products/u-bolts",
+                    "title": "U型螺栓",
+                    "summary": "管道安装用U型螺栓，多规格、多材质可选。",
+                    "icon": "../../images/products/others/U Bolt1.webp"
+                },
+                {
+                    "slug": "products/circlips",
+                    "title": "轴用挡圈",
+                    "summary": "轴用外卡簧，符合DIN 471标准。",
+                    "icon": "../../images/products/others/External Circlip2.webp"
+                },
+                {
+                    "slug": "products/fastener-kits",
+                    "title": "紧固件套装",
+                    "summary": "维修保养用混合紧固件套装，支持定制包装。",
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "category": "Washers",
-      "icon": "images/products/washers/Flat Washer4.webp",
-      "items": [
-        {
-          "slug": "products/flat-washers",
-          "title": "Flat Washers",
-          "summary": "Standard flat washers per DIN 125 / ISO 7089. Zinc plated, galvanized, or plain finish.",
-          "icon": "../../images/products/washers/Flat Washer4.webp"
-        },
-        {
-          "slug": "products/lock-washers",
-          "title": "Lock Washers",
-          "summary": "Split lock washers for vibration resistance. DIN 127 / ISO 7092.",
-          "icon": "../../images/products/washers/Lock Washer2.webp"
-        },
-        {
-          "slug": "products/spring-washers",
-          "title": "Spring Washers",
-          "summary": "Conical spring washers for dynamic load applications. DIN 2093.",
-          "icon": "../../images/products/washers/Spring Washer4.webp"
-        },
-        {
-          "slug": "products/square-washers",
-          "title": "Square Washers",
-          "summary": "Square flat washers for structural applications. DIN 436.",
-          "icon": "../../images/products/washers/Square Washer1.webp"
-        }
-      ]
-    },
-    {
-      "category": "Screws",
-      "icon": "images/products/screws/Machine Screw2.webp",
-      "items": [
-        {
-          "slug": "products/machine-screws",
-          "title": "Machine Screws",
-          "summary": "Pan head, hex head, and countersunk machine screws. DIN 963, 964, 965, 966.",
-          "icon": "../../images/products/screws/Machine Screw2.webp"
-        },
-        {
-          "slug": "products/self-drilling-screws",
-          "title": "Self Drilling Screws",
-          "summary": "Tek screws with drill point for metal and steel applications. Various head types.",
-          "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-        },
-        {
-          "slug": "products/wood-screws",
-          "title": "Wood Screws",
-          "summary": "Flat head and round head wood screws. Various sizes and materials.",
-          "icon": "../../images/products/screws/Wood Screw3.webp"
-        },
-        {
-          "slug": "products/drywall-screws",
-          "title": "Drywall Screws",
-          "summary": "Fine and coarse thread drywall screws for gypsum board applications.",
-          "icon": "../../images/products/screws/Drywall Screw1.webp"
-        }
-      ]
-    },
-    {
-      "category": "Studs & Threaded Rods",
-      "icon": "images/products/studs/Threaded Rod6.webp",
-      "items": [
-        {
-          "slug": "products/threaded-rods",
-          "title": "Threaded Rods",
-          "summary": "Full thread and partially threaded rods. DIN 975, M4–M30, various lengths.",
-          "icon": "../../images/products/studs/Threaded Rod6.webp"
-        },
-        {
-          "slug": "products/double-end-studs",
-          "title": "Double End Studs",
-          "summary": "Stud bolts with threads on both ends. For flanges, valve fittings, and pipe systems.",
-          "icon": "../../images/products/studs/Double End Stud1.webp"
-        }
-      ]
-    },
-    {
-      "category": "Pins",
-      "icon": "images/products/pins/Cotter Pin3.webp",
-      "items": [
-        {
-          "slug": "products/cotter-pins",
-          "title": "Cotter Pins",
-          "summary": "Standard cotter pins for secure fastening. DIN 94 / ISO 1234.",
-          "icon": "../../images/products/pins/Cotter Pin3.webp"
-        },
-        {
-          "slug": "products/dowel-pins",
-          "title": "Dowel Pins",
-          "summary": "Parallel pins for precise alignment. DIN 7 / ISO 2338, hardened steel.",
-          "icon": "../../images/products/pins/Dowel Pin3.webp"
-        }
-      ]
-    },
-    {
-      "category": "Anchors & Fastening",
-      "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-      "items": [
-        {
-          "slug": "products/wedge-anchors",
-          "title": "Wedge Anchors",
-          "summary": "Zinc-plated wedge anchors for concrete and masonry. Heavy-duty applications.",
-          "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-        },
-        {
-          "slug": "products/expansion-bolts",
-          "title": "Expansion Bolts",
-          "summary": "Expansion anchors for secure anchoring in concrete, brick, and stone.",
-          "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-        },
-        {
-          "slug": "products/drop-in-anchors",
-          "title": "Drop-in Anchors",
-          "summary": "Drop-in anchors for use with threaded rods and concrete applications.",
-          "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-        }
-      ]
-    },
-    {
-      "category": "Other Fasteners",
-      "icon": "images/products/others/Solid Rivet1.webp",
-      "items": [
-        {
-          "slug": "products/solid-rivets",
-          "title": "Solid Rivets",
-          "summary": "Solid rivets for permanent fastening. Various head types and materials.",
-          "icon": "../../images/products/others/Solid Rivet1.webp"
-        },
-        {
-          "slug": "products/blind-rivets",
-          "title": "Blind Rivets",
-          "summary": "Pop rivets for applications where access is limited to one side.",
-          "icon": "../../images/products/others/Blind Rivet1.webp"
-        },
-        {
-          "slug": "products/semi-tubular-rivets",
-          "title": "Semi-tubular Rivets",
-          "summary": "Semi-tubular rivets with partial hole for clinching applications.",
-          "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-        },
-        {
-          "slug": "products/u-bolts",
-          "title": "U Bolts",
-          "summary": "U-bolts for pipe and tube mounting. Various sizes and materials.",
-          "icon": "../../images/products/others/U Bolt1.webp"
-        },
-        {
-          "slug": "products/circlips",
-          "title": "External Circlips",
-          "summary": "External retaining rings for shaft applications. DIN 471.",
-          "icon": "../../images/products/others/External Circlip2.webp"
-        },
-        {
-          "slug": "products/fastener-kits",
-          "title": "Fastener Kits",
-          "summary": "Assorted fastener kits for repair and maintenance. Custom packaging available.",
-          "icon": "../../images/products/others/Fastener Kits4.webp"
-        }
-      ]
-    }
-  ]
+    ]
 }

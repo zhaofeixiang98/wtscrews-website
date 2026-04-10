@@ -52,6 +52,172 @@
     }
   });
 
+  function detectLangFromPath(path) {
+    return path.indexOf('/zh/') !== -1 ? 'zh'
+         : path.indexOf('/id/') !== -1 ? 'id'
+         : path.indexOf('/fr/') !== -1 ? 'fr'
+         : path.indexOf('/de/') !== -1 ? 'de'
+         : path.indexOf('/es/') !== -1 ? 'es'
+         : path.indexOf('/ja/') !== -1 ? 'ja'
+         : path.indexOf('/ko/') !== -1 ? 'ko'
+         : path.indexOf('/ar/') !== -1 ? 'ar'
+         : 'en';
+  }
+
+  function getPagesJsonInfo() {
+    var path = window.location.pathname;
+    var lang = detectLangFromPath(path);
+    var inSubdir = path.indexOf('/products/') !== -1 || path.indexOf('/news/') !== -1;
+    return {
+      lang: lang,
+      pagesJsonPath: (inSubdir ? '../' : './') + 'pages_' + lang + '.json'
+    };
+  }
+
+  function resolveAssetUrl(assetPath, jsonBaseUrl) {
+    try {
+      return new URL(assetPath, jsonBaseUrl).href;
+    } catch (err) {
+      return assetPath;
+    }
+  }
+
+  function getPrimaryImage(item) {
+    if (!item) {
+      return '';
+    }
+    if (item.icon) {
+      return item.icon;
+    }
+    if (item.detailImage) {
+      return item.detailImage;
+    }
+    if (item.articleImages && item.articleImages.length > 0) {
+      return item.articleImages[0];
+    }
+    if (item.galleryImages && item.galleryImages.length > 0) {
+      return item.galleryImages[0];
+    }
+    return '';
+  }
+
+  var pagesDataPromise = null;
+
+  function fetchPagesData() {
+    if (pagesDataPromise) {
+      return pagesDataPromise;
+    }
+
+    var info = getPagesJsonInfo();
+    var jsonBaseUrl = new URL(info.pagesJsonPath, window.location.href).href;
+
+    pagesDataPromise = fetch(info.pagesJsonPath)
+      .then(function (res) {
+        if (!res.ok && info.lang !== 'en') {
+          var fallbackPath = (window.location.pathname.indexOf('/products/') !== -1 || window.location.pathname.indexOf('/news/') !== -1 ? '../' : './') + 'pages_en.json';
+          var fallbackBaseUrl = new URL(fallbackPath, window.location.href).href;
+          return fetch(fallbackPath).then(function (fallbackRes) {
+            if (!fallbackRes.ok) {
+              throw new Error('Fallback also failed');
+            }
+            return fallbackRes.json().then(function (data) {
+              return { data: data, jsonBaseUrl: fallbackBaseUrl };
+            });
+          });
+        }
+        return res.json().then(function (data) {
+          return { data: data, jsonBaseUrl: jsonBaseUrl };
+        });
+      });
+
+    return pagesDataPromise;
+  }
+
+  function getCurrentDetailSlug() {
+    var match = window.location.pathname.match(/\/(news|products)\/([^/]+)\.html$/);
+    if (!match) {
+      return '';
+    }
+    return match[1] + '/' + match[2];
+  }
+
+  function findProductItemBySlug(data, slug) {
+    var categories = data.products || [];
+    for (var i = 0; i < categories.length; i++) {
+      var items = categories[i].items || [];
+      for (var j = 0; j < items.length; j++) {
+        if (items[j].slug === slug) {
+          return items[j];
+        }
+      }
+    }
+    return null;
+  }
+
+  function applyProductDetailImage(item, jsonBaseUrl) {
+    var imagePath = item.detailImage || getPrimaryImage(item);
+    var galleryImage = document.querySelector('.product-gallery img');
+    if (!imagePath || !galleryImage) {
+      return;
+    }
+    galleryImage.src = resolveAssetUrl(imagePath, jsonBaseUrl);
+    galleryImage.alt = item.title || galleryImage.alt;
+  }
+
+  function applyNewsDetailImages(item, jsonBaseUrl) {
+    var imagePaths = item.articleImages && item.articleImages.length > 0
+      ? item.articleImages
+      : (getPrimaryImage(item) ? [getPrimaryImage(item)] : []);
+    if (imagePaths.length === 0) {
+      return;
+    }
+
+    var figureImages = document.querySelectorAll('.article-figure img');
+    if (figureImages.length === 0) {
+      return;
+    }
+
+    figureImages.forEach(function (img, index) {
+      var imagePath = imagePaths[index] || imagePaths[0];
+      if (!imagePath) {
+        return;
+      }
+      img.src = resolveAssetUrl(imagePath, jsonBaseUrl);
+      img.alt = item.title || img.alt;
+    });
+  }
+
+  function applyDetailPageAssets() {
+    var slug = getCurrentDetailSlug();
+    if (!slug) {
+      return;
+    }
+
+    fetchPagesData()
+      .then(function (result) {
+        var item = null;
+        if (slug.indexOf('products/') === 0) {
+          item = findProductItemBySlug(result.data, slug);
+          if (item) {
+            applyProductDetailImage(item, result.jsonBaseUrl);
+          }
+          return;
+        }
+
+        if (slug.indexOf('news/') === 0) {
+          item = (result.data.news || []).find(function (newsItem) {
+            return newsItem.slug === slug;
+          });
+          if (item) {
+            applyNewsDetailImages(item, result.jsonBaseUrl);
+          }
+        }
+      })
+      .catch(function () {
+        /* Keep the static HTML image as fallback if JSON loading fails. */
+      });
+  }
+
   /* ===== Scroll Fade-In Animation ===== */
   var fadeElements = document.querySelectorAll('.fade-in');
   if (fadeElements.length > 0) {
@@ -84,15 +250,12 @@
     loadCategorizedProducts(productsContainer, productsCount);
   }
 
-  function loadCategorizedProducts(container, countEl) {
-    var path = window.location.pathname;
-    var lang = path.indexOf('/zh/') !== -1 ? 'zh' : path.indexOf('/id/') !== -1 ? 'id' : 'en';
-    var inSubdir = path.indexOf('/products/') !== -1 || path.indexOf('/news/') !== -1;
-    var pagesJsonPath = (inSubdir ? '../' : './') + 'pages_' + lang + '.json';
+  applyDetailPageAssets();
 
-    fetch(pagesJsonPath)
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
+  function loadCategorizedProducts(container, countEl) {
+    fetchPagesData()
+      .then(function (result) {
+        var data = result.data;
         var categories = data.products || [];
         var totalItems = 0;
         categories.forEach(function (cat) { totalItems += (cat.items || []).length; });
@@ -127,9 +290,9 @@
 
             var imageWrap = document.createElement('figure');
             imageWrap.className = 'card-image';
-            if (item.icon && item.icon.indexOf('images/') !== -1) {
+            if (getPrimaryImage(item)) {
               var img = document.createElement('img');
-              img.src = '../' + item.icon;
+              img.src = resolveAssetUrl(getPrimaryImage(item), result.jsonBaseUrl);
               img.alt = item.title;
               img.loading = 'lazy';
               imageWrap.appendChild(img);
@@ -160,6 +323,60 @@
 
           container.appendChild(grid);
         });
+
+        /* ===== Real-time search ===== */
+        var searchInput = document.getElementById('productSearch');
+        if (searchInput) {
+          var noResultsEl = null;
+
+          searchInput.addEventListener('input', function () {
+            var query = this.value.trim().toLowerCase();
+            var headings = container.querySelectorAll('.category-heading');
+            var grids = container.querySelectorAll('.cards-grid');
+
+            headings.forEach(function (heading, i) {
+              var grid = grids[i];
+              if (!grid) return;
+              var cards = grid.querySelectorAll('.card');
+              var visibleCount = 0;
+
+              cards.forEach(function (card) {
+                var titleEl = card.querySelector('h3');
+                var summaryEl = card.querySelector('p');
+                var text = (
+                  (titleEl ? titleEl.textContent : '') + ' ' +
+                  (summaryEl ? summaryEl.textContent : '')
+                ).toLowerCase();
+                var matches = !query || text.indexOf(query) !== -1;
+                card.style.display = matches ? '' : 'none';
+                if (matches) visibleCount++;
+              });
+
+              var show = !query || visibleCount > 0;
+              heading.style.display = show ? '' : 'none';
+              grid.style.display = show ? '' : 'none';
+            });
+
+            /* No-results message */
+            var anyVisible = Array.prototype.some.call(
+              container.querySelectorAll('.card'),
+              function (c) { return c.style.display !== 'none'; }
+            );
+
+            if (!anyVisible && query) {
+              if (!noResultsEl) {
+                noResultsEl = document.createElement('p');
+                noResultsEl.className = 'search-no-results';
+                container.appendChild(noResultsEl);
+              }
+              var noResultsText = searchInput.getAttribute('data-no-results') || 'No products found.';
+              noResultsEl.textContent = noResultsText;
+              noResultsEl.style.display = '';
+            } else if (noResultsEl) {
+              noResultsEl.style.display = 'none';
+            }
+          });
+        }
       })
       .catch(function () {
         while (container.firstChild) { container.removeChild(container.firstChild); }
@@ -171,17 +388,9 @@
   }
 
   function loadPages(type, container, countEl) {
-    var path = window.location.pathname;
-    var lang = path.indexOf('/zh/') !== -1 ? 'zh' : path.indexOf('/id/') !== -1 ? 'id' : 'en';
-    var inSubdir = path.indexOf('/products/') !== -1 || path.indexOf('/news/') !== -1;
-    var pagesJsonPath = (inSubdir ? '../' : './') + 'pages_' + lang + '.json';
-
-
-    fetch(pagesJsonPath)
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (data) {
+    fetchPagesData()
+      .then(function (result) {
+        var data = result.data;
         var items = data[type] || [];
 
         /* Update count display */
@@ -209,9 +418,9 @@
           /* Image area */
           var imageWrap = document.createElement('figure');
           imageWrap.className = 'card-image';
-          if (item.icon && item.icon.indexOf('images/') !== -1) {
+          if (getPrimaryImage(item)) {
             var img = document.createElement('img');
-            var basePath = pagesJsonPath.substring(0, pagesJsonPath.lastIndexOf('/') + 1); img.src = basePath + item.icon;
+            img.src = resolveAssetUrl(getPrimaryImage(item), result.jsonBaseUrl);
             img.alt = item.title;
             img.loading = 'lazy';
             imageWrap.appendChild(img);

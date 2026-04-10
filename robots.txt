@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.wtfasteners.com/sitemap.xml
+Sitemap: https://wtscrews.com/sitemap.xml

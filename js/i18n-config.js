@@ -3,12 +3,18 @@
 
 var I18N = {
   defaultLang: 'en',
-  languages: [
-    { code: 'en', name: 'English', path: '/pags/en/', htmlLang: 'en' },
-    { code: 'zh', name: '中文', path: '/pags/zh/', htmlLang: 'zh-CN' },
-    { code: 'id', name: 'Indonesia', path: '/pags/id/', htmlLang: 'id' }
-    // 新语言格式：{ code: 'fr', name: 'Français', path: '/pags/fr/', htmlLang: 'fr' }
-  ]
+languages: [
+  { code: 'en', name: 'English', path: '/pags/en/', htmlLang: 'en' },
+  { code: 'zh', name: '中文', path: '/pags/zh/', htmlLang: 'zh-CN' },
+  { code: 'id', name: 'Indonesia', path: '/pags/id/', htmlLang: 'id' },
+
+  { code: 'ar', name: 'العربية', path: '/pags/ar/', htmlLang: 'ar' },
+  { code: 'de', name: 'Deutsch', path: '/pags/de/', htmlLang: 'de' },
+  { code: 'fr', name: 'Français', path: '/pags/fr/', htmlLang: 'fr' },
+  { code: 'es', name: 'Español', path: '/pags/es/', htmlLang: 'es' },
+  { code: 'ja', name: '日本語', path: '/pags/ja/', htmlLang: 'ja' },
+  { code: 'ko', name: '한국어', path: '/pags/ko/', htmlLang: 'ko' }
+]
 };
 
 /* ===== 自动检测当前语言 ===== */

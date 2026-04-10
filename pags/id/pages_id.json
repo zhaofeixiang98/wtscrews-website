@@ -2,250 +2,243 @@
   "news": [
     {
       "slug": "news/industry-outlook-2026",
-      "title": "Fastener Industry Outlook 2026",
+      "title": "Outlook Industri Pengikat 2026",
       "date": "2026-04-07",
-      "summary": "Key growth sectors and market opportunities in EV, renewable energy, and smart manufacturing shaping the year ahead.",
-      "icon": ""
-    },
-    {
-      "slug": "news/new-2026",
-      "title": "2026 Industry Trends & Company Updates",
-      "date": "2026-03-15",
-      "summary": "Explore the latest developments in fastener technology and WT Fasteners' strategic expansion plans for 2026.",
-      "icon": "../../images/news-2026.jpg"
+      "summary": "Sektor pertumbuhan utama dan peluang pasar di bidang EV, energi terbarukan, dan manufaktur cerdas yang membentuk tahun ke depan.",
+      "icon": "../../images/logo.jpg"
     }
   ],
   "products": [
     {
-      "category": "Bolts",
+      "category": "Baut",
       "icon": "images/products/bolts/Hex Bolt0.webp",
       "items": [
         {
           "slug": "products/hex-bolts",
-          "title": "Hex Bolts",
-          "summary": "Full and partial thread hex bolts in DIN 931/933, ISO 4014/4017. Grades 4.8 to 12.9, sizes M4–M64.",
+          "title": "Baut Hex",
+          "summary": "Baut hex ulir penuh dan ulir sebagian sesuai DIN 931/933, ISO 4014/4017. Grade 4.8 hingga 12.9, ukuran M4–M64.",
           "icon": "../../images/products/bolts/Hex Bolt0.webp"
         },
         {
           "slug": "products/flange-bolts",
-          "title": "Flange Bolts",
-          "summary": "Serrated and non-serrated flange bolts per DIN 6921 / ISO 1665. Built-in washer face for vibration resistance.",
+          "title": "Baut Flens",
+          "summary": "Baut flens bergerigi dan tanpa gerigi sesuai DIN 6921 / ISO 1665. Permukaan washer terintegrasi untuk ketahanan getaran.",
           "icon": "../../images/products/bolts/Flange Bolt1.webp"
         },
         {
           "slug": "products/anchor-bolts",
-          "title": "Anchor Bolts",
-          "summary": "Expansion anchors, wedge anchors, and chemical anchor bolts for concrete and masonry.",
+          "title": "Baut Angkur",
+          "summary": "Angkur ekspansi, angkur baji, dan baut angkur kimia untuk beton dan pasangan bata.",
           "icon": "../../images/products/bolts/Anchor Bolt1.webp"
         },
         {
           "slug": "products/high-strength-bolts",
-          "title": "High Strength Bolts",
-          "summary": "High strength structural bolts for heavy-duty applications. Grade 8.8, 10.9, 12.9 available.",
+          "title": "Baut Kekuatan Tinggi",
+          "summary": "Baut struktural kekuatan tinggi untuk aplikasi berat. Tersedia grade 8.8, 10.9, 12.9.",
           "icon": "../../images/products/bolts/High Strength Bolt1.webp"
         },
         {
           "slug": "products/t-bolts",
-          "title": "T Bolts",
-          "summary": "T-shaped bolts for T-slot profiles and structural applications. Various sizes and materials.",
+          "title": "Baut T",
+          "summary": "Baut berbentuk T untuk profil alur-T dan aplikasi struktural. Berbagai ukuran dan material tersedia.",
           "icon": "../../images/products/bolts/T Bolt4.webp"
         }
       ]
     },
     {
-      "category": "Nuts",
+      "category": "Mur",
       "icon": "images/products/nuts/Hex Nut1.webp",
       "items": [
         {
           "slug": "products/hex-nuts",
-          "title": "Hex Nuts",
-          "summary": "Standard hex nuts per DIN 934 / ISO 4032. Sizes M4–M64, grades 4, 6, 8, 10.",
+          "title": "Mur Hex",
+          "summary": "Mur hex standar sesuai DIN 934 / ISO 4032. Ukuran M4–M64, grade 4, 6, 8, 10.",
           "icon": "../../images/products/nuts/Hex Nut1.webp"
         },
         {
           "slug": "products/flange-nuts",
-          "title": "Flange Nuts",
-          "summary": "Serrated flange nuts with built-in washer face for vibration resistance. DIN 6923.",
+          "title": "Mur Flens",
+          "summary": "Mur flens bergerigi dengan permukaan washer terintegrasi untuk ketahanan getaran. DIN 6923.",
           "icon": "../../images/products/nuts/Flange Nut.webp"
         },
         {
           "slug": "products/nyloc-nuts",
-          "title": "Nyloc Nuts",
-          "summary": "Nylon insert lock nuts for prevailing torque resistance. DIN 985 / ISO 10511.",
+          "title": "Mur Nyloc",
+          "summary": "Mur pengunci sisipan nilon untuk ketahanan torsi. DIN 985 / ISO 10511.",
           "icon": "../../images/products/nuts/Nyloc Nut3.webp"
         },
         {
           "slug": "products/weld-nuts",
-          "title": "Weld Nuts",
-          "summary": "Projection weld nuts for automated welding. Square and hexagonal types available.",
+          "title": "Mur Las",
+          "summary": "Mur las proyeksi untuk pengelasan otomatis. Tersedia tipe persegi dan heksagonal.",
           "icon": "../../images/products/nuts/Weld Nut 5.webp"
         },
         {
           "slug": "products/wing-nuts",
-          "title": "Wing Nuts",
-          "summary": "Hand-operated wing nuts for quick assembly and disassembly. Various sizes.",
+          "title": "Mur Kupu-Kupu",
+          "summary": "Mur kupu-kupu yang dioperasikan tangan untuk pemasangan dan pelepasan cepat. Berbagai ukuran tersedia.",
           "icon": "../../images/products/nuts/Wing Nut7.webp"
         }
       ]
     },
     {
-      "category": "Washers",
+      "category": "Cincin Pengikat",
       "icon": "images/products/washers/Flat Washer4.webp",
       "items": [
         {
           "slug": "products/flat-washers",
-          "title": "Flat Washers",
-          "summary": "Standard flat washers per DIN 125 / ISO 7089. Zinc plated, galvanized, or plain finish.",
+          "title": "Cincin Datar",
+          "summary": "Cincin datar standar sesuai DIN 125 / ISO 7089. Tersedia dengan pelapis seng, galvanis, atau polos.",
           "icon": "../../images/products/washers/Flat Washer4.webp"
         },
         {
           "slug": "products/lock-washers",
-          "title": "Lock Washers",
-          "summary": "Split lock washers for vibration resistance. DIN 127 / ISO 7092.",
+          "title": "Cincin Pengunci",
+          "summary": "Cincin pengunci belah untuk ketahanan getaran. DIN 127 / ISO 7092.",
           "icon": "../../images/products/washers/Lock Washer2.webp"
         },
         {
           "slug": "products/spring-washers",
-          "title": "Spring Washers",
-          "summary": "Conical spring washers for dynamic load applications. DIN 2093.",
+          "title": "Cincin Per",
+          "summary": "Cincin per konik untuk aplikasi beban dinamis. DIN 2093.",
           "icon": "../../images/products/washers/Spring Washer4.webp"
         },
         {
           "slug": "products/square-washers",
-          "title": "Square Washers",
-          "summary": "Square flat washers for structural applications. DIN 436.",
+          "title": "Cincin Persegi",
+          "summary": "Cincin datar persegi untuk aplikasi struktural. DIN 436.",
           "icon": "../../images/products/washers/Square Washer1.webp"
         }
       ]
     },
     {
-      "category": "Screws",
+      "category": "Sekrup",
       "icon": "images/products/screws/Machine Screw2.webp",
       "items": [
         {
           "slug": "products/machine-screws",
-          "title": "Machine Screws",
-          "summary": "Pan head, hex head, and countersunk machine screws. DIN 963, 964, 965, 966.",
+          "title": "Sekrup Mesin",
+          "summary": "Sekrup mesin kepala pan, kepala hex, dan kepala terbenam. DIN 963, 964, 965, 966.",
           "icon": "../../images/products/screws/Machine Screw2.webp"
         },
         {
           "slug": "products/self-drilling-screws",
-          "title": "Self Drilling Screws",
-          "summary": "Tek screws with drill point for metal and steel applications. Various head types.",
+          "title": "Sekrup Bor Sendiri",
+          "summary": "Sekrup tek dengan ujung bor untuk aplikasi logam dan baja. Berbagai tipe kepala tersedia.",
           "icon": "../../images/products/screws/Self Drilling Screw3.webp"
         },
         {
           "slug": "products/wood-screws",
-          "title": "Wood Screws",
-          "summary": "Flat head and round head wood screws. Various sizes and materials.",
+          "title": "Sekrup Kayu",
+          "summary": "Sekrup kayu kepala datar dan kepala bulat. Berbagai ukuran dan material tersedia.",
           "icon": "../../images/products/screws/Wood Screw3.webp"
         },
         {
           "slug": "products/drywall-screws",
-          "title": "Drywall Screws",
-          "summary": "Fine and coarse thread drywall screws for gypsum board applications.",
+          "title": "Sekrup Drywall",
+          "summary": "Sekrup drywall ulir halus dan kasar untuk aplikasi papan gipsum.",
           "icon": "../../images/products/screws/Drywall Screw1.webp"
         }
       ]
     },
     {
-      "category": "Studs & Threaded Rods",
+      "category": "Stud & Batang Berulir",
       "icon": "images/products/studs/Threaded Rod6.webp",
       "items": [
         {
           "slug": "products/threaded-rods",
-          "title": "Threaded Rods",
-          "summary": "Full thread and partially threaded rods. DIN 975, M4–M30, various lengths.",
+          "title": "Batang Berulir",
+          "summary": "Batang berulir penuh dan sebagian. DIN 975, M4–M30, berbagai panjang tersedia.",
           "icon": "../../images/products/studs/Threaded Rod6.webp"
         },
         {
           "slug": "products/double-end-studs",
-          "title": "Double End Studs",
-          "summary": "Stud bolts with threads on both ends. For flanges, valve fittings, and pipe systems.",
+          "title": "Stud Ujung Ganda",
+          "summary": "Baut stud berulir di kedua ujung. Untuk flens, fitting katup, dan sistem perpipaan.",
           "icon": "../../images/products/studs/Double End Stud1.webp"
         }
       ]
     },
     {
-      "category": "Pins",
+      "category": "Pin",
       "icon": "images/products/pins/Cotter Pin3.webp",
       "items": [
         {
           "slug": "products/cotter-pins",
-          "title": "Cotter Pins",
-          "summary": "Standard cotter pins for secure fastening. DIN 94 / ISO 1234.",
+          "title": "Pin Belah",
+          "summary": "Pin belah standar untuk pengikatan yang aman. DIN 94 / ISO 1234.",
           "icon": "../../images/products/pins/Cotter Pin3.webp"
         },
         {
           "slug": "products/dowel-pins",
-          "title": "Dowel Pins",
-          "summary": "Parallel pins for precise alignment. DIN 7 / ISO 2338, hardened steel.",
+          "title": "Pin Silinder",
+          "summary": "Pin paralel untuk penyelarasan presisi. DIN 7 / ISO 2338, baja keras.",
           "icon": "../../images/products/pins/Dowel Pin3.webp"
         }
       ]
     },
     {
-      "category": "Anchors & Fastening",
+      "category": "Angkur & Pengikat",
       "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
       "items": [
         {
           "slug": "products/wedge-anchors",
-          "title": "Wedge Anchors",
-          "summary": "Zinc-plated wedge anchors for concrete and masonry. Heavy-duty applications.",
+          "title": "Angkur Baji",
+          "summary": "Angkur baji lapis seng untuk beton dan pasangan bata. Aplikasi beban berat.",
           "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
         },
         {
           "slug": "products/expansion-bolts",
-          "title": "Expansion Bolts",
-          "summary": "Expansion anchors for secure anchoring in concrete, brick, and stone.",
+          "title": "Baut Ekspansi",
+          "summary": "Angkur ekspansi untuk penambatan yang aman pada beton, bata, dan batu.",
           "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
         },
         {
           "slug": "products/drop-in-anchors",
-          "title": "Drop-in Anchors",
-          "summary": "Drop-in anchors for use with threaded rods and concrete applications.",
+          "title": "Angkur Tanam",
+          "summary": "Angkur tanam untuk digunakan dengan batang berulir dan aplikasi beton.",
           "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
         }
       ]
     },
     {
-      "category": "Other Fasteners",
+      "category": "Pengikat Lainnya",
       "icon": "images/products/others/Solid Rivet1.webp",
       "items": [
         {
           "slug": "products/solid-rivets",
-          "title": "Solid Rivets",
-          "summary": "Solid rivets for permanent fastening. Various head types and materials.",
+          "title": "Rivet Padat",
+          "summary": "Rivet padat untuk pengikatan permanen. Berbagai tipe kepala dan material tersedia.",
           "icon": "../../images/products/others/Solid Rivet1.webp"
         },
         {
           "slug": "products/blind-rivets",
-          "title": "Blind Rivets",
-          "summary": "Pop rivets for applications where access is limited to one side.",
+          "title": "Rivet Buta",
+          "summary": "Rivet pop untuk aplikasi di mana akses terbatas pada satu sisi.",
           "icon": "../../images/products/others/Blind Rivet1.webp"
         },
         {
           "slug": "products/semi-tubular-rivets",
-          "title": "Semi-tubular Rivets",
-          "summary": "Semi-tubular rivets with partial hole for clinching applications.",
+          "title": "Rivet Semi-Tubular",
+          "summary": "Rivet semi-tubular dengan lubang sebagian untuk aplikasi pengelingan.",
           "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
         },
         {
           "slug": "products/u-bolts",
-          "title": "U Bolts",
-          "summary": "U-bolts for pipe and tube mounting. Various sizes and materials.",
+          "title": "Baut U",
+          "summary": "Baut U untuk pemasangan pipa dan tabung. Berbagai ukuran dan material tersedia.",
           "icon": "../../images/products/others/U Bolt1.webp"
         },
         {
           "slug": "products/circlips",
-          "title": "External Circlips",
-          "summary": "External retaining rings for shaft applications. DIN 471.",
+          "title": "Circlip Eksternal",
+          "summary": "Cincin pengaman eksternal untuk aplikasi poros. DIN 471.",
           "icon": "../../images/products/others/External Circlip2.webp"
         },
         {
           "slug": "products/fastener-kits",
-          "title": "Fastener Kits",
-          "summary": "Assorted fastener kits for repair and maintenance. Custom packaging available.",
+          "title": "Kit Pengikat",
+          "summary": "Kit pengikat campuran untuk perbaikan dan pemeliharaan. Kemasan khusus tersedia.",
           "icon": "../../images/products/others/Fastener Kits4.webp"
         }
       ]
