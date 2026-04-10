@@ -1,0 +1,254 @@
+{
+  "news": [
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "Perspectives de l'industrie des fixations 2026",
+      "date": "2026-04-07",
+      "summary": "Principaux secteurs de croissance et opportunités sur les marchés des VE, des énergies renouvelables et de la fabrication intelligente pour l'année à venir.",
+      "icon": ""
+    },
+    {
+      "slug": "news/new-2026",
+      "title": "Tendances 2026 et actualités de l'entreprise",
+      "date": "2026-03-15",
+      "summary": "Découvrez les dernières avancées en technologie des fixations et les plans d'expansion stratégique de WT Fasteners pour 2026.",
+      "icon": "../../images/news-2026.jpg"
+    }
+  ],
+  "products": [
+    {
+      "category": "Boulons",
+      "icon": "images/products/bolts/Hex Bolt0.webp",
+      "items": [
+        {
+          "slug": "products/hex-bolts",
+          "title": "Boulons hexagonaux",
+          "summary": "Boulons hexagonaux à filetage complet ou partiel selon DIN 931/933, ISO 4014/4017. Classes 4.8 à 12.9, tailles M4–M64.",
+          "icon": "../../images/products/bolts/Hex Bolt0.webp"
+        },
+        {
+          "slug": "products/flange-bolts",
+          "title": "Boulons à bride",
+          "summary": "Boulons à bride dentelés et non dentelés selon DIN 6921 / ISO 1665. Face intégrée type rondelle pour résistance aux vibrations.",
+          "icon": "../../images/products/bolts/Flange Bolt1.webp"
+        },
+        {
+          "slug": "products/anchor-bolts",
+          "title": "Boulons d'ancrage",
+          "summary": "Chevilles d'expansion, ancrages à coin et boulons d'ancrage chimiques pour béton et maçonnerie.",
+          "icon": "../../images/products/bolts/Anchor Bolt1.webp"
+        },
+        {
+          "slug": "products/high-strength-bolts",
+          "title": "Boulons haute résistance",
+          "summary": "Boulons structurels haute résistance pour applications lourdes. Classes 8.8, 10.9, 12.9 disponibles.",
+          "icon": "../../images/products/bolts/High Strength Bolt1.webp"
+        },
+        {
+          "slug": "products/t-bolts",
+          "title": "Boulons en T",
+          "summary": "Boulons en T pour profils à rainure en T et applications structurelles. Différentes tailles et matériaux.",
+          "icon": "../../images/products/bolts/T Bolt4.webp"
+        }
+      ]
+    },
+    {
+      "category": "Écrous",
+      "icon": "images/products/nuts/Hex Nut1.webp",
+      "items": [
+        {
+          "slug": "products/hex-nuts",
+          "title": "Écrous hexagonaux",
+          "summary": "Écrous hexagonaux standard selon DIN 934 / ISO 4032. Tailles M4–M64, classes 4, 6, 8, 10.",
+          "icon": "../../images/products/nuts/Hex Nut1.webp"
+        },
+        {
+          "slug": "products/flange-nuts",
+          "title": "Écrous à bride",
+          "summary": "Écrous à bride dentelés avec face type rondelle intégrée pour résistance aux vibrations. DIN 6923.",
+          "icon": "../../images/products/nuts/Flange Nut.webp"
+        },
+        {
+          "slug": "products/nyloc-nuts",
+          "title": "Écrous Nyloc",
+          "summary": "Écrous autofreinés à insert en nylon pour résistance au desserrage. DIN 985 / ISO 10511.",
+          "icon": "../../images/products/nuts/Nyloc Nut3.webp"
+        },
+        {
+          "slug": "products/weld-nuts",
+          "title": "Écrous à souder",
+          "summary": "Écrous de soudage par projection pour soudage automatisé. Types carrés et hexagonaux disponibles.",
+          "icon": "../../images/products/nuts/Weld Nut 5.webp"
+        },
+        {
+          "slug": "products/wing-nuts",
+          "title": "Écrous papillon",
+          "summary": "Écrous papillon pour montage/démontage manuel rapide. Différentes tailles.",
+          "icon": "../../images/products/nuts/Wing Nut7.webp"
+        }
+      ]
+    },
+    {
+      "category": "Rondelles",
+      "icon": "images/products/washers/Flat Washer4.webp",
+      "items": [
+        {
+          "slug": "products/flat-washers",
+          "title": "Rondelles plates",
+          "summary": "Rondelles plates standard selon DIN 125 / ISO 7089. Zinguées, galvanisées ou brutes.",
+          "icon": "../../images/products/washers/Flat Washer4.webp"
+        },
+        {
+          "slug": "products/lock-washers",
+          "title": "Rondelles frein",
+          "summary": "Rondelles fendues pour résistance aux vibrations. DIN 127 / ISO 7092.",
+          "icon": "../../images/products/washers/Lock Washer2.webp"
+        },
+        {
+          "slug": "products/spring-washers",
+          "title": "Rondelles ressort",
+          "summary": "Rondelles ressort coniques pour charges dynamiques. DIN 2093.",
+          "icon": "../../images/products/washers/Spring Washer4.webp"
+        },
+        {
+          "slug": "products/square-washers",
+          "title": "Rondelles carrées",
+          "summary": "Rondelles plates carrées pour applications structurelles. DIN 436.",
+          "icon": "../../images/products/washers/Square Washer1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Vis",
+      "icon": "images/products/screws/Machine Screw2.webp",
+      "items": [
+        {
+          "slug": "products/machine-screws",
+          "title": "Vis mécaniques",
+          "summary": "Vis mécaniques tête fraisée, tête cylindrique, tête hexagonale. DIN 963, 964, 965, 966.",
+          "icon": "../../images/products/screws/Machine Screw2.webp"
+        },
+        {
+          "slug": "products/self-drilling-screws",
+          "title": "Vis autoforeuses",
+          "summary": "Vis Tek avec pointe trépan pour métal et acier. Différents types de tête.",
+          "icon": "../../images/products/screws/Self Drilling Screw3.webp"
+        },
+        {
+          "slug": "products/wood-screws",
+          "title": "Vis à bois",
+          "summary": "Vis à bois tête plate et tête ronde. Différentes tailles et matériaux.",
+          "icon": "../../images/products/screws/Wood Screw3.webp"
+        },
+        {
+          "slug": "products/drywall-screws",
+          "title": "Vis pour plaques de plâtre",
+          "summary": "Vis pour plaques de plâtre filetage fin et grossier pour applications en plaques de plâtre.",
+          "icon": "../../images/products/screws/Drywall Screw1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Tiges filetées & Goujons",
+      "icon": "images/products/studs/Threaded Rod6.webp",
+      "items": [
+        {
+          "slug": "products/threaded-rods",
+          "title": "Tiges filetées",
+          "summary": "Tiges filetées complètes et partielles. DIN 975, M4–M30, longueurs variées.",
+          "icon": "../../images/products/studs/Threaded Rod6.webp"
+        },
+        {
+          "slug": "products/double-end-studs",
+          "title": "Goujons double filetage",
+          "summary": "Goujons filetés aux deux extrémités. Pour brides, raccords de vannes et systèmes de tuyauterie.",
+          "icon": "../../images/products/studs/Double End Stud1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Goupilles",
+      "icon": "images/products/pins/Cotter Pin3.webp",
+      "items": [
+        {
+          "slug": "products/cotter-pins",
+          "title": "Goupilles fendues",
+          "summary": "Goupilles fendues standard pour fixation sécurisée. DIN 94 / ISO 1234.",
+          "icon": "../../images/products/pins/Cotter Pin3.webp"
+        },
+        {
+          "slug": "products/dowel-pins",
+          "title": "Goupilles cylindriques",
+          "summary": "Goupilles parallèles pour alignement précis. DIN 7 / ISO 2338, acier trempé.",
+          "icon": "../../images/products/pins/Dowel Pin3.webp"
+        }
+      ]
+    },
+    {
+      "category": "Ancrages & Fixations",
+      "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
+      "items": [
+        {
+          "slug": "products/wedge-anchors",
+          "title": "Ancrages à coin",
+          "summary": "Ancrages à coin zingués pour béton et maçonnerie. Applications lourdes.",
+          "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+        },
+        {
+          "slug": "products/expansion-bolts",
+          "title": "Boulons d'expansion",
+          "summary": "Chevilles d'expansion pour ancrage sécurisé dans béton, brique et pierre.",
+          "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+        },
+        {
+          "slug": "products/drop-in-anchors",
+          "title": "Chevilles à expansion (drop-in)",
+          "summary": "Chevilles à expansion pour utilisation avec tiges filetées et applications béton.",
+          "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Autres fixations",
+      "icon": "images/products/others/Solid Rivet1.webp",
+      "items": [
+        {
+          "slug": "products/solid-rivets",
+          "title": "Rivets pleins",
+          "summary": "Rivets pleins pour assemblage permanent. Différents types de tête et matériaux.",
+          "icon": "../../images/products/others/Solid Rivet1.webp"
+        },
+        {
+          "slug": "products/blind-rivets",
+          "title": "Rivets aveugles",
+          "summary": "Rivets pop pour applications avec accès limité d'un seul côté.",
+          "icon": "../../images/products/others/Blind Rivet1.webp"
+        },
+        {
+          "slug": "products/semi-tubular-rivets",
+          "title": "Rivets semi-tubulaires",
+          "summary": "Rivets semi-tubulaires avec trou partiel pour applications de sertissage.",
+          "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
+        },
+        {
+          "slug": "products/u-bolts",
+          "title": "Boulons en U",
+          "summary": "Boulons en U pour montage de tuyaux et tubes. Différentes tailles et matériaux.",
+          "icon": "../../images/products/others/U Bolt1.webp"
+        },
+        {
+          "slug": "products/circlips",
+          "title": "Circlips externes",
+          "summary": "Anneaux élastiques externes pour arbres. DIN 471.",
+          "icon": "../../images/products/others/External Circlip2.webp"
+        },
+        {
+          "slug": "products/fastener-kits",
+          "title": "Kits de fixations",
+          "summary": "Kits assortis de fixations pour réparation et maintenance. Emballage personnalisé disponible.",
+          "icon": "../../images/products/others/Fastener Kits4.webp"
+        }
+      ]
+    }
+  ]
+}
