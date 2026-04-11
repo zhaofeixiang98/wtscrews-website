@@ -58,5 +58,5 @@ $record = [
 file_put_contents($filename, json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
 // Redirect to success page
-header('Location: http://38.60.251.149/pags/success.html');
+header('Location: http://wtscrews.com/pags/success.html');
 exit;

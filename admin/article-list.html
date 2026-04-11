@@ -536,8 +536,9 @@
           statusEl.textContent = msg;
           setTimeout(function() { statusEl.textContent = ''; }, 5000);
         } else {
+          var errMsg = data.error || (data.errors && data.errors.length ? data.errors.join(' | ') : '删除失败');
           statusEl.className = 'action-status error';
-          statusEl.textContent = '❌ ' + (data.error || '删除失败');
+          statusEl.textContent = '❌ ' + errMsg;
         }
         pending = [];
         loadArticles();

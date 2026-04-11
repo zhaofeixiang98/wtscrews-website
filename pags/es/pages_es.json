@@ -1,13 +1,6 @@
 {
     "news": [
         {
-            "slug": "news/11",
-            "title": "11",
-            "date": "2026-04-11",
-            "summary": "33",
-            "icon": "../../images/news/qr-line.png"
-        },
-        {
             "slug": "news/industry-outlook-2026",
             "title": "Perspectivas de la industria de fijaciones 2026",
             "date": "2026-04-07",

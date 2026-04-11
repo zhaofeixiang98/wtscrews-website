@@ -62,19 +62,19 @@ POST {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # 列出文章
-curl -s -X POST http://38.60.251.149/cgi-bin/api.cgi \
+curl -s -X POST wtscrews.com/cgi-bin/api.cgi \
   -H "X-API-Key: wt2026-api-key" \
   -H "Content-Type: application/json" \
   -d '{"action":"list_articles"}'
 
 # 删除文章（同时删图）
-curl -s -X POST http://38.60.251.149/cgi-bin/api.cgi \
+curl -s -X POST wtscrews.com/cgi-bin/api.cgi \
   -H "X-API-Key: wt2026-api-key" \
   -H "Content-Type: application/json" \
   -d '{"action":"delete_articles","slugs":["news/old-article"],"delete_images":true}'
 
 # 列出未使用图片
-curl -s -X POST http://38.60.251.149/cgi-bin/api.cgi \
+curl -s -X POST wtscrews.com/cgi-bin/api.cgi \
   -H "X-API-Key: wt2026-api-key" \
   -H "Content-Type: application/json" \
   -d '{"action":"list_images"}'

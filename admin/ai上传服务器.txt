@@ -155,11 +155,11 @@ JSON 数据文件（CGI 脚本需要读写）：
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 浏览器访问网站：
-  http://38.60.251.149/
+  wtscrews.com/
   ← 能看到网站首页就说明 Apache 正常
 
 测试 API 接口（在你自己电脑终端运行）：
-  curl -s -X POST http://38.60.251.149/cgi-bin/api.cgi \
+  curl -s -X POST wtscrews.com/cgi-bin/api.cgi \
     -H "X-API-Key: wt2026-api-key" \
     -H "Content-Type: application/json" \
     -d '{"action":"list_articles"}'
