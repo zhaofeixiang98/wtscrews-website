@@ -59,7 +59,22 @@
     }
     .topbar-links a:hover { color: var(--white); }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 100px; }
+    .container { max-width: 1420px; margin: 0 auto; padding: 32px 24px 100px; }
+    .editor-layout {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .editor-sidebar {
+      position: sticky;
+      top: 86px;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .editor-main { min-width: 0; }
 
     /* ── Cards ── */
     .card {
@@ -76,6 +91,62 @@
       margin-bottom: 20px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--gray-200);
+    }
+
+    .sidebar-panel {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .sidebar-panel summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 22px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-900);
+    }
+    .sidebar-panel summary::-webkit-details-marker { display: none; }
+    .sidebar-panel summary::after {
+      content: '展开';
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+    .sidebar-panel[open] summary {
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .sidebar-panel[open] summary::after {
+      content: '折叠';
+      color: var(--accent);
+    }
+    .sidebar-panel-body {
+      padding: 22px;
+    }
+    .image-library-panel[open] {
+      position: fixed;
+      top: 10vh;
+      left: 24px;
+      width: min(80vw, 1120px);
+      max-height: 80vh;
+      z-index: 180;
+      border: 1px solid rgba(37,99,235,0.14);
+      box-shadow: 0 24px 80px rgba(15, 33, 64, 0.24);
+    }
+    .image-library-panel[open] .sidebar-panel-body {
+      max-height: calc(80vh - 72px);
+      overflow: auto;
+    }
+    .image-library-panel[open] .library-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      max-height: none;
+      overflow: visible;
+      padding-right: 0;
     }
 
     /* ── Forms ── */
@@ -153,8 +224,8 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 4px;
-      padding: 10px 0 14px;
-      margin-bottom: 4px;
+      padding: 0 0 12px;
+      margin: 6px 0 6px;
       border-bottom: 1px solid var(--gray-200);
     }
     .toolbar-label { font-size: 0.78rem; color: var(--gray-400); margin-right: 4px; white-space: nowrap; }
@@ -208,6 +279,204 @@
     .upload-info { flex: 1; min-width: 0; }
     .upload-info .u-name { font-weight: 600; color: var(--green-500); font-size: 0.875rem; margin-bottom: 3px; word-break: break-all; }
     .upload-info .u-path { font-size: 0.78rem; color: var(--gray-500); word-break: break-all; }
+    .cover-current {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      word-break: break-all;
+    }
+    .editor-sidebar .form-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .editor-sidebar .upload-preview-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .editor-sidebar .upload-preview-row img {
+      width: 100%;
+      height: auto;
+      max-height: 220px;
+    }
+    .editor-sidebar .btn-insert,
+    .editor-sidebar .btn-upload,
+    .editor-sidebar .btn-refresh {
+      width: 100%;
+    }
+
+    /* ── Image library ── */
+    .card-head-inline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .card-head-inline h2 {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    .btn-refresh {
+      padding: 8px 14px;
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-refresh:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+    .library-note {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .library-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .library-toolbar input {
+      flex: 1;
+    }
+    .library-summary {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+    .library-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .library-action-msg {
+      font-size: 0.8rem;
+      color: var(--green-500);
+      min-height: 1.2em;
+      text-align: right;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .editor-sidebar .library-grid {
+      grid-template-columns: 1fr;
+      max-height: 58vh;
+      overflow: auto;
+      padding-right: 4px;
+    }
+    .library-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      background: var(--gray-50);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .library-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .library-meta {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .library-name {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      word-break: break-word;
+    }
+    .library-path {
+      font-size: 0.77rem;
+      color: var(--gray-500);
+      word-break: break-all;
+      line-height: 1.5;
+    }
+    .library-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .library-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+    .library-size {
+      font-size: 0.74rem;
+      color: var(--gray-400);
+    }
+    .library-actions {
+      display: flex;
+      gap: 8px;
+      padding: 0 12px 12px;
+    }
+    .library-actions button {
+      flex: 1;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: 1.5px solid var(--gray-200);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .library-actions .btn-cover {
+      background: var(--white);
+      color: var(--gray-700);
+    }
+    .library-actions .btn-cover:hover {
+      background: var(--blue-900);
+      border-color: var(--blue-900);
+      color: var(--white);
+    }
+    .library-actions .btn-use {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+    .library-actions .btn-use:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+    .state-msg {
+      padding: 18px;
+      border: 1px dashed var(--gray-200);
+      border-radius: 10px;
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.86rem;
+      background: var(--gray-50);
+    }
 
     .divider { border: none; border-top: 1px solid var(--gray-200); margin: 20px 0; }
 
@@ -338,9 +607,39 @@
     }
 
     @media (max-width: 640px) {
+      .container { padding-left: 16px; padding-right: 16px; }
       .form-row { grid-template-columns: 1fr; }
       .card { padding: 20px 16px; }
       .html-toolbar { gap: 3px; }
+      .editor-layout { grid-template-columns: 1fr; }
+      .editor-sidebar {
+        position: static;
+        top: auto;
+      }
+      .image-library-panel[open] {
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        max-height: none;
+        box-shadow: var(--shadow);
+      }
+      .image-library-panel[open] .sidebar-panel-body {
+        max-height: none;
+        overflow: visible;
+      }
+      .card-head-inline,
+      .library-toolbar,
+      .library-status-row,
+      .library-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .library-summary,
+      .library-action-msg {
+        text-align: left;
+        white-space: normal;
+      }
     }
   </style>
 </head>
@@ -357,6 +656,82 @@
   </div>
 
   <div class="container">
+
+    <div class="editor-layout">
+      <aside class="editor-sidebar">
+
+        <!-- ── 图片上传 ── -->
+        <details class="sidebar-panel" open>
+          <summary>图片上传</summary>
+          <div class="sidebar-panel-body">
+            <p style="font-size:0.82rem;color:var(--gray-500);margin-bottom:20px">
+              上传后自动设为本文<strong>封面（og:image）</strong>并插入<strong>英文正文顶部</strong>。其他语言留空时会继承英文正文。文件名重复时自动加数字后缀。
+            </p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>选择图片<span class="req">*</span></label>
+                <div class="upload-zone" id="uploadZone">
+                  <input type="file" id="imgFile" accept="image/*">
+                  <div class="upload-zone-text" id="uploadZoneText">
+                    <strong>点击选择图片</strong> 或拖拽到此处<br>
+                    <span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="form-group">
+                  <label>重命名<span class="optional">可选，留空用原名</span></label>
+                  <input type="text" id="imgRename" placeholder="新文件名（不含扩展名），如 ev-factory-2026">
+                  <div class="hint">保存路径：<code style="font-size:0.8rem">/images/news/文件名.ext</code></div>
+                </div>
+                <div class="form-group">
+                  <label>Alt 文字<span class="optional">建议填写，有助于 SEO</span></label>
+                  <input type="text" id="imgAlt" placeholder="图片描述，如 WT Fasteners factory floor 2026">
+                  <div class="hint">上传图片和下方资源库插入图片都会使用这里的 Alt / Caption 生成 figure。</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>图片说明 Caption<span class="optional">可选</span></label>
+              <input type="text" id="imgCaption" placeholder="显示在图片下方的文字">
+            </div>
+            <button type="button" class="btn-upload" id="uploadBtn">上传图片</button>
+            <span id="uploadStatus" style="display:block;font-size:0.82rem;margin-top:10px;color:var(--gray-500)"></span>
+
+            <div class="upload-preview-row" id="uploadPreviewRow">
+              <img id="uploadThumb" src="" alt="">
+              <div class="upload-info">
+                <div class="u-name" id="uploadedName"></div>
+                <div class="u-path" id="uploadedPath"></div>
+                <div style="margin-top:6px;font-size:0.8rem;color:var(--green-500)" id="currentImageNote"></div>
+              </div>
+              <button type="button" class="btn-insert" id="insertAtCursorBtn" title="将同一张图片额外插入到当前光标处">再次插入到光标处</button>
+            </div>
+          </div>
+        </details>
+
+        <!-- ── 图片资源库 ── -->
+        <details class="sidebar-panel image-library-panel" open>
+          <summary>图片资源库</summary>
+          <div class="sidebar-panel-body">
+            <p class="library-note">从 /images/ 选择现有图片设为封面或插入正文。删除功能仍然只在文章管理页处理 /images/news/ 下的图片。</p>
+            <div class="library-toolbar">
+              <input type="text" id="librarySearch" placeholder="搜索文件名或路径，如 abouts / products / news">
+              <span class="library-summary" id="librarySummary">加载中...</span>
+            </div>
+            <div class="library-status-row">
+              <div class="hint">先点击正文编辑框定位光标，再使用“插入到当前光标”。</div>
+              <div class="library-action-msg" id="libraryActionMsg"></div>
+            </div>
+            <button type="button" class="btn-refresh" id="libraryRefreshBtn" style="margin-bottom:14px">刷新图片</button>
+            <div id="libraryGrid">
+              <div class="state-msg">加载中...</div>
+            </div>
+          </div>
+        </details>
+      </aside>
+
+      <div class="editor-main">
 
     <!-- ── 基本信息 ── -->
     <div class="card">
@@ -378,61 +753,26 @@
           <input type="text" id="article_section" value="Industry News" placeholder="Industry News">
           <div class="hint">写入 JSON-LD articleSection，有助于 Google News 分类。</div>
         </div>
-    </div>
-
-    <!-- ── 图片上传 ── -->
-    <div class="card">
-      <h2>图片上传</h2>
-      <p style="font-size:0.82rem;color:var(--gray-500);margin-bottom:20px">
-        上传后自动设为本文<strong>封面（og:image）</strong>并插入<strong>所有语言正文顶部</strong>。文件名重复时自动加数字后缀。
-      </p>
-      <div class="form-row">
-        <div class="form-group">
-          <label>选择图片<span class="req">*</span></label>
-          <div class="upload-zone" id="uploadZone">
-            <input type="file" id="imgFile" accept="image/*">
-            <div class="upload-zone-text" id="uploadZoneText">
-              <strong>点击选择图片</strong> 或拖拽到此处<br>
-              <span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="form-group">
-            <label>重命名<span class="optional">可选，留空用原名</span></label>
-            <input type="text" id="imgRename" placeholder="新文件名（不含扩展名），如 ev-factory-2026">
-            <div class="hint">保存路径：<code style="font-size:0.8rem">/images/news/文件名.ext</code></div>
-          </div>
-          <div class="form-group">
-            <label>Alt 文字<span class="optional">建议填写，有助于 SEO</span></label>
-            <input type="text" id="imgAlt" placeholder="图片描述，如 WT Fasteners factory floor 2026">
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>图片说明 Caption<span class="optional">可选</span></label>
-        <input type="text" id="imgCaption" placeholder="显示在图片下方的文字">
-      </div>
-      <button type="button" class="btn-upload" id="uploadBtn">上传图片</button>
-      <span id="uploadStatus" style="font-size:0.82rem;margin-left:10px;color:var(--gray-500)"></span>
-
-      <!-- Result -->
-      <div class="upload-preview-row" id="uploadPreviewRow">
-        <img id="uploadThumb" src="" alt="">
-        <div class="upload-info">
-          <div class="u-name" id="uploadedName"></div>
-          <div class="u-path" id="uploadedPath"></div>
-          <div style="margin-top:6px;font-size:0.8rem;color:var(--green-500)">✓ 已设为封面 &nbsp;·&nbsp; ✓ 已插入所有语言正文顶部</div>
-        </div>
-        <button type="button" class="btn-insert" id="insertAtCursorBtn" title="将同一张图片额外插入到当前光标处">再次插入到光标处</button>
-      </div>
+        <div class="cover-current" id="coverCurrent">当前封面图：未选择</div>
     </div>
 
     <!-- ── 文章内容 ── -->
     <div class="card">
       <h2>文章内容（按语言填写）</h2>
 
-      <!-- HTML Toolbar -->
+      <!-- Language tabs -->
+      <div class="lang-tabs">
+        <button type="button" class="lang-tab main active" data-lang="en">English 🇬🇧</button>
+        <button type="button" class="lang-tab main" data-lang="zh">中文 🇨🇳</button>
+        <button type="button" class="lang-tab" data-lang="de">Deutsch 🇩🇪</button>
+        <button type="button" class="lang-tab" data-lang="es">Español 🇪🇸</button>
+        <button type="button" class="lang-tab" data-lang="fr">Français 🇫🇷</button>
+        <button type="button" class="lang-tab" data-lang="ar">العربية 🇸🇦</button>
+        <button type="button" class="lang-tab" data-lang="id">Indonesia 🇮🇩</button>
+        <button type="button" class="lang-tab" data-lang="ja">日本語 🇯🇵</button>
+        <button type="button" class="lang-tab" data-lang="ko">한국어 🇰🇷</button>
+      </div>
+
       <div class="html-toolbar" id="htmlToolbar">
         <span class="toolbar-label">格式工具：</span>
         <button type="button" class="html-btn" data-action="h2" title="H2 二级标题">H2</button>
@@ -449,19 +789,6 @@
         <button type="button" class="html-btn" data-action="blockquote" title="引用块">❝</button>
         <button type="button" class="html-btn" data-action="hr"         title="分割线">—</button>
         <span class="toolbar-note">先点击正文编辑框定位光标，再点工具按钮</span>
-      </div>
-
-      <!-- Language tabs -->
-      <div class="lang-tabs">
-        <button type="button" class="lang-tab main active" data-lang="en">English 🇬🇧</button>
-        <button type="button" class="lang-tab main" data-lang="zh">中文 🇨🇳</button>
-        <button type="button" class="lang-tab" data-lang="de">Deutsch 🇩🇪</button>
-        <button type="button" class="lang-tab" data-lang="es">Español 🇪🇸</button>
-        <button type="button" class="lang-tab" data-lang="fr">Français 🇫🇷</button>
-        <button type="button" class="lang-tab" data-lang="ar">العربية 🇸🇦</button>
-        <button type="button" class="lang-tab" data-lang="id">Indonesia 🇮🇩</button>
-        <button type="button" class="lang-tab" data-lang="ja">日本語 🇯🇵</button>
-        <button type="button" class="lang-tab" data-lang="ko">한국어 🇰🇷</button>
       </div>
 
       <!-- EN panel -->
@@ -494,7 +821,7 @@
           <label>面包屑标签<span class="optional">留空则用标题</span></label>
           <input type="text" id="en_bc_label" placeholder="Market Update Q3 2026">
         </div>
-        <div class="form-group">
+        <div class="form-group body-group">
           <label>正文 HTML<span class="req">*</span></label>
           <textarea id="en_body" class="body-editor" placeholder="<p>Article content here...</p>&#10;<h2>Section Heading</h2>&#10;<p>More content...</p>"></textarea>
           <div class="hint">直接写 HTML，或用上方工具栏快速插入标签。</div>
@@ -514,7 +841,7 @@
           <div class="form-group"><label>关键词<span class="optional">可选</span></label><input type="text" id="zh_keywords"></div>
         </div>
         <div class="form-group"><label>面包屑标签<span class="optional">可选</span></label><input type="text" id="zh_bc_label"></div>
-        <div class="form-group"><label>正文 HTML<span class="optional">可选</span></label><textarea id="zh_body" class="body-editor" placeholder="<p>中文内容...</p>&#10;<h2>章节标题</h2>"></textarea></div>
+        <div class="form-group body-group"><label>正文 HTML<span class="optional">可选</span></label><textarea id="zh_body" class="body-editor" placeholder="<p>中文内容...</p>&#10;<h2>章节标题</h2>"></textarea></div>
       </div>
 
       <!-- DE panel -->
@@ -530,7 +857,7 @@
           <div class="form-group"><label>Stichwörter<span class="optional">optional</span></label><input type="text" id="de_keywords"></div>
         </div>
         <div class="form-group"><label>Breadcrumb-Label<span class="optional">optional</span></label><input type="text" id="de_bc_label"></div>
-        <div class="form-group"><label>Inhalt (HTML)<span class="optional">optional</span></label><textarea id="de_body" class="body-editor"></textarea></div>
+        <div class="form-group body-group"><label>Inhalt (HTML)<span class="optional">optional</span></label><textarea id="de_body" class="body-editor"></textarea></div>
       </div>
 
       <!-- ES panel -->
@@ -546,7 +873,7 @@
           <div class="form-group"><label>Palabras clave<span class="optional">opcional</span></label><input type="text" id="es_keywords"></div>
         </div>
         <div class="form-group"><label>Etiqueta breadcrumb<span class="optional">opcional</span></label><input type="text" id="es_bc_label"></div>
-        <div class="form-group"><label>Contenido (HTML)<span class="optional">opcional</span></label><textarea id="es_body" class="body-editor"></textarea></div>
+        <div class="form-group body-group"><label>Contenido (HTML)<span class="optional">opcional</span></label><textarea id="es_body" class="body-editor"></textarea></div>
       </div>
 
       <!-- FR panel -->
@@ -562,7 +889,7 @@
           <div class="form-group"><label>Mots-clés<span class="optional">optionnel</span></label><input type="text" id="fr_keywords"></div>
         </div>
         <div class="form-group"><label>Libellé breadcrumb<span class="optional">optionnel</span></label><input type="text" id="fr_bc_label"></div>
-        <div class="form-group"><label>Contenu (HTML)<span class="optional">optionnel</span></label><textarea id="fr_body" class="body-editor"></textarea></div>
+        <div class="form-group body-group"><label>Contenu (HTML)<span class="optional">optionnel</span></label><textarea id="fr_body" class="body-editor"></textarea></div>
       </div>
 
       <!-- AR panel -->
@@ -578,7 +905,7 @@
           <div class="form-group"><label>الكلمات المفتاحية<span class="optional">اختياري</span></label><input type="text" id="ar_keywords" dir="rtl"></div>
         </div>
         <div class="form-group"><label>تسمية التنقل<span class="optional">اختياري</span></label><input type="text" id="ar_bc_label" dir="rtl"></div>
-        <div class="form-group"><label>المحتوى (HTML)<span class="optional">اختياري</span></label><textarea id="ar_body" class="body-editor" dir="ltr"></textarea></div>
+        <div class="form-group body-group"><label>المحتوى (HTML)<span class="optional">اختياري</span></label><textarea id="ar_body" class="body-editor" dir="ltr"></textarea></div>
       </div>
 
       <!-- ID panel -->
@@ -594,7 +921,7 @@
           <div class="form-group"><label>Kata Kunci<span class="optional">opsional</span></label><input type="text" id="id_keywords"></div>
         </div>
         <div class="form-group"><label>Label Breadcrumb<span class="optional">opsional</span></label><input type="text" id="id_bc_label"></div>
-        <div class="form-group"><label>Konten (HTML)<span class="optional">opsional</span></label><textarea id="id_body" class="body-editor"></textarea></div>
+        <div class="form-group body-group"><label>Konten (HTML)<span class="optional">opsional</span></label><textarea id="id_body" class="body-editor"></textarea></div>
       </div>
 
       <!-- JA panel -->
@@ -610,7 +937,7 @@
           <div class="form-group"><label>キーワード<span class="optional">任意</span></label><input type="text" id="ja_keywords"></div>
         </div>
         <div class="form-group"><label>パンくずラベル<span class="optional">任意</span></label><input type="text" id="ja_bc_label"></div>
-        <div class="form-group"><label>本文 (HTML)<span class="optional">任意</span></label><textarea id="ja_body" class="body-editor"></textarea></div>
+        <div class="form-group body-group"><label>本文 (HTML)<span class="optional">任意</span></label><textarea id="ja_body" class="body-editor"></textarea></div>
       </div>
 
       <!-- KO panel -->
@@ -626,10 +953,12 @@
           <div class="form-group"><label>키워드<span class="optional">선택</span></label><input type="text" id="ko_keywords"></div>
         </div>
         <div class="form-group"><label>브레드크럼 레이블<span class="optional">선택</span></label><input type="text" id="ko_bc_label"></div>
-        <div class="form-group"><label>본문 (HTML)<span class="optional">선택</span></label><textarea id="ko_body" class="body-editor"></textarea></div>
+        <div class="form-group body-group"><label>본문 (HTML)<span class="optional">선택</span></label><textarea id="ko_body" class="body-editor"></textarea></div>
       </div>
 
     </div><!-- .card -->
+      </div><!-- .editor-main -->
+    </div><!-- .editor-layout -->
   </div><!-- .container -->
 
   <!-- ── Submit bar ── -->
@@ -675,6 +1004,69 @@
       localStorage.removeItem('userAdminAuth');
       window.location.href = 'login.html';
     });
+
+    function escHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function fmtSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+
+    function encodeImagePath(path) {
+      return String(path || '').split('/').map(function(part) {
+        return encodeURIComponent(part);
+      }).join('/');
+    }
+
+    var currentImagePathRaw = '';
+
+    function setCurrentImage(path, displayName, noteText) {
+      var safePath = String(path || '').trim();
+      currentImagePathRaw = safePath;
+      document.getElementById('og_image').value = safePath ? encodeImagePath(safePath) : '';
+      document.getElementById('coverCurrent').textContent = safePath
+        ? '当前封面图：/images/' + safePath
+        : '当前封面图：未选择';
+
+      if (!safePath) {
+        document.getElementById('uploadPreviewRow').classList.remove('show');
+        return;
+      }
+
+      document.getElementById('uploadedName').textContent = displayName || safePath.split('/').pop();
+      document.getElementById('uploadedPath').textContent = '/images/' + safePath;
+      document.getElementById('uploadThumb').src = '/images/' + encodeImagePath(safePath);
+      document.getElementById('currentImageNote').textContent = noteText || '✓ 已设为封面';
+      document.getElementById('uploadPreviewRow').classList.add('show');
+    }
+
+    function buildFigureHtml(imagePath) {
+      var src = '../../../images/' + encodeImagePath(imagePath);
+      var alt = escHtml(document.getElementById('imgAlt').value.trim());
+      var caption = escHtml(document.getElementById('imgCaption').value.trim());
+      return '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
+        (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') +
+        '</figure>\n\n';
+    }
+
+    function insertIntoCurrentBody(html) {
+      if (!lastBodyTA) {
+        alert('请先点击某个正文编辑框定位光标');
+        return false;
+      }
+      var start = lastBodyTA.selectionStart;
+      lastBodyTA.value = lastBodyTA.value.slice(0, start) + html + lastBodyTA.value.slice(lastBodyTA.selectionEnd);
+      lastBodyTA.selectionStart = lastBodyTA.selectionEnd = start + html.length;
+      lastBodyTA.focus();
+      return true;
+    }
 
     // ── Default date ──────────────────────────────────────────────────────────
     document.getElementById('date').value = new Date().toISOString().slice(0, 10);
@@ -758,12 +1150,23 @@
     ].join('\n');
 
     // ── Language tabs ─────────────────────────────────────────────────────────
+    var htmlToolbar = document.getElementById('htmlToolbar');
+
+    function placeToolbar(lang) {
+      var panel = document.getElementById('panel-' + lang);
+      if (!panel) return;
+      var bodyGroup = panel.querySelector('.body-group');
+      if (!bodyGroup) return;
+      bodyGroup.parentNode.insertBefore(htmlToolbar, bodyGroup);
+    }
+
     document.querySelectorAll('.lang-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
         document.querySelectorAll('.lang-tab').forEach(function(t) { t.classList.remove('active'); });
         document.querySelectorAll('.lang-panel').forEach(function(p) { p.classList.remove('active'); });
         this.classList.add('active');
         document.getElementById('panel-' + this.dataset.lang).classList.add('active');
+        placeToolbar(this.dataset.lang);
       });
     });
 
@@ -782,6 +1185,89 @@
       var ta = document.getElementById(lang + '_body');
       if (ta && !ta.value) ta.placeholder = DEFAULT_BODY_TPL;
     });
+    placeToolbar('en');
+
+    // ── Image library ────────────────────────────────────────────────────────
+    var libraryImages = [];
+
+    function renderImageLibrary() {
+      var keyword = document.getElementById('librarySearch').value.trim().toLowerCase();
+      var filtered = libraryImages.filter(function(item) {
+        return !keyword || item.path.toLowerCase().indexOf(keyword) !== -1 || item.filename.toLowerCase().indexOf(keyword) !== -1;
+      });
+      document.getElementById('librarySummary').textContent = '共 ' + libraryImages.length + ' 张，当前显示 ' + filtered.length + ' 张';
+
+      if (!filtered.length) {
+        document.getElementById('libraryGrid').innerHTML = '<div class="state-msg">没有匹配的图片</div>';
+        return;
+      }
+
+      var html = filtered.map(function(item) {
+        return '<div class="library-card">' +
+          '<img class="library-thumb" src="' + item.url + '" alt="' + escHtml(item.filename) + '" loading="lazy">' +
+          '<div class="library-meta">' +
+            '<div class="library-name">' + escHtml(item.filename) + '</div>' +
+            '<div class="library-path">/images/' + escHtml(item.path) + '</div>' +
+            '<div class="library-meta-row">' +
+              '<span class="library-badge">' + escHtml(item.section) + '</span>' +
+              '<span class="library-size">' + fmtSize(item.size) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="library-actions">' +
+            '<button type="button" class="btn-cover" data-path="' + escHtml(item.path) + '" data-name="' + escHtml(item.filename) + '">设为封面</button>' +
+            '<button type="button" class="btn-use" data-path="' + escHtml(item.path) + '">插入到当前光标</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      document.getElementById('libraryGrid').className = 'library-grid';
+      document.getElementById('libraryGrid').innerHTML = html;
+
+      document.querySelectorAll('.btn-cover').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          setCurrentImage(this.dataset.path, this.dataset.name, '✓ 已设为封面（来源于 /images 资源库）');
+          document.getElementById('libraryActionMsg').textContent = '已选择封面：/images/' + this.dataset.path;
+        });
+      });
+
+      document.querySelectorAll('.btn-use').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var path = this.dataset.path;
+          if (insertIntoCurrentBody(buildFigureHtml(path))) {
+            document.getElementById('libraryActionMsg').textContent = '已插入：/images/' + path;
+          }
+        });
+      });
+    }
+
+    function loadImageLibrary() {
+      document.getElementById('libraryGrid').className = '';
+      document.getElementById('libraryGrid').innerHTML = '<div class="state-msg">加载中...</div>';
+      document.getElementById('librarySummary').textContent = '读取 /images/ ...';
+      document.getElementById('libraryActionMsg').textContent = '';
+
+      fetch('/cgi-bin/image-library.cgi?_=' + Date.now())
+        .then(function(res) {
+          var status = res.status;
+          return res.text().then(function(text) {
+            try { return JSON.parse(text); }
+            catch (err) { throw new Error('HTTP ' + status + ' — ' + text.slice(0, 200)); }
+          });
+        })
+        .then(function(data) {
+          if (!data.success) throw new Error(data.error || '读取失败');
+          libraryImages = data.images || [];
+          renderImageLibrary();
+        })
+        .catch(function(err) {
+          document.getElementById('libraryGrid').className = '';
+          document.getElementById('libraryGrid').innerHTML = '<div class="state-msg" style="color:var(--red-500)">加载失败：' + escHtml(err.message) + '</div>';
+          document.getElementById('librarySummary').textContent = '读取失败';
+        });
+    }
+
+    document.getElementById('librarySearch').addEventListener('input', renderImageLibrary);
+    document.getElementById('libraryRefreshBtn').addEventListener('click', loadImageLibrary);
 
     // ── Image upload ──────────────────────────────────────────────────────────
     document.getElementById('imgFile').addEventListener('change', function() {
@@ -819,28 +1305,14 @@
           btn.disabled = false;
           if (data.success) {
             statusEl.textContent = '';
-            // Show thumbnail
-            document.getElementById('uploadedName').textContent = data.filename;
-            document.getElementById('uploadedPath').textContent = '/images/' + data.path;
-            document.getElementById('uploadThumb').src = '/images/' + data.path;
-            document.getElementById('uploadPreviewRow').classList.add('show');
+            setCurrentImage(data.path, data.filename, '✓ 已设为封面 · ✓ 已插入英文正文顶部');
 
-            // 1. Set og_image cover field
-            document.getElementById('og_image').value = data.path;
-
-            // 2. Build figure HTML
-            var src     = '../../../images/' + data.path;
-            var alt     = document.getElementById('imgAlt').value.trim();
-            var caption = document.getElementById('imgCaption').value.trim();
-            var fig = '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
-                      (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') +
-                      '</figure>\n\n';
-
-            // 3. Only prepend to EN body; other langs stay empty (fallback to EN)
+            // Only prepend to EN body; other langs stay empty (fallback to EN)
+            var fig = buildFigureHtml(data.path);
             var enBody = document.getElementById('en_body');
             enBody.value = fig + enBody.value;
 
-            // 4. Set template as placeholder for other language bodies
+            // Set template as placeholder for other language bodies
             var tpl = fig + '<h2>Section Heading</h2>\n<p>Paragraph text...</p>';
             ['ar','de','es','fr','id','ja','ko','zh'].forEach(function(lang) {
               var ta = document.getElementById(lang + '_body');
@@ -858,18 +1330,11 @@
 
     // Re-insert the same uploaded image at cursor position
     document.getElementById('insertAtCursorBtn').addEventListener('click', function() {
-      if (!lastBodyTA) { alert('请先点击某个正文编辑框定位光标'); return; }
-      var path    = document.getElementById('og_image').value.trim();
-      if (!path) return;
-      var src     = '../../../images/' + path;
-      var alt     = document.getElementById('imgAlt').value.trim();
-      var caption = document.getElementById('imgCaption').value.trim();
-      var fig = '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
-                (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') + '</figure>\n';
-      var start = lastBodyTA.selectionStart;
-      lastBodyTA.value = lastBodyTA.value.slice(0, start) + fig + lastBodyTA.value.slice(lastBodyTA.selectionEnd);
-      lastBodyTA.selectionStart = lastBodyTA.selectionEnd = start + fig.length;
-      lastBodyTA.focus();
+      if (!currentImagePathRaw) {
+        alert('请先上传图片或从资源库选择封面图');
+        return;
+      }
+      insertIntoCurrentBody(buildFigureHtml(currentImagePathRaw));
     });
 
     // ── HTML Toolbar ──────────────────────────────────────────────────────────
@@ -965,6 +1430,8 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') document.getElementById('previewOverlay').style.display = 'none';
     });
+
+    loadImageLibrary();
 
     // ── Submit ────────────────────────────────────────────────────────────────
     document.getElementById('submitBtn').addEventListener('click', function() {
