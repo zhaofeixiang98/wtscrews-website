@@ -1029,8 +1029,8 @@ table {
 
 .article-figure img {
   width: 100%;
-  height: 420px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -2577,6 +2577,49 @@ table {
 .lang-select select:focus {
   outline: 2px solid var(--blue-300);
   outline-offset: 2px;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 40px 0 20px;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  line-height: 1;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--blue-500);
+  color: var(--blue-500);
+  background: var(--blue-50);
+}
+
+.page-btn.active {
+  background: var(--blue-500);
+  border-color: var(--blue-500);
+  color: var(--white);
+}
+
+.page-btn:disabled,
+.page-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .lang-select select option {

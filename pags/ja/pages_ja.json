@@ -1,12 +1,19 @@
 {
     "news": [
         {
+            "slug": "news/11",
+            "title": "11",
+            "date": "2026-04-11",
+            "summary": "33",
+            "icon": "../../images/news/qr-line.png"
+        },
+        {
             "slug": "news/industry-outlook-2026",
             "title": "2026年ファスナー産業の展望",
             "date": "2026-04-07",
             "summary": "電気自動車、再生可能エネルギー、スマート製造における主要な成長分野と市場機会が来年の方向性を決定します。",
             "icon": "../../images/logo.jpg"
-        } 
+        }
     ],
     "products": [
         {

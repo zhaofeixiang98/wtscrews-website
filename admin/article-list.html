@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章管理 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #0a1628;
+      --blue-800: #0f2140;
+      --accent:   #2563eb;
+      --green-500:#16a34a;
+      --red-500:  #dc2626;
+      --red-50:   #fef2f2;
+      --red-100:  #fee2e2;
+      --red-600:  #b91c1c;
+      --orange-500:#f97316;
+      --gray-900: #111827;
+      --gray-700: #374151;
+      --gray-500: #6b7280;
+      --gray-400: #9ca3af;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --gray-50:  #f9fafb;
+      --white:    #ffffff;
+      --shadow:   0 4px 20px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--gray-50); color: var(--gray-900); min-height: 100vh; }
+
+    /* Topbar */
+    .topbar {
+      background: var(--blue-900); color: var(--white);
+      padding: 14px 24px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .topbar h1 { font-size: 1rem; font-weight: 600; }
+    .topbar-links { display: flex; gap: 16px; }
+    .topbar-links a { color: var(--gray-400); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .topbar-links a:hover { color: var(--white); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 32px 24px 100px; }
+
+    /* Card */
+    .card { background: var(--white); border-radius: 12px; padding: 0; box-shadow: var(--shadow); overflow: hidden; margin-bottom: 24px; }
+    .card-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; border-bottom: 1px solid var(--gray-200);
+    }
+    .card-head h2 { font-size: 1rem; font-weight: 700; color: var(--blue-900); }
+    .card-head-btns { display: flex; gap: 8px; align-items: center; }
+    .btn-sm {
+      padding: 7px 16px; background: var(--gray-100); border: 1.5px solid var(--gray-200);
+      border-radius: 7px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; color: var(--gray-700); transition: all 0.2s;
+    }
+    .btn-sm:hover { background: var(--gray-200); }
+
+    /* Select-all bar */
+    .select-bar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px; background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200); font-size: 0.85rem;
+    }
+    .select-bar label { display: flex; align-items: center; gap: 7px; cursor: pointer; font-weight: 500; color: var(--gray-700); }
+    .select-bar input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); }
+    .sel-count { color: var(--gray-500); font-size: 0.82rem; }
+
+    /* Article rows */
+    .article-row {
+      display: grid;
+      grid-template-columns: 40px 90px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--gray-100);
+      transition: background 0.15s;
+    }
+    .article-row:last-child { border-bottom: none; }
+    .article-row:hover { background: var(--gray-50); }
+    .article-row.selected { background: #eff6ff; }
+    .article-row input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); justify-self: center; }
+    .art-date { font-size: 0.8rem; color: var(--gray-400); white-space: nowrap; }
+    .art-info { min-width: 0; }
+    .art-title { font-size: 0.9rem; font-weight: 600; color: var(--gray-900); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .art-summary { font-size: 0.78rem; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .art-slug { font-size: 0.72rem; color: var(--gray-400); font-family: monospace; margin-top: 2px; }
+    .btn-del-single {
+      padding: 6px 14px; background: transparent; border: 1.5px solid var(--gray-200);
+      border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; color: var(--gray-500); transition: all 0.2s; white-space: nowrap;
+    }
+    .btn-del-single:hover { background: var(--red-50); border-color: var(--red-500); color: var(--red-500); }
+
+    /* Empty / loading state */
+    .state-msg { padding: 48px 24px; text-align: center; color: var(--gray-400); font-size: 0.9rem; }
+
+    /* ── Image grid ─────────────────────────────────────────────────────── */
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      padding: 20px 24px;
+    }
+    .img-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.15s;
+      position: relative;
+      background: var(--gray-100);
+    }
+    .img-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .img-card.selected { border-color: var(--red-500); background: var(--red-50); }
+    .img-card.used     { border-color: var(--gray-200); }
+    .img-card input[type="checkbox"] {
+      position: absolute; top: 6px; left: 6px;
+      width: 16px; height: 16px; accent-color: var(--red-500); cursor: pointer;
+      z-index: 2;
+    }
+    .img-thumb {
+      width: 100%; height: 100px; object-fit: contain;
+      background: var(--gray-100); display: block;
+    }
+    .img-info {
+      padding: 8px 10px; border-top: 1px solid var(--gray-200);
+    }
+    .img-name {
+      font-size: 0.72rem; color: var(--gray-700); font-weight: 500;
+      word-break: break-all; line-height: 1.35; margin-bottom: 4px;
+    }
+    .img-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 20px;
+    }
+    .img-badge.unused { background: var(--red-100); color: var(--red-600); }
+    .img-badge.used   { background: #dcfce7; color: var(--green-500); }
+    .img-size { font-size: 0.68rem; color: var(--gray-400); margin-left: 4px; }
+
+    .img-sel-bar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px; background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200); font-size: 0.85rem;
+    }
+    .img-sel-bar label { display: flex; align-items: center; gap: 7px; cursor: pointer; font-weight: 500; color: var(--gray-700); }
+    .img-sel-bar input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--red-500); }
+
+    .btn-del-imgs {
+      padding: 8px 18px; background: var(--red-500); color: var(--white);
+      border: none; border-radius: 7px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+    }
+    .btn-del-imgs:hover:not(:disabled) { background: var(--red-600); }
+    .btn-del-imgs:disabled { background: var(--gray-400); cursor: not-allowed; }
+
+    .img-status { font-size: 0.82rem; font-weight: 500; margin-left: 4px; }
+    .img-status.success { color: var(--green-500); }
+    .img-status.error   { color: var(--red-500); }
+
+    /* Bottom action bar */
+    .action-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--white); border-top: 1px solid var(--gray-200);
+      padding: 14px 24px; display: flex; align-items: center; gap: 16px;
+      z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    }
+    .btn-delete-sel {
+      padding: 11px 28px; background: var(--red-500); color: var(--white);
+      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+    }
+    .btn-delete-sel:hover:not(:disabled) { background: var(--red-600); }
+    .btn-delete-sel:disabled { background: var(--gray-400); cursor: not-allowed; }
+    .action-status { font-size: 0.85rem; font-weight: 500; }
+    .action-status.success { color: var(--green-500); }
+    .action-status.error   { color: var(--red-500); }
+
+    /* Confirm modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 300; display: flex; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal {
+      background: var(--white); border-radius: 14px; padding: 32px;
+      max-width: 520px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal h3 { font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; }
+    .modal p  { font-size: 0.875rem; color: var(--gray-500); margin-bottom: 16px; }
+    .modal-list {
+      background: var(--red-50); border: 1px solid var(--red-100); border-radius: 8px;
+      padding: 12px 16px; max-height: 180px; overflow-y: auto; margin-bottom: 16px;
+    }
+    .modal-list li {
+      font-size: 0.85rem; color: var(--gray-700); padding: 4px 0;
+      border-bottom: 1px solid var(--red-100); list-style: none;
+    }
+    .modal-list li:last-child { border-bottom: none; }
+    .modal-list li .slug { font-size: 0.75rem; color: var(--gray-400); font-family: monospace; }
+
+    /* Image delete option in modal */
+    .modal-img-option {
+      border: 1.5px solid var(--gray-200); border-radius: 8px;
+      padding: 12px 16px; margin-bottom: 16px; background: var(--gray-50);
+    }
+    .modal-img-option label {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.875rem; font-weight: 600; cursor: pointer; color: var(--gray-700);
+    }
+    .modal-img-option label input { width: 16px; height: 16px; accent-color: var(--red-500); flex-shrink: 0; }
+    .modal-img-preview {
+      display: none; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    }
+    .modal-img-preview.show { display: flex; }
+    .modal-img-preview-item {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--red-50); border: 1px solid var(--red-100); border-radius: 6px;
+      padding: 4px 10px; font-size: 0.75rem; color: var(--gray-600);
+    }
+    .modal-img-preview-item img { width: 30px; height: 24px; object-fit: contain; border-radius: 3px; background: var(--gray-100); }
+
+    .modal-warn { font-size: 0.82rem; color: var(--red-600); font-weight: 600; margin-bottom: 20px; }
+    .modal-btns { display: flex; gap: 12px; justify-content: flex-end; }
+    .btn-confirm-del {
+      padding: 10px 24px; background: var(--red-500); color: var(--white);
+      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+    }
+    .btn-confirm-del:hover { background: var(--red-600); }
+    .btn-cancel {
+      padding: 10px 20px; background: var(--gray-100); border: 1.5px solid var(--gray-200);
+      border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; color: var(--gray-700); transition: all 0.2s;
+    }
+    .btn-cancel:hover { background: var(--gray-200); }
+
+    /* img-only confirm modal */
+    .modal-sm { max-width: 420px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>📋 文章管理</h1>
+    <div class="topbar-links">
+      <a href="article-new.html">✍️ 发布新文章</a>
+      <a href="users-view.html">用户数据</a>
+      <a href="../pags/en/news.html" target="_blank">查看新闻页</a>
+      <a href="#" id="logoutBtn">退出</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── 文章列表 ── -->
+    <div class="card">
+      <div class="card-head">
+        <h2 id="cardTitle">文章列表 <span id="totalCount" style="font-weight:400;color:var(--gray-400);font-size:0.85rem"></span></h2>
+        <div class="card-head-btns">
+          <button class="btn-sm" id="refreshBtn">↻ 刷新</button>
+        </div>
+      </div>
+      <div class="select-bar" id="selectBar" style="display:none">
+        <label><input type="checkbox" id="selectAll"> 全选</label>
+        <span class="sel-count" id="selCount">已选 0 篇</span>
+      </div>
+      <div id="articleList">
+        <div class="state-msg">加载中...</div>
+      </div>
+    </div>
+
+    <!-- ── 图片管理 /images/news/ ── -->
+    <div class="card">
+      <div class="card-head">
+        <h2>图片管理 <code style="font-size:0.78rem;font-weight:400;color:var(--gray-400)">/images/news/</code>
+          <span id="imgTotalBadge" style="font-weight:400;color:var(--gray-400);font-size:0.82rem;margin-left:6px"></span>
+        </h2>
+        <div class="card-head-btns">
+          <button class="btn-sm" id="imgRefreshBtn">↻ 刷新</button>
+        </div>
+      </div>
+
+      <!-- select-all for images -->
+      <div class="img-sel-bar" id="imgSelBar" style="display:none">
+        <label><input type="checkbox" id="imgSelectAll"> 只选未使用</label>
+        <span class="sel-count" id="imgSelCount">已选 0 张</span>
+        <button class="btn-del-imgs" id="delImgsBtn" disabled>🗑 删除所选图片</button>
+        <span class="img-status" id="imgStatus"></span>
+      </div>
+
+      <div id="imgGrid">
+        <div class="state-msg">加载中...</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom action bar -->
+  <div class="action-bar">
+    <button class="btn-delete-sel" id="deleteSelBtn" disabled>🗑 删除所选</button>
+    <span class="action-status" id="actionStatus"></span>
+  </div>
+
+  <!-- ── 文章删除确认 modal ── -->
+  <div class="modal-overlay" id="confirmOverlay" style="display:none">
+    <div class="modal">
+      <h3>确认删除文章</h3>
+      <p>以下 <strong id="confirmCount">0</strong> 篇文章将从 <strong>所有 9 个语言版本</strong>中永久删除：</p>
+      <ul class="modal-list" id="confirmList"></ul>
+
+      <!-- Image delete option -->
+      <div class="modal-img-option">
+        <label>
+          <input type="checkbox" id="delImgCb">
+          同时删除文章关联图片
+        </label>
+        <div class="modal-img-preview" id="modalImgPreview"></div>
+      </div>
+
+      <p class="modal-warn">⚠ 此操作不可撤销，HTML 文件和列表记录都将被删除。</p>
+      <div class="modal-btns">
+        <button class="btn-cancel" id="cancelBtn">取消</button>
+        <button class="btn-confirm-del" id="confirmDelBtn">确认删除</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 图片单独删除确认 modal ── -->
+  <div class="modal-overlay" id="imgConfirmOverlay" style="display:none">
+    <div class="modal modal-sm">
+      <h3>确认删除图片</h3>
+      <p>以下 <strong id="imgConfirmCount">0</strong> 张图片将被永久删除：</p>
+      <ul class="modal-list" id="imgConfirmList"></ul>
+      <p class="modal-warn">⚠ 此操作不可撤销。</p>
+      <div class="modal-btns">
+        <button class="btn-cancel" id="imgCancelBtn">取消</button>
+        <button class="btn-confirm-del" id="imgConfirmDelBtn">确认删除</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Auth ──────────────────────────────────────────────────────────────────
+    (function() {
+      var auth = localStorage.getItem('userAdminAuth');
+      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
+        localStorage.removeItem('userAdminAuth');
+        window.location.href = 'login.html';
+      }
+    })();
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+    });
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function fmtSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1048576) return (bytes/1024).toFixed(1) + ' KB';
+      return (bytes/1048576).toFixed(1) + ' MB';
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // ARTICLES
+    // ─────────────────────────────────────────────────────────────────────────
+    var articles = [];
+    var pending  = [];
+
+    function loadArticles() {
+      document.getElementById('articleList').innerHTML = '<div class="state-msg">加载中...</div>';
+      document.getElementById('selectBar').style.display = 'none';
+      document.getElementById('deleteSelBtn').disabled = true;
+      document.getElementById('actionStatus').textContent = '';
+
+      fetch('/pags/en/pages_en.json?_=' + Date.now())
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          articles = (data.news || []).filter(function(a) { return a.slug && a.slug.startsWith('news/'); });
+          document.getElementById('totalCount').textContent = '共 ' + articles.length + ' 篇';
+          if (articles.length === 0) {
+            document.getElementById('articleList').innerHTML = '<div class="state-msg">暂无已发布文章</div>';
+            return;
+          }
+          document.getElementById('selectBar').style.display = 'flex';
+          renderArticles();
+        })
+        .catch(function(e) {
+          document.getElementById('articleList').innerHTML =
+            '<div class="state-msg" style="color:var(--red-500)">加载失败：' + e.message + '</div>';
+        });
+    }
+
+    function renderArticles() {
+      var html = '';
+      articles.forEach(function(a) {
+        var slug = a.slug;
+        html += '<div class="article-row" data-slug="' + escHtml(slug) + '">' +
+          '<input type="checkbox" class="art-cb" data-slug="' + escHtml(slug) + '">' +
+          '<span class="art-date">' + escHtml(a.date || '—') + '</span>' +
+          '<div class="art-info">' +
+            '<div class="art-title">' + escHtml(a.title || '（无标题）') + '</div>' +
+            '<div class="art-summary">' + escHtml((a.summary || '').slice(0, 100)) + '</div>' +
+            '<div class="art-slug">' + escHtml(slug) + '</div>' +
+          '</div>' +
+          '<button class="btn-del-single" data-slug="' + escHtml(slug) + '" data-title="' + escHtml(a.title || slug) + '">删除</button>' +
+        '</div>';
+      });
+      document.getElementById('articleList').innerHTML = html;
+
+      document.querySelectorAll('.art-cb').forEach(function(cb) { cb.addEventListener('change', updateSelection); });
+      document.querySelectorAll('.btn-del-single').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          showConfirm([{slug: this.dataset.slug, title: this.dataset.title}]);
+        });
+      });
+      updateSelection();
+    }
+
+    function getChecked() {
+      var checked = [];
+      document.querySelectorAll('.art-cb:checked').forEach(function(cb) {
+        var slug  = cb.dataset.slug;
+        var art   = articles.find(function(a) { return a.slug === slug; }) || {};
+        checked.push({slug: slug, title: art.title || slug, icon: art.icon || ''});
+      });
+      return checked;
+    }
+
+    function updateSelection() {
+      var checked = getChecked();
+      var total   = document.querySelectorAll('.art-cb').length;
+      document.querySelectorAll('.art-cb').forEach(function(cb) {
+        cb.closest('.article-row').classList.toggle('selected', cb.checked);
+      });
+      var selAll = document.getElementById('selectAll');
+      selAll.checked       = total > 0 && checked.length === total;
+      selAll.indeterminate = checked.length > 0 && checked.length < total;
+      document.getElementById('selCount').textContent = '已选 ' + checked.length + ' 篇';
+      document.getElementById('deleteSelBtn').disabled = checked.length === 0;
+      document.getElementById('deleteSelBtn').textContent = checked.length > 0
+        ? '🗑 删除所选（' + checked.length + '）' : '🗑 删除所选';
+    }
+
+    document.getElementById('selectAll').addEventListener('change', function() {
+      document.querySelectorAll('.art-cb').forEach(function(cb) { cb.checked = this.checked; }.bind(this));
+      updateSelection();
+    });
+
+    function showConfirm(items) {
+      pending = items;
+      document.getElementById('confirmCount').textContent = items.length;
+      var listHtml = '';
+      items.forEach(function(item) {
+        listHtml += '<li><strong>' + escHtml(item.title) + '</strong><br>' +
+                    '<span class="slug">' + escHtml(item.slug) + '</span></li>';
+      });
+      document.getElementById('confirmList').innerHTML = listHtml;
+
+      // Build image preview
+      var previewEl = document.getElementById('modalImgPreview');
+      previewEl.innerHTML = '';
+      previewEl.classList.remove('show');
+      var hasImgs = false;
+      items.forEach(function(item) {
+        if (item.icon && item.icon.indexOf('images/news/') !== -1) {
+          hasImgs = true;
+          var fname = item.icon.split('images/news/').pop();
+          var div = document.createElement('div');
+          div.className = 'modal-img-preview-item';
+          div.innerHTML = '<img src="/images/news/' + escHtml(fname) + '" alt=""> ' + escHtml(fname);
+          previewEl.appendChild(div);
+        }
+      });
+      if (hasImgs) previewEl.classList.add('show');
+
+      document.getElementById('delImgCb').checked = false;
+      document.getElementById('confirmOverlay').style.display = 'flex';
+    }
+
+    document.getElementById('deleteSelBtn').addEventListener('click', function() {
+      var checked = getChecked();
+      if (checked.length > 0) showConfirm(checked);
+    });
+
+    document.getElementById('cancelBtn').addEventListener('click', function() {
+      document.getElementById('confirmOverlay').style.display = 'none';
+      pending = [];
+    });
+
+    document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+      if (e.target === this) { this.style.display = 'none'; pending = []; }
+    });
+
+    document.getElementById('confirmDelBtn').addEventListener('click', function() {
+      if (!pending.length) return;
+      var btn      = this;
+      var statusEl = document.getElementById('actionStatus');
+      btn.disabled = true;
+      btn.textContent = '删除中...';
+
+      var delImg = document.getElementById('delImgCb').checked ? '1' : '0';
+      var params = new URLSearchParams();
+      params.append('slugs', pending.map(function(i) { return i.slug; }).join(','));
+      params.append('delete_image', delImg);
+
+      fetch('/cgi-bin/article-delete.cgi', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: params.toString()
+      })
+      .then(function(res) {
+        var st = res.status;
+        return res.text().then(function(t) {
+          try { return JSON.parse(t); }
+          catch(e) { throw new Error('HTTP ' + st + ': ' + t.slice(0, 200)); }
+        });
+      })
+      .then(function(data) {
+        btn.disabled = false;
+        btn.textContent = '确认删除';
+        document.getElementById('confirmOverlay').style.display = 'none';
+        if (data.success) {
+          var msg = '✓ 已删除 ' + data.deleted.length + ' 篇文章';
+          if (data.deleted_images && data.deleted_images.length) {
+            msg += '，图片 ' + data.deleted_images.length + ' 张';
+          }
+          statusEl.className = 'action-status success';
+          statusEl.textContent = msg;
+          setTimeout(function() { statusEl.textContent = ''; }, 5000);
+        } else {
+          statusEl.className = 'action-status error';
+          statusEl.textContent = '❌ ' + (data.error || '删除失败');
+        }
+        pending = [];
+        loadArticles();
+        loadImages();
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.textContent = '确认删除';
+        document.getElementById('confirmOverlay').style.display = 'none';
+        document.getElementById('actionStatus').className = 'action-status error';
+        document.getElementById('actionStatus').textContent = '❌ ' + err.message;
+        pending = [];
+      });
+    });
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // IMAGES
+    // ─────────────────────────────────────────────────────────────────────────
+    var allImgData   = [];
+    var pendingImgs  = [];
+
+    function loadImages() {
+      document.getElementById('imgGrid').innerHTML = '<div class="state-msg">加载中...</div>';
+      document.getElementById('imgSelBar').style.display = 'none';
+      document.getElementById('imgTotalBadge').textContent = '';
+
+      fetch('/cgi-bin/image-manager.cgi', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'action=list'
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        allImgData = data.images || [];
+        var unused = allImgData.filter(function(i) { return !i.used; });
+        document.getElementById('imgTotalBadge').textContent =
+          '共 ' + allImgData.length + ' 张，未使用 ' + unused.length + ' 张';
+
+        if (allImgData.length === 0) {
+          document.getElementById('imgGrid').innerHTML = '<div class="state-msg">暂无图片</div>';
+          return;
+        }
+        document.getElementById('imgSelBar').style.display = 'flex';
+        renderImages();
+      })
+      .catch(function(e) {
+        document.getElementById('imgGrid').innerHTML =
+          '<div class="state-msg" style="color:var(--red-500)">加载失败：' + e.message + '</div>';
+      });
+    }
+
+    function renderImages() {
+      var grid = document.getElementById('imgGrid');
+      grid.className = 'img-grid';
+      grid.innerHTML = '';
+
+      allImgData.forEach(function(img) {
+        var card = document.createElement('div');
+        card.className = 'img-card' + (img.used ? ' used' : '');
+        card.dataset.filename = img.filename;
+
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.className = 'img-cb';
+        cb.dataset.filename = img.filename;
+        cb.addEventListener('change', updateImgSelection);
+        card.appendChild(cb);
+
+        var thumb = document.createElement('img');
+        thumb.className = 'img-thumb';
+        thumb.src = '/images/news/' + encodeURIComponent(img.filename);
+        thumb.alt = img.filename;
+        thumb.loading = 'lazy';
+        card.appendChild(thumb);
+
+        var info = document.createElement('div');
+        info.className = 'img-info';
+        var badge = img.used
+          ? '<span class="img-badge used">已使用</span>'
+          : '<span class="img-badge unused">未使用</span>';
+        info.innerHTML =
+          '<div class="img-name">' + escHtml(img.filename) + '</div>' +
+          badge + '<span class="img-size">' + fmtSize(img.size) + '</span>';
+        card.appendChild(info);
+
+        card.addEventListener('click', function(e) {
+          if (e.target === cb) return;
+          cb.checked = !cb.checked;
+          updateImgSelection();
+        });
+
+        grid.appendChild(card);
+      });
+
+      updateImgSelection();
+    }
+
+    function getCheckedImgs() {
+      var result = [];
+      document.querySelectorAll('.img-cb:checked').forEach(function(cb) {
+        result.push(cb.dataset.filename);
+      });
+      return result;
+    }
+
+    function updateImgSelection() {
+      var checked = getCheckedImgs();
+      var total   = document.querySelectorAll('.img-cb').length;
+      var unusedAll = allImgData.filter(function(i) { return !i.used; });
+
+      document.querySelectorAll('.img-cb').forEach(function(cb) {
+        cb.closest('.img-card').classList.toggle('selected', cb.checked);
+      });
+
+      var selAllCb = document.getElementById('imgSelectAll');
+      var unusedChecked = checked.filter(function(f) {
+        return allImgData.some(function(i) { return i.filename === f && !i.used; });
+      });
+      selAllCb.checked       = unusedAll.length > 0 && unusedChecked.length === unusedAll.length;
+      selAllCb.indeterminate = unusedChecked.length > 0 && unusedChecked.length < unusedAll.length;
+
+      document.getElementById('imgSelCount').textContent = '已选 ' + checked.length + ' 张';
+      var btn = document.getElementById('delImgsBtn');
+      btn.disabled = checked.length === 0;
+      btn.textContent = checked.length > 0 ? '🗑 删除所选（' + checked.length + '）' : '🗑 删除所选图片';
+    }
+
+    // "只选未使用" checkbox — selects all unused
+    document.getElementById('imgSelectAll').addEventListener('change', function() {
+      var selectUnused = this.checked;
+      document.querySelectorAll('.img-cb').forEach(function(cb) {
+        var img = allImgData.find(function(i) { return i.filename === cb.dataset.filename; });
+        if (img && !img.used) cb.checked = selectUnused;
+      });
+      updateImgSelection();
+    });
+
+    document.getElementById('delImgsBtn').addEventListener('click', function() {
+      var checked = getCheckedImgs();
+      if (!checked.length) return;
+      pendingImgs = checked;
+      document.getElementById('imgConfirmCount').textContent = checked.length;
+      var listHtml = checked.map(function(f) {
+        return '<li>' + escHtml(f) + '</li>';
+      }).join('');
+      document.getElementById('imgConfirmList').innerHTML = listHtml;
+      document.getElementById('imgConfirmOverlay').style.display = 'flex';
+    });
+
+    document.getElementById('imgCancelBtn').addEventListener('click', function() {
+      document.getElementById('imgConfirmOverlay').style.display = 'none';
+      pendingImgs = [];
+    });
+
+    document.getElementById('imgConfirmOverlay').addEventListener('click', function(e) {
+      if (e.target === this) { this.style.display = 'none'; pendingImgs = []; }
+    });
+
+    document.getElementById('imgConfirmDelBtn').addEventListener('click', function() {
+      if (!pendingImgs.length) return;
+      var btn      = this;
+      var statusEl = document.getElementById('imgStatus');
+      btn.disabled = true;
+      btn.textContent = '删除中...';
+
+      var params = new URLSearchParams();
+      params.append('action', 'delete');
+      params.append('filenames', pendingImgs.join(','));
+
+      fetch('/cgi-bin/image-manager.cgi', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: params.toString()
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        btn.disabled = false;
+        btn.textContent = '确认删除';
+        document.getElementById('imgConfirmOverlay').style.display = 'none';
+        if (data.success) {
+          statusEl.className = 'img-status success';
+          statusEl.textContent = '✓ 已删除 ' + data.deleted.length + ' 张图片';
+          setTimeout(function() { statusEl.textContent = ''; }, 4000);
+        } else {
+          statusEl.className = 'img-status error';
+          statusEl.textContent = '❌ ' + (data.error || '删除失败');
+        }
+        pendingImgs = [];
+        loadImages();
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.textContent = '确认删除';
+        document.getElementById('imgConfirmOverlay').style.display = 'none';
+        var statusEl = document.getElementById('imgStatus');
+        statusEl.className = 'img-status error';
+        statusEl.textContent = '❌ ' + err.message;
+        pendingImgs = [];
+      });
+    });
+
+    // ── Misc ──────────────────────────────────────────────────────────────────
+    document.getElementById('refreshBtn').addEventListener('click', loadArticles);
+    document.getElementById('imgRefreshBtn').addEventListener('click', loadImages);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('confirmOverlay').style.display = 'none';
+        document.getElementById('imgConfirmOverlay').style.display = 'none';
+        pending = []; pendingImgs = [];
+      }
+    });
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    loadArticles();
+    loadImages();
+  </script>
+</body>
+</html>

@@ -388,76 +388,129 @@
   }
 
   function loadPages(type, container, countEl) {
+    var ITEMS_PER_PAGE = 9;
+    var currentPage = 1;
+    var allItems = [];
+    var jsonBase = '';
+
+    /* Insert pagination nav after the container */
+    var paginationEl = document.createElement('nav');
+    paginationEl.className = 'pagination';
+    container.parentNode.insertBefore(paginationEl, container.nextSibling);
+
+    function renderPagination(totalPages) {
+      while (paginationEl.firstChild) {
+        paginationEl.removeChild(paginationEl.firstChild);
+      }
+      if (totalPages <= 1) { return; }
+
+      var prev = document.createElement('button');
+      prev.className = 'page-btn';
+      prev.textContent = '\u2190';
+      prev.disabled = currentPage === 1;
+      prev.addEventListener('click', function () {
+        if (currentPage > 1) { renderPage(currentPage - 1); }
+      });
+      paginationEl.appendChild(prev);
+
+      for (var i = 1; i <= totalPages; i++) {
+        (function (p) {
+          var btn = document.createElement('button');
+          btn.className = 'page-btn' + (p === currentPage ? ' active' : '');
+          btn.textContent = p;
+          btn.addEventListener('click', function () { renderPage(p); });
+          paginationEl.appendChild(btn);
+        })(i);
+      }
+
+      var next = document.createElement('button');
+      next.className = 'page-btn';
+      next.textContent = '\u2192';
+      next.disabled = currentPage === totalPages;
+      next.addEventListener('click', function () {
+        if (currentPage < totalPages) { renderPage(currentPage + 1); }
+      });
+      paginationEl.appendChild(next);
+    }
+
+    function renderPage(page) {
+      currentPage = page;
+      var totalPages = Math.ceil(allItems.length / ITEMS_PER_PAGE);
+      var start = (page - 1) * ITEMS_PER_PAGE;
+      var pageItems = allItems.slice(start, start + ITEMS_PER_PAGE);
+
+      if (countEl) {
+        countEl.textContent =
+          allItems.length + (allItems.length === 1 ? ' item' : ' items') + ' found';
+      }
+
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+
+      pageItems.forEach(function (item, index) {
+        var card = document.createElement('a');
+        card.href = item.slug + '.html';
+        card.className = 'card fade-in';
+
+        setTimeout(function () {
+          card.classList.add('visible');
+        }, index * 100);
+
+        var imageWrap = document.createElement('figure');
+        imageWrap.className = 'card-image';
+        if (getPrimaryImage(item)) {
+          var img = document.createElement('img');
+          img.src = resolveAssetUrl(getPrimaryImage(item), jsonBase);
+          img.alt = item.title;
+          img.loading = 'lazy';
+          imageWrap.appendChild(img);
+        } else {
+          imageWrap.textContent = item.icon || (type === 'products' ? '\u2699' : '\uD83D\uDCF0');
+        }
+        card.appendChild(imageWrap);
+
+        var body = document.createElement('section');
+        body.className = 'card-body';
+
+        var title = document.createElement('h3');
+        title.textContent = item.title;
+        body.appendChild(title);
+
+        var summary = document.createElement('p');
+        summary.textContent = item.summary;
+        body.appendChild(summary);
+
+        if (item.date) {
+          var meta = document.createElement('time');
+          meta.className = 'card-meta';
+          meta.textContent = item.date;
+          meta.setAttribute('datetime', item.date);
+          body.appendChild(meta);
+        }
+
+        var linkText = document.createElement('span');
+        linkText.className = 'card-link';
+        var isProduct = (type === 'products' || type === 'bolts' || type === 'washers');
+        linkText.textContent = isProduct ? 'View Details \u2192' : 'Read More \u2192';
+        body.appendChild(linkText);
+
+        card.appendChild(body);
+        container.appendChild(card);
+      });
+
+      renderPagination(totalPages);
+
+      if (page > 1) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
     fetchPagesData()
       .then(function (result) {
-        var data = result.data;
-        var items = data[type] || [];
-
-        /* Update count display */
-        if (countEl) {
-          countEl.textContent =
-            items.length + (items.length === 1 ? ' item' : ' items') + ' found';
-        }
-
-        /* Clear loading text */
-        while (container.firstChild) {
-          container.removeChild(container.firstChild);
-        }
-
-        /* Create cards using DOM API — no HTML tags in JS */
-        items.forEach(function (item, index) {
-          var card = document.createElement('a');
-          card.href = item.slug + '.html';
-          card.className = 'card fade-in';
-
-          /* Stagger animation */
-          setTimeout(function () {
-            card.classList.add('visible');
-          }, index * 100);
-
-          /* Image area */
-          var imageWrap = document.createElement('figure');
-          imageWrap.className = 'card-image';
-          if (getPrimaryImage(item)) {
-            var img = document.createElement('img');
-            img.src = resolveAssetUrl(getPrimaryImage(item), result.jsonBaseUrl);
-            img.alt = item.title;
-            img.loading = 'lazy';
-            imageWrap.appendChild(img);
-          } else {
-            imageWrap.textContent = item.icon || (type === 'products' ? '\u2699' : '\uD83D\uDCF0');
-          }
-          card.appendChild(imageWrap);
-
-          /* Body */
-          var body = document.createElement('section');
-          body.className = 'card-body';
-
-          var title = document.createElement('h3');
-          title.textContent = item.title;
-          body.appendChild(title);
-
-          var summary = document.createElement('p');
-          summary.textContent = item.summary;
-          body.appendChild(summary);
-
-          if (item.date) {
-            var meta = document.createElement('time');
-            meta.className = 'card-meta';
-            meta.textContent = item.date;
-            meta.setAttribute('datetime', item.date);
-            body.appendChild(meta);
-          }
-
-          var linkText = document.createElement('span');
-          linkText.className = 'card-link';
-          var isProduct = (type === 'products' || type === 'bolts' || type === 'washers');
-          linkText.textContent = isProduct ? 'View Details \u2192' : 'Read More \u2192';
-          body.appendChild(linkText);
-
-          card.appendChild(body);
-          container.appendChild(card);
-        });
+        allItems = result.data[type] || [];
+        jsonBase = result.jsonBaseUrl;
+        renderPage(1);
       })
       .catch(function () {
         while (container.firstChild) {

@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发布文章 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #0a1628;
+      --blue-800: #0f2140;
+      --blue-500: #2563eb;
+      --blue-400: #3b82f6;
+      --green-500: #16a34a;
+      --red-500:   #dc2626;
+      --gray-900:  #111827;
+      --gray-700:  #374151;
+      --gray-500:  #6b7280;
+      --gray-400:  #9ca3af;
+      --gray-200:  #e5e7eb;
+      --gray-100:  #f3f4f6;
+      --gray-50:   #f9fafb;
+      --white:     #ffffff;
+      --accent:    #2563eb;
+      --radius:    8px;
+      --shadow:    0 4px 20px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--blue-900);
+      color: var(--white);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .topbar h1 { font-size: 1rem; font-weight: 600; }
+    .topbar-links { display: flex; gap: 16px; }
+    .topbar-links a {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .topbar-links a:hover { color: var(--white); }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 100px; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-900);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    /* ── Forms ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+    }
+    .form-group label span.req { color: var(--red-500); margin-left: 2px; }
+    .form-group label span.optional {
+      color: var(--gray-400);
+      font-weight: 400;
+      font-size: 0.78rem;
+      margin-left: 4px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--gray-900);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; font-family: 'Menlo','Consolas',monospace; font-size: 0.82rem; }
+    .form-group textarea.body-editor { min-height: 300px; }
+    .form-group .hint { font-size: 0.78rem; color: var(--gray-400); margin-top: 4px; }
+
+    /* ── Language tabs ── */
+    .lang-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+    .lang-tab {
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--gray-50);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--gray-500);
+      transition: all 0.2s;
+    }
+    .lang-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-tab.active { background: var(--accent); border-color: var(--accent); color: var(--white); font-weight: 600; }
+    .lang-tab.main { border-color: var(--accent); color: var(--accent); }
+    .lang-tab.main.active { background: var(--accent); color: var(--white); }
+    .lang-panel { display: none; }
+    .lang-panel.active { display: block; }
+    .lang-fallback-note {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #1d4ed8;
+      margin-bottom: 20px;
+    }
+
+    /* ── HTML Toolbar ── */
+    .html-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 0 14px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .toolbar-label { font-size: 0.78rem; color: var(--gray-400); margin-right: 4px; white-space: nowrap; }
+    .html-btn {
+      padding: 5px 9px;
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--gray-700);
+      transition: all 0.15s;
+      min-width: 34px;
+      text-align: center;
+    }
+    .html-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .toolbar-sep { width: 1px; height: 20px; background: var(--gray-200); margin: 0 3px; flex-shrink: 0; }
+    .toolbar-note { font-size: 0.75rem; color: var(--gray-400); margin-left: 6px; }
+
+    /* ── Image upload card ── */
+    .upload-zone {
+      border: 2px dashed var(--gray-200);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .upload-zone:hover { border-color: var(--accent); background: #eff6ff; }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-zone-text { font-size: 0.875rem; color: var(--gray-500); pointer-events: none; }
+    .upload-zone-text strong { color: var(--accent); }
+    .upload-preview-row {
+      display: none;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      background: var(--gray-50);
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      margin-bottom: 14px;
+    }
+    .upload-preview-row.show { display: flex; }
+    .upload-preview-row img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+    .upload-info { flex: 1; min-width: 0; }
+    .upload-info .u-name { font-weight: 600; color: var(--green-500); font-size: 0.875rem; margin-bottom: 3px; word-break: break-all; }
+    .upload-info .u-path { font-size: 0.78rem; color: var(--gray-500); word-break: break-all; }
+
+    .divider { border: none; border-top: 1px solid var(--gray-200); margin: 20px 0; }
+
+    /* ── Buttons ── */
+    .btn-upload {
+      padding: 10px 24px;
+      background: var(--blue-900);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn-upload:hover { background: var(--blue-800); }
+    .btn-upload:disabled { background: var(--gray-400); cursor: not-allowed; }
+    .btn-insert {
+      padding: 9px 20px;
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+    .btn-insert:hover { background: var(--accent); border-color: var(--accent); color: var(--white); }
+
+    /* ── Submit bar ── */
+    .submit-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    }
+    .btn-submit {
+      padding: 12px 36px;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-submit:hover { background: #1d4ed8; }
+    .btn-submit:active { transform: translateY(1px); }
+    .btn-submit:disabled { background: var(--gray-400); cursor: not-allowed; }
+    .btn-preview {
+      padding: 12px 24px;
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+    .btn-preview:hover { background: #1e293b; border-color: #1e293b; color: var(--white); }
+    .status-msg { font-size: 0.88rem; font-weight: 500; flex: 1; }
+    .status-msg.success { color: var(--green-500); }
+    .status-msg.error   { color: var(--red-500); }
+    .status-msg.loading { color: var(--gray-500); }
+
+    /* ── Preview overlay ── */
+    .preview-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+    }
+    .preview-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--blue-900);
+      color: var(--white);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+    .preview-topbar span { font-size: 0.95rem; font-weight: 600; }
+    .preview-lang-row { display: flex; align-items: center; gap: 10px; }
+    .preview-lang-sel {
+      padding: 7px 12px;
+      border-radius: 6px;
+      border: none;
+      font-family: inherit;
+      font-size: 0.875rem;
+      cursor: pointer;
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+    }
+    .preview-lang-sel option { background: #1e293b; color: white; }
+    .preview-close-btn {
+      padding: 8px 18px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    .preview-close-btn:hover { background: rgba(255,255,255,0.25); }
+    .preview-frame {
+      flex: 1;
+      border: none;
+      width: 100%;
+      background: var(--white);
+    }
+
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .card { padding: 20px 16px; }
+      .html-toolbar { gap: 3px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>✍️ 发布新文章</h1>
+    <div class="topbar-links">
+      <a href="article-list.html">📋 管理文章</a>
+      <a href="users-view.html">← 用户数据</a>
+      <a href="../pags/en/news.html" target="_blank">查看新闻页</a>
+      <a href="#" id="logoutBtn">退出</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── 基本信息 ── -->
+    <div class="card">
+      <h2>基本信息（所有语言共用）</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="slug">URL 标识 (Slug)<span class="req">*</span></label>
+          <input type="text" id="slug" placeholder="e.g. market-update-q3-2026" autocomplete="off">
+          <div class="hint">只能包含小写字母、数字、连字符。会自动从英文标题生成。</div>
+        </div>
+        <div class="form-group">
+          <label for="date">发布日期<span class="req">*</span></label>
+          <input type="date" id="date">
+        </div>
+      </div>
+        <input type="hidden" id="og_image">
+        <div class="form-group">
+          <label for="article_section">文章分类<span class="optional">可选</span></label>
+          <input type="text" id="article_section" value="Industry News" placeholder="Industry News">
+          <div class="hint">写入 JSON-LD articleSection，有助于 Google News 分类。</div>
+        </div>
+    </div>
+
+    <!-- ── 图片上传 ── -->
+    <div class="card">
+      <h2>图片上传</h2>
+      <p style="font-size:0.82rem;color:var(--gray-500);margin-bottom:20px">
+        上传后自动设为本文<strong>封面（og:image）</strong>并插入<strong>所有语言正文顶部</strong>。文件名重复时自动加数字后缀。
+      </p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>选择图片<span class="req">*</span></label>
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="imgFile" accept="image/*">
+            <div class="upload-zone-text" id="uploadZoneText">
+              <strong>点击选择图片</strong> 或拖拽到此处<br>
+              <span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="form-group">
+            <label>重命名<span class="optional">可选，留空用原名</span></label>
+            <input type="text" id="imgRename" placeholder="新文件名（不含扩展名），如 ev-factory-2026">
+            <div class="hint">保存路径：<code style="font-size:0.8rem">/images/news/文件名.ext</code></div>
+          </div>
+          <div class="form-group">
+            <label>Alt 文字<span class="optional">建议填写，有助于 SEO</span></label>
+            <input type="text" id="imgAlt" placeholder="图片描述，如 WT Fasteners factory floor 2026">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>图片说明 Caption<span class="optional">可选</span></label>
+        <input type="text" id="imgCaption" placeholder="显示在图片下方的文字">
+      </div>
+      <button type="button" class="btn-upload" id="uploadBtn">上传图片</button>
+      <span id="uploadStatus" style="font-size:0.82rem;margin-left:10px;color:var(--gray-500)"></span>
+
+      <!-- Result -->
+      <div class="upload-preview-row" id="uploadPreviewRow">
+        <img id="uploadThumb" src="" alt="">
+        <div class="upload-info">
+          <div class="u-name" id="uploadedName"></div>
+          <div class="u-path" id="uploadedPath"></div>
+          <div style="margin-top:6px;font-size:0.8rem;color:var(--green-500)">✓ 已设为封面 &nbsp;·&nbsp; ✓ 已插入所有语言正文顶部</div>
+        </div>
+        <button type="button" class="btn-insert" id="insertAtCursorBtn" title="将同一张图片额外插入到当前光标处">再次插入到光标处</button>
+      </div>
+    </div>
+
+    <!-- ── 文章内容 ── -->
+    <div class="card">
+      <h2>文章内容（按语言填写）</h2>
+
+      <!-- HTML Toolbar -->
+      <div class="html-toolbar" id="htmlToolbar">
+        <span class="toolbar-label">格式工具：</span>
+        <button type="button" class="html-btn" data-action="h2" title="H2 二级标题">H2</button>
+        <button type="button" class="html-btn" data-action="h3" title="H3 三级标题">H3</button>
+        <button type="button" class="html-btn" data-action="p"  title="段落">P</button>
+        <div class="toolbar-sep"></div>
+        <button type="button" class="html-btn" data-action="strong" title="加粗"><b>B</b></button>
+        <button type="button" class="html-btn" data-action="em"     title="斜体"><i>I</i></button>
+        <button type="button" class="html-btn" data-action="link"   title="超链接">🔗</button>
+        <div class="toolbar-sep"></div>
+        <button type="button" class="html-btn" data-action="ul" title="无序列表">≡ UL</button>
+        <button type="button" class="html-btn" data-action="li" title="列表项">• LI</button>
+        <div class="toolbar-sep"></div>
+        <button type="button" class="html-btn" data-action="blockquote" title="引用块">❝</button>
+        <button type="button" class="html-btn" data-action="hr"         title="分割线">—</button>
+        <span class="toolbar-note">先点击正文编辑框定位光标，再点工具按钮</span>
+      </div>
+
+      <!-- Language tabs -->
+      <div class="lang-tabs">
+        <button type="button" class="lang-tab main active" data-lang="en">English 🇬🇧</button>
+        <button type="button" class="lang-tab main" data-lang="zh">中文 🇨🇳</button>
+        <button type="button" class="lang-tab" data-lang="de">Deutsch 🇩🇪</button>
+        <button type="button" class="lang-tab" data-lang="es">Español 🇪🇸</button>
+        <button type="button" class="lang-tab" data-lang="fr">Français 🇫🇷</button>
+        <button type="button" class="lang-tab" data-lang="ar">العربية 🇸🇦</button>
+        <button type="button" class="lang-tab" data-lang="id">Indonesia 🇮🇩</button>
+        <button type="button" class="lang-tab" data-lang="ja">日本語 🇯🇵</button>
+        <button type="button" class="lang-tab" data-lang="ko">한국어 🇰🇷</button>
+      </div>
+
+      <!-- EN panel -->
+      <div class="lang-panel active" id="panel-en">
+        <div class="form-row">
+          <div class="form-group">
+            <label>标题 (Title)<span class="req">*</span></label>
+            <input type="text" id="en_title" placeholder="Fastener Market Update Q3 2026">
+          </div>
+          <div class="form-group">
+            <label>副标题 (Subtitle)<span class="optional">可选</span></label>
+            <input type="text" id="en_subtitle" placeholder="Key trends and buyer insights for Q3">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>列表摘要<span class="req">*</span> — 显示在新闻列表卡片上</label>
+          <input type="text" id="en_summary" placeholder="Brief description for the news listing card (1-2 sentences)">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Meta 描述<span class="optional">留空则用摘要</span></label>
+            <input type="text" id="en_meta_desc" placeholder="SEO meta description (under 160 chars)">
+          </div>
+          <div class="form-group">
+            <label>关键词<span class="optional">可选</span></label>
+            <input type="text" id="en_keywords" placeholder="fastener news, market update, 2026">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>面包屑标签<span class="optional">留空则用标题</span></label>
+          <input type="text" id="en_bc_label" placeholder="Market Update Q3 2026">
+        </div>
+        <div class="form-group">
+          <label>正文 HTML<span class="req">*</span></label>
+          <textarea id="en_body" class="body-editor" placeholder="<p>Article content here...</p>&#10;<h2>Section Heading</h2>&#10;<p>More content...</p>"></textarea>
+          <div class="hint">直接写 HTML，或用上方工具栏快速插入标签。</div>
+        </div>
+      </div>
+
+      <!-- ZH panel -->
+      <div class="lang-panel" id="panel-zh">
+        <div class="lang-fallback-note">💡 留空的字段将自动使用英文内容</div>
+        <div class="form-row">
+          <div class="form-group"><label>标题<span class="optional">可选</span></label><input type="text" id="zh_title" placeholder="2026年第三季度紧固件市场动态"></div>
+          <div class="form-group"><label>副标题<span class="optional">可选</span></label><input type="text" id="zh_subtitle" placeholder="第三季度主要趋势与采购建议"></div>
+        </div>
+        <div class="form-group"><label>列表摘要<span class="optional">可选</span></label><input type="text" id="zh_summary" placeholder="新闻列表卡片简介"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Meta 描述<span class="optional">可选</span></label><input type="text" id="zh_meta_desc"></div>
+          <div class="form-group"><label>关键词<span class="optional">可选</span></label><input type="text" id="zh_keywords"></div>
+        </div>
+        <div class="form-group"><label>面包屑标签<span class="optional">可选</span></label><input type="text" id="zh_bc_label"></div>
+        <div class="form-group"><label>正文 HTML<span class="optional">可选</span></label><textarea id="zh_body" class="body-editor" placeholder="<p>中文内容...</p>&#10;<h2>章节标题</h2>"></textarea></div>
+      </div>
+
+      <!-- DE panel -->
+      <div class="lang-panel" id="panel-de">
+        <div class="lang-fallback-note">💡 留空的字段将自动使用英文内容</div>
+        <div class="form-row">
+          <div class="form-group"><label>Titel<span class="optional">optional</span></label><input type="text" id="de_title"></div>
+          <div class="form-group"><label>Untertitel<span class="optional">optional</span></label><input type="text" id="de_subtitle"></div>
+        </div>
+        <div class="form-group"><label>Zusammenfassung<span class="optional">optional</span></label><input type="text" id="de_summary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Meta-Beschreibung<span class="optional">optional</span></label><input type="text" id="de_meta_desc"></div>
+          <div class="form-group"><label>Stichwörter<span class="optional">optional</span></label><input type="text" id="de_keywords"></div>
+        </div>
+        <div class="form-group"><label>Breadcrumb-Label<span class="optional">optional</span></label><input type="text" id="de_bc_label"></div>
+        <div class="form-group"><label>Inhalt (HTML)<span class="optional">optional</span></label><textarea id="de_body" class="body-editor"></textarea></div>
+      </div>
+
+      <!-- ES panel -->
+      <div class="lang-panel" id="panel-es">
+        <div class="lang-fallback-note">💡 Dejar en blanco usará el contenido en inglés</div>
+        <div class="form-row">
+          <div class="form-group"><label>Título<span class="optional">opcional</span></label><input type="text" id="es_title"></div>
+          <div class="form-group"><label>Subtítulo<span class="optional">opcional</span></label><input type="text" id="es_subtitle"></div>
+        </div>
+        <div class="form-group"><label>Resumen<span class="optional">opcional</span></label><input type="text" id="es_summary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Meta descripción<span class="optional">opcional</span></label><input type="text" id="es_meta_desc"></div>
+          <div class="form-group"><label>Palabras clave<span class="optional">opcional</span></label><input type="text" id="es_keywords"></div>
+        </div>
+        <div class="form-group"><label>Etiqueta breadcrumb<span class="optional">opcional</span></label><input type="text" id="es_bc_label"></div>
+        <div class="form-group"><label>Contenido (HTML)<span class="optional">opcional</span></label><textarea id="es_body" class="body-editor"></textarea></div>
+      </div>
+
+      <!-- FR panel -->
+      <div class="lang-panel" id="panel-fr">
+        <div class="lang-fallback-note">💡 Les champs vides utiliseront le contenu anglais</div>
+        <div class="form-row">
+          <div class="form-group"><label>Titre<span class="optional">optionnel</span></label><input type="text" id="fr_title"></div>
+          <div class="form-group"><label>Sous-titre<span class="optional">optionnel</span></label><input type="text" id="fr_subtitle"></div>
+        </div>
+        <div class="form-group"><label>Résumé<span class="optional">optionnel</span></label><input type="text" id="fr_summary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Meta description<span class="optional">optionnel</span></label><input type="text" id="fr_meta_desc"></div>
+          <div class="form-group"><label>Mots-clés<span class="optional">optionnel</span></label><input type="text" id="fr_keywords"></div>
+        </div>
+        <div class="form-group"><label>Libellé breadcrumb<span class="optional">optionnel</span></label><input type="text" id="fr_bc_label"></div>
+        <div class="form-group"><label>Contenu (HTML)<span class="optional">optionnel</span></label><textarea id="fr_body" class="body-editor"></textarea></div>
+      </div>
+
+      <!-- AR panel -->
+      <div class="lang-panel" id="panel-ar" dir="rtl">
+        <div class="lang-fallback-note">💡 ستستخدم الحقول الفارغة المحتوى الإنجليزي</div>
+        <div class="form-row">
+          <div class="form-group"><label>العنوان<span class="optional">اختياري</span></label><input type="text" id="ar_title" dir="rtl"></div>
+          <div class="form-group"><label>العنوان الفرعي<span class="optional">اختياري</span></label><input type="text" id="ar_subtitle" dir="rtl"></div>
+        </div>
+        <div class="form-group"><label>الملخص<span class="optional">اختياري</span></label><input type="text" id="ar_summary" dir="rtl"></div>
+        <div class="form-row">
+          <div class="form-group"><label>الوصف التعريفي<span class="optional">اختياري</span></label><input type="text" id="ar_meta_desc" dir="rtl"></div>
+          <div class="form-group"><label>الكلمات المفتاحية<span class="optional">اختياري</span></label><input type="text" id="ar_keywords" dir="rtl"></div>
+        </div>
+        <div class="form-group"><label>تسمية التنقل<span class="optional">اختياري</span></label><input type="text" id="ar_bc_label" dir="rtl"></div>
+        <div class="form-group"><label>المحتوى (HTML)<span class="optional">اختياري</span></label><textarea id="ar_body" class="body-editor" dir="ltr"></textarea></div>
+      </div>
+
+      <!-- ID panel -->
+      <div class="lang-panel" id="panel-id">
+        <div class="lang-fallback-note">💡 Bidang kosong akan menggunakan konten bahasa Inggris</div>
+        <div class="form-row">
+          <div class="form-group"><label>Judul<span class="optional">opsional</span></label><input type="text" id="id_title"></div>
+          <div class="form-group"><label>Subjudul<span class="optional">opsional</span></label><input type="text" id="id_subtitle"></div>
+        </div>
+        <div class="form-group"><label>Ringkasan<span class="optional">opsional</span></label><input type="text" id="id_summary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Deskripsi Meta<span class="optional">opsional</span></label><input type="text" id="id_meta_desc"></div>
+          <div class="form-group"><label>Kata Kunci<span class="optional">opsional</span></label><input type="text" id="id_keywords"></div>
+        </div>
+        <div class="form-group"><label>Label Breadcrumb<span class="optional">opsional</span></label><input type="text" id="id_bc_label"></div>
+        <div class="form-group"><label>Konten (HTML)<span class="optional">opsional</span></label><textarea id="id_body" class="body-editor"></textarea></div>
+      </div>
+
+      <!-- JA panel -->
+      <div class="lang-panel" id="panel-ja">
+        <div class="lang-fallback-note">💡 空白のフィールドは英語コンテンツを使用します</div>
+        <div class="form-row">
+          <div class="form-group"><label>タイトル<span class="optional">任意</span></label><input type="text" id="ja_title"></div>
+          <div class="form-group"><label>サブタイトル<span class="optional">任意</span></label><input type="text" id="ja_subtitle"></div>
+        </div>
+        <div class="form-group"><label>概要<span class="optional">任意</span></label><input type="text" id="ja_summary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>メタ説明<span class="optional">任意</span></label><input type="text" id="ja_meta_desc"></div>
+          <div class="form-group"><label>キーワード<span class="optional">任意</span></label><input type="text" id="ja_keywords"></div>
+        </div>
+        <div class="form-group"><label>パンくずラベル<span class="optional">任意</span></label><input type="text" id="ja_bc_label"></div>
+        <div class="form-group"><label>本文 (HTML)<span class="optional">任意</span></label><textarea id="ja_body" class="body-editor"></textarea></div>
+      </div>
+
+      <!-- KO panel -->
+      <div class="lang-panel" id="panel-ko">
+        <div class="lang-fallback-note">💡 빈 필드는 영어 콘텐츠를 사용합니다</div>
+        <div class="form-row">
+          <div class="form-group"><label>제목<span class="optional">선택</span></label><input type="text" id="ko_title"></div>
+          <div class="form-group"><label>부제목<span class="optional">선택</span></label><input type="text" id="ko_subtitle"></div>
+        </div>
+        <div class="form-group"><label>요약<span class="optional">선택</span></label><input type="text" id="ko_summary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>메타 설명<span class="optional">선택</span></label><input type="text" id="ko_meta_desc"></div>
+          <div class="form-group"><label>키워드<span class="optional">선택</span></label><input type="text" id="ko_keywords"></div>
+        </div>
+        <div class="form-group"><label>브레드크럼 레이블<span class="optional">선택</span></label><input type="text" id="ko_bc_label"></div>
+        <div class="form-group"><label>본문 (HTML)<span class="optional">선택</span></label><textarea id="ko_body" class="body-editor"></textarea></div>
+      </div>
+
+    </div><!-- .card -->
+  </div><!-- .container -->
+
+  <!-- ── Submit bar ── -->
+  <div class="submit-bar">
+    <button type="button" class="btn-submit" id="submitBtn">发布文章（所有语言）</button>
+    <button type="button" class="btn-preview" id="previewBtn">👁 预览</button>
+    <span class="status-msg" id="statusMsg"></span>
+  </div>
+
+  <!-- ── Preview overlay ── -->
+  <div id="previewOverlay" class="preview-overlay" style="display:none">
+    <div class="preview-topbar">
+      <span>预览文章</span>
+      <div class="preview-lang-row">
+        <select id="previewLangSel" class="preview-lang-sel">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+          <option value="id">Indonesia</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+        </select>
+        <button class="preview-close-btn" id="previewClose">✕ 关闭预览</button>
+      </div>
+    </div>
+    <iframe id="previewFrame" class="preview-frame"></iframe>
+  </div>
+
+  <script>
+    // ── Auth ──────────────────────────────────────────────────────────────────
+    (function() {
+      var auth = localStorage.getItem('userAdminAuth');
+      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
+        localStorage.removeItem('userAdminAuth');
+        window.location.href = 'login.html';
+      }
+    })();
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+    });
+
+    // ── Default date ──────────────────────────────────────────────────────────
+    document.getElementById('date').value = new Date().toISOString().slice(0, 10);
+
+    // ── Auto-slug from EN title ───────────────────────────────────────────────
+    document.getElementById('en_title').addEventListener('input', function() {
+      var slugEl = document.getElementById('slug');
+      if (slugEl._manual) return;
+      slugEl.value = this.value.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '').trim()
+        .replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 80);
+    });
+    document.getElementById('slug').addEventListener('input', function() { this._manual = true; });
+
+    // ── Default EN body template ──────────────────────────────────────────────
+    document.getElementById('en_body').value = [
+      '',
+      '<p>步入2026年，全球紧固件行业的需求格局正发生显著变化。传统领域保持稳定，而新能源汽车、可再生能源基础设施和先进制造等新兴应用领域正催生全新的增长机遇。以下是我们对核心市场动态的分析。</p>',
+      '',
+      '<h2>新能源汽车：全新需求前沿</h2>',
+      '',
+      '<p>新能源汽车革命持续重塑紧固件市场。与传统汽车应用不同，新能源汽车制造需要具备独特性能的专用紧固件：</p>',
+      '',
+      '<ul>',
+      '  <li><strong>电池包组装</strong> 需要具备出色抗振性能的高扭矩紧固件</li>',
+      '  <li><strong>电机安装系统</strong> 需要能够承受热循环的精密工程紧固件</li>',
+      '  <li><strong>轻量化车身结构</strong> 推动铝制和钛制紧固件的广泛应用</li>',
+      '  <li><strong>充电基础设施</strong> 扩张持续催生耐候户外紧固件需求</li>',
+      '</ul>',
+      '',
+      '<p>主流新能源汽车制造商日益指定符合严格质量标准的紧固件，优先选择能够提供稳定可追溯性和检测报告的供应商。</p>',
+      '',
+      '<h2>可再生能源产业扩张</h2>',
+      '',
+      '<p>太阳能与风能项目在全球市场持续拉动紧固件需求：</p>',
+      '',
+      '<p><strong>太阳能安装系统</strong> 需要用于面板安装的耐腐蚀紧固件，北美、欧洲和东南亚地区需求最为旺盛。大型太阳能电站的发展趋势增加了结构紧固件的订单量。</p>',
+      '',
+      '<p><strong>风力涡轮机应用</strong> 需要能够在极端天气条件下使用20年以上的高强度紧固件。质量认证和材料可追溯性是该领域的硬性要求。</p>',
+      '',
+      '<h2>智能制造发展趋势</h2>',
+      '',
+      '<p>紧固件行业正全方位拥抱数字化转型：</p>',
+      '',
+      '<ul>',
+      '  <li><strong>自动化检测系统</strong> 结合AI缺陷检测已成为质量控制的标准配置</li>',
+      '  <li><strong>RFID追踪技术</strong> 实现从原材料到成品的全流程可追溯</li>',
+      '  <li><strong>预测性维护</strong> 应用于生产设备，减少非计划停机时间</li>',
+      '  <li><strong>数字化库存管理</strong> 提升订单准确率和交付速度</li>',
+      '</ul>',
+      '',
+      '<figure class="article-figure">',
+      '  <img src="../../../images/abouts/Quality%20Control1.png" alt="WT紧固件 质量控制检测" loading="lazy">',
+      '  <figcaption>WT紧固件 — 先进质量控制与检测系统</figcaption>',
+      '</figure>',
+      '',
+      '<h2>区域市场亮点</h2>',
+      '',
+      '<p><strong>北美：</strong> 基础设施投资计划支撑建筑紧固件需求。制造业回流趋势推动国内库存建设。</p>',
+      '',
+      '<p><strong>欧洲：</strong> 可再生能源项目与汽车电动化转型创造强劲需求。可持续发展要求推动可回收紧固件材料的应用。</p>',
+      '',
+      '<p><strong>亚太地区：</strong> 东南亚成为制造业投资增长区域。中国持续保持产能领先，同时加大高附加值专用紧固件的研发投入。</p>',
+      '',
+      '<p><strong>中东与非洲：</strong> 建筑与基础设施开发项目支撑稳定的紧固件进口需求，阿联酋和沙特市场表现突出。</p>',
+      '',
+      '<h2>对采购方的建议</h2>',
+      '',
+      '<p>对于采购团队，以下趋势值得重点关注：</p>',
+      '',
+      '<ul>',
+      '  <li>专用紧固件交期可能仍较长，请提前规划订单</li>',
+      '  <li>质量文件与认证对合规性愈发重要</li>',
+      '  <li>建议多元化供应商合作，降低供应链风险</li>',
+      '  <li>提前沟通项目计划，帮助供应商做好产能准备</li>',
+      '</ul>',
+      '',
+      '<p>WT紧固件持续投资生产能力与质量体系，以服务这些快速增长的市场领域。无论您是为新能源汽车制造、可再生能源项目还是工业应用采购产品，我们的团队都随时为您提供专业支持。</p>',
+      '',
+      '<p>如需产品信息或技术咨询，请访问我们的<a href="../products.html" style="color:var(--accent)" >产品页面</a>或<a href="../contact.html" style="color:var(--accent)" >直接联系我们</a>。</p>',
+    ].join('\n');
+
+    // ── Language tabs ─────────────────────────────────────────────────────────
+    document.querySelectorAll('.lang-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.lang-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.lang-panel').forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('panel-' + this.dataset.lang).classList.add('active');
+      });
+    });
+
+    // ── Track last focused body textarea ─────────────────────────────────────
+    var lastBodyTA = null;
+    document.querySelectorAll('textarea.body-editor').forEach(function(ta) {
+      ta.addEventListener('focus', function() { lastBodyTA = this; });
+    });
+
+    // ── Default placeholder template for non-EN body textareas ───────────────
+    var DEFAULT_BODY_TPL =
+      '<h2>Section Heading</h2>\n' +
+      '<p>Paragraph text...</p>\n' +
+      '<ul>\n  <li>List item</li>\n</ul>';
+    ['ar','de','es','fr','id','ja','ko','zh'].forEach(function(lang) {
+      var ta = document.getElementById(lang + '_body');
+      if (ta && !ta.value) ta.placeholder = DEFAULT_BODY_TPL;
+    });
+
+    // ── Image upload ──────────────────────────────────────────────────────────
+    document.getElementById('imgFile').addEventListener('change', function() {
+      if (this.files[0]) {
+        document.getElementById('uploadZoneText').innerHTML =
+          '<strong>' + this.files[0].name + '</strong><br>' +
+          '<span style="font-size:0.78rem;color:var(--green-500)">已选择，点击「上传图片」继续</span>';
+      }
+    });
+
+    document.getElementById('uploadBtn').addEventListener('click', function() {
+      var fileInput = document.getElementById('imgFile');
+      var rename    = document.getElementById('imgRename').value.trim();
+      var statusEl  = document.getElementById('uploadStatus');
+      var btn = this;
+
+      if (!fileInput.files[0]) { statusEl.textContent = '请先选择图片'; return; }
+
+      btn.disabled = true;
+      statusEl.textContent = '上传中...';
+
+      var fd = new FormData();
+      fd.append('file', fileInput.files[0]);
+      fd.append('rename', rename);
+
+      fetch('/cgi-bin/image-upload.cgi', { method: 'POST', body: fd })
+        .then(function(res) {
+          var st = res.status;
+          return res.text().then(function(t) {
+            try { return JSON.parse(t); }
+            catch(e) { throw new Error('HTTP ' + st + ': ' + t.slice(0, 200)); }
+          });
+        })
+        .then(function(data) {
+          btn.disabled = false;
+          if (data.success) {
+            statusEl.textContent = '';
+            // Show thumbnail
+            document.getElementById('uploadedName').textContent = data.filename;
+            document.getElementById('uploadedPath').textContent = '/images/' + data.path;
+            document.getElementById('uploadThumb').src = '/images/' + data.path;
+            document.getElementById('uploadPreviewRow').classList.add('show');
+
+            // 1. Set og_image cover field
+            document.getElementById('og_image').value = data.path;
+
+            // 2. Build figure HTML
+            var src     = '../../../images/' + data.path;
+            var alt     = document.getElementById('imgAlt').value.trim();
+            var caption = document.getElementById('imgCaption').value.trim();
+            var fig = '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
+                      (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') +
+                      '</figure>\n\n';
+
+            // 3. Only prepend to EN body; other langs stay empty (fallback to EN)
+            var enBody = document.getElementById('en_body');
+            enBody.value = fig + enBody.value;
+
+            // 4. Set template as placeholder for other language bodies
+            var tpl = fig + '<h2>Section Heading</h2>\n<p>Paragraph text...</p>';
+            ['ar','de','es','fr','id','ja','ko','zh'].forEach(function(lang) {
+              var ta = document.getElementById(lang + '_body');
+              if (ta) ta.placeholder = tpl;
+            });
+          } else {
+            statusEl.textContent = '❌ ' + data.error;
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          statusEl.textContent = '❌ ' + err.message;
+        });
+    });
+
+    // Re-insert the same uploaded image at cursor position
+    document.getElementById('insertAtCursorBtn').addEventListener('click', function() {
+      if (!lastBodyTA) { alert('请先点击某个正文编辑框定位光标'); return; }
+      var path    = document.getElementById('og_image').value.trim();
+      if (!path) return;
+      var src     = '../../../images/' + path;
+      var alt     = document.getElementById('imgAlt').value.trim();
+      var caption = document.getElementById('imgCaption').value.trim();
+      var fig = '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
+                (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') + '</figure>\n';
+      var start = lastBodyTA.selectionStart;
+      lastBodyTA.value = lastBodyTA.value.slice(0, start) + fig + lastBodyTA.value.slice(lastBodyTA.selectionEnd);
+      lastBodyTA.selectionStart = lastBodyTA.selectionEnd = start + fig.length;
+      lastBodyTA.focus();
+    });
+
+    // ── HTML Toolbar ──────────────────────────────────────────────────────────
+    document.querySelectorAll('.html-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (!lastBodyTA) return;
+        var action   = this.dataset.action;
+        var ta       = lastBodyTA;
+        var start    = ta.selectionStart;
+        var end      = ta.selectionEnd;
+        var selected = ta.value.slice(start, end);
+        var insert   = '';
+
+        switch (action) {
+          case 'h2':
+            insert = '<h2>' + (selected || '标题') + '</h2>\n'; break;
+          case 'h3':
+            insert = '<h3>' + (selected || '小标题') + '</h3>\n'; break;
+          case 'p':
+            insert = '<p>' + (selected || '段落文字...') + '</p>\n'; break;
+          case 'strong':
+            insert = '<strong>' + (selected || '粗体') + '</strong>'; break;
+          case 'em':
+            insert = '<em>' + (selected || '斜体') + '</em>'; break;
+          case 'link': {
+            var url = prompt('链接 URL：', 'https://');
+            if (!url) return;
+            insert = '<a href="' + url + '" style="color:var(--accent)">' + (selected || '链接文字') + '</a>';
+            break;
+          }
+          case 'ul':
+            insert = '<ul>\n  <li>' + (selected || '列表项') + '</li>\n  <li>列表项</li>\n</ul>\n'; break;
+          case 'li':
+            insert = '<li>' + (selected || '列表项') + '</li>\n'; break;
+          case 'blockquote':
+            insert = '<blockquote>' + (selected || '引用文字') + '</blockquote>\n'; break;
+          case 'hr':
+            insert = '\n<hr>\n'; break;
+        }
+
+        var text = ta.value;
+        ta.value = text.slice(0, start) + insert + text.slice(end);
+        ta.selectionStart = ta.selectionEnd = start + insert.length;
+        ta.focus();
+      });
+    });
+
+    // ── Preview ───────────────────────────────────────────────────────────────
+    function buildPreview(lang) {
+      var title    = (document.getElementById(lang + '_title').value    || document.getElementById('en_title').value).trim()    || '（无标题）';
+      var subtitle = (document.getElementById(lang + '_subtitle').value || document.getElementById('en_subtitle').value).trim();
+      var body     = (document.getElementById(lang + '_body').value     || document.getElementById('en_body').value).trim();
+      var date     = document.getElementById('date').value;
+
+      // Fix relative image paths for preview
+      body = body.replace(/src="\.\.\/\.\.\/\.\.\/images\//g, 'src="/images/');
+
+      return '<!DOCTYPE html><html><head>' +
+        '<meta charset="UTF-8">' +
+        '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+        '<link rel="stylesheet" href="/css/style.css">' +
+        '<title>' + title + '</title>' +
+        '<style>.site-header,.breadcrumb{display:none!important}body{padding-top:0}</style>' +
+        '</head><body>' +
+        '<main>' +
+        '<section class="page-header"><article class="container">' +
+        '<h1>' + title + '</h1>' +
+        (subtitle ? '<p>' + subtitle + '</p>' : '') +
+        '</article></section>' +
+        '<section class="section"><article class="container article-content">' +
+        '<time class="article-meta" datetime="' + date + '">' + date + '</time>' +
+        body +
+        '</article></section>' +
+        '</main></body></html>';
+    }
+
+    document.getElementById('previewBtn').addEventListener('click', function() {
+      var lang = document.getElementById('previewLangSel').value;
+      document.getElementById('previewFrame').srcdoc = buildPreview(lang);
+      document.getElementById('previewOverlay').style.display = 'flex';
+    });
+
+    document.getElementById('previewLangSel').addEventListener('change', function() {
+      document.getElementById('previewFrame').srcdoc = buildPreview(this.value);
+    });
+
+    document.getElementById('previewClose').addEventListener('click', function() {
+      document.getElementById('previewOverlay').style.display = 'none';
+    });
+
+    // Close preview with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('previewOverlay').style.display = 'none';
+    });
+
+    // ── Submit ────────────────────────────────────────────────────────────────
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      var slug    = document.getElementById('slug').value.trim();
+      var date    = document.getElementById('date').value;
+      var title   = document.getElementById('en_title').value.trim();
+      var body    = document.getElementById('en_body').value.trim();
+      var summary = document.getElementById('en_summary').value.trim();
+      var statusEl = document.getElementById('statusMsg');
+      var btn = this;
+
+      if (!slug)    { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写 URL 标识 (Slug)'; return; }
+      if (!title)   { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写英文标题'; return; }
+      if (!body)    { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写英文正文内容'; return; }
+      if (!summary) { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写英文摘要'; return; }
+
+      btn.disabled = true;
+      statusEl.className = 'status-msg loading';
+      statusEl.textContent = '正在生成文章（9 个语言）...';
+
+      var langs  = ['en','ar','de','es','fr','id','ja','ko','zh'];
+      var fields = ['title','subtitle','summary','meta_desc','keywords','bc_label','body'];
+      var params = new URLSearchParams();
+      params.append('slug', slug);
+      params.append('date', date);
+      params.append('og_image',        document.getElementById('og_image').value.trim());
+      params.append('article_section', document.getElementById('article_section').value.trim());
+      langs.forEach(function(lang) {
+        fields.forEach(function(field) {
+          var el = document.getElementById(lang + '_' + field);
+          if (el) params.append(lang + '_' + field, el.value);
+        });
+      });
+
+      fetch('/cgi-bin/article-save.cgi', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: params.toString()
+      })
+      .then(function(res) {
+        var status = res.status;
+        return res.text().then(function(text) {
+          try { return JSON.parse(text); }
+          catch(e) { throw new Error('HTTP ' + status + ' — 服务器返回:\n' + text.slice(0, 300)); }
+        });
+      })
+      .then(function(data) {
+        btn.disabled = false;
+        if (data.success) {
+          statusEl.className = 'status-msg success';
+          statusEl.textContent = '✅ 发布成功！已生成 ' + data.created.length + ' 个语言版本。';
+          setTimeout(function() { window.open(data.url, '_blank'); }, 800);
+        } else {
+          statusEl.className = 'status-msg error';
+          statusEl.textContent = '❌ ' + (data.error || (data.errors && data.errors.join('; ')) || '未知错误');
+        }
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        statusEl.className = 'status-msg error';
+        statusEl.textContent = '❌ ' + err.message;
+      });
+    });
+  </script>
+</body>
+</html>
