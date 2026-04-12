@@ -76,6 +76,8 @@ if not action:
                     'date':           'required, YYYY-MM-DD',
                     'og_image':       'optional, relative to /images/, e.g. "news/cover.jpg"',
                     'article_section':'optional, default "Industry News"',
+                    'extra_head':     'optional, raw HTML/JSON injected before </head>',
+                    'auto_translate': 'optional, 1/true to auto-translate empty non-English fields from English source',
                     'en_title':       'required',
                     'en_summary':     'required (shown in news listing)',
                     'en_body':        'required (HTML)',
@@ -280,7 +282,7 @@ elif action == 'create_article':
     # Build URL-encoded params for article-save.cgi
     params = {}
     all_fields = ['title','subtitle','summary','meta_desc','keywords','bc_label','body']
-    scalar_keys = ['slug','date','og_image','article_section']
+    scalar_keys = ['slug','date','og_image','article_section','extra_head','auto_translate']
     for k in scalar_keys:
         if body.get(k):
             params[k] = str(body[k])

@@ -758,6 +758,13 @@
           <textarea id="extra_head" placeholder="<script type=&quot;application/ld+json&quot;>{...}</script>&#10;<meta name=&quot;google-site-verification&quot; content=&quot;...&quot;>"></textarea>
           <div class="hint">会原样插入每个生成新闻页的 head 末尾。可放 JSON-LD、meta、script、验证标签等。</div>
         </div>
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+            <input type="checkbox" id="auto_translate" checked style="width:auto;margin:0">
+            <span>自动翻译空白字段到 8 个语言版本</span>
+          </label>
+          <div class="hint">默认开启。英文内容必填，其他语言留空时会在发布时自动翻译；手动填写的字段优先，不会被覆盖。</div>
+        </div>
         <div class="cover-current" id="coverCurrent">当前封面图：未选择</div>
     </div>
 
@@ -970,6 +977,7 @@
   <div class="submit-bar">
     <button type="button" class="btn-submit" id="submitBtn">发布文章（所有语言）</button>
     <button type="button" class="btn-preview" id="previewBtn">👁 预览</button>
+    <button type="button" class="btn-preview" id="checkTranslateBtn">检测翻译配置</button>
     <span class="status-msg" id="statusMsg"></span>
   </div>
 
@@ -1440,6 +1448,39 @@
 
     loadImageLibrary();
 
+    document.getElementById('checkTranslateBtn').addEventListener('click', function() {
+      var btn = this;
+      var statusEl = document.getElementById('statusMsg');
+
+      btn.disabled = true;
+      statusEl.className = 'status-msg loading';
+      statusEl.textContent = '正在检测翻译接口配置...';
+
+      fetch('/cgi-bin/translation-check.cgi?_=' + Date.now())
+        .then(function(res) {
+          var status = res.status;
+          return res.text().then(function(text) {
+            try { return JSON.parse(text); }
+            catch (e) { throw new Error('HTTP ' + status + ' — 服务器返回:\n' + text.slice(0, 300)); }
+          });
+        })
+        .then(function(data) {
+          btn.disabled = false;
+          if (data.success) {
+            statusEl.className = 'status-msg success';
+            statusEl.textContent = '✅ 翻译接口可用：' + (data.provider || 'Provider') + ' / ' + (data.model || '-') + ' / ' + (data.latencyMs || 0) + 'ms';
+          } else {
+            statusEl.className = 'status-msg error';
+            statusEl.textContent = '❌ 翻译接口不可用：' + (data.error || '未知错误');
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          statusEl.className = 'status-msg error';
+          statusEl.textContent = '❌ 检测失败：' + err.message;
+        });
+    });
+
     // ── Submit ────────────────────────────────────────────────────────────────
     document.getElementById('submitBtn').addEventListener('click', function() {
       var slug    = document.getElementById('slug').value.trim();
@@ -1447,6 +1488,7 @@
       var title   = document.getElementById('en_title').value.trim();
       var body    = document.getElementById('en_body').value.trim();
       var summary = document.getElementById('en_summary').value.trim();
+      var autoTranslate = document.getElementById('auto_translate').checked;
       var statusEl = document.getElementById('statusMsg');
       var btn = this;
 
@@ -1457,7 +1499,9 @@
 
       btn.disabled = true;
       statusEl.className = 'status-msg loading';
-      statusEl.textContent = '正在生成文章（9 个语言）...';
+      statusEl.textContent = autoTranslate
+        ? '正在自动翻译并生成文章（9 个语言）...'
+        : '正在生成文章（9 个语言）...';
 
       var langs  = ['en','ar','de','es','fr','id','ja','ko','zh'];
       var fields = ['title','subtitle','summary','meta_desc','keywords','bc_label','body'];
@@ -1467,6 +1511,7 @@
       params.append('og_image',        document.getElementById('og_image').value.trim());
       params.append('article_section', document.getElementById('article_section').value.trim());
       params.append('extra_head',      document.getElementById('extra_head').value);
+      params.append('auto_translate',  autoTranslate ? '1' : '0');
       langs.forEach(function(lang) {
         fields.forEach(function(field) {
           var el = document.getElementById(lang + '_' + field);
@@ -1490,7 +1535,10 @@
         btn.disabled = false;
         if (data.success) {
           statusEl.className = 'status-msg success';
-          statusEl.textContent = '✅ 发布成功！已生成 ' + data.created.length + ' 个语言版本。';
+          var translatedCount = Array.isArray(data.translated) ? data.translated.length : 0;
+          statusEl.textContent = translatedCount > 0
+            ? '✅ 发布成功！已生成 ' + data.created.length + ' 个语言版本，自动翻译 ' + translatedCount + ' 个语言。'
+            : '✅ 发布成功！已生成 ' + data.created.length + ' 个语言版本。';
           setTimeout(function() { window.open(data.url, '_blank'); }, 800);
         } else {
           statusEl.className = 'status-msg error';

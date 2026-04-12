@@ -3,6 +3,16 @@
 import os, sys, json, re
 from datetime import datetime
 from urllib.parse import parse_qs
+from urllib import request as urlrequest
+from urllib import error as urlerror
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
+TRANSLATION_ENV_FILES = [
+  os.path.join(BASE_DIR, '.translation-env'),
+  os.path.join(BASE_DIR, '.env.translation'),
+]
+_translation_env_loaded = False
 
 # ── Headers first ─────────────────────────────────────────────────────────────
 sys.stdout.write("Content-Type: application/json; charset=utf-8\r\n\r\n")
@@ -36,6 +46,7 @@ en_body     = g('en_body')
 og_image        = g('og_image')          # relative to /images/, e.g. abouts/factory1.jpg
 article_section = g('article_section') or 'Industry News'
 extra_head      = g('extra_head')
+auto_translate  = g('auto_translate', '0')
 
 if not slug:     respond({'success': False, 'error': 'Slug 不能为空'})
 if not en_title: respond({'success': False, 'error': '英文标题为必填项'})
@@ -44,6 +55,17 @@ if not en_summary: respond({'success': False, 'error': '英文摘要为必填项
 
 # ── Language config ───────────────────────────────────────────────────────────
 LANGS = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh']
+TRANSLATABLE_FIELDS = ['title', 'subtitle', 'summary', 'meta_desc', 'keywords', 'bc_label', 'body']
+LANG_LABELS = {
+  'ar': 'Arabic',
+  'de': 'German',
+  'es': 'Spanish',
+  'fr': 'French',
+  'id': 'Indonesian',
+  'ja': 'Japanese',
+  'ko': 'Korean',
+  'zh': 'Simplified Chinese',
+}
 
 MON_EN = ['','January','February','March','April','May','June','July','August','September','October','November','December']
 MON_ZH = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
@@ -256,6 +278,162 @@ LC = {
     ],
   },
 }
+
+def truthy(value):
+  return str(value or '').strip().lower() in {'1', 'true', 'yes', 'on'}
+
+def load_translation_env_files():
+  global _translation_env_loaded
+  if _translation_env_loaded:
+    return
+
+  _translation_env_loaded = True
+  for env_path in TRANSLATION_ENV_FILES:
+    if not os.path.exists(env_path):
+      continue
+
+    try:
+      with open(env_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    except Exception:
+      continue
+
+    for raw_line in lines:
+      line = raw_line.strip()
+      if not line or line.startswith('#') or '=' not in line:
+        continue
+
+      key, value = line.split('=', 1)
+      key = key.strip()
+      value = value.strip()
+      if not key:
+        continue
+
+      if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        value = value[1:-1]
+
+      os.environ.setdefault(key, value)
+
+def pick_translation_api_key():
+  load_translation_env_files()
+  return (
+    os.environ.get('WT_TRANSLATE_API_KEY', '').strip()
+    or os.environ.get('DEEPSEEK_API_KEY', '').strip()
+    or os.environ.get('OPENAI_API_KEY', '').strip()
+  )
+
+def pick_translation_api_url():
+  load_translation_env_files()
+  explicit_url = (
+    os.environ.get('WT_TRANSLATE_API_URL', '').strip()
+    or os.environ.get('DEEPSEEK_API_URL', '').strip()
+    or os.environ.get('OPENAI_API_URL', '').strip()
+  )
+  if explicit_url:
+    return explicit_url
+
+  base_url = (
+    os.environ.get('WT_TRANSLATE_API_BASE', '').strip()
+    or os.environ.get('DEEPSEEK_API_BASE', '').strip()
+    or os.environ.get('OPENAI_BASE_URL', '').strip()
+  )
+  if base_url:
+    return base_url.rstrip('/') + '/chat/completions'
+
+  if os.environ.get('DEEPSEEK_API_KEY', '').strip():
+    return 'https://api.deepseek.com/chat/completions'
+
+  if os.environ.get('OPENAI_API_KEY', '').strip():
+    return 'https://api.openai.com/v1/chat/completions'
+
+  return ''
+
+def pick_translation_model():
+  load_translation_env_files()
+  return (
+    os.environ.get('WT_TRANSLATE_MODEL', '').strip()
+    or os.environ.get('DEEPSEEK_MODEL', '').strip()
+    or os.environ.get('OPENAI_MODEL', '').strip()
+    or ('deepseek-chat' if os.environ.get('DEEPSEEK_API_KEY', '').strip() else '')
+    or 'gpt-4o-mini'
+  )
+
+def extract_json_object(raw_text):
+  text = (raw_text or '').strip()
+  if not text:
+    raise ValueError('translation model returned empty content')
+  try:
+    return json.loads(text)
+  except Exception:
+    match = re.search(r'\{.*\}', text, re.S)
+    if not match:
+      raise ValueError('translation model did not return valid JSON')
+    return json.loads(match.group(0))
+
+def translate_fields(lang, source_fields):
+  api_key = pick_translation_api_key()
+  api_url = pick_translation_api_url()
+  if not api_key or not api_url:
+    raise RuntimeError('自动翻译已启用，但服务器未配置 WT_TRANSLATE_API_KEY / WT_TRANSLATE_API_URL、DEEPSEEK_API_KEY / DEEPSEEK_API_BASE，或 OPENAI_API_KEY / OPENAI_BASE_URL')
+
+  target_name = LANG_LABELS.get(lang, lang)
+  system_prompt = (
+    'You are a professional website localization translator for industrial fastener news. '
+    'Translate English source content into the requested target language and return strict JSON only.'
+  )
+  user_prompt = (
+    f'Target language: {target_name} ({lang}).\n'
+    'Return exactly one JSON object with keys: title, subtitle, summary, meta_desc, keywords, bc_label, body.\n'
+    'Rules:\n'
+    '1. Preserve HTML structure in body exactly: keep tag names, nesting, href, src, class, id, style, loading, and relative paths unchanged.\n'
+    '2. Translate only human-readable text content. Do not translate URLs, filenames, product standards, model numbers, or brand names like WT Fasteners.\n'
+    '3. Keep measurements, units, dates, percentages, DIN/ISO/ASTM codes, and punctuation formatting appropriate for the target language.\n'
+    '4. keywords must stay a comma-separated SEO keyword string in the target language.\n'
+    '5. meta_desc should remain concise and suitable for a meta description.\n'
+    '6. If subtitle is empty, return an empty string for subtitle.\n'
+    '7. Output JSON only, with no markdown fences or explanations.\n\n'
+    'Source JSON:\n'
+    + json.dumps(source_fields, ensure_ascii=False)
+  )
+  payload = {
+    'model': pick_translation_model(),
+    'temperature': 0.2,
+    'messages': [
+      {'role': 'system', 'content': system_prompt},
+      {'role': 'user', 'content': user_prompt},
+    ],
+  }
+  req = urlrequest.Request(
+    api_url,
+    data=json.dumps(payload).encode('utf-8'),
+    headers={
+      'Content-Type': 'application/json',
+      'Authorization': f'Bearer {api_key}',
+    },
+    method='POST',
+  )
+
+  try:
+    with urlrequest.urlopen(req, timeout=120) as resp:
+      raw_resp = resp.read().decode('utf-8', errors='replace')
+  except urlerror.HTTPError as exc:
+    detail = exc.read().decode('utf-8', errors='replace')
+    raise RuntimeError(f'{target_name} 翻译请求失败: HTTP {exc.code} {detail[:300]}')
+  except Exception as exc:
+    raise RuntimeError(f'{target_name} 翻译请求失败: {exc}')
+
+  try:
+    data = json.loads(raw_resp)
+    content = data['choices'][0]['message']['content']
+  except Exception as exc:
+    raise RuntimeError(f'{target_name} 翻译响应解析失败: {exc}')
+
+  translated = extract_json_object(content)
+  missing = [field for field in TRANSLATABLE_FIELDS if field not in translated]
+  if missing:
+    raise RuntimeError(f'{target_name} 翻译结果缺少字段: {", ".join(missing)}')
+
+  return {field: str(translated.get(field, '') or '') for field in TRANSLATABLE_FIELDS}
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def he(s):
@@ -528,39 +706,90 @@ def update_json(json_path, slug, title, date_str, summary, og_image=''):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 # ── Main ──────────────────────────────────────────────────────────────────────
-script_dir = os.path.dirname(os.path.abspath(__file__))
-base_dir   = os.path.abspath(os.path.join(script_dir, '..'))
-
 errors  = []
 created = []
+translated = []
 
-for lang in LANGS:
-    title    = g(f'{lang}_title')    or en_title
-    subtitle = g(f'{lang}_subtitle') or en_subtitle
-    summary  = g(f'{lang}_summary')  or en_summary
-    meta     = g(f'{lang}_meta_desc') or summary
-    kw       = g(f'{lang}_keywords') or en_kw
-    bc       = g(f'{lang}_bc_label') or title
-    body     = g(f'{lang}_body')     or en_body
+auto_translate_enabled = truthy(auto_translate)
+translation_cache = {}
+en_source_fields = {
+  'title': en_title,
+  'subtitle': en_subtitle,
+  'summary': en_summary,
+  'meta_desc': en_meta,
+  'keywords': en_kw,
+  'bc_label': en_bc,
+  'body': en_body,
+}
 
-    news_dir  = os.path.join(base_dir, 'pags', lang, 'news')
-    html_path = os.path.join(news_dir, slug + '.html')
-    json_path = os.path.join(base_dir, 'pags', lang, f'pages_{lang}.json')
+if auto_translate_enabled:
+  for lang in LANGS:
+    if lang == 'en':
+      continue
+
+    missing_fields = []
+    for field_name, current_value, source_value in [
+      ('title', g(f'{lang}_title'), en_title),
+      ('subtitle', g(f'{lang}_subtitle'), en_subtitle),
+      ('summary', g(f'{lang}_summary'), en_summary),
+      ('meta_desc', g(f'{lang}_meta_desc'), en_meta),
+      ('keywords', g(f'{lang}_keywords'), en_kw),
+      ('bc_label', g(f'{lang}_bc_label'), en_bc),
+      ('body', g(f'{lang}_body'), en_body),
+    ]:
+      if current_value:
+        continue
+      if not source_value and field_name in {'subtitle', 'keywords', 'meta_desc'}:
+        continue
+      missing_fields.append(field_name)
+
+    if not missing_fields:
+      continue
 
     try:
-        os.makedirs(news_dir, exist_ok=True)
-        html = build_html(lang, slug, date, title, subtitle, meta, kw, bc, body, LANGS, og_image, article_section, extra_head)
-        with open(html_path, 'w', encoding='utf-8') as f:
-            f.write(html)
-        update_json(json_path, slug, title, date, summary, og_image)
-        created.append(lang)
-    except Exception as e:
-        errors.append(f'{lang}: {str(e)}')
+      translation_cache[lang] = translate_fields(lang, en_source_fields)
+      translated.append(lang)
+    except Exception as exc:
+      respond({'success': False, 'error': str(exc), 'created': [], 'errors': errors})
+
+for lang in LANGS:
+  title_input    = g(f'{lang}_title')
+  subtitle_input = g(f'{lang}_subtitle')
+  summary_input  = g(f'{lang}_summary')
+  meta_input     = g(f'{lang}_meta_desc')
+  kw_input       = g(f'{lang}_keywords')
+  bc_input       = g(f'{lang}_bc_label')
+  body_input     = g(f'{lang}_body')
+
+  translated_fields = translation_cache.get(lang, {})
+
+  title    = title_input or translated_fields.get('title') or en_title
+  subtitle = subtitle_input or translated_fields.get('subtitle') or en_subtitle
+  summary  = summary_input or translated_fields.get('summary') or en_summary
+  meta     = meta_input or translated_fields.get('meta_desc') or summary
+  kw       = kw_input or translated_fields.get('keywords') or en_kw
+  bc       = bc_input or translated_fields.get('bc_label') or title
+  body     = body_input or translated_fields.get('body') or en_body
+
+  news_dir  = os.path.join(BASE_DIR, 'pags', lang, 'news')
+  html_path = os.path.join(news_dir, slug + '.html')
+  json_path = os.path.join(BASE_DIR, 'pags', lang, f'pages_{lang}.json')
+
+  try:
+    os.makedirs(news_dir, exist_ok=True)
+    html = build_html(lang, slug, date, title, subtitle, meta, kw, bc, body, LANGS, og_image, article_section, extra_head)
+    with open(html_path, 'w', encoding='utf-8') as f:
+      f.write(html)
+    update_json(json_path, slug, title, date, summary, og_image)
+    created.append(lang)
+  except Exception as e:
+    errors.append(f'{lang}: {str(e)}')
 
 respond({
     'success': len(created) > 0,
     'slug': slug,
     'created': created,
+    'translated': translated,
     'errors': errors,
     'url': f'/pags/en/news/{slug}.html',
 })
