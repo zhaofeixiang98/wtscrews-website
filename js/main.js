@@ -64,6 +64,19 @@
          : 'en';
   }
 
+  function getPrivacyPolicyPath() {
+    var path = window.location.pathname;
+    var lang = detectLangFromPath(path);
+    var langRoot = '/pags/' + lang + '/';
+    var langRootIndex = path.indexOf(langRoot);
+
+    if (langRootIndex !== -1) {
+      return path.slice(0, langRootIndex + langRoot.length) + 'privacy-policy.html';
+    }
+
+    return langRoot + 'privacy-policy.html';
+  }
+
   function getPagesJsonInfo() {
     var path = window.location.pathname;
     var lang = detectLangFromPath(path);
@@ -616,10 +629,7 @@
     banner.className = 'cookie-banner';
     banner.innerHTML =
       '<p>We use cookies to improve your experience on our website. By continuing to browse, you agree to our <a href="' +
-      (window.location.pathname.indexOf('/pags/') !== -1
-        ? (window.location.pathname.indexOf('/products/') !== -1 || window.location.pathname.indexOf('/news/') !== -1
-          ? '../privacy-policy.html' : 'privacy-policy.html')
-        : 'pags/privacy-policy.html') +
+      getPrivacyPolicyPath() +
       '">Privacy Policy</a>.</p>' +
       '<button class="cookie-btn">Accept</button>';
     document.body.appendChild(banner);

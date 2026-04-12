@@ -35,6 +35,7 @@ en_bc       = g('en_bc_label') or en_title
 en_body     = g('en_body')
 og_image        = g('og_image')          # relative to /images/, e.g. abouts/factory1.jpg
 article_section = g('article_section') or 'Industry News'
+extra_head      = g('extra_head')
 
 if not slug:     respond({'success': False, 'error': 'Slug 不能为空'})
 if not en_title: respond({'success': False, 'error': '英文标题为必填项'})
@@ -274,13 +275,19 @@ def build_faq(faq_items):
         out += f'      </article>\n'
     return out
 
+def build_head_extra(extra_head):
+  snippet = (extra_head or '').strip()
+  if not snippet:
+    return ''
+  return '\n  <!-- Custom Head Snippet -->\n' + snippet + '\n  <!-- End Custom Head Snippet -->'
+
 def build_hreflang(slug, all_langs):
     hm = {'en':'en','ar':'ar','de':'de','es':'es','fr':'fr','id':'id','ja':'ja','ko':'ko','zh':'zh-CN'}
     lines = [f'  <link rel="alternate" hreflang="{hm[l]}" href="/pags/{l}/news/{slug}.html">' for l in all_langs]
     lines.append(f'  <link rel="alternate" hreflang="x-default" href="/pags/en/news/{slug}.html">')
     return '\n'.join(lines)
 
-def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_label, body, all_langs, og_image='', article_section='Industry News'):
+def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_label, body, all_langs, og_image='', article_section='Industry News', extra_head=''):
     c   = LC[lang]
     hl  = c['html_lang']
     dir_attr = ' dir="rtl"' if c['rtl'] else ''
@@ -291,6 +298,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
     faq_html = build_faq(c['faq'])
     fp = c['fp']
     og_img_url = f'https://wtscrews.com/images/{og_image}' if og_image else 'https://wtscrews.com/images/og-cover.jpg'
+    extra_head_block = build_head_extra(extra_head)
 
     return f'''<!DOCTYPE html>
 <html lang="{hl}"{dir_attr}>
@@ -331,7 +339,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
     "keywords": "{je(keywords)}",
     "image": "{og_img_url}"
   }}
-  </script>
+  </script>{extra_head_block}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -541,7 +549,7 @@ for lang in LANGS:
 
     try:
         os.makedirs(news_dir, exist_ok=True)
-        html = build_html(lang, slug, date, title, subtitle, meta, kw, bc, body, LANGS, og_image, article_section)
+        html = build_html(lang, slug, date, title, subtitle, meta, kw, bc, body, LANGS, og_image, article_section, extra_head)
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(html)
         update_json(json_path, slug, title, date, summary, og_image)

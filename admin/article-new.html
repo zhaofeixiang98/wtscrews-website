@@ -753,6 +753,11 @@
           <input type="text" id="article_section" value="Industry News" placeholder="Industry News">
           <div class="hint">写入 JSON-LD articleSection，有助于 Google News 分类。</div>
         </div>
+        <div class="form-group">
+          <label for="extra_head">额外 Head HTML / JSON<span class="optional">可选</span></label>
+          <textarea id="extra_head" placeholder="<script type=&quot;application/ld+json&quot;>{...}</script>&#10;<meta name=&quot;google-site-verification&quot; content=&quot;...&quot;>"></textarea>
+          <div class="hint">会原样插入每个生成新闻页的 head 末尾。可放 JSON-LD、meta、script、验证标签等。</div>
+        </div>
         <div class="cover-current" id="coverCurrent">当前封面图：未选择</div>
     </div>
 
@@ -1388,6 +1393,7 @@
       var subtitle = (document.getElementById(lang + '_subtitle').value || document.getElementById('en_subtitle').value).trim();
       var body     = (document.getElementById(lang + '_body').value     || document.getElementById('en_body').value).trim();
       var date     = document.getElementById('date').value;
+      var extraHead = document.getElementById('extra_head').value.trim();
 
       // Fix relative image paths for preview
       body = body.replace(/src="\.\.\/\.\.\/\.\.\/images\//g, 'src="/images/');
@@ -1398,6 +1404,7 @@
         '<base href="https://wtscrews.com/">' +
         '<link rel="stylesheet" href="/css/style.css">' +
         '<title>' + title + '</title>' +
+        (extraHead ? extraHead : '') +
         '<style>.site-header,.breadcrumb{display:none!important}body{padding-top:0}</style>' +
         '</head><body>' +
         '<main>' +
@@ -1459,6 +1466,7 @@
       params.append('date', date);
       params.append('og_image',        document.getElementById('og_image').value.trim());
       params.append('article_section', document.getElementById('article_section').value.trim());
+      params.append('extra_head',      document.getElementById('extra_head').value);
       langs.forEach(function(lang) {
         fields.forEach(function(field) {
           var el = document.getElementById(lang + '_' + field);

@@ -28,6 +28,7 @@ $en_meta_desc  = trim($_POST['en_meta_desc'] ?? '') ?: $en_summary;
 $en_keywords   = trim($_POST['en_keywords'] ?? '');
 $en_bc_label   = trim($_POST['en_bc_label'] ?? '') ?: $en_title;
 $en_body       = trim($_POST['en_body']     ?? '');
+$extra_head    = trim($_POST['extra_head']  ?? '');
 
 if (empty($en_title) || empty($en_body)) {
     exit(json_encode(['error' => '英文标题和正文内容为必填项']));
@@ -135,10 +136,19 @@ function formatArticleDate(string $d, string $lang): string {
     }
 }
 
+function buildHeadExtra(string $extraHead): string {
+  $snippet = trim($extraHead);
+  if ($snippet === '') {
+    return '';
+  }
+  return "\n  <!-- Custom Head Snippet -->\n{$snippet}\n  <!-- End Custom Head Snippet -->";
+}
+
 // ── HTML generator ────────────────────────────────────────────────────────────
 function buildArticleHtml(
     string $lang, string $slug, string $date,
     string $title, string $subtitle, string $meta_desc, string $keywords, string $bc_label, string $body,
+  string $extra_head,
     array $config
 ): string {
     extract($config);
@@ -182,6 +192,8 @@ function buildArticleHtml(
     $ptitle = $nav[$lang][1]; // "Products" label for footer column heading
     // year for copyright
     $copy_year = substr($date, 0, 4) >= 2026 ? 2026 : 2026;
+    $page_url = "https://wtscrews.com/pags/{$lang}/news/{$slug}.html";
+    $head_extra_block = buildHeadExtra($extra_head);
 
     $html = <<<HTML
 <!DOCTYPE html>
@@ -194,7 +206,7 @@ function buildArticleHtml(
   <meta name="description" content="{$meta_desc}">
   <meta name="keywords" content="{$keywords}">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://wtscrews.com/pags/news/{$slug}.html">
+  <link rel="canonical" href="{$page_url}">
   <link rel="sitemap" type="application/xml" href="../../../sitemap.xml">
   <!-- Geo Tags -->
   <meta name="geo.region" content="CN">
@@ -205,7 +217,7 @@ function buildArticleHtml(
   <meta property="og:title" content="{$title} — WT Fasteners">
   <meta property="og:description" content="{$meta_desc}">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://wtscrews.com/pags/news/{$slug}.html">
+  <meta property="og:url" content="{$page_url}">
   <meta property="og:image" content="../../../images/og-cover.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -233,10 +245,10 @@ function buildArticleHtml(
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://wtscrews.com/pags/news/{$slug}.html"
+      "@id": "{$page_url}"
     }
   }
-  </script>
+  </script>{$head_extra_block}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -444,7 +456,7 @@ foreach ($langs as $lang) {
         mkdir($news_dir, 0755, true);
     }
     $html_path = $news_dir . '/' . $slug . '.html';
-    $html_content = buildArticleHtml($lang, $slug, $date, $title, $subtitle, $meta_desc, $keywords, $bc_label, $body, $config);
+    $html_content = buildArticleHtml($lang, $slug, $date, $title, $subtitle, $meta_desc, $keywords, $bc_label, $body, $extra_head, $config);
     if (file_put_contents($html_path, $html_content) === false) {
         $errors[] = "无法写入文件: pags/{$lang}/news/{$slug}.html";
         continue;
