@@ -40,15 +40,27 @@
 </IfModule>
 
 # ── Cache-Control headers ──────────────────────────────────────────────────────
+# Use "set" (not "append") so Cloudflare sees a single, authoritative header.
+# max-age=31536000 tells Cloudflare to cache at the edge for 1 year.
 <IfModule mod_headers.c>
-  # Immutable static assets
-  <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|woff|woff2|css|js)$">
-    Header append Cache-Control "public, immutable"
+  # Static assets — 1 year immutable (cache-bust via filename versioning)
+  <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|woff|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 
-  # JSON: revalidate
+  # CSS / JS — 1 year immutable
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # JSON data — 1 hour, must revalidate
   <FilesMatch "\.json$">
     Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # HTML — 10 minutes, revalidate
+  <FilesMatch "\.html?$">
+    Header set Cache-Control "public, max-age=600, must-revalidate"
   </FilesMatch>
 
   # Security headers

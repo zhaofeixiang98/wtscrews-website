@@ -31,7 +31,24 @@
   <!-- Async font load — eliminates render-blocking -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+:root{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.logo{display:flex;align-items:center}
+.logo img{height:44px;width:auto}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white);overflow:hidden}
+.page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
+.container{max-width:1220px;margin:0 auto;padding:0 24px}
+</style>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
   <!-- Facebook 配合梓豪 Meta Pixel Code -->
 <!-- Facebook 配合梓豪 Meta Pixel Code -->
   <script>
@@ -56,7 +73,7 @@
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo.jpg" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -123,7 +140,7 @@
         <h2>6. お問い合わせ</h2>
         <p>このプライバシーポリシーについてご質問がある場合は、下記までお問い合わせください。</p>
         <ul>
-          <li>メール:<a href="mailto:info@wtbolts.com">info@wtbolts.com</a></li>
+          <li>メール:<a href="mailto:info@wtbolts.com">info&#64;wtbolts.com</a></li>
           <li>電話番号：+86 159 2620 1780</li>
           <li>WhatsApp:<a href="https://wa.me/8615175432812" target="_blank" rel="noopener">+8615175432812</a></li>
         </ul>
@@ -165,8 +182,8 @@
       </article>
       <article class="footer-col">
         <h3>お問い合わせ</h3>
-        <p>メールアドレス：info@wtbolts.com</p>
-        <p>メールアドレス：lipbolts@gmail.com</p>
+        <p>メールアドレス：info&#64;wtbolts.com</p>
+        <p>メールアドレス：lipbolts&#64;gmail.com</p>
         <p>電話番号：+8615175432812</p>
         <p>住所：中国河北省邯鄲市永年区</p>
       </article>

@@ -32,7 +32,24 @@
   <!-- Async font load — eliminates render-blocking -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+:root{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.logo{display:flex;align-items:center}
+.logo img{height:44px;width:auto}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white);overflow:hidden}
+.page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
+.container{max-width:1220px;margin:0 auto;padding:0 24px}
+</style>
+  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
   <!-- Facebook 配合梓豪 Meta Pixel Code -->
 <!-- Facebook 配合梓豪 Meta Pixel Code -->
   <script>
@@ -57,7 +74,7 @@
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo.jpg" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -90,7 +107,7 @@
     <section class="section">
       <article class="container about-grid">
         <figure class="about-image fade-in">
-          <img src="../../images/abouts/Precision%20CNC%20machining%20lines1.png" alt="WT Fasteners Manufacturing Facility" loading="lazy">
+          <img src="../../images/abouts/Precision%20CNC%20machining%20lines1.webp" alt="WT Fasteners Manufacturing Facility" loading="lazy">
         </figure>
         <section class="about-text fade-in">
           <h2>我们的故事</h2>
@@ -111,7 +128,7 @@
           <section class="gallery-grid">
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Precision%20CNC%20machining%20lines1.png" alt="Precision CNC Machining Lines" loading="lazy">
+            <img src="../../images/abouts/Precision%20CNC%20machining%20lines1.webp" alt="Precision CNC Machining Lines" loading="lazy">
             <div class="gallery-caption">
               <h4>数控加工</h4>
               <p>精密数控加工生产线</p>
@@ -119,7 +136,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Precision%20CNC%20machining%20lines2.png" alt="CNC Machining Equipment" loading="lazy">
+            <img src="../../images/abouts/Precision%20CNC%20machining%20lines2.webp" alt="CNC Machining Equipment" loading="lazy">
             <div class="gallery-caption">
               <h4>数控加工</h4>
               <p>高精度生产设备</p>
@@ -127,7 +144,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Precision%20CNC%20machining%20lines3.png" alt="CNC Production Line" loading="lazy">
+            <img src="../../images/abouts/Precision%20CNC%20machining%20lines3.webp" alt="CNC Production Line" loading="lazy">
             <div class="gallery-caption">
               <h4>数控加工</h4>
               <p>自动化加工作业</p>
@@ -135,7 +152,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Precision%20CNC%20machining%20lines4.png" alt="CNC Manufacturing Center" loading="lazy">
+            <img src="../../images/abouts/Precision%20CNC%20machining%20lines4.webp" alt="CNC Manufacturing Center" loading="lazy">
             <div class="gallery-caption">
               <h4>数控加工</h4>
               <p>先进数控加工设备</p>
@@ -143,7 +160,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Precision%20CNC%20machining%20lines6.png" alt="Extended CNC Machining Area" loading="lazy">
+            <img src="../../images/abouts/Precision%20CNC%20machining%20lines6.webp" alt="Extended CNC Machining Area" loading="lazy">
             <div class="gallery-caption">
               <h4>数控加工</h4>
               <p>扩展精密加工区域</p>
@@ -151,7 +168,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Precision%20CNC%20machining%20lines7.png" alt="Multi-station CNC Line" loading="lazy">
+            <img src="../../images/abouts/Precision%20CNC%20machining%20lines7.webp" alt="Multi-station CNC Line" loading="lazy">
             <div class="gallery-caption">
               <h4>数控加工</h4>
               <p>多工位生产线</p>
@@ -164,7 +181,7 @@
           <section class="gallery-grid">
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Warehouse1.png" alt="Warehouse Storage" loading="lazy">
+            <img src="../../images/abouts/Warehouse1.webp" alt="Warehouse Storage" loading="lazy">
             <div class="gallery-caption">
               <h4>仓库</h4>
               <p>15,000平方米的存储容量</p>
@@ -172,7 +189,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Warehouse2.png" alt="Warehouse Interior" loading="lazy">
+            <img src="../../images/abouts/Warehouse2.webp" alt="Warehouse Interior" loading="lazy">
             <div class="gallery-caption">
               <h4>仓库</h4>
               <p>有序的库存管理</p>
@@ -180,7 +197,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Warehouse3.png" alt="Warehouse Facility" loading="lazy">
+            <img src="../../images/abouts/Warehouse3.webp" alt="Warehouse Facility" loading="lazy">
             <div class="gallery-caption">
               <h4>仓库</h4>
               <p>大规模存储作业</p>
@@ -188,7 +205,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Warehouse4.png" alt="Warehouse Operations" loading="lazy">
+            <img src="../../images/abouts/Warehouse4.webp" alt="Warehouse Operations" loading="lazy">
             <div class="gallery-caption">
               <h4>仓库</h4>
               <p>高效的库存系统</p>
@@ -196,7 +213,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Loading%20Dock1.png" alt="Loading Dock" loading="lazy">
+            <img src="../../images/abouts/Loading%20Dock1.webp" alt="Loading Dock" loading="lazy">
             <div class="gallery-caption">
               <h4>装卸货平台</h4>
               <p>高效的运输运营</p>
@@ -209,7 +226,7 @@
           <section class="gallery-grid">
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Quality%20Control1.png" alt="Quality Control" loading="lazy">
+            <img src="../../images/abouts/Quality%20Control1.webp" alt="Quality Control" loading="lazy">
             <div class="gallery-caption">
               <h4>质量控制</h4>
               <p>先进的测试设备</p>
@@ -217,7 +234,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/Quality%20Control2.png" alt="Inspection Line" loading="lazy">
+            <img src="../../images/abouts/Quality%20Control2.webp" alt="Inspection Line" loading="lazy">
             <div class="gallery-caption">
               <h4>检验线</h4>
               <p>自动化检测系统</p>
@@ -230,7 +247,7 @@
           <section class="gallery-grid">
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/offoce1.png" alt="Customer Service Office" loading="lazy">
+            <img src="../../images/abouts/offoce1.webp" alt="Customer Service Office" loading="lazy">
             <div class="gallery-caption">
               <h4>办公区</h4>
               <p>客户服务办公室</p>
@@ -238,7 +255,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/offoce2.png" alt="Meeting Room" loading="lazy">
+            <img src="../../images/abouts/offoce2.webp" alt="Meeting Room" loading="lazy">
             <div class="gallery-caption">
               <h4>办公区</h4>
               <p>会议与协调区域</p>
@@ -246,7 +263,7 @@
           </article>
 
           <article class="gallery-item fade-in">
-            <img src="../../images/abouts/offoce3.png" alt="Office Workspace" loading="lazy">
+            <img src="../../images/abouts/offoce3.webp" alt="Office Workspace" loading="lazy">
             <div class="gallery-caption">
               <h4>办公区</h4>
               <p>团队办公空间</p>
@@ -418,8 +435,8 @@
       </article>
       <article class="footer-col">
         <h3>联系我们</h3>
-        <p>邮箱：info@wtbolts.com</p>
-        <p>邮箱：lipbolts@gmail.com</p>
+        <p>邮箱：info&#64;wtbolts.com</p>
+        <p>邮箱：lipbolts&#64;gmail.com</p>
         <p>电话：+8615175432812</p>
         <p>地址：中国，河北邯郸永年区</p>
       </article>

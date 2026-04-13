@@ -68,7 +68,24 @@
   <!-- Async font load — eliminates render-blocking -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+:root{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.logo{display:flex;align-items:center}
+.logo img{height:44px;width:auto}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white);overflow:hidden}
+.page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
+.container{max-width:1220px;margin:0 auto;padding:0 24px}
+</style>
+  <link rel="preload" href="../../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../../css/style.css"></noscript>
   <!-- Facebook Pixel Code -->
 <!-- Facebook 配合梓豪 Meta Pixel Code -->
   <script>
@@ -92,7 +109,7 @@
 
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="../../../index.html" class="logo"><img src="../../../images/logo.jpg" alt="WT Metal Produk Co., Ltd."></a>
+      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="WT Metal Produk Co., Ltd."></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -132,7 +149,7 @@
 
     <section class="section">
       <article class="container product-detail">
-        <figure class="product-gallery fade-in"><img src="../../../images/image.png" alt="Rivet Semi-tubular"></figure>
+        <figure class="product-gallery fade-in"><img src="../../../images/products/others/Semi-tubular Rivet1.webp" alt="Rivet Semi-tubular"></figure>
         <section class="product-info fade-in">
           <h2>Rivet Semi-tubular</h2>
           <p>Rivets semi-tubular kami memiliki batang berongga parsial (biasanya 50-70% dari panjang batang), menggabungkan kekuatan rivets solid dengan bobot lebih ringan dan pengaturan lebih mudah dari rivets tubular.</p>
@@ -395,7 +412,7 @@
           <div class="related-grid">
         <a href="solid-rivets.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/others/Solid Rivet1.webp" alt="Rivet Padat" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/others/Solid Rivet1_sm.webp" alt="Rivet Padat" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Rivet Padat</h4>
@@ -405,7 +422,7 @@
         </a>
         <a href="blind-rivets.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/others/Blind Rivet1.webp" alt="Rivet Buta" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/others/Blind Rivet1_sm.webp" alt="Rivet Buta" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Rivet Buta</h4>
@@ -415,7 +432,7 @@
         </a>
         <a href="u-bolts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/others/U Bolt1.webp" alt="Baut U" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/others/U Bolt1_sm.webp" alt="Baut U" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Baut U</h4>
@@ -464,8 +481,8 @@
       </article>
       <article class="footer-col">
         <h3>Hubungi Kami</h3>
-        <p>Email: info@wtbolts.com</p>
-        <p>Email: lipbolts@gmail.com</p>
+        <p>Email: info&#64;wtbolts.com</p>
+        <p>Email: lipbolts&#64;gmail.com</p>
         <p>Telepon: +8615175432812</p>
         <p>Alamat: Distrik Yongnian, Handan, Hebei, China</p>
       </article>

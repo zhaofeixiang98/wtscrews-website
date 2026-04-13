@@ -757,33 +757,39 @@ for lang in LANGS:
   except Exception as e:
     errors.append(f'{lang}: {str(e)}')
 
+fork_error = None
 if auto_translate_enabled:
-    jobs_dir    = os.path.join(BASE_DIR, '.translate-jobs')
-    os.makedirs(jobs_dir, exist_ok=True)
-    status_path = os.path.join(jobs_dir, slug + '-status.json')
-    job_path    = os.path.join(jobs_dir, slug + '-job.json')
-    with open(status_path, 'w', encoding='utf-8') as _sf:
-        json.dump({'status': 'starting', 'completed': [], 'failed': {}, 'total': len(LANGS) - 1,
-                   'started_at': datetime.now().isoformat()}, _sf, ensure_ascii=False)
-    job_data = {
-        'slug': slug, 'date': date, 'og_image': og_image,
-        'article_section': article_section, 'extra_head': extra_head,
-        'source_fields': en_source_fields,
-        'langs': [l for l in LANGS if l != 'en'],
-        'base_dir': BASE_DIR,
-        'article_save_path': os.path.abspath(__file__),
-        'status_path': status_path,
-    }
-    with open(job_path, 'w', encoding='utf-8') as _jf:
-        json.dump(job_data, _jf, ensure_ascii=False)
-    worker_path = os.path.join(SCRIPT_DIR, 'translate-worker.py')
-    subprocess.Popen(
-        [sys.executable, worker_path, job_path],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        close_fds=True,
-        start_new_session=True,
-    )
+    try:
+        jobs_dir    = os.path.join(BASE_DIR, '.translate-jobs')
+        os.makedirs(jobs_dir, exist_ok=True)
+        status_path = os.path.join(jobs_dir, slug + '-status.json')
+        job_path    = os.path.join(jobs_dir, slug + '-job.json')
+        with open(status_path, 'w', encoding='utf-8') as _sf:
+            json.dump({'status': 'starting', 'completed': [], 'failed': {}, 'total': len(LANGS) - 1,
+                       'started_at': datetime.now().isoformat()}, _sf, ensure_ascii=False)
+        job_data = {
+            'slug': slug, 'date': date, 'og_image': og_image,
+            'article_section': article_section, 'extra_head': extra_head,
+            'source_fields': en_source_fields,
+            'langs': [l for l in LANGS if l != 'en'],
+            'base_dir': BASE_DIR,
+            'article_save_path': os.path.abspath(__file__),
+            'status_path': status_path,
+        }
+        with open(job_path, 'w', encoding='utf-8') as _jf:
+            json.dump(job_data, _jf, ensure_ascii=False)
+        worker_path = os.path.join(SCRIPT_DIR, 'translate-worker.py')
+        subprocess.Popen(
+            [sys.executable, worker_path, job_path],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            close_fds=True,
+            start_new_session=True,
+        )
+    except Exception as _fork_exc:
+        fork_error = str(_fork_exc)
+        auto_translate_enabled = False   # 回退：不报告 translating=True
 
 respond({
     'success': len(created) > 0,
@@ -791,6 +797,6 @@ respond({
     'created': created,
     'translated': translated,
     'translating': auto_translate_enabled,
-    'errors': errors,
+    'errors': errors + ([f'translate fork failed: {fork_error}'] if fork_error else []),
     'url': f'/pags/en/news/{slug}.html',
 })
