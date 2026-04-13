@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os, sys, json, re
+import os, sys, json, re, subprocess
 from datetime import datetime
 from urllib.parse import parse_qs
 from urllib import request as urlrequest
@@ -722,36 +722,6 @@ en_source_fields = {
   'body': en_body,
 }
 
-if auto_translate_enabled:
-  for lang in LANGS:
-    if lang == 'en':
-      continue
-
-    missing_fields = []
-    for field_name, current_value, source_value in [
-      ('title', g(f'{lang}_title'), en_title),
-      ('subtitle', g(f'{lang}_subtitle'), en_subtitle),
-      ('summary', g(f'{lang}_summary'), en_summary),
-      ('meta_desc', g(f'{lang}_meta_desc'), en_meta),
-      ('keywords', g(f'{lang}_keywords'), en_kw),
-      ('bc_label', g(f'{lang}_bc_label'), en_bc),
-      ('body', g(f'{lang}_body'), en_body),
-    ]:
-      if current_value:
-        continue
-      if not source_value and field_name in {'subtitle', 'keywords', 'meta_desc'}:
-        continue
-      missing_fields.append(field_name)
-
-    if not missing_fields:
-      continue
-
-    try:
-      translation_cache[lang] = translate_fields(lang, en_source_fields)
-      translated.append(lang)
-    except Exception as exc:
-      respond({'success': False, 'error': str(exc), 'created': [], 'errors': errors})
-
 for lang in LANGS:
   title_input    = g(f'{lang}_title')
   subtitle_input = g(f'{lang}_subtitle')
@@ -785,11 +755,40 @@ for lang in LANGS:
   except Exception as e:
     errors.append(f'{lang}: {str(e)}')
 
+if auto_translate_enabled:
+    jobs_dir    = os.path.join(BASE_DIR, '.translate-jobs')
+    os.makedirs(jobs_dir, exist_ok=True)
+    status_path = os.path.join(jobs_dir, slug + '-status.json')
+    job_path    = os.path.join(jobs_dir, slug + '-job.json')
+    with open(status_path, 'w', encoding='utf-8') as _sf:
+        json.dump({'status': 'starting', 'completed': [], 'failed': {}, 'total': len(LANGS) - 1,
+                   'started_at': datetime.now().isoformat()}, _sf, ensure_ascii=False)
+    job_data = {
+        'slug': slug, 'date': date, 'og_image': og_image,
+        'article_section': article_section, 'extra_head': extra_head,
+        'source_fields': en_source_fields,
+        'langs': [l for l in LANGS if l != 'en'],
+        'base_dir': BASE_DIR,
+        'article_save_path': os.path.abspath(__file__),
+        'status_path': status_path,
+    }
+    with open(job_path, 'w', encoding='utf-8') as _jf:
+        json.dump(job_data, _jf, ensure_ascii=False)
+    worker_path = os.path.join(SCRIPT_DIR, 'translate-worker.py')
+    subprocess.Popen(
+        [sys.executable, worker_path, job_path],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        close_fds=True,
+        start_new_session=True,
+    )
+
 respond({
     'success': len(created) > 0,
     'slug': slug,
     'created': created,
     'translated': translated,
+    'translating': auto_translate_enabled,
     'errors': errors,
     'url': f'/pags/en/news/{slug}.html',
 })
