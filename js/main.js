@@ -29,7 +29,7 @@
       } else {
         header.classList.remove('scrolled');
       }
-    });
+    }, { passive: true });
   }
 
   /* ===== Active Navigation Link ===== */
@@ -299,7 +299,20 @@
             card.href = item.slug + '.html';
             card.className = 'card fade-in';
 
-            setTimeout(function () { card.classList.add('visible'); }, idx * 100);
+            // Use IntersectionObserver instead of setTimeout to avoid forced reflow
+            if (typeof IntersectionObserver !== 'undefined') {
+              var cardObserver = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.05 });
+              cardObserver.observe(card);
+            } else {
+              card.classList.add('visible');
+            }
 
             var imageWrap = document.createElement('figure');
             imageWrap.className = 'card-image';
@@ -466,9 +479,20 @@
         card.href = item.slug + '.html';
         card.className = 'card fade-in';
 
-        setTimeout(function () {
+        // Use IntersectionObserver to avoid forced reflow from setTimeout
+        if (typeof IntersectionObserver !== 'undefined') {
+          var newsObs = new IntersectionObserver(function(entries, obs) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.05 });
+          newsObs.observe(card);
+        } else {
           card.classList.add('visible');
-        }, index * 100);
+        }
 
         var imageWrap = document.createElement('figure');
         imageWrap.className = 'card-image';
@@ -656,7 +680,7 @@
     } else {
       btt.classList.remove('visible');
     }
-  });
+  }, { passive: true });
 
   btt.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });

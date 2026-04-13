@@ -423,7 +423,7 @@ table {
 /* ===== Cards Grid ===== */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
   gap: 28px;
 }
 
@@ -1417,6 +1417,13 @@ table {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Prevent horizontal overflow on tables */
+  .product-specs table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .applications-grid {
     grid-template-columns: 1fr;
   }
@@ -1528,7 +1535,29 @@ table {
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+
+  /* 4-col product highlights → 2-col on very small screens */
+  .product-highlights {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  /* Ensure related grid stays single-column */
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FAQ modal cannot overflow small screens */
+  .faq-modal {
+    padding: 20px 16px;
+  }
+
+  /* CTA button full-width on tiny screens */
+  .cta-section .btn {
+    width: 100%;
   }
 }
 
@@ -1854,6 +1883,15 @@ table {
   font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.related-card-link {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 4px;
 }
 
 /* Customer Reviews */

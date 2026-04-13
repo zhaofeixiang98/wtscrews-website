@@ -1,0 +1,70 @@
+# WT Fasteners — Apache Performance Config
+# Render-blocking, cache, and compression optimizations
+
+# ── Enable Gzip / Deflate ──────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml text/xml
+  AddOutputFilterByType DEFLATE image/svg+xml font/woff font/woff2
+</IfModule>
+
+# ── Efficient Cache Lifetimes ──────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # CSS / JS  — 1 year (bust with filename changes)
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/javascript           "access plus 1 year"
+
+  # Images — 1 year
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/gif                 "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/x-icon              "access plus 1 year"
+
+  # Fonts — 1 year
+  ExpiresByType font/woff                 "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType application/font-woff     "access plus 1 year"
+  ExpiresByType application/font-woff2    "access plus 1 year"
+
+  # JSON data — 1 hour (pages_*.json updated on publish)
+  ExpiresByType application/json          "access plus 1 hour"
+
+  # HTML — 10 minutes
+  ExpiresByType text/html                 "access plus 10 minutes"
+</IfModule>
+
+# ── Cache-Control headers ──────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Immutable static assets
+  <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|woff|woff2|css|js)$">
+    Header append Cache-Control "public, immutable"
+  </FilesMatch>
+
+  # JSON: revalidate
+  <FilesMatch "\.json$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+
+  # Security headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ── Keep-Alive ─────────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header set Connection keep-alive
+</IfModule>
+
+# ── Vary: Accept-Encoding ──────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|html|htm|xml|json)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>

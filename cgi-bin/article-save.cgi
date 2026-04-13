@@ -520,7 +520,9 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
   </script>{extra_head_block}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Async font load — eliminates render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="../../../css/style.css">
   <script>
   !function(f,b,e,v,n,t,s)
@@ -678,9 +680,9 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
     </section>
   </aside>
 
-  <script src="../../../js/i18n-config.js"></script>
-  <script src="../../../js/main.js"></script>
-  <script src="../../../js/chat-dock.js"></script>
+  <script src="../../../js/i18n-config.js" defer></script>
+  <script src="../../../js/main.js" defer></script>
+  <script src="../../../js/chat-dock.js" defer></script>
 </body>
 </html>'''
 
