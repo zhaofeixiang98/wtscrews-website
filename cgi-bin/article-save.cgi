@@ -277,7 +277,7 @@ LC = {
       ('OEM 제조가 가능한가요?','물론입니다. 도면을 보내주시면 24시간 내에 견적을 드립니다.'),
     ],
   },
-}
+图片管理 /images/news/ 共 0 张，未使用 0 张}
 
 def truthy(value):
   return str(value or '').strip().lower() in {'1', 'true', 'yes', 'on'}

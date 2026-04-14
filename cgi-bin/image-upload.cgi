@@ -25,7 +25,7 @@ try:
     rename_raw  = ''
 
     for part in msg.get_payload():
-        disp = part.get('Content-Disposition', '')
+        disp = str(part.get('Content-Disposition', ''))  # Header obj → str
         name_m  = re.search(r'name="([^"]+)"',     disp)
         fname_m = re.search(r'filename="([^"]*)"', disp)
         if not name_m:

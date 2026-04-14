@@ -33,6 +33,7 @@
   ExpiresByType application/font-woff2    "access plus 1 year"
 
   # JSON data — 1 hour (pages_*.json updated on publish)
+  # Note: CGI endpoints returning JSON are overridden by FilesMatch "\.cgi$" no-store rule
   ExpiresByType application/json          "access plus 1 hour"
 
   # HTML — 10 minutes
@@ -43,6 +44,12 @@
 # Use "set" (not "append") so Cloudflare sees a single, authoritative header.
 # max-age=31536000 tells Cloudflare to cache at the edge for 1 year.
 <IfModule mod_headers.c>
+  # CGI / API — never cache dynamic responses
+  <FilesMatch "\.cgi$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+
   # Static assets — 1 year immutable (cache-bust via filename versioning)
   <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|woff|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
