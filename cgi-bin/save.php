@@ -9,6 +9,14 @@ $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
 $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
+// Get language from form or referer, default to en
+$lang = isset($_POST['lang']) ? trim($_POST['lang']) : 'en';
+// Validate language code
+$allowed_langs = ['en', 'zh', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko'];
+if (!in_array($lang, $allowed_langs)) {
+    $lang = 'en';
+}
+
 // Get client IP
 $client_ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 
@@ -51,12 +59,14 @@ $record = [
     'subject' => $subject,
     'message' => $message,
     'ip' => $client_ip,
+    'lang' => $lang,
     'time' => date('c')
 ];
 
 // Save to file
 file_put_contents($filename, json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
-// Redirect to success page
-header('Location: http://wtscrews.com/pags/success.html');
+// Redirect to language-specific success page
+$success_url = '/pags/' . $lang . '/success.html';
+header('Location: ' . $success_url);
 exit;

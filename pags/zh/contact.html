@@ -183,11 +183,12 @@
               <section class="form-group">
                 <label for="subject">主题</label>
                 <select id="subject" name="subject">
-                  
-                  
-                  
-                  
-                  
+                  <option value="">选择主题</option>
+                  <option value="product-inquiry">产品咨询</option>
+                  <option value="quotation-request">报价请求</option>
+                  <option value="technical-support">技术支持</option>
+                  <option value="partnership">合作机会</option>
+                  <option value="other">其他</option>
                 </select>
               </section>
               <section class="form-group">
@@ -202,7 +203,7 @@
 
         <script>
         (function(){
-          const form = document.querySelector('form[action="/cgi-bin/save.cgi"]');
+          const form = document.getElementById('contactForm');
           const submitBtn = document.getElementById('contactSubmit');
           const KEY = 'wt_last_submit_ts';
           function canSubmit(){

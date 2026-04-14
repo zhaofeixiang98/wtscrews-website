@@ -211,11 +211,12 @@ ul{list-style:none}
               <section class="form-group">
                 <label for="subject">Thema</label>
                 <select id="subject" name="subject">
-
-
-
-
-
+                  <option value="">Thema auswählen</option>
+                  <option value="product-inquiry">Produktanfrage</option>
+                  <option value="quotation-request">Angebotsanfrage</option>
+                  <option value="technical-support">Technischer Support</option>
+                  <option value="partnership">Partnerschaft</option>
+                  <option value="other">Sonstiges</option>
                 </select>
               </section>
               <section class="form-group">
@@ -231,7 +232,7 @@ ul{list-style:none}
 
         <script>
           (function () {
-            const form = document.querySelector('form[action="/cgi-bin/save.cgi"]');
+            const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('contactSubmit');
             const KEY = 'wt_last_submit_ts';
             function canSubmit() {

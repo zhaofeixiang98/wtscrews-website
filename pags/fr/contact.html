@@ -222,11 +222,12 @@ Merci pour votre message ! Nous vous répondrons prochainement.</aside>
               <section class="form-group">
                 <label for="subject">Sujet</label>
                 <select id="subject" name="subject">
-                  
-                  
-                  
-                  
-                  
+                  <option value="">Choisir un sujet</option>
+                  <option value="product-inquiry">Demande de produit</option>
+                  <option value="quotation-request">Demande de devis</option>
+                  <option value="technical-support">Support technique</option>
+                  <option value="partnership">Partenariat</option>
+                  <option value="other">Autre</option>
                 </select>
               </section>
               <section class="form-group">
@@ -241,7 +242,7 @@ Merci pour votre message ! Nous vous répondrons prochainement.</aside>
 
         <script>
         (function(){
-          const form = document.querySelector('form[action="/cgi-bin/save.cgi"]');
+          const form = document.getElementById('contactForm');
           const submitBtn = document.getElementById('contactSubmit');
           const KEY = 'wt_last_submit_ts';
           function canSubmit(){

@@ -164,6 +164,7 @@ ul{list-style:none}
           </aside>
 
           <form id="contactForm" action="/cgi-bin/save.php" method="post">
+            <input type="hidden" name="lang" value="en">
             <fieldset style="border: none; padding: 0;">
               <section class="form-row">
                 <section class="form-group">
@@ -190,11 +191,12 @@ ul{list-style:none}
               <section class="form-group">
                 <label for="subject">Subject</label>
                 <select id="subject" name="subject">
-                  
-                  
-                  
-                  
-                  
+                  <option value="">Select a subject</option>
+                  <option value="product-inquiry">Product Inquiry</option>
+                  <option value="quotation-request">Request for Quotation</option>
+                  <option value="technical-support">Technical Support</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="other">Other</option>
                 </select>
               </section>
               <section class="form-group">
@@ -209,7 +211,7 @@ ul{list-style:none}
 
         <script>
         (function(){
-          const form = document.querySelector('form[action="/cgi-bin/save.cgi"]');
+          const form = document.getElementById('contactForm');
           const submitBtn = document.getElementById('contactSubmit');
           const KEY = 'wt_last_submit_ts';
           function canSubmit(){

@@ -202,11 +202,12 @@ ul{list-style:none}
               <section class="form-group">
                 <label for="subject">Subjek</label>
                 <select id="subject" name="subject">
-                  
-                  
-                  
-                  
-                  
+                  <option value="">Pilih subjek</option>
+                  <option value="product-inquiry">Pertanyaan produk</option>
+                  <option value="quotation-request">Permintaan quotes</option>
+                  <option value="technical-support">Dukungan teknis</option>
+                  <option value="partnership">Mitra peluang</option>
+                  <option value="other">Lainnya</option>
                 </select>
               </section>
               <section class="form-group">
@@ -221,7 +222,7 @@ ul{list-style:none}
 
         <script>
         (function(){
-          const form = document.querySelector('form[action="/cgi-bin/save.cgi"]');
+          const form = document.getElementById('contactForm');
           const submitBtn = document.getElementById('contactSubmit');
           const KEY = 'wt_last_submit_ts';
           function canSubmit(){
