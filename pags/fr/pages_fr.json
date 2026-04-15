@@ -1,10 +1,17 @@
 {
     "news": [
         {
-            "slug": "news/industry-outlook-2026",
-            "title": "Perspectives de l'industrie des fixations 2026",
-            "date": "2026-04-07",
-            "summary": "Les secteurs de croissance clés et les opportunités du marché dans les véhicules électriques, les énergies renouvelables et la fabrication intelligente façonnent l'année à venir.",
+            "slug": "news/2026-04-15",
+            "title": "De la Foire de Canton à l'Expo de Yiwu : L'industrie des fixations embrasse l'essor commercial \"bi-noyau\" en avril",
+            "date": "2026-04-15",
+            "summary": "Avril 2026 marque une concentration d'événements commerciaux pour les fixations dans le Sud de la Chine. Le 6e Salon d'Approvisionnement de Guangzhou (GSF) se tiendra au Poly World Trade Center du 14 au 17 avril, suivi immédiatement par la 10e Expo Internationale du Matériel Électrique de Yiwu du 20 au 22 avril. Le lien entre ces deux grands pôles commerciaux crée un corridor commercial bi-noyau \"précision de Guangzhou + portée mondiale de Yiwu\", offrant aux entreprises de fixations une fenêtre privilégiée pour sécuriser des commandes à l'étranger et s'étendre sur les marchés émergents.",
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
+        },
+        {
+            "slug": "news/2026-04-14-us-tariff-fastener",
+            "title": "Ajustement de la politique tarifaire américaine : les exportations de fixations face à un nouveau tournant",
+            "date": "2026-04-14",
+            "summary": "À compter du 6 avril 2026, les États-Unis ont officiellement ajusté les règles tarifaires de la Section 232 pour les produits dérivés de l'acier et de l'aluminium. Pour les fixations contenant de l'acier ou de l'aluminium, la méthode de calcul a fondamentalement changé — d'une taxation uniquement sur la valeur de la teneur en métal à une imposition de 25 % sur la valeur déclarée totale de l'ensemble du produit. Cet article fournit une analyse approfondie des nouvelles réglementations, des estimations de l'impact sur les coûts et des stratégies de réponse des entreprises.",
             "icon": "../../images/logo.jpg"
         }
     ],

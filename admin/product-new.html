@@ -1,0 +1,2957 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发布产品详情页 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-950: #081120;
+      --blue-900: #0a1628;
+      --blue-800: #0f2140;
+      --blue-700: #18345f;
+      --blue-500: #2563eb;
+      --blue-400: #3b82f6;
+      --green-500: #16a34a;
+      --red-500: #dc2626;
+      --gray-950: #0f172a;
+      --gray-900: #111827;
+      --gray-800: #1f2937;
+      --gray-700: #374151;
+      --gray-500: #6b7280;
+      --gray-400: #9ca3af;
+      --gray-300: #d1d5db;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --gray-50: #f9fafb;
+      --white: #ffffff;
+      --accent: #2563eb;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: #ffffff;
+      --radius: 14px;
+      --radius-lg: 24px;
+      --shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 24%),
+        linear-gradient(180deg, #f6f9ff 0%, #f8fafc 100%);
+      color: var(--gray-900);
+      min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    .admin-header {
+      background: rgba(255, 255, 255, 0.78);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+    }
+    .admin-header .container {
+      max-width: 1900px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.35rem;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
+    }
+    .brand-text {
+      display: grid;
+      gap: 4px;
+    }
+    .brand-text .title { font-size: 1.15rem; font-weight: 700; color: var(--gray-900); }
+    .brand-text .subtitle { color: var(--gray-500); font-size: 0.92rem; }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-links a, .nav-links button {
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: rgba(248, 250, 252, 0.9);
+      color: var(--gray-900);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-links a:hover, .nav-links button:hover { background: #eff6ff; border-color: #dbeafe; transform: translateY(-1px); }
+    .nav-links .primary { background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%); color: white; border: none; box-shadow: 0 12px 28px rgba(37, 99, 235, 0.18); }
+    @media (max-width: 1024px) {
+      .admin-header .container { flex-direction: column; align-items: stretch; }
+    }
+
+    .container {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 32px 24px 120px;
+    }
+
+    .editor-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .editor-sidebar {
+      position: sticky;
+      top: 86px;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .editor-main {
+      min-width: 0;
+      display: grid;
+      gap: 24px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-lg);
+      padding: 30px 32px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--blue-900);
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+      letter-spacing: 0.01em;
+    }
+
+    .sidebar-panel {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 22px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .sidebar-panel summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 22px 24px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--blue-900);
+    }
+
+    .sidebar-panel summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .sidebar-panel summary::after {
+      content: '展开';
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+
+    .sidebar-panel[open] summary {
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .sidebar-panel[open] summary::after {
+      content: '折叠';
+      color: var(--accent);
+    }
+
+    .sidebar-panel-body {
+      padding: 24px;
+    }
+
+    /* ── Forms ── */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+    }
+
+    .form-group label span.req {
+      color: var(--red-500);
+      margin-left: 2px;
+    }
+
+    .form-group label span.optional {
+      color: var(--gray-400);
+      font-weight: 400;
+      font-size: 0.78rem;
+      margin-left: 4px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--gray-900);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 0.82rem;
+    }
+
+    .form-group textarea.body-editor {
+      min-height: 300px;
+    }
+
+    .form-group .hint {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ── Language tabs ── */
+    .lang-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .lang-tab {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1.5px solid var(--gray-200);
+      background: rgba(248, 250, 252, 0.92);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--gray-500);
+      transition: all 0.2s;
+    }
+
+    .lang-tab:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .lang-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .lang-tab.main {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .lang-tab.main.active {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .lang-panel {
+      display: none;
+    }
+
+    .lang-panel.active {
+      display: block;
+    }
+
+    .lang-fallback-note {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #1d4ed8;
+      margin-bottom: 20px;
+    }
+
+    .module-mount {
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%);
+      padding: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .module-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--gray-200);
+    }
+
+    .module-toolbar .label {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      font-weight: 600;
+    }
+
+    .module-toolbar select {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--gray-900);
+    }
+
+    .module-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--gray-700);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .module-btn:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      color: var(--gray-900);
+    }
+
+    .module-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    .module-btn.primary:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    .module-btn.danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+
+    .module-btn.danger:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+    }
+
+    .module-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .module-card {
+      background: var(--surface-strong);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .module-card.active {
+      border-color: #93c5fd;
+      box-shadow: 0 12px 34px rgba(37, 99, 235, 0.14);
+    }
+
+    .module-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, #f8fbff 0%, #f8fafc 100%);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .module-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .module-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .module-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .module-icon-btn {
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gray-700);
+      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .module-icon-btn:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      color: var(--gray-900);
+    }
+
+    .module-icon-btn.danger {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+
+    .module-icon-btn.danger:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+    }
+
+    .module-body {
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .module-field label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .module-field input,
+    .module-field textarea,
+    .module-field select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--gray-900);
+    }
+
+    .module-field textarea {
+      min-height: 90px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+
+    .module-row-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .module-preview {
+      margin-top: 14px;
+      border-top: 1px dashed var(--gray-200);
+      padding-top: 14px;
+    }
+
+    .module-preview .preview-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+    }
+
+    .module-preview .preview-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    /* ── Image upload card ── */
+    .upload-zone {
+      border: 2px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, #eff6ff 0%, #f8fbff 100%);
+    }
+
+    .upload-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .upload-zone-text {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      pointer-events: none;
+    }
+
+    .upload-zone-text strong {
+      color: var(--accent);
+    }
+
+    .upload-preview-row {
+      display: none;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border-radius: 14px;
+      border: 1px solid var(--gray-200);
+      margin-bottom: 14px;
+    }
+
+    .upload-preview-row.show {
+      display: flex;
+    }
+
+    .upload-preview-row img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .upload-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .upload-info .u-name {
+      font-weight: 600;
+      color: var(--green-500);
+      font-size: 0.875rem;
+      margin-bottom: 3px;
+      word-break: break-all;
+    }
+
+    .upload-info .u-path {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      word-break: break-all;
+    }
+
+    .cover-current {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      word-break: break-all;
+    }
+
+    .library-launch-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Image library ── */
+    .card-head-inline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .card-head-inline h2 {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .btn-refresh {
+      padding: 8px 14px;
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-refresh:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    .library-note {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .library-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .library-toolbar input {
+      flex: 1;
+    }
+
+    .library-summary {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    .library-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .library-action-msg {
+      font-size: 0.8rem;
+      color: var(--green-500);
+      min-height: 1.2em;
+      text-align: right;
+    }
+
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .library-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2600;
+    }
+
+    .library-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.42);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .library-dialog {
+      position: relative;
+      z-index: 1;
+      width: min(1320px, calc(100vw - 40px));
+      max-height: calc(100vh - 40px);
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      box-shadow: 0 30px 100px rgba(15, 23, 42, 0.24);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .library-dialog-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      background: linear-gradient(180deg, #f8fbff 0%, #f8fafc 100%);
+    }
+
+    .library-dialog-head h3 {
+      font-size: 1.08rem;
+      color: var(--blue-900);
+      margin-bottom: 4px;
+    }
+
+    .library-dialog-head p {
+      font-size: 0.84rem;
+      color: var(--gray-500);
+    }
+
+    .library-dialog-body {
+      padding: 22px 24px 26px;
+      overflow: auto;
+    }
+
+    .library-upload-panel {
+      margin-bottom: 20px;
+      padding: 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .library-upload-grid {
+      align-items: start;
+    }
+
+    .library-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .library-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .library-meta {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .library-name {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      word-break: break-word;
+    }
+
+    .library-path {
+      font-size: 0.77rem;
+      color: var(--gray-500);
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    .library-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .library-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+
+    .library-size {
+      font-size: 0.74rem;
+      color: var(--gray-400);
+    }
+
+    .library-actions {
+      display: flex;
+      gap: 8px;
+      padding: 0 12px 12px;
+    }
+
+    .library-actions button,
+    .library-actions a {
+      flex: 1;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: 1.5px solid var(--gray-200);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .library-actions .btn-cover {
+      background: var(--white);
+      color: var(--gray-700);
+    }
+
+    .library-actions .btn-cover:hover {
+      background: var(--blue-900);
+      border-color: var(--blue-900);
+      color: var(--white);
+    }
+
+    .library-actions .btn-use {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    .library-actions .btn-use:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    .library-actions .btn-download {
+      background: #f8fafc;
+      color: var(--gray-700);
+      text-decoration: none;
+    }
+
+    .library-actions .btn-download:hover {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+      color: var(--blue-700);
+    }
+
+    .state-msg {
+      padding: 18px;
+      border: 1px dashed var(--gray-200);
+      border-radius: 10px;
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.86rem;
+      background: var(--gray-50);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--gray-200);
+      margin: 20px 0;
+    }
+
+    /* ── Buttons ── */
+    .btn-upload {
+      padding: 11px 24px;
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-upload:hover {
+      background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-500) 100%);
+      transform: translateY(-1px);
+    }
+
+    .btn-upload:disabled {
+      background: var(--gray-400);
+      cursor: not-allowed;
+    }
+
+    .btn-insert {
+      padding: 9px 20px;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+
+    .btn-insert:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* ── Submit bar ── */
+    .submit-bar {
+      position: fixed;
+      bottom: 18px;
+      left: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 120;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+    }
+
+    .btn-submit {
+      padding: 12px 36px;
+      background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-submit:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-submit:active {
+      transform: translateY(1px);
+    }
+
+    .btn-submit:disabled {
+      background: var(--gray-400);
+      cursor: not-allowed;
+    }
+
+    .btn-preview {
+      padding: 12px 24px;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--gray-700);
+      transition: all 0.2s;
+    }
+
+    .btn-preview:hover {
+      background: #1e293b;
+      border-color: #1e293b;
+      color: var(--white);
+    }
+
+    .status-msg {
+      font-size: 0.88rem;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .status-msg.success {
+      color: var(--green-500);
+    }
+
+    .status-msg.error {
+      color: var(--red-500);
+    }
+
+    .status-msg.loading {
+      color: var(--gray-500);
+    }
+
+    /* ── Preview overlay ── */
+    .preview-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.32);
+      margin: 0;
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: none;
+    }
+
+    .preview-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, var(--blue-950) 0%, var(--blue-800) 100%);
+      color: var(--white);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+
+    .preview-topbar span {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .preview-lang-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .preview-lang-sel {
+      padding: 7px 12px;
+      border-radius: 6px;
+      border: none;
+      font-family: inherit;
+      font-size: 0.875rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+    }
+
+    .preview-lang-sel option {
+      background: #1e293b;
+      color: white;
+    }
+
+    .preview-close-btn {
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      color: var(--white);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+
+    .preview-close-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .preview-frame {
+      flex: 1;
+      border: none;
+      width: 100%;
+      background: var(--white);
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      .module-row-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .editor-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .editor-sidebar {
+        position: static;
+        top: auto;
+      }
+
+      .card-head-inline,
+      .library-launch-row,
+      .library-toolbar,
+      .library-status-row,
+      .library-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .library-dialog {
+        width: calc(100vw - 16px);
+        max-height: calc(100vh - 16px);
+        margin: 8px;
+        border-radius: 18px;
+      }
+
+      .library-summary,
+      .library-action-msg {
+        text-align: left;
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="admin-header">
+    <div class="container">
+      <div class="brand">
+        <div class="brand-icon">🛠️</div>
+        <div class="brand-text">
+          <div class="title">发布产品</div>
+          <div class="subtitle">新增产品条目，支持多种产品模式</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">🏠 后台首页</a>
+        <a href="article-list.html">📝 文章管理</a>
+        <a href="article-new.html">✍️ 发布新文章</a>
+        <a href="product-management.html">🛍️ 产品管理</a>
+        <a href="product-new.html" class="primary">🛠️ 发布新产品</a>
+        <a href="image-manager.html">🖼️ 图片管理</a>
+        <a href="users-view.html">👥 用户数据</a>
+        <button class="primary" id="logoutBtn">退出登录</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="editor-layout">
+      <div class="editor-main">
+
+        <!-- ── 基本信息 ── -->
+        <div class="card">
+          <h2>产品基本信息（所有语言共用）</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="slug">URL 标识 (Slug)<span class="req">*</span></label>
+              <input type="text" id="slug" placeholder="e.g. hex-bolts" autocomplete="off">
+              <div class="hint">只能包含小写字母、数字、连字符。会自动从英文标题生成。</div>
+            </div>
+            <div class="form-group">
+              <label for="date">发布日期<span class="req">*</span></label>
+              <input type="date" id="date">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="product_category">产品类别<span class="optional">可选</span></label>
+            <select id="product_category">
+              <option value="">请选择产品类别</option>
+              <option value="Bolts">Bolts</option>
+              <option value="Nuts">Nuts</option>
+              <option value="Screws">Screws</option>
+              <option value="Washers">Washers</option>
+              <option value="Pins">Pins</option>
+              <option value="Studs">Studs</option>
+              <option value="Anchors Fastening">Anchors Fastening</option>
+              <option value="Other Fasteners">Other Fasteners</option>
+            </select>
+            <div class="hint">下拉单选。若不选择，系统默认使用 "Other Fasteners"。</div>
+          </div>
+          <div class="form-group">
+            <label for="extra_head">额外 Head HTML / JSON<span class="optional">可选</span></label>
+            <textarea id="extra_head"
+              placeholder="<script type=&quot;application/ld+json&quot;>{...}</script>&#10;<meta name=&quot;google-site-verification&quot; content=&quot;...&quot;>"></textarea>
+            <div class="hint">会原样插入每个生成产品页的 head 末尾。可放 JSON-LD、meta、script、验证标签等。</div>
+          </div>
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+              <input type="checkbox" id="auto_translate" checked style="width:auto;margin:0">
+              <span>自动翻译空白字段到 8 个语言版本</span>
+            </label>
+            <div class="hint">默认开启。英文内容必填，其他语言留空时会在发布时自动翻译；手动填写的字段优先，不会被覆盖。</div>
+          </div>
+          <input type="hidden" id="og_image">
+          <div class="cover-current" id="coverCurrent">当前封面图：未选择</div>
+        </div>
+
+        <div class="card">
+          <h2>正式产品页整体配置</h2>
+          <div class="hint" style="margin-bottom:20px">主图、图片说明、规格参数、应用场景、评价、关联产品等都在这里统一编辑，生成页和预览会一起使用。</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="coverImagePathDisplay">当前主图路径</label>
+              <input type="text" id="coverImagePathDisplay" placeholder="/images/products/..." readonly>
+              <div class="library-launch-row">
+                <button type="button" class="btn-upload" id="openImageLibraryBtn">选择图片 / 打开资源库</button>
+                <span class="hint">在资源库中完成上传、设为封面、下载和添加图片模块。</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>当前主图状态</label>
+              <div class="cover-current" id="coverCurrentMain">当前封面图：未选择</div>
+            </div>
+          </div>
+          <div class="upload-preview-row" id="uploadPreviewRow">
+            <img id="uploadThumb" src="" alt="">
+            <div class="upload-info">
+              <div class="u-name" id="uploadedName"></div>
+              <div class="u-path" id="uploadedPath"></div>
+              <div style="margin-top:6px;font-size:0.8rem;color:var(--green-500)" id="currentImageNote"></div>
+            </div>
+            <button type="button" class="btn-insert" id="insertAtCursorBtn" title="把当前选择的图片作为模块追加到正文">添加图片模块</button>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="imgAlt">图片 Alt 文字<span class="optional">建议填写，有助于 SEO</span></label>
+              <input type="text" id="imgAlt" placeholder="图片描述，如 Hex Bolts product line 2026">
+              <div class="hint">上传图片和正文中的图片模块都会复用这里的 Alt / Caption。</div>
+            </div>
+            <div class="form-group">
+              <label for="imgCaption">图片说明 Caption<span class="optional">可选</span></label>
+              <input type="text" id="imgCaption" placeholder="显示在图片下方的文字">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="applications_data">Applications 区块</label>
+            <textarea id="applications_data" style="min-height:160px" placeholder="每行一个卡片：图标|标题|描述"></textarea>
+            <div class="hint">示例：🏢|Building Construction|Structural connections, facade mounting, equipment installation</div>
+          </div>
+          <div class="form-group">
+            <label for="materials_data">Materials &amp; Grades 区块</label>
+            <textarea id="materials_data" style="min-height:160px" placeholder="每行一个卡片：标题|要点1;要点2;要点3"></textarea>
+            <div class="hint">示例：Carbon Steel|Grade 4.8, 8.8, 10.9;Good strength, cost-effective;Zinc plated for corrosion resistance</div>
+          </div>
+          <div class="form-group">
+            <label for="size_chart_data">Size Chart / 规格表</label>
+            <textarea id="size_chart_data" style="min-height:180px" placeholder="每行一行参数：Size|Thread|Length Range|Pull-out Strength|Shear Strength|Embedment"></textarea>
+            <div class="hint">示例：M6|1.0 mm|50 - 150 mm|12 kN|8 kN|40 mm</div>
+          </div>
+          <div class="form-group">
+            <label for="reviews_data">Customer Reviews 区块</label>
+            <textarea id="reviews_data" style="min-height:150px" placeholder="每行一条评价：姓名|日期|内容|星级"></textarea>
+            <div class="hint">示例：Michael Johnson|January 15, 2026|Excellent quality anchor bolts...|5</div>
+          </div>
+          <div class="form-group">
+            <label for="related_products_data">Related Products 区块</label>
+            <textarea id="related_products_data" style="min-height:150px" placeholder="每行一个产品：slug|标题|摘要|图片路径"></textarea>
+            <div class="hint">示例：hex-bolts|Hex Bolts|Full and partial thread hex bolts...|products/bolts/Hex Bolt0_sm.webp</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cta_title">CTA 标题</label>
+              <input type="text" id="cta_title" placeholder="Need a Custom Product?">
+            </div>
+            <div class="form-group">
+              <label for="cta_button_text">CTA 按钮文字</label>
+              <input type="text" id="cta_button_text" placeholder="Contact Our Team">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cta_desc">CTA 描述</label>
+            <input type="text" id="cta_desc" placeholder="We can manufacture products to your exact specifications — just send us the details.">
+          </div>
+        </div>
+
+        <!-- ── 产品内容 ── -->
+        <div class="card">
+          <h2>产品内容（按语言填写）</h2>
+
+          <!-- Language tabs -->
+          <div class="lang-tabs">
+            <button type="button" class="lang-tab main active" data-lang="en">English 🇬🇧</button>
+            <button type="button" class="lang-tab main" data-lang="zh">中文 🇨🇳</button>
+            <button type="button" class="lang-tab" data-lang="de">Deutsch 🇩🇪</button>
+            <button type="button" class="lang-tab" data-lang="es">Español 🇪🇸</button>
+            <button type="button" class="lang-tab" data-lang="fr">Français 🇫🇷</button>
+            <button type="button" class="lang-tab" data-lang="ar">العربية 🇸🇦</button>
+            <button type="button" class="lang-tab" data-lang="id">Indonesia 🇮🇩</button>
+            <button type="button" class="lang-tab" data-lang="ja">日本語 🇯🇵</button>
+            <button type="button" class="lang-tab" data-lang="ko">한국어 🇰🇷</button>
+          </div>
+
+          <div class="module-toolbar" id="moduleToolbar">
+            <span class="label">模块：</span>
+            <select id="moduleTypeSelect">
+              <option value="heading">标题</option>
+              <option value="paragraph">段落</option>
+              <option value="bullets">要点列表</option>
+              <option value="specs">参数表</option>
+              <option value="highlights">核心亮点</option>
+              <option value="image">图片</option>
+              <option value="divider">分隔线</option>
+            </select>
+            <button type="button" class="module-btn primary" id="moduleAddBtn">添加模块</button>
+            <button type="button" class="module-btn" id="moduleLoadFlangeTemplate" style="background:#f59e0b;color:#fff">法兰螺栓模板</button>
+            <button type="button" class="module-btn" id="modulePreviewBtn">预览</button>
+            <button type="button" class="module-btn danger" id="moduleClearBtn">清空当前语言</button>
+          </div>
+          <div class="module-list" id="moduleEditor"></div>
+          <div class="module-preview" id="modulePreview" style="display:none">
+            <div class="preview-title">预览（生成后的页面效果）</div>
+            <div class="preview-box" id="modulePreviewBox"></div>
+          </div>
+
+          <!-- EN panel -->
+          <div class="lang-panel active" id="panel-en">
+            <div class="form-row">
+              <div class="form-group">
+                <label>标题 (Title)<span class="req">*</span></label>
+                <input type="text" id="en_title" placeholder="Hex Bolts">
+              </div>
+              <div class="form-group">
+                <label>副标题 (Subtitle)<span class="optional">可选</span></label>
+                <input type="text" id="en_subtitle" placeholder="High-strength fastening solutions">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>列表摘要<span class="req">*</span> — 显示在产品列表卡片上</label>
+              <input type="text" id="en_summary"
+                placeholder="Brief description for the product listing card (1-2 sentences)">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Meta 描述<span class="optional">留空则用摘要</span></label>
+                <input type="text" id="en_meta_desc" placeholder="SEO meta description (under 160 chars)">
+              </div>
+              <div class="form-group">
+                <label>关键词<span class="optional">可选</span></label>
+                <input type="text" id="en_keywords" placeholder="hex bolts, fasteners, hardware">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>面包屑标签<span class="optional">留空则用标题</span></label>
+              <input type="text" id="en_bc_label" placeholder="Hex Bolts">
+            </div>
+            <div class="form-group body-group">
+              <label>正文内容（模块化）<span class="req">*</span></label>
+              <div class="module-mount" id="moduleMount-en"></div>
+              <textarea id="en_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">在模块里新增/删除内容，系统会自动生成 HTML。</div>
+            </div>
+          </div>
+
+          <!-- ZH panel -->
+          <div class="lang-panel" id="panel-zh">
+            <div class="lang-fallback-note">💡 留空的字段将自动使用英文内容</div>
+            <div class="form-row">
+              <div class="form-group"><label>标题<span class="optional">可选</span></label><input type="text" id="zh_title"
+                  placeholder="六角螺栓"></div>
+              <div class="form-group"><label>副标题<span class="optional">可选</span></label><input type="text"
+                  id="zh_subtitle" placeholder="高强度紧固解决方案"></div>
+            </div>
+            <div class="form-group"><label>列表摘要<span class="optional">可选</span></label><input type="text"
+                id="zh_summary" placeholder="产品列表卡片简介"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Meta 描述<span class="optional">可选</span></label><input type="text"
+                  id="zh_meta_desc"></div>
+              <div class="form-group"><label>关键词<span class="optional">可选</span></label><input type="text"
+                  id="zh_keywords"></div>
+            </div>
+            <div class="form-group"><label>面包屑标签<span class="optional">可选</span></label><input type="text"
+                id="zh_bc_label"></div>
+            <div class="form-group body-group">
+              <label>正文内容（模块化）<span class="optional">可选</span></label>
+              <div class="module-mount" id="moduleMount-zh"></div>
+              <textarea id="zh_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">留空时会自动使用英文内容或翻译。</div>
+            </div>
+          </div>
+
+          <!-- DE panel -->
+          <div class="lang-panel" id="panel-de">
+            <div class="lang-fallback-note">💡 留空的字段将自动使用英文内容</div>
+            <div class="form-row">
+              <div class="form-group"><label>Titel<span class="optional">optional</span></label><input type="text"
+                  id="de_title"></div>
+              <div class="form-group"><label>Untertitel<span class="optional">optional</span></label><input type="text"
+                  id="de_subtitle"></div>
+            </div>
+            <div class="form-group"><label>Zusammenfassung<span class="optional">optional</span></label><input
+                type="text" id="de_summary"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Meta-Beschreibung<span class="optional">optional</span></label><input
+                  type="text" id="de_meta_desc"></div>
+              <div class="form-group"><label>Stichwörter<span class="optional">optional</span></label><input type="text"
+                  id="de_keywords"></div>
+            </div>
+            <div class="form-group"><label>Breadcrumb-Label<span class="optional">optional</span></label><input
+                type="text" id="de_bc_label"></div>
+            <div class="form-group body-group">
+              <label>Inhalt (Modular)<span class="optional">optional</span></label>
+              <div class="module-mount" id="moduleMount-de"></div>
+              <textarea id="de_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Leave blank to use English content / auto-translate.</div>
+            </div>
+          </div>
+
+          <!-- ES panel -->
+          <div class="lang-panel" id="panel-es">
+            <div class="lang-fallback-note">💡 Dejar en blanco usará el contenido en inglés</div>
+            <div class="form-row">
+              <div class="form-group"><label>Título<span class="optional">opcional</span></label><input type="text"
+                  id="es_title"></div>
+              <div class="form-group"><label>Subtítulo<span class="optional">opcional</span></label><input type="text"
+                  id="es_subtitle"></div>
+            </div>
+            <div class="form-group"><label>Resumen<span class="optional">opcional</span></label><input type="text"
+                id="es_summary"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Meta descripción<span class="optional">opcional</span></label><input
+                  type="text" id="es_meta_desc"></div>
+              <div class="form-group"><label>Palabras clave<span class="optional">opcional</span></label><input
+                  type="text" id="es_keywords"></div>
+            </div>
+            <div class="form-group"><label>Etiqueta breadcrumb<span class="optional">opcional</span></label><input
+                type="text" id="es_bc_label"></div>
+            <div class="form-group body-group">
+              <label>Contenido (Modular)<span class="optional">opcional</span></label>
+              <div class="module-mount" id="moduleMount-es"></div>
+              <textarea id="es_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Dejar en blanco usará contenido en inglés / traducción automática.</div>
+            </div>
+          </div>
+
+          <!-- FR panel -->
+          <div class="lang-panel" id="panel-fr">
+            <div class="lang-fallback-note">💡 Les champs vides utiliseront le contenu anglais</div>
+            <div class="form-row">
+              <div class="form-group"><label>Titre<span class="optional">optionnel</span></label><input type="text"
+                  id="fr_title"></div>
+              <div class="form-group"><label>Sous-titre<span class="optional">optionnel</span></label><input type="text"
+                  id="fr_subtitle"></div>
+            </div>
+            <div class="form-group"><label>Résumé<span class="optional">optionnel</span></label><input type="text"
+                id="fr_summary"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Meta description<span class="optional">optionnel</span></label><input
+                  type="text" id="fr_meta_desc"></div>
+              <div class="form-group"><label>Mots-clés<span class="optional">optionnel</span></label><input type="text"
+                  id="fr_keywords"></div>
+            </div>
+            <div class="form-group"><label>Libellé breadcrumb<span class="optional">optionnel</span></label><input
+                type="text" id="fr_bc_label"></div>
+            <div class="form-group body-group">
+              <label>Contenu (Modulaire)<span class="optional">optionnel</span></label>
+              <div class="module-mount" id="moduleMount-fr"></div>
+              <textarea id="fr_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Les champs vides utiliseront le contenu anglais / traduction auto.</div>
+            </div>
+          </div>
+
+          <!-- AR panel -->
+          <div class="lang-panel" id="panel-ar" dir="rtl">
+            <div class="lang-fallback-note">💡 ستستخدم الحقول الفارغة المحتوى الإنجليزي</div>
+            <div class="form-row">
+              <div class="form-group"><label>العنوان<span class="optional">اختياري</span></label><input type="text"
+                  id="ar_title" dir="rtl"></div>
+              <div class="form-group"><label>العنوان الفرعي<span class="optional">اختياري</span></label><input
+                  type="text" id="ar_subtitle" dir="rtl"></div>
+            </div>
+            <div class="form-group"><label>الملخص<span class="optional">اختياري</span></label><input type="text"
+                id="ar_summary" dir="rtl"></div>
+            <div class="form-row">
+              <div class="form-group"><label>الوصف التعريفي<span class="optional">اختياري</span></label><input
+                  type="text" id="ar_meta_desc" dir="rtl"></div>
+              <div class="form-group"><label>الكلمات المفتاحية<span class="optional">اختياري</span></label><input
+                  type="text" id="ar_keywords" dir="rtl"></div>
+            </div>
+            <div class="form-group"><label>تسمية التنقل<span class="optional">اختياري</span></label><input type="text"
+                id="ar_bc_label" dir="rtl"></div>
+            <div class="form-group body-group">
+              <label dir="rtl">المحتوى (وحدات)<span class="optional">اختياري</span></label>
+              <div class="module-mount" id="moduleMount-ar"></div>
+              <textarea id="ar_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint" dir="rtl">اتركه فارغًا لاستخدام الإنجليزية / الترجمة التلقائية.</div>
+            </div>
+          </div>
+
+          <!-- ID panel -->
+          <div class="lang-panel" id="panel-id">
+            <div class="lang-fallback-note">💡 Bidang kosong akan menggunakan konten bahasa Inggris</div>
+            <div class="form-row">
+              <div class="form-group"><label>Judul<span class="optional">opsional</span></label><input type="text"
+                  id="id_title"></div>
+              <div class="form-group"><label>Subjudul<span class="optional">opsional</span></label><input type="text"
+                  id="id_subtitle"></div>
+            </div>
+            <div class="form-group"><label>Ringkasan<span class="optional">opsional</span></label><input type="text"
+                id="id_summary"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Deskripsi Meta<span class="optional">opsional</span></label><input
+                  type="text" id="id_meta_desc"></div>
+              <div class="form-group"><label>Kata Kunci<span class="optional">opsional</span></label><input type="text"
+                  id="id_keywords"></div>
+            </div>
+            <div class="form-group"><label>Label Breadcrumb<span class="optional">opsional</span></label><input
+                type="text" id="id_bc_label"></div>
+            <div class="form-group body-group">
+              <label>Konten (Modular)<span class="optional">opsional</span></label>
+              <div class="module-mount" id="moduleMount-id"></div>
+              <textarea id="id_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Kosongkan untuk memakai English / auto-translate.</div>
+            </div>
+          </div>
+
+          <!-- JA panel -->
+          <div class="lang-panel" id="panel-ja">
+            <div class="lang-fallback-note">💡 空白のフィールドは英語コンテンツを使用します</div>
+            <div class="form-row">
+              <div class="form-group"><label>タイトル<span class="optional">任意</span></label><input type="text"
+                  id="ja_title"></div>
+              <div class="form-group"><label>サブタイトル<span class="optional">任意</span></label><input type="text"
+                  id="ja_subtitle"></div>
+            </div>
+            <div class="form-group"><label>概要<span class="optional">任意</span></label><input type="text" id="ja_summary">
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>メタ説明<span class="optional">任意</span></label><input type="text"
+                  id="ja_meta_desc"></div>
+              <div class="form-group"><label>キーワード<span class="optional">任意</span></label><input type="text"
+                  id="ja_keywords"></div>
+            </div>
+            <div class="form-group"><label>パンくずラベル<span class="optional">任意</span></label><input type="text"
+                id="ja_bc_label"></div>
+            <div class="form-group body-group">
+              <label>本文（モジュール）<span class="optional">任意</span></label>
+              <div class="module-mount" id="moduleMount-ja"></div>
+              <textarea id="ja_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">空欄の場合は英語 / 自動翻訳を使用します。</div>
+            </div>
+          </div>
+
+          <!-- KO panel -->
+          <div class="lang-panel" id="panel-ko">
+            <div class="lang-fallback-note">💡 빈 필드는 영어 콘텐츠를 사용합니다</div>
+            <div class="form-row">
+              <div class="form-group"><label>제목<span class="optional">선택</span></label><input type="text" id="ko_title">
+              </div>
+              <div class="form-group"><label>부제목<span class="optional">선택</span></label><input type="text"
+                  id="ko_subtitle"></div>
+            </div>
+            <div class="form-group"><label>요약<span class="optional">선택</span></label><input type="text" id="ko_summary">
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>메타 설명<span class="optional">선택</span></label><input type="text"
+                  id="ko_meta_desc"></div>
+              <div class="form-group"><label>키워드<span class="optional">선택</span></label><input type="text"
+                  id="ko_keywords"></div>
+            </div>
+            <div class="form-group"><label>브레드크럼 레이블<span class="optional">선택</span></label><input type="text"
+                id="ko_bc_label"></div>
+            <div class="form-group body-group">
+              <label>본문 (모듈)<span class="optional">선택</span></label>
+              <div class="module-mount" id="moduleMount-ko"></div>
+              <textarea id="ko_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">비워두면 영어 / 자동 번역을 사용합니다.</div>
+            </div>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- .editor-main -->
+    </div><!-- .editor-layout -->
+  </div><!-- .container -->
+
+  <div class="library-modal" id="imageLibraryModal" style="display:none">
+    <div class="library-backdrop" id="imageLibraryBackdrop"></div>
+    <div class="library-dialog">
+      <div class="library-dialog-head">
+        <div>
+          <h3>图片资源库</h3>
+          <p>在这里统一上传、下载、设为封面，或添加到当前语言正文模块。</p>
+        </div>
+        <button type="button" class="module-btn" id="closeImageLibraryBtn">关闭</button>
+      </div>
+      <div class="library-dialog-body">
+        <div class="library-upload-panel">
+          <div class="form-row library-upload-grid">
+            <div class="form-group">
+              <label>选择图片<span class="req">*</span></label>
+              <div class="upload-zone" id="uploadZone">
+                <input type="file" id="imgFile" accept="image/*">
+                <div class="upload-zone-text" id="uploadZoneText">
+                  <strong>点击选择图片</strong> 或拖拽到此处<br>
+                  <span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>重命名<span class="optional">可选，留空用原名</span></label>
+              <input type="text" id="imgRename" placeholder="新文件名（不含扩展名），如 flange-bolts-2026">
+              <div class="hint">保存路径：<code style="font-size:0.8rem">/images/news/文件名.ext</code></div>
+              <button type="button" class="btn-upload" id="uploadBtn" style="margin-top:12px">上传到资源库</button>
+              <span id="uploadStatus" style="display:block;font-size:0.82rem;margin-top:10px;color:var(--gray-500)"></span>
+            </div>
+          </div>
+        </div>
+        <p class="library-note">资源库统一管理 `/images/` 下的图片。支持搜索、下载、设为封面，以及把图片插入当前语言正文。</p>
+        <div class="library-toolbar">
+          <input type="text" id="librarySearch" placeholder="搜索文件名或路径，如 products / bolts / news">
+          <span class="library-summary" id="librarySummary">加载中...</span>
+          <button type="button" class="btn-refresh" id="libraryRefreshBtn">刷新</button>
+        </div>
+        <div class="library-status-row">
+          <div class="hint">点击“设为封面”同步到主图，点击“添加模块”插入当前语言正文。</div>
+          <div class="library-action-msg" id="libraryActionMsg"></div>
+        </div>
+        <div id="libraryGrid">
+          <div class="state-msg">加载中...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Submit bar ── -->
+  <div class="submit-bar">
+    <button type="button" class="btn-submit" id="submitBtn">发布产品详情页（所有语言）</button>
+    <button type="button" class="btn-preview" id="previewBtn">👁 预览</button>
+    <button type="button" class="btn-preview" id="checkTranslateBtn">检测翻译配置</button>
+    <span class="status-msg" id="statusMsg"></span>
+  </div>
+
+  <!-- ── Preview overlay ── -->
+  <div id="previewOverlay" class="preview-overlay" style="display:none">
+    <div class="preview-topbar">
+      <span>预览产品页</span>
+      <div class="preview-lang-row">
+        <select id="previewLangSel" class="preview-lang-sel">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+          <option value="id">Indonesia</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+        </select>
+        <button class="preview-close-btn" id="previewClose">✕ 关闭预览</button>
+      </div>
+    </div>
+    <iframe id="previewFrame" class="preview-frame"></iframe>
+  </div>
+
+  <script>
+    // ── Auth ──────────────────────────────────────────────────────────────────
+    (function () {
+      var auth = localStorage.getItem('userAdminAuth');
+      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
+        localStorage.removeItem('userAdminAuth');
+        window.location.href = 'login.html';
+      }
+    })();
+    document.getElementById('logoutBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+    });
+
+    function escHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function fmtSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+
+    function encodeImagePath(path) {
+      return String(path || '').split('/').map(function (part) {
+        return encodeURIComponent(part);
+      }).join('/');
+    }
+
+    var currentImagePathRaw = '';
+
+    function setCurrentImage(path, displayName, noteText) {
+      var safePath = String(path || '').trim();
+      var coverText = safePath
+        ? '当前封面图：/images/' + safePath
+        : '当前封面图：未选择';
+      currentImagePathRaw = safePath;
+      document.getElementById('og_image').value = safePath ? encodeImagePath(safePath) : '';
+      document.getElementById('coverCurrent').textContent = coverText;
+      if (document.getElementById('coverCurrentMain')) {
+        document.getElementById('coverCurrentMain').textContent = coverText;
+      }
+      if (document.getElementById('coverImagePathDisplay')) {
+        document.getElementById('coverImagePathDisplay').value = safePath ? '/images/' + safePath : '';
+      }
+
+      if (!safePath) {
+        document.getElementById('uploadPreviewRow').classList.remove('show');
+        return;
+      }
+
+      document.getElementById('uploadedName').textContent = displayName || safePath.split('/').pop();
+      document.getElementById('uploadedPath').textContent = '/images/' + safePath;
+      document.getElementById('uploadThumb').src = '/images/' + encodeImagePath(safePath);
+      document.getElementById('currentImageNote').textContent = noteText || '✓ 已设为封面';
+      document.getElementById('uploadPreviewRow').classList.add('show');
+    }
+
+    function buildFigureHtml(imagePath, altText, captionText) {
+      var src = '../../../images/' + encodeImagePath(imagePath);
+      var alt = escHtml((altText || '').trim());
+      var caption = escHtml((captionText || '').trim());
+      return '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
+        (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') +
+        '</figure>\n\n';
+    }
+
+    // ── Default date ──────────────────────────────────────────────────────────
+    document.getElementById('date').value = new Date().toISOString().slice(0, 10);
+
+    // ── Auto-slug from EN title ───────────────────────────────────────────────
+    document.getElementById('en_title').addEventListener('input', function () {
+      var slugEl = document.getElementById('slug');
+      if (slugEl._manual) return;
+      slugEl.value = this.value.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '').trim()
+        .replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 80);
+    });
+    document.getElementById('slug').addEventListener('input', function () { this._manual = true; });
+
+    var MODULE_LANGS = ['en', 'zh', 'de', 'es', 'fr', 'ar', 'id', 'ja', 'ko'];
+    var currentLang = 'en';
+    var modulesByLang = {};
+    var activeModuleIndexByLang = {};
+    var moduleToolbar = document.getElementById('moduleToolbar');
+    var moduleEditor = document.getElementById('moduleEditor');
+    var modulePreview = document.getElementById('modulePreview');
+    var modulePreviewBox = document.getElementById('modulePreviewBox');
+
+    MODULE_LANGS.forEach(function (lang) {
+      modulesByLang[lang] = [];
+      activeModuleIndexByLang[lang] = -1;
+    });
+
+    function normalizeImagePath(p) {
+      var s = String(p || '').trim();
+      if (!s) return '';
+      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
+      s = s.replace(/^\/?images\//i, '');
+      s = s.replace(/^\/+/, '');
+      return s;
+    }
+
+    function moduleTypeName(type) {
+      switch (type) {
+        case 'heading': return '标题';
+        case 'paragraph': return '段落';
+        case 'bullets': return '要点列表';
+        case 'specs': return '参数表';
+        case 'highlights': return '核心亮点';
+        case 'image': return '图片';
+        case 'divider': return '分隔线';
+        default: return type || '模块';
+      }
+    }
+
+    function createModule(type) {
+      switch (type) {
+        case 'heading': return { type: 'heading', level: 2, text: '' };
+        case 'paragraph': return { type: 'paragraph', text: '' };
+        case 'bullets': return { type: 'bullets', itemsText: '' };
+        case 'specs': return { type: 'specs', rows: [{ k: '', v: '' }] };
+        case 'highlights': return { type: 'highlights', items: [{ icon: '🔩', title: '', desc: '' }, { icon: '⚙️', title: '', desc: '' }, { icon: '📏', title: '', desc: '' }, { icon: '✈️', title: '', desc: '' }] };
+        case 'image': return { type: 'image', path: '', alt: '', caption: '' };
+        case 'divider': return { type: 'divider' };
+        default: return { type: 'paragraph', text: '' };
+      }
+    }
+
+    function escapeTextWithBreaks(text) {
+      var t = String(text || '').trim();
+      if (!t) return '';
+      return escHtml(t).replace(/\n/g, '<br>');
+    }
+
+    function compileModulesToHtml(modules) {
+      var out = [];
+      (modules || []).forEach(function (m) {
+        if (!m || !m.type) return;
+        if (m.type === 'heading') {
+          var lvl = (m.level === 3) ? 3 : 2;
+          var txt = String(m.text || '').trim();
+          if (!txt) return;
+          out.push('<h' + lvl + '>' + escHtml(txt) + '</h' + lvl + '>');
+          return;
+        }
+        if (m.type === 'paragraph') {
+          var p = String(m.text || '').trim();
+          if (!p) return;
+          out.push('<p>' + escapeTextWithBreaks(p) + '</p>');
+          return;
+        }
+        if (m.type === 'bullets') {
+          var items = String(m.itemsText || '').split('\n').map(function (x) { return String(x || '').trim(); }).filter(Boolean);
+          if (!items.length) return;
+          out.push('<ul>\n' + items.map(function (it) { return '  <li>' + escHtml(it) + '</li>'; }).join('\n') + '\n</ul>');
+          return;
+        }
+        if (m.type === 'specs') {
+          var rows = Array.isArray(m.rows) ? m.rows : [];
+          var valid = rows.filter(function (r) { return r && (String(r.k || '').trim() || String(r.v || '').trim()); });
+          if (!valid.length) return;
+          var html = '<section class="product-specs">\n' +
+            '  <h3>Specifications</h3>\n' +
+            '  <table>\n' +
+            valid.map(function (r) {
+              return '    <tr><th>' + escHtml(String(r.k || '').trim()) + '</th><td>' + escHtml(String(r.v || '').trim()) + '</td></tr>';
+            }).join('\n') +
+            '\n  </table>\n</section>';
+          out.push(html);
+          return;
+        }
+        if (m.type === 'highlights') {
+          var items = Array.isArray(m.items) ? m.items : [];
+          var valid = items.filter(function (it) { return it && (String(it.title || '').trim() || String(it.desc || '').trim()); });
+          if (!valid.length) return;
+          var html = '<section class="product-highlights">\n' + valid.map(function (it) {
+            return '  <article class="highlight-item">\n' +
+              '    <div class="highlight-icon">' + escHtml(String(it.icon || '🔩').trim()) + '</div>\n' +
+              '    <h4>' + escHtml(String(it.title || '').trim()) + '</h4>\n' +
+              '    <p>' + escHtml(String(it.desc || '').trim()) + '</p>\n' +
+              '  </article>';
+          }).join('\n') + '\n</section>';
+          out.push(html);
+          return;
+        }
+        if (m.type === 'image') {
+          var pth = normalizeImagePath(m.path);
+          if (!pth) return;
+          out.push(buildFigureHtml(pth, m.alt || '', m.caption || '').trim());
+          return;
+        }
+        if (m.type === 'divider') {
+          out.push('<hr>');
+          return;
+        }
+      });
+      return out.join('\n\n').trim() + (out.length ? '\n' : '');
+    }
+
+    function syncBodyTextarea(lang) {
+      var ta = document.getElementById(lang + '_body');
+      if (!ta) return;
+      ta.value = compileModulesToHtml(modulesByLang[lang]);
+    }
+
+    function syncAllBodyTextareas() {
+      MODULE_LANGS.forEach(function (lang) { syncBodyTextarea(lang); });
+    }
+
+    function getActiveModuleIndex() {
+      var idx = activeModuleIndexByLang[currentLang];
+      if (typeof idx !== 'number') return -1;
+      return idx;
+    }
+
+    function setActiveModuleIndex(idx) {
+      activeModuleIndexByLang[currentLang] = idx;
+      renderModuleEditor();
+    }
+
+    function addModuleToCurrentLang(module, insertAfterIndex) {
+      var modules = modulesByLang[currentLang];
+      var m = module || createModule('paragraph');
+      var at = (typeof insertAfterIndex === 'number' && insertAfterIndex >= -1) ? insertAfterIndex : getActiveModuleIndex();
+      if (at >= 0 && at < modules.length) {
+        modules.splice(at + 1, 0, m);
+        setActiveModuleIndex(at + 1);
+      } else {
+        modules.push(m);
+        setActiveModuleIndex(modules.length - 1);
+      }
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    }
+
+    function deleteModule(idx) {
+      var modules = modulesByLang[currentLang];
+      if (idx < 0 || idx >= modules.length) return;
+      modules.splice(idx, 1);
+      var next = Math.min(idx, modules.length - 1);
+      activeModuleIndexByLang[currentLang] = next;
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    }
+
+    function moveModule(idx, dir) {
+      var modules = modulesByLang[currentLang];
+      var j = idx + dir;
+      if (idx < 0 || idx >= modules.length) return;
+      if (j < 0 || j >= modules.length) return;
+      var tmp = modules[idx];
+      modules[idx] = modules[j];
+      modules[j] = tmp;
+      activeModuleIndexByLang[currentLang] = j;
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    }
+
+    function renderModuleEditor() {
+      var modules = modulesByLang[currentLang];
+      var active = getActiveModuleIndex();
+      if (!modules.length) {
+        moduleEditor.innerHTML = '<div class="state-msg">当前语言正文为空。点击“添加模块”开始。</div>';
+        return;
+      }
+
+      var html = modules.map(function (m, idx) {
+        var badge = moduleTypeName(m.type);
+        var title = (m.type === 'heading' && String(m.text || '').trim()) ? String(m.text || '').trim() : '';
+        var headTitle = title ? escHtml(title) : ('模块 ' + (idx + 1));
+        var cardCls = 'module-card' + (idx === active ? ' active' : '');
+        var bodyHtml = '';
+
+        if (m.type === 'heading') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>级别</label>' +
+            '<select data-field="level">' +
+            '<option value="2"' + (m.level === 2 ? ' selected' : '') + '>H2</option>' +
+            '<option value="3"' + (m.level === 3 ? ' selected' : '') + '>H3</option>' +
+            '</select>' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>标题文字</label>' +
+            '<input type="text" data-field="text" value="' + escHtml(m.text || '') + '" placeholder="输入标题...">' +
+            '</div>';
+        } else if (m.type === 'paragraph') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>段落内容</label>' +
+            '<textarea data-field="text" placeholder="输入内容...">' + escHtml(m.text || '') + '</textarea>' +
+            '</div>';
+        } else if (m.type === 'bullets') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>要点（每行一个）</label>' +
+            '<textarea data-field="itemsText" placeholder="例如：\nISO 认证\n支持定制\n交期 7-15 天">' + escHtml(m.itemsText || '') + '</textarea>' +
+            '</div>';
+        } else if (m.type === 'specs') {
+          var rows = Array.isArray(m.rows) ? m.rows : [];
+          if (!rows.length) rows = [{ k: '', v: '' }];
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>参数行</label>' +
+            rows.map(function (r, rIdx) {
+              return '<div class="module-row-grid" data-row="' + rIdx + '">' +
+                '<div class="module-field"><label>字段</label><input type="text" data-field="k" value="' + escHtml(r.k || '') + '" placeholder="如：Standards"></div>' +
+                '<div class="module-field"><label>值</label><input type="text" data-field="v" value="' + escHtml(r.v || '') + '" placeholder="如：DIN 931, ISO 4014"></div>' +
+                '<button type="button" class="module-icon-btn danger" data-action="delRow" data-row="' + rIdx + '">删行</button>' +
+                '</div>';
+            }).join('') +
+            '<div class="module-actions" style="justify-content:flex-start;margin-top:10px">' +
+            '<button type="button" class="module-btn" data-action="addRow">新增一行</button>' +
+            '</div>' +
+            '</div>';
+        } else if (m.type === 'highlights') {
+          var items = Array.isArray(m.items) ? m.items : [];
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>核心亮点 (最多 4 个)</label>' +
+            items.map(function (it, itIdx) {
+              return '<div class="module-row-grid" data-item="' + itIdx + '">' +
+                '<div class="module-field" style="flex:0 0 60px"><label>图标</label><input type="text" data-field="icon" value="' + escHtml(it.icon || '🔩') + '"></div>' +
+                '<div class="module-field"><label>标题</label><input type="text" data-field="title" value="' + escHtml(it.title || '') + '" placeholder="如：DIN 6921"></div>' +
+                '<div class="module-field"><label>描述</label><input type="text" data-field="desc" value="' + escHtml(it.desc || '') + '" placeholder="如：ISO 1665 Compliant"></div>' +
+                '</div>';
+            }).join('') +
+            '</div>';
+        } else if (m.type === 'image') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>图片路径（相对 /images/）</label>' +
+            '<input type="text" data-field="path" value="' + escHtml(m.path || '') + '" placeholder="products/bolts/Hex Bolt0.webp">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>Alt 文本</label>' +
+            '<input type="text" data-field="alt" value="' + escHtml(m.alt || '') + '" placeholder="如：Hex Bolts">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>图片说明（可选）</label>' +
+            '<input type="text" data-field="caption" value="' + escHtml(m.caption || '') + '" placeholder="如：Factory view">' +
+            '</div>' +
+            '<div class="module-actions" style="justify-content:flex-start">' +
+            '<button type="button" class="module-btn" data-action="useCurrentImage">使用当前封面图</button>' +
+            '</div>';
+        } else if (m.type === 'divider') {
+          bodyHtml = '<div class="state-msg">分隔线模块，无需填写内容。</div>';
+        } else {
+          bodyHtml = '<div class="state-msg">未知模块类型。</div>';
+        }
+
+        return '<div class="' + cardCls + '" data-idx="' + idx + '">' +
+          '<div class="module-head" data-action="select">' +
+          '<div class="module-title"><span class="module-badge">' + escHtml(badge) + '</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + headTitle + '</span></div>' +
+          '<div class="module-actions">' +
+          '<button type="button" class="module-icon-btn" data-action="up" title="上移">↑</button>' +
+          '<button type="button" class="module-icon-btn" data-action="down" title="下移">↓</button>' +
+          '<button type="button" class="module-icon-btn danger" data-action="del" title="删除">删除</button>' +
+          '</div>' +
+          '</div>' +
+          '<div class="module-body">' + bodyHtml + '</div>' +
+          '</div>';
+      }).join('');
+
+      moduleEditor.innerHTML = html;
+
+      moduleEditor.querySelectorAll('.module-card').forEach(function (card) {
+        var idx = parseInt(card.dataset.idx, 10);
+        card.querySelector('.module-head').addEventListener('click', function () {
+          setActiveModuleIndex(idx);
+        });
+
+        card.querySelectorAll('button[data-action]').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var action = this.dataset.action;
+            if (action === 'up') moveModule(idx, -1);
+            if (action === 'down') moveModule(idx, 1);
+            if (action === 'del') deleteModule(idx);
+            if (action === 'addRow') {
+              var m = modulesByLang[currentLang][idx];
+              if (!m.rows) m.rows = [];
+              m.rows.push({ k: '', v: '' });
+              renderModuleEditor();
+              syncBodyTextarea(currentLang);
+              updatePreview();
+            }
+            if (action === 'delRow') {
+              var row = parseInt(this.dataset.row, 10);
+              var mm = modulesByLang[currentLang][idx];
+              if (Array.isArray(mm.rows) && mm.rows.length > 1) {
+                mm.rows.splice(row, 1);
+              } else if (Array.isArray(mm.rows) && mm.rows.length === 1) {
+                mm.rows[0] = { k: '', v: '' };
+              }
+              renderModuleEditor();
+              syncBodyTextarea(currentLang);
+              updatePreview();
+            }
+            if (action === 'useCurrentImage') {
+              var mod = modulesByLang[currentLang][idx];
+              mod.path = normalizeImagePath(currentImagePathRaw);
+              mod.alt = String(document.getElementById('imgAlt').value || '').trim();
+              mod.caption = String(document.getElementById('imgCaption').value || '').trim();
+              renderModuleEditor();
+              syncBodyTextarea(currentLang);
+              updatePreview();
+            }
+          });
+        });
+
+        card.querySelectorAll('input[data-field], textarea[data-field], select[data-field]').forEach(function (fieldEl) {
+          fieldEl.addEventListener('input', function () {
+            var key = this.dataset.field;
+            var mod = modulesByLang[currentLang][idx];
+            if (!mod) return;
+            if (mod.type === 'specs' && this.closest('[data-row]')) {
+              var rowIdx = parseInt(this.closest('[data-row]').dataset.row, 10);
+              if (!Array.isArray(mod.rows)) mod.rows = [];
+              if (!mod.rows[rowIdx]) mod.rows[rowIdx] = { k: '', v: '' };
+              mod.rows[rowIdx][key] = this.value;
+            } else if (mod.type === 'highlights' && this.closest('[data-item]')) {
+              var itemIdx = parseInt(this.closest('[data-item]').dataset.item, 10);
+              if (!Array.isArray(mod.items)) mod.items = [];
+              if (!mod.items[itemIdx]) mod.items[itemIdx] = { icon: '🔩', title: '', desc: '' };
+              mod.items[itemIdx][key] = this.value;
+            } else if (key === 'level') {
+              mod.level = parseInt(this.value, 10) === 3 ? 3 : 2;
+            } else {
+              mod[key] = this.value;
+            }
+            syncBodyTextarea(currentLang);
+            updatePreview();
+          });
+        });
+      });
+    }
+
+    function updatePreview() {
+      if (modulePreview.style.display === 'none') return;
+      modulePreviewBox.innerHTML = compileModulesToHtml(modulesByLang[currentLang]);
+    }
+
+    function placeModuleEditor(lang) {
+      var mount = document.getElementById('moduleMount-' + lang);
+      if (!mount) return;
+      currentLang = lang;
+      mount.innerHTML = '';
+      mount.appendChild(moduleToolbar);
+      mount.appendChild(moduleEditor);
+      mount.appendChild(modulePreview);
+      renderModuleEditor();
+      updatePreview();
+    }
+
+    document.querySelectorAll('.lang-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.lang-tab').forEach(function (t) { t.classList.remove('active'); });
+        document.querySelectorAll('.lang-panel').forEach(function (p) { p.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('panel-' + this.dataset.lang).classList.add('active');
+        placeModuleEditor(this.dataset.lang);
+      });
+    });
+    placeModuleEditor('en');
+
+    document.getElementById('moduleAddBtn').addEventListener('click', function () {
+      var type = document.getElementById('moduleTypeSelect').value;
+      addModuleToCurrentLang(createModule(type));
+    });
+
+    document.getElementById('modulePreviewBtn').addEventListener('click', function () {
+      if (modulePreview.style.display === 'none') {
+        modulePreview.style.display = '';
+      } else {
+        modulePreview.style.display = 'none';
+      }
+      updatePreview();
+    });
+
+    document.getElementById('moduleClearBtn').addEventListener('click', function () {
+      if (!confirm('确定要清空当前语言的正文模块吗？此操作不可撤销。')) return;
+      modulesByLang[currentLang] = [];
+      activeModuleIndexByLang[currentLang] = -1;
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    });
+
+    document.getElementById('moduleLoadFlangeTemplate').addEventListener('click', function () {
+      if (!confirm('确定载入法兰螺栓模板吗？这会覆盖当前语言的正文内容和部分整体配置。')) return;
+      
+      // 1. Set main info
+      document.getElementById('en_title').value = 'Flange Bolts';
+      document.getElementById('en_summary').value = 'Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface. Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.';
+      document.getElementById('product_category').value = 'Bolts';
+      
+      // 2. Set formal sections
+      document.getElementById('applications_data').value = [
+        '🏢|Industrial Fastening|Structural connections, machinery assembly, automotive components',
+        '🏗️|Construction|Heavy-duty structural anchoring, bridge components, highway barriers',
+        '🏭|Manufacturing|Production line equipment, motor mounts, industrial racking',
+        '🚢|Marine|Vibration-resistant fasteners for marine engines and structures'
+      ].join('\n');
+      document.getElementById('materials_data').value = [
+        'Carbon Steel|Grade 8.8, 10.9, 12.9;High tensile strength;Zinc plated or black oxide finish',
+        'Stainless Steel 304|A2-70, A2-80;Excellent corrosion resistance;Food and chemical industry safe',
+        'Stainless Steel 316|A4-70, A4-80;Marine grade corrosion resistance;Acid and chloride resistant',
+        'Alloy Steel|Quenched and tempered;Superior mechanical properties;High fatigue resistance'
+      ].join('\n');
+      document.getElementById('size_chart_data').value = [
+        'M5|0.8 mm|12 - 100 mm|8 kN|5 kN|30 mm',
+        'M6|1.0 mm|12 - 120 mm|12 kN|8 kN|40 mm',
+        'M8|1.25 mm|16 - 150 mm|18 kN|12 kN|50 mm',
+        'M10|1.5 mm|20 - 200 mm|25 kN|18 kN|60 mm',
+        'M12|1.75 mm|25 - 200 mm|35 kN|24 kN|70 mm',
+        'M16|2.0 mm|30 - 200 mm|45 kN|32 kN|80 mm',
+        'M20|2.5 mm|40 - 200 mm|50 kN|40 kN|100 mm',
+        'M24|3.0 mm|50 - 200 mm|55 kN|45 kN|100 mm'
+      ].join('\n');
+      document.getElementById('reviews_data').value = [
+        'David Chen|March 12, 2026|High quality flange bolts. The serrations provide excellent locking action. Used them for heavy machinery mounts.|5',
+        'Robert Smith|February 20, 2026|Great service and fast shipping. The DIN 6921 standards are perfectly met. Will buy again.|5'
+      ].join('\n');
+      document.getElementById('related_products_data').value = [
+        'hex-bolts|Hex Bolts|Full and partial thread hex bolts in DIN 931/933, ISO 4014/4017. Grades 4.8 to 12.9, sizes M4–M64.|products/bolts/Hex Bolt0_sm.webp',
+        'flange-nuts|Flange Nuts|Matching flange nuts for flange bolts. Serrated and non-serrated options available.|products/nuts/Flange Nut1_sm.webp',
+        'heavy-hex-bolts|Heavy Hex Bolts|Structural heavy hex bolts for high-strength applications in construction.|products/bolts/Heavy Hex Bolt1_sm.webp'
+      ].join('\n');
+      
+      document.getElementById('cta_title').value = 'Custom Flange Bolts?';
+      document.getElementById('cta_desc').value = 'We can manufacture flange bolts to your specific drawings or requirements. Contact us for a custom quote.';
+      document.getElementById('cta_button_text').value = 'Contact Us Now';
+      
+      // 3. Set modules
+      modulesByLang.en = [
+        { type: 'paragraph', text: 'Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface.' },
+        { type: 'paragraph', text: 'Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.' },
+        { 
+          type: 'highlights', 
+          items: [
+            { icon: '🔩', title: 'DIN 6921', desc: 'ISO 1665 Compliant' },
+            { icon: '⚙️', title: 'High Strength', desc: 'Grade 8.8–12.9' },
+            { icon: '📏', title: 'Size Range', desc: 'M5 – M24' },
+            { icon: '✈️', title: 'Fast Delivery', desc: '7–15 days' }
+          ]
+        },
+        { 
+          type: 'specs', 
+          rows: [
+            { k: 'Standards', v: 'DIN 6921, ISO 1665, ASME B18.2.3, GB/T 16674' },
+            { k: 'Materials', v: 'Carbon Steel, Stainless Steel 304/316, Alloy Steel' },
+            { k: 'Grades', v: '8.8, 10.9, 12.9' },
+            { k: 'Sizes', v: 'M5 – M24' },
+            { k: 'Length', v: '12mm – 200mm' },
+            { k: 'Surface Finish', v: 'Zinc Plated, Hot-Dip Galvanized, Black Oxide, Dacromet' },
+            { k: 'Types', v: 'Serrated (Vibration Resistant), Non-Serrated' },
+            { k: 'Thread', v: 'Metric Coarse (ISO), Metric Fine' },
+            { k: 'MOQ', v: '10 kg (standard), negotiable for custom orders' },
+            { k: 'Packaging', v: 'Carton boxes, wooden pallets, or per customer requirement' }
+          ]
+        }
+      ];
+      
+      activeModuleIndexByLang.en = 0;
+      renderModuleEditor();
+      syncBodyTextarea('en');
+      updatePreview();
+      alert('法兰螺栓模板载入完成（英文版）。');
+    });
+
+    var DEFAULT_APPLICATIONS_DATA = [
+      '🏢|Building Construction|Structural connections, facade mounting, equipment installation',
+      '🏗️|Infrastructure|Bridges, highway barriers, railings, sign posts',
+      '🏭|Industrial|Equipment anchoring, conveyor systems, machinery bases',
+      '⚡|Energy|Solar panel mounting, wind turbine bases, utility poles',
+      '🏠|Residential|Deck mounting, fence posts, garage door installation',
+      '🚧|Renovation|Wall mounting, ceiling fixtures, bathroom installations'
+    ].join('\n');
+
+    var DEFAULT_MATERIALS_DATA = [
+      'Carbon Steel|Grade 4.8, 8.8, 10.9;Good strength, cost-effective;Zinc plated for corrosion resistance',
+      'Stainless Steel 304|A2-70, A2-80;Excellent corrosion resistance;Suitable for indoor/outdoor use',
+      'Stainless Steel 316|A4-70, A4-80;Superior marine corrosion resistance;Chloride and acid resistant',
+      'Hot-Dip Galvanized|Heavy-duty corrosion protection;Suitable for outdoor applications;Extended service life'
+    ].join('\n');
+
+    var DEFAULT_SIZE_CHART_DATA = [
+      'M5|0.8 mm|12 - 100 mm|8 kN|5 kN|30 mm',
+      'M6|1.0 mm|12 - 120 mm|12 kN|8 kN|40 mm',
+      'M8|1.25 mm|16 - 150 mm|18 kN|12 kN|50 mm',
+      'M10|1.5 mm|20 - 200 mm|25 kN|18 kN|60 mm',
+      'M12|1.75 mm|25 - 200 mm|35 kN|24 kN|70 mm',
+      'M16|2.0 mm|30 - 200 mm|45 kN|32 kN|80 mm',
+      'M20|2.5 mm|40 - 200 mm|50 kN|40 kN|100 mm',
+      'M24|3.0 mm|50 - 200 mm|55 kN|45 kN|100 mm'
+    ].join('\n');
+
+    var DEFAULT_REVIEWS_DATA = [
+      'Michael Johnson|January 15, 2026|Excellent quality anchor bolts. Used them for installing solar panel mounts and they held up perfectly. Fast delivery and well-packaged.|5',
+      'Sarah Williams|December 8, 2025|We ordered M12 and M16 anchor bolts for our construction project. The quality exceeded our expectations. Will definitely order again.|5'
+    ].join('\n');
+
+    var DEFAULT_RELATED_PRODUCTS_DATA = [
+      'hex-bolts|Hex Bolts|Full and partial thread hex bolts in DIN 931/933, ISO 4014/4017. Grades 4.8 to 12.9, sizes M4–M64.|products/bolts/Hex Bolt0_sm.webp',
+      'flange-bolts|Flange Bolts|Serrated and non-serrated flange bolts per DIN 6921 / ISO 1665. Built-in washer face for vibration resistance.|products/bolts/Flange Bolt1_sm.webp',
+      'high-strength-bolts|High Strength Bolts|High strength structural bolts for heavy-duty applications. Grade 8.8, 10.9, 12.9 available.|products/bolts/High Strength Bolt1_sm.webp'
+    ].join('\n');
+
+    function setDefaultFieldValue(id, value) {
+      var el = document.getElementById(id);
+      if (el && !String(el.value || '').trim()) el.value = value;
+    }
+
+    setDefaultFieldValue('applications_data', DEFAULT_APPLICATIONS_DATA);
+    setDefaultFieldValue('materials_data', DEFAULT_MATERIALS_DATA);
+    setDefaultFieldValue('size_chart_data', DEFAULT_SIZE_CHART_DATA);
+    setDefaultFieldValue('reviews_data', DEFAULT_REVIEWS_DATA);
+    setDefaultFieldValue('related_products_data', DEFAULT_RELATED_PRODUCTS_DATA);
+    setDefaultFieldValue('cta_title', 'Need a Custom Product?');
+    setDefaultFieldValue('cta_desc', 'We can manufacture products to your exact specifications — just send us the details.');
+    setDefaultFieldValue('cta_button_text', 'Contact Our Team');
+
+    // ── Initial pre-fill with Flange Bolts data ───────────────────────────────
+    function initialPreFill() {
+      // Basic info
+      setDefaultFieldValue('en_title', 'Flange Bolts');
+      setDefaultFieldValue('en_summary', 'Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface. Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.');
+      setDefaultFieldValue('product_category', 'Bolts');
+      
+      // Formal sections
+      setDefaultFieldValue('applications_data', [
+        '🏢|Industrial Fastening|Structural connections, machinery assembly, automotive components',
+        '🏗️|Construction|Heavy-duty structural anchoring, bridge components, highway barriers',
+        '🏭|Manufacturing|Production line equipment, motor mounts, industrial racking',
+        '🚢|Marine|Vibration-resistant fasteners for marine engines and structures'
+      ].join('\n'));
+      setDefaultFieldValue('materials_data', [
+        'Carbon Steel|Grade 8.8, 10.9, 12.9;High tensile strength;Zinc plated or black oxide finish',
+        'Stainless Steel 304|A2-70, A2-80;Excellent corrosion resistance;Food and chemical industry safe',
+        'Stainless Steel 316|A4-70, A4-80;Marine grade corrosion resistance;Acid and chloride resistant',
+        'Alloy Steel|Quenched and tempered;Superior mechanical properties;High fatigue resistance'
+      ].join('\n'));
+      setDefaultFieldValue('size_chart_data', DEFAULT_SIZE_CHART_DATA);
+      setDefaultFieldValue('reviews_data', DEFAULT_REVIEWS_DATA);
+      setDefaultFieldValue('related_products_data', DEFAULT_RELATED_PRODUCTS_DATA);
+      setDefaultFieldValue('cta_title', 'Custom Flange Bolts?');
+      setDefaultFieldValue('cta_desc', 'We can manufacture flange bolts to your specific drawings or requirements. Contact us for a custom quote.');
+      setDefaultFieldValue('cta_button_text', 'Contact Us Now');
+      
+      // Default modules
+      if (modulesByLang.en.length === 0) {
+        modulesByLang.en = [
+          { type: 'paragraph', text: 'Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface.' },
+          { type: 'paragraph', text: 'Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.' },
+          { 
+            type: 'highlights', 
+            items: [
+              { icon: '🔩', title: 'DIN 6921', desc: 'ISO 1665 Compliant' },
+              { icon: '⚙️', title: 'High Strength', desc: 'Grade 8.8–12.9' },
+              { icon: '📏', title: 'Size Range', desc: 'M5 – M24' },
+              { icon: '✈️', title: 'Fast Delivery', desc: '7–15 days' }
+            ]
+          },
+          { 
+            type: 'specs', 
+            rows: [
+              { k: 'Standards', v: 'DIN 6921, ISO 1665, ASME B18.2.3, GB/T 16674' },
+              { k: 'Materials', v: 'Carbon Steel, Stainless Steel 304/316, Alloy Steel' },
+              { k: 'Grades', v: '8.8, 10.9, 12.9' },
+              { k: 'Sizes', v: 'M5 – M24' },
+              { k: 'Length', v: '12mm – 200mm' },
+              { k: 'Surface Finish', v: 'Zinc Plated, Hot-Dip Galvanized, Black Oxide, Dacromet' },
+              { k: 'Types', v: 'Serrated (Vibration Resistant), Non-Serrated' },
+              { k: 'Thread', v: 'Metric Coarse (ISO), Metric Fine' },
+              { k: 'MOQ', v: '10 kg (standard), negotiable for custom orders' },
+              { k: 'Packaging', v: 'Carton boxes, wooden pallets, or per customer requirement' }
+            ]
+          }
+        ];
+        renderModuleEditor();
+        syncBodyTextarea('en');
+      }
+      updatePreview();
+    }
+    initialPreFill();
+
+    function splitStructuredLines(raw) {
+      return String(raw || '').split('\n').map(function (line) {
+        return line.trim();
+      }).filter(function (line) {
+        return line && line.charAt(0) !== '#';
+      });
+    }
+
+    function renderApplicationsSection(raw) {
+      var rows = splitStructuredLines(raw).map(function (line) {
+        var parts = line.split('|');
+        return { icon: (parts[0] || '').trim(), title: (parts[1] || '').trim(), desc: (parts[2] || '').trim() };
+      }).filter(function (row) { return row.title || row.desc; });
+      return rows.map(function (row) {
+        return '<article class="application-card"><div class="app-icon">' + escHtml(row.icon || '📦') + '</div><section><h4>' + escHtml(row.title) + '</h4><p>' + escHtml(row.desc) + '</p></section></article>';
+      }).join('');
+    }
+
+    function renderMaterialsSection(raw) {
+      var rows = splitStructuredLines(raw).map(function (line) {
+        var parts = line.split('|');
+        return { title: (parts[0] || '').trim(), bullets: String(parts.slice(1).join('|') || '').split(';').map(function (x) { return x.trim(); }).filter(Boolean) };
+      }).filter(function (row) { return row.title; });
+      return rows.map(function (row) {
+        return '<article class="material-card"><h4>' + escHtml(row.title) + '</h4><ul>' +
+          row.bullets.map(function (item) { return '<li>' + escHtml(item) + '</li>'; }).join('') +
+          '</ul></article>';
+      }).join('');
+    }
+
+    function renderSizeChartSection(raw) {
+      var rows = splitStructuredLines(raw).map(function (line) {
+        var parts = line.split('|').map(function (x) { return x.trim(); });
+        return parts.length >= 6 ? parts.slice(0, 6) : null;
+      }).filter(Boolean);
+      return rows.map(function (cols) {
+        return '<tr>' + cols.map(function (col, idx) {
+          return idx === 0 ? '<td>' + escHtml(col) + '</td>' : '<td>' + escHtml(col) + '</td>';
+        }).join('') + '</tr>';
+      }).join('');
+    }
+
+    function renderReviewsSection(raw) {
+      var rows = splitStructuredLines(raw).map(function (line) {
+        var parts = line.split('|');
+        return {
+          name: (parts[0] || '').trim(),
+          date: (parts[1] || '').trim(),
+          content: (parts[2] || '').trim(),
+          rating: Math.max(1, Math.min(5, parseInt(parts[3] || '5', 10) || 5))
+        };
+      }).filter(function (row) { return row.name || row.content; });
+      return rows.map(function (row) {
+        return '<article class="review-card"><header class="review-header"><div class="review-rating">' + '★'.repeat(row.rating) +
+          '</div><section class="review-info"><h4>' + escHtml(row.name) + '</h4><p class="review-date">' + escHtml(row.date) +
+          '</p></section></header><p>"' + escHtml(row.content) + '"</p></article>';
+      }).join('');
+    }
+
+    function renderRelatedSection(raw) {
+      var rows = splitStructuredLines(raw).map(function (line) {
+        var parts = line.split('|');
+        return {
+          slug: (parts[0] || '').trim(),
+          title: (parts[1] || '').trim(),
+          summary: (parts[2] || '').trim(),
+          image: normalizeImagePath((parts[3] || '').trim())
+        };
+      }).filter(function (row) { return row.slug || row.title; });
+      return rows.map(function (row) {
+        var href = row.slug ? ('/pags/en/products/' + row.slug.replace(/\.html$/i, '') + '.html') : '#';
+        var image = row.image ? ('/images/' + row.image) : '/images/logo.jpg';
+        return '<a href="' + href + '" class="related-card"><div class="related-card-image"><img src="' + image + '" alt="' + escHtml(row.title) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div><div class="related-card-body"><h4>' + escHtml(row.title) + '</h4><p>' + escHtml(row.summary) + '</p><span class="related-card-link">View Details →</span></div></a>';
+      }).join('');
+    }
+
+    // ── Unified image library ────────────────────────────────────────────────
+    var libraryImages = [];
+
+    function openImageLibrary() {
+      document.getElementById('imageLibraryModal').style.display = '';
+      loadImageLibrary();
+    }
+
+    function closeImageLibrary() {
+      document.getElementById('imageLibraryModal').style.display = 'none';
+    }
+
+    function renderImageLibrary() {
+      var keyword = document.getElementById('librarySearch').value.trim().toLowerCase();
+      var filtered = libraryImages.filter(function (item) {
+        return !keyword || item.path.toLowerCase().indexOf(keyword) !== -1 || item.filename.toLowerCase().indexOf(keyword) !== -1;
+      });
+      document.getElementById('librarySummary').textContent = '共 ' + libraryImages.length + ' 张，当前显示 ' + filtered.length + ' 张';
+
+      if (!filtered.length) {
+        document.getElementById('libraryGrid').className = '';
+        document.getElementById('libraryGrid').innerHTML = '<div class="state-msg">没有匹配的图片</div>';
+        return;
+      }
+
+      var html = filtered.map(function (item) {
+        return '<div class="library-card">' +
+          '<img class="library-thumb" src="' + item.url + '" alt="' + escHtml(item.filename) + '" loading="lazy">' +
+          '<div class="library-meta">' +
+          '<div class="library-name">' + escHtml(item.filename) + '</div>' +
+          '<div class="library-path">/images/' + escHtml(item.path) + '</div>' +
+          '<div class="library-meta-row">' +
+          '<span class="library-badge">' + escHtml(item.section) + '</span>' +
+          '<span class="library-size">' + fmtSize(item.size) + '</span>' +
+          '</div>' +
+          '</div>' +
+          '<div class="library-actions">' +
+          '<button type="button" class="btn-cover" data-path="' + escHtml(item.path) + '" data-name="' + escHtml(item.filename) + '">设为封面</button>' +
+          '<button type="button" class="btn-use" data-path="' + escHtml(item.path) + '">添加模块</button>' +
+          '<a class="btn-download" href="' + item.url + '" download="' + escHtml(item.filename) + '">下载</a>' +
+          '</div>' +
+          '</div>';
+      }).join('');
+
+      document.getElementById('libraryGrid').className = 'library-grid';
+      document.getElementById('libraryGrid').innerHTML = html;
+
+      document.querySelectorAll('.btn-cover').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setCurrentImage(this.dataset.path, this.dataset.name, '✓ 已设为封面（来自图片资源库）');
+          document.getElementById('libraryActionMsg').textContent = '已选择封面：/images/' + this.dataset.path;
+        });
+      });
+
+      document.querySelectorAll('.btn-use').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var path = this.dataset.path;
+          addModuleToCurrentLang({
+            type: 'image',
+            path: normalizeImagePath(path),
+            alt: String(document.getElementById('imgAlt').value || '').trim(),
+            caption: String(document.getElementById('imgCaption').value || '').trim()
+          });
+          document.getElementById('libraryActionMsg').textContent = '已添加图片模块：/images/' + path;
+        });
+      });
+    }
+
+    function loadImageLibrary() {
+      document.getElementById('libraryGrid').className = '';
+      document.getElementById('libraryGrid').innerHTML = '<div class="state-msg">加载中...</div>';
+      document.getElementById('librarySummary').textContent = '读取 /images/ ...';
+      document.getElementById('libraryActionMsg').textContent = '';
+
+      fetch('/cgi-bin/image-library.cgi?_=' + Date.now())
+        .then(function (res) {
+          var status = res.status;
+          return res.text().then(function (text) {
+            try { return JSON.parse(text); }
+            catch (err) { throw new Error('HTTP ' + status + ' — ' + text.slice(0, 200)); }
+          });
+        })
+        .then(function (data) {
+          if (!data.success) throw new Error(data.error || '读取失败');
+          libraryImages = data.images || [];
+          renderImageLibrary();
+        })
+        .catch(function (err) {
+          document.getElementById('libraryGrid').className = '';
+          document.getElementById('libraryGrid').innerHTML = '<div class="state-msg" style="color:var(--red-500)">加载失败：' + escHtml(err.message) + '</div>';
+          document.getElementById('librarySummary').textContent = '读取失败';
+        });
+    }
+
+    document.getElementById('openImageLibraryBtn').addEventListener('click', openImageLibrary);
+    document.getElementById('closeImageLibraryBtn').addEventListener('click', closeImageLibrary);
+    document.getElementById('imageLibraryBackdrop').addEventListener('click', closeImageLibrary);
+    document.getElementById('librarySearch').addEventListener('input', renderImageLibrary);
+    document.getElementById('libraryRefreshBtn').addEventListener('click', loadImageLibrary);
+
+    // ── Image upload ──────────────────────────────────────────────────────────
+    document.getElementById('imgFile').addEventListener('change', function () {
+      if (this.files[0]) {
+        document.getElementById('uploadZoneText').innerHTML =
+          '<strong>' + this.files[0].name + '</strong><br>' +
+          '<span style="font-size:0.78rem;color:var(--green-500)">已选择，点击「上传图片」继续</span>';
+      }
+    });
+
+    document.getElementById('uploadBtn').addEventListener('click', function () {
+      var fileInput = document.getElementById('imgFile');
+      var rename = document.getElementById('imgRename').value.trim();
+      var statusEl = document.getElementById('uploadStatus');
+      var btn = this;
+
+      if (!fileInput.files[0]) { statusEl.textContent = '请先选择图片'; return; }
+
+      btn.disabled = true;
+      statusEl.textContent = '上传中...';
+
+      var fd = new FormData();
+      fd.append('file', fileInput.files[0]);
+      fd.append('rename', rename);
+
+      fetch('/cgi-bin/image-upload.cgi', { method: 'POST', body: fd })
+        .then(function (res) {
+          var st = res.status;
+          return res.text().then(function (t) {
+            try { return JSON.parse(t); }
+            catch (e) { throw new Error('HTTP ' + st + ': ' + t.slice(0, 200)); }
+          });
+        })
+        .then(function (data) {
+          btn.disabled = false;
+          if (data.success) {
+            statusEl.textContent = '✓ 上传成功，已同步到资源库';
+            setCurrentImage(data.path, data.filename, '✓ 已设为封面 · ✓ 已插入英文正文顶部');
+            modulesByLang.en.unshift({
+              type: 'image',
+              path: normalizeImagePath(data.path),
+              alt: String(document.getElementById('imgAlt').value || '').trim(),
+              caption: String(document.getElementById('imgCaption').value || '').trim()
+            });
+            activeModuleIndexByLang.en = 0;
+            placeModuleEditor('en');
+            syncBodyTextarea('en');
+            updatePreview();
+            document.getElementById('imgFile').value = '';
+            document.getElementById('imgRename').value = '';
+            document.getElementById('uploadZoneText').innerHTML =
+              '<strong>点击选择图片</strong> 或拖拽到此处<br><span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>';
+            loadImageLibrary();
+            document.getElementById('libraryActionMsg').textContent = '已上传并设为封面：/images/' + data.path;
+          } else {
+            statusEl.textContent = '❌ ' + data.error;
+          }
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          statusEl.textContent = '❌ ' + err.message;
+        });
+    });
+
+    // Re-insert the same uploaded image at cursor position
+    document.getElementById('insertAtCursorBtn').addEventListener('click', function () {
+      if (!currentImagePathRaw) {
+        alert('请先上传图片或从资源库选择封面图');
+        return;
+      }
+      addModuleToCurrentLang({
+        type: 'image',
+        path: normalizeImagePath(currentImagePathRaw),
+        alt: String(document.getElementById('imgAlt').value || '').trim(),
+        caption: String(document.getElementById('imgCaption').value || '').trim()
+      });
+    });
+
+    // ── Preview ───────────────────────────────────────────────────────────────
+    function buildPreview(lang) {
+      syncAllBodyTextareas();
+      var title = (document.getElementById(lang + '_title').value || document.getElementById('en_title').value).trim() || '（无标题）';
+      var subtitle = (document.getElementById(lang + '_subtitle').value || document.getElementById('en_subtitle').value).trim();
+      var summary = (document.getElementById(lang + '_summary').value || document.getElementById('en_summary').value).trim();
+      var bcLabel = (document.getElementById(lang + '_bc_label').value || document.getElementById('en_bc_label').value || title).trim();
+      var body = (document.getElementById(lang + '_body').value || document.getElementById('en_body').value).trim();
+      var date = document.getElementById('date').value;
+      var extraHead = document.getElementById('extra_head').value.trim();
+      var ogImage = document.getElementById('og_image').value.trim();
+      var heroImage = ogImage ? ('/images/' + ogImage) : '/images/og-cover.jpg';
+      var applicationsHtml = renderApplicationsSection(document.getElementById('applications_data').value);
+      var materialsHtml = renderMaterialsSection(document.getElementById('materials_data').value);
+      var sizeChartHtml = renderSizeChartSection(document.getElementById('size_chart_data').value);
+      var reviewsHtml = renderReviewsSection(document.getElementById('reviews_data').value);
+      var relatedHtml = renderRelatedSection(document.getElementById('related_products_data').value);
+      var ctaTitle = document.getElementById('cta_title').value.trim();
+      var ctaDesc = document.getElementById('cta_desc').value.trim();
+      var ctaButtonText = document.getElementById('cta_button_text').value.trim();
+
+      // Fix relative image paths for preview
+      body = body.replace(/src="\.\.\/\.\.\/\.\.\/images\//g, 'src="/images/');
+      body = body.replace(/href="\.\.\/products\.html"/g, 'href="/pags/en/products.html"');
+      body = body.replace(/href="\.\.\/contact\.html"/g, 'href="/pags/en/contact.html"');
+
+      return '<!DOCTYPE html><html><head>' +
+        '<meta charset="UTF-8">' +
+        '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+        '<link rel="stylesheet" href="../../css/style.css?v=' + Date.now() + '">' +
+        '<link rel="preconnect" href="https://fonts.googleapis.com">' +
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
+        '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">' +
+        '<title>' + title + '</title>' +
+        (extraHead ? extraHead : '') +
+        '<style>' +
+          'body { background: #fff !important; } ' +
+          '.fade-in { opacity: 1 !important; transform: none !important; transition: none !important; visibility: visible !important; } ' +
+          '.page-header { background: linear-gradient(165deg, #0a1628 0%, #163264 100%) !important; color: #fff !important; padding: 60px 0 !important; } ' +
+          '.product-detail { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 40px !important; align-items: start !important; } ' +
+          '.preview-helper-hide { display: none !important; }' +
+        '</style>' +
+        '</head><body>' +
+        '<header class="site-header"><nav class="container nav">' +
+        '<a href="/index.html" class="logo"><img src="/images/logo_sm.webp" alt="WT Fasteners"></a>' +
+        '<button class="menu-toggle preview-helper-hide" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>' +
+        '<ul class="nav-links"><li><a href="/pags/en/index.html">Home</a></li><li><a href="/pags/en/products.html">Products</a></li><li><a href="/pags/en/news.html">News</a></li><li><a href="/pags/en/about.html">About</a></li><li><a href="/pags/en/contact.html">Contact</a></li></ul>' +
+        '</nav></header>' +
+        '<div class="header-spacer" aria-hidden="true"></div>' +
+        '<main>' +
+        '<section class="page-header"><article class="container">' +
+        '<h1>' + title + '</h1>' +
+        (subtitle ? '<p>' + subtitle + '</p>' : '') +
+        '</article></section>' +
+        '<nav class="breadcrumb"><article class="container">' +
+        '<a href="/pags/en/index.html">Home</a><span>/</span><a href="/pags/en/products.html">Products</a><span>/</span>' + bcLabel +
+        '</article></nav>' +
+        '<section class="section"><article class="container product-detail">' +
+        '<figure class="product-gallery fade-in"><img src="' + heroImage + '" alt="' + title + '"></figure>' +
+        '<section class="product-info fade-in">' +
+        '<h2>' + title + '</h2>' +
+        (summary ? '<p>' + summary + '</p>' : '') +
+        body +
+        '<a href="/pags/en/contact.html" class="btn btn-primary">Request a Quote</a>' +
+        '</section></article></section>' +
+        '<section class="section"><article class="container"><section class="applications-section"><h3>Applications</h3><section class="applications-grid">' +
+        applicationsHtml +
+        '</section></section></article></section>' +
+        '<section class="section"><article class="container"><section class="materials-section"><h3>Materials & Grades</h3><section class="materials-grid">' +
+        materialsHtml +
+        '</section></section></article></section>' +
+        '<section class="section"><article class="container"><section class="size-chart-section"><h3>Size Chart</h3><div class="size-chart"><table><thead><tr><th>Size</th><th>Thread</th><th>Length Range</th><th>Pull-out Strength</th><th>Shear Strength</th><th>Embedment</th></tr></thead><tbody>' + sizeChartHtml + '</tbody></table></div></section></article></section>' +
+        '<section class="section"><article class="container"><section class="customer-reviews"><h3>Customer Reviews</h3><section class="reviews-grid">' +
+        reviewsHtml +
+        '</section></section></article></section>' +
+        '<section class="section"><article class="container"><div class="related-products"><h3>Related Products</h3><div class="related-grid">' +
+        relatedHtml +
+        '</div></div></article></section>' +
+        '<section class="cta-section"><article class="container"><h2>' + escHtml(ctaTitle) + '</h2><p>' + escHtml(ctaDesc) + '</p><a href="/pags/en/contact.html" class="btn btn-primary">' + escHtml(ctaButtonText) + '</a></article></section>' +
+        '</main>' +
+        '<footer class="site-footer"><section class="container footer-grid">' +
+        '<article class="footer-col"><h3>WT Fasteners</h3><p>Professional fastener manufacturer and exporter since 2005.</p></article>' +
+        '<article class="footer-col"><h3>Quick Links</h3><ul><li><a href="/pags/en/index.html">Home</a></li><li><a href="/pags/en/products.html">Products</a></li><li><a href="/pags/en/news.html">News</a></li><li><a href="/pags/en/about.html">About Us</a></li><li><a href="/pags/en/contact.html">Contact</a></li></ul></article>' +
+        '<article class="footer-col"><h3>Products</h3><ul><li><a href="#">Hex Bolts</a></li><li><a href="#">Flange Bolts</a></li><li><a href="#">Anchor Bolts</a></li></ul></article>' +
+        '<article class="footer-col"><h3>Contact Us</h3><p>Email: info@wtbolts.com</p><p>Email: lipbolts@gmail.com</p><p>Phone: +8615175432812</p></article>' +
+        '</section><section class="footer-bottom"><p class="container">© 2026 WT Fasteners. All Rights Reserved.</p></section></footer>' +
+        '</body></html>';
+    }
+
+    document.getElementById('previewBtn').addEventListener('click', function () {
+      syncAllBodyTextareas();
+      var lang = document.getElementById('previewLangSel').value;
+      document.getElementById('previewFrame').srcdoc = buildPreview(lang);
+      document.getElementById('previewOverlay').style.display = 'flex';
+    });
+
+    document.getElementById('previewLangSel').addEventListener('change', function () {
+      syncAllBodyTextareas();
+      document.getElementById('previewFrame').srcdoc = buildPreview(this.value);
+    });
+
+    document.getElementById('previewClose').addEventListener('click', function () {
+      document.getElementById('previewOverlay').style.display = 'none';
+    });
+
+    // Close preview with Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      document.getElementById('previewOverlay').style.display = 'none';
+      if (document.getElementById('imageLibraryModal').style.display !== 'none') {
+        closeImageLibrary();
+      }
+    });
+
+    document.getElementById('checkTranslateBtn').addEventListener('click', function () {
+      var btn = this;
+      var statusEl = document.getElementById('statusMsg');
+
+      btn.disabled = true;
+      statusEl.className = 'status-msg loading';
+      statusEl.textContent = '正在检测翻译接口配置...';
+
+      fetch('/cgi-bin/translation-check.cgi?_=' + Date.now())
+        .then(function (res) {
+          var status = res.status;
+          return res.text().then(function (text) {
+            try { return JSON.parse(text); }
+            catch (e) { throw new Error('HTTP ' + status + ' — 服务器返回:\n' + text.slice(0, 300)); }
+          });
+        })
+        .then(function (data) {
+          btn.disabled = false;
+          if (data.success) {
+            statusEl.className = 'status-msg success';
+            statusEl.textContent = '✅ 翻译接口可用：' + (data.provider || 'Provider') + ' / ' + (data.model || '-') + ' / ' + (data.latencyMs || 0) + 'ms';
+          } else {
+            statusEl.className = 'status-msg error';
+            statusEl.textContent = '❌ 翻译接口不可用：' + (data.error || '未知错误');
+          }
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          statusEl.className = 'status-msg error';
+          statusEl.textContent = '❌ 检测失败：' + err.message;
+        });
+    });
+
+    // ── Background translation polling ────────────────────────────────────────
+    function startTranslationPolling(slug, statusEl) {
+      var maxPoll = 120;   // 停止轮询前最多轮询 120 次（约 10 分钟）
+      var count = 0;
+      var timer = setInterval(function () {
+        count++;
+        if (count > maxPoll) {
+          clearInterval(timer);
+          statusEl.textContent += ' （轮询超时，请手动刷新页面确认翻译结果）';
+          return;
+        }
+        fetch('/cgi-bin/translation-status.cgi?slug=' + encodeURIComponent(slug))
+          .then(function (r) { return r.json(); })
+          .then(function (s) {
+            var done = Array.isArray(s.completed) ? s.completed.length : 0;
+            var total = s.total || 8;
+            var failed = s.failed ? Object.keys(s.failed).length : 0;
+            var status = s.status || '';
+            if (status === 'done' || status === 'partial_error') {
+              clearInterval(timer);
+              if (status === 'done') {
+                statusEl.className = 'status-msg success';
+                statusEl.textContent = '✅ 翻译完成！共生成 ' + done + '/' + total + ' 个语言版本。';
+              } else {
+                statusEl.className = 'status-msg error';
+                var failedLangs = s.failed ? Object.keys(s.failed).join(', ') : '';
+                statusEl.textContent = '⚠️ 翻译部分完成：' + done + '/' + total + ' 个语言成功。失败：' + failedLangs;
+              }
+            } else if (status === 'not_found') {
+              // 尚未开始或已清理
+            } else {
+              statusEl.textContent = '⏳ 后台翻译进行中… 已完成 ' + done + '/' + total + ' 个语言';
+            }
+          })
+          .catch(function () { /* 忽略轮询网络错误 */ });
+      }, 5000);
+    }
+
+    // ── Submit ────────────────────────────────────────────────────────────────
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      var slug = document.getElementById('slug').value.trim();
+      var date = document.getElementById('date').value;
+      var title = document.getElementById('en_title').value.trim();
+      syncAllBodyTextareas();
+      var body = document.getElementById('en_body').value.trim();
+      var summary = document.getElementById('en_summary').value.trim();
+      var autoTranslate = document.getElementById('auto_translate').checked;
+      var statusEl = document.getElementById('statusMsg');
+      var btn = this;
+
+      if (!slug) { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写 URL 标识 (Slug)'; return; }
+      if (!title) { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写英文标题'; return; }
+      if (!body) { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写英文正文内容'; return; }
+      if (!summary) { statusEl.className = 'status-msg error'; statusEl.textContent = '请填写英文摘要'; return; }
+
+      btn.disabled = true;
+      statusEl.className = 'status-msg loading';
+      statusEl.textContent = autoTranslate
+        ? '正在自动翻译并生成产品详情页（9 个语言）...'
+        : '正在生成产品详情页（9 个语言）...';
+
+      var langs = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
+      var fields = ['title', 'subtitle', 'summary', 'meta_desc', 'keywords', 'bc_label', 'body'];
+      var params = new URLSearchParams();
+      params.append('slug', slug);
+      params.append('date', date);
+      params.append('og_image', document.getElementById('og_image').value.trim());
+      params.append('auto_translate', autoTranslate ? '1' : '0');
+      params.append('product_category', document.getElementById('product_category').value.trim());
+      params.append('extra_head', document.getElementById('extra_head').value);
+      params.append('applications_data', document.getElementById('applications_data').value);
+      params.append('materials_data', document.getElementById('materials_data').value);
+      params.append('size_chart_data', document.getElementById('size_chart_data').value);
+      params.append('reviews_data', document.getElementById('reviews_data').value);
+      params.append('related_products_data', document.getElementById('related_products_data').value);
+      params.append('cta_title', document.getElementById('cta_title').value.trim());
+      params.append('cta_desc', document.getElementById('cta_desc').value.trim());
+      params.append('cta_button_text', document.getElementById('cta_button_text').value.trim());
+      langs.forEach(function (lang) {
+        fields.forEach(function (field) {
+          var el = document.getElementById(lang + '_' + field);
+          if (el) params.append(lang + '_' + field, el.value);
+        });
+      });
+
+      fetch('/cgi-bin/product-save.cgi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+        .then(function (res) {
+          var status = res.status;
+          return res.text().then(function (text) {
+            try { return JSON.parse(text); }
+            catch (e) { throw new Error('HTTP ' + status + ' — 服务器返回:\n' + text.slice(0, 300)); }
+          });
+        })
+        .then(function (data) {
+          btn.disabled = false;
+          if (data.success) {
+            if (data.translating) {
+              statusEl.className = 'status-msg loading';
+              statusEl.textContent = '✅ 产品页已发布（英文版）。后台正在翻译其余 ' + (data.created.length - 1) + ' 个语言版本，请稍候…';
+              setTimeout(function () { window.open(data.url, '_blank'); }, 800);
+              startTranslationPolling(data.slug, statusEl);
+            } else {
+              statusEl.className = 'status-msg success';
+              var translatedCount = Array.isArray(data.translated) ? data.translated.length : 0;
+              statusEl.textContent = translatedCount > 0
+                ? '✅ 产品页发布成功！已生成 ' + data.created.length + ' 个语言版本，自动翻译 ' + translatedCount + ' 个语言。'
+                : '✅ 产品页发布成功！已生成 ' + data.created.length + ' 个语言版本。';
+              setTimeout(function () { window.open(data.url, '_blank'); }, 800);
+            }
+          } else {
+            statusEl.className = 'status-msg error';
+            statusEl.textContent = '❌ ' + (data.error || (data.errors && data.errors.join('; ')) || '未知错误');
+          }
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          statusEl.className = 'status-msg error';
+          statusEl.textContent = '❌ ' + err.message;
+        });
+    });
+  </script>
+</body>
+
+</html>

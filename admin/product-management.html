@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品管理 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --blue: #2563eb;
+      --blue-strong: #1d4ed8;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 18px;
+      --shadow: 0 14px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { min-height: 100vh; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .admin-header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .admin-header .container { max-width: 1900px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon { width: 44px; height: 44px; border-radius: 14px; background: #e0f2fe; display: grid; place-items: center; color: #0369a1; font-size: 1.3rem; }
+    .brand-text .title { font-size: 1.1rem; font-weight: 700; }
+    .brand-text .subtitle { color: var(--muted); font-size: 0.92rem; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .nav-links a, .nav-links button { padding: 10px 14px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; border: 1px solid transparent; background: #f8fafc; color: var(--text); transition: all 0.2s ease; }
+    .nav-links a:hover, .nav-links button:hover { background: #eff6ff; border-color: #dbeafe; }
+    .nav-links .primary { background: var(--blue); color: #fff; }
+    .container { max-width: 1900px; margin: 0 auto; padding: 24px; }
+    .page-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; }
+    .page-desc { color: var(--muted); margin-bottom: 24px; font-size: 1rem; }
+    .tool-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 24px; }
+    .tool-bar input { min-width: 240px; flex: 1; border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; font-size: 0.95rem; background: #fff; }
+    .tool-bar button { padding: 12px 20px; border-radius: 12px; background: var(--blue); color: #fff; border: none; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+    .tool-status { min-height: 22px; margin: -8px 0 18px; font-size: 0.92rem; font-weight: 600; }
+    .tool-status.success { color: #15803d; }
+    .tool-status.error { color: #b91c1c; }
+    .summary-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .summary-card { background: var(--surface); border-radius: 20px; padding: 22px; box-shadow: var(--shadow); border: 1px solid #eff6ff; }
+    .summary-card .label { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
+    .summary-card .value { font-size: 2rem; font-weight: 800; color: var(--blue-strong); }
+    .summary-card .note { color: var(--muted); margin-top: 10px; font-size: 0.9rem; }
+    .category-grid { display: grid; gap: 18px; }
+    .category-card { background: var(--surface); border-radius: 22px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; }
+    .category-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 22px; }
+    .category-head h3 { font-size: 1.05rem; font-weight: 700; }
+    .category-head .meta { color: var(--muted); font-size: 0.93rem; }
+    .category-list { padding: 0 22px 22px; display: grid; gap: 12px; }
+    .product-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 16px; background: #f8fafc; border-radius: 14px; }
+    .product-item .title { font-weight: 700; color: var(--text); }
+    .product-item .summary { color: var(--muted); font-size: 0.88rem; }
+    .product-item .badge { padding: 7px 12px; background: #e0f2fe; color: #0c4a6e; border-radius: 999px; font-size: 0.82rem; font-weight: 700; }
+    .product-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px; }
+    .product-actions .btn-delete { padding: 9px 14px; border: none; border-radius: 10px; background: #dc2626; color: #fff; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: background 0.2s ease, opacity 0.2s ease; }
+    .product-actions .btn-delete:hover:not(:disabled) { background: #b91c1c; }
+    .product-actions .btn-delete:disabled { opacity: 0.55; cursor: not-allowed; }
+    .empty-state { background: var(--surface); border-radius: 22px; padding: 40px; box-shadow: var(--shadow); text-align: center; color: var(--muted); }
+    @media (max-width: 860px) {
+      .tool-bar { flex-direction: column; align-items: stretch; }
+      .product-item { grid-template-columns: 1fr; }
+      .product-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <div class="brand">
+        <div class="brand-icon">🛍️</div>
+        <div class="brand-text">
+          <div class="title">产品管理</div>
+          <div class="subtitle">查看和浏览当前产品分类</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">🏠 后台首页</a>
+        <a href="article-list.html">📝 文章管理</a>
+        <a href="article-new.html">✍️ 发布新文章</a>
+        <a href="product-management.html" class="primary">🛍️ 产品管理</a>
+        <a href="product-new.html">🛠️ 发布新产品</a>
+        <a href="image-manager.html">🖼️ 图片管理</a>
+        <a href="users-view.html">👥 用户数据</a>
+        <button class="primary" id="logoutBtn">退出登录</button>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <h1 class="page-title">产品管理</h1>
+    <p class="page-desc">从英文产品列表中读取当前产品分类和条目。需要新增产品时，点击“发布新产品”并选择产品模式。</p>
+    <div class="tool-bar">
+      <input type="text" id="searchInput" placeholder="搜索产品名称或分类...">
+      <button id="addProductBtn">发布新产品</button>
+    </div>
+    <div class="tool-status" id="actionStatus"></div>
+    <div class="summary-panel">
+      <div class="summary-card">
+        <div class="label">产品分类</div>
+        <div class="value" id="categoryCount">-</div>
+        <div class="note">当前英文产品分类数量</div>
+      </div>
+      <div class="summary-card">
+        <div class="label">产品条目</div>
+        <div class="value" id="productCount">-</div>
+        <div class="note">当前英文产品总数</div>
+      </div>
+    </div>
+    <section class="category-grid" id="categoriesContainer">
+      <div class="empty-state">加载中...</div>
+    </section>
+  </main>
+  <script>
+    let currentCategories = [];
+    let deletingSlug = '';
+
+    function logout() { localStorage.removeItem('userAdminAuth'); window.location.href = 'login.html'; }
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    document.getElementById('addProductBtn').addEventListener('click', function() {
+      window.location.href = 'product-new.html';
+    });
+
+    function checkAuth() {
+      const auth = localStorage.getItem('userAdminAuth');
+      if (!auth || new Date().getTime() > parseInt(auth, 10)) { window.location.href = 'login.html'; return false; }
+      return true;
+    }
+    function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    function setActionStatus(message, type) {
+      const status = document.getElementById('actionStatus');
+      status.className = 'tool-status' + (type ? ' ' + type : '');
+      status.textContent = message || '';
+    }
+    function setDeleteButtonsDisabled(disabled) {
+      document.querySelectorAll('.btn-delete').forEach(function(btn) {
+        btn.disabled = disabled;
+      });
+    }
+
+    async function loadProducts() {
+      if (!checkAuth()) return;
+      const container = document.getElementById('categoriesContainer');
+      container.innerHTML = '<div class="empty-state">加载中...</div>';
+      try {
+        const resp = await fetch('../pags/en/pages_en.json?_=' + Date.now());
+        if (!resp.ok) throw new Error('获取产品 JSON 失败');
+        const data = await resp.json();
+        const categories = Array.isArray(data.products) ? data.products : [];
+        currentCategories = categories;
+        const totalProducts = categories.reduce((sum, c) => sum + ((c.items || []).length), 0);
+        document.getElementById('categoryCount').textContent = categories.length;
+        document.getElementById('productCount').textContent = totalProducts;
+        if (!categories.length) {
+          container.innerHTML = '<div class="empty-state">当前没有产品分类。</div>';
+          return;
+        }
+        renderCategories(categories);
+      } catch (err) {
+        currentCategories = [];
+        container.innerHTML = '<div class="empty-state">加载失败：' + escHtml(err.message) + '</div>';
+      }
+    }
+
+    function renderCategories(categories) {
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      const container = document.getElementById('categoriesContainer');
+      let html = '';
+      categories.forEach(function(cat) {
+        const filtered = (cat.items || []).filter(function(item) {
+          const title = String(item.title || '').toLowerCase();
+          const summary = String(item.summary || '').toLowerCase();
+          const category = String(cat.category || '').toLowerCase();
+          return !keyword || title.includes(keyword) || summary.includes(keyword) || category.includes(keyword);
+        });
+        if (!filtered.length) return;
+        html += '<div class="category-card">';
+        html += '<div class="category-head"><h3>' + escHtml(cat.category) + '</h3><div class="meta">' + filtered.length + ' 个产品</div></div>';
+        html += '<div class="category-list">';
+        filtered.forEach(function(item) {
+          const itemSlug = String(item.slug || '');
+          const displaySlug = itemSlug.replace(/^products\//, '');
+          html += '<div class="product-item"><div><div class="title">' + escHtml(item.title) + '</div><div class="summary">' + escHtml(item.summary || '-') + '</div></div><div class="product-actions"><div class="badge">' + escHtml(displaySlug || '-') + '</div><button type="button" class="btn-delete" data-slug="' + escHtml(itemSlug) + '" data-title="' + escHtml(item.title || displaySlug) + '">删除</button></div></div>';
+        });
+        html += '</div></div>';
+      });
+      container.innerHTML = html || '<div class="empty-state">没有匹配的产品。</div>';
+      setDeleteButtonsDisabled(Boolean(deletingSlug));
+      document.querySelectorAll('.btn-delete').forEach(function(btn) {
+        btn.addEventListener('click', handleDeleteProduct);
+      });
+    }
+
+    async function handleDeleteProduct(event) {
+      if (!checkAuth()) return;
+      const btn = event.currentTarget;
+      const slug = String(btn.dataset.slug || '').trim();
+      const title = btn.dataset.title || slug.replace(/^products\//, '');
+      if (!slug || deletingSlug) return;
+      const confirmed = window.confirm('确认删除产品“' + title + '”吗？\n\n这会同步删除所有语言版本的产品详情页，并从产品列表中移除。');
+      if (!confirmed) return;
+
+      deletingSlug = slug;
+      setActionStatus('正在删除产品：' + title + ' ...');
+      setDeleteButtonsDisabled(true);
+
+      try {
+        const params = new URLSearchParams();
+        params.append('slugs', slug);
+        const resp = await fetch('../cgi-bin/product-delete.cgi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data.success) {
+          throw new Error((data.errors || [data.error]).filter(Boolean).join('；') || '删除失败');
+        }
+        setActionStatus('已删除产品：' + title, 'success');
+        await loadProducts();
+      } catch (err) {
+        setActionStatus('删除失败：' + err.message, 'error');
+        alert('删除失败：' + err.message);
+      } finally {
+        deletingSlug = '';
+        setDeleteButtonsDisabled(false);
+      }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+      renderCategories(currentCategories);
+    });
+    loadProducts();
+  </script>
+</body>
+</html>

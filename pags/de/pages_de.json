@@ -1,10 +1,17 @@
 {
     "news": [
         {
-            "slug": "news/industry-outlook-2026",
-            "title": "Blick auf die Befestigerindustrie 2026",
-            "date": "2026-04-07",
-            "summary": "Wichtige Wachstumsbranchen und Marktchancen in Elektrofahrzeugen, erneuerbaren Energien und intelligenter Fertigung prägen das kommende Jahr.",
+            "slug": "news/2026-04-15",
+            "title": "Von der Canton Fair zur Yiwu Expo: Die Befestigungsindustrie begrüßt den \"Dual-Core\"-Handelsboom im April",
+            "date": "2026-04-15",
+            "summary": "Der April 2026 markiert eine konzentrierte Häufung von Handelsveranstaltungen für die Befestigungsindustrie in Südchina. Die 6. Guangzhou Sourcing Fair (GSF) findet vom 14. bis 17. April im Poly World Trade Center statt, gefolgt unmittelbar von der 10. Yiwu International Hardware & Electrical Appliances Expo vom 20. bis 22. April. Die Verknüpfung dieser beiden großen Handelszentren schafft einen \"Guangzhou-Präzisionsanschluss + Yiwu globale Reichweite\" Dual-Core-Handelskorridor und bietet Befestigungsunternehmen ein erstklassiges Fenster, um Auslandsaufträge zu sichern und in aufstrebende Märkte zu expandieren.",
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
+        },
+        {
+            "slug": "news/2026-04-14-us-tariff-fastener",
+            "title": "US-Zollpolitik-Anpassung: Befestigungsexporte stehen vor einer neuen Wende",
+            "date": "2026-04-14",
+            "summary": "Ab dem 6. April 2026 hat die USA die Section-232-Zollregeln für Stahl- und Aluminiumderivatprodukte offiziell angepasst. Für Befestigungselemente, die Stahl oder Aluminium enthalten, hat sich die Berechnungsmethode grundlegend geändert – von der Besteuerung nur des Metallgehaltswerts hin zur Erhebung eines 25%igen Zolls auf den gesamten deklarierten Wert des Produkts. Dieser Artikel bietet eine eingehende Analyse der neuen Vorschriften, Kosteneinflussschätzungen und Unternehmensreaktionsstrategien.",
             "icon": "../../images/logo.jpg"
         }
     ],

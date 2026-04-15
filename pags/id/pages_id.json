@@ -1,10 +1,17 @@
 {
     "news": [
         {
-            "slug": "news/industry-outlook-2026",
-            "title": "Outlook Industri Pengikat 2026",
-            "date": "2026-04-07",
-            "summary": "Sektor pertumbuhan utama dan peluang pasar di bidang EV, energi terbarukan, dan manufaktur cerdas yang membentuk tahun ke depan.",
+            "slug": "news/2026-04-15",
+            "title": "Dari Canton Fair ke Expo Yiwu: Industri Fastener Sambut Ledakan Perdagangan \"Dual-Core\" di April",
+            "date": "2026-04-15",
+            "summary": "April 2026 menandai ledakan terkonsentrasi acara perdagangan fastener di Tiongkok Selatan. Guangzhou Sourcing Fair (GSF) ke-6 akan diadakan di Poly World Trade Center dari 14-17 April, segera diikuti oleh Yiwu International Hardware & Electrical Appliances Expo ke-10 dari 20-22 April. Keterkaitan antara dua pusat komersial utama ini menciptakan koridor perdagangan dual-core \"presisi Guangzhou + jangkauan global Yiwu\", menawarkan perusahaan fastener jendela utama untuk mengamankan pesanan luar negeri dan memperluas ke pasar berkembang.",
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
+        },
+        {
+            "slug": "news/2026-04-14-us-tariff-fastener",
+            "title": "Penyesuaian Kebijakan Tarif AS: Ekspor Fastener Hadapi Titik Balik Baru",
+            "date": "2026-04-14",
+            "summary": "Mulai berlaku 6 April 2026, AS secara resmi menyesuaikan aturan tarif Bagian 232 untuk produk turunan baja dan aluminium. Untuk fastener yang mengandung baja atau aluminium, metode perhitungan telah berubah secara fundamental—dari hanya mengenakan pajak pada nilai kandungan logam menjadi mengenakan tarif 25% pada nilai deklarasi total seluruh produk. Artikel ini memberikan analisis mendalam tentang peraturan baru, perkiraan dampak biaya, dan strategi respons perusahaan.",
             "icon": "../../images/logo.jpg"
         }
     ],

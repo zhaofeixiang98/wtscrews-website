@@ -1,10 +1,17 @@
 {
     "news": [
         {
-            "slug": "news/industry-outlook-2026",
-            "title": "Perspectivas de la industria de fijaciones 2026",
-            "date": "2026-04-07",
-            "summary": "Los sectores de crecimiento clave y las oportunidades de mercado en vehículos eléctricos, energías renovables y fabricación inteligente configuran el año venidero.",
+            "slug": "news/2026-04-15",
+            "title": "De la Feria de Cantón a la Expo de Yiwu: La Industria de los Elementos de Fijación Abraza el Boom Comercial \"Dual-Core\" en Abril",
+            "date": "2026-04-15",
+            "summary": "Abril de 2026 marca una concentrada explosión de eventos comerciales de elementos de fijación en el sur de China. La 6ª Feria de Abastecimiento de Guangzhou (GSF) se celebrará en el Poly World Trade Center del 14 al 17 de abril, seguida inmediatamente por la 10ª Expo Internacional de Ferretería y Electrodomésticos de Yiwu del 20 al 22 de abril. La vinculación entre estos dos grandes centros comerciales crea un corredor comercial de doble núcleo \"precisión de Guangzhou + alcance global de Yiwu\", ofreciendo a las empresas de elementos de fijación una ventana principal para asegurar pedidos en el extranjero y expandirse en mercados emergentes.",
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
+        },
+        {
+            "slug": "news/2026-04-14-us-tariff-fastener",
+            "title": "Ajuste de la Política Arancelaria de EE.UU.: Las Exportaciones de Sujetadores Enfrentan un Nuevo Punto de Inflexión",
+            "date": "2026-04-14",
+            "summary": "A partir del 6 de abril de 2026, EE.UU. ha ajustado oficialmente las reglas arancelarias de la Sección 232 para productos derivados de acero y aluminio. Para los sujetadores que contienen acero o aluminio, el método de cálculo ha cambiado fundamentalmente: de gravar solo el valor del contenido metálico a aplicar un arancel del 25% sobre el valor declarado total de todo el producto. Este artículo proporciona un análisis en profundidad de las nuevas regulaciones, estimaciones del impacto en costos y estrategias de respuesta empresarial.",
             "icon": "../../images/logo.jpg"
         }
     ],

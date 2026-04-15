@@ -117,6 +117,18 @@ def extract_json_object(text):
 # ── Core: translate one language ──────────────────────────────────────────────
 def translate_one(lang, source_fields, api_key, api_url, model):
     target_name = LANG_LABELS.get(lang, lang)
+    
+    # ── Mask <img> tags to prevent LLM from confusing or dropping them ──
+    body_text = source_fields.get('body', '')
+    img_masks = []
+    def mask_img(m):
+        img_masks.append(m.group(0))
+        return f'__IMG_MASK_{len(img_masks)-1}__'
+    
+    masked_body = re.sub(r'<img\s+[^>]*>', mask_img, body_text)
+    masked_source_fields = dict(source_fields)
+    masked_source_fields['body'] = masked_body
+
     system_prompt = (
         'You are a professional website localization translator for industrial fastener news. '
         'Translate English source content into the requested target language and return strict JSON only.'
@@ -126,7 +138,7 @@ def translate_one(lang, source_fields, api_key, api_url, model):
         'Return exactly one JSON object with keys: title, subtitle, summary, meta_desc, keywords, bc_label, body.\n'
         'Rules:\n'
         '1. Preserve HTML structure in body exactly: keep tag names, nesting, href, src, class, id, '
-        'style, loading, and relative paths unchanged.\n'
+        'style, loading, and relative paths unchanged. Do not alter placeholders like __IMG_MASK_0__.\n'
         '2. Translate only human-readable text content. Do not translate URLs, filenames, product '
         'standards, model numbers, or brand names like WT Fasteners.\n'
         '3. Keep measurements, units, dates, percentages, DIN/ISO/ASTM codes, and punctuation '
@@ -136,7 +148,7 @@ def translate_one(lang, source_fields, api_key, api_url, model):
         '6. If subtitle is empty, return an empty string for subtitle.\n'
         '7. Output JSON only, with no markdown fences or explanations.\n\n'
         'Source JSON:\n'
-        + json.dumps(source_fields, ensure_ascii=False)
+        + json.dumps(masked_source_fields, ensure_ascii=False)
     )
     payload = {
         'model': model,
@@ -162,6 +174,16 @@ def translate_one(lang, source_fields, api_key, api_url, model):
     data = json.loads(raw)
     content = data['choices'][0]['message']['content']
     translated = extract_json_object(content)
+    
+    # Restore img masks
+    if 'body' in translated:
+        def restore_img(m):
+            idx = int(m.group(1))
+            if 0 <= idx < len(img_masks):
+                return img_masks[idx]
+            return m.group(0)
+        translated['body'] = re.sub(r'__IMG_MASK_(\d+)__', restore_img, translated['body'])
+        
     missing = [f for f in TRANSLATABLE_FIELDS if f not in translated]
     if missing:
         raise ValueError(f'missing fields in response: {", ".join(missing)}')

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --primary: #2563eb;
+      --primary-strong: #0f4fcc;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { min-height: 100vh; background: linear-gradient(180deg, #f6f8ff 0%, #f7f8fb 100%); font-family: 'Inter', sans-serif; color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .admin-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-header .container {
+      max-width: 1900px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.35rem;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.18);
+    }
+    .brand-text {
+      display: grid;
+      gap: 4px;
+    }
+    .brand-text .title { font-size: 1.15rem; font-weight: 700; }
+    .brand-text .subtitle { color: var(--muted); font-size: 0.92rem; }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-links a, .nav-links button {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links button:hover { background: #eff6ff; border-color: #dbeafe; }
+    .nav-links .primary { background: var(--primary); color: white; }
+    .container { max-width: 1900px; margin: 0 auto; padding: 24px; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .hero-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid transparent;
+    }
+    .hero-card h1 { font-size: 2.1rem; line-height: 1.05; margin-bottom: 12px; }
+    .hero-card p { color: var(--muted); font-size: 1rem; max-width: 720px; margin-bottom: 20px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-actions a { display: inline-flex; align-items: center; justify-content: center; min-width: 170px; padding: 14px 18px; border-radius: 12px; border: none; font-size: 0.95rem; font-weight: 700; }
+    .hero-actions .secondary { background: #f8fafc; color: var(--text); border: 1px solid var(--border); }
+    .hero-actions .primary { background: var(--primary); color: white; }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .dashboard-card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .dashboard-card:hover { transform: translateY(-4px); border-color: #dbeafe; }
+    .dashboard-card .icon { width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; font-size: 1.35rem; margin-bottom: 18px; }
+    .dashboard-card .icon.article { background: #eff6ff; color: #1d4ed8; }
+    .dashboard-card .icon.image { background: #e0f2fe; color: #0369a1; }
+    .dashboard-card .icon.message { background: #ede9fe; color: #7c3aed; }
+    .dashboard-card .icon.product { background: #ecfdf5; color: #0f766e; }
+    .dashboard-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .dashboard-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.55; margin-bottom: 18px; }
+    .dashboard-card .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .dashboard-card .stat { font-size: 0.95rem; color: var(--primary-strong); font-weight: 700; }
+    .dashboard-card .link { font-size: 0.92rem; color: var(--primary); font-weight: 700; }
+    .summary-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .summary-card {
+      background: #ffffff;
+      border: 1px solid #eef2ff;
+      border-radius: 18px;
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      min-height: 112px;
+    }
+    .summary-card .label { color: var(--muted); font-size: 0.92rem; }
+    .summary-card .value { font-size: 1.9rem; font-weight: 800; color: var(--text); }
+    .summary-card .note { color: var(--muted); font-size: 0.88rem; margin-top: 6px; }
+    @media (max-width: 840px) {
+      .admin-header .container { flex-direction: column; align-items: stretch; }
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <div class="brand">
+        <div class="brand-icon">后台</div>
+        <div class="brand-text">
+          <div class="title">管理后台</div>
+          <div class="subtitle">文章 / 图片 / 客户消息 / 产品管理</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="primary">🏠 后台首页</a>
+        <a href="article-list.html">📝 文章管理</a>
+        <a href="article-new.html">✍️ 发布新文章</a>
+        <a href="product-management.html">🛍️ 产品管理</a>
+        <a href="product-new.html">🛠️ 发布新产品</a>
+        <a href="image-manager.html">🖼️ 图片管理</a>
+        <a href="users-view.html">👥 用户数据</a>
+        <button class="primary" id="logoutBtn">退出登录</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>欢迎来到新版后台</h1>
+        <p>这里统一展示所有管理员入口：文章发布、产品管理、图片库维护和客户消息查看。界面更清爽，操作更直观。</p>
+        <div class="hero-actions">
+          <a class="primary" href="article-list.html">进入文章管理</a>
+          <a class="secondary" href="product-management.html">进入产品管理</a>
+          <a class="secondary" href="article-new.html">发布新内容</a>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div>
+            <div class="label">文章总数</div>
+            <div class="value" id="summaryArticles">-</div>
+          </div>
+          <div class="note">包含所有语言首页新闻条目</div>
+        </div>
+        <div class="summary-card">
+          <div>
+            <div class="label">产品总数</div>
+            <div class="value" id="summaryProducts">-</div>
+          </div>
+          <div class="note">当前英文产品列表统计</div>
+        </div>
+        <div class="summary-card">
+          <div>
+            <div class="label">图片数量</div>
+            <div class="value" id="summaryImages">-</div>
+          </div>
+          <div class="note">新闻图片库中的文件总数</div>
+        </div>
+        <div class="summary-card">
+          <div>
+            <div class="label">客户消息</div>
+            <div class="value" id="summaryMessages">-</div>
+          </div>
+          <div class="note">当前用户提交记录</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-cards">
+      <a class="dashboard-card" href="article-list.html">
+        <div class="icon article">📰</div>
+        <h3>文章管理</h3>
+        <p>查看、刷新、删除新闻文章。直接发布新内容并管理多语言文章。</p>
+        <div class="card-footer"><span class="stat" id="cardArticles">-</span><span class="link">进入 →</span></div>
+      </a>
+      <a class="dashboard-card" href="image-manager.html">
+        <div class="icon image">🖼️</div>
+        <h3>图片管理</h3>
+        <p>上传封面图、查看图片库、删除未使用图片，保持图像资源整洁。</p>
+        <div class="card-footer"><span class="stat" id="cardImages">-</span><span class="link">进入 →</span></div>
+      </a>
+      <a class="dashboard-card" href="users-view.html">
+        <div class="icon message">💬</div>
+        <h3>客户消息</h3>
+        <p>查看所有客户提交记录，按时间排序，快速打开留言详情。</p>
+        <div class="card-footer"><span class="stat" id="cardMessages">-</span><span class="link">进入 →</span></div>
+      </a>
+      <a class="dashboard-card" href="product-management.html">
+        <div class="icon product">🛠️</div>
+        <h3>产品管理</h3>
+        <p>浏览当前产品分类与条目，快速进入新产品发布流程。</p>
+        <div class="card-footer"><span class="stat" id="cardProducts">-</span><span class="link">进入 →</span></div>
+      </a>
+    </section>
+  </main>
+
+  <script>
+    function logout() {
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+    }
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    function checkAuth() {
+      const auth = localStorage.getItem('userAdminAuth');
+      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      return true;
+    }
+    async function loadSummary() {
+      if (!checkAuth()) return;
+      try {
+        const pagesResp = await fetch('../pags/en/pages_en.json?_=' + Date.now());
+        const pagesData = await pagesResp.json();
+        const articleCount = (pagesData.news || []).length;
+        const productCount = (pagesData.products || []).reduce(function(sum, category) { return sum + ((category.items || []).length); }, 0);
+        document.getElementById('summaryArticles').textContent = articleCount;
+        document.getElementById('cardArticles').textContent = articleCount + ' 条';
+        document.getElementById('summaryProducts').textContent = productCount;
+        document.getElementById('cardProducts').textContent = productCount + ' 个';
+      } catch (err) {
+        document.getElementById('summaryArticles').textContent = '-';
+        document.getElementById('summaryProducts').textContent = '-';
+      }
+      try {
+        const imgResp = await fetch('../cgi-bin/image-manager.cgi?action=list&_=' + Date.now());
+        const imgData = await imgResp.json();
+        document.getElementById('summaryImages').textContent = imgData.total || 0;
+        document.getElementById('cardImages').textContent = (imgData.total || 0) + ' 张';
+      } catch (err) {
+        document.getElementById('summaryImages').textContent = '-';
+        document.getElementById('cardImages').textContent = '-';
+      }
+      try {
+        const userResp = await fetch('../cgi-bin/api-users.php?_=' + Date.now());
+        const users = await userResp.json();
+        const count = Array.isArray(users) ? users.length : (users.total || 0);
+        document.getElementById('summaryMessages').textContent = count;
+        document.getElementById('cardMessages').textContent = count + ' 条';
+      } catch (err) {
+        document.getElementById('summaryMessages').textContent = '-';
+        document.getElementById('cardMessages').textContent = '-';
+      }
+    }
+    loadSummary();
+  </script>
+</body>
+</html>

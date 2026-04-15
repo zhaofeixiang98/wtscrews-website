@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片管理 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --primary: #2563eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 18px;
+      --shadow: 0 14px 45px rgba(15, 23, 42, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { min-height: 100vh; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .admin-header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .admin-header .container { max-width: 1900px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon { width: 44px; height: 44px; border-radius: 14px; background: #dbeafe; display: grid; place-items: center; color: #1d4ed8; font-size: 1.3rem; }
+    .brand-text .title { font-size: 1.1rem; font-weight: 700; }
+    .brand-text .subtitle { color: var(--muted); font-size: 0.92rem; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .nav-links a, .nav-links button { padding: 10px 14px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; border: 1px solid transparent; background: #f8fafc; color: var(--text); transition: all 0.2s ease; }
+    .nav-links a:hover, .nav-links button:hover { background: #eff6ff; border-color: #dbeafe; }
+    .nav-links .primary { background: var(--primary); color: white; }
+    .container { max-width: 1900px; margin: 0 auto; padding: 24px; }
+    .page-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+    .page-desc { color: var(--muted); margin-bottom: 20px; }
+    .upload-panel { display: grid; gap: 18px; margin-bottom: 26px; }
+    .upload-card { background: var(--surface); border-radius: 22px; padding: 24px; box-shadow: var(--shadow); border: 1px solid #e8eef9; }
+    .upload-card h2 { font-size: 1.05rem; margin-bottom: 14px; }
+    .upload-zone { border: 2px dashed #dbeafe; border-radius: 18px; background: #f8fbff; padding: 30px; text-align: center; color: var(--muted); cursor: pointer; position: relative; transition: border-color 0.2s, background 0.2s; }
+    .upload-zone.hover { border-color: #93c5fd; background: #eff6ff; }
+    .upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .upload-zone strong { color: var(--primary); }
+    .upload-hint { margin-top: 14px; color: var(--muted); font-size: 0.95rem; }
+    .upload-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
+    .upload-input { border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; background: #fff; font-size: 0.95rem; width: 100%; }
+    .btn-primary { padding: 13px 18px; border-radius: 14px; border: none; background: var(--primary); color: white; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .status-line { color: var(--muted); font-size: 0.95rem; }
+    .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+    .image-card { background: var(--surface); border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+    .image-card.used { border-color: #d1fae5; }
+    .image-card .thumb { width: 100%; aspect-ratio: 1.25; object-fit: cover; background: #f8fafc; }
+    .image-card .meta { padding: 14px 14px 18px; display: grid; gap: 8px; }
+    .image-card .meta strong { font-size: 0.95rem; display: block; color: var(--text); }
+    .image-card .meta span { font-size: 0.85rem; color: var(--muted); }
+    .image-card .badge { display: inline-flex; padding: 6px 10px; font-size: 0.78rem; font-weight: 700; border-radius: 999px; background: #eef2ff; color: #2563eb; }
+    .image-card .actions { display: grid; gap: 10px; margin-top: 10px; }
+    .image-card button { width: 100%; border: none; border-radius: 12px; padding: 10px 12px; font-weight: 600; cursor: pointer; }
+    .btn-delete { background: #eef2f7; color: #b91c1c; }
+    .btn-delete:hover { background: #fee2e2; }
+    .btn-select { background: #f8fafc; color: var(--text); }
+    .image-meta-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .stats-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+    .stat-card { flex: 1 1 220px; background: var(--surface); border-radius: 18px; border: 1px solid #e2e8f0; padding: 20px; box-shadow: var(--shadow); }
+    .stat-card .label { margin-bottom: 8px; color: var(--muted); font-size: 0.92rem; }
+    .stat-card .value { font-size: 1.75rem; font-weight: 800; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 18px; }
+    .filter-row input { flex: 1; border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px; background: #fff; }
+    .btn-delete-selected { padding: 12px 18px; border-radius: 14px; border: none; background: #ef4444; color: white; font-weight: 700; cursor: pointer; }
+    .btn-delete-selected:disabled { opacity: 0.5; cursor: not-allowed; }
+    .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); background: var(--surface); border: 1px dashed var(--border); border-radius: 20px; }
+    @media (max-width: 860px) { .filter-row { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <div class="brand">
+        <div class="brand-icon">🖼️</div>
+        <div class="brand-text">
+          <div class="title">图片管理</div>
+          <div class="subtitle">上传、浏览和删除新闻图片</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">🏠 后台首页</a>
+        <a href="article-list.html">📝 文章管理</a>
+        <a href="article-new.html">✍️ 发布新文章</a>
+        <a href="product-management.html">🛍️ 产品管理</a>
+        <a href="product-new.html">🛠️ 发布新产品</a>
+        <a href="image-manager.html" class="primary">🖼️ 图片管理</a>
+        <a href="users-view.html">👥 用户数据</a>
+        <button class="primary" id="logoutBtn">退出登录</button>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <h1 class="page-title">图片管理</h1>
+    <p class="page-desc">通过上传功能新增图片，并使用筛选与删除功能维护 /images/news/ 图片库。</p>
+    <section class="upload-panel">
+      <div class="upload-card">
+        <h2>上传图片</h2>
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="fileInput" accept="image/*">
+          <div>
+            <p><strong>点击或拖拽图片到此处</strong></p>
+            <p class="upload-hint">支持 JPG / PNG / WEBP / GIF / SVG</p>
+          </div>
+        </div>
+        <div class="upload-actions">
+          <input type="text" id="renameInput" class="upload-input" placeholder="重命名（可选，去掉扩展名）">
+          <input type="text" id="altInput" class="upload-input" placeholder="Alt 文本（可选）">
+          <button class="btn-primary" id="uploadBtn">上传并设为封面</button>
+        </div>
+        <p class="status-line" id="uploadStatus">上传后会显示图片，并自动进入新闻封面管理流程。</p>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="label">图片总数</div><div class="value" id="totalImages">-</div></div>
+        <div class="stat-card"><div class="label">未使用</div><div class="value" id="unusedImages">-</div></div>
+      </div>
+    </section>
+    <section class="upload-card">
+      <div class="filter-row">
+        <input type="text" id="searchInput" placeholder="按文件名搜索图片...">
+        <button class="btn-delete-selected" id="deleteSelectedBtn" disabled>删除所选图片</button>
+      </div>
+      <div id="imageGrid" class="image-grid"><div class="empty-state">加载中...</div></div>
+    </section>
+  </main>
+  <script>
+    function logout() { localStorage.removeItem('userAdminAuth'); window.location.href = 'login.html'; }
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    function checkAuth() { const auth = localStorage.getItem('userAdminAuth'); if (!auth || new Date().getTime() > parseInt(auth, 10)) { window.location.href = 'login.html'; return false; } return true; }
+    function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    const imageGrid = document.getElementById('imageGrid');
+    const deleteBtn = document.getElementById('deleteSelectedBtn');
+    let images = [];
+
+    async function loadImages() {
+      if (!checkAuth()) return;
+      imageGrid.innerHTML = '<div class="empty-state">加载中...</div>';
+      try {
+        const resp = await fetch('../cgi-bin/image-manager.cgi?action=list&_=' + Date.now());
+        if (!resp.ok) throw new Error('读取图片列表失败');
+        const data = await resp.json();
+        images = data.images || [];
+        document.getElementById('totalImages').textContent = data.total || 0;
+        document.getElementById('unusedImages').textContent = data.unused_count || 0;
+        renderImages();
+      } catch (err) {
+        imageGrid.innerHTML = '<div class="empty-state">加载失败：' + escHtml(err.message) + '</div>';
+      }
+    }
+
+    function renderImages() {
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      const filtered = images.filter(function(item) {
+        const filename = item.filename.toLowerCase();
+        return !keyword || filename.includes(keyword);
+      });
+      if (!filtered.length) {
+        imageGrid.innerHTML = '<div class="empty-state">没有匹配图片。</div>';
+        deleteBtn.disabled = true;
+        return;
+      }
+      imageGrid.innerHTML = filtered.map(function(item) {
+        const usedClass = item.used ? ' used' : '';
+        return '<div class="image-card' + usedClass + '">' +
+          '<img class="thumb" src="../images/news/' + escHtml(item.filename) + '" alt="' + escHtml(item.filename) + '">' +
+          '<div class="meta"><strong>' + escHtml(item.filename) + '</strong>' +
+          '<div class="image-meta-row"><span>' + escHtml((item.size || 0) + ' bytes') + '</span><span class="badge">' + (item.used ? '已使用' : '未使用') + '</span></div>' +
+          '<div class="actions"><label><input type="checkbox" class="img-cb" data-filename="' + escHtml(item.filename) + '"> 选择</label>' +
+          '<button class="btn-delete" data-filename="' + escHtml(item.filename) + '">删除</button></div></div></div>';
+      }).join('');
+      document.querySelectorAll('.img-cb').forEach(function(cb) { cb.addEventListener('change', updateDeleteState); });
+      document.querySelectorAll('.btn-delete').forEach(function(btn) { btn.addEventListener('click', handleSingleDelete); });
+      updateDeleteState();
+    }
+
+    function updateDeleteState() {
+      const selected = document.querySelectorAll('.img-cb:checked');
+      deleteBtn.disabled = selected.length === 0;
+      deleteBtn.textContent = selected.length ? '删除所选图片（' + selected.length + '）' : '删除所选图片';
+    }
+
+    async function handleSingleDelete(event) {
+      const filename = event.currentTarget.dataset.filename;
+      if (!confirm('确认删除图片：' + filename + '？')) return;
+      await deleteImages([filename]);
+    }
+
+    async function deleteImages(filenames) {
+      if (!checkAuth()) return;
+      deleteBtn.disabled = true;
+      deleteBtn.textContent = '删除中...';
+      try {
+        const params = new URLSearchParams();
+        params.append('action', 'delete');
+        params.append('filenames', filenames.join(','));
+        const resp = await fetch('../cgi-bin/image-manager.cgi', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'}, body: params.toString() });
+        const data = await resp.json();
+        if (!data.success) throw new Error((data.errors || [data.error]).filter(Boolean).join(', ') || '删除失败');
+        await loadImages();
+      } catch (err) {
+        alert('删除失败：' + err.message);
+        deleteBtn.disabled = false;
+        deleteBtn.textContent = '删除所选图片';
+      }
+    }
+
+    document.getElementById('uploadZone').addEventListener('dragenter', function() { this.classList.add('hover'); });
+    document.getElementById('uploadZone').addEventListener('dragleave', function() { this.classList.remove('hover'); });
+    document.getElementById('uploadZone').addEventListener('drop', function(event) {
+      event.preventDefault();
+      this.classList.remove('hover');
+      const files = event.dataTransfer.files;
+      if (files.length) document.getElementById('fileInput').files = files;
+    });
+    document.getElementById('uploadZone').addEventListener('dragover', function(event) { event.preventDefault(); });
+
+    document.getElementById('uploadBtn').addEventListener('click', async function() {
+      if (!checkAuth()) return;
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      if (!file) { alert('请先选择图片'); return; }
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('rename', document.getElementById('renameInput').value.trim());
+      const status = document.getElementById('uploadStatus');
+      status.textContent = '上传中...';
+      try {
+        const resp = await fetch('../cgi-bin/image-upload.cgi', { method: 'POST', body: formData });
+        const data = await resp.json();
+        if (!data.success) throw new Error(data.error || '上传失败');
+        status.textContent = '上传成功：' + data.filename;
+        fileInput.value = '';
+        document.getElementById('renameInput').value = '';
+        await loadImages();
+      } catch (err) {
+        status.textContent = '上传失败：' + err.message;
+      }
+    });
+
+    document.getElementById('searchInput').addEventListener('input', renderImages);
+    deleteBtn.addEventListener('click', function() {
+      const selected = Array.from(document.querySelectorAll('.img-cb:checked')).map(function(cb) { return cb.dataset.filename; });
+      if (!selected.length) return;
+      if (!confirm('确认删除 ' + selected.length + ' 张图片？')) return;
+      deleteImages(selected);
+    });
+    loadImages();
+  </script>
+</body>
+</html>

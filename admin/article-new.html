@@ -318,57 +318,223 @@
       margin-bottom: 20px;
     }
 
-    /* ── HTML Toolbar ── */
-    .html-toolbar {
+    .module-mount {
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%);
+      padding: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .module-toolbar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 4px;
-      padding: 0 0 12px;
-      margin: 6px 0 6px;
-      border-bottom: 1px solid var(--gray-200);
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--gray-200);
     }
 
-    .toolbar-label {
-      font-size: 0.78rem;
-      color: var(--gray-400);
-      margin-right: 4px;
-      white-space: nowrap;
-    }
-
-    .html-btn {
-      padding: 5px 9px;
-      background: var(--gray-100);
-      border: 1.5px solid var(--gray-200);
-      border-radius: 5px;
-      font-size: 0.8rem;
+    .module-toolbar .label {
+      font-size: 0.82rem;
+      color: var(--gray-500);
       font-weight: 600;
+    }
+
+    .module-toolbar select {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--gray-900);
+    }
+
+    .module-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: 0.9rem;
+      font-weight: 700;
       cursor: pointer;
       font-family: inherit;
       color: var(--gray-700);
       transition: all 0.15s;
-      min-width: 34px;
-      text-align: center;
+      white-space: nowrap;
     }
 
-    .html-btn:hover {
+    .module-btn:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      color: var(--gray-900);
+    }
+
+    .module-btn.primary {
       background: var(--accent);
       border-color: var(--accent);
       color: var(--white);
     }
 
-    .toolbar-sep {
-      width: 1px;
-      height: 20px;
-      background: var(--gray-200);
-      margin: 0 3px;
+    .module-btn.primary:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    .module-btn.danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+
+    .module-btn.danger:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+    }
+
+    .module-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .module-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .module-card.active {
+      border-color: #93c5fd;
+      box-shadow: 0 12px 34px rgba(37, 99, 235, 0.14);
+    }
+
+    .module-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, #f8fbff 0%, #f8fafc 100%);
+      border-bottom: 1px solid var(--gray-200);
+      cursor: pointer;
+    }
+
+    .module-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .module-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      font-weight: 800;
       flex-shrink: 0;
     }
 
-    .toolbar-note {
-      font-size: 0.75rem;
-      color: var(--gray-400);
-      margin-left: 6px;
+    .module-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .module-icon-btn {
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gray-700);
+      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .module-icon-btn:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      color: var(--gray-900);
+    }
+
+    .module-icon-btn.danger {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+
+    .module-icon-btn.danger:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+    }
+
+    .module-body {
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .module-field label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .module-field input,
+    .module-field textarea,
+    .module-field select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--gray-900);
+    }
+
+    .module-field textarea {
+      min-height: 90px;
+      resize: vertical;
+      line-height: 1.55;
+      font-family: inherit;
+    }
+
+    .module-preview {
+      margin-top: 14px;
+      border-top: 1px dashed var(--gray-200);
+      padding-top: 14px;
+    }
+
+    .module-preview .preview-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+    }
+
+    .module-preview .preview-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 18px;
+      overflow: hidden;
     }
 
     /* ── Image upload card ── */
@@ -454,6 +620,14 @@
       font-size: 0.82rem;
       color: var(--gray-500);
       word-break: break-all;
+    }
+
+    .library-launch-row {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .editor-sidebar .form-row {
@@ -558,6 +732,74 @@
       gap: 14px;
     }
 
+    .library-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2600;
+    }
+
+    .library-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.42);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .library-dialog {
+      position: relative;
+      z-index: 1;
+      width: min(1320px, calc(100vw - 40px));
+      max-height: calc(100vh - 40px);
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      box-shadow: 0 30px 100px rgba(15, 23, 42, 0.24);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .library-dialog-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      background: linear-gradient(180deg, #f8fbff 0%, #f8fafc 100%);
+    }
+
+    .library-dialog-head h3 {
+      font-size: 1.08rem;
+      color: var(--blue-900);
+      margin-bottom: 4px;
+    }
+
+    .library-dialog-head p {
+      font-size: 0.84rem;
+      color: var(--gray-500);
+    }
+
+    .library-dialog-body {
+      padding: 22px 24px 26px;
+      overflow: auto;
+    }
+
+    .library-upload-panel {
+      margin-bottom: 20px;
+      padding: 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .library-upload-grid {
+      align-items: start;
+    }
+
     .editor-sidebar .library-grid {
       grid-template-columns: 1fr;
       max-height: 58vh;
@@ -635,7 +877,8 @@
       padding: 0 12px 12px;
     }
 
-    .library-actions button {
+    .library-actions button,
+    .library-actions a {
       flex: 1;
       padding: 9px 10px;
       border-radius: 8px;
@@ -666,6 +909,18 @@
     .library-actions .btn-use:hover {
       background: #1d4ed8;
       border-color: #1d4ed8;
+    }
+
+    .library-actions .btn-download {
+      background: #f8fafc;
+      color: var(--gray-700);
+      text-decoration: none;
+    }
+
+    .library-actions .btn-download:hover {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+      color: var(--blue-700);
     }
 
     .state-msg {
@@ -890,10 +1145,6 @@
         padding: 20px 16px;
       }
 
-      .html-toolbar {
-        gap: 3px;
-      }
-
       .editor-layout {
         grid-template-columns: 1fr;
       }
@@ -903,26 +1154,21 @@
         top: auto;
       }
 
-      .image-library-panel[open] {
-        position: static;
-        top: auto;
-        left: auto;
-        width: auto;
-        max-height: none;
-        box-shadow: var(--shadow);
-      }
-
-      .image-library-panel[open] .sidebar-panel-body {
-        max-height: none;
-        overflow: visible;
-      }
-
       .card-head-inline,
+      .library-launch-row,
       .library-toolbar,
       .library-status-row,
-      .library-actions {
+      .library-actions,
+      .module-toolbar {
         flex-direction: column;
         align-items: stretch;
+      }
+
+      .library-dialog {
+        width: calc(100vw - 16px);
+        max-height: calc(100vh - 16px);
+        margin: 8px;
+        border-radius: 18px;
       }
 
       .library-summary,
@@ -950,46 +1196,29 @@
 
     <div class="editor-layout">
       <aside class="editor-sidebar">
-
-        <!-- ── 图片上传 ── -->
         <details class="sidebar-panel" open>
-          <summary>图片上传</summary>
+          <summary>图片资源库</summary>
           <div class="sidebar-panel-body">
             <p style="font-size:0.82rem;color:var(--gray-500);margin-bottom:20px">
-              上传后自动设为本文<strong>封面（og:image）</strong>并插入<strong>英文正文顶部</strong>。其他语言留空时会继承英文正文。文件名重复时自动加数字后缀。
+              选择图片后会自动显示当前路径。你可以在资源库里统一上传、下载、设为封面，或添加到当前语言正文模块。
             </p>
-            <div class="form-row">
-              <div class="form-group">
-                <label>选择图片<span class="req">*</span></label>
-                <div class="upload-zone" id="uploadZone">
-                  <input type="file" id="imgFile" accept="image/*">
-                  <div class="upload-zone-text" id="uploadZoneText">
-                    <strong>点击选择图片</strong> 或拖拽到此处<br>
-                    <span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>
-                  </div>
-                </div>
+            <div class="form-group">
+              <label for="coverImagePathDisplay">当前图片路径</label>
+              <input type="text" id="coverImagePathDisplay" placeholder="/images/news/..." readonly>
+              <div class="library-launch-row">
+                <button type="button" class="btn-upload" id="openImageLibraryBtn">选择图片 / 打开资源库</button>
+                <span class="hint">不需要手填目录，选中图片后这里会自动显示。</span>
               </div>
-              <div>
-                <div class="form-group">
-                  <label>重命名<span class="optional">可选，留空用原名</span></label>
-                  <input type="text" id="imgRename" placeholder="新文件名（不含扩展名），如 ev-factory-2026">
-                  <div class="hint">保存路径：<code style="font-size:0.8rem">/images/news/文件名.ext</code></div>
-                </div>
-                <div class="form-group">
-                  <label>Alt 文字<span class="optional">建议填写，有助于 SEO</span></label>
-                  <input type="text" id="imgAlt" placeholder="图片描述，如 WT Fasteners factory floor 2026">
-                  <div class="hint">上传图片和下方资源库插入图片都会使用这里的 Alt / Caption 生成 figure。</div>
-                </div>
-              </div>
+            </div>
+            <div class="form-group">
+              <label>Alt 文字<span class="optional">建议填写，有助于 SEO</span></label>
+              <input type="text" id="imgAlt" placeholder="图片描述，如 WT Fasteners factory floor 2026">
+              <div class="hint">上传图片和正文里的图片模块都会复用这里的 Alt / Caption。</div>
             </div>
             <div class="form-group">
               <label>图片说明 Caption<span class="optional">可选</span></label>
               <input type="text" id="imgCaption" placeholder="显示在图片下方的文字">
             </div>
-            <button type="button" class="btn-upload" id="uploadBtn">上传图片</button>
-            <span id="uploadStatus"
-              style="display:block;font-size:0.82rem;margin-top:10px;color:var(--gray-500)"></span>
-
             <div class="upload-preview-row" id="uploadPreviewRow">
               <img id="uploadThumb" src="" alt="">
               <div class="upload-info">
@@ -997,27 +1226,7 @@
                 <div class="u-path" id="uploadedPath"></div>
                 <div style="margin-top:6px;font-size:0.8rem;color:var(--green-500)" id="currentImageNote"></div>
               </div>
-              <button type="button" class="btn-insert" id="insertAtCursorBtn" title="将同一张图片额外插入到当前光标处">再次插入到光标处</button>
-            </div>
-          </div>
-        </details>
-
-        <!-- ── 图片资源库 ── -->
-        <details class="sidebar-panel image-library-panel" open>
-          <summary>图片资源库</summary>
-          <div class="sidebar-panel-body">
-            <p class="library-note">从 /images/ 选择现有图片设为封面或插入正文。删除功能仍然只在文章管理页处理 /images/news/ 下的图片。</p>
-            <div class="library-toolbar">
-              <input type="text" id="librarySearch" placeholder="搜索文件名或路径，如 abouts / products / news">
-              <span class="library-summary" id="librarySummary">加载中...</span>
-            </div>
-            <div class="library-status-row">
-              <div class="hint">先点击正文编辑框定位光标，再使用“插入到当前光标”。</div>
-              <div class="library-action-msg" id="libraryActionMsg"></div>
-            </div>
-            <button type="button" class="btn-refresh" id="libraryRefreshBtn" style="margin-bottom:14px">刷新图片</button>
-            <div id="libraryGrid">
-              <div class="state-msg">加载中...</div>
+              <button type="button" class="btn-insert" id="insertAtCursorBtn" title="将当前图片添加到正文模块">添加到当前语言正文</button>
             </div>
           </div>
         </details>
@@ -1078,22 +1287,27 @@
             <button type="button" class="lang-tab" data-lang="ko">한국어 🇰🇷</button>
           </div>
 
-          <div class="html-toolbar" id="htmlToolbar">
-            <span class="toolbar-label">格式工具：</span>
-            <button type="button" class="html-btn" data-action="h2" title="H2 二级标题">H2</button>
-            <button type="button" class="html-btn" data-action="h3" title="H3 三级标题">H3</button>
-            <button type="button" class="html-btn" data-action="p" title="段落">P</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="html-btn" data-action="strong" title="加粗"><b>B</b></button>
-            <button type="button" class="html-btn" data-action="em" title="斜体"><i>I</i></button>
-            <button type="button" class="html-btn" data-action="link" title="超链接">🔗</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="html-btn" data-action="ul" title="无序列表">≡ UL</button>
-            <button type="button" class="html-btn" data-action="li" title="列表项">• LI</button>
-            <div class="toolbar-sep"></div>
-            <button type="button" class="html-btn" data-action="blockquote" title="引用块">❝</button>
-            <button type="button" class="html-btn" data-action="hr" title="分割线">—</button>
-            <span class="toolbar-note">先点击正文编辑框定位光标，再点工具按钮</span>
+          <div class="module-toolbar" id="moduleToolbar">
+            <span class="label">模块：</span>
+            <select id="moduleTypeSelect">
+              <option value="heading">标题</option>
+              <option value="paragraph">段落</option>
+              <option value="bullets">要点列表</option>
+              <option value="keypoint">重点说明</option>
+              <option value="quote">引用</option>
+              <option value="link">链接按钮</option>
+              <option value="image">图片</option>
+              <option value="divider">分隔线</option>
+            </select>
+            <button type="button" class="module-btn primary" id="moduleAddBtn">添加模块</button>
+            <button type="button" class="module-btn" id="moduleLoadArticleTemplate">文章模板</button>
+            <button type="button" class="module-btn" id="modulePreviewBtn">预览模块</button>
+            <button type="button" class="module-btn danger" id="moduleClearBtn">清空当前语言</button>
+          </div>
+          <div class="module-list" id="moduleEditor"></div>
+          <div class="module-preview" id="modulePreview" style="display:none">
+            <div class="preview-title">预览（生成后的 HTML 效果）</div>
+            <div class="preview-box" id="modulePreviewBox"></div>
           </div>
 
           <!-- EN panel -->
@@ -1128,10 +1342,10 @@
               <input type="text" id="en_bc_label" placeholder="Market Update Q3 2026">
             </div>
             <div class="form-group body-group">
-              <label>正文 HTML<span class="req">*</span></label>
-              <textarea id="en_body" class="body-editor"
-                placeholder="<p>Article content here...</p>&#10;<h2>Section Heading</h2>&#10;<p>More content...</p>"></textarea>
-              <div class="hint">直接写 HTML，或用上方工具栏快速插入标签。</div>
+              <label>正文内容（模块化）<span class="req">*</span></label>
+              <div class="module-mount" id="moduleMount-en"></div>
+              <textarea id="en_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">在模块里新增/删除内容，系统会自动生成 HTML。</div>
             </div>
           </div>
 
@@ -1154,8 +1368,12 @@
             </div>
             <div class="form-group"><label>面包屑标签<span class="optional">可选</span></label><input type="text"
                 id="zh_bc_label"></div>
-            <div class="form-group body-group"><label>正文 HTML<span class="optional">可选</span></label><textarea
-                id="zh_body" class="body-editor" placeholder="<p>中文内容...</p>&#10;<h2>章节标题</h2>"></textarea></div>
+            <div class="form-group body-group">
+              <label>正文内容（模块化）<span class="optional">可选</span></label>
+              <div class="module-mount" id="moduleMount-zh"></div>
+              <textarea id="zh_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">留空时会自动使用英文内容或翻译。</div>
+            </div>
           </div>
 
           <!-- DE panel -->
@@ -1177,8 +1395,12 @@
             </div>
             <div class="form-group"><label>Breadcrumb-Label<span class="optional">optional</span></label><input
                 type="text" id="de_bc_label"></div>
-            <div class="form-group body-group"><label>Inhalt (HTML)<span
-                  class="optional">optional</span></label><textarea id="de_body" class="body-editor"></textarea></div>
+            <div class="form-group body-group">
+              <label>Inhalt (Modular)<span class="optional">optional</span></label>
+              <div class="module-mount" id="moduleMount-de"></div>
+              <textarea id="de_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Leave blank to use English content / auto-translate.</div>
+            </div>
           </div>
 
           <!-- ES panel -->
@@ -1200,8 +1422,12 @@
             </div>
             <div class="form-group"><label>Etiqueta breadcrumb<span class="optional">opcional</span></label><input
                 type="text" id="es_bc_label"></div>
-            <div class="form-group body-group"><label>Contenido (HTML)<span
-                  class="optional">opcional</span></label><textarea id="es_body" class="body-editor"></textarea></div>
+            <div class="form-group body-group">
+              <label>Contenido (Modular)<span class="optional">opcional</span></label>
+              <div class="module-mount" id="moduleMount-es"></div>
+              <textarea id="es_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Dejar en blanco usará contenido en inglés / traducción automática.</div>
+            </div>
           </div>
 
           <!-- FR panel -->
@@ -1223,8 +1449,12 @@
             </div>
             <div class="form-group"><label>Libellé breadcrumb<span class="optional">optionnel</span></label><input
                 type="text" id="fr_bc_label"></div>
-            <div class="form-group body-group"><label>Contenu (HTML)<span
-                  class="optional">optionnel</span></label><textarea id="fr_body" class="body-editor"></textarea></div>
+            <div class="form-group body-group">
+              <label>Contenu (Modulaire)<span class="optional">optionnel</span></label>
+              <div class="module-mount" id="moduleMount-fr"></div>
+              <textarea id="fr_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Les champs vides utiliseront le contenu anglais / traduction auto.</div>
+            </div>
           </div>
 
           <!-- AR panel -->
@@ -1246,9 +1476,12 @@
             </div>
             <div class="form-group"><label>تسمية التنقل<span class="optional">اختياري</span></label><input type="text"
                 id="ar_bc_label" dir="rtl"></div>
-            <div class="form-group body-group"><label>المحتوى (HTML)<span
-                  class="optional">اختياري</span></label><textarea id="ar_body" class="body-editor"
-                dir="ltr"></textarea></div>
+            <div class="form-group body-group">
+              <label dir="rtl">المحتوى (وحدات)<span class="optional">اختياري</span></label>
+              <div class="module-mount" id="moduleMount-ar"></div>
+              <textarea id="ar_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint" dir="rtl">اتركه فارغًا لاستخدام الإنجليزية / الترجمة التلقائية.</div>
+            </div>
           </div>
 
           <!-- ID panel -->
@@ -1270,8 +1503,12 @@
             </div>
             <div class="form-group"><label>Label Breadcrumb<span class="optional">opsional</span></label><input
                 type="text" id="id_bc_label"></div>
-            <div class="form-group body-group"><label>Konten (HTML)<span
-                  class="optional">opsional</span></label><textarea id="id_body" class="body-editor"></textarea></div>
+            <div class="form-group body-group">
+              <label>Konten (Modular)<span class="optional">opsional</span></label>
+              <div class="module-mount" id="moduleMount-id"></div>
+              <textarea id="id_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">Kosongkan untuk memakai English / auto-translate.</div>
+            </div>
           </div>
 
           <!-- JA panel -->
@@ -1293,8 +1530,12 @@
             </div>
             <div class="form-group"><label>パンくずラベル<span class="optional">任意</span></label><input type="text"
                 id="ja_bc_label"></div>
-            <div class="form-group body-group"><label>本文 (HTML)<span class="optional">任意</span></label><textarea
-                id="ja_body" class="body-editor"></textarea></div>
+            <div class="form-group body-group">
+              <label>本文（モジュール）<span class="optional">任意</span></label>
+              <div class="module-mount" id="moduleMount-ja"></div>
+              <textarea id="ja_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">空欄の場合は英語 / 自動翻訳を使用します。</div>
+            </div>
           </div>
 
           <!-- KO panel -->
@@ -1316,14 +1557,67 @@
             </div>
             <div class="form-group"><label>브레드크럼 레이블<span class="optional">선택</span></label><input type="text"
                 id="ko_bc_label"></div>
-            <div class="form-group body-group"><label>본문 (HTML)<span class="optional">선택</span></label><textarea
-                id="ko_body" class="body-editor"></textarea></div>
+            <div class="form-group body-group">
+              <label>본문 (모듈)<span class="optional">선택</span></label>
+              <div class="module-mount" id="moduleMount-ko"></div>
+              <textarea id="ko_body" class="body-editor" style="display:none"></textarea>
+              <div class="hint">비워두면 영어 / 자동 번역을 사용합니다.</div>
+            </div>
           </div>
 
         </div><!-- .card -->
       </div><!-- .editor-main -->
     </div><!-- .editor-layout -->
   </div><!-- .container -->
+
+  <div class="library-modal" id="imageLibraryModal" style="display:none">
+    <div class="library-backdrop" id="imageLibraryBackdrop"></div>
+    <div class="library-dialog">
+      <div class="library-dialog-head">
+        <div>
+          <h3>图片资源库</h3>
+          <p>在这里统一上传、下载、设为封面，或添加到当前语言正文模块。</p>
+        </div>
+        <button type="button" class="module-btn" id="closeImageLibraryBtn">关闭</button>
+      </div>
+      <div class="library-dialog-body">
+        <div class="library-upload-panel">
+          <div class="form-row library-upload-grid">
+            <div class="form-group">
+              <label>选择图片<span class="req">*</span></label>
+              <div class="upload-zone" id="uploadZone">
+                <input type="file" id="imgFile" accept="image/*">
+                <div class="upload-zone-text" id="uploadZoneText">
+                  <strong>点击选择图片</strong> 或拖拽到此处<br>
+                  <span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>重命名<span class="optional">可选，留空用原名</span></label>
+              <input type="text" id="imgRename" placeholder="新文件名（不含扩展名），如 ev-factory-2026">
+              <div class="hint">保存路径：<code style="font-size:0.8rem">/images/news/文件名.ext</code></div>
+              <button type="button" class="btn-upload" id="uploadBtn" style="margin-top:12px">上传到资源库</button>
+              <span id="uploadStatus" style="display:block;font-size:0.82rem;margin-top:10px;color:var(--gray-500)"></span>
+            </div>
+          </div>
+        </div>
+        <p class="library-note">资源库统一管理 `/images/` 下的图片。支持搜索、下载、设为封面，以及把图片添加到当前语言正文模块。</p>
+        <div class="library-toolbar">
+          <input type="text" id="librarySearch" placeholder="搜索文件名或路径，如 products / news / abouts">
+          <span class="library-summary" id="librarySummary">加载中...</span>
+          <button type="button" class="btn-refresh" id="libraryRefreshBtn">刷新</button>
+        </div>
+        <div class="library-status-row">
+          <div class="hint">点击“设为封面”会同步到当前图片路径，点击“添加模块”会加入当前语言正文。</div>
+          <div class="library-action-msg" id="libraryActionMsg"></div>
+        </div>
+        <div id="libraryGrid">
+          <div class="state-msg">加载中...</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ── Submit bar ── -->
   <div class="submit-bar">
@@ -1396,6 +1690,9 @@
       var safePath = String(path || '').trim();
       currentImagePathRaw = safePath;
       document.getElementById('og_image').value = safePath ? encodeImagePath(safePath) : '';
+      if (document.getElementById('coverImagePathDisplay')) {
+        document.getElementById('coverImagePathDisplay').value = safePath ? '/images/' + safePath : '';
+      }
       document.getElementById('coverCurrent').textContent = safePath
         ? '当前封面图：/images/' + safePath
         : '当前封面图：未选择';
@@ -1412,25 +1709,13 @@
       document.getElementById('uploadPreviewRow').classList.add('show');
     }
 
-    function buildFigureHtml(imagePath) {
+    function buildFigureHtml(imagePath, altText, captionText) {
       var src = '../../../images/' + encodeImagePath(imagePath);
-      var alt = escHtml(document.getElementById('imgAlt').value.trim());
-      var caption = escHtml(document.getElementById('imgCaption').value.trim());
+      var alt = escHtml(String(typeof altText === 'string' ? altText : document.getElementById('imgAlt').value).trim());
+      var caption = escHtml(String(typeof captionText === 'string' ? captionText : document.getElementById('imgCaption').value).trim());
       return '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
         (caption ? '  <figcaption>' + caption + '</figcaption>\n' : '') +
         '</figure>\n\n';
-    }
-
-    function insertIntoCurrentBody(html) {
-      if (!lastBodyTA) {
-        alert('请先点击某个正文编辑框定位光标');
-        return false;
-      }
-      var start = lastBodyTA.selectionStart;
-      lastBodyTA.value = lastBodyTA.value.slice(0, start) + html + lastBodyTA.value.slice(lastBodyTA.selectionEnd);
-      lastBodyTA.selectionStart = lastBodyTA.selectionEnd = start + html.length;
-      lastBodyTA.focus();
-      return true;
     }
 
     // ── Default date ──────────────────────────────────────────────────────────
@@ -1446,71 +1731,370 @@
     });
     document.getElementById('slug').addEventListener('input', function () { this._manual = true; });
 
-    // ── Default EN body template ──────────────────────────────────────────────
-    document.getElementById('en_body').value = [
-      '',
-      '<p>1</p>',
-      '<h2>2</h2>',
-      '<p>3</p>',
+    var MODULE_LANGS = ['en', 'zh', 'de', 'es', 'fr', 'ar', 'id', 'ja', 'ko'];
+    var currentLang = 'en';
+    var modulesByLang = {};
+    var activeModuleIndexByLang = {};
+    var moduleToolbar = document.getElementById('moduleToolbar');
+    var moduleEditor = document.getElementById('moduleEditor');
+    var modulePreview = document.getElementById('modulePreview');
+    var modulePreviewBox = document.getElementById('modulePreviewBox');
 
-      '<ul>',
-      '  <li><strong>4</strong> 5</li>',
-      '  <li><strong>6</strong> 7</li>',
-      '  <li><strong>8</strong> 9</li>',
-      '  <li><strong>10</strong> 11</li>',
-      '</ul>',
+    MODULE_LANGS.forEach(function (lang) {
+      modulesByLang[lang] = [];
+      activeModuleIndexByLang[lang] = -1;
+    });
 
-      '<p>12</p>',
+    function normalizeImagePath(path) {
+      var s = String(path || '').trim();
+      if (!s) return '';
+      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
+      s = s.replace(/^\/?images\//i, '');
+      s = s.replace(/^\/+/, '');
+      return s;
+    }
 
-      '<h2>13</h2>',
-      '<p>14</p>',
+    function moduleTypeName(type) {
+      switch (type) {
+        case 'heading': return '标题';
+        case 'paragraph': return '段落';
+        case 'bullets': return '要点列表';
+        case 'keypoint': return '重点说明';
+        case 'quote': return '引用';
+        case 'link': return '链接按钮';
+        case 'image': return '图片';
+        case 'divider': return '分隔线';
+        default: return type || '模块';
+      }
+    }
 
-      '<p><strong>15</strong> 16</p>',
+    function createModule(type) {
+      switch (type) {
+        case 'heading': return { type: 'heading', level: 2, text: '' };
+        case 'paragraph': return { type: 'paragraph', text: '' };
+        case 'bullets': return { type: 'bullets', itemsText: '' };
+        case 'keypoint': return { type: 'keypoint', strong: '', text: '' };
+        case 'quote': return { type: 'quote', text: '', cite: '' };
+        case 'link': return { type: 'link', text: '', url: 'https://', style: 'primary' };
+        case 'image': return { type: 'image', path: '', alt: '', caption: '' };
+        case 'divider': return { type: 'divider' };
+        default: return { type: 'paragraph', text: '' };
+      }
+    }
 
-      '<p><strong>17</strong> 18</p>',
+    function escapeTextWithBreaks(text) {
+      var t = String(text || '').trim();
+      if (!t) return '';
+      return escHtml(t).replace(/\n/g, '<br>');
+    }
 
-      '<h2>19</h2>',
+    function compileModulesToHtml(modules) {
+      var out = [];
+      (modules || []).forEach(function (m) {
+        if (!m || !m.type) return;
+        if (m.type === 'heading') {
+          var lvl = (m.level === 3) ? 3 : 2;
+          var txt = String(m.text || '').trim();
+          if (!txt) return;
+          out.push('<h' + lvl + '>' + escHtml(txt) + '</h' + lvl + '>');
+          return;
+        }
+        if (m.type === 'paragraph') {
+          var p = String(m.text || '').trim();
+          if (!p) return;
+          out.push('<p>' + escapeTextWithBreaks(p) + '</p>');
+          return;
+        }
+        if (m.type === 'bullets') {
+          var items = String(m.itemsText || '').split('\n').map(function (x) { return String(x || '').trim(); }).filter(Boolean);
+          if (!items.length) return;
+          out.push('<ul>\n' + items.map(function (it) { return '  <li>' + escHtml(it) + '</li>'; }).join('\n') + '\n</ul>');
+          return;
+        }
+        if (m.type === 'keypoint') {
+          var strong = String(m.strong || '').trim();
+          var text = String(m.text || '').trim();
+          if (!strong && !text) return;
+          if (strong && text) {
+            out.push('<p><strong>' + escHtml(strong) + '</strong> ' + escapeTextWithBreaks(text) + '</p>');
+          } else if (strong) {
+            out.push('<p><strong>' + escHtml(strong) + '</strong></p>');
+          } else {
+            out.push('<p>' + escapeTextWithBreaks(text) + '</p>');
+          }
+          return;
+        }
+        if (m.type === 'quote') {
+          var quoteText = String(m.text || '').trim();
+          var cite = String(m.cite || '').trim();
+          if (!quoteText) return;
+          out.push('<blockquote>' + escapeTextWithBreaks(quoteText) + (cite ? '<cite>' + escHtml(cite) + '</cite>' : '') + '</blockquote>');
+          return;
+        }
+        if (m.type === 'link') {
+          var linkText = String(m.text || '').trim();
+          var url = String(m.url || '').trim();
+          if (!linkText || !url) return;
+          var style = m.style === 'muted' ? 'color:var(--gray-700)' : 'color:var(--accent)';
+          out.push('<p><a href="' + escHtml(url) + '" style="' + style + '">' + escHtml(linkText) + '</a></p>');
+          return;
+        }
+        if (m.type === 'image') {
+          var path = normalizeImagePath(m.path);
+          if (!path) return;
+          out.push(buildFigureHtml(path, m.alt || '', m.caption || '').trim());
+          return;
+        }
+        if (m.type === 'divider') {
+          out.push('<hr>');
+        }
+      });
+      return out.join('\n\n').trim() + (out.length ? '\n' : '');
+    }
 
-      '<ul>',
-      '  <li><strong>20</strong> 21</li>',
-      '  <li><strong>22</strong> 23</li>',
-      '  <li><strong>24</strong> 25</li>',
-      '  <li><strong>26</strong> 27</li>',
-      '</ul>',
+    function syncBodyTextarea(lang) {
+      var ta = document.getElementById(lang + '_body');
+      if (!ta) return;
+      ta.value = compileModulesToHtml(modulesByLang[lang]);
+    }
 
+    function syncAllBodyTextareas() {
+      MODULE_LANGS.forEach(function (lang) { syncBodyTextarea(lang); });
+    }
 
+    function getActiveModuleIndex() {
+      var idx = activeModuleIndexByLang[currentLang];
+      if (typeof idx !== 'number') return -1;
+      return idx;
+    }
 
-      '<h2>31</h2>',
+    function setActiveModuleIndex(idx) {
+      activeModuleIndexByLang[currentLang] = idx;
+      renderModuleEditor();
+    }
 
-      '<p><strong>32</strong> 33</p>',
-      '<p><strong>34</strong> 35</p>',
-      '<p><strong>36</strong> 37</p>',
-      '<p><strong>38</strong> 39</p>',
+    function addModuleToCurrentLang(module, insertAfterIndex) {
+      var modules = modulesByLang[currentLang];
+      var m = module || createModule('paragraph');
+      var at = (typeof insertAfterIndex === 'number' && insertAfterIndex >= -1) ? insertAfterIndex : getActiveModuleIndex();
+      if (at >= 0 && at < modules.length) {
+        modules.splice(at + 1, 0, m);
+        setActiveModuleIndex(at + 1);
+      } else {
+        modules.push(m);
+        setActiveModuleIndex(modules.length - 1);
+      }
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    }
 
-      '<h2>40</h2>',
+    function prependModuleToLang(lang, module) {
+      modulesByLang[lang].unshift(module);
+      activeModuleIndexByLang[lang] = 0;
+      syncBodyTextarea(lang);
+      if (lang === currentLang) {
+        renderModuleEditor();
+        updatePreview();
+      }
+    }
 
-      '<ul>',
-      '  <li>41</li>',
-      '  <li>42</li>',
-      '  <li>43</li>',
-      '  <li>44</li>',
-      '</ul>',
+    function deleteModule(idx) {
+      var modules = modulesByLang[currentLang];
+      if (idx < 0 || idx >= modules.length) return;
+      modules.splice(idx, 1);
+      activeModuleIndexByLang[currentLang] = Math.min(idx, modules.length - 1);
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    }
 
-      '<p>45</p>',
+    function moveModule(idx, dir) {
+      var modules = modulesByLang[currentLang];
+      var j = idx + dir;
+      if (idx < 0 || idx >= modules.length || j < 0 || j >= modules.length) return;
+      var tmp = modules[idx];
+      modules[idx] = modules[j];
+      modules[j] = tmp;
+      activeModuleIndexByLang[currentLang] = j;
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    }
 
-'<p>For product details or technical support, please visit our <a href="../products.html" style="color:var(--accent)">Products Page</a> or <a href="../contact.html" style="color:var(--accent)">contact our team</a>.</p>',
+    function renderModuleEditor() {
+      var modules = modulesByLang[currentLang];
+      var active = getActiveModuleIndex();
+      if (!modules.length) {
+        moduleEditor.innerHTML = '<div class="state-msg">当前语言正文为空。点击“添加模块”开始。</div>';
+        return;
+      }
 
-    ].join('\n');
+      var html = modules.map(function (m, idx) {
+        var badge = moduleTypeName(m.type);
+        var title = '';
+        if (m.type === 'heading') title = String(m.text || '').trim();
+        if (m.type === 'paragraph') title = String(m.text || '').trim().slice(0, 40);
+        if (m.type === 'keypoint') title = String(m.strong || '').trim();
+        if (m.type === 'image') title = String(m.path || '').trim();
+        var headTitle = title ? escHtml(title) : ('模块 ' + (idx + 1));
+        var cardCls = 'module-card' + (idx === active ? ' active' : '');
+        var bodyHtml = '';
 
-    // ── Language tabs ─────────────────────────────────────────────────────────
-    var htmlToolbar = document.getElementById('htmlToolbar');
+        if (m.type === 'heading') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>级别</label>' +
+            '<select data-field="level">' +
+            '<option value="2"' + (m.level === 2 ? ' selected' : '') + '>H2</option>' +
+            '<option value="3"' + (m.level === 3 ? ' selected' : '') + '>H3</option>' +
+            '</select>' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>标题文字</label>' +
+            '<input type="text" data-field="text" value="' + escHtml(m.text || '') + '" placeholder="输入标题...">' +
+            '</div>';
+        } else if (m.type === 'paragraph') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>段落内容</label>' +
+            '<textarea data-field="text" placeholder="输入正文内容...">' + escHtml(m.text || '') + '</textarea>' +
+            '</div>';
+        } else if (m.type === 'bullets') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>要点（每行一个）</label>' +
+            '<textarea data-field="itemsText" placeholder="例如：\n全球市场需求回升\n原材料价格保持稳定\n交期预计缩短">' + escHtml(m.itemsText || '') + '</textarea>' +
+            '</div>';
+        } else if (m.type === 'keypoint') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>重点标题</label>' +
+            '<input type="text" data-field="strong" value="' + escHtml(m.strong || '') + '" placeholder="如：Supply Chain">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>说明内容</label>' +
+            '<textarea data-field="text" placeholder="输入补充说明...">' + escHtml(m.text || '') + '</textarea>' +
+            '</div>';
+        } else if (m.type === 'quote') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>引用内容</label>' +
+            '<textarea data-field="text" placeholder="输入引用内容...">' + escHtml(m.text || '') + '</textarea>' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>引用来源<span class="optional">可选</span></label>' +
+            '<input type="text" data-field="cite" value="' + escHtml(m.cite || '') + '" placeholder="如：WT Fasteners Research Team">' +
+            '</div>';
+        } else if (m.type === 'link') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>链接文字</label>' +
+            '<input type="text" data-field="text" value="' + escHtml(m.text || '') + '" placeholder="如：View Product Details">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>链接地址</label>' +
+            '<input type="text" data-field="url" value="' + escHtml(m.url || '') + '" placeholder="https://">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>链接样式</label>' +
+            '<select data-field="style">' +
+            '<option value="primary"' + (m.style !== 'muted' ? ' selected' : '') + '>主强调色</option>' +
+            '<option value="muted"' + (m.style === 'muted' ? ' selected' : '') + '>普通文字色</option>' +
+            '</select>' +
+            '</div>';
+        } else if (m.type === 'image') {
+          bodyHtml =
+            '<div class="module-field">' +
+            '<label>图片路径（相对 /images/）</label>' +
+            '<input type="text" data-field="path" value="' + escHtml(m.path || '') + '" placeholder="news/example.webp">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>Alt 文本</label>' +
+            '<input type="text" data-field="alt" value="' + escHtml(m.alt || '') + '" placeholder="如：Factory overview">' +
+            '</div>' +
+            '<div class="module-field">' +
+            '<label>图片说明<span class="optional">可选</span></label>' +
+            '<input type="text" data-field="caption" value="' + escHtml(m.caption || '') + '" placeholder="显示在图片下方的文字">' +
+            '</div>' +
+            '<div class="module-actions" style="justify-content:flex-start">' +
+            '<button type="button" class="module-btn" data-action="useCurrentImage">使用当前封面图</button>' +
+            '</div>';
+        } else if (m.type === 'divider') {
+          bodyHtml = '<div class="state-msg">分隔线模块，无需填写内容。</div>';
+        }
 
-    function placeToolbar(lang) {
-      var panel = document.getElementById('panel-' + lang);
-      if (!panel) return;
-      var bodyGroup = panel.querySelector('.body-group');
-      if (!bodyGroup) return;
-      bodyGroup.parentNode.insertBefore(htmlToolbar, bodyGroup);
+        return '<div class="' + cardCls + '" data-idx="' + idx + '">' +
+          '<div class="module-head">' +
+          '<div class="module-title"><span class="module-badge">' + escHtml(badge) + '</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + headTitle + '</span></div>' +
+          '<div class="module-actions">' +
+          '<button type="button" class="module-icon-btn" data-action="up" title="上移">↑</button>' +
+          '<button type="button" class="module-icon-btn" data-action="down" title="下移">↓</button>' +
+          '<button type="button" class="module-icon-btn danger" data-action="del" title="删除">删除</button>' +
+          '</div>' +
+          '</div>' +
+          '<div class="module-body">' + bodyHtml + '</div>' +
+          '</div>';
+      }).join('');
+
+      moduleEditor.innerHTML = html;
+
+      moduleEditor.querySelectorAll('.module-card').forEach(function (card) {
+        var idx = parseInt(card.dataset.idx, 10);
+        card.querySelector('.module-head').addEventListener('click', function () {
+          setActiveModuleIndex(idx);
+        });
+
+        card.querySelectorAll('button[data-action]').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var action = this.dataset.action;
+            if (action === 'up') moveModule(idx, -1);
+            if (action === 'down') moveModule(idx, 1);
+            if (action === 'del') deleteModule(idx);
+            if (action === 'useCurrentImage') {
+              var mod = modulesByLang[currentLang][idx];
+              mod.path = normalizeImagePath(currentImagePathRaw);
+              mod.alt = String(document.getElementById('imgAlt').value || '').trim();
+              mod.caption = String(document.getElementById('imgCaption').value || '').trim();
+              renderModuleEditor();
+              syncBodyTextarea(currentLang);
+              updatePreview();
+            }
+          });
+        });
+
+        card.querySelectorAll('input[data-field], textarea[data-field], select[data-field]').forEach(function (fieldEl) {
+          fieldEl.addEventListener('input', function () {
+            var mod = modulesByLang[currentLang][idx];
+            if (!mod) return;
+            var key = this.dataset.field;
+            if (key === 'level') {
+              mod.level = parseInt(this.value, 10) === 3 ? 3 : 2;
+            } else {
+              mod[key] = this.value;
+            }
+            syncBodyTextarea(currentLang);
+            updatePreview();
+          });
+        });
+      });
+    }
+
+    function updatePreview() {
+      if (modulePreview.style.display === 'none') return;
+      modulePreviewBox.innerHTML = compileModulesToHtml(modulesByLang[currentLang]);
+    }
+
+    function placeModuleEditor(lang) {
+      var mount = document.getElementById('moduleMount-' + lang);
+      if (!mount) return;
+      currentLang = lang;
+      mount.innerHTML = '';
+      mount.appendChild(moduleToolbar);
+      mount.appendChild(moduleEditor);
+      mount.appendChild(modulePreview);
+      renderModuleEditor();
+      updatePreview();
     }
 
     document.querySelectorAll('.lang-tab').forEach(function (tab) {
@@ -1519,29 +2103,58 @@
         document.querySelectorAll('.lang-panel').forEach(function (p) { p.classList.remove('active'); });
         this.classList.add('active');
         document.getElementById('panel-' + this.dataset.lang).classList.add('active');
-        placeToolbar(this.dataset.lang);
+        placeModuleEditor(this.dataset.lang);
       });
     });
+    placeModuleEditor('en');
 
-    // ── Track last focused body textarea ─────────────────────────────────────
-    var lastBodyTA = null;
-    document.querySelectorAll('textarea.body-editor').forEach(function (ta) {
-      ta.addEventListener('focus', function () { lastBodyTA = this; });
+    document.getElementById('moduleAddBtn').addEventListener('click', function () {
+      addModuleToCurrentLang(createModule(document.getElementById('moduleTypeSelect').value));
     });
 
-    // ── Default placeholder template for non-EN body textareas ───────────────
-    var DEFAULT_BODY_TPL =
-      '<h2>Section Heading</h2>\n' +
-      '<p>Paragraph text...</p>\n' +
-      '<ul>\n  <li>List item</li>\n</ul>';
-    ['ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'].forEach(function (lang) {
-      var ta = document.getElementById(lang + '_body');
-      if (ta && !ta.value) ta.placeholder = DEFAULT_BODY_TPL;
+    document.getElementById('modulePreviewBtn').addEventListener('click', function () {
+      modulePreview.style.display = modulePreview.style.display === 'none' ? '' : 'none';
+      updatePreview();
     });
-    placeToolbar('en');
+
+    document.getElementById('moduleClearBtn').addEventListener('click', function () {
+      if (!confirm('确定要清空当前语言的正文模块吗？此操作不可撤销。')) return;
+      modulesByLang[currentLang] = [];
+      activeModuleIndexByLang[currentLang] = -1;
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    });
+
+    document.getElementById('moduleLoadArticleTemplate').addEventListener('click', function () {
+      if (!confirm('确定载入文章模板吗？这会覆盖当前语言的正文内容。')) return;
+      modulesByLang[currentLang] = [
+        { type: 'paragraph', text: 'Start with a short intro that summarizes the key news point in one or two sentences.' },
+        { type: 'heading', level: 2, text: 'Market Overview' },
+        { type: 'paragraph', text: 'Describe what happened, who is affected, and why this update matters for buyers or distributors.' },
+        { type: 'bullets', itemsText: 'Key point 1\nKey point 2\nKey point 3' },
+        { type: 'heading', level: 2, text: 'What Buyers Should Watch' },
+        { type: 'keypoint', strong: 'Lead Time:', text: 'Explain expected shipment or procurement timing.' },
+        { type: 'keypoint', strong: 'Pricing:', text: 'Explain current pricing movement or cost pressure.' },
+        { type: 'link', text: 'View Products Page', url: '../products.html', style: 'primary' }
+      ];
+      activeModuleIndexByLang[currentLang] = 0;
+      renderModuleEditor();
+      syncBodyTextarea(currentLang);
+      updatePreview();
+    });
 
     // ── Image library ────────────────────────────────────────────────────────
     var libraryImages = [];
+
+    function openImageLibrary() {
+      document.getElementById('imageLibraryModal').style.display = '';
+      loadImageLibrary();
+    }
+
+    function closeImageLibrary() {
+      document.getElementById('imageLibraryModal').style.display = 'none';
+    }
 
     function renderImageLibrary() {
       var keyword = document.getElementById('librarySearch').value.trim().toLowerCase();
@@ -1568,7 +2181,8 @@
           '</div>' +
           '<div class="library-actions">' +
           '<button type="button" class="btn-cover" data-path="' + escHtml(item.path) + '" data-name="' + escHtml(item.filename) + '">设为封面</button>' +
-          '<button type="button" class="btn-use" data-path="' + escHtml(item.path) + '">插入到当前光标</button>' +
+          '<button type="button" class="btn-use" data-path="' + escHtml(item.path) + '">添加模块</button>' +
+          '<a class="btn-download" href="' + item.url + '" download="' + escHtml(item.filename) + '">下载</a>' +
           '</div>' +
           '</div>';
       }).join('');
@@ -1586,9 +2200,13 @@
       document.querySelectorAll('.btn-use').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var path = this.dataset.path;
-          if (insertIntoCurrentBody(buildFigureHtml(path))) {
-            document.getElementById('libraryActionMsg').textContent = '已插入：/images/' + path;
-          }
+          addModuleToCurrentLang({
+            type: 'image',
+            path: normalizeImagePath(path),
+            alt: String(document.getElementById('imgAlt').value || '').trim(),
+            caption: String(document.getElementById('imgCaption').value || '').trim()
+          });
+          document.getElementById('libraryActionMsg').textContent = '已添加图片模块：/images/' + path;
         });
       });
     }
@@ -1621,6 +2239,9 @@
 
     document.getElementById('librarySearch').addEventListener('input', renderImageLibrary);
     document.getElementById('libraryRefreshBtn').addEventListener('click', loadImageLibrary);
+    document.getElementById('openImageLibraryBtn').addEventListener('click', openImageLibrary);
+    document.getElementById('closeImageLibraryBtn').addEventListener('click', closeImageLibrary);
+    document.getElementById('imageLibraryBackdrop').addEventListener('click', closeImageLibrary);
 
     // ── Image upload ──────────────────────────────────────────────────────────
     document.getElementById('imgFile').addEventListener('change', function () {
@@ -1658,19 +2279,19 @@
           btn.disabled = false;
           if (data.success) {
             statusEl.textContent = '';
-            setCurrentImage(data.path, data.filename, '✓ 已设为封面 · ✓ 已插入英文正文顶部');
-
-            // Only prepend to EN body; other langs stay empty (fallback to EN)
-            var fig = buildFigureHtml(data.path);
-            var enBody = document.getElementById('en_body');
-            enBody.value = fig + enBody.value;
-
-            // Set template as placeholder for other language bodies
-            var tpl = fig + '<h2>Section Heading</h2>\n<p>Paragraph text...</p>';
-            ['ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'].forEach(function (lang) {
-              var ta = document.getElementById(lang + '_body');
-              if (ta) ta.placeholder = tpl;
+            setCurrentImage(data.path, data.filename, '✓ 已设为封面 · ✓ 已添加到英文正文模块');
+            prependModuleToLang('en', {
+              type: 'image',
+              path: normalizeImagePath(data.path),
+              alt: String(document.getElementById('imgAlt').value || '').trim(),
+              caption: String(document.getElementById('imgCaption').value || '').trim()
             });
+            document.getElementById('imgFile').value = '';
+            document.getElementById('imgRename').value = '';
+            document.getElementById('uploadZoneText').innerHTML =
+              '<strong>点击选择图片</strong> 或拖拽到此处<br><span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>';
+            loadImageLibrary();
+            document.getElementById('libraryActionMsg').textContent = '已上传并设为封面：/images/' + data.path;
           } else {
             statusEl.textContent = '❌ ' + data.error;
           }
@@ -1681,62 +2302,23 @@
         });
     });
 
-    // Re-insert the same uploaded image at cursor position
+    // Re-use current image as a new module
     document.getElementById('insertAtCursorBtn').addEventListener('click', function () {
       if (!currentImagePathRaw) {
         alert('请先上传图片或从资源库选择封面图');
         return;
       }
-      insertIntoCurrentBody(buildFigureHtml(currentImagePathRaw));
-    });
-
-    // ── HTML Toolbar ──────────────────────────────────────────────────────────
-    document.querySelectorAll('.html-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (!lastBodyTA) return;
-        var action = this.dataset.action;
-        var ta = lastBodyTA;
-        var start = ta.selectionStart;
-        var end = ta.selectionEnd;
-        var selected = ta.value.slice(start, end);
-        var insert = '';
-
-        switch (action) {
-          case 'h2':
-            insert = '<h2>' + (selected || '标题') + '</h2>\n'; break;
-          case 'h3':
-            insert = '<h3>' + (selected || '小标题') + '</h3>\n'; break;
-          case 'p':
-            insert = '<p>' + (selected || '段落文字...') + '</p>\n'; break;
-          case 'strong':
-            insert = '<strong>' + (selected || '粗体') + '</strong>'; break;
-          case 'em':
-            insert = '<em>' + (selected || '斜体') + '</em>'; break;
-          case 'link': {
-            var url = prompt('链接 URL：', 'https://');
-            if (!url) return;
-            insert = '<a href="' + url + '" style="color:var(--accent)">' + (selected || '链接文字') + '</a>';
-            break;
-          }
-          case 'ul':
-            insert = '<ul>\n  <li>' + (selected || '列表项') + '</li>\n  <li>列表项</li>\n</ul>\n'; break;
-          case 'li':
-            insert = '<li>' + (selected || '列表项') + '</li>\n'; break;
-          case 'blockquote':
-            insert = '<blockquote>' + (selected || '引用文字') + '</blockquote>\n'; break;
-          case 'hr':
-            insert = '\n<hr>\n'; break;
-        }
-
-        var text = ta.value;
-        ta.value = text.slice(0, start) + insert + text.slice(end);
-        ta.selectionStart = ta.selectionEnd = start + insert.length;
-        ta.focus();
+      addModuleToCurrentLang({
+        type: 'image',
+        path: normalizeImagePath(currentImagePathRaw),
+        alt: String(document.getElementById('imgAlt').value || '').trim(),
+        caption: String(document.getElementById('imgCaption').value || '').trim()
       });
     });
 
     // ── Preview ───────────────────────────────────────────────────────────────
     function buildPreview(lang) {
+      syncAllBodyTextareas();
       var title = (document.getElementById(lang + '_title').value || document.getElementById('en_title').value).trim() || '（无标题）';
       var subtitle = (document.getElementById(lang + '_subtitle').value || document.getElementById('en_subtitle').value).trim();
       var body = (document.getElementById(lang + '_body').value || document.getElementById('en_body').value).trim();
@@ -1783,10 +2365,12 @@
 
     // Close preview with Escape key
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') document.getElementById('previewOverlay').style.display = 'none';
+      if (e.key !== 'Escape') return;
+      document.getElementById('previewOverlay').style.display = 'none';
+      if (document.getElementById('imageLibraryModal').style.display !== 'none') {
+        closeImageLibrary();
+      }
     });
-
-    loadImageLibrary();
 
     document.getElementById('checkTranslateBtn').addEventListener('click', function () {
       var btn = this;
@@ -1861,6 +2445,7 @@
 
     // ── Submit ────────────────────────────────────────────────────────────────
     document.getElementById('submitBtn').addEventListener('click', function () {
+      syncAllBodyTextareas();
       var slug = document.getElementById('slug').value.trim();
       var date = document.getElementById('date').value;
       var title = document.getElementById('en_title').value.trim();
