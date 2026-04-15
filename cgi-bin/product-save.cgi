@@ -290,6 +290,15 @@ def translate_fields(lang, source_fields):
   if not api_key or not api_url:
     raise RuntimeError('自动翻译已启用，但服务器未配置 WT_TRANSLATE_API_KEY / WT_TRANSLATE_API_URL、DEEPSEEK_API_KEY / DEEPSEEK_API_BASE，或 OPENAI_API_KEY / OPENAI_BASE_URL')
   target_name = LANG_LABELS.get(lang, lang)
+  body_text = source_fields.get('body', '')
+  img_masks = []
+
+  def mask_img(match):
+    img_masks.append(match.group(0))
+    return f'__IMG_MASK_{len(img_masks) - 1}__'
+
+  masked_source_fields = dict(source_fields)
+  masked_source_fields['body'] = re.sub(r'<img\s+[^>]*>', mask_img, body_text)
   system_prompt = (
     'You are a professional website localization translator for industrial fastener product pages. '
     'Translate English source content into the requested target language and return strict JSON only.'
@@ -298,7 +307,7 @@ def translate_fields(lang, source_fields):
     f'Target language: {target_name} ({lang}).\n'
     'Return exactly one JSON object with keys: title, subtitle, summary, meta_desc, keywords, bc_label, body.\n'
     'Rules:\n'
-    '1. Preserve HTML structure in body exactly: keep tag names, nesting, href, src, class, id, style, loading, and relative paths unchanged.\n'
+    '1. Preserve HTML structure in body exactly: keep tag names, nesting, href, src, class, id, style, loading, and relative paths unchanged. Do not alter placeholders like __IMG_MASK_0__.\n'
     '2. Translate only human-readable text content. Do not translate URLs, filenames, product standards, model numbers, or brand names like WT Fasteners.\n'
     '3. Keep measurements, units, dates, percentages, DIN/ISO/ASTM codes, and punctuation formatting appropriate for the target language.\n'
     '4. keywords must stay a comma-separated SEO keyword string in the target language.\n'
@@ -306,7 +315,7 @@ def translate_fields(lang, source_fields):
     '6. If subtitle is empty, return an empty string for subtitle.\n'
     '7. Output JSON only, with no markdown fences or explanations.\n\n'
     'Source JSON:\n'
-    + json.dumps(source_fields, ensure_ascii=False)
+    + json.dumps(masked_source_fields, ensure_ascii=False)
   )
   payload = {
     'model': pick_translation_model(),
@@ -342,6 +351,14 @@ def translate_fields(lang, source_fields):
     raise RuntimeError(f'{target_name} 翻译响应解析失败: {exc}')
 
   translated = extract_json_object(content)
+  if 'body' in translated:
+    def restore_img(match):
+      idx = int(match.group(1))
+      if 0 <= idx < len(img_masks):
+        return img_masks[idx]
+      return match.group(0)
+
+    translated['body'] = re.sub(r'__IMG_MASK_(\d+)__', restore_img, translated['body'])
   missing = [field for field in TRANSLATABLE_FIELDS if field not in translated]
   if missing:
     raise RuntimeError(f"{target_name} 翻译结果缺少字段: {', '.join(missing)}")
