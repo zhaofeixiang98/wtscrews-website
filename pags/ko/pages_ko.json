@@ -1,254 +1,46 @@
 {
-    "news": [
-        {
-            "slug": "news/2026-04-15",
-            "title": "광저우 박람회에서 이우 박람회까지: 패스너 산업, 4월 '듀얼 코어' 무역 호황 맞이",
-            "date": "2026-04-15",
-            "summary": "2026년 4월은 화남 지역 패스너 무역 행사의 집중 폭발을 맞는 달입니다. 제6회 광저우 소싱 페어(GSF)가 4월 14일부터 17일까지 폴리 월드 트레이드 센터에서 열리고, 이어서 제10회 이우 국제 하드웨어·전기제품 박람회가 4월 20일부터 22일까지 개최됩니다. 이 두 주요 상업 허브 간의 연계는 '광저우 정밀 연결 + 이우 글로벌 접근'이라는 듀얼 코어 무역 회랑을 형성하여 패스너 기업들에게 해외 주문 확보와 신흥 시장 진출을 위한 최적의 창구를 제공합니다.",
-            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
-        },
-        {
-            "slug": "news/2026-04-14-us-tariff-fastener",
-            "title": "미국 관세 정책 조정: 패스너 수출, 새로운 전환점에 직면",
-            "date": "2026-04-14",
-            "summary": "2026년 4월 6일 발효, 미국은 철강 및 알루미늄 파생 제품에 대한 섹션 232 관세 규칙을 공식적으로 조정했습니다. 철강 또는 알루미늄을 함유한 패스너의 경우, 계산 방식이 근본적으로 변경되었습니다—금속 함량 가치에만 과세하던 방식에서 전체 제품의 신고 가치에 대해 25% 관세를 부과하는 방식으로 바뀌었습니다. 본문은 새로운 규정, 비용 영향 추정 및 기업 대응 전략에 대한 심층 분석을 제공합니다.",
-            "icon": "../../images/logo.jpg"
-        }
-    ],
-    "products": [
-        {
-            "category": "볼트",
-            "icon": "images/products/bolts/Hex Bolt0.webp",
-            "items": [
-                {
-                    "slug": "products/hex-bolts",
-                    "title": "육각 볼트",
-                    "summary": "DIN 931/933, ISO 4014/4017 규격의 전나사/반나사 육각 볼트. 강도 등급 4.8~12.9, 규격 M4~M64.",
-                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
-                },
-                {
-                    "slug": "products/flange-bolts",
-                    "title": "플랜지 볼트",
-                    "summary": "DIN 6921 / ISO 1665 규격의 톱니형/무톱니 플랜지 볼트. 일체형 와셔 면으로 진동 방지.",
-                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
-                },
-                {
-                    "slug": "products/anchor-bolts",
-                    "title": "앵커 볼트",
-                    "summary": "콘크리트 및 벽돌 구조용 확장 앵커, 쐐기 앵커, 케미컬 앵커 볼트.",
-                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-                },
-                {
-                    "slug": "products/high-strength-bolts",
-                    "title": "고강도 볼트",
-                    "summary": "중하중 구조용 고강도 볼트. 8.8, 10.9, 12.9급 구비.",
-                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-                },
-                {
-                    "slug": "products/t-bolts",
-                    "title": "T형 볼트",
-                    "summary": "T슬롯 프로파일 및 구조물용 T형 볼트. 다양한 규격 및 소재.",
-                    "icon": "../../images/products/bolts/T Bolt4.webp"
-                }
-            ]
-        },
-        {
-            "category": "너트",
-            "icon": "images/products/nuts/Hex Nut1.webp",
-            "items": [
-                {
-                    "slug": "products/hex-nuts",
-                    "title": "육각 너트",
-                    "summary": "DIN 934 / ISO 4032 표준 육각 너트. 규격 M4~M64, 등급 4, 6, 8, 10급.",
-                    "icon": "../../images/products/nuts/Hex Nut1.webp"
-                },
-                {
-                    "slug": "products/flange-nuts",
-                    "title": "플랜지 너트",
-                    "summary": "일체형 와셔 면이 있는 톱니형 플랜지 너트, 진동 방지 우수. DIN 6923.",
-                    "icon": "../../images/products/nuts/Flange Nut.webp"
-                },
-                {
-                    "slug": "products/nyloc-nuts",
-                    "title": "나일록 너트",
-                    "summary": "나일론 삽입형 풀림 방지 너트. DIN 985 / ISO 10511.",
-                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
-                },
-                {
-                    "slug": "products/weld-nuts",
-                    "title": "용접 너트",
-                    "summary": "자동 용접용 돌기 용접 너트. 사각형, 육각형 구비.",
-                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
-                },
-                {
-                    "slug": "products/wing-nuts",
-                    "title": "날개 너트",
-                    "summary": "수동으로 빠른 조립/분해가 가능한 날개 너트. 다양한 규격.",
-                    "icon": "../../images/products/nuts/Wing Nut7.webp"
-                }
-            ]
-        },
-        {
-            "category": "와셔",
-            "icon": "images/products/washers/Flat Washer4.webp",
-            "items": [
-                {
-                    "slug": "products/flat-washers",
-                    "title": "평와셔",
-                    "summary": "DIN 125 / ISO 7089 표준 평와셔. 아연 도금, 용융 아연 도금, 소지 선택 가능.",
-                    "icon": "../../images/products/washers/Flat Washer4.webp"
-                },
-                {
-                    "slug": "products/lock-washers",
-                    "title": "풀림 방지 와셔",
-                    "summary": "진동 방지용 절개형 스프링 와셔. DIN 127 / ISO 7092.",
-                    "icon": "../../images/products/washers/Lock Washer2.webp"
-                },
-                {
-                    "slug": "products/spring-washers",
-                    "title": "스프링 와셔",
-                    "summary": "동하중 적용용 원추형 스프링 와셔. DIN 2093.",
-                    "icon": "../../images/products/washers/Spring Washer4.webp"
-                },
-                {
-                    "slug": "products/square-washers",
-                    "title": "사각 와셔",
-                    "summary": "구조물용 사각 평와셔. DIN 436.",
-                    "icon": "../../images/products/washers/Square Washer1.webp"
-                }
-            ]
-        },
-        {
-            "category": "나사",
-            "icon": "images/products/screws/Machine Screw2.webp",
-            "items": [
-                {
-                    "slug": "products/machine-screws",
-                    "title": "기계 나사",
-                    "summary": "접시머신, 육각머신, 접시머신 나사. DIN 963, 964, 965, 966.",
-                    "icon": "../../images/products/screws/Machine Screw2.webp"
-                },
-                {
-                    "slug": "products/self-drilling-screws",
-                    "title": "셀프 드릴링 나사",
-                    "summary": "금속 및 강재 적용용 드릴 팁이 있는 테크 나사. 다양한 헤드 타입.",
-                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-                },
-                {
-                    "slug": "products/wood-screws",
-                    "title": "목재 나사",
-                    "summary": "평머리 및 둥근머리 목재 나사. 다양한 규격 및 소재.",
-                    "icon": "../../images/products/screws/Wood Screw3.webp"
-                },
-                {
-                    "slug": "products/drywall-screws",
-                    "title": "석고보드 나사",
-                    "summary": "석고보드 적용용 세밀한 나사산 및 굵은 나사산 석고보드 나사.",
-                    "icon": "../../images/products/screws/Drywall Screw1.webp"
-                }
-            ]
-        },
-        {
-            "category": "스터드 볼트 & 수나사봉",
-            "icon": "images/products/studs/Threaded Rod6.webp",
-            "items": [
-                {
-                    "slug": "products/threaded-rods",
-                    "title": "수나사봉",
-                    "summary": "전나사 및 반나사봉. DIN 975, M4~M30, 다양한 길이.",
-                    "icon": "../../images/products/studs/Threaded Rod6.webp"
-                },
-                {
-                    "slug": "products/double-end-studs",
-                    "title": "양단 스터드 볼트",
-                    "summary": "양단에 나사산이 있는 스터드 볼트. 플랜지, 밸브 피팅, 배관 시스템용.",
-                    "icon": "../../images/products/studs/Double End Stud1.webp"
-                }
-            ]
-        },
-        {
-            "category": "핀",
-            "icon": "images/products/pins/Cotter Pin3.webp",
-            "items": [
-                {
-                    "slug": "products/cotter-pins",
-                    "title": "핀",
-                    "summary": "안전 체결용 표준 핀. DIN 94 / ISO 1234.",
-                    "icon": "../../images/products/pins/Cotter Pin3.webp"
-                },
-                {
-                    "slug": "products/dowel-pins",
-                    "title": "정렬 핀",
-                    "summary": "정밀 정렬용 평행 핀. DIN 7 / ISO 2338, 경화강.",
-                    "icon": "../../images/products/pins/Dowel Pin3.webp"
-                }
-            ]
-        },
-        {
-            "category": "앵커 & 체결구",
-            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-            "items": [
-                {
-                    "slug": "products/wedge-anchors",
-                    "title": "쐐기 앵커",
-                    "summary": "콘크리트 및 벽돌용 아연 도금 쐐기 앵커. 중하중 적용.",
-                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-                },
-                {
-                    "slug": "products/expansion-bolts",
-                    "title": "확장 볼트",
-                    "summary": "콘크리트, 벽돌, 석재에 안전하게 고정하는 확장 앵커.",
-                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-                },
-                {
-                    "slug": "products/drop-in-anchors",
-                    "title": "드롭인 앵커",
-                    "summary": "수나사봉과 함께 사용하는 콘크리트 적용용 드롭인 앵커.",
-                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-                }
-            ]
-        },
-        {
-            "category": "기타 체결구",
-            "icon": "images/products/others/Solid Rivet1.webp",
-            "items": [
-                {
-                    "slug": "products/solid-rivets",
-                    "title": "중실 리벳",
-                    "summary": "영구 체결용 중실 리벳. 다양한 헤드 타입 및 소재.",
-                    "icon": "../../images/products/others/Solid Rivet1.webp"
-                },
-                {
-                    "slug": "products/blind-rivets",
-                    "title": "블라인드 리벳",
-                    "summary": "한쪽 면으로만 접근 가능한 곳에 사용하는 팝 리벳.",
-                    "icon": "../../images/products/others/Blind Rivet1.webp"
-                },
-                {
-                    "slug": "products/semi-tubular-rivets",
-                    "title": "반중공 리벳",
-                    "summary": "리벳팅 적용용 부분 구멍이 있는 반중공 리벳.",
-                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-                },
-                {
-                    "slug": "products/u-bolts",
-                    "title": "U형 볼트",
-                    "summary": "배관 및 튜브 장착용 U형 볼트. 다양한 규격 및 소재.",
-                    "icon": "../../images/products/others/U Bolt1.webp"
-                },
-                {
-                    "slug": "products/circlips",
-                    "title": "축용 스냅 링",
-                    "summary": "축 적용용 외부 스냅 링. DIN 471.",
-                    "icon": "../../images/products/others/External Circlip2.webp"
-                },
-                {
-                    "slug": "products/fastener-kits",
-                    "title": "체결구 키트",
-                    "summary": "수리 및 유지보수용 혼합 체결구 키트. 맞춤 포장 가능.",
-                    "icon": "../../images/products/others/Fastener Kits4.webp"
-                }
-            ]
-        }
-    ]
+  "news": [
+    {
+      "slug": "news/2007-11-08-eu-china-fasteners",
+      "title": "EU, 중국 패스너에 대한 반덤핑 조사 착수",
+      "date": "2007-11-08",
+      "summary": "2007년 11월 9일, 유럽 집행위원회는 중국산 철강 패스너에 대한 반덤핑 조사를 개시했습니다. 이 사건은 약 5억 7,500만 유로(8억 900만 달러) 상당의 수출을 하는 1,700개 이상의 중국 기업을 포함하여, 당시 중국에 대한 최대 규모의 무역 구제 사건으로 기록되었습니다.",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2007-11-09-eu-china-fasteners",
+      "title": "EU, 중국 패스너에 대한 반덤핑 조사 착수",
+      "date": "2007-11-09",
+      "summary": "2007년 11월 9일, 유럽 집행위원회는 중국산 철강 패스너에 대한 반덤핑 조사를 개시했습니다. 이 사건은 약 5억 7,500만 유로(8억 900만 달러) 상당의 수출을 하는 1,700개 이상의 중국 기업을 포함하여, 당시 중국에 대한 최대 규모의 무역 구제 사건으로 기록되었습니다.",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2026-04-14-us-tariff-fastener",
+      "title": "미국 관세 정책 조정: 패스너 수출, 새로운 전환점에 직면",
+      "date": "2026-04-14",
+      "summary": "미국 섹션 232 관세 규칙 변경으로 패스너 수출 비용이 급증합니다. 새로운 과세 기준(전체 제품 가치의 25%)에 따른 영향 분석, 비용 증가율, 중국 패스너 기업의 4가지 대응 전략을 확인하세요.",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    },
+    {
+      "slug": "news/2026-04-15",
+      "title": "광저우 박람회에서 이우 박람회까지: 패스너 산업, 4월 '듀얼 코어' 무역 호황 맞이",
+      "date": "2026-04-15",
+      "summary": "2026년 4월, 광저우 소싱 페어와 이우 하드웨어·전기제품 박람회가 잇따라 개최되며 화남 패스너 산업에 듀얼 코어 무역 호황을 가져옵니다. 해외 주문 확보와 시장 확장의 기회를 포착하세요.",
+      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+    },
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "WT Fasteners",
+      "date": "2026-04-07",
+      "summary": "WT Fasteners는 고품질 볼트, 나사, 와셔 및 맞춤형 패스너의 선도적인 제조업체 및 수출업체입니다. 2005년 이후 ISO 인증 제품으로 글로벌 시장에 서비스를 제공하고 있습니다.",
+      "icon": "../../../../images/og-cover.jpg"
+    },
+    {
+      "slug": "news/test-article-123",
+      "title": "Test",
+      "date": "2026-04-13",
+      "summary": "test summary",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    }
+  ]
 }

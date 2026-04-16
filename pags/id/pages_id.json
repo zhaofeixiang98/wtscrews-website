@@ -1,254 +1,46 @@
 {
-    "news": [
-        {
-            "slug": "news/2026-04-15",
-            "title": "Dari Canton Fair ke Expo Yiwu: Industri Fastener Sambut Ledakan Perdagangan \"Dual-Core\" di April",
-            "date": "2026-04-15",
-            "summary": "April 2026 menandai ledakan terkonsentrasi acara perdagangan fastener di Tiongkok Selatan. Guangzhou Sourcing Fair (GSF) ke-6 akan diadakan di Poly World Trade Center dari 14-17 April, segera diikuti oleh Yiwu International Hardware & Electrical Appliances Expo ke-10 dari 20-22 April. Keterkaitan antara dua pusat komersial utama ini menciptakan koridor perdagangan dual-core \"presisi Guangzhou + jangkauan global Yiwu\", menawarkan perusahaan fastener jendela utama untuk mengamankan pesanan luar negeri dan memperluas ke pasar berkembang.",
-            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
-        },
-        {
-            "slug": "news/2026-04-14-us-tariff-fastener",
-            "title": "Penyesuaian Kebijakan Tarif AS: Ekspor Fastener Hadapi Titik Balik Baru",
-            "date": "2026-04-14",
-            "summary": "Mulai berlaku 6 April 2026, AS secara resmi menyesuaikan aturan tarif Bagian 232 untuk produk turunan baja dan aluminium. Untuk fastener yang mengandung baja atau aluminium, metode perhitungan telah berubah secara fundamental—dari hanya mengenakan pajak pada nilai kandungan logam menjadi mengenakan tarif 25% pada nilai deklarasi total seluruh produk. Artikel ini memberikan analisis mendalam tentang peraturan baru, perkiraan dampak biaya, dan strategi respons perusahaan.",
-            "icon": "../../images/logo.jpg"
-        }
-    ],
-    "products": [
-        {
-            "category": "Baut",
-            "icon": "images/products/bolts/Hex Bolt0.webp",
-            "items": [
-                {
-                    "slug": "products/hex-bolts",
-                    "title": "Baut Hex",
-                    "summary": "Baut hex ulir penuh dan ulir sebagian sesuai DIN 931/933, ISO 4014/4017. Grade 4.8 hingga 12.9, ukuran M4–M64.",
-                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
-                },
-                {
-                    "slug": "products/flange-bolts",
-                    "title": "Baut Flens",
-                    "summary": "Baut flens bergerigi dan tanpa gerigi sesuai DIN 6921 / ISO 1665. Permukaan washer terintegrasi untuk ketahanan getaran.",
-                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
-                },
-                {
-                    "slug": "products/anchor-bolts",
-                    "title": "Baut Angkur",
-                    "summary": "Angkur ekspansi, angkur baji, dan baut angkur kimia untuk beton dan pasangan bata.",
-                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-                },
-                {
-                    "slug": "products/high-strength-bolts",
-                    "title": "Baut Kekuatan Tinggi",
-                    "summary": "Baut struktural kekuatan tinggi untuk aplikasi berat. Tersedia grade 8.8, 10.9, 12.9.",
-                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-                },
-                {
-                    "slug": "products/t-bolts",
-                    "title": "Baut T",
-                    "summary": "Baut berbentuk T untuk profil alur-T dan aplikasi struktural. Berbagai ukuran dan material tersedia.",
-                    "icon": "../../images/products/bolts/T Bolt4.webp"
-                }
-            ]
-        },
-        {
-            "category": "Mur",
-            "icon": "images/products/nuts/Hex Nut1.webp",
-            "items": [
-                {
-                    "slug": "products/hex-nuts",
-                    "title": "Mur Hex",
-                    "summary": "Mur hex standar sesuai DIN 934 / ISO 4032. Ukuran M4–M64, grade 4, 6, 8, 10.",
-                    "icon": "../../images/products/nuts/Hex Nut1.webp"
-                },
-                {
-                    "slug": "products/flange-nuts",
-                    "title": "Mur Flens",
-                    "summary": "Mur flens bergerigi dengan permukaan washer terintegrasi untuk ketahanan getaran. DIN 6923.",
-                    "icon": "../../images/products/nuts/Flange Nut.webp"
-                },
-                {
-                    "slug": "products/nyloc-nuts",
-                    "title": "Mur Nyloc",
-                    "summary": "Mur pengunci sisipan nilon untuk ketahanan torsi. DIN 985 / ISO 10511.",
-                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
-                },
-                {
-                    "slug": "products/weld-nuts",
-                    "title": "Mur Las",
-                    "summary": "Mur las proyeksi untuk pengelasan otomatis. Tersedia tipe persegi dan heksagonal.",
-                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
-                },
-                {
-                    "slug": "products/wing-nuts",
-                    "title": "Mur Kupu-Kupu",
-                    "summary": "Mur kupu-kupu yang dioperasikan tangan untuk pemasangan dan pelepasan cepat. Berbagai ukuran tersedia.",
-                    "icon": "../../images/products/nuts/Wing Nut7.webp"
-                }
-            ]
-        },
-        {
-            "category": "Cincin Pengikat",
-            "icon": "images/products/washers/Flat Washer4.webp",
-            "items": [
-                {
-                    "slug": "products/flat-washers",
-                    "title": "Cincin Datar",
-                    "summary": "Cincin datar standar sesuai DIN 125 / ISO 7089. Tersedia dengan pelapis seng, galvanis, atau polos.",
-                    "icon": "../../images/products/washers/Flat Washer4.webp"
-                },
-                {
-                    "slug": "products/lock-washers",
-                    "title": "Cincin Pengunci",
-                    "summary": "Cincin pengunci belah untuk ketahanan getaran. DIN 127 / ISO 7092.",
-                    "icon": "../../images/products/washers/Lock Washer2.webp"
-                },
-                {
-                    "slug": "products/spring-washers",
-                    "title": "Cincin Per",
-                    "summary": "Cincin per konik untuk aplikasi beban dinamis. DIN 2093.",
-                    "icon": "../../images/products/washers/Spring Washer4.webp"
-                },
-                {
-                    "slug": "products/square-washers",
-                    "title": "Cincin Persegi",
-                    "summary": "Cincin datar persegi untuk aplikasi struktural. DIN 436.",
-                    "icon": "../../images/products/washers/Square Washer1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Sekrup",
-            "icon": "images/products/screws/Machine Screw2.webp",
-            "items": [
-                {
-                    "slug": "products/machine-screws",
-                    "title": "Sekrup Mesin",
-                    "summary": "Sekrup mesin kepala pan, kepala hex, dan kepala terbenam. DIN 963, 964, 965, 966.",
-                    "icon": "../../images/products/screws/Machine Screw2.webp"
-                },
-                {
-                    "slug": "products/self-drilling-screws",
-                    "title": "Sekrup Bor Sendiri",
-                    "summary": "Sekrup tek dengan ujung bor untuk aplikasi logam dan baja. Berbagai tipe kepala tersedia.",
-                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-                },
-                {
-                    "slug": "products/wood-screws",
-                    "title": "Sekrup Kayu",
-                    "summary": "Sekrup kayu kepala datar dan kepala bulat. Berbagai ukuran dan material tersedia.",
-                    "icon": "../../images/products/screws/Wood Screw3.webp"
-                },
-                {
-                    "slug": "products/drywall-screws",
-                    "title": "Sekrup Drywall",
-                    "summary": "Sekrup drywall ulir halus dan kasar untuk aplikasi papan gipsum.",
-                    "icon": "../../images/products/screws/Drywall Screw1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Stud & Batang Berulir",
-            "icon": "images/products/studs/Threaded Rod6.webp",
-            "items": [
-                {
-                    "slug": "products/threaded-rods",
-                    "title": "Batang Berulir",
-                    "summary": "Batang berulir penuh dan sebagian. DIN 975, M4–M30, berbagai panjang tersedia.",
-                    "icon": "../../images/products/studs/Threaded Rod6.webp"
-                },
-                {
-                    "slug": "products/double-end-studs",
-                    "title": "Stud Ujung Ganda",
-                    "summary": "Baut stud berulir di kedua ujung. Untuk flens, fitting katup, dan sistem perpipaan.",
-                    "icon": "../../images/products/studs/Double End Stud1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Pin",
-            "icon": "images/products/pins/Cotter Pin3.webp",
-            "items": [
-                {
-                    "slug": "products/cotter-pins",
-                    "title": "Pin Belah",
-                    "summary": "Pin belah standar untuk pengikatan yang aman. DIN 94 / ISO 1234.",
-                    "icon": "../../images/products/pins/Cotter Pin3.webp"
-                },
-                {
-                    "slug": "products/dowel-pins",
-                    "title": "Pin Silinder",
-                    "summary": "Pin paralel untuk penyelarasan presisi. DIN 7 / ISO 2338, baja keras.",
-                    "icon": "../../images/products/pins/Dowel Pin3.webp"
-                }
-            ]
-        },
-        {
-            "category": "Angkur & Pengikat",
-            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-            "items": [
-                {
-                    "slug": "products/wedge-anchors",
-                    "title": "Angkur Baji",
-                    "summary": "Angkur baji lapis seng untuk beton dan pasangan bata. Aplikasi beban berat.",
-                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-                },
-                {
-                    "slug": "products/expansion-bolts",
-                    "title": "Baut Ekspansi",
-                    "summary": "Angkur ekspansi untuk penambatan yang aman pada beton, bata, dan batu.",
-                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-                },
-                {
-                    "slug": "products/drop-in-anchors",
-                    "title": "Angkur Tanam",
-                    "summary": "Angkur tanam untuk digunakan dengan batang berulir dan aplikasi beton.",
-                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Pengikat Lainnya",
-            "icon": "images/products/others/Solid Rivet1.webp",
-            "items": [
-                {
-                    "slug": "products/solid-rivets",
-                    "title": "Rivet Padat",
-                    "summary": "Rivet padat untuk pengikatan permanen. Berbagai tipe kepala dan material tersedia.",
-                    "icon": "../../images/products/others/Solid Rivet1.webp"
-                },
-                {
-                    "slug": "products/blind-rivets",
-                    "title": "Rivet Buta",
-                    "summary": "Rivet pop untuk aplikasi di mana akses terbatas pada satu sisi.",
-                    "icon": "../../images/products/others/Blind Rivet1.webp"
-                },
-                {
-                    "slug": "products/semi-tubular-rivets",
-                    "title": "Rivet Semi-Tubular",
-                    "summary": "Rivet semi-tubular dengan lubang sebagian untuk aplikasi pengelingan.",
-                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-                },
-                {
-                    "slug": "products/u-bolts",
-                    "title": "Baut U",
-                    "summary": "Baut U untuk pemasangan pipa dan tabung. Berbagai ukuran dan material tersedia.",
-                    "icon": "../../images/products/others/U Bolt1.webp"
-                },
-                {
-                    "slug": "products/circlips",
-                    "title": "Circlip Eksternal",
-                    "summary": "Cincin pengaman eksternal untuk aplikasi poros. DIN 471.",
-                    "icon": "../../images/products/others/External Circlip2.webp"
-                },
-                {
-                    "slug": "products/fastener-kits",
-                    "title": "Kit Pengikat",
-                    "summary": "Kit pengikat campuran untuk perbaikan dan pemeliharaan. Kemasan khusus tersedia.",
-                    "icon": "../../images/products/others/Fastener Kits4.webp"
-                }
-            ]
-        }
-    ]
+  "news": [
+    {
+      "slug": "news/2007-11-08-eu-china-fasteners",
+      "title": "UE Mulai Investigasi Anti-Dumping atas Produk Fastener China",
+      "date": "2007-11-08",
+      "summary": "Pada 9 November 2007, Komisi Eropa meluncurkan investigasi anti-dumping terhadap produk fastener besi dan baja dari China. Kasus ini melibatkan lebih dari 1.700 perusahaan China dengan nilai ekspor se",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2007-11-09-eu-china-fasteners",
+      "title": "UE Mulai Investigasi Anti-Dumping atas Produk Fastener China",
+      "date": "2007-11-09",
+      "summary": "Pada 9 November 2007, Komisi Eropa meluncurkan investigasi anti-dumping terhadap produk fastener besi dan baja dari China. Kasus ini melibatkan lebih dari 1.700 perusahaan China dengan nilai ekspor se",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2026-04-14-us-tariff-fastener",
+      "title": "Penyesuaian Kebijakan Tarif AS: Ekspor Fastener Hadapi Titik Balik Baru",
+      "date": "2026-04-14",
+      "summary": "Tinggalkan kosong untuk menggunakan kutipan",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    },
+    {
+      "slug": "news/2026-04-15",
+      "title": "Dari Canton Fair ke Expo Yiwu: Industri Fastener Sambut Ledakan Perdagangan &quot;Dual-Core&quot; di April",
+      "date": "2026-04-15",
+      "summary": "April 2026 jadi bulan puncak perdagangan fastener di Tiongkok Selatan dengan rangkaian Guangzhou Sourcing Fair &amp; Yiwu Hardware Expo. Manfaatkan koridor dual-core untuk ekspor dan perluasan pasar g",
+      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+    },
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "WT Fasteners",
+      "date": "2026-04-07",
+      "summary": "WT Fasteners adalah produsen dan eksportir terkemuka baut berkualitas tinggi, sekrup, washer, dan fastener khusus. Melayani pasar global dengan produk bersertifikat ISO sejak 2005.",
+      "icon": "../../../../images/og-cover.jpg"
+    },
+    {
+      "slug": "news/test-article-123",
+      "title": "Test",
+      "date": "2026-04-13",
+      "summary": "test summary",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    }
+  ]
 }

@@ -1,254 +1,46 @@
 {
-    "news": [
-        {
-            "slug": "news/2026-04-15",
-            "title": "広州交易会から義烏博覧会へ：4月に「デュアルコア」貿易ブームを迎えるファスナー産業",
-            "date": "2026-04-15",
-            "summary": "2026年4月は、華南地域におけるファスナー貿易イベントが集中開催される月となる。第6回広州調達フェア（GSF）が4月14日から17日までポリーワールドトレードセンターで開催され、続いて第10回義烏国際五金・家電博覧会が4月20日から22日まで開催される。これら二大商業ハブの連携により、「広州の精密マッチング＋義烏のグローバルリーチ」というデュアルコア貿易回廊が形成され、ファスナー企業にとって海外受注獲得と新興市場開拓の絶好の窓口を提供する。",
-            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
-        },
-        {
-            "slug": "news/2026-04-14-us-tariff-fastener",
-            "title": "米国関税政策の調整：ファスナー輸出は新たな転換点に直面",
-            "date": "2026-04-14",
-            "summary": "2026年4月6日より、米国は鉄鋼・アルミニウム二次製品に対するセクション232関税ルールを正式に調整しました。鋼材またはアルミニウムを含むファスナーについては、計算方法が根本的に変更され、金属含有量の価値のみに課税する方式から、製品全体の申告総価値に対して25％の関税を課す方式へと移行しました。本記事では、新規制の詳細な分析、コストへの影響予測、企業の対応戦略について解説します。",
-            "icon": "../../images/logo.jpg"
-        }
-    ],
-    "products": [
-        {
-            "category": "ボルト",
-            "icon": "images/products/bolts/Hex Bolt0.webp",
-            "items": [
-                {
-                    "slug": "products/hex-bolts",
-                    "title": "六角ボルト",
-                    "summary": "DIN 931/933、ISO 4014/4017規格の全ねじ・半ねじ六角ボルト。強度等级4.8～12.9、サイズM4～M64。",
-                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
-                },
-                {
-                    "slug": "products/flange-bolts",
-                    "title": "フランジボルト",
-                    "summary": "DIN 6921 / ISO 1665規格の歯付き・無歯フランジボルト。一体型座面で耐振動性を実現。",
-                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
-                },
-                {
-                    "slug": "products/anchor-bolts",
-                    "title": "アンカーボルト",
-                    "summary": "コンクリート・レンガ構造用の拡張アンカー、ウェッジアンカー、ケミカルアンカーボルト。",
-                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-                },
-                {
-                    "slug": "products/high-strength-bolts",
-                    "title": "高力ボルト",
-                    "summary": "重構造用高力ボルト。8.8、10.9、12.9級をラインアップ。",
-                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-                },
-                {
-                    "slug": "products/t-bolts",
-                    "title": "Tボルト",
-                    "summary": "Tスロットプロファイル・構造部材用Tボルト。各種サイズ・材質を用意。",
-                    "icon": "../../images/products/bolts/T Bolt4.webp"
-                }
-            ]
-        },
-        {
-            "category": "ナット",
-            "icon": "images/products/nuts/Hex Nut1.webp",
-            "items": [
-                {
-                    "slug": "products/hex-nuts",
-                    "title": "六角ナット",
-                    "summary": "DIN 934 / ISO 4032規格の標準六角ナット。サイズM4～M64、等级4、6、8、10級。",
-                    "icon": "../../images/products/nuts/Hex Nut1.webp"
-                },
-                {
-                    "slug": "products/flange-nuts",
-                    "title": "フランジナット",
-                    "summary": "一体型座面付き歯付フランジナット、耐振動性に優れる。DIN 6923規格。",
-                    "icon": "../../images/products/nuts/Flange Nut.webp"
-                },
-                {
-                    "slug": "products/nyloc-nuts",
-                    "title": "ナイロックナット",
-                    "summary": "ナイロンインサート付き緩み止めナット。DIN 985 / ISO 10511規格。",
-                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
-                },
-                {
-                    "slug": "products/weld-nuts",
-                    "title": "溶接ナット",
-                    "summary": "自動溶接用プロジェクション溶接ナット。角形・六角形を用意。",
-                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
-                },
-                {
-                    "slug": "products/wing-nuts",
-                    "title": "蝶ナット",
-                    "summary": "手動で簡単に着脱できる蝶ナット。各種サイズをラインアップ。",
-                    "icon": "../../images/products/nuts/Wing Nut7.webp"
-                }
-            ]
-        },
-        {
-            "category": "ワッシャー",
-            "icon": "images/products/washers/Flat Washer4.webp",
-            "items": [
-                {
-                    "slug": "products/flat-washers",
-                    "title": "平座金",
-                    "summary": "DIN 125 / ISO 7089規格の標準平座金。亜鉛メッキ、溶融亜鉛メッキ、生地から選択可能。",
-                    "icon": "../../images/products/washers/Flat Washer4.webp"
-                },
-                {
-                    "slug": "products/lock-washers",
-                    "title": "ばね座金",
-                    "summary": "耐振動用割りばね座金。DIN 127 / ISO 7092規格。",
-                    "icon": "../../images/products/washers/Lock Washer2.webp"
-                },
-                {
-                    "slug": "products/spring-washers",
-                    "title": "皿ばね座金",
-                    "summary": "動荷重用途向け円錐形皿ばね座金。DIN 2093規格。",
-                    "icon": "../../images/products/washers/Spring Washer4.webp"
-                },
-                {
-                    "slug": "products/square-washers",
-                    "title": "角座金",
-                    "summary": "構造部材用角形平座金。DIN 436規格。",
-                    "icon": "../../images/products/washers/Square Washer1.webp"
-                }
-            ]
-        },
-        {
-            "category": "ネジ",
-            "icon": "images/products/screws/Machine Screw2.webp",
-            "items": [
-                {
-                    "slug": "products/machine-screws",
-                    "title": "小ねじ（マシンスクリュー）",
-                    "summary": "なべ小ねじ、六角小ねじ、さら小ねじ。DIN 963、964、965、966規格。",
-                    "icon": "../../images/products/screws/Machine Screw2.webp"
-                },
-                {
-                    "slug": "products/self-drilling-screws",
-                    "title": "セルフドリルネジ",
-                    "summary": "金属・鋼材用ドリル付きセルフドリルネジ。各種頭部形状を用意。",
-                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-                },
-                {
-                    "slug": "products/wood-screws",
-                    "title": "木ネジ",
-                    "summary": "さら頭・丸頭木ネジ。各種サイズ・材質をラインアップ。",
-                    "icon": "../../images/products/screws/Wood Screw3.webp"
-                },
-                {
-                    "slug": "products/drywall-screws",
-                    "title": "石膏ボードネジ",
-                    "summary": "石膏ボード用細目・粗目ネジ。",
-                    "icon": "../../images/products/screws/Drywall Screw1.webp"
-                }
-            ]
-        },
-        {
-            "category": "スタッドボルト & 全ねじ棒",
-            "icon": "images/products/studs/Threaded Rod6.webp",
-            "items": [
-                {
-                    "slug": "products/threaded-rods",
-                    "title": "全ねじ棒",
-                    "summary": "全ねじ・半ねじ棒。DIN 975規格、M4～M30、各種長さを用意。",
-                    "icon": "../../images/products/studs/Threaded Rod6.webp"
-                },
-                {
-                    "slug": "products/double-end-studs",
-                    "title": "両端スタッドボルト",
-                    "summary": "両端ねじ付きスタッドボルト。フランジ、バルブ、配管システム用。",
-                    "icon": "../../images/products/studs/Double End Stud1.webp"
-                }
-            ]
-        },
-        {
-            "category": "ピン",
-            "icon": "images/products/pins/Cotter Pin3.webp",
-            "items": [
-                {
-                    "slug": "products/cotter-pins",
-                    "title": "割りピン",
-                    "summary": "安全締結用標準割りピン。DIN 94 / ISO 1234規格。",
-                    "icon": "../../images/products/pins/Cotter Pin3.webp"
-                },
-                {
-                    "slug": "products/dowel-pins",
-                    "title": "平行ピン",
-                    "summary": "精密位置決め用平行ピン。DIN 7 / ISO 2338規格、焼入れ鋼製。",
-                    "icon": "../../images/products/pins/Dowel Pin3.webp"
-                }
-            ]
-        },
-        {
-            "category": "アンカー & 固定金具",
-            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-            "items": [
-                {
-                    "slug": "products/wedge-anchors",
-                    "title": "ウェッジアンカー",
-                    "summary": "コンクリート・レンガ用亜鉛メッキウェッジアンカー。重量物用途に最適。",
-                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-                },
-                {
-                    "slug": "products/expansion-bolts",
-                    "title": "拡張ボルト",
-                    "summary": "コンクリート、レンガ、石材に強力固定する拡張アンカー。",
-                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-                },
-                {
-                    "slug": "products/drop-in-anchors",
-                    "title": "埋め込みアンカー",
-                    "summary": "全ねじ棒と併用するコンクリート用埋め込みアンカー。",
-                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-                }
-            ]
-        },
-        {
-            "category": "その他のファスナー",
-            "icon": "images/products/others/Solid Rivet1.webp",
-            "items": [
-                {
-                    "slug": "products/solid-rivets",
-                    "title": "中実リベット",
-                    "summary": "永久締結用中実リベット。各種頭部形状・材質を用意。",
-                    "icon": "../../images/products/others/Solid Rivet1.webp"
-                },
-                {
-                    "slug": "products/blind-rivets",
-                    "title": "ブラインドリベット",
-                    "summary": "片面から施工可能なポップリベット。",
-                    "icon": "../../images/products/others/Blind Rivet1.webp"
-                },
-                {
-                    "slug": "products/semi-tubular-rivets",
-                    "title": "半中空リベット",
-                    "summary": "かしめ加工用半中空リベット。",
-                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-                },
-                {
-                    "slug": "products/u-bolts",
-                    "title": "Uボルト",
-                    "summary": "配管固定用Uボルト。各種サイズ・材質をラインアップ。",
-                    "icon": "../../images/products/others/U Bolt1.webp"
-                },
-                {
-                    "slug": "products/circlips",
-                    "title": "軸用止め輪",
-                    "summary": "軸用外輪止め輪。DIN 471規格。",
-                    "icon": "../../images/products/others/External Circlip2.webp"
-                },
-                {
-                    "slug": "products/fastener-kits",
-                    "title": "ファスナーキット",
-                    "summary": "修理・メンテナンス用各種ファスナーセット。カスタムパッケージ対応。",
-                    "icon": "../../images/products/others/Fastener Kits4.webp"
-                }
-            ]
-        }
-    ]
+  "news": [
+    {
+      "slug": "news/2007-11-08-eu-china-fasteners",
+      "title": "EU、中国製ファスナーに対するダンピング調査を開始",
+      "date": "2007-11-08",
+      "summary": "2007年11月9日、欧州委員会は中国産鉄鋼ファスナーに対するダンピング調査を開始。輸出額約5億7500万ユーロ、1,700社以上が関与した当時最大の案件。",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2007-11-09-eu-china-fasteners",
+      "title": "EU、中国製ファスナーに対するダンピング調査を開始",
+      "date": "2007-11-09",
+      "summary": "2007年11月9日、欧州委員会は中国産鉄鋼ファスナーに対するダンピング調査を開始。1,700社以上、約8億900万米ドル相当の輸出が関与する当時最大の案件。",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2026-04-14-us-tariff-fastener",
+      "title": "米国関税政策の調整：ファスナー輸出は新たな転換点に直面",
+      "date": "2026-04-14",
+      "summary": "2026年4月6日発効の米国セクション232関税ルール変更により、ファスナー輸出の課税基準が「金属含有量」から「製品総価値」へ移行。中国ファスナー企業への影響と具体的な対応戦略を分析。",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    },
+    {
+      "slug": "news/2026-04-15",
+      "title": "広州交易会から義烏博覧会へ：4月に「デュアルコア」貿易ブームを迎えるファスナー産業",
+      "date": "2026-04-15",
+      "summary": "2026年4月、広州調達フェアと義烏国際五金・家電博覧会が相次いで開催され、華南のファスナー産業に「デュアルコア」貿易ブームをもたらします。WT Fastenersが最新動向を解説。",
+      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+    },
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "WT Fasteners",
+      "date": "2026-04-07",
+      "summary": "WT Fasteners は、高品質なボルト、ネジ、ワッシャー、カスタムファスナーの大手製造業者兼輸出業者です。2005年以来、ISO認定製品で世界市場にサービスを提供しています。",
+      "icon": "../../../../images/og-cover.jpg"
+    },
+    {
+      "slug": "news/test-article-123",
+      "title": "Test",
+      "date": "2026-04-13",
+      "summary": "test summary",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    }
+  ]
 }

@@ -1,254 +1,46 @@
 {
-    "news": [
-        {
-            "slug": "news/2026-04-15",
-            "title": "从广交会到义乌博览会：紧固件行业四月迎来“双核”贸易热潮",
-            "date": "2026-04-15",
-            "summary": "2026年4月，华南地区紧固件贸易活动迎来集中爆发。第六届广州采购交易会将于4月14日至17日在保利世贸博览馆举行，紧接着第十届义乌国际五金电器博览会将于4月20日至22日举办。这两大商业枢纽的联动，打造了“广州精准对接 + 义乌全球触达”的双核贸易走廊，为紧固件企业获取海外订单、开拓新兴市场提供了绝佳窗口。",
-            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
-        },
-        {
-            "slug": "news/2026-04-14-us-tariff-fastener",
-            "title": "美国关税政策调整：紧固件出口面临新转折点",
-            "date": "2026-04-14",
-            "summary": "自2026年4月6日起，美国正式调整了针对钢铁和铝衍生品的232条款关税规则。对于含钢或铝的紧固件，其计税方式发生了根本性变化——从仅对金属含量价值征税，转变为按产品全部申报总值的25%征收关税。本文深入解析了新规内容、成本影响预估及企业应对策略。",
-            "icon": "../../images/logo.jpg"
-        }
-    ],
-    "products": [
-        {
-            "category": "螺栓",
-            "icon": "images/products/bolts/Hex Bolt0.webp",
-            "items": [
-                {
-                    "slug": "products/hex-bolts",
-                    "title": "六角螺栓",
-                    "summary": "全螺纹/半螺纹六角螺栓，符合DIN 931/933、ISO 4014/4017标准；强度等级4.8-12.9，规格M4-M64。",
-                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
-                },
-                {
-                    "slug": "products/flange-bolts",
-                    "title": "法兰面螺栓",
-                    "summary": "带齿/无齿法兰面螺栓，符合DIN 6921/ISO 1665标准；一体式垫圈结构，具备抗震防松性能。",
-                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
-                },
-                {
-                    "slug": "products/anchor-bolts",
-                    "title": "地脚螺栓",
-                    "summary": "适用于混凝土和砖石结构的膨胀锚栓、楔型锚栓及化学锚栓。",
-                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-                },
-                {
-                    "slug": "products/high-strength-bolts",
-                    "title": "高强度螺栓",
-                    "summary": "重载工程用高强度结构螺栓，提供8.8、10.9、12.9级规格。",
-                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-                },
-                {
-                    "slug": "products/t-bolts",
-                    "title": "T型螺栓",
-                    "summary": "用于T型槽型材及结构件的T型螺栓，多规格、多材质可选。",
-                    "icon": "../../images/products/bolts/T Bolt4.webp"
-                }
-            ]
-        },
-        {
-            "category": "螺母",
-            "icon": "images/products/nuts/Hex Nut1.webp",
-            "items": [
-                {
-                    "slug": "products/hex-nuts",
-                    "title": "六角螺母",
-                    "summary": "标准六角螺母，符合DIN 934/ISO 4032标准；规格M4-M64，强度等级4、6、8、10级。",
-                    "icon": "../../images/products/nuts/Hex Nut1.webp"
-                },
-                {
-                    "slug": "products/flange-nuts",
-                    "title": "法兰面螺母",
-                    "summary": "带齿法兰面螺母，一体式垫圈结构，抗震防松，符合DIN 6923标准。",
-                    "icon": "../../images/products/nuts/Flange Nut.webp"
-                },
-                {
-                    "slug": "products/nyloc-nuts",
-                    "title": "尼龙锁紧螺母",
-                    "summary": "尼龙嵌件防松螺母，具备有效锁紧力矩，符合DIN 985/ISO 10511标准。",
-                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
-                },
-                {
-                    "slug": "products/weld-nuts",
-                    "title": "焊接螺母",
-                    "summary": "自动化焊接用凸焊螺母，提供方形、六角形两种类型。",
-                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
-                },
-                {
-                    "slug": "products/wing-nuts",
-                    "title": "蝶形螺母",
-                    "summary": "手动操作蝶形螺母，可快速拆装，多规格可选。",
-                    "icon": "../../images/products/nuts/Wing Nut7.webp"
-                }
-            ]
-        },
-        {
-            "category": "垫圈",
-            "icon": "images/products/washers/Flat Washer4.webp",
-            "items": [
-                {
-                    "slug": "products/flat-washers",
-                    "title": "平垫圈",
-                    "summary": "标准平垫圈，符合DIN 125/ISO 7089标准；表面处理可选镀锌、热镀锌或本色。",
-                    "icon": "../../images/products/washers/Flat Washer4.webp"
-                },
-                {
-                    "slug": "products/lock-washers",
-                    "title": "防松垫圈",
-                    "summary": "开口防松垫圈，具备抗震性能，符合DIN 127/ISO 7092标准。",
-                    "icon": "../../images/products/washers/Lock Washer2.webp"
-                },
-                {
-                    "slug": "products/spring-washers",
-                    "title": "弹簧垫圈",
-                    "summary": "动载荷应用用锥形弹簧垫圈，符合DIN 2093标准。",
-                    "icon": "../../images/products/washers/Spring Washer4.webp"
-                },
-                {
-                    "slug": "products/square-washers",
-                    "title": "方形垫圈",
-                    "summary": "结构件用方形平垫圈，符合DIN 436标准。",
-                    "icon": "../../images/products/washers/Square Washer1.webp"
-                }
-            ]
-        },
-        {
-            "category": "螺钉",
-            "icon": "images/products/screws/Machine Screw2.webp",
-            "items": [
-                {
-                    "slug": "products/machine-screws",
-                    "title": "机螺钉",
-                    "summary": "盘头、六角头、沉头机螺钉，符合DIN 963、964、965、966标准。",
-                    "icon": "../../images/products/screws/Machine Screw2.webp"
-                },
-                {
-                    "slug": "products/self-drilling-screws",
-                    "title": "自钻螺钉",
-                    "summary": "带钻尖的自钻螺钉，适用于金属板材，多头部款式可选。",
-                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-                },
-                {
-                    "slug": "products/wood-screws",
-                    "title": "木螺钉",
-                    "summary": "沉头、圆头木螺钉，多规格、多材质可选。",
-                    "icon": "../../images/products/screws/Wood Screw3.webp"
-                },
-                {
-                    "slug": "products/drywall-screws",
-                    "title": "干壁钉",
-                    "summary": "细牙/粗牙干壁钉，适用于石膏板安装。",
-                    "icon": "../../images/products/screws/Drywall Screw1.webp"
-                }
-            ]
-        },
-        {
-            "category": "螺柱与牙条",
-            "icon": "images/products/studs/Threaded Rod6.webp",
-            "items": [
-                {
-                    "slug": "products/threaded-rods",
-                    "title": "全牙螺杆",
-                    "summary": "全螺纹/半螺纹牙条，符合DIN 975标准，规格M4-M30，多种长度可选。",
-                    "icon": "../../images/products/studs/Threaded Rod6.webp"
-                },
-                {
-                    "slug": "products/double-end-studs",
-                    "title": "双头螺柱",
-                    "summary": "两端螺纹螺柱，适用于法兰、阀门管件及管道系统。",
-                    "icon": "../../images/products/studs/Double End Stud1.webp"
-                }
-            ]
-        },
-        {
-            "category": "销钉",
-            "icon": "images/products/pins/Cotter Pin3.webp",
-            "items": [
-                {
-                    "slug": "products/cotter-pins",
-                    "title": "开口销",
-                    "summary": "标准开口销，用于安全紧固，符合DIN 94/ISO 1234标准。",
-                    "icon": "../../images/products/pins/Cotter Pin3.webp"
-                },
-                {
-                    "slug": "products/dowel-pins",
-                    "title": "定位销",
-                    "summary": "精密定位用圆柱销，符合DIN 7/ISO 2338标准，材质为淬火钢。",
-                    "icon": "../../images/products/pins/Dowel Pin3.webp"
-                }
-            ]
-        },
-        {
-            "category": "锚栓与紧固配件",
-            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-            "items": [
-                {
-                    "slug": "products/wedge-anchors",
-                    "title": "楔型锚栓",
-                    "summary": "镀锌楔型锚栓，适用于混凝土和砖石结构，重载工况专用。",
-                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-                },
-                {
-                    "slug": "products/expansion-bolts",
-                    "title": "膨胀螺栓",
-                    "summary": "膨胀锚栓，适用于混凝土、砖体、石材的牢固锚固。",
-                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-                },
-                {
-                    "slug": "products/drop-in-anchors",
-                    "title": "内爆锚栓",
-                    "summary": "内爆式锚栓，搭配全牙螺杆使用，适用于混凝土工程。",
-                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-                }
-            ]
-        },
-        {
-            "category": "其他紧固件",
-            "icon": "images/products/others/Solid Rivet1.webp",
-            "items": [
-                {
-                    "slug": "products/solid-rivets",
-                    "title": "实心铆钉",
-                    "summary": "永久性紧固用实心铆钉，多头部款式、多材质可选。",
-                    "icon": "../../images/products/others/Solid Rivet1.webp"
-                },
-                {
-                    "slug": "products/blind-rivets",
-                    "title": "抽芯铆钉",
-                    "summary": "拉铆钉，适用于单侧操作受限的安装场景。",
-                    "icon": "../../images/products/others/Blind Rivet1.webp"
-                },
-                {
-                    "slug": "products/semi-tubular-rivets",
-                    "title": "半空心铆钉",
-                    "summary": "半空心结构铆钉，适用于压铆工艺。",
-                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-                },
-                {
-                    "slug": "products/u-bolts",
-                    "title": "U型螺栓",
-                    "summary": "管道安装用U型螺栓，多规格、多材质可选。",
-                    "icon": "../../images/products/others/U Bolt1.webp"
-                },
-                {
-                    "slug": "products/circlips",
-                    "title": "轴用挡圈",
-                    "summary": "轴用外卡簧，符合DIN 471标准。",
-                    "icon": "../../images/products/others/External Circlip2.webp"
-                },
-                {
-                    "slug": "products/fastener-kits",
-                    "title": "紧固件套装",
-                    "summary": "维修保养用混合紧固件套装，支持定制包装。",
-                    "icon": "../../images/products/others/Fastener Kits4.webp"
-                }
-            ]
-        }
-    ]
+  "news": [
+    {
+      "slug": "news/2007-11-08-eu-china-fasteners",
+      "title": "欧盟对华紧固件发起反倾销调查",
+      "date": "2007-11-08",
+      "summary": "2007年11月9日，欧盟委员会对来自中国的钢铁紧固件发起反倾销调查，涉及逾1700家中国出口商，出口额约8.09亿美元，成为当时针对中国的最大贸易救济案。",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2007-11-09-eu-china-fasteners",
+      "title": "欧盟启动对中国紧固件的反倾销调查",
+      "date": "2007-11-09",
+      "summary": "2007年11月9日，欧盟委员会对中国钢铁紧固件发起反倾销调查，涉及逾1700家中国出口商，出口额约8.09亿美元，成为当时针对中国的最大贸易救济案件。",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2026-04-14-us-tariff-fastener",
+      "title": "美国关税政策调整：紧固件出口面临新转折点",
+      "date": "2026-04-14",
+      "summary": "自2026年4月6日起，美国232条款关税规则调整，紧固件出口计税基础改为产品总值，中国紧固件企业面临成本上升挑战。本文分析影响并提供应对策略。",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    },
+    {
+      "slug": "news/2026-04-15",
+      "title": "从广交会到义乌博览会：紧固件行业四月迎来“双核”贸易热潮",
+      "date": "2026-04-15",
+      "summary": "2026年4月，广州采购交易会与义乌五金电器博览会相继举办，为紧固件行业打造“双核”贸易走廊，助力企业开拓海外市场与新兴市场。",
+      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+    },
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "WT紧固件——优质紧固件制造商及全球出口商",
+      "date": "2026-04-07",
+      "summary": "WT紧固件是高质量螺栓、螺钉、垫圈和定制紧固件的领先制造商和出口商。自2005年以来，以ISO认证产品服务全球市场。",
+      "icon": "../../../../images/og-cover.jpg"
+    },
+    {
+      "slug": "news/test-article-123",
+      "title": "Test",
+      "date": "2026-04-13",
+      "summary": "test summary",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    }
+  ]
 }

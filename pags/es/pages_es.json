@@ -1,254 +1,46 @@
 {
-    "news": [
-        {
-            "slug": "news/2026-04-15",
-            "title": "De la Feria de Cantón a la Expo de Yiwu: La Industria de los Elementos de Fijación Abraza el Boom Comercial \"Dual-Core\" en Abril",
-            "date": "2026-04-15",
-            "summary": "Abril de 2026 marca una concentrada explosión de eventos comerciales de elementos de fijación en el sur de China. La 6ª Feria de Abastecimiento de Guangzhou (GSF) se celebrará en el Poly World Trade Center del 14 al 17 de abril, seguida inmediatamente por la 10ª Expo Internacional de Ferretería y Electrodomésticos de Yiwu del 20 al 22 de abril. La vinculación entre estos dos grandes centros comerciales crea un corredor comercial de doble núcleo \"precisión de Guangzhou + alcance global de Yiwu\", ofreciendo a las empresas de elementos de fijación una ventana principal para asegurar pedidos en el extranjero y expandirse en mercados emergentes.",
-            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
-        },
-        {
-            "slug": "news/2026-04-14-us-tariff-fastener",
-            "title": "Ajuste de la Política Arancelaria de EE.UU.: Las Exportaciones de Sujetadores Enfrentan un Nuevo Punto de Inflexión",
-            "date": "2026-04-14",
-            "summary": "A partir del 6 de abril de 2026, EE.UU. ha ajustado oficialmente las reglas arancelarias de la Sección 232 para productos derivados de acero y aluminio. Para los sujetadores que contienen acero o aluminio, el método de cálculo ha cambiado fundamentalmente: de gravar solo el valor del contenido metálico a aplicar un arancel del 25% sobre el valor declarado total de todo el producto. Este artículo proporciona un análisis en profundidad de las nuevas regulaciones, estimaciones del impacto en costos y estrategias de respuesta empresarial.",
-            "icon": "../../images/logo.jpg"
-        }
-    ],
-    "products": [
-        {
-            "category": "Pernos",
-            "icon": "images/products/bolts/Hex Bolt0.webp",
-            "items": [
-                {
-                    "slug": "products/hex-bolts",
-                    "title": "Pernos hexagonales",
-                    "summary": "Pernos hexagonales de rosca completa y parcial según DIN 931/933, ISO 4014/4017. Grados 4.8 a 12.9, tamaños M4–M64.",
-                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
-                },
-                {
-                    "slug": "products/flange-bolts",
-                    "title": "Pernos con brida",
-                    "summary": "Pernos con brida dentada y sin dentar según DIN 6921 / ISO 1665. Cara de arandela integrada para resistencia a vibraciones.",
-                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
-                },
-                {
-                    "slug": "products/anchor-bolts",
-                    "title": "Pernos anclaje",
-                    "summary": "Anclajes de expansión, anclajes de cuña y pernos anclaje químicos para hormigón y mampostería.",
-                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-                },
-                {
-                    "slug": "products/high-strength-bolts",
-                    "title": "Pernos alta resistencia",
-                    "summary": "Pernos estructurales alta resistencia para aplicaciones pesadas. Grados 8.8, 10.9, 12.9 disponibles.",
-                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-                },
-                {
-                    "slug": "products/t-bolts",
-                    "title": "Pernos en T",
-                    "summary": "Pernos en forma de T para perfiles de ranura en T y aplicaciones estructurales. Varios tamaños y materiales.",
-                    "icon": "../../images/products/bolts/T Bolt4.webp"
-                }
-            ]
-        },
-        {
-            "category": "Tuercas",
-            "icon": "images/products/nuts/Hex Nut1.webp",
-            "items": [
-                {
-                    "slug": "products/hex-nuts",
-                    "title": "Tuercas hexagonales",
-                    "summary": "Tuercas hexagonales estándar según DIN 934 / ISO 4032. Tamaños M4–M64, grados 4, 6, 8, 10.",
-                    "icon": "../../images/products/nuts/Hex Nut1.webp"
-                },
-                {
-                    "slug": "products/flange-nuts",
-                    "title": "Tuercas con brida",
-                    "summary": "Tuercas con brida dentada con cara de arandela integrada para resistencia a vibraciones. DIN 6923.",
-                    "icon": "../../images/products/nuts/Flange Nut.webp"
-                },
-                {
-                    "slug": "products/nyloc-nuts",
-                    "title": "Tuercas Nyloc",
-                    "summary": "Tuercas de bloqueo con inserto de nailon para resistencia al par. DIN 985 / ISO 10511.",
-                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
-                },
-                {
-                    "slug": "products/weld-nuts",
-                    "title": "Tuercas de soldadura",
-                    "summary": "Tuercas de soldadura de proyección para soldadura automatizada. Tipos cuadrados y hexagonales disponibles.",
-                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
-                },
-                {
-                    "slug": "products/wing-nuts",
-                    "title": "Tuercas mariposa",
-                    "summary": "Tuercas mariposa manuales para montaje y desmontaje rápidos. Varios tamaños.",
-                    "icon": "../../images/products/nuts/Wing Nut7.webp"
-                }
-            ]
-        },
-        {
-            "category": "Arandelas",
-            "icon": "images/products/washers/Flat Washer4.webp",
-            "items": [
-                {
-                    "slug": "products/flat-washers",
-                    "title": "Arandelas planas",
-                    "summary": "Arandelas planas estándar según DIN 125 / ISO 7089. Zincadas, galvanizadas o acabado natural.",
-                    "icon": "../../images/products/washers/Flat Washer4.webp"
-                },
-                {
-                    "slug": "products/lock-washers",
-                    "title": "Arandelas de bloqueo",
-                    "summary": "Arandelas de bloqueo divididas para resistencia a vibraciones. DIN 127 / ISO 7092.",
-                    "icon": "../../images/products/washers/Lock Washer2.webp"
-                },
-                {
-                    "slug": "products/spring-washers",
-                    "title": "Arandelas de resorte",
-                    "summary": "Arandelas de resorte cónicas para aplicaciones de carga dinámica. DIN 2093.",
-                    "icon": "../../images/products/washers/Spring Washer4.webp"
-                },
-                {
-                    "slug": "products/square-washers",
-                    "title": "Arandelas cuadradas",
-                    "summary": "Arandelas planas cuadradas para aplicaciones estructurales. DIN 436.",
-                    "icon": "../../images/products/washers/Square Washer1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Tornillos",
-            "icon": "images/products/screws/Machine Screw2.webp",
-            "items": [
-                {
-                    "slug": "products/machine-screws",
-                    "title": "Tornillos máquina",
-                    "summary": "Tornillos máquina de cabeza cilíndrica, hexagonal y avellanada. DIN 963, 964, 965, 966.",
-                    "icon": "../../images/products/screws/Machine Screw2.webp"
-                },
-                {
-                    "slug": "products/self-drilling-screws",
-                    "title": "Tornillos autoperforantes",
-                    "summary": "Tornillos Tek con punta de perforación para aplicaciones de metal y acero. Varios tipos de cabeza.",
-                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-                },
-                {
-                    "slug": "products/wood-screws",
-                    "title": "Tornillos para madera",
-                    "summary": "Tornillos para madera de cabeza plana y redonda. Varios tamaños y materiales.",
-                    "icon": "../../images/products/screws/Wood Screw3.webp"
-                },
-                {
-                    "slug": "products/drywall-screws",
-                    "title": "Tornillos para pladur",
-                    "summary": "Tornillos para pladur de rosca fina y gruesa para placas de yeso.",
-                    "icon": "../../images/products/screws/Drywall Screw1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Pernos pasadores & varillas roscadas",
-            "icon": "images/products/studs/Threaded Rod6.webp",
-            "items": [
-                {
-                    "slug": "products/threaded-rods",
-                    "title": "Varillas roscadas",
-                    "summary": "Varillas roscadas completas y parciales. DIN 975, M4–M30, varias longitudes.",
-                    "icon": "../../images/products/studs/Threaded Rod6.webp"
-                },
-                {
-                    "slug": "products/double-end-studs",
-                    "title": "Pernos pasadores doble extremo",
-                    "summary": "Pernos pasadores con roscas en ambos extremos. Para bridas, accesorios de válvulas y sistemas de tuberías.",
-                    "icon": "../../images/products/studs/Double End Stud1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Pasadores",
-            "icon": "images/products/pins/Cotter Pin3.webp",
-            "items": [
-                {
-                    "slug": "products/cotter-pins",
-                    "title": "Pasadores de chaveta",
-                    "summary": "Pasadores de chaveta estándar para fijación segura. DIN 94 / ISO 1234.",
-                    "icon": "../../images/products/pins/Cotter Pin3.webp"
-                },
-                {
-                    "slug": "products/dowel-pins",
-                    "title": "Pasadores de alineación",
-                    "summary": "Pasadores paralelos para alineación precisa. DIN 7 / ISO 2338, acero endurecido.",
-                    "icon": "../../images/products/pins/Dowel Pin3.webp"
-                }
-            ]
-        },
-        {
-            "category": "Anclajes & fijación",
-            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-            "items": [
-                {
-                    "slug": "products/wedge-anchors",
-                    "title": "Anclajes de cuña",
-                    "summary": "Anclajes de cuña zincados para hormigón y mampostería. Aplicaciones pesadas.",
-                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-                },
-                {
-                    "slug": "products/expansion-bolts",
-                    "title": "Pernos de expansión",
-                    "summary": "Anclajes de expansión para anclaje seguro en hormigón, ladrillo y piedra.",
-                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-                },
-                {
-                    "slug": "products/drop-in-anchors",
-                    "title": "Anclajes empotrados",
-                    "summary": "Anclajes empotrados para uso con varillas roscadas y aplicaciones de hormigón.",
-                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-                }
-            ]
-        },
-        {
-            "category": "Otras fijaciones",
-            "icon": "images/products/others/Solid Rivet1.webp",
-            "items": [
-                {
-                    "slug": "products/solid-rivets",
-                    "title": "Remaches sólidos",
-                    "summary": "Remaches sólidos para fijación permanente. Varios tipos de cabeza y materiales.",
-                    "icon": "../../images/products/others/Solid Rivet1.webp"
-                },
-                {
-                    "slug": "products/blind-rivets",
-                    "title": "Remaches ciegos",
-                    "summary": "Remaches pop para aplicaciones donde el acceso está limitado a un solo lado.",
-                    "icon": "../../images/products/others/Blind Rivet1.webp"
-                },
-                {
-                    "slug": "products/semi-tubular-rivets",
-                    "title": "Remaches semitubulares",
-                    "summary": "Remaches semitubulares con agujero parcial para aplicaciones de remachado.",
-                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-                },
-                {
-                    "slug": "products/u-bolts",
-                    "title": "Pernos en U",
-                    "summary": "Pernos en U para montaje de tuberías. Varios tamaños y materiales.",
-                    "icon": "../../images/products/others/U Bolt1.webp"
-                },
-                {
-                    "slug": "products/circlips",
-                    "title": "Circlips externos",
-                    "summary": "Circlips externos para aplicaciones de eje. DIN 471.",
-                    "icon": "../../images/products/others/External Circlip2.webp"
-                },
-                {
-                    "slug": "products/fastener-kits",
-                    "title": "Kits de fijaciones",
-                    "summary": "Kits de fijaciones surtidos para reparación y mantenimiento. Embalaje personalizado disponible.",
-                    "icon": "../../images/products/others/Fastener Kits4.webp"
-                }
-            ]
-        }
-    ]
+  "news": [
+    {
+      "slug": "news/2007-11-08-eu-china-fasteners",
+      "title": "La UE inicia una investigación antidumping sobre los sujetadores chinos",
+      "date": "2007-11-08",
+      "summary": "Dejar en blanco – se utilizará el resumen",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2007-11-09-eu-china-fasteners",
+      "title": "La UE inicia una investigación antidumping sobre los sujetadores chinos",
+      "date": "2007-11-09",
+      "summary": "El 9 de noviembre de 2007, la Comisión Europea inició una investigación antidumping sobre los sujetadores de hierro y acero procedentes de China. El caso involucró a más de 1.700 empresas chinas con e",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2026-04-14-us-tariff-fastener",
+      "title": "Ajuste de la Política Arancelaria de EE.UU.: Las Exportaciones de Sujetadores Enfrentan un Nuevo Punto de Inflexión",
+      "date": "2026-04-14",
+      "summary": "A partir del 6 de abril de 2026, las nuevas reglas de la Sección 232 de EE.UU. gravan el valor total de los sujetadores de acero/aluminio con un 25%, impactando significativamente los costos de export",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    },
+    {
+      "slug": "news/2026-04-15",
+      "title": "De la Feria de Cantón a la Expo de Yiwu: La Industria de los Elementos de Fijación Abraza el Boom Comercial &quot;Dual-Core&quot; en Abril",
+      "date": "2026-04-15",
+      "summary": "Abril 2026: La Feria de Abastecimiento de Guangzhou y la Expo de Ferretería de Yiwu crean un corredor comercial &quot;dual-core&quot; para la industria de elementos de fijación. Oportunidad clave para",
+      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+    },
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "WT Fasteners",
+      "date": "2026-04-07",
+      "summary": "WT Fasteners es un fabricante y exportador líder de pernos, tornillos, arandelas y sujetadores personalizados de alta calidad. Sirve a mercados globales con productos certificados ISO desde 2005.",
+      "icon": "../../../../images/og-cover.jpg"
+    },
+    {
+      "slug": "news/test-article-123",
+      "title": "Test",
+      "date": "2026-04-13",
+      "summary": "test summary",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    }
+  ]
 }

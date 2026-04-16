@@ -1,254 +1,46 @@
 {
-    "news": [
-        {
-            "slug": "news/2026-04-15",
-            "title": "من معرض كانتون إلى معرض ييوو: صناعة المسامير تحتضن ازدهار التجارة \"ثنائي النواة\" في أبريل",
-            "date": "2026-04-15",
-            "summary": "يشهد أبريل 2026 تركيزًا كبيرًا لفعاليات تجارة المسامير في جنوب الصين. سيعقد معرض غوانغتشو السادس للمصادر (GSF) في مركز بوليوورلد التجاري العالمي من 14 إلى 17 أبريل، يليه مباشرة المعرض الدولي العاشر للأجهزة الكهربائية في ييوو من 20 إلى 22 أبريل. يخلق الترابط بين هذين المركزين التجاريين الرئيسيين ممرًا تجاريًا ثنائي النواة \"غوانغتشو للتواصل الدقيق + ييوو للوصول العالمي\"، مما يوفر لشركات المسامير نافذة رئيسية لتأمين الطلبات الخارجية والتوسع في الأسواق الناشئة.",
-            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
-        },
-        {
-            "slug": "news/2026-04-14-us-tariff-fastener",
-            "title": "تعديل السياسة الجمركية الأمريكية: صادرات المسامير تواجه نقطة تحول جديدة",
-            "date": "2026-04-14",
-            "summary": "اعتبارًا من 6 أبريل 2026، قامت الولايات المتحدة بتعديل قواعد التعريفة بموجب القسم 232 للمنتجات المشتقة من الصلب والألومنيوم رسميًا. بالنسبة للمسامير التي تحتوي على صلب أو ألومنيوم، تغيرت طريقة الحساب بشكل جذري—من فرض الضريبة على قيمة محتوى المعدن فقط إلى فرض تعريفة بنسبة 25٪ على القيمة الإجمالية المعلنة للمنتج بأكمله. تقدم هذه المقالة تحليلًا متعمقًا للوائح الجديدة، وتقديرات لتأثير التكلفة، واستراتيجيات استجابة الشركات.",
-            "icon": "../../images/logo.jpg"
-        }
-    ],
-    "products": [
-        {
-            "category": "براغي",
-            "icon": "images/products/bolts/Hex Bolt0.webp",
-            "items": [
-                {
-                    "slug": "products/hex-bolts",
-                    "title": "براغي سداسية",
-                    "summary": "براغي سداسية ذات خيوط كاملة وجزئية وفق DIN 931/933، ISO 4014/4017. درجات 4.8 إلى 12.9، أحجام M4–M64.",
-                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
-                },
-                {
-                    "slug": "products/flange-bolts",
-                    "title": "براغي ذات حافة دائرية",
-                    "summary": "براغي ذات حافة دائرية مسننة وغير مسننة وفق DIN 6921 / ISO 1665. وجه غساز مدمج لمقاومة الاهتزاز.",
-                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
-                },
-                {
-                    "slug": "products/anchor-bolts",
-                    "title": "براغي تثبيت أساسية",
-                    "summary": "مراسي تمدد، مراسي إسفينية، وبراغي تثبيت كيميائية للخرسانة والبناء بالطوب.",
-                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
-                },
-                {
-                    "slug": "products/high-strength-bolts",
-                    "title": "براغي عالية القوة",
-                    "summary": "براغي هيكلية عالية القوة للتطبيقات الثقيلة. متوفرة بدرجات 8.8، 10.9، 12.9.",
-                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
-                },
-                {
-                    "slug": "products/t-bolts",
-                    "title": "براغي على شكل T",
-                    "summary": "براغي على شكل T لملفات ذقن T والتطبيقات الهيكلية. أحجام ومواد متنوعة.",
-                    "icon": "../../images/products/bolts/T Bolt4.webp"
-                }
-            ]
-        },
-        {
-            "category": "صواميل",
-            "icon": "images/products/nuts/Hex Nut1.webp",
-            "items": [
-                {
-                    "slug": "products/hex-nuts",
-                    "title": "صواميل سداسية",
-                    "summary": "صواميل سداسية قياسية وفق DIN 934 / ISO 4032. أحجام M4–M64، درجات 4، 6، 8، 10.",
-                    "icon": "../../images/products/nuts/Hex Nut1.webp"
-                },
-                {
-                    "slug": "products/flange-nuts",
-                    "title": "صواميل ذات حافة دائرية",
-                    "summary": "صواميل ذات حافة دائرية مسننة مع وجه غساز مدمج لمقاومة الاهتزاز. DIN 6923.",
-                    "icon": "../../images/products/nuts/Flange Nut.webp"
-                },
-                {
-                    "slug": "products/nyloc-nuts",
-                    "title": "صواميل قفل نايلون",
-                    "summary": "صواميل قفل بمقبس نايلون لمقاومة عزم السيطرة. DIN 985 / ISO 10511.",
-                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
-                },
-                {
-                    "slug": "products/weld-nuts",
-                    "title": "صواميل لحام",
-                    "summary": "صواميل لحام نتوءية لللحام الآلي. متوفرة بأنواع مربعة وسداسية.",
-                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
-                },
-                {
-                    "slug": "products/wing-nuts",
-                    "title": "صواميل أجنحة",
-                    "summary": "صواميل أجنحة تعمل باليد للتجميع والفك السريع. أحجام متنوعة.",
-                    "icon": "../../images/products/nuts/Wing Nut7.webp"
-                }
-            ]
-        },
-        {
-            "category": "غسالات",
-            "icon": "images/products/washers/Flat Washer4.webp",
-            "items": [
-                {
-                    "slug": "products/flat-washers",
-                    "title": "غسالات مسطحة",
-                    "summary": "غسالات مسطحة قياسية وفق DIN 125 / ISO 7089. مطلي بالزنك، مجلفن، أو نهاية عادية.",
-                    "icon": "../../images/products/washers/Flat Washer4.webp"
-                },
-                {
-                    "slug": "products/lock-washers",
-                    "title": "غسالات قفل",
-                    "summary": "غسالات قفل منفذة لمقاومة الاهتزاز. DIN 127 / ISO 7092.",
-                    "icon": "../../images/products/washers/Lock Washer2.webp"
-                },
-                {
-                    "slug": "products/spring-washers",
-                    "title": "غسالات زنبركية",
-                    "summary": "غسالات زنبركية مخروطية للتطبيقات ذات الحمل الديناميكي. DIN 2093.",
-                    "icon": "../../images/products/washers/Spring Washer4.webp"
-                },
-                {
-                    "slug": "products/square-washers",
-                    "title": "غسالات مربعة",
-                    "summary": "غسالات مسطحة مربعة للتطبيقات الهيكلية. DIN 436.",
-                    "icon": "../../images/products/washers/Square Washer1.webp"
-                }
-            ]
-        },
-        {
-            "category": "مسامير",
-            "icon": "images/products/screws/Machine Screw2.webp",
-            "items": [
-                {
-                    "slug": "products/machine-screws",
-                    "title": "مسامير آلية",
-                    "summary": "مسامير آلية ذات رأس مقعر، رأس سداسي، ورأس مستدير. DIN 963، 964، 965، 966.",
-                    "icon": "../../images/products/screws/Machine Screw2.webp"
-                },
-                {
-                    "slug": "products/self-drilling-screws",
-                    "title": "مسامير ذات حفر ذاتي",
-                    "summary": "مسامير تيك ذات نقطة حفر لتطبيقات المعادن والصلب. أنواع رؤوس متنوعة.",
-                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
-                },
-                {
-                    "slug": "products/wood-screws",
-                    "title": "مسامير خشب",
-                    "summary": "مسامير خشب ذات رأس مسطح ورأس مستدير. أحجام ومواد متنوعة.",
-                    "icon": "../../images/products/screws/Wood Screw3.webp"
-                },
-                {
-                    "slug": "products/drywall-screws",
-                    "title": "مسامير جدران جبسية",
-                    "summary": "مسامير جدران جبسية ذات خيوط دقيقة وخشنة لتطبيقات ألواح الجبس.",
-                    "icon": "../../images/products/screws/Drywall Screw1.webp"
-                }
-            ]
-        },
-        {
-            "category": "أعمدة خيوط وقضبان خيوط",
-            "icon": "images/products/studs/Threaded Rod6.webp",
-            "items": [
-                {
-                    "slug": "products/threaded-rods",
-                    "title": "قضبان خيوط",
-                    "summary": "قضبان خيوط كاملة وجزئية. DIN 975، M4–M30، أطوال متنوعة.",
-                    "icon": "../../images/products/studs/Threaded Rod6.webp"
-                },
-                {
-                    "slug": "products/double-end-studs",
-                    "title": "أعمدة خيوط ذات طرفين",
-                    "summary": "براغي أعمدة ذات خيوط على الطرفين. للحواف، تركيبات الصمامات، وأنظمة الأنابيب.",
-                    "icon": "../../images/products/studs/Double End Stud1.webp"
-                }
-            ]
-        },
-        {
-            "category": "دبابيس",
-            "icon": "images/products/pins/Cotter Pin3.webp",
-            "items": [
-                {
-                    "slug": "products/cotter-pins",
-                    "title": "دبابيس مقسمة",
-                    "summary": "دبابيس مقسمة قياسية للتثبيت الآمن. DIN 94 / ISO 1234.",
-                    "icon": "../../images/products/pins/Cotter Pin3.webp"
-                },
-                {
-                    "slug": "products/dowel-pins",
-                    "title": "دبابيس محاذاة",
-                    "summary": "دبابيس متوازية للمحاذاة الدقيقة. DIN 7 / ISO 2338، فولاذ متصلب.",
-                    "icon": "../../images/products/pins/Dowel Pin3.webp"
-                }
-            ]
-        },
-        {
-            "category": "مراسي وأدوات تثبيت",
-            "icon": "images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp",
-            "items": [
-                {
-                    "slug": "products/wedge-anchors",
-                    "title": "مراسي إسفينية",
-                    "summary": "مراسي إسفينية مطلي بالزنك للخرسانة والبناء بالطوب. تطبيقات ثقيلة.",
-                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-                },
-                {
-                    "slug": "products/expansion-bolts",
-                    "title": "براغي تمدد",
-                    "summary": "مراسي تمدد للتثبيت الآمن في الخرسانة، الطوب، والحجر.",
-                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-                },
-                {
-                    "slug": "products/drop-in-anchors",
-                    "title": "مراسي إسقاطية",
-                    "summary": "مراسي إسقاطية للاستخدام مع القضبان الخيوط وتطبيقات الخرسانة.",
-                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
-                }
-            ]
-        },
-        {
-            "category": "ملحقات تثبيت أخرى",
-            "icon": "images/products/others/Solid Rivet1.webp",
-            "items": [
-                {
-                    "slug": "products/solid-rivets",
-                    "title": "مسامير ملحومة صلبة",
-                    "summary": "مسامير ملحومة صلبة للتثبيت الدائم. أنواع رؤوس ومواد متنوعة.",
-                    "icon": "../../images/products/others/Solid Rivet1.webp"
-                },
-                {
-                    "slug": "products/blind-rivets",
-                    "title": "مسامير ملحومة عمياء",
-                    "summary": "مسامير بوب للتطبيقات التي يقتصر الوصول فيها على جانب واحد.",
-                    "icon": "../../images/products/others/Blind Rivet1.webp"
-                },
-                {
-                    "slug": "products/semi-tubular-rivets",
-                    "title": "مسامير ملحومة نصف أنبوبية",
-                    "summary": "مسامير ملحومة نصف أنبوبية ذات فتحة جزئية لتطبيقات الضغط.",
-                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
-                },
-                {
-                    "slug": "products/u-bolts",
-                    "title": "براغي على شكل U",
-                    "summary": "براغي على شكل U لتركيب الأنابيب. أحجام ومواد متنوعة.",
-                    "icon": "../../images/products/others/U Bolt1.webp"
-                },
-                {
-                    "slug": "products/circlips",
-                    "title": "حلقات تثبيت خارجية",
-                    "summary": "حلقات تثبيت خارجية لتطبيقات الأعمدة. DIN 471.",
-                    "icon": "../../images/products/others/External Circlip2.webp"
-                },
-                {
-                    "slug": "products/fastener-kits",
-                    "title": "مجموعات تثبيت",
-                    "summary": "مجموعات تثبيت متنوعة للصيانة والإصلاح. تغليف مخصص متاح.",
-                    "icon": "../../images/products/others/Fastener Kits4.webp"
-                }
-            ]
-        }
-    ]
+  "news": [
+    {
+      "slug": "news/2007-11-08-eu-china-fasteners",
+      "title": "الاتحاد الأوروبي يبدأ تحقيقًا مضادًا للإغراق في المسامير الصينية",
+      "date": "2007-11-08",
+      "summary": "في 9 نوفمبر 2007، أطلقت المفوضية الأوروبية تحقيقًا مضادًا للإغراق بشأن مسامير الحديد والصلب الصينية. شملت القضية أكثر من 1700 شركة صينية بقيمة صادرات تقارب 575 مليون يورو (809 مليون دولار أمريكي)، مما",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2007-11-09-eu-china-fasteners",
+      "title": "EU Initiates Anti-Dumping Investigation on Chinese Fasteners",
+      "date": "2007-11-09",
+      "summary": "On November 9, 2007, the European Commission launched an anti-dumping investigation into Chinese iron and steel fasteners. The case involved over 1,700 Chinese companies with exports valued at approxi",
+      "icon": "https://wtscrews.com/images/news/WTO.png"
+    },
+    {
+      "slug": "news/2026-04-14-us-tariff-fastener",
+      "title": "تعديل السياسة الجمركية الأمريكية: صادرات المسامير تواجه نقطة تحول جديدة",
+      "date": "2026-04-14",
+      "summary": "تعديل أمريكي جذري: فرض تعريفة 25٪ على القيمة الكاملة للمسامير المصدرة بدءًا من 2026. تحليل التأثير على التكلفة واستراتيجيات المواجهة للشركات الصينية.",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    },
+    {
+      "slug": "news/2026-04-15",
+      "title": "من معرض كانتون إلى معرض ييوو: صناعة المسامير تحتضن ازدهار التجارة &quot;ثنائي النواة&quot; في أبريل",
+      "date": "2026-04-15",
+      "summary": "يشهد أبريل 2026 ازدهارًا تجاريًا لصناعة المسامير في جنوب الصين من خلال معرضي غوانغتشو للمصادر ومعرض ييوو الدولي للأجهزة الكهربائية، مما يوفر ممرًا تجاريًا ثنائي النواة لشركات المسامير لتعزيز صادراتها.",
+      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+    },
+    {
+      "slug": "news/industry-outlook-2026",
+      "title": "WT Fasteners",
+      "date": "2026-04-07",
+      "summary": "WT Fasteners هي الشركة المصنعة والمصدرة الرائدة للمسامير والبراغي والحلقات والمثبتات المخصصة عالية الجودة. تخدم الأسواق العالمية بمنتجات معتمدة ISO منذ عام 2005.",
+      "icon": "../../../../images/og-cover.jpg"
+    },
+    {
+      "slug": "news/test-article-123",
+      "title": "Test",
+      "date": "2026-04-13",
+      "summary": "test summary",
+      "icon": "https://wtscrews.com/images/og-cover.jpg"
+    }
+  ]
 }
