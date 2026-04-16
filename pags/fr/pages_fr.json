@@ -1,11 +1,11 @@
 {
   "news": [
     {
-      "slug": "news/2007-11-08-eu-china-fasteners",
-      "title": "L'UE lance une enquête antidumping sur les fixations chinoises",
-      "date": "2007-11-08",
-      "summary": "Laissez vide – le résumé sera utilisé",
-      "icon": "https://wtscrews.com/images/news/WTO.png"
+      "slug": "news/test-json-1776321839",
+      "title": "Test JSON",
+      "date": "2026-04-16",
+      "summary": "test summary",
+      "icon": "../../images/logo.jpg"
     },
     {
       "slug": "news/2007-11-09-eu-china-fasteners",
@@ -34,13 +34,242 @@
       "date": "2026-04-07",
       "summary": "WT Fasteners est un fabricant et exportateur leader de boulons, vis, rondelles et fixations personnalisées de haute qualité. Sert les marchés mondiaux avec des produits certifiés ISO depuis 2005.",
       "icon": "../../../../images/og-cover.jpg"
+    }
+  ],
+  "products": [
+    {
+      "category": "Bolts",
+      "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+      "items": [
+        {
+          "slug": "products/anchor-bolts",
+          "title": "WT Fasteners",
+          "summary": "Expansion anchors, wedge anchors, and chemical anchor bolts for concrete and masonry applications. Tailles M6–M24.",
+          "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+        },
+        {
+          "slug": "products/flange-bolts",
+          "title": "WT Fasteners",
+          "summary": "Flange bolts with serrated or non-serrated washer face per DIN 6921 / ISO 1665. Tailles M5–M24.",
+          "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+        },
+        {
+          "slug": "products/hex-bolts",
+          "title": "WT Fasteners",
+          "summary": "Full and partial thread hex bolts manufactured to DIN 931/933 and ISO 4014/4017 standards. Grades 4.8 to 12.9, sizes M4–M64.",
+          "icon": "https://wtscrews.com/images/hex-bolts.jpg"
+        },
+        {
+          "slug": "products/high-strength-bolts",
+          "title": "WT Fasteners",
+          "summary": "Haute résistance structural bolts in grades 8.8, 10.9, 12.9. ASTM A325, A490, DIN 6914 compliant.",
+          "icon": "https://wtscrews.com/images/products/bolts/Haute Résistance Bolt1.webp"
+        },
+        {
+          "slug": "products/t-bolts",
+          "title": "WT Fasteners",
+          "summary": "T-shaped bolts for T-slot profiles and structural applications. Tailles M4–M12.",
+          "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+        }
+      ]
     },
     {
-      "slug": "news/test-article-123",
-      "title": "Test",
-      "date": "2026-04-13",
-      "summary": "test summary",
-      "icon": "https://wtscrews.com/images/og-cover.jpg"
+      "category": "Nuts",
+      "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+      "items": [
+        {
+          "slug": "products/flange-nuts",
+          "title": "WT Fasteners",
+          "summary": "Serrated flange nuts per DIN 6923 with built-in washer face. Tailles M5–M24.",
+          "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+        },
+        {
+          "slug": "products/hex-nuts",
+          "title": "WT Fasteners",
+          "summary": "Standard hex nuts per DIN 934 / ISO 4032. Tailles M4–M64, grades 4, 6, 8, 10.",
+          "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+        },
+        {
+          "slug": "products/nyloc-nuts",
+          "title": "WT Fasteners",
+          "summary": "Nylon insert lock nuts per DIN 985 / ISO 10511. Tailles M3–M36.",
+          "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+        },
+        {
+          "slug": "products/weld-nuts",
+          "title": "WT Fasteners",
+          "summary": "Projection weld nuts for automated welding. Square and hexagonal types.",
+          "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+        },
+        {
+          "slug": "products/wing-nuts",
+          "title": "WT Fasteners",
+          "summary": "Hand-operated wing nuts for quick assembly and disassembly.",
+          "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+        }
+      ]
+    },
+    {
+      "category": "Washers",
+      "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+      "items": [
+        {
+          "slug": "products/flat-washers",
+          "title": "WT Fasteners",
+          "summary": "Standard flat washers per DIN 125 / ISO 7089. Tailles M2–M64.",
+          "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+        },
+        {
+          "slug": "products/lock-washers",
+          "title": "WT Fasteners",
+          "summary": "Split lock washers per DIN 127 / ISO 7092. Tailles M2–M64.",
+          "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+        },
+        {
+          "slug": "products/spring-washers",
+          "title": "WT Fasteners",
+          "summary": "Conical spring washers (Belleville) for dynamic load applications. DIN 2093.",
+          "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+        },
+        {
+          "slug": "products/square-washers",
+          "title": "WT Fasteners",
+          "summary": "Square flat washers for structural applications. DIN 436.",
+          "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+        }
+      ]
+    },
+    {
+      "category": "Screws",
+      "icon": "https://wtscrews.com/images/drywall-screws.jpg",
+      "items": [
+        {
+          "slug": "products/drywall-screws",
+          "title": "WT Fasteners",
+          "summary": "Professionnel drywall screws with fine thread for metal studs and coarse thread for wood framing. Black phosphate finish.",
+          "icon": "https://wtscrews.com/images/drywall-screws.jpg"
+        },
+        {
+          "slug": "products/machine-screws",
+          "title": "WT Fasteners",
+          "summary": "Pan head, hex head, and countersunk machine screws. Tailles M1.6–M20.",
+          "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+        },
+        {
+          "slug": "products/self-drilling-screws",
+          "title": "WT Fasteners",
+          "summary": "Self drilling screws (Tek screws) with drill point for metal applications.",
+          "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+        },
+        {
+          "slug": "products/wood-screws",
+          "title": "WT Fasteners",
+          "summary": "High-quality wood screws in various sizes and materials. Suitable for woodworking, furniture assembly, and general construction.",
+          "icon": "https://wtscrews.com/images/wood-screws.jpg"
+        }
+      ]
+    },
+    {
+      "category": "Studs & Threaded Rods",
+      "icon": "https://wtscrews.com/images/double-end-studs.jpg",
+      "items": [
+        {
+          "slug": "products/double-end-studs",
+          "title": "WT Fasteners",
+          "summary": "Double end studs (stud bolts) manufactured to DIN 938/939 and ISO standards. Both ends threaded with unthreaded center section.",
+          "icon": "https://wtscrews.com/images/double-end-studs.jpg"
+        },
+        {
+          "slug": "products/threaded-rods",
+          "title": "WT Fasteners",
+          "summary": "High-quality threaded rods (all-thread) manufactured to DIN 975/976 and ISO standards. Disponible en various materials and grades.",
+          "icon": "https://wtscrews.com/images/threaded-rods.jpg"
+        }
+      ]
+    },
+    {
+      "category": "Pins",
+      "icon": "https://wtscrews.com/images/cotter-pins.jpg",
+      "items": [
+        {
+          "slug": "products/cotter-pins",
+          "title": "WT Fasteners",
+          "summary": "High-quality cotter pins (split pins) manufactured to DIN 94 and ISO 1234 standards. Used for securing nuts, bolts, and other fasteners.",
+          "icon": "https://wtscrews.com/images/cotter-pins.jpg"
+        },
+        {
+          "slug": "products/dowel-pins",
+          "title": "WT Fasteners",
+          "summary": "High-quality dowel pins (parallel pins) manufactured to DIN 7 and ISO 2339 standards. Used for precise alignment and positioning.",
+          "icon": "https://wtscrews.com/images/dowel-pins.jpg"
+        }
+      ]
+    },
+    {
+      "category": "Anchors & Fastening",
+      "icon": "https://wtscrews.com/images/drop-in-anchors.jpg",
+      "items": [
+        {
+          "slug": "products/drop-in-anchors",
+          "title": "WT Fasteners",
+          "summary": "High-quality drop-in anchors with internal thread for concrete applications. Zinc-plated carbon steel and stainless steel options.",
+          "icon": "https://wtscrews.com/images/drop-in-anchors.jpg"
+        },
+        {
+          "slug": "products/expansion-bolts",
+          "title": "WT Fasteners",
+          "summary": "Heavy-duty expansion bolts ( sleeve anchors) for concrete and masonry applications. Zinc-plated carbon steel construction.",
+          "icon": "https://wtscrews.com/images/expansion-bolts.jpg"
+        },
+        {
+          "slug": "products/wedge-anchors",
+          "title": "WT Fasteners",
+          "summary": "Heavy-duty wedge anchors for concrete and masonry applications. Zinc-plated carbon steel and stainless steel options.",
+          "icon": "https://wtscrews.com/images/wedge-anchors.jpg"
+        }
+      ]
+    },
+    {
+      "category": "Other Fasteners",
+      "icon": "https://wtscrews.com/images/blind-rivets.jpg",
+      "items": [
+        {
+          "slug": "products/blind-rivets",
+          "title": "WT Fasteners",
+          "summary": "High-quality blind rivets (pop rivets) for one-sided installation. Disponible en aluminum, steel, and stainless steel with various head styles.",
+          "icon": "https://wtscrews.com/images/blind-rivets.jpg"
+        },
+        {
+          "slug": "products/circlips",
+          "title": "WT Fasteners",
+          "summary": "High-quality circlips (retaining rings) for shaft and bore retention. Internal and external types available.",
+          "icon": "https://wtscrews.com/images/circlips.jpg"
+        },
+        {
+          "slug": "products/fastener-kits",
+          "title": "WT Fasteners",
+          "summary": "Comprehensive fastener assortments and kits for industrial, automotive, and maintenance applications.",
+          "icon": "https://wtscrews.com/images/fastener-kits.jpg"
+        },
+        {
+          "slug": "products/semi-tubular-rivets",
+          "title": "WT Fasteners",
+          "summary": "High-quality semi-tubular rivets with partial hollow shank. Lighter weight and easier to set than solid rivets.",
+          "icon": "https://wtscrews.com/images/semi-tubular-rivets.jpg"
+        },
+        {
+          "slug": "products/solid-rivets",
+          "title": "WT Fasteners",
+          "summary": "High-quality solid rivets in aluminum, steel, and stainless steel. Multiple head styles for structural and general applications.",
+          "icon": "https://wtscrews.com/images/solid-rivets.jpg"
+        },
+        {
+          "slug": "products/u-bolts",
+          "title": "WT Fasteners",
+          "summary": "High-quality U-bolts for pipe and tube mounting. Manufactured to DIN standards with steel and stainless steel options.",
+          "icon": "https://wtscrews.com/images/u-bolts.jpg"
+        }
+      ]
     }
   ]
 }
