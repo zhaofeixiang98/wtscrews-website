@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2025-01-15-cost-trade",
+            "title": "挑战与机遇：成本、贸易与转型",
+            "date": "2025-01-15",
+            "summary": "原材料成本上升、国际贸易争端加剧以及从低端向高端制造转型的压力，正在重塑紧固件行业。本文分析了关键挑战，并揭示了实现可持续增长的战略机遇。",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines4.png"
+        },
+        {
             "slug": "news/2007-11-09-eu-china-fasteners",
             "title": "欧盟启动对中国紧固件的反倾销调查",
             "date": "2007-11-09",

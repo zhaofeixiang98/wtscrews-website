@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2025-01-15-cost-trade",
+            "title": "Herausforderungen und Chancen: Kosten, Handel und Transformation",
+            "date": "2025-01-15",
+            "summary": "Steigende Rohstoffkosten, eskalierende internationale Handelsstreitigkeiten und der Druck zur Transformation von der Low-End- zur High-End-Fertigung gestalten die Befestigungsmittelindustrie neu. Dieser Artikel analysiert die zentralen Herausforderungen und zeigt strategische Chancen für nachhaltiges Wachstum auf.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines4.png"
+        },
+        {
             "slug": "news/2007-11-09-eu-china-fasteners",
             "title": "EU leitet Anti-Dumping-Untersuchung zu chinesischen Befestigungselementen ein",
             "date": "2007-11-09",

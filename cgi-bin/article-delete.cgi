@@ -93,6 +93,10 @@ for news_slug in slugs:
     if slug_deleted:
         deleted.append(news_slug)
 
+# ── Regenerate static HTML ───────────────────────────────────────────────────
+import subprocess
+subprocess.run(['python3', os.path.join(base_dir, 'render_list_pages.py')], capture_output=True)
+
 # ── Delete associated images ──────────────────────────────────────────────────
 deleted_images = []
 if delete_image:

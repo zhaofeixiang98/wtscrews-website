@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2025-01-15-cost-trade",
+            "title": "Challenges and Opportunities: Cost, Trade, and Transformation",
+            "date": "2025-01-15",
+            "summary": "Rising raw material costs, escalating international trade disputes, and the pressure to transform from low-end to high-end manufacturing are reshaping the fastener industry. This article analyzes key challenges and reveals strategic opportunities for sustainable growth.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines4.png"
+        },
+        {
             "slug": "news/2007-11-09-eu-china-fasteners",
             "title": "EU Initiates Anti-Dumping Investigation on Chinese Fasteners",
             "date": "2007-11-09",

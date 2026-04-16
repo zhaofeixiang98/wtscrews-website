@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2025-01-15-cost-trade",
+            "title": "التحديات والفرص: التكلفة، التجارة، والتحول",
+            "date": "2025-01-15",
+            "summary": "ارتفاع تكاليف المواد الخام، تصاعد النزاعات التجارية الدولية، والضغط للتحول من التصنيع منخفض القيمة إلى عالي القيمة يعيد تشكيل صناعة المسامير. تحلل هذه المقالة التحديات الرئيسية وتكشف عن الفرص الاستراتيجية للنمو المستدام.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines4.png"
+        },
+        {
             "slug": "news/2007-11-09-eu-china-fasteners",
             "title": "EU Initiates Anti-Dumping Investigation on Chinese Fasteners",
             "date": "2007-11-09",

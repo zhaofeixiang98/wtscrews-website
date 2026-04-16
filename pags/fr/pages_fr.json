@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2025-01-15-cost-trade",
+            "title": "Défis et opportunités : Coûts, commerce et transformation",
+            "date": "2025-01-15",
+            "summary": "La hausse des coûts des matières premières, l'escalade des conflits commerciaux internationaux et la pression pour passer d'une fabrication bas de gamme à haut de gamme redessinent l'industrie des fixations. Cet article analyse les principaux défis et révèle les opportunités stratégiques pour une croissance durable.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines4.png"
+        },
+        {
             "slug": "news/2007-11-09-eu-china-fasteners",
             "title": "L'UE lance une enquête antidumping sur les fixations chinoises",
             "date": "2007-11-09",

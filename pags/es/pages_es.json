@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2025-01-15-cost-trade",
+            "title": "Desafíos y Oportunidades: Costo, Comercio y Transformación",
+            "date": "2025-01-15",
+            "summary": "Los crecientes costos de materias primas, las disputas comerciales internacionales en aumento y la presión para transformarse de una fabricación de baja gama a una de alta gama están remodelando la industria de los sujetadores. Este artículo analiza los desafíos clave y revela oportunidades estratégicas para un crecimiento sostenible.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines4.png"
+        },
+        {
             "slug": "news/2007-11-09-eu-china-fasteners",
             "title": "La UE inicia una investigación antidumping sobre los sujetadores chinos",
             "date": "2007-11-09",
