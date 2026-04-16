@@ -252,6 +252,54 @@
       min-height: 300px;
     }
 
+    .body-mode-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .body-mode-btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--gray-50);
+      color: var(--gray-700);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .body-mode-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #eff6ff;
+    }
+
+    .body-mode-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    .body-mode-note {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .body-mode-note.show {
+      display: block;
+    }
+
     .form-group .hint {
       font-size: 0.78rem;
       color: var(--gray-400);
@@ -1735,6 +1783,7 @@
     var currentLang = 'en';
     var modulesByLang = {};
     var activeModuleIndexByLang = {};
+    var bodyModeByLang = {};
     var moduleToolbar = document.getElementById('moduleToolbar');
     var moduleEditor = document.getElementById('moduleEditor');
     var modulePreview = document.getElementById('modulePreview');
@@ -1743,7 +1792,124 @@
     MODULE_LANGS.forEach(function (lang) {
       modulesByLang[lang] = [];
       activeModuleIndexByLang[lang] = -1;
+      bodyModeByLang[lang] = 'module';
     });
+
+    function isHtmlMode(lang) {
+      return bodyModeByLang[lang] === 'html';
+    }
+
+    function getBodyTextarea(lang) {
+      return document.getElementById(lang + '_body');
+    }
+
+    function getCompiledBodyHtml(lang) {
+      return compileModulesToHtml(modulesByLang[lang]);
+    }
+
+    function getBodyValue(lang) {
+      var ta = getBodyTextarea(lang);
+      if (!ta) return '';
+      return isHtmlMode(lang) ? String(ta.value || '') : getCompiledBodyHtml(lang);
+    }
+
+    function appendHtmlToBody(lang, html, options) {
+      var ta = getBodyTextarea(lang);
+      var snippet = String(html || '').trim();
+      var current = String((ta && ta.value) || '').trim();
+      if (!ta || !snippet) return;
+      if (options && options.prepend) {
+        ta.value = snippet + (current ? '\n\n' + current : '\n');
+      } else {
+        ta.value = current ? current + '\n\n' + snippet + '\n' : snippet + '\n';
+      }
+      if (lang === currentLang) updatePreview();
+    }
+
+    function updateBodyModeUi(lang) {
+      var mount = document.getElementById('moduleMount-' + lang);
+      var ta = getBodyTextarea(lang);
+      var note = document.getElementById('bodyModeNote-' + lang);
+      var isHtml = isHtmlMode(lang);
+      if (!mount || !ta) return;
+
+      mount.style.display = isHtml ? 'none' : '';
+      ta.style.display = isHtml ? 'block' : 'none';
+
+      var wrap = document.querySelector('.body-mode-switch[data-lang="' + lang + '"]');
+      if (wrap) {
+        wrap.querySelectorAll('.body-mode-btn').forEach(function (btn) {
+          btn.classList.toggle('active', btn.dataset.mode === bodyModeByLang[lang]);
+        });
+      }
+
+      if (note) {
+        if (isHtml) {
+          note.classList.add('show');
+          note.textContent = '当前为 HTML 源码模式。可直接编辑 <p>、<h2>、<img>、<ul> 等标签；发布和预览都会按这里的源码输出。';
+        } else {
+          note.classList.remove('show');
+          note.textContent = '';
+        }
+      }
+
+      if (lang === currentLang) updatePreview();
+    }
+
+    function setBodyMode(lang, mode) {
+      var ta = getBodyTextarea(lang);
+      if (!ta || (mode !== 'module' && mode !== 'html') || bodyModeByLang[lang] === mode) return;
+
+      if (mode === 'html') {
+        ta.value = getCompiledBodyHtml(lang);
+      } else {
+        var compiled = getCompiledBodyHtml(lang).trim();
+        var htmlDraft = String(ta.value || '').trim();
+        if (htmlDraft && htmlDraft !== compiled) {
+          var ok = confirm('切回模块模式后，将继续使用当前模块内容；你在 HTML 源码中的修改不会自动转换为模块。是否继续切换？');
+          if (!ok) return;
+        }
+        ta.value = getCompiledBodyHtml(lang);
+      }
+
+      bodyModeByLang[lang] = mode;
+      updateBodyModeUi(lang);
+    }
+
+    function initBodyModeSwitches() {
+      MODULE_LANGS.forEach(function (lang) {
+        var mount = document.getElementById('moduleMount-' + lang);
+        var ta = getBodyTextarea(lang);
+        if (!mount || !ta || !mount.parentNode) return;
+
+        ta.placeholder = '可直接输入 HTML 标签，例如：\n<p>段落</p>\n<h2>小标题</h2>\n<figure class="article-figure">\n  <img src="../../../images/news/example.webp" alt="" loading="lazy">\n</figure>';
+
+        var switchRow = document.createElement('div');
+        switchRow.className = 'body-mode-switch';
+        switchRow.setAttribute('data-lang', lang);
+        switchRow.innerHTML =
+          '<button type="button" class="body-mode-btn active" data-mode="module">模块编辑</button>' +
+          '<button type="button" class="body-mode-btn" data-mode="html">HTML源码</button>';
+        mount.parentNode.insertBefore(switchRow, mount);
+
+        var note = document.createElement('div');
+        note.className = 'body-mode-note';
+        note.id = 'bodyModeNote-' + lang;
+        mount.parentNode.insertBefore(note, ta.nextSibling);
+
+        switchRow.querySelectorAll('.body-mode-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            setBodyMode(lang, this.dataset.mode);
+          });
+        });
+
+        ta.addEventListener('input', function () {
+          if (isHtmlMode(lang) && lang === currentLang) updatePreview();
+        });
+
+        updateBodyModeUi(lang);
+      });
+    }
 
     function normalizeImagePath(path) {
       var s = String(path || '').trim();
@@ -1855,6 +2021,7 @@
     function syncBodyTextarea(lang) {
       var ta = document.getElementById(lang + '_body');
       if (!ta) return;
+      if (isHtmlMode(lang)) return;
       ta.value = compileModulesToHtml(modulesByLang[lang]);
     }
 
@@ -2082,7 +2249,7 @@
 
     function updatePreview() {
       if (modulePreview.style.display === 'none') return;
-      modulePreviewBox.innerHTML = compileModulesToHtml(modulesByLang[currentLang]);
+      modulePreviewBox.innerHTML = getBodyValue(currentLang);
     }
 
     function placeModuleEditor(lang) {
@@ -2106,6 +2273,7 @@
         placeModuleEditor(this.dataset.lang);
       });
     });
+    initBodyModeSwitches();
     placeModuleEditor('en');
 
     document.getElementById('moduleAddBtn').addEventListener('click', function () {
@@ -2200,12 +2368,20 @@
       document.querySelectorAll('.btn-use').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var path = this.dataset.path;
-          addModuleToCurrentLang({
-            type: 'image',
-            path: normalizeImagePath(path),
-            alt: String(document.getElementById('imgAlt').value || '').trim(),
-            caption: String(document.getElementById('imgCaption').value || '').trim()
-          });
+          if (isHtmlMode(currentLang)) {
+            appendHtmlToBody(currentLang, buildFigureHtml(
+              normalizeImagePath(path),
+              String(document.getElementById('imgAlt').value || '').trim(),
+              String(document.getElementById('imgCaption').value || '').trim()
+            ));
+          } else {
+            addModuleToCurrentLang({
+              type: 'image',
+              path: normalizeImagePath(path),
+              alt: String(document.getElementById('imgAlt').value || '').trim(),
+              caption: String(document.getElementById('imgCaption').value || '').trim()
+            });
+          }
           document.getElementById('libraryActionMsg').textContent = '已添加图片模块：/images/' + path;
         });
       });
@@ -2280,12 +2456,20 @@
           if (data.success) {
             statusEl.textContent = '';
             setCurrentImage(data.path, data.filename, '✓ 已设为封面 · ✓ 已添加到英文正文模块');
-            prependModuleToLang('en', {
-              type: 'image',
-              path: normalizeImagePath(data.path),
-              alt: String(document.getElementById('imgAlt').value || '').trim(),
-              caption: String(document.getElementById('imgCaption').value || '').trim()
-            });
+            if (isHtmlMode('en')) {
+              appendHtmlToBody('en', buildFigureHtml(
+                normalizeImagePath(data.path),
+                String(document.getElementById('imgAlt').value || '').trim(),
+                String(document.getElementById('imgCaption').value || '').trim()
+              ), { prepend: true });
+            } else {
+              prependModuleToLang('en', {
+                type: 'image',
+                path: normalizeImagePath(data.path),
+                alt: String(document.getElementById('imgAlt').value || '').trim(),
+                caption: String(document.getElementById('imgCaption').value || '').trim()
+              });
+            }
             document.getElementById('imgFile').value = '';
             document.getElementById('imgRename').value = '';
             document.getElementById('uploadZoneText').innerHTML =
@@ -2308,12 +2492,20 @@
         alert('请先上传图片或从资源库选择封面图');
         return;
       }
-      addModuleToCurrentLang({
-        type: 'image',
-        path: normalizeImagePath(currentImagePathRaw),
-        alt: String(document.getElementById('imgAlt').value || '').trim(),
-        caption: String(document.getElementById('imgCaption').value || '').trim()
-      });
+      if (isHtmlMode(currentLang)) {
+        appendHtmlToBody(currentLang, buildFigureHtml(
+          normalizeImagePath(currentImagePathRaw),
+          String(document.getElementById('imgAlt').value || '').trim(),
+          String(document.getElementById('imgCaption').value || '').trim()
+        ));
+      } else {
+        addModuleToCurrentLang({
+          type: 'image',
+          path: normalizeImagePath(currentImagePathRaw),
+          alt: String(document.getElementById('imgAlt').value || '').trim(),
+          caption: String(document.getElementById('imgCaption').value || '').trim()
+        });
+      }
     });
 
     // ── Preview ───────────────────────────────────────────────────────────────
@@ -2321,7 +2513,7 @@
       syncAllBodyTextareas();
       var title = (document.getElementById(lang + '_title').value || document.getElementById('en_title').value).trim() || '（无标题）';
       var subtitle = (document.getElementById(lang + '_subtitle').value || document.getElementById('en_subtitle').value).trim();
-      var body = (document.getElementById(lang + '_body').value || document.getElementById('en_body').value).trim();
+      var body = String(getBodyValue(lang) || getBodyValue('en') || '').trim();
       var date = document.getElementById('date').value;
       var extraHead = document.getElementById('extra_head').value.trim();
 
@@ -2449,7 +2641,7 @@
       var slug = document.getElementById('slug').value.trim();
       var date = document.getElementById('date').value;
       var title = document.getElementById('en_title').value.trim();
-      var body = document.getElementById('en_body').value.trim();
+      var body = String(getBodyValue('en') || '').trim();
       var summary = document.getElementById('en_summary').value.trim();
       var autoTranslate = document.getElementById('auto_translate').checked;
       var statusEl = document.getElementById('statusMsg');
@@ -2478,7 +2670,12 @@
       langs.forEach(function (lang) {
         fields.forEach(function (field) {
           var el = document.getElementById(lang + '_' + field);
-          if (el) params.append(lang + '_' + field, el.value);
+          if (!el) return;
+          if (field === 'body') {
+            params.append(lang + '_' + field, getBodyValue(lang));
+          } else {
+            params.append(lang + '_' + field, el.value);
+          }
         });
       });
 
