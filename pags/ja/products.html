@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="alternate" hreflang="en" href="/pags/en/products.html">
-  <link rel="alternate" hreflang="zh-CN" href="/pags/zh/products.html">
-  <link rel="alternate" hreflang="x-default" href="/pags/en/products.html">
+  <link rel="alternate" hreflang="en" href="https://wtscrews.com/pags/en/products.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://wtscrews.com/pags/zh/products.html">
+  <link rel="alternate" hreflang="x-default" href="https://wtscrews.com/pags/ja/products.html">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
@@ -48,33 +48,17 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
-  <!-- Facebook 配合梓豪 Meta Pixel Code -->
-<!-- Facebook 配合梓豪 Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1626729111828175');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1626729111828175&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/products.css">
+
 </head>
 <body>
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -86,7 +70,7 @@ ul{list-style:none}
         <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
       <div class="lang-select">
-        <select id="langSwitcher" onchange="switchLanguage(this.value)">
+        <select id="langSwitcher" onchange="switchLanguage(this.value)" aria-label="言語を選択">
           
           
         </select>
@@ -102,17 +86,289 @@ ul{list-style:none}
         <p>性能と耐久性を追求して設計された、幅広い種類のファスナーを取り揃えています。</p>
       </article>
     </section>
-
     <!-- Products Listing -->
     <section class="section">
       <article class="container">
+
+
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" id="productSearch" placeholder="製品を検索..." data-no-results="製品が見つかりません。" autocomplete="off" aria-label="製品を検索...">
       </div>
-        <p class="page-count" id="productsCount">読み込み中…</p>
         <section id="productsContainer">
-          <p class="loading">商品を読み込んでいます...</p>
+          <h2 class="section-title category-heading">ボルト</h2>
+          <section class="cards-grid">
+            <a href="products/hex-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/bolts/Hex Bolt0_sm.webp" alt="六角ボルト" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>六角ボルト</h3>
+                <p>DIN 931/933、ISO 4014/4017規格の全ねじ・半ねじ六角ボルト。強度等级4.8～12.9、サイズM4～M64。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/flange-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/bolts/Flange Bolt1_sm.webp" alt="フランジボルト" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>フランジボルト</h3>
+                <p>DIN 6921 / ISO 1665規格の歯付き・無歯フランジボルト。一体型座面で耐振動性を実現。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/bolts/Anchor Bolt1_sm.webp" alt="アンカーボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>アンカーボルト</h3>
+                <p>コンクリート・レンガ構造用の拡張アンカー、ウェッジアンカー、ケミカルアンカーボルト。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/high-strength-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/bolts/High Strength Bolt1_sm.webp" alt="高力ボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>高力ボルト</h3>
+                <p>重構造用高力ボルト。8.8、10.9、12.9級をラインアップ。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/bolts/T Bolt4_sm.webp" alt="Tボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Tボルト</h3>
+                <p>Tスロットプロファイル・構造部材用Tボルト。各種サイズ・材質を用意。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">ナット</h2>
+          <section class="cards-grid">
+            <a href="products/hex-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/nuts/Hex Nut1_sm.webp" alt="六角ナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>六角ナット</h3>
+                <p>DIN 934 / ISO 4032規格の標準六角ナット。サイズM4～M64、等级4、6、8、10級。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/flange-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="フランジナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>フランジナット</h3>
+                <p>一体型座面付き歯付フランジナット、耐振動性に優れる。DIN 6923規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/nyloc-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/nuts/Nyloc Nut3_sm.webp" alt="ナイロックナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ナイロックナット</h3>
+                <p>ナイロンインサート付き緩み止めナット。DIN 985 / ISO 10511規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/weld-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/nuts/Weld Nut 5_sm.webp" alt="溶接ナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>溶接ナット</h3>
+                <p>自動溶接用プロジェクション溶接ナット。角形・六角形を用意。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/wing-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/nuts/Wing Nut7_sm.webp" alt="蝶ナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>蝶ナット</h3>
+                <p>手動で簡単に着脱できる蝶ナット。各種サイズをラインアップ。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">ワッシャー</h2>
+          <section class="cards-grid">
+            <a href="products/flat-washers.html" class="card">
+              <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="平座金" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>平座金</h3>
+                <p>DIN 125 / ISO 7089規格の標準平座金。亜鉛メッキ、溶融亜鉛メッキ、生地から選択可能。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/lock-washers.html" class="card">
+              <figure class="card-image"><img src="../../images/products/washers/Lock Washer2_sm.webp" alt="ばね座金" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ばね座金</h3>
+                <p>耐振動用割りばね座金。DIN 127 / ISO 7092規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/spring-washers.html" class="card">
+              <figure class="card-image"><img src="../../images/products/washers/Spring Washer4_sm.webp" alt="皿ばね座金" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>皿ばね座金</h3>
+                <p>動荷重用途向け円錐形皿ばね座金。DIN 2093規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/square-washers.html" class="card">
+              <figure class="card-image"><img src="../../images/products/washers/Square Washer1_sm.webp" alt="角座金" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>角座金</h3>
+                <p>構造部材用角形平座金。DIN 436規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">ネジ</h2>
+          <section class="cards-grid">
+            <a href="products/machine-screws.html" class="card">
+              <figure class="card-image"><img src="../../images/products/screws/Machine Screw2_sm.webp" alt="小ねじ（マシンスクリュー）" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>小ねじ（マシンスクリュー）</h3>
+                <p>なべ小ねじ、六角小ねじ、さら小ねじ。DIN 963、964、965、966規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/self-drilling-screws.html" class="card">
+              <figure class="card-image"><img src="../../images/products/screws/Self Drilling Screw3_sm.webp" alt="セルフドリルネジ" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>セルフドリルネジ</h3>
+                <p>金属・鋼材用ドリル付きセルフドリルネジ。各種頭部形状を用意。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/wood-screws.html" class="card">
+              <figure class="card-image"><img src="../../images/products/screws/Wood Screw3_sm.webp" alt="木ネジ" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>木ネジ</h3>
+                <p>さら頭・丸頭木ネジ。各種サイズ・材質をラインアップ。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/drywall-screws.html" class="card">
+              <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="石膏ボードネジ" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>石膏ボードネジ</h3>
+                <p>石膏ボード用細目・粗目ネジ。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">スタッドボルト &amp; 全ねじ棒</h2>
+          <section class="cards-grid">
+            <a href="products/threaded-rods.html" class="card">
+              <figure class="card-image"><img src="../../images/products/studs/Threaded Rod6_sm.webp" alt="全ねじ棒" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>全ねじ棒</h3>
+                <p>全ねじ・半ねじ棒。DIN 975規格、M4～M30、各種長さを用意。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/double-end-studs.html" class="card">
+              <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="両端スタッドボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>両端スタッドボルト</h3>
+                <p>両端ねじ付きスタッドボルト。フランジ、バルブ、配管システム用。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">ピン</h2>
+          <section class="cards-grid">
+            <a href="products/cotter-pins.html" class="card">
+              <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="割りピン" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>割りピン</h3>
+                <p>安全締結用標準割りピン。DIN 94 / ISO 1234規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/dowel-pins.html" class="card">
+              <figure class="card-image"><img src="../../images/products/pins/Dowel Pin3_sm.webp" alt="平行ピン" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>平行ピン</h3>
+                <p>精密位置決め用平行ピン。DIN 7 / ISO 2338規格、焼入れ鋼製。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">アンカー &amp; 固定金具</h2>
+          <section class="cards-grid">
+            <a href="products/wedge-anchors.html" class="card">
+              <figure class="card-image"><img src="../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1_sm.webp" alt="ウェッジアンカー" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ウェッジアンカー</h3>
+                <p>コンクリート・レンガ用亜鉛メッキウェッジアンカー。重量物用途に最適。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/expansion-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/anchors-fastening/Sipery Expansion Bolts1_sm.webp" alt="拡張ボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>拡張ボルト</h3>
+                <p>コンクリート、レンガ、石材に強力固定する拡張アンカー。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/drop-in-anchors.html" class="card">
+              <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="埋め込みアンカー" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>埋め込みアンカー</h3>
+                <p>全ねじ棒と併用するコンクリート用埋め込みアンカー。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
+          <h2 class="section-title category-heading">その他のファスナー</h2>
+          <section class="cards-grid">
+            <a href="products/solid-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/products/others/Solid Rivet1_sm.webp" alt="中実リベット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>中実リベット</h3>
+                <p>永久締結用中実リベット。各種頭部形状・材質を用意。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/blind-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="ブラインドリベット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ブラインドリベット</h3>
+                <p>片面から施工可能なポップリベット。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/semi-tubular-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/products/others/Semi-tubular Rivet1_sm.webp" alt="半中空リベット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>半中空リベット</h3>
+                <p>かしめ加工用半中空リベット。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/u-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/products/others/U Bolt1_sm.webp" alt="Uボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Uボルト</h3>
+                <p>配管固定用Uボルト。各種サイズ・材質をラインアップ。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/circlips.html" class="card">
+              <figure class="card-image"><img src="../../images/products/others/External Circlip2_sm.webp" alt="軸用止め輪" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>軸用止め輪</h3>
+                <p>軸用外輪止め輪。DIN 471規格。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/fastener-kits.html" class="card">
+              <figure class="card-image"><img src="../../images/products/others/Fastener Kits4_sm.webp" alt="ファスナーキット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ファスナーキット</h3>
+                <p>修理・メンテナンス用各種ファスナーセット。カスタムパッケージ対応。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+          </section>
         </section>
       </article>
     </section>

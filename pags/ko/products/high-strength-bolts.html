@@ -52,11 +52,10 @@
   <meta property="og:image" content="../../../../images/og-cover.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <link rel="preload" as="image" href="../../../images/products/bolts/고강도 Bolt1.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Async font load — eliminates render-blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional">
   <style>
 :root{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -73,8 +72,9 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../../css/style.css"></noscript>
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/common.css">
+  <link rel="stylesheet" href="../../../css/product-detail.css">
   <!-- Facebook Meta Pixel Code -->
 <!-- Facebook 配合梓豪 Meta Pixel Code -->
   <script>
@@ -98,7 +98,7 @@ ul{list-style:none}
 
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="WT Metal 제품 Co., Ltd."></a>
+      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="WT Metal 제품 Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -139,7 +139,7 @@ ul{list-style:none}
 
     <section class="section">
       <article class="container product-detail">
-        <figure class="product-gallery fade-in"><img src="../../../images/products/bolts/고강도 Bolt1.webp" alt="고강도 Bolts"></figure>
+        <figure class="product-gallery fade-in"><img src="../../../images/products/bolts/고강도 Bolt1.webp" alt="고강도 Bolts" width="1500" height="1500" fetchpriority="high"></figure>
         <section class="product-info fade-in">
           <h2>고강도 Bolts</h2>
           <p>저희 고강도 구조 볼트는 최대 인장 및 전단 강도가 필요한 중요한 애플리케이션용으로 설계되었습니다.</p>
@@ -298,7 +298,7 @@ ul{list-style:none}
           <div class="related-grid">
         <a href="hex-bolts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="육각 볼트" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="육각 볼트" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>육각 볼트</h4>
@@ -308,7 +308,7 @@ ul{list-style:none}
         </a>
         <a href="flange-bolts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="플랜지 볼트" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="플랜지 볼트" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>플랜지 볼트</h4>
@@ -318,7 +318,7 @@ ul{list-style:none}
         </a>
         <a href="anchor-bolts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/bolts/Anchor Bolt1_sm.webp" alt="앵커 볼트" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/bolts/Anchor Bolt1_sm.webp" alt="앵커 볼트" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>앵커 볼트</h4>
@@ -485,41 +485,8 @@ ul{list-style:none}
     </section>
   </footer>
 
-  <aside class="faq-overlay" id="faqOverlay">
-    <section class="faq-modal">
-      <header class="faq-modal-header">
-        <h2>자주 묻는 질문</h2>
-        <button class="faq-close" aria-label="Close 자주 묻는 질문">&times;</button>
-      </header>
-      <article class="faq-item">
-        <h3 class="faq-question">최소 주문 수량은 얼마인가요?</h3>
-        <p class="faq-answer">표준 최소 주문 수량은 품목당 10kg입니다. 맞춤 주문의 경우 사양에 따라 달라질 수 있습니다 — 문의해 주세요.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">What grades are available?</h3>
-        <p class="faq-answer">We offer Grade 8.8, 10.9, and 12.9, as well as ASTM A325 and A490 structural bolts.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">What surface finishes do you offer?</h3>
-        <p class="faq-answer">흑색 산화, 아연 도금, 용융 아연 도금 및 다크로멧 마감을 제공합니다.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Do you provide test certificates?</h3>
-        <p class="faq-answer">Yes, all shipments include mill test certificates and quality inspection reports.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Can you manufacture custom sizes?</h3>
-        <p class="faq-answer">네, 가능합니다 produce custom lengths and specifications per your drawings.</p>
-      </article>
-      <footer class="faq-cta">
-        <p>아직 질문이 있으신가요?</p>
-        <a href="../contact.html" class="btn btn-primary">문의하기</a>
-      </footer>
-    </section>
-  </aside>
-
   <script src="../../../js/i18n-config.js" defer></script>
-  <script src="../../../js/main.js" defer></script>
+  <script src="../../../js/detail-page.js" defer></script>
   <script src="../../../js/chat-dock.js" defer></script>
 </body>
 </html>

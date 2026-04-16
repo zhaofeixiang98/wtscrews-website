@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os, sys, json, re, subprocess
+import html as html_lib
+from html.parser import HTMLParser
 from datetime import datetime
 from urllib.parse import parse_qs
 from urllib import request as urlrequest
 from urllib import error as urlerror
+
+try:
+    from PIL import Image
+except Exception:
+    Image = None
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
@@ -13,6 +20,16 @@ TRANSLATION_ENV_FILES = [
   os.path.join(BASE_DIR, '.env.translation'),
 ]
 _translation_env_loaded = False
+VOID_ELEMENTS = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
+HEADING_ELEMENTS = {'h1', 'h2', 'h3', 'h4', 'h5', 'h6'}
+BLOCK_ELEMENTS = {
+  'address', 'article', 'aside', 'blockquote', 'details', 'div', 'dl', 'fieldset',
+  'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+  'header', 'hr', 'main', 'nav', 'ol', 'p', 'pre', 'section', 'table', 'ul'
+}
+IMG_TAG_RE = re.compile(r'<img\b[^>]*>', re.I)
+ATTR_RE = re.compile(r'([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(".*?"|\'.*?\'|[^\s"\'>/=`]+))?', re.S)
+IMAGE_DIMENSION_CACHE = {}
 
 # ── Headers first ─────────────────────────────────────────────────────────────
 sys.stdout.write("Content-Type: application/json; charset=utf-8\r\n\r\n")
@@ -22,6 +39,190 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+class ArticleBodyValidator(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []
+        self.errors = []
+
+    def error(self, message):
+        self._push_error(message)
+
+    def _push_error(self, message):
+        if len(self.errors) >= 12:
+            return
+        line, col = self.getpos()
+        self.errors.append(f'第 {line} 行附近：{message}')
+
+    def _process_start_tag(self, tag, attrs, self_closing=False):
+        tag = tag.lower()
+        attr_map = {str(k or '').lower(): str(v or '') for k, v in attrs}
+
+        if tag in HEADING_ELEMENTS and any(parent in HEADING_ELEMENTS for parent in self.stack):
+            self._push_error(f'不允许嵌套标题标签 `<{tag}>`')
+
+        current_heading = next((parent for parent in reversed(self.stack) if parent in HEADING_ELEMENTS), '')
+        if current_heading and tag in BLOCK_ELEMENTS:
+            self._push_error(f'标题标签 `<{current_heading}>` 内不能包含块级元素 `<{tag}>`')
+
+        if tag == 'li' and not any(parent in {'ul', 'ol'} for parent in self.stack):
+            self._push_error('发现脱离列表容器的 `<li>`，请把列表项放进 `<ul>` 或 `<ol>` 内')
+
+        if tag == 'a':
+            href = attr_map.get('href', '').strip()
+            if not href:
+                self._push_error('发现空链接 `<a href="">`，请填写有效链接地址')
+
+        if tag == 'img':
+            src = attr_map.get('src', '').strip()
+            if not src:
+                self._push_error('发现缺少 `src` 的 `<img>` 标签')
+
+        if tag not in VOID_ELEMENTS and not self_closing:
+            self.stack.append(tag)
+
+    def handle_starttag(self, tag, attrs):
+        self._process_start_tag(tag, attrs, self_closing=False)
+
+    def handle_startendtag(self, tag, attrs):
+        self._process_start_tag(tag, attrs, self_closing=True)
+
+    def handle_endtag(self, tag):
+        tag = tag.lower()
+        if tag in VOID_ELEMENTS:
+            return
+        if tag not in self.stack:
+            self._push_error(f'发现多余的闭合标签 `</{tag}>`')
+            return
+
+        while self.stack:
+            top = self.stack.pop()
+            if top == tag:
+                break
+            self._push_error(f'标签闭合顺序错误：期望先闭合 `<{top}>`，但遇到 `</{tag}>`')
+
+    def close(self):
+        super().close()
+        for tag in reversed(self.stack[-5:]):
+            self._push_error(f'标签未闭合：`<{tag}>`')
+
+def extract_attr_value(raw):
+    value = (raw or '').strip()
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {'"', "'"}:
+        value = value[1:-1]
+    return html_lib.unescape(value)
+
+def parse_img_attributes(tag_html):
+    inner = re.sub(r'^<img\b', '', tag_html.strip(), flags=re.I)
+    inner = re.sub(r'/?>\s*$', '', inner).strip()
+    attrs = []
+    for match in ATTR_RE.finditer(inner):
+        name = str(match.group(1) or '').lower()
+        if not name:
+            continue
+        attrs.append([name, extract_attr_value(match.group(2))])
+    return attrs
+
+def set_attr(attrs, name, value, overwrite=False):
+    name = name.lower()
+    for item in attrs:
+        if item[0] == name:
+            if overwrite or not str(item[1] or '').strip():
+                item[1] = value
+            return
+    attrs.append([name, value])
+
+def serialize_img_tag(attrs):
+    parts = ['<img']
+    for name, value in attrs:
+        if value is None or value == '':
+            parts.append(f' {name}')
+        else:
+            parts.append(f' {name}="{he(str(value))}"')
+    parts.append('>')
+    return ''.join(parts)
+
+def resolve_image_rel_path(src):
+    path = str(src or '').strip()
+    if not path or path.startswith('data:'):
+        return ''
+    path = path.split('?', 1)[0].split('#', 1)[0]
+    path = re.sub(r'^\s*https?://[^/]+/images/', '', path, flags=re.I)
+    path = re.sub(r'^(?:\.\./)+images/', '', path, flags=re.I)
+    path = re.sub(r'^/?images/', '', path, flags=re.I)
+    return path.lstrip('/')
+
+def get_image_dimensions(rel_path):
+    rel = str(rel_path or '').strip()
+    if not rel:
+        return None
+    if rel in IMAGE_DIMENSION_CACHE:
+        return IMAGE_DIMENSION_CACHE[rel]
+
+    local_path = os.path.join(BASE_DIR, 'images', rel.replace('/', os.sep))
+    dims = None
+    if Image and os.path.exists(local_path):
+        try:
+            with Image.open(local_path) as img:
+                dims = (int(img.width), int(img.height))
+        except Exception:
+            dims = None
+
+    IMAGE_DIMENSION_CACHE[rel] = dims
+    return dims
+
+def validate_article_body_html(lang, body):
+    parser = ArticleBodyValidator()
+    try:
+        parser.feed(body or '')
+        parser.close()
+    except Exception as exc:
+        return [f'{lang}: HTML 解析失败：{exc}']
+    return [f'{lang}: {msg}' for msg in parser.errors]
+
+def enrich_body_images(body):
+    state = {'seen': False}
+
+    def replace_img(match):
+        attrs = parse_img_attributes(match.group(0))
+        if not attrs:
+            return match.group(0)
+
+        attr_map = {name: value for name, value in attrs}
+        src = str(attr_map.get('src', '') or '').strip()
+        if not src:
+            return match.group(0)
+
+        dims = get_image_dimensions(resolve_image_rel_path(src))
+        prioritize = not state['seen']
+        state['seen'] = True
+
+        if prioritize:
+            set_attr(attrs, 'loading', 'eager', overwrite=True)
+            set_attr(attrs, 'fetchpriority', 'high', overwrite=True)
+        elif not str(attr_map.get('loading', '') or '').strip():
+            set_attr(attrs, 'loading', 'lazy')
+
+        if not str(attr_map.get('decoding', '') or '').strip():
+            set_attr(attrs, 'decoding', 'async')
+
+        if dims:
+            if not str(attr_map.get('width', '') or '').strip():
+                set_attr(attrs, 'width', str(dims[0]))
+            if not str(attr_map.get('height', '') or '').strip():
+                set_attr(attrs, 'height', str(dims[1]))
+
+        return serialize_img_tag(attrs)
+
+    return IMG_TAG_RE.sub(replace_img, body or '')
+
+def prepare_article_body_html(lang, body):
+    content = str(body or '').strip()
+    errors = validate_article_body_html(lang, content)
+    if errors:
+        raise ValueError('；'.join(errors))
+    return enrich_body_images(content)
 
 # ── Parse URL-encoded POST body ───────────────────────────────────────────────
 try:
@@ -494,6 +695,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
     fp = c['fp']
     og_img_url = f'https://wtscrews.com/images/{og_image}' if og_image else 'https://wtscrews.com/images/og-cover.jpg'
     extra_head_block = build_head_extra(extra_head)
+    safe_body = prepare_article_body_html(lang, body)
 
     return f'''<!DOCTYPE html>
 <html lang="{hl}"{dir_attr}>
@@ -540,7 +742,9 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
   <!-- Async font load — eliminates render-blocking -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/common.css">
+  <link rel="stylesheet" href="../../../css/news-detail.css">
   <script>
   !function(f,b,e,v,n,t,s)
   {{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?
@@ -561,7 +765,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
 
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="../index.html" class="logo"><img src="../../../images/logo.jpg" alt="{he(c['alt_logo'])}"></a>
+      <a href="../index.html" class="logo"><img src="../../../images/logo.jpg" alt="{he(c['alt_logo'])}" width="940" height="940" decoding="async"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -600,7 +804,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
     <section class="section">
       <article class="container article-content">
         <time class="article-meta" datetime="{date_str}">{date_display}</time>
-        {body}
+        {safe_body}
       </article>
     </section>
 
@@ -611,7 +815,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
           <div class="related-grid">
             <a href="../products/hex-bolts.html" class="related-card">
               <div class="related-card-image">
-                <img src="../../../images/products/bolts/Hex Bolt0.webp" alt="{fp[0]}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <img src="../../../images/products/bolts/Hex Bolt0.webp" alt="{fp[0]}" width="1500" height="1500" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">
               </div>
               <div class="related-card-body">
                 <h4>{fp[0]}</h4>
@@ -621,7 +825,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
             </a>
             <a href="../products/hex-nuts.html" class="related-card">
               <div class="related-card-image">
-                <img src="../../../images/products/nuts/Hex Nut1.webp" alt="Hex Nuts" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <img src="../../../images/products/nuts/Hex Nut1.webp" alt="Hex Nuts" width="1500" height="1500" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">
               </div>
               <div class="related-card-body">
                 <h4>Hex Nuts</h4>
@@ -631,7 +835,7 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
             </a>
             <a href="../products/flat-washers.html" class="related-card">
               <div class="related-card-image">
-                <img src="../../../images/products/washers/Flat Washer4.webp" alt="Flat Washers" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <img src="../../../images/products/washers/Flat Washer4.webp" alt="Flat Washers" width="1500" height="1500" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;">
               </div>
               <div class="related-card-body">
                 <h4>Flat Washers</h4>
@@ -728,6 +932,7 @@ def update_json(json_path, slug, title, date_str, summary, og_image=''):
 errors  = []
 created = []
 translated = []
+prepared_lang_payloads = []
 
 auto_translate_enabled = truthy(auto_translate)
 translation_cache = {}
@@ -760,16 +965,52 @@ for lang in LANGS:
   bc       = bc_input or translated_fields.get('bc_label') or title
   body     = body_input or translated_fields.get('body') or en_body
 
+  body_errors = validate_article_body_html(lang, body)
+  if body_errors:
+    errors.extend(body_errors)
+    continue
+
   news_dir  = os.path.join(BASE_DIR, 'pags', lang, 'news')
   html_path = os.path.join(news_dir, slug + '.html')
   json_path = os.path.join(BASE_DIR, 'pags', lang, f'pages_{lang}.json')
 
+  prepared_lang_payloads.append({
+    'lang': lang,
+    'title': title,
+    'subtitle': subtitle,
+    'summary': summary,
+    'meta': meta,
+    'kw': kw,
+    'bc': bc,
+    'body': body,
+    'news_dir': news_dir,
+    'html_path': html_path,
+    'json_path': json_path,
+  })
+
+if errors:
+  respond({
+      'success': False,
+      'slug': slug,
+      'created': created,
+      'translated': translated,
+      'translating': False,
+      'errors': errors,
+      'url': f'/pags/en/news/{slug}.html',
+  })
+
+for payload in prepared_lang_payloads:
+  lang = payload['lang']
   try:
-    os.makedirs(news_dir, exist_ok=True)
-    html = build_html(lang, slug, date, title, subtitle, meta, kw, bc, body, LANGS, og_image, article_section, extra_head)
-    with open(html_path, 'w', encoding='utf-8') as f:
+    os.makedirs(payload['news_dir'], exist_ok=True)
+    html = build_html(
+      lang, slug, date,
+      payload['title'], payload['subtitle'], payload['meta'], payload['kw'],
+      payload['bc'], payload['body'], LANGS, og_image, article_section, extra_head
+    )
+    with open(payload['html_path'], 'w', encoding='utf-8') as f:
       f.write(html)
-    update_json(json_path, slug, title, date, summary, og_image)
+    update_json(payload['json_path'], slug, payload['title'], date, payload['summary'], og_image)
     created.append(lang)
   except Exception as e:
     errors.append(f'{lang}: {str(e)}')

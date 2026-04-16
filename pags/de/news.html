@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <link rel="alternate" hreflang="en" href="/pags/en/news.html">
-  <link rel="alternate" hreflang="zh-CN" href="/pags/zh/news.html">
-  <link rel="alternate" hreflang="x-default" href="/pags/en/news.html">
+  <link rel="alternate" hreflang="en" href="https://wtscrews.com/pags/en/news.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://wtscrews.com/pags/zh/news.html">
+  <link rel="alternate" hreflang="x-default" href="https://wtscrews.com/pags/de/news.html">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
@@ -48,33 +48,17 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
-  <!-- Facebook 配合梓豪 Meta Pixel Code -->
-<!-- Facebook 配合梓豪 Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1626729111828175');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1626729111828175&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/news.css">
+
 </head>
 <body>
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -86,7 +70,7 @@ ul{list-style:none}
         <li><a href="contact.html">Kontakt</a></li>
       </ul>
       <div class="lang-select">
-        <select id="langSwitcher" onchange="switchLanguage(this.value)">
+        <select id="langSwitcher" onchange="switchLanguage(this.value)" aria-label="Sprache auswahlen">
           
           
         </select>
@@ -102,13 +86,29 @@ ul{list-style:none}
         <p>Brancheneinblicke, Unternehmensmeldungen und Aktuelles von WT Fasteners</p>
       </article>
     </section>
-
     <!-- News Listing -->
     <section class="section">
       <article class="container">
-        <p class="page-count" id="newsCount">Laden...</p>
+        <h2 class="sr-only">Neueste Artikel</h2>
         <section class="cards-grid" id="newsContainer">
-          <p class="loading">Nachrichtenartikel werden geladen...</p>
+          <a href="news/2026-04-15.html" class="card">
+            <figure class="card-image"><img src="../../images/news/The-139th-Canton-Fair-1_sm.webp" alt="Von der Canton Fair zur Yiwu Expo: Die Befestigungsindustrie begrüßt den &quot;Dual-Core&quot;-Handelsboom im April" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-15">2026-04-15</time>
+              <h3>Von der Canton Fair zur Yiwu Expo: Die Befestigungsindustrie begrüßt den &quot;Dual-Core&quot;-Handelsboom im April</h3>
+              <p>Der April 2026 markiert eine konzentrierte Häufung von Handelsveranstaltungen für die Befestigungsindustrie in Südchina. Die 6. Guangzhou Sourcing Fair (GSF) findet vom 14. bis 17. April im Poly World Trade Center statt, gefolgt unmittelbar von der 10. Yiwu International Hardware &amp; Electrical Appliances Expo vom 20. bis 22. April. Die Verknüpfung dieser beiden großen Handelszentren schafft einen &quot;Guangzhou-Präzisionsanschluss + Yiwu globale Reichweite&quot; Dual-Core-Handelskorridor und bietet Befestigungsunternehmen ein erstklassiges Fenster, um Auslandsaufträge zu sichern und in aufstrebende Märkte zu expandieren.</p>
+              <span class="card-link">Mehr lesen -&gt;</span>
+            </section>
+          </a>
+          <a href="news/2026-04-14-us-tariff-fastener.html" class="card">
+            <figure class="card-image"><img src="../../images/logo_sm.webp" alt="US-Zollpolitik-Anpassung: Befestigungsexporte stehen vor einer neuen Wende" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-14">2026-04-14</time>
+              <h3>US-Zollpolitik-Anpassung: Befestigungsexporte stehen vor einer neuen Wende</h3>
+              <p>Ab dem 6. April 2026 hat die USA die Section-232-Zollregeln für Stahl- und Aluminiumderivatprodukte offiziell angepasst. Für Befestigungselemente, die Stahl oder Aluminium enthalten, hat sich die Berechnungsmethode grundlegend geändert – von der Besteuerung nur des Metallgehaltswerts hin zur Erhebung eines 25%igen Zolls auf den gesamten deklarierten Wert des Produkts. Dieser Artikel bietet eine eingehende Analyse der neuen Vorschriften, Kosteneinflussschätzungen und Unternehmensreaktionsstrategien.</p>
+              <span class="card-link">Mehr lesen -&gt;</span>
+            </section>
+          </a>
         </section>
       </article>
     </section>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <link rel="alternate" hreflang="en" href="/pags/en/news.html">
-  <link rel="alternate" hreflang="zh-CN" href="/pags/zh/news.html">
-  <link rel="alternate" hreflang="x-default" href="/pags/en/news.html">
+  <link rel="alternate" hreflang="en" href="https://wtscrews.com/pags/en/news.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://wtscrews.com/pags/zh/news.html">
+  <link rel="alternate" hreflang="x-default" href="https://wtscrews.com/pags/ar/news.html">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
@@ -48,33 +48,17 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
-  <!-- Facebook 配合梓豪 Meta Pixel Code -->
-<!-- Facebook 配合梓豪 Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1626729111828175');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1626729111828175&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/news.css">
+
 </head>
 <body>
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -86,7 +70,7 @@ ul{list-style:none}
         <li><a href="contact.html">اتصال</a></li>
       </ul>
       <div class="lang-select">
-        <select id="langSwitcher" onchange="switchLanguage(this.value)">
+        <select id="langSwitcher" onchange="switchLanguage(this.value)" aria-label="اختر اللغة">
           
           
         </select>
@@ -102,13 +86,29 @@ ul{list-style:none}
         <p>رؤى صناعية، وإعلانات الشركة، وآخر المستجدات من شركة WT Fasteners</p>
       </article>
     </section>
-
     <!-- News Listing -->
     <section class="section">
       <article class="container">
-        <p class="page-count" id="newsCount">تحميل...</p>
+        <h2 class="sr-only">احدث المقالات</h2>
         <section class="cards-grid" id="newsContainer">
-          <p class="loading">جارٍ تحميل المقالات الإخبارية...</p>
+          <a href="news/2026-04-15.html" class="card">
+            <figure class="card-image"><img src="../../images/news/The-139th-Canton-Fair-1_sm.webp" alt="من معرض كانتون إلى معرض ييوو: صناعة المسامير تحتضن ازدهار التجارة &quot;ثنائي النواة&quot; في أبريل" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-15">2026-04-15</time>
+              <h3>من معرض كانتون إلى معرض ييوو: صناعة المسامير تحتضن ازدهار التجارة &quot;ثنائي النواة&quot; في أبريل</h3>
+              <p>يشهد أبريل 2026 تركيزًا كبيرًا لفعاليات تجارة المسامير في جنوب الصين. سيعقد معرض غوانغتشو السادس للمصادر (GSF) في مركز بوليوورلد التجاري العالمي من 14 إلى 17 أبريل، يليه مباشرة المعرض الدولي العاشر للأجهزة الكهربائية في ييوو من 20 إلى 22 أبريل. يخلق الترابط بين هذين المركزين التجاريين الرئيسيين ممرًا تجاريًا ثنائي النواة &quot;غوانغتشو للتواصل الدقيق + ييوو للوصول العالمي&quot;، مما يوفر لشركات المسامير نافذة رئيسية لتأمين الطلبات الخارجية والتوسع في الأسواق الناشئة.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/2026-04-14-us-tariff-fastener.html" class="card">
+            <figure class="card-image"><img src="../../images/logo_sm.webp" alt="تعديل السياسة الجمركية الأمريكية: صادرات المسامير تواجه نقطة تحول جديدة" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-14">2026-04-14</time>
+              <h3>تعديل السياسة الجمركية الأمريكية: صادرات المسامير تواجه نقطة تحول جديدة</h3>
+              <p>اعتبارًا من 6 أبريل 2026، قامت الولايات المتحدة بتعديل قواعد التعريفة بموجب القسم 232 للمنتجات المشتقة من الصلب والألومنيوم رسميًا. بالنسبة للمسامير التي تحتوي على صلب أو ألومنيوم، تغيرت طريقة الحساب بشكل جذري—من فرض الضريبة على قيمة محتوى المعدن فقط إلى فرض تعريفة بنسبة 25٪ على القيمة الإجمالية المعلنة للمنتج بأكمله. تقدم هذه المقالة تحليلًا متعمقًا للوائح الجديدة، وتقديرات لتأثير التكلفة، واستراتيجيات استجابة الشركات.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
         </section>
       </article>
     </section>

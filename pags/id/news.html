@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link rel="alternate" hreflang="en" href="/pags/en/news.html">
-  <link rel="alternate" hreflang="zh-CN" href="/pags/zh/news.html">
-  <link rel="alternate" hreflang="x-default" href="/pags/en/news.html">
+  <link rel="alternate" hreflang="en" href="https://wtscrews.com/pags/en/news.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://wtscrews.com/pags/zh/news.html">
+  <link rel="alternate" hreflang="x-default" href="https://wtscrews.com/pags/id/news.html">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
@@ -48,33 +48,17 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
-  <!-- Facebook 配合梓豪 Meta Pixel Code -->
-<!-- Facebook 配合梓豪 Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1626729111828175');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1626729111828175&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/news.css">
+
 </head>
 <body>
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -86,7 +70,7 @@ ul{list-style:none}
         <li><a href="contact.html">Kontak</a></li>
       </ul>
       <div class="lang-select">
-        <select id="langSwitcher" onchange="switchLanguage(this.value)">
+        <select id="langSwitcher" onchange="switchLanguage(this.value)" aria-label="Pilih bahasa">
           
           
         </select>
@@ -102,13 +86,29 @@ ul{list-style:none}
         <p>Wawasan industri, pengumuman perusahaan, dan berita terbaru dari WT Fasteners.</p>
       </article>
     </section>
-
     <!-- News Listing -->
     <section class="section">
       <article class="container">
-        <p class="page-count" id="newsCount">Memuat...</p>
+        <h2 class="sr-only">Artikel terbaru</h2>
         <section class="cards-grid" id="newsContainer">
-          <p class="loading">Memuat artikel berita...</p>
+          <a href="news/2026-04-15.html" class="card">
+            <figure class="card-image"><img src="../../images/news/The-139th-Canton-Fair-1_sm.webp" alt="Dari Canton Fair ke Expo Yiwu: Industri Fastener Sambut Ledakan Perdagangan &quot;Dual-Core&quot; di April" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-15">2026-04-15</time>
+              <h3>Dari Canton Fair ke Expo Yiwu: Industri Fastener Sambut Ledakan Perdagangan &quot;Dual-Core&quot; di April</h3>
+              <p>April 2026 menandai ledakan terkonsentrasi acara perdagangan fastener di Tiongkok Selatan. Guangzhou Sourcing Fair (GSF) ke-6 akan diadakan di Poly World Trade Center dari 14-17 April, segera diikuti oleh Yiwu International Hardware &amp; Electrical Appliances Expo ke-10 dari 20-22 April. Keterkaitan antara dua pusat komersial utama ini menciptakan koridor perdagangan dual-core &quot;presisi Guangzhou + jangkauan global Yiwu&quot;, menawarkan perusahaan fastener jendela utama untuk mengamankan pesanan luar negeri dan memperluas ke pasar berkembang.</p>
+              <span class="card-link">Baca Selengkapnya -&gt;</span>
+            </section>
+          </a>
+          <a href="news/2026-04-14-us-tariff-fastener.html" class="card">
+            <figure class="card-image"><img src="../../images/logo_sm.webp" alt="Penyesuaian Kebijakan Tarif AS: Ekspor Fastener Hadapi Titik Balik Baru" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-14">2026-04-14</time>
+              <h3>Penyesuaian Kebijakan Tarif AS: Ekspor Fastener Hadapi Titik Balik Baru</h3>
+              <p>Mulai berlaku 6 April 2026, AS secara resmi menyesuaikan aturan tarif Bagian 232 untuk produk turunan baja dan aluminium. Untuk fastener yang mengandung baja atau aluminium, metode perhitungan telah berubah secara fundamental—dari hanya mengenakan pajak pada nilai kandungan logam menjadi mengenakan tarif 25% pada nilai deklarasi total seluruh produk. Artikel ini memberikan analisis mendalam tentang peraturan baru, perkiraan dampak biaya, dan strategi respons perusahaan.</p>
+              <span class="card-link">Baca Selengkapnya -&gt;</span>
+            </section>
+          </a>
         </section>
       </article>
     </section>

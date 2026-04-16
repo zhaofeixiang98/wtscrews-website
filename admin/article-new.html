@@ -1393,7 +1393,7 @@
               <label>正文内容（模块化）<span class="req">*</span></label>
               <div class="module-mount" id="moduleMount-en"></div>
               <textarea id="en_body" class="body-editor" style="display:none"></textarea>
-              <div class="hint">在模块里新增/删除内容，系统会自动生成 HTML。</div>
+              <div class="hint">优先用模块编辑。若切到 HTML 源码模式，发布时会校验标题/列表/链接结构，异常内容会被拦截。</div>
             </div>
           </div>
 
@@ -1420,7 +1420,7 @@
               <label>正文内容（模块化）<span class="optional">可选</span></label>
               <div class="module-mount" id="moduleMount-zh"></div>
               <textarea id="zh_body" class="body-editor" style="display:none"></textarea>
-              <div class="hint">留空时会自动使用英文内容或翻译。</div>
+              <div class="hint">留空时会自动使用英文内容或翻译；若使用 HTML 源码模式，发布时会校验结构。</div>
             </div>
           </div>
 
@@ -1846,7 +1846,7 @@
       if (note) {
         if (isHtml) {
           note.classList.add('show');
-          note.textContent = '当前为 HTML 源码模式。可直接编辑 <p>、<h2>、<img>、<ul> 等标签；发布和预览都会按这里的源码输出。';
+          note.textContent = '当前为 HTML 源码模式。可直接编辑 <p>、<h2>、<img>、<ul> 等标签；发布时会校验标题内块级元素、脱离 <ul>/<ol> 的 <li>、空链接和缺少 src 的图片，异常内容会被拦截。';
         } else {
           note.classList.remove('show');
           note.textContent = '';
@@ -2524,7 +2524,7 @@
         '<meta charset="UTF-8">' +
         '<meta name="viewport" content="width=device-width,initial-scale=1">' +
         '<base href="https://wtscrews.com/">' +
-        '<link rel="stylesheet" href="/css/style.css">' +
+        '<link rel="stylesheet" href="/css/base.css"><link rel="stylesheet" href="/css/common.css"><link rel="stylesheet" href="/css/news-detail.css">' +
         '<title>' + title + '</title>' +
         (extraHead ? extraHead : '') +
         '<style>.site-header,.breadcrumb{display:none!important}body{padding-top:0}</style>' +

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="alternate" hreflang="en" href="/pags/en/news.html">
-  <link rel="alternate" hreflang="zh-CN" href="/pags/zh/news.html">
-  <link rel="alternate" hreflang="x-default" href="/pags/en/news.html">
+  <link rel="alternate" hreflang="en" href="https://wtscrews.com/pags/en/news.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://wtscrews.com/pags/zh/news.html">
+  <link rel="alternate" hreflang="x-default" href="https://wtscrews.com/pags/ja/news.html">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
@@ -48,33 +48,17 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
-  <!-- Facebook 配合梓豪 Meta Pixel Code -->
-<!-- Facebook 配合梓豪 Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1626729111828175');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1626729111828175&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/news.css">
+
 </head>
 <body>
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -86,7 +70,7 @@ ul{list-style:none}
         <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
       <div class="lang-select">
-        <select id="langSwitcher" onchange="switchLanguage(this.value)">
+        <select id="langSwitcher" onchange="switchLanguage(this.value)" aria-label="言語を選択">
           
           
         </select>
@@ -102,13 +86,29 @@ ul{list-style:none}
         <p>業界の動向、企業発表、WT Fastenersの最新情報</p>
       </article>
     </section>
-
     <!-- News Listing -->
     <section class="section">
       <article class="container">
-        <p class="page-count" id="newsCount">読み込み中…</p>
+        <h2 class="sr-only">最新記事</h2>
         <section class="cards-grid" id="newsContainer">
-          <p class="loading">ニュース記事を読み込んでいます...</p>
+          <a href="news/2026-04-15.html" class="card">
+            <figure class="card-image"><img src="../../images/news/The-139th-Canton-Fair-1_sm.webp" alt="広州交易会から義烏博覧会へ：4月に「デュアルコア」貿易ブームを迎えるファスナー産業" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-15">2026-04-15</time>
+              <h3>広州交易会から義烏博覧会へ：4月に「デュアルコア」貿易ブームを迎えるファスナー産業</h3>
+              <p>2026年4月は、華南地域におけるファスナー貿易イベントが集中開催される月となる。第6回広州調達フェア（GSF）が4月14日から17日までポリーワールドトレードセンターで開催され、続いて第10回義烏国際五金・家電博覧会が4月20日から22日まで開催される。これら二大商業ハブの連携により、「広州の精密マッチング＋義烏のグローバルリーチ」というデュアルコア貿易回廊が形成され、ファスナー企業にとって海外受注獲得と新興市場開拓の絶好の窓口を提供する。</p>
+              <span class="card-link">続きを読む -&gt;</span>
+            </section>
+          </a>
+          <a href="news/2026-04-14-us-tariff-fastener.html" class="card">
+            <figure class="card-image"><img src="../../images/logo_sm.webp" alt="米国関税政策の調整：ファスナー輸出は新たな転換点に直面" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-14">2026-04-14</time>
+              <h3>米国関税政策の調整：ファスナー輸出は新たな転換点に直面</h3>
+              <p>2026年4月6日より、米国は鉄鋼・アルミニウム二次製品に対するセクション232関税ルールを正式に調整しました。鋼材またはアルミニウムを含むファスナーについては、計算方法が根本的に変更され、金属含有量の価値のみに課税する方式から、製品全体の申告総価値に対して25％の関税を課す方式へと移行しました。本記事では、新規制の詳細な分析、コストへの影響予測、企業の対応戦略について解説します。</p>
+              <span class="card-link">続きを読む -&gt;</span>
+            </section>
+          </a>
         </section>
       </article>
     </section>

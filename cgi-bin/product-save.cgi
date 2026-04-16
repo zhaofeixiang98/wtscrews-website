@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os, sys, json, re, subprocess
+import os, sys, json, re, struct, subprocess
 from datetime import datetime
 from urllib.parse import parse_qs
 from urllib import request as urlrequest
@@ -429,6 +429,87 @@ def normalize_image_path(path):
     p = re.sub(r'^/?images/', '', p, flags=re.I)
     return p.lstrip('/')
 
+def get_image_dimensions(image_path):
+    rel = normalize_image_path(image_path)
+    if not rel:
+        return None
+    abs_path = os.path.join(BASE_DIR, 'images', rel)
+    if not os.path.exists(abs_path):
+        return None
+    try:
+        with open(abs_path, 'rb') as f:
+            header = f.read(32)
+            if header.startswith(b'\x89PNG\r\n\x1a\n') and len(header) >= 24:
+                return struct.unpack('>II', header[16:24])
+            if header[:6] in (b'GIF87a', b'GIF89a') and len(header) >= 10:
+                return struct.unpack('<HH', header[6:10])
+            if header.startswith(b'RIFF') and header[8:12] == b'WEBP':
+                chunk = header[12:16]
+                if chunk == b'VP8X' and len(header) >= 30:
+                    width = 1 + int.from_bytes(header[24:27], 'little')
+                    height = 1 + int.from_bytes(header[27:30], 'little')
+                    return (width, height)
+                if chunk == b'VP8L' and len(header) >= 25:
+                    b0, b1, b2, b3 = header[21:25]
+                    width = 1 + (((b1 & 0x3F) << 8) | b0)
+                    height = 1 + (((b3 & 0x0F) << 10) | (b2 << 2) | ((b1 & 0xC0) >> 6))
+                    return (width, height)
+                if chunk == b'VP8 ' and len(header) >= 30:
+                    width = struct.unpack('<H', header[26:28])[0] & 0x3FFF
+                    height = struct.unpack('<H', header[28:30])[0] & 0x3FFF
+                    return (width, height)
+            if header[:2] == b'\xff\xd8':
+                f.seek(2)
+                while True:
+                    marker_prefix = f.read(1)
+                    if not marker_prefix:
+                        break
+                    if marker_prefix != b'\xff':
+                        continue
+                    marker = f.read(1)
+                    while marker == b'\xff':
+                        marker = f.read(1)
+                    if not marker or marker in (b'\xd8', b'\xd9'):
+                        continue
+                    length_bytes = f.read(2)
+                    if len(length_bytes) != 2:
+                        break
+                    length = struct.unpack('>H', length_bytes)[0]
+                    if marker in (b'\xc0', b'\xc1', b'\xc2', b'\xc3', b'\xc5', b'\xc6', b'\xc7', b'\xc9', b'\xca', b'\xcb', b'\xcd', b'\xce', b'\xcf'):
+                        payload = f.read(5)
+                        if len(payload) == 5:
+                            height, width = struct.unpack('>HH', payload[1:5])
+                            return (width, height)
+                        break
+                    f.seek(length - 2, os.SEEK_CUR)
+    except Exception:
+        return None
+    return None
+
+def enrich_img_tag(match):
+    tag = match.group(0)
+    if re.search(r'\bwidth\s*=', tag, flags=re.I) and re.search(r'\bheight\s*=', tag, flags=re.I):
+        return tag
+    src_match = re.search(r'\bsrc\s*=\s*["\']([^"\']+)["\']', tag, flags=re.I)
+    if not src_match:
+        return tag
+    src = src_match.group(1).strip()
+    if not src or src.startswith('data:'):
+        return tag
+    dims = get_image_dimensions(src)
+    if not dims:
+        return tag
+    insert = ''
+    if not re.search(r'\bwidth\s*=', tag, flags=re.I):
+        insert += f' width="{dims[0]}"'
+    if not re.search(r'\bheight\s*=', tag, flags=re.I):
+        insert += f' height="{dims[1]}"'
+    return re.sub(r'(?i)<img\b', '<img' + insert, tag, count=1)
+
+def prepare_body_html(raw_html):
+    html = raw_html or ''
+    return re.sub(r'(?is)<img\b[^>]*>', enrich_img_tag, html)
+
 def render_applications_html(raw):
     cards = []
     for line in split_structured_lines(raw, DEFAULT_APPLICATIONS_DATA):
@@ -513,10 +594,12 @@ def render_related_html(raw):
         if not slug and not title:
             continue
         href = slug if slug.endswith('.html') else (slug + '.html' if slug else '#')
-        image_src = f'../../../images/{he(image)}' if image else '../../../images/logo.jpg'
+        image_rel = image or 'logo.jpg'
+        image_src = f'../../../images/{he(image_rel)}'
+        image_dims = get_image_dimensions(image_rel) or (400, 400)
         cards.append(f'''        <a href="{he(href)}" class="related-card">
           <div class="related-card-image">
-            <img src="{image_src}" alt="{he(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="{image_src}" alt="{he(title)}" loading="lazy" width="{image_dims[0]}" height="{image_dims[1]}" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>{he(title)}</h4>
@@ -535,6 +618,9 @@ def build_html(lang, slug, date_str, title, subtitle, summary, meta_desc, keywor
     date_display = c['date_fn'](y, m, d)
     hreflang = build_hreflang(slug, all_langs)
     og_img_url = f'https://wtscrews.com/images/{og_image}' if og_image else 'https://wtscrews.com/images/og-cover.jpg'
+    hero_image_rel = normalize_image_path(og_image or 'og-cover.jpg')
+    hero_image_dims = get_image_dimensions(hero_image_rel) or (1500, 1500)
+    body_html = prepare_body_html(body)
     extra_head_block = build_head_extra(extra_head)
     applications_html = render_applications_html(applications_data)
     materials_html = render_materials_html(materials_data)
@@ -591,11 +677,10 @@ def build_html(lang, slug, date_str, title, subtitle, summary, meta_desc, keywor
   <meta property="og:image" content="{og_img_url}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <link rel="preload" as="image" href="../../../images/{he(hero_image_rel)}" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Async font load — eliminates render-blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional">
   <style>
 :root{{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}}
 *,*::before,*::after{{margin:0;padding:0;box-sizing:border-box}}
@@ -612,8 +697,9 @@ ul{{list-style:none}}
 .page-hero,.inner-hero{{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}}
 .container{{max-width:1220px;margin:0 auto;padding:0 24px}}
 </style>
-  <link rel="preload" href="../../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../../css/style.css"></noscript>
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/common.css">
+  <link rel="stylesheet" href="../../../css/product-detail.css">
   <!-- Facebook Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -637,7 +723,7 @@ ul{{list-style:none}}
 
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -678,11 +764,11 @@ ul{{list-style:none}}
 
     <section class="section">
       <article class="container product-detail">
-        <figure class="product-gallery fade-in"><img src="../../../images/{he(og_image or 'og-cover.jpg')}" alt="{he(title)}"></figure>
+        <figure class="product-gallery fade-in"><img src="../../../images/{he(hero_image_rel)}" alt="{he(title)}" width="{hero_image_dims[0]}" height="{hero_image_dims[1]}" fetchpriority="high"></figure>
         <section class="product-info fade-in">
           <h2>{title}</h2>
           <p>{summary}</p>
-          {body}
+          {body_html}
           <a href="../contact.html" class="btn btn-primary">Request a Quote</a>
         </section>
       </article>
@@ -807,41 +893,8 @@ ul{{list-style:none}}
     </section>
   </footer>
 
-  <aside class="faq-overlay" id="faqOverlay">
-    <section class="faq-modal">
-      <header class="faq-modal-header">
-        <h2>Frequently Asked Questions</h2>
-        <button class="faq-close" aria-label="Close FAQ">&times;</button>
-      </header>
-      <article class="faq-item">
-        <h3 class="faq-question">What is the minimum order quantity?</h3>
-        <p class="faq-answer">Our standard MOQ is 10 kg per item. For custom sizes or materials, we can discuss based on your specific requirements.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">How long does production take?</h3>
-        <p class="faq-answer">Standard products: 7–15 business days. Custom orders: 15–25 business days depending on specifications.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">What materials are available for our products?</h3>
-        <p class="faq-answer">We offer Carbon Steel (Grade 4.8, 8.8, 10.9), Stainless Steel 304 (A2-70/80), and Stainless Steel 316 (A4-70/80).</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Do you provide installation guidance?</h3>
-        <p class="faq-answer">Yes, we provide detailed installation guides and technical support for all our products.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Can you provide custom product designs?</h3>
-        <p class="faq-answer">Absolutely! We can manufacture products to your specific drawings and specifications. Contact us with your requirements.</p>
-      </article>
-      <footer class="faq-cta">
-        <p>Still have questions?</p>
-        <a href="../contact.html" class="btn btn-primary">Contact Us</a>
-      </footer>
-    </section>
-  </aside>
-
   <script src="../../../js/i18n-config.js" defer></script>
-  <script src="../../../js/main.js" defer></script>
+  <script src="../../../js/detail-page.js" defer></script>
   <script src="../../../js/chat-dock.js" defer></script>
 </body>
 </html>'''
@@ -877,6 +930,25 @@ def update_json(json_path, slug, title, summary, og_image='', product_category='
     })
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+
+def rebuild_static_product_lists():
+    render_script = os.path.join(BASE_DIR, 'render_list_pages.py')
+    if not os.path.exists(render_script):
+        return 'render_list_pages.py not found'
+    try:
+        result = subprocess.run(
+            [sys.executable, render_script],
+            cwd=BASE_DIR,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+    except Exception as exc:
+        return f'render list pages failed: {exc}'
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or '').strip()
+        return f'render list pages failed: {detail or "unknown error"}'
+    return ''
 
 errors = []
 created = []
@@ -932,6 +1004,10 @@ for lang in LANGS:
   except Exception as e:
     errors.append(f'{lang}: {str(e)}')
 
+render_error = ''
+if created:
+    render_error = rebuild_static_product_lists()
+
 fork_error = None
 if auto_translate_enabled:
     try:
@@ -974,6 +1050,6 @@ respond({
     'created': created,
     'translated': translated,
     'translating': auto_translate_enabled,
-    'errors': errors + ([f'translate fork failed: {fork_error}'] if fork_error else []),
+    'errors': errors + ([render_error] if render_error else []) + ([f'translate fork failed: {fork_error}'] if fork_error else []),
     'url': f'/pags/en/products/{slug}.html',
 })

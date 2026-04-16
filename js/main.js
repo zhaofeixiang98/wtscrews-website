@@ -114,6 +114,10 @@
     return '';
   }
 
+  function hasStaticCards(container) {
+    return !!(container && container.querySelector('.card'));
+  }
+
   var pagesDataPromise = null;
 
   function fetchPagesData() {
@@ -180,7 +184,7 @@
   function applyNewsDetailImages(item, jsonBaseUrl) {
     var imagePaths = item.articleImages && item.articleImages.length > 0
       ? item.articleImages
-      : (getPrimaryImage(item) ? [getPrimaryImage(item)] : []);
+      : [];
     if (imagePaths.length === 0) {
       return;
     }
@@ -191,12 +195,14 @@
     }
 
     figureImages.forEach(function (img, index) {
-      var imagePath = imagePaths[index] || imagePaths[0];
+      var imagePath = imagePaths[index];
       if (!imagePath) {
         return;
       }
       img.src = resolveAssetUrl(imagePath, jsonBaseUrl);
-      img.alt = item.title || img.alt;
+      if (!img.getAttribute('alt')) {
+        img.alt = item.title || '';
+      }
     });
   }
 
@@ -253,14 +259,18 @@
   /* ===== Auto-Load Pages (News / Products) ===== */
   var newsContainer = document.getElementById('newsContainer');
   var newsCount = document.getElementById('newsCount');
-  if (newsContainer) {
+  if (newsContainer && !hasStaticCards(newsContainer)) {
     loadPages('news', newsContainer, newsCount);
   }
 
   var productsContainer = document.getElementById('productsContainer');
   var productsCount = document.getElementById('productsCount');
   if (productsContainer) {
-    loadCategorizedProducts(productsContainer, productsCount);
+    if (hasStaticCards(productsContainer)) {
+      bindProductSearch(productsContainer);
+    } else {
+      loadCategorizedProducts(productsContainer, productsCount);
+    }
   }
 
   applyDetailPageAssets();
@@ -350,59 +360,7 @@
           container.appendChild(grid);
         });
 
-        /* ===== Real-time search ===== */
-        var searchInput = document.getElementById('productSearch');
-        if (searchInput) {
-          var noResultsEl = null;
-
-          searchInput.addEventListener('input', function () {
-            var query = this.value.trim().toLowerCase();
-            var headings = container.querySelectorAll('.category-heading');
-            var grids = container.querySelectorAll('.cards-grid');
-
-            headings.forEach(function (heading, i) {
-              var grid = grids[i];
-              if (!grid) return;
-              var cards = grid.querySelectorAll('.card');
-              var visibleCount = 0;
-
-              cards.forEach(function (card) {
-                var titleEl = card.querySelector('h3');
-                var summaryEl = card.querySelector('p');
-                var text = (
-                  (titleEl ? titleEl.textContent : '') + ' ' +
-                  (summaryEl ? summaryEl.textContent : '')
-                ).toLowerCase();
-                var matches = !query || text.indexOf(query) !== -1;
-                card.style.display = matches ? '' : 'none';
-                if (matches) visibleCount++;
-              });
-
-              var show = !query || visibleCount > 0;
-              heading.style.display = show ? '' : 'none';
-              grid.style.display = show ? '' : 'none';
-            });
-
-            /* No-results message */
-            var anyVisible = Array.prototype.some.call(
-              container.querySelectorAll('.card'),
-              function (c) { return c.style.display !== 'none'; }
-            );
-
-            if (!anyVisible && query) {
-              if (!noResultsEl) {
-                noResultsEl = document.createElement('p');
-                noResultsEl.className = 'search-no-results';
-                container.appendChild(noResultsEl);
-              }
-              var noResultsText = searchInput.getAttribute('data-no-results') || 'No products found.';
-              noResultsEl.textContent = noResultsText;
-              noResultsEl.style.display = '';
-            } else if (noResultsEl) {
-              noResultsEl.style.display = 'none';
-            }
-          });
-        }
+        bindProductSearch(container);
       })
       .catch(function () {
         while (container.firstChild) { container.removeChild(container.firstChild); }
@@ -411,6 +369,62 @@
         errMsg.textContent = 'Failed to load products. Please try again later.';
         container.appendChild(errMsg);
       });
+  }
+
+  function bindProductSearch(container) {
+    var searchInput = document.getElementById('productSearch');
+    if (!searchInput || searchInput.dataset.searchBound === 'true') {
+      return;
+    }
+
+    var noResultsEl = null;
+    searchInput.dataset.searchBound = 'true';
+
+    searchInput.addEventListener('input', function () {
+      var query = this.value.trim().toLowerCase();
+      var headings = container.querySelectorAll('.category-heading');
+      var grids = container.querySelectorAll('.cards-grid');
+
+      headings.forEach(function (heading, i) {
+        var grid = grids[i];
+        if (!grid) return;
+        var cards = grid.querySelectorAll('.card');
+        var visibleCount = 0;
+
+        cards.forEach(function (card) {
+          var titleEl = card.querySelector('h3');
+          var summaryEl = card.querySelector('p');
+          var text = (
+            (titleEl ? titleEl.textContent : '') + ' ' +
+            (summaryEl ? summaryEl.textContent : '')
+          ).toLowerCase();
+          var matches = !query || text.indexOf(query) !== -1;
+          card.style.display = matches ? '' : 'none';
+          if (matches) visibleCount++;
+        });
+
+        var show = !query || visibleCount > 0;
+        heading.style.display = show ? '' : 'none';
+        grid.style.display = show ? '' : 'none';
+      });
+
+      var anyVisible = Array.prototype.some.call(
+        container.querySelectorAll('.card'),
+        function (card) { return card.style.display !== 'none'; }
+      );
+
+      if (!anyVisible && query) {
+        if (!noResultsEl) {
+          noResultsEl = document.createElement('p');
+          noResultsEl.className = 'search-no-results';
+          container.appendChild(noResultsEl);
+        }
+        noResultsEl.textContent = searchInput.getAttribute('data-no-results') || 'No products found.';
+        noResultsEl.style.display = '';
+      } else if (noResultsEl) {
+        noResultsEl.style.display = 'none';
+      }
+    });
   }
 
   function loadPages(type, container, countEl) {
@@ -619,6 +633,7 @@
   if (faqOverlay) {
     var faqKey = 'wt_faq_shown';
     var faqShown = sessionStorage.getItem(faqKey);
+    var skipFaqAutoPopup = !!(document.getElementById('productsContainer') || document.getElementById('newsContainer'));
 
     function closeFaq() {
       faqOverlay.classList.remove('active');
@@ -639,7 +654,7 @@
       }
     });
 
-    if (!faqShown) {
+    if (!faqShown && !skipFaqAutoPopup) {
       setTimeout(function () {
         faqOverlay.classList.add('active');
         sessionStorage.setItem(faqKey, '1');

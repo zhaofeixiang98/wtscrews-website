@@ -52,11 +52,10 @@
   <meta property="og:image" content="../../../../images/og-cover.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <link rel="preload" as="image" href="../../../images/products/nuts/Hex Nut1.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Async font load — eliminates render-blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional">
   <style>
 :root{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -73,8 +72,9 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../../css/style.css"></noscript>
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/common.css">
+  <link rel="stylesheet" href="../../../css/product-detail.css">
   <!-- Facebook Meta Pixel Code -->
 <!-- Facebook 配合梓豪 Meta Pixel Code -->
   <script>
@@ -98,7 +98,7 @@ ul{list-style:none}
 
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -139,7 +139,7 @@ ul{list-style:none}
 
     <section class="section">
       <article class="container product-detail">
-        <figure class="product-gallery fade-in"><img src="../../../images/products/nuts/Hex Nut1.webp" alt="Hex Nuts"></figure>
+        <figure class="product-gallery fade-in"><img src="../../../images/products/nuts/Hex Nut1.webp" alt="Hex Nuts" width="1500" height="1500" fetchpriority="high"></figure>
         <section class="product-info fade-in">
           <h2>Hex Nuts</h2>
           <p>Our hex nuts are the industry standard for general fastening applications. Manufactured to DIN 934 / ISO 4032 standards, they provide reliable thread engagement and can be tightened with standard wrenches.</p>
@@ -400,7 +400,7 @@ ul{list-style:none}
           <div class="related-grid">
         <a href="flange-nuts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/nuts/Flange Nut_sm.webp" alt="Flange Nuts" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/nuts/Flange Nut_sm.webp" alt="Flange Nuts" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Flange Nuts</h4>
@@ -410,7 +410,7 @@ ul{list-style:none}
         </a>
         <a href="nyloc-nuts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/nuts/Nyloc Nut3_sm.webp" alt="Nyloc Nuts" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/nuts/Nyloc Nut3_sm.webp" alt="Nyloc Nuts" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Nyloc Nuts</h4>
@@ -420,7 +420,7 @@ ul{list-style:none}
         </a>
         <a href="weld-nuts.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/nuts/Weld Nut 5_sm.webp" alt="Weld Nuts" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/nuts/Weld Nut 5_sm.webp" alt="Weld Nuts" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Weld Nuts</h4>
@@ -474,41 +474,8 @@ ul{list-style:none}
     </section>
   </footer>
 
-  <aside class="faq-overlay" id="faqOverlay">
-    <section class="faq-modal">
-      <header class="faq-modal-header">
-        <h2>Frequently Asked Questions</h2>
-        <button class="faq-close" aria-label="Close FAQ">&times;</button>
-      </header>
-      <article class="faq-item">
-        <h3 class="faq-question">What is the minimum order quantity?</h3>
-        <p class="faq-answer">Our standard MOQ is 10 kg per item. For custom specifications, we can discuss based on your requirements.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">What grades do you offer?</h3>
-        <p class="faq-answer">We offer Grade 4, 6, 8, and 10 for carbon steel, and A2 (304) and A4 (316) for stainless steel.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">What surface finishes are available?</h3>
-        <p class="faq-answer">We provide Zinc Plated, Hot-Dip Galvanized, Black Oxide, and Passivation finishes.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Can you supply prevailing torque nuts?</h3>
-        <p class="faq-answer">Yes, we offer prevailing torque type (Nyloc style) hex nuts upon request.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Do you provide test certificates?</h3>
-        <p class="faq-answer">Yes, all shipments include material test certificates and quality inspection reports.</p>
-      </article>
-      <footer class="faq-cta">
-        <p>Still have questions?</p>
-        <a href="../contact.html" class="btn btn-primary">Contact Us</a>
-      </footer>
-    </section>
-  </aside>
-
   <script src="../../../js/i18n-config.js" defer></script>
-  <script src="../../../js/main.js" defer></script>
+  <script src="../../../js/detail-page.js" defer></script>
   <script src="../../../js/chat-dock.js" defer></script>
 </body>
 </html>

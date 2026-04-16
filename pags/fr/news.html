@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <link rel="alternate" hreflang="en" href="/pags/en/news.html">
-  <link rel="alternate" hreflang="zh-CN" href="/pags/zh/news.html">
-  <link rel="alternate" hreflang="x-default" href="/pags/en/news.html">
+  <link rel="alternate" hreflang="en" href="https://wtscrews.com/pags/en/news.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://wtscrews.com/pags/zh/news.html">
+  <link rel="alternate" hreflang="x-default" href="https://wtscrews.com/pags/fr/news.html">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
 
@@ -48,33 +48,17 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../css/style.css"></noscript>
-  <!-- Facebook 配合梓豪 Meta Pixel Code -->
-<!-- Facebook 配合梓豪 Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1626729111828175');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1626729111828175&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/news.css">
+
 </head>
 <body>
 
   <!-- Header -->
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd."></a>
+      <a href="index.html" class="logo"><img src="../../images/logo_sm.webp" alt="Hebei Wangtu Metal Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -86,7 +70,7 @@ ul{list-style:none}
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="lang-select">
-        <select id="langSwitcher" onchange="switchLanguage(this.value)">
+        <select id="langSwitcher" onchange="switchLanguage(this.value)" aria-label="Choisir la langue">
           
           
         </select>
@@ -102,13 +86,29 @@ ul{list-style:none}
         <p>Analyses du secteur, annonces de l'entreprise et dernières nouvelles de WT Fasteners</p>
       </article>
     </section>
-
     <!-- News Listing -->
     <section class="section">
       <article class="container">
-        <p class="page-count" id="newsCount">Chargement...</p>
+        <h2 class="sr-only">Derniers articles</h2>
         <section class="cards-grid" id="newsContainer">
-          <p class="loading">Chargement des articles d'actualité...</p>
+          <a href="news/2026-04-15.html" class="card">
+            <figure class="card-image"><img src="../../images/news/The-139th-Canton-Fair-1_sm.webp" alt="De la Foire de Canton à l&#x27;Expo de Yiwu : L&#x27;industrie des fixations embrasse l&#x27;essor commercial &quot;bi-noyau&quot; en avril" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-15">2026-04-15</time>
+              <h3>De la Foire de Canton à l&#x27;Expo de Yiwu : L&#x27;industrie des fixations embrasse l&#x27;essor commercial &quot;bi-noyau&quot; en avril</h3>
+              <p>Avril 2026 marque une concentration d&#x27;événements commerciaux pour les fixations dans le Sud de la Chine. Le 6e Salon d&#x27;Approvisionnement de Guangzhou (GSF) se tiendra au Poly World Trade Center du 14 au 17 avril, suivi immédiatement par la 10e Expo Internationale du Matériel Électrique de Yiwu du 20 au 22 avril. Le lien entre ces deux grands pôles commerciaux crée un corridor commercial bi-noyau &quot;précision de Guangzhou + portée mondiale de Yiwu&quot;, offrant aux entreprises de fixations une fenêtre privilégiée pour sécuriser des commandes à l&#x27;étranger et s&#x27;étendre sur les marchés émergents.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/2026-04-14-us-tariff-fastener.html" class="card">
+            <figure class="card-image"><img src="../../images/logo_sm.webp" alt="Ajustement de la politique tarifaire américaine : les exportations de fixations face à un nouveau tournant" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-04-14">2026-04-14</time>
+              <h3>Ajustement de la politique tarifaire américaine : les exportations de fixations face à un nouveau tournant</h3>
+              <p>À compter du 6 avril 2026, les États-Unis ont officiellement ajusté les règles tarifaires de la Section 232 pour les produits dérivés de l&#x27;acier et de l&#x27;aluminium. Pour les fixations contenant de l&#x27;acier ou de l&#x27;aluminium, la méthode de calcul a fondamentalement changé — d&#x27;une taxation uniquement sur la valeur de la teneur en métal à une imposition de 25 % sur la valeur déclarée totale de l&#x27;ensemble du produit. Cet article fournit une analyse approfondie des nouvelles réglementations, des estimations de l&#x27;impact sur les coûts et des stratégies de réponse des entreprises.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
         </section>
       </article>
     </section>

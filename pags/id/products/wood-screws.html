@@ -63,11 +63,10 @@
   <meta property="og:image" content="../../../../images/og-cover.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <link rel="preload" as="image" href="../../../images/products/screws/Wood Screw3.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Async font load — eliminates render-blocking -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional">
   <style>
 :root{--blue-900:#0a1628;--blue-800:#0f2140;--blue-700:#163264;--blue-500:#2563eb;--blue-400:#3b82f6;--blue-300:#60a5fa;--white:#ffffff;--text:#1e293b;--radius:6px;--radius-lg:12px;--header-h:76px;--transition:0.3s cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -84,8 +83,9 @@ ul{list-style:none}
 .page-hero,.inner-hero{background:linear-gradient(165deg,var(--blue-900) 0%,var(--blue-800) 40%,var(--blue-700) 100%);color:var(--white)}
 .container{max-width:1220px;margin:0 auto;padding:0 24px}
 </style>
-  <link rel="preload" href="../../../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../../../css/style.css"></noscript>
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/common.css">
+  <link rel="stylesheet" href="../../../css/product-detail.css">
   <!-- Facebook Pixel Code -->
 <!-- Facebook 配合梓豪 Meta Pixel Code -->
   <script>
@@ -109,7 +109,7 @@ ul{list-style:none}
 
   <header class="site-header" id="siteHeader">
     <nav class="container nav">
-      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="WT Metal Produk Co., Ltd."></a>
+      <a href="../../../index.html" class="logo"><img src="../../../images/logo_sm.webp" alt="WT Metal Produk Co., Ltd." width="88" height="88"></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -150,7 +150,7 @@ ul{list-style:none}
 
     <section class="section">
       <article class="container product-detail">
-        <figure class="product-gallery fade-in"><img src="../../../images/products/screws/Wood Screw3.webp" alt="Sekrup Kayu"></figure>
+        <figure class="product-gallery fade-in"><img src="../../../images/products/screws/Wood Screw3.webp" alt="Sekrup Kayu" width="1500" height="1500" fetchpriority="high"></figure>
         <section class="product-info fade-in">
           <h2>Sekrup Kayu</h2>
           <p>Sekrup kayu kami dirancang untuk kekuatan holding yang luar biasa di bahan kayu. Baik Anda membuat furnitur, membangun lemari, atau bekerja di proyek konstruksi, sekrup ini memberikan pengikatan yang andal dan aman.</p>
@@ -422,7 +422,7 @@ ul{list-style:none}
           <div class="related-grid">
         <a href="machine-screws.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/screws/Machine Screw2_sm.webp" alt="Sekrup Mesin" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/screws/Machine Screw2_sm.webp" alt="Sekrup Mesin" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Sekrup Mesin</h4>
@@ -432,7 +432,7 @@ ul{list-style:none}
         </a>
         <a href="self-drilling-screws.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/screws/Self Drilling Screw3_sm.webp" alt="Sekrup Bor Sendiri" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/screws/Self Drilling Screw3_sm.webp" alt="Sekrup Bor Sendiri" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Sekrup Bor Sendiri</h4>
@@ -442,7 +442,7 @@ ul{list-style:none}
         </a>
         <a href="drywall-screws.html" class="related-card">
           <div class="related-card-image">
-            <img src="../../../images/products/screws/Drywall Screw1_sm.webp" alt="Sekrup Drywall" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <img src="../../../images/products/screws/Drywall Screw1_sm.webp" alt="Sekrup Drywall" loading="lazy" width="400" height="400" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="related-card-body">
             <h4>Sekrup Drywall</h4>
@@ -503,41 +503,9 @@ ul{list-style:none}
   </footer>
 
   <!-- FAQ Modal -->
-  <aside class="faq-overlay" id="faqOverlay">
-    <section class="faq-modal">
-      <header class="faq-modal-header">
-        <h2>Pertanyaan yang Sering Diajukan</h2>
-        <button class="faq-close" aria-label="Tutup FAQ">&times;</button>
-      </header>
-      <article class="faq-item">
-        <h3 class="faq-question">Berapa jumlah pesanan minimum?</h3>
-        <p class="faq-answer">MOQ standar kami adalah 10 kg per item. Untuk pesanan khusus, MOQ dapat bervariasi tergantung spesifikasi — silakan tanyakan.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Berapa lama waktu produksi?</h3>
-        <p class="faq-answer">Produk standar: 7–15 hari kerja. Pesanan khusus: 15–25 hari kerja tergantung kompleksitas dan jumlah.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Bisakah Anda mengirim sampel sebelum saya memesan dalam jumlah besar?</h3>
-        <p class="faq-answer">Ya. Kami menyediakan sampel gratis untuk item standar (ongkos kirim ditanggung Anda). Untuk komponen khusus, biaya sampel kecil mungkin berlaku.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Metode pembayaran apa yang Anda terima?</h3>
-        <p class="faq-answer">Transfer bank (T/T), L/C, Western Union, dan PayPal untuk pesanan kecil. Kami biasanya meminta deposit 30% dengan pelunasan sebelum pengiriman.</p>
-      </article>
-      <article class="faq-item">
-        <h3 class="faq-question">Apakah Anda menawarkan OEM / manufaktur khusus?</h3>
-        <p class="faq-answer">Tentu saja. Kirimkan gambar atau spesifikasi Anda dan kami akan memberikan penawaran dalam 24 jam.</p>
-      </article>
-      <footer class="faq-cta">
-        <p>Masih punya pertanyaan?</p>
-        <a href="../contact.html" class="btn btn-primary">Hubungi Kami</a>
-      </footer>
-    </section>
-  </aside>
 
   <script src="../../../js/i18n-config.js" defer></script>
-  <script src="../../../js/main.js" defer></script>
+  <script src="../../../js/detail-page.js" defer></script>
   <script src="../../../js/chat-dock.js" defer></script>
 </body>
 </html>
