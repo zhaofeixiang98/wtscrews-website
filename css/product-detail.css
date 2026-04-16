@@ -42,6 +42,20 @@
   margin-bottom: 16px;
 }
 
+.product-info p,
+.application-card p,
+.material-card li,
+.review-text,
+.related-card-body p {
+  overflow-wrap: anywhere;
+}
+
+.product-detail > *,
+.product-info,
+.product-gallery {
+  min-width: 0;
+}
+
 .product-specs {
   margin: 28px 0;
 }
@@ -518,4 +532,190 @@
 .download-info p {
   font-size: 0.75rem;
   color: var(--gray-500);
+}
+
+@media (max-width: 1024px) {
+  .product-detail {
+    gap: 36px;
+  }
+
+  .product-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .product-gallery {
+    position: static;
+    top: auto;
+    width: 100%;
+    max-height: 420px;
+    aspect-ratio: 1/1;
+  }
+
+  .product-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-info h2 {
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+  }
+
+  .product-info > p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .product-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 16px;
+    margin: 24px 0;
+  }
+
+  .highlight-item {
+    padding: 12px 8px;
+  }
+
+  .highlight-item .highlight-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .product-specs {
+    margin: 22px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-specs table {
+    min-width: 540px;
+  }
+
+  .size-chart {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .size-chart table {
+    min-width: 640px;
+  }
+
+  .product-specs th,
+  .product-specs td {
+    padding: 11px 12px;
+    font-size: 0.84rem;
+  }
+
+  .applications-section,
+  .materials-section,
+  .size-chart-section,
+  .customer-reviews,
+  .document-downloads {
+    margin: 32px 0;
+  }
+
+  .materials-section,
+  .document-downloads {
+    padding: 20px;
+  }
+
+  .applications-grid,
+  .materials-grid,
+  .reviews-grid,
+  .downloads-grid {
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .application-card,
+  .materials-grid .material-card,
+  .review-card,
+  .download-item {
+    width: min(80vw, 300px);
+    scroll-snap-align: start;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+
+  .product-info .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .related-card-image {
+    height: 180px;
+  }
+
+  .related-card-body {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-gallery {
+    max-height: 320px;
+  }
+
+  .product-info h2 {
+    font-size: 1.45rem;
+  }
+
+  .product-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .product-specs table {
+    min-width: 500px;
+  }
+
+  .product-specs th,
+  .product-specs td {
+    padding: 10px 10px;
+    font-size: 0.8rem;
+  }
+
+  .size-chart table {
+    min-width: 560px;
+  }
+
+  .application-card,
+  .materials-grid .material-card,
+  .review-card,
+  .download-item {
+    width: min(82vw, 280px);
+  }
+
+  .applications-section h3,
+  .materials-section h3,
+  .size-chart-section h3,
+  .related-products h3,
+  .customer-reviews h3 {
+    font-size: 1.2rem;
+  }
 }

@@ -280,3 +280,65 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== About Mobile Tuning ===== */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-text h2 {
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+  }
+
+  .about-text p {
+    margin-bottom: 14px;
+    line-height: 1.68;
+  }
+
+  .value-card {
+    padding: 32px 20px;
+  }
+
+  .gallery-caption {
+    padding: 14px;
+  }
+
+  .cert-item {
+    padding: 22px 16px;
+  }
+
+  .process-number {
+    width: 68px;
+    height: 68px;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .value-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.35rem;
+    margin-bottom: 14px;
+  }
+
+  .value-card h3 {
+    font-size: 1.02rem;
+  }
+
+  .gallery-caption h4 {
+    font-size: 0.92rem;
+  }
+
+  .gallery-caption p {
+    font-size: 0.76rem;
+  }
+}
