@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import json
 import os
+import subprocess
 import re
 import sys
 from urllib.parse import parse_qs
@@ -119,6 +120,8 @@ for requested_slug in requested_slugs:
     if removed_anything:
         deleted.append(full_slug)
 
+# Regenerate static HTML
+subprocess.run(['python3', os.path.join(BASE_DIR, 'render_list_pages.py')], capture_output=True)
 
 respond({
     'success': len(deleted) > 0,

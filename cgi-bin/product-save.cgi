@@ -1044,6 +1044,10 @@ if auto_translate_enabled:
         fork_error = str(_fork_exc)
         auto_translate_enabled = False
 
+
+# Regenerate static HTML
+subprocess.run(['python3', os.path.join(BASE_DIR, 'render_list_pages.py')], capture_output=True)
+
 respond({
     'success': len(created) > 0,
     'slug': slug,
