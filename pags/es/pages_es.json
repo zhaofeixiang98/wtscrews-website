@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "Pernos de Brida",
+                    "summary": "Nuestros pernos de brida cuentan con una arandela circular integrada bajo la cabeza, que distribuye la carga de manera uniforme y evita el aflojamiento bajo vibración. La versión dentada crea un efecto de bloqueo contra la superficie de contacto. Disponibles en configuraciones dentadas (resistentes a vibraciones) y no dentadas. Fabricados según las normas DIN 6921 / ISO 1665 con una precisión dimensional constante.",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT Fasteners",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. Disponible en aluminum, steel, and stainless steel with various head styles.",

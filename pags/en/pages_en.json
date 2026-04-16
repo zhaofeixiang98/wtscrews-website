@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "Flange Bolts",
+                    "summary": "Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface. Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "Blind Rivets",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. Available in aluminum, steel, and stainless steel with various head styles.",

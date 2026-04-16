@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "Boulons à collerette",
+                    "summary": "Nos boulons à collerette sont dotés d'une rondelle circulaire intégrée sous la tête, répartissant la charge uniformément et empêchant le desserrage sous vibrations. La version crantée crée un effet de blocage contre la surface d'appui. Disponibles en configurations crantée (résistante aux vibrations) et non crantée. Fabriqués selon les normes DIN 6921 / ISO 1665 avec une précision dimensionnelle constante.",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT Fasteners",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. Disponible en aluminum, steel, and stainless steel with various head styles.",

@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "法兰螺栓",
+                    "summary": "我们的法兰螺栓在头部下方集成了一个圆形垫圈，可均匀分布载荷并防止在振动下松动。锯齿版本可在配合表面产生锁紧作用。提供锯齿（防振）和非锯齿两种配置。按照 DIN 6921 / ISO 1665 标准制造，尺寸精度一致。",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT紧固件——优质紧固件制造商及全球出口商",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. 可提供 aluminum, steel, and stainless steel with various head styles.",

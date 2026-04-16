@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "Baut Flensa",
+                    "summary": "Baut flensa kami memiliki ring washer bundar terintegrasi di bawah kepala, mendistribusikan beban secara merata dan mencegah pengenduran akibat getaran. Versi bergerigi menciptakan aksi penguncian terhadap permukaan pasangan. Tersedia dalam konfigurasi bergerigi (tahan getaran) dan tidak bergerigi. Diproduksi sesuai standar DIN 6921 / ISO 1665 dengan akurasi dimensi yang konsisten.",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT Fasteners",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. Tersedia dalam aluminum, steel, and stainless steel with various head styles.",

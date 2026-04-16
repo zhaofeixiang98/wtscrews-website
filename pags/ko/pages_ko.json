@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "플랜지 볼트",
+                    "summary": "당사의 플랜지 볼트는 헤드 아래에 통합된 원형 와셔를 특징으로 하여 하중을 균일하게 분산시키고 진동 하에서 풀림을 방지합니다. 톱니형 버전은 맞대는 표면에 대해 잠금 작용을 생성합니다. 톱니형(진동 방지) 및 비톱니형 구성 모두에서 이용 가능합니다. 일관된 치수 정확도로 DIN 6921 / ISO 1665 표준에 따라 제조됩니다.",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT Fasteners",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. 제공 가능 aluminum, steel, and stainless steel with various head styles.",

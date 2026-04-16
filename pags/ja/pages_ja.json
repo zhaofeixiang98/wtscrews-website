@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "フランジボルト",
+                    "summary": "当社のフランジボルトは、頭部の下に一体型の円形座金を備えており、荷重を均等に分散し、振動による緩みを防止します。鋸歯状バージョンは、相手面に対してロック作用を生み出します。鋸歯状（耐振動）と非鋸歯状の両方の構成でご利用いただけます。DIN 6921 / ISO 1665規格に準拠し、一貫した寸法精度で製造されています。",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT Fasteners",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. 取り揃え aluminum, steel, and stainless steel with various head styles.",

@@ -234,6 +234,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/flange-bolt-1",
+                    "title": "براغي الفلانش",
+                    "summary": "تتميز براغي الفلانش الخاصة بنا بوجود غسالة دائرية متكاملة تحت الرأس، مما يوزع الحمل بشكل متساوٍ ويمنع الترخي تحت تأثير الاهتزاز. النسخة المسننة تخلق تأثير قفل ضد السطح المقابل. متوفرة بكل من التكوينات المسننة (المقاومة للاهتزاز) وغير المسننة. مصنوعة وفقًا لمعايير DIN 6921 / ISO 1665 بدقة أبعاد ثابتة.",
+                    "icon": "../../images/news/flange-bolt.png"
+                },
+                {
                     "slug": "products/blind-rivets",
                     "title": "WT Fasteners",
                     "summary": "High-quality blind rivets (pop rivets) for one-sided installation. متوفر في aluminum, steel, and stainless steel with various head styles.",
