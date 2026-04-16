@@ -1,275 +1,268 @@
 {
-  "news": [
-    {
-      "slug": "news/test-json-1776321839",
-      "title": "Test JSON",
-      "date": "2026-04-16",
-      "summary": "test summary",
-      "icon": "../../images/news/1.webp"
-    },
-    {
-      "slug": "news/2007-11-09-eu-china-fasteners",
-      "title": "欧盟启动对中国紧固件的反倾销调查",
-      "date": "2007-11-09",
-      "summary": "2007年11月9日，欧盟委员会对中国钢铁紧固件发起反倾销调查，涉及逾1700家中国出口商，出口额约8.09亿美元，成为当时针对中国的最大贸易救济案件。",
-      "icon": "https://wtscrews.com/images/news/WTO.png"
-    },
-    {
-      "slug": "news/2026-04-14-us-tariff-fastener",
-      "title": "美国关税政策调整：紧固件出口面临新转折点",
-      "date": "2026-04-14",
-      "summary": "自2026年4月6日起，美国232条款关税规则调整，紧固件出口计税基础改为产品总值，中国紧固件企业面临成本上升挑战。本文分析影响并提供应对策略。",
-      "icon": "../../images/news/2006-2007.jpg"
-    },
-    {
-      "slug": "news/2026-04-15",
-      "title": "从广交会到义乌博览会：紧固件行业四月迎来“双核”贸易热潮",
-      "date": "2026-04-15",
-      "summary": "2026年4月，广州采购交易会与义乌五金电器博览会相继举办，为紧固件行业打造“双核”贸易走廊，助力企业开拓海外市场与新兴市场。",
-      "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
-    },
-    {
-      "slug": "news/industry-outlook-2026",
-      "title": "WT紧固件——优质紧固件制造商及全球出口商",
-      "date": "2026-04-07",
-      "summary": "WT紧固件是高质量螺栓、螺钉、垫圈和定制紧固件的领先制造商和出口商。自2005年以来，以ISO认证产品服务全球市场。",
-      "icon": "../../images/news/logo.jpg"
-    }
-  ],
-  "products": [
-    {
-      "category": "Bolts",
-      "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
-      "items": [
+    "news": [
         {
-          "slug": "products/anchor-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Expansion anchors, wedge anchors, and chemical anchor bolts for concrete and masonry applications. 尺寸 M6–M24.",
-          "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+            "slug": "news/2007-11-09-eu-china-fasteners",
+            "title": "欧盟启动对中国紧固件的反倾销调查",
+            "date": "2007-11-09",
+            "summary": "2007年11月9日，欧盟委员会对中国钢铁紧固件发起反倾销调查，涉及逾1700家中国出口商，出口额约8.09亿美元，成为当时针对中国的最大贸易救济案件。",
+            "icon": "https://wtscrews.com/images/news/WTO.png"
         },
         {
-          "slug": "products/flange-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Flange bolts with serrated or non-serrated washer face per DIN 6921 / ISO 1665. 尺寸 M5–M24.",
-          "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+            "slug": "news/2026-04-14-us-tariff-fastener",
+            "title": "美国关税政策调整：紧固件出口面临新转折点",
+            "date": "2026-04-14",
+            "summary": "自2026年4月6日起，美国232条款关税规则调整，紧固件出口计税基础改为产品总值，中国紧固件企业面临成本上升挑战。本文分析影响并提供应对策略。",
+            "icon": "../../images/news/2006-2007.jpg"
         },
         {
-          "slug": "products/hex-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Full and partial thread hex bolts manufactured to DIN 931/933 and ISO 4014/4017 standards. 等级 4.8 to 12.9, sizes M4–M64.",
-          "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+            "slug": "news/2026-04-15",
+            "title": "从广交会到义乌博览会：紧固件行业四月迎来“双核”贸易热潮",
+            "date": "2026-04-15",
+            "summary": "2026年4月，广州采购交易会与义乌五金电器博览会相继举办，为紧固件行业打造“双核”贸易走廊，助力企业开拓海外市场与新兴市场。",
+            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
         },
         {
-          "slug": "products/high-strength-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "高强度 structural bolts in grades 8.8, 10.9, 12.9. ASTM A325, A490, DIN 6914 compliant.",
-          "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
-        },
-        {
-          "slug": "products/t-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "T-shaped bolts for T-slot profiles and structural applications. 尺寸 M4–M12.",
-          "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+            "slug": "news/industry-outlook-2026",
+            "title": "WT紧固件——优质紧固件制造商及全球出口商",
+            "date": "2026-04-07",
+            "summary": "WT紧固件是高质量螺栓、螺钉、垫圈和定制紧固件的领先制造商和出口商。自2005年以来，以ISO认证产品服务全球市场。",
+            "icon": "../../images/news/logo.jpg"
         }
-      ]
-    },
-    {
-      "category": "Nuts",
-      "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
-      "items": [
+    ],
+    "products": [
         {
-          "slug": "products/flange-nuts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Serrated flange nuts per DIN 6923 with built-in washer face. 尺寸 M5–M24.",
-          "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+            "category": "Bolts",
+            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "items": [
+                {
+                    "slug": "products/anchor-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Expansion anchors, wedge anchors, and chemical anchor bolts for concrete and masonry applications. 尺寸 M6–M24.",
+                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                },
+                {
+                    "slug": "products/flange-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Flange bolts with serrated or non-serrated washer face per DIN 6921 / ISO 1665. 尺寸 M5–M24.",
+                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                },
+                {
+                    "slug": "products/hex-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Full and partial thread hex bolts manufactured to DIN 931/933 and ISO 4014/4017 standards. 等级 4.8 to 12.9, sizes M4–M64.",
+                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                },
+                {
+                    "slug": "products/high-strength-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "高强度 structural bolts in grades 8.8, 10.9, 12.9. ASTM A325, A490, DIN 6914 compliant.",
+                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                },
+                {
+                    "slug": "products/t-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "T-shaped bolts for T-slot profiles and structural applications. 尺寸 M4–M12.",
+                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                }
+            ]
         },
         {
-          "slug": "products/hex-nuts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "标准 hex nuts per DIN 934 / ISO 4032. 尺寸 M4–M64, grades 4, 6, 8, 10.",
-          "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+            "category": "Nuts",
+            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "items": [
+                {
+                    "slug": "products/flange-nuts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Serrated flange nuts per DIN 6923 with built-in washer face. 尺寸 M5–M24.",
+                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                },
+                {
+                    "slug": "products/hex-nuts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "标准 hex nuts per DIN 934 / ISO 4032. 尺寸 M4–M64, grades 4, 6, 8, 10.",
+                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                },
+                {
+                    "slug": "products/nyloc-nuts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "尼龙 insert lock nuts per DIN 985 / ISO 10511. 尺寸 M3–M36.",
+                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                },
+                {
+                    "slug": "products/weld-nuts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Projection weld nuts for automated welding. Square and hexagonal types.",
+                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                },
+                {
+                    "slug": "products/wing-nuts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Hand-operated wing nuts for quick assembly and disassembly.",
+                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                }
+            ]
         },
         {
-          "slug": "products/nyloc-nuts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "尼龙 insert lock nuts per DIN 985 / ISO 10511. 尺寸 M3–M36.",
-          "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+            "category": "Washers",
+            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "items": [
+                {
+                    "slug": "products/flat-washers",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "标准 flat washers per DIN 125 / ISO 7089. 尺寸 M2–M64.",
+                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                },
+                {
+                    "slug": "products/lock-washers",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Split lock washers per DIN 127 / ISO 7092. 尺寸 M2–M64.",
+                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                },
+                {
+                    "slug": "products/spring-washers",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Conical spring washers (Belleville) for dynamic load applications. DIN 2093.",
+                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                },
+                {
+                    "slug": "products/square-washers",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Square flat washers for structural applications. DIN 436.",
+                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                }
+            ]
         },
         {
-          "slug": "products/weld-nuts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Projection weld nuts for automated welding. Square and hexagonal types.",
-          "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+            "category": "Screws",
+            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "items": [
+                {
+                    "slug": "products/drywall-screws",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "专业 drywall screws with fine thread for metal studs and coarse thread for wood framing. Black phosphate finish.",
+                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                },
+                {
+                    "slug": "products/machine-screws",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Pan head, hex head, and countersunk machine screws. 尺寸 M1.6–M20.",
+                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                },
+                {
+                    "slug": "products/self-drilling-screws",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Self drilling screws (Tek screws) with drill point for metal applications.",
+                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                },
+                {
+                    "slug": "products/wood-screws",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality wood screws in various sizes and materials. Suitable for woodworking, furniture assembly, and general construction.",
+                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                }
+            ]
         },
         {
-          "slug": "products/wing-nuts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Hand-operated wing nuts for quick assembly and disassembly.",
-          "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+            "category": "Studs & Threaded Rods",
+            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "items": [
+                {
+                    "slug": "products/double-end-studs",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Double end studs (stud bolts) manufactured to DIN 938/939 and ISO standards. Both ends threaded with unthreaded center section.",
+                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                },
+                {
+                    "slug": "products/threaded-rods",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality threaded rods (all-thread) manufactured to DIN 975/976 and ISO standards. 可提供 various materials and grades.",
+                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                }
+            ]
+        },
+        {
+            "category": "Pins",
+            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "items": [
+                {
+                    "slug": "products/cotter-pins",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality cotter pins (split pins) manufactured to DIN 94 and ISO 1234 standards. Used for securing nuts, bolts, and other fasteners.",
+                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                },
+                {
+                    "slug": "products/dowel-pins",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality dowel pins (parallel pins) manufactured to DIN 7 and ISO 2339 standards. Used for precise alignment and positioning.",
+                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                }
+            ]
+        },
+        {
+            "category": "Anchors & Fastening",
+            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "items": [
+                {
+                    "slug": "products/drop-in-anchors",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality drop-in anchors with internal thread for concrete applications. Zinc-plated carbon steel and stainless steel options.",
+                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                },
+                {
+                    "slug": "products/expansion-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Heavy-duty expansion bolts ( sleeve anchors) for concrete and masonry applications. Zinc-plated carbon steel construction.",
+                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                },
+                {
+                    "slug": "products/wedge-anchors",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Heavy-duty wedge anchors for concrete and masonry applications. Zinc-plated carbon steel and stainless steel options.",
+                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                }
+            ]
+        },
+        {
+            "category": "Other Fasteners",
+            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/blind-rivets",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality blind rivets (pop rivets) for one-sided installation. 可提供 aluminum, steel, and stainless steel with various head styles.",
+                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                },
+                {
+                    "slug": "products/circlips",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality circlips (retaining rings) for shaft and bore retention. Internal and external types 可提供.",
+                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                },
+                {
+                    "slug": "products/fastener-kits",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "Comprehensive fastener assortments and kits for industrial, automotive, and maintenance applications.",
+                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                },
+                {
+                    "slug": "products/semi-tubular-rivets",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality semi-tubular rivets with partial hollow shank. Lighter weight and easier to set than solid rivets.",
+                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                },
+                {
+                    "slug": "products/solid-rivets",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality solid rivets in aluminum, steel, and stainless steel. Multiple head styles for structural and general applications.",
+                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                },
+                {
+                    "slug": "products/u-bolts",
+                    "title": "WT紧固件——优质紧固件制造商及全球出口商",
+                    "summary": "High-quality U-bolts for pipe and tube mounting. Manufactured to DIN standards with steel and stainless steel options.",
+                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "category": "Washers",
-      "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
-      "items": [
-        {
-          "slug": "products/flat-washers",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "标准 flat washers per DIN 125 / ISO 7089. 尺寸 M2–M64.",
-          "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
-        },
-        {
-          "slug": "products/lock-washers",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Split lock washers per DIN 127 / ISO 7092. 尺寸 M2–M64.",
-          "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
-        },
-        {
-          "slug": "products/spring-washers",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Conical spring washers (Belleville) for dynamic load applications. DIN 2093.",
-          "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
-        },
-        {
-          "slug": "products/square-washers",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Square flat washers for structural applications. DIN 436.",
-          "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
-        }
-      ]
-    },
-    {
-      "category": "Screws",
-      "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
-      "items": [
-        {
-          "slug": "products/drywall-screws",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "专业 drywall screws with fine thread for metal studs and coarse thread for wood framing. Black phosphate finish.",
-          "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
-        },
-        {
-          "slug": "products/machine-screws",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Pan head, hex head, and countersunk machine screws. 尺寸 M1.6–M20.",
-          "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
-        },
-        {
-          "slug": "products/self-drilling-screws",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Self drilling screws (Tek screws) with drill point for metal applications.",
-          "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
-        },
-        {
-          "slug": "products/wood-screws",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality wood screws in various sizes and materials. Suitable for woodworking, furniture assembly, and general construction.",
-          "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
-        }
-      ]
-    },
-    {
-      "category": "Studs & Threaded Rods",
-      "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
-      "items": [
-        {
-          "slug": "products/double-end-studs",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Double end studs (stud bolts) manufactured to DIN 938/939 and ISO standards. Both ends threaded with unthreaded center section.",
-          "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
-        },
-        {
-          "slug": "products/threaded-rods",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality threaded rods (all-thread) manufactured to DIN 975/976 and ISO standards. 可提供 various materials and grades.",
-          "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
-        }
-      ]
-    },
-    {
-      "category": "Pins",
-      "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
-      "items": [
-        {
-          "slug": "products/cotter-pins",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality cotter pins (split pins) manufactured to DIN 94 and ISO 1234 standards. Used for securing nuts, bolts, and other fasteners.",
-          "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
-        },
-        {
-          "slug": "products/dowel-pins",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality dowel pins (parallel pins) manufactured to DIN 7 and ISO 2339 standards. Used for precise alignment and positioning.",
-          "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
-        }
-      ]
-    },
-    {
-      "category": "Anchors & Fastening",
-      "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
-      "items": [
-        {
-          "slug": "products/drop-in-anchors",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality drop-in anchors with internal thread for concrete applications. Zinc-plated carbon steel and stainless steel options.",
-          "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
-        },
-        {
-          "slug": "products/expansion-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Heavy-duty expansion bolts ( sleeve anchors) for concrete and masonry applications. Zinc-plated carbon steel construction.",
-          "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
-        },
-        {
-          "slug": "products/wedge-anchors",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Heavy-duty wedge anchors for concrete and masonry applications. Zinc-plated carbon steel and stainless steel options.",
-          "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
-        }
-      ]
-    },
-    {
-      "category": "Other Fasteners",
-      "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
-      "items": [
-        {
-          "slug": "products/blind-rivets",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality blind rivets (pop rivets) for one-sided installation. 可提供 aluminum, steel, and stainless steel with various head styles.",
-          "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
-        },
-        {
-          "slug": "products/circlips",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality circlips (retaining rings) for shaft and bore retention. Internal and external types 可提供.",
-          "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
-        },
-        {
-          "slug": "products/fastener-kits",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "Comprehensive fastener assortments and kits for industrial, automotive, and maintenance applications.",
-          "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
-        },
-        {
-          "slug": "products/semi-tubular-rivets",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality semi-tubular rivets with partial hollow shank. Lighter weight and easier to set than solid rivets.",
-          "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
-        },
-        {
-          "slug": "products/solid-rivets",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality solid rivets in aluminum, steel, and stainless steel. Multiple head styles for structural and general applications.",
-          "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
-        },
-        {
-          "slug": "products/u-bolts",
-          "title": "WT紧固件——优质紧固件制造商及全球出口商",
-          "summary": "High-quality U-bolts for pipe and tube mounting. Manufactured to DIN standards with steel and stainless steel options.",
-          "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
-        }
-      ]
-    }
-  ]
+    ]
 }
