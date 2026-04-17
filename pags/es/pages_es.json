@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2026-04-17-market-expo",
+            "title": "Dinámica del Mercado y las Exposiciones",
+            "date": "2026-04-17",
+            "summary": "Se prevé que el mercado global de pernos alcance los 51.790 millones de dólares en 2026, impulsado por la fuerte demanda en energías renovables e infraestructura. Dos exposiciones insignia – la Exposición Internacional de Fijaciones de Shanghái en mayo y la Fastener Expo Shanghai (FES) en junio – abrirán pronto, centrándose en la fabricación inteligente de alta gama y la actualización de equipos, proporcionando una plataforma para el emparejamiento comercial y la exhibición tecnológica.",
+            "icon": "../../images/news/9400ea0906646968e3ed846f5aa91385.png"
+        },
+        {
             "slug": "news/2025-01-15-cost-trade",
             "title": "Desafíos y Oportunidades: Costo, Comercio y Transformación",
             "date": "2025-01-15",

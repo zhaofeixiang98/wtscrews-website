@@ -1,6 +1,13 @@
 {
     "news": [
         {
+            "slug": "news/2026-04-17-market-expo",
+            "title": "Markt- und Messedynamik",
+            "date": "2026-04-17",
+            "summary": "Der globale Schraubenmarkt soll 2026 51,79 Mrd. USD erreichen, angetrieben durch starke Nachfrage in den Bereichen neue Energie und Infrastruktur. Zwei Flaggschiff-Messen – die Shanghai International Fastener Expo im Mai und die Fastener Expo Shanghai (FES) im Juni – werden bald eröffnet. Sie konzentrieren sich auf hochwertige intelligente Fertigung und Anlagenmodernisierung und bieten eine Plattform für Geschäftsanbahnung und Technologiepräsentation.",
+            "icon": "../../images/news/9400ea0906646968e3ed846f5aa91385.png"
+        },
+        {
             "slug": "news/2025-01-15-cost-trade",
             "title": "Herausforderungen und Chancen: Kosten, Handel und Transformation",
             "date": "2025-01-15",
