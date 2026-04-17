@@ -128,10 +128,10 @@
     var info = getPagesJsonInfo();
     var jsonBaseUrl = new URL(info.pagesJsonPath, window.location.href).href;
 
-    pagesDataPromise = fetch(info.pagesJsonPath)
+    pagesDataPromise = fetch(info.pagesJsonPath + '?_=' + Date.now())
       .then(function (res) {
         if (!res.ok && info.lang !== 'en') {
-          var fallbackPath = (window.location.pathname.indexOf('/products/') !== -1 || window.location.pathname.indexOf('/news/') !== -1 ? '../' : './') + 'pages_en.json';
+var fallbackPath = (window.location.pathname.indexOf('/products/') !== -1 || window.location.pathname.indexOf('/news/') !== -1 ? '../' : './') + 'pages_en.json?_=' + Date.now();
           var fallbackBaseUrl = new URL(fallbackPath, window.location.href).href;
           return fetch(fallbackPath).then(function (fallbackRes) {
             if (!fallbackRes.ok) {
