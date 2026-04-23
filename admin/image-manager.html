@@ -129,7 +129,7 @@
       <div id="imageGrid" class="image-grid"><div class="empty-state">加载中...</div></div>
     </section>
   </main>
-  <script>
+  <script data-cfasync="false">
     function logout() { localStorage.removeItem('userAdminAuth'); window.location.href = 'login.html'; }
     document.getElementById('logoutBtn').addEventListener('click', logout);
     function checkAuth() { const auth = localStorage.getItem('userAdminAuth'); if (!auth || new Date().getTime() > parseInt(auth, 10)) { window.location.href = 'login.html'; return false; } return true; }
