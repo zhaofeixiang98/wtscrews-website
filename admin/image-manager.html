@@ -250,7 +250,7 @@
       if (!confirm('确认删除 ' + selected.length + ' 张图片？')) return;
       deleteImages(selected);
     });
-    loadImages();
+    window.addEventListener('DOMContentLoaded', function() { loadImages(); });
   </script>
 </body>
 </html>
