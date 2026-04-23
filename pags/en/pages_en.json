@@ -269,6 +269,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/2026-04-23",
+                    "title": "Wheel Bolts / Lug Bolts",
+                    "summary": "Our wheel bolts feature a tapered or spherical seat design to ensure precise centering and secure clamping of the wheel to the hub. The optimized thread geometry and hardened steel construction provide high tensile strength, resisting loosening under dynamic driving conditions such as cornering, braking, and vibration. Available in various seat types (cone, radius, or flat) to match OE wheel specifications. Manufactured to ISO or DIN standards with consistent dimensional accuracy and corrosion-resistant surface finishes (e.g., zinc flake coating).",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                },
+                {
                     "slug": "products/flange-bolt-1",
                     "title": "Flange Bolts",
                     "summary": "Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface. Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.",

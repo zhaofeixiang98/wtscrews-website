@@ -269,6 +269,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/2026-04-23",
+                    "title": "Radschrauben / Radbolzen",
+                    "summary": "Unsere Radschrauben verfügen über ein konisches oder kugelförmiges Sitzdesign, um eine präzise Zentrierung und sichere Klemmung des Rades an der Nabe zu gewährleisten. Die optimierte Gewindegeometrie und die gehärtete Stahlkonstruktion bieten hohe Zugfestigkeit und widerstehen dem Lösen unter dynamischen Fahrbedingungen wie Kurvenfahrten, Bremsen und Vibrationen. Verfügbar in verschiedenen Sitztypen (Kegel, Radius oder flach), um den OE-Radspezifikationen zu entsprechen. Hergestellt nach ISO- oder DIN-Normen mit konsistenter Maßgenauigkeit und korrosionsbeständigen Oberflächenbeschichtungen (z. B. Zinkflockenbeschichtung).",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                },
+                {
                     "slug": "products/flange-bolt-1",
                     "title": "Flanschschrauben",
                     "summary": "Unsere Flanschschrauben verfügen unter dem Kopf über einen integrierten, kreisförmigen Bund, der die Last gleichmäßig verteilt und ein Lösen unter Vibration verhindert. Die gezahnte Version erzeugt eine Verriegelungswirkung gegen die Gegenfläche. Erhältlich in gezahnter (vibrationssicherer) und ungezahnter Ausführung. Hergestellt nach DIN 6921 / ISO 1665 Normen mit konstanter Maßgenauigkeit.",

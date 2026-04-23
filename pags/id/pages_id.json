@@ -269,6 +269,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/2026-04-23",
+                    "title": "Baut Roda / Baut Pengikat Roda",
+                    "summary": "Baut roda kami menampilkan desain dudukan tirus atau bulat untuk memastikan pemusatan yang tepat dan penjepitan aman roda ke hub. Geometri ulir yang dioptimalkan dan konstruksi baja yang dikeraskan memberikan kekuatan tarik tinggi, menahan pengenduran dalam kondisi berkendara dinamis seperti menikung, pengereman, dan getaran. Tersedia dalam berbagai tipe dudukan (kerucut, radius, atau datar) untuk mencocokkan spesifikasi roda OE. Diproduksi sesuai standar ISO atau DIN dengan akurasi dimensi yang konsisten dan lapisan permukaan tahan korosi (misalnya, pelapisan serpihan seng).",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                },
+                {
                     "slug": "products/flange-bolt-1",
                     "title": "Baut Flensa",
                     "summary": "Baut flensa kami memiliki ring washer bundar terintegrasi di bawah kepala, mendistribusikan beban secara merata dan mencegah pengenduran akibat getaran. Versi bergerigi menciptakan aksi penguncian terhadap permukaan pasangan. Tersedia dalam konfigurasi bergerigi (tahan getaran) dan tidak bergerigi. Diproduksi sesuai standar DIN 6921 / ISO 1665 dengan akurasi dimensi yang konsisten.",

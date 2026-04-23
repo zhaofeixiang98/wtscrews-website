@@ -269,6 +269,12 @@
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
                 {
+                    "slug": "products/2026-04-23",
+                    "title": "Boulons de roue / Boulons de jante",
+                    "summary": "Nos boulons de roue présentent une conception à siège conique ou sphérique pour assurer un centrage précis et un serrage sécurisé de la roue sur le moyeu. La géométrie de filetage optimisée et la construction en acier trempé offrent une haute résistance à la traction, résistant au desserrage dans des conditions de conduite dynamiques telles que les virages, le freinage et les vibrations. Disponibles en différents types de sièges (cône, rayon ou plat) pour correspondre aux spécifications des roues d'origine. Fabriqués selon les normes ISO ou DIN avec une précision dimensionnelle constante et des finitions de surface résistantes à la corrosion (par exemple, revêtement en flocons de zinc).",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                },
+                {
                     "slug": "products/flange-bolt-1",
                     "title": "Boulons à collerette",
                     "summary": "Nos boulons à collerette sont dotés d'une rondelle circulaire intégrée sous la tête, répartissant la charge uniformément et empêchant le desserrage sous vibrations. La version crantée crée un effet de blocage contre la surface d'appui. Disponibles en configurations crantée (résistante aux vibrations) et non crantée. Fabriqués selon les normes DIN 6921 / ISO 1665 avec une précision dimensionnelle constante.",
