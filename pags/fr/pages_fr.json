@@ -1,6 +1,34 @@
 {
     "news": [
         {
+            "slug": "news/20260423-thailand-architect",
+            "title": "Thailand International Architecture & Building Materials Expo : Une nouvelle rampe de lancement pour la mondialisation des fixations",
+            "date": "2026-04-23",
+            "summary": "ARCHITECT'26, le salon international de l'architecture et des matériaux de construction de Thaïlande, se tiendra du 28 avril au 3 mai 2026 à l'IMPACT Muang Thong Thani de Bangkok. En tant qu'événement phare le plus important et le plus influent de l'industrie des matériaux de construction de l'ASEAN, l'édition de cette année rassemble plus de 1 000 marques du monde entier sur plus de 75 000 m² d'espace d'exposition. Les fixations, en tant que catégorie centrale de la quincaillerie de construction, font face à des opportunités historiques de mondialisation, portées par le Corridor Économique de l'Est de la Thaïlande et le train à grande vitesse Chine-Thaïlande. Cet article détaille les points forts du salon et les perspectives du marché thaïlandais des fixations.",
+            "icon": "../../images/news/1b7a4879728ec83e2a103b5ddd3c30e1.png"
+        },
+        {
+            "slug": "news/2026-04-22",
+            "title": "New Global Landscape: From \"Price War\" to \"System Competition",
+            "date": "2026-04-22",
+            "summary": "The global fastener market reached $109.6 billion in 2025 and is expected to climb to $189.9 billion by 2035 with a CAGR of 6.3%. Pure low-price competition is no longer effective. Leading players are building moats with high-end product portfolios, smart production lines, agile delivery, and global networks. This article analyzes the drivers behind the new landscape and provides a systematic upgrade path for fastener enterprises.",
+            "icon": "../../images/logo.jpg"
+        },
+        {
+            "slug": "news/20260421-material-frontier",
+            "title": "La « zone interdite » de la science des matériaux – Ultra-haute résistance et défis environnementaux extrêmes",
+            "date": "2026-04-21",
+            "summary": "Alors que les fixations classiques de classe 10.9 et 12.9 sont devenues « l'équipement standard », la véritable compétition s'est engagée dans la « zone interdite » de la science des matériaux. La quête incessante d'allègement et de densité de puissance dans les applications en aval force les matériaux des fixations à repousser les limites physiques. Cet article explore la lutte contre la fragilisation par l'hydrogène de l'acier à ultra-haute résistance, la révolution du remplacement à haute température par les plastiques PPA hautes performances, et les technologies de revêtements pour environnements extrêmes dans les applications offshore et aérospatiales.",
+            "icon": "../../images/abouts/Loading%20Dock1.png"
+        },
+        {
+            "slug": "news/2026-04-20",
+            "title": "Le \"Riz de l'Industrie\" dans la Fabrication",
+            "date": "2026-04-20",
+            "summary": "Petites mais indispensables, les fixations sont le \"Riz de l'Industrie\" pour la fabrication moderne. Cet article analyse leur valeur d'application critique et les tendances dans l'automobile, l'aérospatiale, la construction, les nouvelles énergies et plus encore, mettant en lumière comment les fixations haute résistance, légères et intelligentes stimulent un développement industriel de haute qualité.",
+            "icon": "../../images/news/16c1eb59eeb4111082c5a9aee14087cb.png"
+        },
+        {
             "slug": "news/2026-04-17-market-expo",
             "title": "Dynamiques du Marché et des Salons",
             "date": "2026-04-17",

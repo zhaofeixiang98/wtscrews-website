@@ -1,6 +1,34 @@
 {
     "news": [
         {
+            "slug": "news/20260423-thailand-architect",
+            "title": "Exposición Internacional de Arquitectura y Materiales de Construcción de Tailandia: Una Nueva Plataforma de Lanzamiento para la Internacionalización de los Elementos de Fijación",
+            "date": "2026-04-23",
+            "summary": "ARCHITECT'26, la Exposición Internacional de Arquitectura y Materiales de Construcción de Tailandia, se celebrará del 28 de abril al 3 de mayo de 2026 en IMPACT Muang Thong Thani, Bangkok. Como el evento insignia más grande e influyente de la industria de materiales de construcción de la ASEAN, la exposición de este año reúne a más de 1,000 marcas de todo el mundo en más de 75,000 m² de espacio de exposición. Los elementos de fijación, como categoría central en la ferretería de construcción, enfrentan oportunidades históricas de internacionalización impulsadas por el Corredor Económico Oriental de Tailandia y el Tren de Alta Velocidad China-Tailandia. Este artículo analiza los aspectos más destacados de la exposición y las perspectivas del mercado tailandés de elementos de fijación.",
+            "icon": "../../images/news/1b7a4879728ec83e2a103b5ddd3c30e1.png"
+        },
+        {
+            "slug": "news/2026-04-22",
+            "title": "New Global Landscape: From \"Price War\" to \"System Competition",
+            "date": "2026-04-22",
+            "summary": "The global fastener market reached $109.6 billion in 2025 and is expected to climb to $189.9 billion by 2035 with a CAGR of 6.3%. Pure low-price competition is no longer effective. Leading players are building moats with high-end product portfolios, smart production lines, agile delivery, and global networks. This article analyzes the drivers behind the new landscape and provides a systematic upgrade path for fastener enterprises.",
+            "icon": "../../images/logo.jpg"
+        },
+        {
+            "slug": "news/20260421-material-frontier",
+            "title": "La \"Zona de Exclusión\" de la Ciencia de Materiales – Ultra Alta Resistencia y Desafíos Ambientales Extremos",
+            "date": "2026-04-21",
+            "summary": "Mientras que los sujetadores convencionales de Grado 10.9 y 12.9 se han convertido en \"equipamiento estándar\", la verdadera competencia ha entrado en la \"zona de exclusión\" de la ciencia de materiales. La búsqueda implacable de reducción de peso y densidad de potencia en aplicaciones posteriores está obligando a los materiales de los sujetadores a romper los límites físicos. Este artículo profundiza en la batalla contra la fragilización por hidrógeno del acero de ultra alta resistencia, la revolución de sustitución a alta temperatura de los plásticos PPA de alto rendimiento y las tecnologías de recubrimiento para entornos extremos en aplicaciones marinas y aeroespaciales.",
+            "icon": "../../images/abouts/Loading%20Dock1.png"
+        },
+        {
+            "slug": "news/2026-04-20",
+            "title": "El \"Arroz de la Industria\" en la Fabricación",
+            "date": "2026-04-20",
+            "summary": "Pequeños pero indispensables, los sujetadores son el \"Arroz de la Industria\" para la fabricación moderna. Este artículo analiza su valor de aplicación crítico y tendencias en automoción, aeroespacial, construcción, nueva energía y más, destacando cómo los sujetadores de alta resistencia, ligeros e inteligentes impulsan el desarrollo industrial de alta calidad.",
+            "icon": "../../images/news/16c1eb59eeb4111082c5a9aee14087cb.png"
+        },
+        {
             "slug": "news/2026-04-17-market-expo",
             "title": "Dinámica del Mercado y las Exposiciones",
             "date": "2026-04-17",

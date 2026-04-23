@@ -1,6 +1,34 @@
 {
     "news": [
         {
+            "slug": "news/20260423-thailand-architect",
+            "title": "泰国国际建筑与建材博览会：紧固件出海新跳板",
+            "date": "2026-04-23",
+            "summary": "泰国国际建筑与建材博览会（ARCHITECT'26）将于2026年4月28日至5月3日在曼谷IMPACT Muang Thong Thani举行。作为东盟建材行业规模最大、最具影响力的旗舰盛会，本届展会汇聚全球超过1000个品牌，展览面积超7.5万平方米。紧固件作为建筑五金核心品类，正迎来泰国东部经济走廊和中泰高铁建设带来的历史性出海机遇。本文解读展会亮点及泰国紧固件市场前景。",
+            "icon": "../../images/news/1b7a4879728ec83e2a103b5ddd3c30e1.png"
+        },
+        {
+            "slug": "news/2026-04-22",
+            "title": "New Global Landscape: From \"Price War\" to \"System Competition",
+            "date": "2026-04-22",
+            "summary": "The global fastener market reached $109.6 billion in 2025 and is expected to climb to $189.9 billion by 2035 with a CAGR of 6.3%. Pure low-price competition is no longer effective. Leading players are building moats with high-end product portfolios, smart production lines, agile delivery, and global networks. This article analyzes the drivers behind the new landscape and provides a systematic upgrade path for fastener enterprises.",
+            "icon": "../../images/logo.jpg"
+        },
+        {
+            "slug": "news/20260421-material-frontier",
+            "title": "材料科学的“禁区”——超高强度与极端环境挑战",
+            "date": "2026-04-21",
+            "summary": "当传统的10.9级和12.9级紧固件已成为“标准配置”时，真正的竞争已进入材料科学的“禁区”。下游应用对轻量化和功率密度的不懈追求，正迫使紧固件材料突破物理极限。本文深入探讨了超高强度钢的抗氢脆之战、高性能PPA塑料的高温替代革命，以及面向海上和航空航天应用的极端环境涂层技术。",
+            "icon": "../../images/abouts/Loading%20Dock1.png"
+        },
+        {
+            "slug": "news/2026-04-20",
+            "title": "制造业中的“工业大米”",
+            "date": "2026-04-20",
+            "summary": "紧固件虽小却不可或缺，是现代制造业的“工业大米”。本文分析了其在汽车、航空航天、建筑、新能源等领域的核心应用价值与趋势，重点阐述了高强度、轻量化、智能化紧固件如何驱动工业高质量发展。",
+            "icon": "../../images/news/16c1eb59eeb4111082c5a9aee14087cb.png"
+        },
+        {
             "slug": "news/2026-04-17-market-expo",
             "title": "市场与展会动态",
             "date": "2026-04-17",
