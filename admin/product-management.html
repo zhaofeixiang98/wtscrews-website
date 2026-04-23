@@ -119,8 +119,15 @@
     let currentCategories = [];
     let deletingSlug = '';
 
-    function logout() { localStorage.removeItem('userAdminAuth'); window.location.href = 'login.html'; }
-    document.getElementById('logoutBtn').addEventListener('click', logout);
+    function logout(e) {
+      if (e) e.preventDefault();
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+    }
+    var logoutBtn = document.getElementById('logoutBtn') || document.querySelector('.logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', logout);
+    }
     document.getElementById('addProductBtn').addEventListener('click', function() {
       window.location.href = 'product-new.html';
     });

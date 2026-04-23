@@ -1,4 +1,4 @@
-/* ===== Chat Dock: WhatsApp + LINE with QR Popups ===== */
+/* ===== Chat Dock: WeChat + WhatsApp + LINE with QR/Info Popups ===== */
 (function () {
   var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
@@ -10,6 +10,8 @@
     if (idx !== -1) { imgBase = src.substring(0, idx) + '/images/'; }
   }
 
+  var wechatId = '+8615175432812';
+  var wechatDeepLink = 'weixin://dl/chat';
   var lineUrl = 'https://line.me/ti/p/StdQJteUYQ';
   var whatsappUrl = 'https://wa.me/8615175432812?text=' + encodeURIComponent('Hi, I\'m interested in your fastener products. Could you send me a catalog and price list?');
 
@@ -18,6 +20,9 @@
     /* Mobile: direct links, no QR */
     html =
       '<nav class="chat-dock">' +
+        '<a href="' + wechatDeepLink + '" class="chat-btn chat-btn--wechat" aria-label="Contact on WeChat">' +
+          '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 11c0-4.5-4.7-8-10.5-8S.5 6.5.5 11c0 2.6 1.6 4.9 4.2 6.4l-1 3.1c-.1.4.3.7.7.5l3.9-1.9c.9.2 1.8.3 2.7.3 5.8 0 10.5-3.5 10.5-7.9zm-13-1.2c0 .6-.5 1-1.1 1s-1.1-.4-1.1-1 .5-1 1.1-1 1.1.4 1.1 1zm4.6 0c0 .6-.5 1-1.1 1s-1.1-.4-1.1-1 .5-1 1.1-1 1.1.4 1.1 1zm16.4 11.3c0-3.8-3.9-6.8-8.8-6.8s-8.8 3-8.8 6.8 3.9 6.8 8.8 6.8c.8 0 1.6-.1 2.4-.3l3.4 1.7c.4.2.8-.1.7-.5l-.9-2.7c2-1.3 3.2-3.1 3.2-5zm-11.9-.9c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9zm4 0c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9zm4 0c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9z"/></svg>' +
+        '</a>' +
         '<a href="' + lineUrl + '" target="_blank" rel="noopener" class="chat-btn chat-btn--line" aria-label="Chat on LINE">' +
           '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 1.4C7.6 1.4.8 7 .8 14c0 6.2 5.5 11.4 12.9 12.4.5.1 1.2.3 1.3.8.1.4.1 1.1 0 1.5 0 0-.2 1-.2 1.2-.1.4-.3 1.5 1.3.8s8.8-5.2 12-8.9c2.2-2.4 3.2-4.9 3.2-7.8-.1-7-6.8-12.6-15.3-12.6zM10.2 18H7.4c-.4 0-.7-.3-.7-.7v-5.8c0-.4.3-.7.7-.7s.7.3.7.7v5.1h2.1c.4 0 .7.3.7.7s-.3.7-.7.7zm2.3-.7c0 .4-.3.7-.7.7s-.7-.3-.7-.7v-5.8c0-.4.3-.7.7-.7s.7.3.7.7v5.8zm6.2 0c0 .3-.2.5-.4.6h-.2c-.2 0-.4-.1-.5-.3l-2.9-3.9v3.6c0 .4-.3.7-.7.7s-.7-.3-.7-.7v-5.8c0-.3.2-.5.4-.6.2-.1.5-.1.7.1l2.8 3.8v-3.4c0-.4.3-.7.7-.7s.7.3.7.7v5.9zm4.7-4.4c.4 0 .7.3.7.7s-.3.7-.7.7h-2.1v1.3h2.1c.4 0 .7.3.7.7s-.3.7-.7.7h-2.8c-.4 0-.7-.3-.7-.7v-5.8c0-.4.3-.7.7-.7h2.8c.4 0 .7.3.7.7s-.3.7-.7.7h-2.1v1.3h2.1z"/></svg>' +
         '</a>' +
@@ -29,6 +34,15 @@
     /* Desktop: QR popup cards */
     html =
       '<nav class="chat-dock">' +
+        '<div class="chat-btn chat-btn--wechat" data-qr aria-label="WeChat Contact" role="button" tabindex="0">' +
+          '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 11c0-4.5-4.7-8-10.5-8S.5 6.5.5 11c0 2.6 1.6 4.9 4.2 6.4l-1 3.1c-.1.4.3.7.7.5l3.9-1.9c.9.2 1.8.3 2.7.3 5.8 0 10.5-3.5 10.5-7.9zm-13-1.2c0 .6-.5 1-1.1 1s-1.1-.4-1.1-1 .5-1 1.1-1 1.1.4 1.1 1zm4.6 0c0 .6-.5 1-1.1 1s-1.1-.4-1.1-1 .5-1 1.1-1 1.1.4 1.1 1zm16.4 11.3c0-3.8-3.9-6.8-8.8-6.8s-8.8 3-8.8 6.8 3.9 6.8 8.8 6.8c.8 0 1.6-.1 2.4-.3l3.4 1.7c.4.2.8-.1.7-.5l-.9-2.7c2-1.3 3.2-3.1 3.2-5zm-11.9-.9c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9zm4 0c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9zm4 0c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9z"/></svg>' +
+          '<aside class="qr-popup">' +
+            '<img src="' + imgBase + 'qr-wechat.png" alt="WeChat QR Code" width="320" height="320" loading="lazy">' +
+            '<p>Scan to add us on WeChat</p>' +
+            '<p class="wechat-id">' + wechatId + '</p>' +
+            '<button type="button" class="qr-chat-link qr-chat-link--wechat" data-copy="' + wechatId + '">Copy WeChat ID</button>' +
+          '</aside>' +
+        '</div>' +
         '<div class="chat-btn chat-btn--line" data-qr aria-label="LINE QR Code" role="button" tabindex="0">' +
           '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 1.4C7.6 1.4.8 7 .8 14c0 6.2 5.5 11.4 12.9 12.4.5.1 1.2.3 1.3.8.1.4.1 1.1 0 1.5 0 0-.2 1-.2 1.2-.1.4-.3 1.5 1.3.8s8.8-5.2 12-8.9c2.2-2.4 3.2-4.9 3.2-7.8-.1-7-6.8-12.6-15.3-12.6zM10.2 18H7.4c-.4 0-.7-.3-.7-.7v-5.8c0-.4.3-.7.7-.7s.7.3.7.7v5.1h2.1c.4 0 .7.3.7.7s-.3.7-.7.7zm2.3-.7c0 .4-.3.7-.7.7s-.7-.3-.7-.7v-5.8c0-.4.3-.7.7-.7s.7.3.7.7v5.8zm6.2 0c0 .3-.2.5-.4.6h-.2c-.2 0-.4-.1-.5-.3l-2.9-3.9v3.6c0 .4-.3.7-.7.7s-.7-.3-.7-.7v-5.8c0-.3.2-.5.4-.6.2-.1.5-.1.7.1l2.8 3.8v-3.4c0-.4.3-.7.7-.7s.7.3.7.7v5.9zm4.7-4.4c.4 0 .7.3.7.7s-.3.7-.7.7h-2.1v1.3h2.1c.4 0 .7.3.7.7s-.3.7-.7.7h-2.8c-.4 0-.7-.3-.7-.7v-5.8c0-.4.3-.7.7-.7h2.8c.4 0 .7.3.7.7s-.3.7-.7.7h-2.1v1.3h2.1z"/></svg>' +
           '<aside class="qr-popup">' +
@@ -64,6 +78,21 @@
         var isOpen = popup.classList.contains('show');
         document.querySelectorAll('.qr-popup.show').forEach(function (p) { p.classList.remove('show'); });
         if (!isOpen) { popup.classList.add('show'); }
+      });
+    });
+    document.querySelectorAll('[data-copy]').forEach(function (copyBtn) {
+      copyBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var value = copyBtn.getAttribute('data-copy') || '';
+        if (!value) return;
+        navigator.clipboard.writeText(value).then(function () {
+          copyBtn.textContent = 'Copied';
+          setTimeout(function () { copyBtn.textContent = 'Copy WeChat ID'; }, 1400);
+        }).catch(function () {
+          copyBtn.textContent = 'Copy failed';
+          setTimeout(function () { copyBtn.textContent = 'Copy WeChat ID'; }, 1400);
+        });
       });
     });
     document.addEventListener('click', function (e) {
