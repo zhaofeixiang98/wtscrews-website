@@ -52,6 +52,14 @@ foreach ($files as $file) {
     $data = json_decode($content, true);
     
     if ($data) {
+        // 过滤掉空提交（email为空、noemail或name为空）
+        $email = isset($data['email']) ? trim($data['email']) : '';
+        $name = isset($data['name']) ? trim($data['name']) : '';
+        
+        if (empty($email) || $email === 'noemail' || $email === '未填写' || empty($name)) {
+            continue; // 跳过空提交
+        }
+        
         $data['filename'] = basename($file);
         $users[] = $data;
     }
