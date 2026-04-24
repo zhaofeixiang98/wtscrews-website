@@ -568,10 +568,12 @@
 
     function ensureBodyImageCss() {
       var cssSnippet = '<style>\n' +
+        '.lp-image-row { display:flex; gap:16px; align-items:stretch; margin: 28px auto; }\n' +
+        '.lp-image-row .lp-image-block { margin: 0; flex:1 1 0; max-width: none; }\n' +
         '.lp-image-block { margin: 28px auto; max-width: 1040px; padding: 10px; border-radius: 18px; border: 1px solid rgba(148,163,184,.30); background: linear-gradient(160deg, rgba(255,255,255,.90), rgba(241,245,249,.78)); box-shadow: 0 20px 44px rgba(15,23,42,.20); }\n' +
         '.lp-image-block img { display:block; width:100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid rgba(148,163,184,.34); box-shadow: 0 14px 34px rgba(15,23,42,.18); background:#fff; }\n' +
         '.lp-image-block figcaption { margin-top: 10px; color:#1f2937; font-size: 13px; line-height:1.6; padding: 9px 12px; border-radius: 10px; border: 1px dashed rgba(148,163,184,.42); background: rgba(255,255,255,.82); }\n' +
-        '@media (max-width: 860px) { .lp-image-block { margin: 20px auto; padding: 8px; border-radius: 14px; } .lp-image-block figcaption { font-size: 12px; } }\n' +
+        '@media (max-width: 860px) { .lp-image-row { display:block; margin: 20px auto; } .lp-image-row .lp-image-block { margin: 20px auto; } .lp-image-block { margin: 20px auto; padding: 8px; border-radius: 14px; } .lp-image-block figcaption { font-size: 12px; } }\n' +
         '</style>';
       var extraHeadEl = document.getElementById('extra_head');
       var current = String(extraHeadEl.value || '');
@@ -821,9 +823,11 @@
         '</ol>',
         '<p><strong>Tip:</strong> If your order is urgent, contact us on WhatsApp for faster response.</p>',
         '<h3>Product Images</h3>',
+        '<div class="lp-image-row">',
         '<figure class="lp-image-block"><img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy"><figcaption>Hex bolts - standard and custom sizes</figcaption></figure>',
         '<figure class="lp-image-block"><img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy"><figcaption>Flange bolts - serrated and non-serrated</figcaption></figure>',
-        '<figure class="lp-image-block"><img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>High strength bolts - grade 8.8 / 10.9 / 12.9</figcaption></figure>'
+        '<figure class="lp-image-block"><img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>High strength bolts - grade 8.8 / 10.9 / 12.9</figcaption></figure>',
+        '</div>'
       ].join('\n');
     });
 
@@ -859,6 +863,7 @@
         '.article h3{margin:18px 0 10px;color:#0f172a}' +
         '.biz-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px}.biz-box{background:rgba(255,255,255,.84);border:1px solid rgba(148,163,184,.22);border-radius:22px;padding:24px;box-shadow:0 20px 42px rgba(148,163,184,.14)}.biz-box h3{margin:0 0 12px;font-size:1.18rem;color:#0f172a}.biz-box ul,.biz-box ol{padding-inline-start:20px;color:#526072;display:grid;gap:10px}' +
         '.faq-section{margin-top:18px;background:rgba(255,255,255,.88);border:1px solid rgba(148,163,184,.22);border-radius:22px;padding:28px;box-shadow:0 20px 42px rgba(148,163,184,.14)}.faq-section h2{margin:0 0 14px;font-size:1.36rem;color:#0f172a}.faq-list{display:grid;gap:12px}.faq-item{padding:16px 18px;border-radius:16px;border:1px solid rgba(148,163,184,.18);background:rgba(248,250,252,.86)}.faq-item h3{margin:0 0 8px;font-size:1rem;color:#0f172a}.faq-item p{color:#526072;line-height:1.7}' +
+        '.lp-image-row{display:flex;gap:16px;align-items:stretch;margin:28px auto}.lp-image-row .lp-image-block{margin:0;flex:1 1 0;max-width:none}' +
         '.lp-image-block{margin:28px auto;max-width:1040px;padding:10px;border-radius:18px;border:1px solid rgba(148,163,184,.24);background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(241,245,249,.88));box-shadow:0 20px 44px rgba(148,163,184,.14)}' +
         '.lp-image-block img{display:block;max-width:100%;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid rgba(148,163,184,.18);box-shadow:0 14px 34px rgba(148,163,184,.18)}' +
         '.lp-image-block figcaption{margin-top:10px;padding:9px 12px;border-radius:10px;border:1px dashed rgba(148,163,184,.38);background:rgba(248,250,252,.88);color:#475569;font-size:13px;line-height:1.6}' +
@@ -872,7 +877,7 @@
         '.fixed-wa-box b{font-size:.9rem}' +
         '.fixed-wa-box span{display:block;color:#526072;font-size:.8rem;margin-top:2px}' +
         '.fixed-wa-box a{background:#22c55e;color:#fff;text-decoration:none;border-radius:8px;padding:9px 12px;font-weight:800}' +
-        '@media(max-width:860px){.hero,.trust-strip,.biz-grid{grid-template-columns:1fr}h1{max-width:none;font-size:2.1rem}.hero img{min-height:240px}.fixed-wa-box{flex-direction:column;align-items:stretch}.fixed-wa-box a{text-align:center}}' +
+        '@media(max-width:860px){.hero,.trust-strip,.biz-grid{grid-template-columns:1fr}.lp-image-row{display:block;margin:20px auto}.lp-image-row .lp-image-block{margin:20px auto}h1{max-width:none;font-size:2.1rem}.hero img{min-height:240px}.fixed-wa-box{flex-direction:column;align-items:stretch}.fixed-wa-box a{text-align:center}}' +
         '</style>' +
         '</head><body><main class="wrap">' +
         '<div class="topbar"><nav class="lang-switch"><div class="lang-picker"><span class="lang-picker-label">English</span><select class="lang-select"><option selected>English</option><option>中文</option><option>Español</option><option>Français</option><option>Deutsch</option><option>العربية</option></select></div></nav></div>' +

@@ -269,6 +269,8 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
     .btn.quote {{ background: linear-gradient(135deg, #fb923c, #ea580c); }}
     .hero-media {{ padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); }}
     .hero-media img {{ width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }}
+    .lp-image-row {{ display: flex; gap: 16px; align-items: stretch; margin: 28px auto; }}
+    .lp-image-row .lp-image-block {{ margin: 0; flex: 1 1 0; max-width: none; }}
     .trust-strip {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }}
     .stat-card {{ background: rgba(255,255,255,.78); border: 1px solid rgba(148,163,184,.22); border-radius: 18px; padding: 16px; box-shadow: 0 16px 36px rgba(148,163,184,.12); }}
     .stat-card span {{ display: block; color: #64748b; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }}
@@ -349,6 +351,8 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
     .foot {{ color: var(--muted); font-size: .84rem; margin: 20px 0 14px; text-align: center; }}
     @media (max-width: 860px) {{
       .hero-grid, .row, .biz-grid, .trust-strip {{ grid-template-columns: 1fr; }}
+      .lp-image-row {{ display: block; margin: 20px auto; }}
+      .lp-image-row .lp-image-block {{ margin: 20px auto; }}
       h1 {{ max-width: none; }}
       .hero-media img {{ min-height: 260px; }}
       .fixed-wa-inner {{ flex-direction: column; align-items: stretch; }}

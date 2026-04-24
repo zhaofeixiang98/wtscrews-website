@@ -305,6 +305,35 @@
       color: var(--gray-400);
       margin-top: 4px;
     }
+    .quick-publish-box {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px dashed #c7d2fe;
+      border-radius: 12px;
+      background: #eef2ff;
+    }
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn-quick {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #fff;
+      background: #1d4ed8;
+    }
+    .btn-quick.secondary {
+      background: #334155;
+    }
+    .btn-quick:hover {
+      opacity: 0.92;
+    }
 
     /* ── Language tabs ── */
     .lang-tabs {
@@ -1320,6 +1349,14 @@
             </label>
             <div class="hint">默认开启。英文内容必填，其他语言留空时会在发布时自动翻译；手动填写的字段优先，不会被覆盖。</div>
           </div>
+          <div class="quick-publish-box">
+            <div style="font-size:0.86rem;font-weight:700;color:#1e3a8a">快速发布（推荐）</div>
+            <div class="quick-actions">
+              <button type="button" class="btn-quick" id="fillDemoQuickBtn">填充示例（行业新闻）</button>
+              <button type="button" class="btn-quick secondary" id="jumpToContentBtn">继续编辑正文</button>
+            </div>
+            <div class="hint">先点“填充示例”，再改标题、摘要、封面图就可以快速发布文章。</div>
+          </div>
           <div class="cover-current" id="coverCurrent">当前封面图：未选择</div>
         </div>
 
@@ -1675,6 +1712,7 @@
   <!-- ── Submit bar ── -->
   <div class="submit-bar">
     <button type="button" class="btn-submit" id="submitBtn">发布文章（所有语言）</button>
+    <button type="button" class="btn-preview" id="fillDemoBtn">填充示例</button>
     <button type="button" class="btn-preview" id="previewBtn">👁 预览</button>
     <button type="button" class="btn-preview" id="checkTranslateBtn">检测翻译配置</button>
     <span class="status-msg" id="statusMsg"></span>
@@ -2315,6 +2353,52 @@
       renderModuleEditor();
       syncBodyTextarea(currentLang);
       updatePreview();
+    });
+
+    document.getElementById('fillDemoBtn').addEventListener('click', function () {
+      document.getElementById('date').value = document.getElementById('date').value || new Date().toISOString().slice(0, 10);
+      document.getElementById('article_section').value = 'Industry News';
+      document.getElementById('slug').value = 'fastener-market-update-demo';
+      document.getElementById('en_title').value = 'Fastener Market Update: Procurement Signals for Q2 2026';
+      document.getElementById('en_subtitle').value = 'A practical summary for importers, distributors and OEM buyers.';
+      document.getElementById('en_summary').value = 'This update reviews demand, delivery pressure and pricing signals across common industrial fastener categories.';
+      document.getElementById('en_meta_desc').value = 'Review current fastener sourcing trends, quote timing and delivery risks for international buyers in Q2 2026.';
+      document.getElementById('en_keywords').value = 'fastener market update, industrial fasteners, sourcing trends, OEM fasteners, export supplier';
+      document.getElementById('en_bc_label').value = 'Market Update';
+      document.getElementById('og_image').value = 'banner-hero.webp';
+      setCurrentImage('banner-hero.webp', 'banner-hero.webp', '✓ 已填充示例封面');
+      modulesByLang.en = [
+        { type: 'paragraph', text: 'Global buyers are watching quotation speed, material stability and shipment reliability more closely in Q2 2026. For standard fasteners, purchasing windows remain available, but custom items still require early planning.' },
+        { type: 'heading', level: 2, text: 'What is changing in the market' },
+        { type: 'paragraph', text: 'Carbon steel and stainless categories remain active, especially for OEM demand. Buyers are asking for shorter lead times, more predictable export packing, and clearer production updates before order confirmation.' },
+        { type: 'bullets', itemsText: 'Demand remains stable for standard export items\nCustom drawings require earlier approval and confirmation\nBuyers want faster response on coating, hardness and packing details' },
+        { type: 'heading', level: 2, text: 'What buyers should watch' },
+        { type: 'keypoint', strong: 'Lead Time:', text: 'Custom production still needs buffer time for material preparation and final inspection.' },
+        { type: 'keypoint', strong: 'Pricing:', text: 'Buyers should confirm raw material and surface finish requirements early to reduce revision rounds.' },
+        { type: 'paragraph', text: 'For projects with urgent delivery or repeated purchasing, a clear requirement sheet with standard, size, quantity and finish can speed up quotation significantly.' },
+        { type: 'link', text: 'View Products Page', url: '../products.html', style: 'primary' }
+      ];
+      activeModuleIndexByLang.en = 0;
+      if (currentLang !== 'en') currentLang = 'en';
+      document.querySelectorAll('.lang-tab').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      });
+      renderModuleEditor();
+      syncBodyTextarea('en');
+      updatePreview();
+      document.getElementById('statusMsg').className = 'status-msg success';
+      document.getElementById('statusMsg').textContent = '✅ 已填充文章示例，可直接修改后发布。';
+    });
+
+    document.getElementById('fillDemoQuickBtn').addEventListener('click', function () {
+      document.getElementById('fillDemoBtn').click();
+    });
+
+    document.getElementById('jumpToContentBtn').addEventListener('click', function () {
+      var contentCard = document.querySelector('.card .lang-tabs');
+      if (contentCard) {
+        contentCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
     // ── Image library ────────────────────────────────────────────────────────

@@ -62,6 +62,7 @@ related_products_data = g('related_products_data')
 cta_title = g('cta_title')
 cta_desc = g('cta_desc')
 cta_button_text = g('cta_button_text')
+translated_product_extras_json_raw = g('translated_product_extras_json', '')
 
 if not slug:    respond({'success': False, 'error': 'Slug 不能为空'})
 if not en_title: respond({'success': False, 'error': '英文标题为必填项'})
@@ -999,6 +1000,14 @@ if translated_langs_raw:
       translated_langs.append(lang_code)
 translated_langs_set = set(translated_langs)
 translation_cache = {}
+translated_product_extras = {}
+if translated_product_extras_json_raw:
+  try:
+    parsed_extra = json.loads(translated_product_extras_json_raw)
+    if isinstance(parsed_extra, dict):
+      translated_product_extras = parsed_extra
+  except Exception:
+    translated_product_extras = {}
 en_source_fields = {
   'title': en_title,
   'subtitle': en_subtitle,
@@ -1007,6 +1016,16 @@ en_source_fields = {
   'keywords': en_kw,
   'bc_label': en_bc,
   'body': en_body,
+}
+source_extra_fields = {
+  'applications_data': applications_data,
+  'materials_data': materials_data,
+  'size_chart_data': size_chart_data,
+  'reviews_data': reviews_data,
+  'related_products_data': related_products_data,
+  'cta_title': cta_title,
+  'cta_desc': cta_desc,
+  'cta_button_text': cta_button_text,
 }
 
 target_langs = list(LANGS)
@@ -1036,6 +1055,15 @@ for lang in target_langs:
   keywords = (translated_fields.get('keywords') or (kw_input if allow_manual_non_en else '') or en_kw) if translated_priority else (kw_input or translated_fields.get('keywords') or en_kw)
   bc_label = (translated_fields.get('bc_label') or (bc_input if allow_manual_non_en else '') or title) if translated_priority else (bc_input or translated_fields.get('bc_label') or title)
   body = (translated_fields.get('body') or (body_input if allow_manual_non_en else '') or en_body) if translated_priority else (body_input or translated_fields.get('body') or en_body)
+  extra_fields_for_lang = translated_product_extras.get(lang, {}) if isinstance(translated_product_extras, dict) else {}
+  applications_data_lang = str(extra_fields_for_lang.get('applications_data') or applications_data or '')
+  materials_data_lang = str(extra_fields_for_lang.get('materials_data') or materials_data or '')
+  size_chart_data_lang = str(extra_fields_for_lang.get('size_chart_data') or size_chart_data or '')
+  reviews_data_lang = str(extra_fields_for_lang.get('reviews_data') or reviews_data or '')
+  related_products_data_lang = str(extra_fields_for_lang.get('related_products_data') or related_products_data or '')
+  cta_title_lang = str(extra_fields_for_lang.get('cta_title') or cta_title or '')
+  cta_desc_lang = str(extra_fields_for_lang.get('cta_desc') or cta_desc or '')
+  cta_button_text_lang = str(extra_fields_for_lang.get('cta_button_text') or cta_button_text or '')
 
   products_dir = os.path.join(BASE_DIR, 'pags', lang, 'products')
   html_path = os.path.join(products_dir, slug + '.html')
@@ -1046,8 +1074,8 @@ for lang in target_langs:
     html = build_html(
       lang, slug, date, title, subtitle, summary, meta_desc, keywords, bc_label, body, LANGS,
       og_image, product_category, extra_head,
-      applications_data, materials_data, size_chart_data, reviews_data, related_products_data,
-      cta_title, cta_desc, cta_button_text
+      applications_data_lang, materials_data_lang, size_chart_data_lang, reviews_data_lang, related_products_data_lang,
+      cta_title_lang, cta_desc_lang, cta_button_text_lang
     )
     with open(html_path, 'w', encoding='utf-8') as f:
       f.write(html)
@@ -1087,11 +1115,22 @@ if auto_translate_enabled:
             'product_category': product_category,
             'extra_head': extra_head,
             'source_fields': en_source_fields,
+            'source_extra_fields': source_extra_fields,
             'langs': [l for l in LANGS if l != 'en'],
             'base_dir': BASE_DIR,
             'article_save_path': os.path.abspath(__file__),
             'status_path': status_path,
-            'extra_params': {'product_category': product_category},
+            'extra_params': {
+              'product_category': product_category,
+              'applications_data': applications_data,
+              'materials_data': materials_data,
+              'size_chart_data': size_chart_data,
+              'reviews_data': reviews_data,
+              'related_products_data': related_products_data,
+              'cta_title': cta_title,
+              'cta_desc': cta_desc,
+              'cta_button_text': cta_button_text,
+            },
         }
         with open(job_path, 'w', encoding='utf-8') as _jf:
             json.dump(job_data, _jf, ensure_ascii=False)

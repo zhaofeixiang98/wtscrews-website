@@ -21,6 +21,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ── Translation constants ─────────────────────────────────────────────────────
 TRANSLATABLE_FIELDS = ['title', 'subtitle', 'summary', 'meta_desc', 'keywords', 'bc_label', 'body']
+PRODUCT_EXTRA_FIELDS = ['applications_data', 'materials_data', 'size_chart_data', 'reviews_data', 'related_products_data', 'cta_title', 'cta_desc', 'cta_button_text']
 LANG_LABELS = {
     'ar': 'Arabic',
     'de': 'German',
@@ -190,6 +191,64 @@ def translate_one(lang, source_fields, api_key, api_url, model):
     return {f: str(translated.get(f, '') or '') for f in TRANSLATABLE_FIELDS}
 
 
+def translate_product_extras(lang, source_extra_fields, api_key, api_url, model):
+    if not source_extra_fields:
+        return {}
+    target_name = LANG_LABELS.get(lang, lang)
+    filtered = {k: str(source_extra_fields.get(k, '') or '') for k in PRODUCT_EXTRA_FIELDS if str(source_extra_fields.get(k, '') or '').strip()}
+    if not filtered:
+        return {}
+    system_prompt = (
+        'You are a professional website localization translator for industrial fastener product pages. '
+        'Translate English source content into the requested target language and return strict JSON only.'
+    )
+    user_prompt = (
+        f'Target language: {target_name} ({lang}).\n'
+        'Return exactly one JSON object with the same keys as the source JSON.\n'
+        'Rules:\n'
+        '1. Preserve all separators and data structure exactly.\n'
+        '2. applications_data format is "icon|title|description" per line. Keep icon and "|" unchanged.\n'
+        '3. materials_data format is "title|point1;point2;point3" per line. Keep "|" and ";" unchanged.\n'
+        '4. size_chart_data format is table-like rows separated by "|". Do not change numbers, dimensions, thread values, units, or row structure.\n'
+        '5. reviews_data format is "name|date|content|rating". Keep name, date, rating and delimiters; translate only review content when needed.\n'
+        '6. related_products_data format is "slug|title|summary|image". Keep slug and image path unchanged; translate title and summary only.\n'
+        '7. cta_title, cta_desc and cta_button_text are plain text and should be translated naturally.\n'
+        '8. Output JSON only, with no markdown fences or explanations.\n\n'
+        'Source JSON:\n'
+        + json.dumps(filtered, ensure_ascii=False)
+    )
+    payload = {
+        'model': model,
+        'temperature': 0.2,
+        'messages': [
+            {'role': 'system', 'content': system_prompt},
+            {'role': 'user', 'content': user_prompt},
+        ],
+    }
+    req = urlrequest.Request(
+        api_url,
+        data=json.dumps(payload).encode('utf-8'),
+        headers={
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {api_key}',
+        },
+        method='POST',
+    )
+    with urlrequest.urlopen(req, timeout=360) as resp:
+        raw = resp.read().decode('utf-8', errors='replace')
+    data = json.loads(raw)
+    content = data['choices'][0]['message']['content']
+    translated = extract_json_object(content)
+    return {k: str(translated.get(k, filtered.get(k, '')) or '') for k in filtered.keys()}
+
+
+def translate_bundle(lang, source_fields, source_extra_fields, api_key, api_url, model):
+    return {
+        'fields': translate_one(lang, source_fields, api_key, api_url, model),
+        'extra_fields': translate_product_extras(lang, source_extra_fields, api_key, api_url, model),
+    }
+
+
 # ── Status helpers ────────────────────────────────────────────────────────────
 def write_status(status_path, completed, failed, total, finished=False):
     if finished:
@@ -211,7 +270,7 @@ def write_status(status_path, completed, failed, total, finished=False):
 
 # ── Save all translated pages via article-save.cgi subprocess ────────────────
 def save_via_cgi(article_save_path, slug, date, og_image, article_section,
-                 extra_head, source_fields, translations, extra_params=None):
+                 extra_head, source_fields, translations, extra_params=None, extra_translations=None):
     """
     Call article-save.cgi as a CGI subprocess with auto_translate=0 and all
     translated content pre-filled. The CGI will write HTML + update JSON for
@@ -233,6 +292,8 @@ def save_via_cgi(article_save_path, slug, date, og_image, article_section,
     for lang, fields in translations.items():
         for field, value in fields.items():
             params[f'{lang}_{field}'] = value
+    if extra_translations:
+        params['translated_product_extras_json'] = json.dumps(extra_translations, ensure_ascii=False)
     translated_langs = [lang for lang in LANG_LABELS.keys() if lang in translations]
     params['translated_langs'] = ','.join(translated_langs)
     params['translated_langs_present'] = '1'
@@ -279,6 +340,7 @@ def main():
     base_dir           = job['base_dir']
     langs              = job.get('langs', ['ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'])
     source_fields      = job['source_fields']
+    source_extra_fields = job.get('source_extra_fields', {})
     status_path        = job['status_path']
     article_save_path  = job['article_save_path']
 
@@ -294,15 +356,18 @@ def main():
 
     # ── Translate all languages in parallel ───────────────────────────────────
     translations = {}
+    extra_translations = {}
     with ThreadPoolExecutor(max_workers=min(8, total)) as executor:
         future_to_lang = {
-            executor.submit(translate_one, lang, source_fields, api_key, api_url, model): lang
+            executor.submit(translate_bundle, lang, source_fields, source_extra_fields, api_key, api_url, model): lang
             for lang in langs
         }
         for future in as_completed(future_to_lang):
             lang = future_to_lang[future]
             try:
-                translations[lang] = future.result()
+                bundle = future.result()
+                translations[lang] = bundle.get('fields', {})
+                extra_translations[lang] = bundle.get('extra_fields', {})
                 completed.append(lang)
             except Exception as exc:
                 failed[lang] = str(exc)
@@ -321,6 +386,7 @@ def main():
             source_fields=source_fields,
             translations=translations,
             extra_params=job.get('extra_params', {}),
+            extra_translations=extra_translations,
         )
         created_langs = set(save_result.get('created', []) or [])
         for lang in list(completed):
