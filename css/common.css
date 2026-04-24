@@ -234,6 +234,35 @@
   margin: 0 auto;
 }
 
+/* Success page action buttons: keep visible on all devices/languages */
+.page-header .success-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page-header .success-actions .btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 168px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff !important;
+  font-weight: 700;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.page-header .success-actions .btn.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff !important;
+}
+
 /* Breadcrumb */
 .breadcrumb {
   padding: 16px 0;
@@ -550,6 +579,14 @@
     width: 100%;
     text-align: center;
     justify-content: center;
+  }
+
+  .page-header .success-actions {
+    flex-direction: column;
+  }
+
+  .page-header .success-actions .btn {
+    width: 100%;
   }
 
   .faq-overlay {

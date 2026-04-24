@@ -129,6 +129,7 @@
       text-decoration: underline;
     }
   </style>
+  <link rel="stylesheet" href="admin-unified.css?v=20260424">
 </head>
 <body>
   <div class="login-container">
@@ -150,35 +151,62 @@
   </div>
 
   <script>
-    // 简单密码验证（使用简单的哈希函数）
-  
-    const CORRECT_PASSWORD = '111';
+    async function checkExistingSession() {
+      if (window.location.protocol === 'file:') {
+        return;
+      }
+      try {
+        const resp = await fetch('../cgi-bin/admin-auth.cgi?action=status&_=' + Date.now(), { credentials: 'include' });
+        const data = await resp.json();
+        if (data && data.authenticated) {
+          const expiry = new Date().getTime() + 24 * 60 * 60 * 1000;
+          localStorage.setItem('userAdminAuth', expiry);
+          window.location.href = 'index.html';
+        }
+      } catch (_) {}
+    }
 
-
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const passwordInput = document.getElementById('password');
       const errorMessage = document.getElementById('errorMessage');
       const password = passwordInput.value;
-
-      if (password === CORRECT_PASSWORD) {
-        // 存储登录状态 (24小时后过期)
-        const expiry = new Date().getTime() + 24 * 60 * 60 * 1000;
-        localStorage.setItem('userAdminAuth', expiry);
-        window.location.href = 'users-view.html';
-      } else {
-        passwordInput.classList.add('error');
-        errorMessage.classList.add('show');
-        passwordInput.value = '';
-        passwordInput.focus();
+      if (window.location.protocol === 'file:') {
+        if (password === '-***-') {
+          const expiry = new Date().getTime() + 24 * 60 * 60 * 1000;
+          localStorage.setItem('userAdminAuth', expiry);
+          window.location.href = 'index.html';
+          return;
+        }
       }
+      try {
+        const body = new URLSearchParams({ action: 'login', password: password });
+        const resp = await fetch('../cgi-bin/admin-auth.cgi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          credentials: 'include',
+          body: body.toString()
+        });
+        const data = await resp.json();
+        if (resp.ok && data && data.success) {
+          const expiry = new Date().getTime() + 24 * 60 * 60 * 1000;
+          localStorage.setItem('userAdminAuth', expiry);
+          window.location.href = 'index.html';
+          return;
+        }
+      } catch (_) {}
+      passwordInput.classList.add('error');
+      errorMessage.classList.add('show');
+      passwordInput.value = '';
+      passwordInput.focus();
     });
 
-    // 移除错误状态
     document.getElementById('password').addEventListener('input', function() {
       this.classList.remove('error');
       document.getElementById('errorMessage').classList.remove('show');
     });
+
+    checkExistingSession();
   </script>
 </body>
 </html>

@@ -1,6 +1,18 @@
 # WT Fasteners — Apache Performance Config
 # Render-blocking, cache, and compression optimizations
 
+# ── Canonical Homepage Redirect ────────────────────────────────────────────────
+# Redirect:
+#   https://wtscrews.com/        -> https://wtscrews.com/pags/en/index.html
+#   https://www.wtscrews.com/    -> https://wtscrews.com/pags/en/index.html
+#   /index.html                  -> https://wtscrews.com/pags/en/index.html
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?wtscrews\.com$ [NC]
+  RewriteCond %{REQUEST_URI} ^/?(index\.html)?$ [NC]
+  RewriteRule ^ https://wtscrews.com/pags/en/index.html [R=301,L]
+</IfModule>
+
 # ── Enable Gzip / Deflate ──────────────────────────────────────────────────────
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/javascript

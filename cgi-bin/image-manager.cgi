@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os, sys, json, re
 from urllib.parse import parse_qs
+from admin_auth import is_request_authenticated
 
 sys.stdout.write("Content-Type: application/json; charset=utf-8\r\n\r\n")
 sys.stdout.flush()
@@ -10,6 +11,10 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+
+if not is_request_authenticated():
+    respond({'success': False, 'error': 'unauthorized'})
 
 try:
     cl  = int(os.environ.get('CONTENT_LENGTH', 0) or 0)

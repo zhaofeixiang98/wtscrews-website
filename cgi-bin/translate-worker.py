@@ -211,7 +211,7 @@ def write_status(status_path, completed, failed, total, finished=False):
 
 # ── Save all translated pages via article-save.cgi subprocess ────────────────
 def save_via_cgi(article_save_path, slug, date, og_image, article_section,
-                 extra_head, source_fields, translations):
+                 extra_head, source_fields, translations, extra_params=None):
     """
     Call article-save.cgi as a CGI subprocess with auto_translate=0 and all
     translated content pre-filled. The CGI will write HTML + update JSON for
@@ -233,6 +233,12 @@ def save_via_cgi(article_save_path, slug, date, og_image, article_section,
     for lang, fields in translations.items():
         for field, value in fields.items():
             params[f'{lang}_{field}'] = value
+    translated_langs = [lang for lang in LANG_LABELS.keys() if lang in translations]
+    params['translated_langs'] = ','.join(translated_langs)
+    params['translated_langs_present'] = '1'
+    if extra_params:
+        for key, value in extra_params.items():
+            params[str(key)] = '' if value is None else str(value)
 
     body = urlencode(params).encode('utf-8')
     env = os.environ.copy()
@@ -240,6 +246,7 @@ def save_via_cgi(article_save_path, slug, date, og_image, article_section,
         'REQUEST_METHOD': 'POST',
         'CONTENT_TYPE': 'application/x-www-form-urlencoded',
         'CONTENT_LENGTH': str(len(body)),
+        'WT_ADMIN_BYPASS': '1',
     })
     result = subprocess.run(
         [sys.executable, article_save_path],
@@ -313,7 +320,13 @@ def main():
             extra_head=job.get('extra_head', ''),
             source_fields=source_fields,
             translations=translations,
+            extra_params=job.get('extra_params', {}),
         )
+        created_langs = set(save_result.get('created', []) or [])
+        for lang in list(completed):
+            if lang not in created_langs:
+                failed[lang] = 'save failed or skipped'
+                completed.remove(lang)
         if not save_result.get('success'):
             print(f'[translate-worker] save_via_cgi reported errors: {save_result}',
                   file=sys.stderr)

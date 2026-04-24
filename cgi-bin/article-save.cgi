@@ -7,6 +7,8 @@ from datetime import datetime
 from urllib.parse import parse_qs
 from urllib import request as urlrequest
 from urllib import error as urlerror
+from json_store import update_pages_json, read_pages_data, JsonStoreError
+from admin_auth import is_request_authenticated
 
 try:
     from PIL import Image
@@ -39,6 +41,10 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+
+if not is_request_authenticated():
+    respond({'success': False, 'error': 'unauthorized'})
 
 class ArticleBodyValidator(HTMLParser):
     def __init__(self):
@@ -248,6 +254,8 @@ og_image        = g('og_image')          # relative to /images/, e.g. abouts/fac
 article_section = g('article_section') or 'Industry News'
 extra_head      = g('extra_head')
 auto_translate  = g('auto_translate', '0')
+translated_langs_raw = g('translated_langs', '')
+translated_langs_present_raw = g('translated_langs_present', '0')
 
 if not slug:     respond({'success': False, 'error': 'Slug 不能为空'})
 if not en_title: respond({'success': False, 'error': '英文标题为必填项'})
@@ -909,24 +917,41 @@ def build_html(lang, slug, date_str, title, subtitle, meta_desc, keywords, bc_la
 
 # ── Update JSON ───────────────────────────────────────────────────────────────
 def update_json(json_path, slug, title, date_str, summary, og_image=''):
-    data = {'news': [], 'products': []}
-    if os.path.exists(json_path):
-        try:
-            with open(json_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-        except Exception:
-            pass
     news_slug = 'news/' + slug
-    data['news'] = [n for n in data.get('news', []) if n.get('slug') != news_slug]
-    data['news'].insert(0, {
-        'slug': news_slug,
-        'title': title,
-        'date': date_str,
-        'summary': summary,
-        'icon': f'../../images/{og_image}' if og_image else '../../images/logo.jpg',
-    })
-    with open(json_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+
+    def mutator(data):
+        data['news'] = [n for n in data.get('news', []) if n.get('slug') != news_slug]
+        data['news'].insert(0, {
+            'slug': news_slug,
+            'title': title,
+            'date': date_str,
+            'summary': summary,
+            'icon': f'../../images/{og_image}' if og_image else '../../images/logo.jpg',
+        })
+        return data
+
+    update_pages_json(json_path, mutator)
+
+
+def verify_article_outputs(lang, news_dir, html_path, json_path, slug):
+    expected_slug = 'news/' + slug
+    safe_news_dir = os.path.abspath(news_dir)
+    safe_html_path = os.path.abspath(html_path)
+    if os.path.commonpath([safe_news_dir, safe_html_path]) != safe_news_dir:
+        return f'{lang}: html path escaped news dir'
+    if os.path.dirname(safe_html_path) != safe_news_dir:
+        return f'{lang}: html not under /pags/{lang}/news/'
+    if not os.path.exists(safe_html_path):
+        return f'{lang}: html file not written'
+    if not safe_html_path.endswith(os.sep + slug + '.html'):
+        return f'{lang}: html filename mismatch'
+    try:
+        pages = read_pages_data(json_path)
+    except Exception as exc:
+        return f'{lang}: pages JSON read failed: {exc}'
+    if not any(item.get('slug') == expected_slug for item in pages.get('news', [])):
+        return f'{lang}: pages_{lang}.json missing slug {expected_slug}'
+    return ''
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 errors  = []
@@ -935,6 +960,14 @@ translated = []
 prepared_lang_payloads = []
 
 auto_translate_enabled = truthy(auto_translate)
+translated_langs_present = truthy(translated_langs_present_raw)
+translated_langs = []
+if translated_langs_raw:
+  for part in re.split(r'[\s,]+', translated_langs_raw):
+    lang_code = str(part or '').strip().lower()
+    if lang_code in LANGS and lang_code != 'en' and lang_code not in translated_langs:
+      translated_langs.append(lang_code)
+translated_langs_set = set(translated_langs)
 translation_cache = {}
 en_source_fields = {
   'title': en_title,
@@ -946,7 +979,11 @@ en_source_fields = {
   'body': en_body,
 }
 
-for lang in LANGS:
+target_langs = list(LANGS)
+if translated_langs_present:
+  target_langs = ['en'] + [l for l in LANGS if l in translated_langs_set]
+
+for lang in target_langs:
   title_input    = g(f'{lang}_title')
   subtitle_input = g(f'{lang}_subtitle')
   summary_input  = g(f'{lang}_summary')
@@ -954,6 +991,12 @@ for lang in LANGS:
   kw_input       = g(f'{lang}_keywords')
   bc_input       = g(f'{lang}_bc_label')
   body_input     = g(f'{lang}_body')
+  has_manual_localized_input = any([title_input, subtitle_input, summary_input, meta_input, kw_input, bc_input, body_input])
+
+  # Auto-translate flow: write EN immediately, defer untouched non-EN pages
+  # to translate-worker to avoid "fallback English" polluting localized pages.
+  if auto_translate_enabled and lang != 'en' and not has_manual_localized_input:
+    continue
 
   translated_fields = translation_cache.get(lang, {})
 
@@ -1011,7 +1054,19 @@ for payload in prepared_lang_payloads:
     with open(payload['html_path'], 'w', encoding='utf-8') as f:
       f.write(html)
     update_json(payload['json_path'], slug, payload['title'], date, payload['summary'], og_image)
+    verify_error = verify_article_outputs(
+      lang,
+      payload['news_dir'],
+      payload['html_path'],
+      payload['json_path'],
+      slug
+    )
+    if verify_error:
+      errors.append(verify_error)
+      continue
     created.append(lang)
+  except JsonStoreError as e:
+    errors.append(f'{lang}: pages JSON update failed: {str(e)}')
   except Exception as e:
     errors.append(f'{lang}: {str(e)}')
 

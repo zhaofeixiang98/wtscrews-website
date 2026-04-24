@@ -73,6 +73,7 @@
     .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); background: var(--surface); border: 1px dashed var(--border); border-radius: 20px; }
     @media (max-width: 860px) { .filter-row { flex-direction: column; } }
   </style>
+  <link rel="stylesheet" href="admin-unified.css?v=20260424">
 </head>
 <body>
   <header class="admin-header">
@@ -131,7 +132,10 @@
   </main>
   <script data-cfasync="false">
     function logout() { localStorage.removeItem('userAdminAuth'); window.location.href = 'login.html'; }
-    document.getElementById('logoutBtn').addEventListener('click', logout);
+    var logoutBtn = document.getElementById('logoutBtn') || document.querySelector('.logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', logout);
+    }
     function checkAuth() { const auth = localStorage.getItem('userAdminAuth'); if (!auth || new Date().getTime() > parseInt(auth, 10)) { window.location.href = 'login.html'; return false; } return true; }
     function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
     const imageGrid = document.getElementById('imageGrid');
@@ -252,5 +256,6 @@
     });
     window.addEventListener('DOMContentLoaded', function() { loadImages(); });
   </script>
+  <script src="admin-nav.js?v=20260424" defer></script>
 </body>
 </html>

@@ -5,6 +5,8 @@ from datetime import datetime
 from urllib.parse import parse_qs
 from urllib import request as urlrequest
 from urllib import error as urlerror
+from json_store import update_pages_json, read_pages_data, JsonStoreError
+from admin_auth import is_request_authenticated
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
@@ -21,6 +23,10 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+
+if not is_request_authenticated():
+    respond({'success': False, 'error': 'unauthorized'})
 
 try:
     cl = int(os.environ.get('CONTENT_LENGTH', 0) or 0)
@@ -44,6 +50,9 @@ en_bc = g('en_bc_label') or en_title
 en_body = g('en_body')
 og_image = g('og_image')
 auto_translate = g('auto_translate', '0')
+force_translate_non_en = g('force_translate_non_en', '0')
+translated_langs_raw = g('translated_langs', '')
+translated_langs_present_raw = g('translated_langs_present', '0')
 extra_head = g('extra_head')
 applications_data = g('applications_data')
 materials_data = g('materials_data')
@@ -900,36 +909,61 @@ ul{{list-style:none}}
 </html>'''
 
 def update_json(json_path, slug, title, summary, og_image='', product_category='Other Fasteners'):
-    data = {'news': [], 'products': []}
-    if os.path.exists(json_path):
-        try:
-            with open(json_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-        except Exception:
-            pass
     category_slug = 'products/' + slug
-    for category in data.get('products', []):
-        category['items'] = [item for item in category.get('items', []) if item.get('slug') != category_slug]
-    target_category = None
-    for category in data.get('products', []):
-        if category.get('category') == product_category:
-            target_category = category
+
+    def mutator(data):
+        for category in data.get('products', []):
+            category['items'] = [item for item in category.get('items', []) if item.get('slug') != category_slug]
+        target_category = None
+        for category in data.get('products', []):
+            if category.get('category') == product_category:
+                target_category = category
+                break
+        if target_category is None:
+            target_category = {
+                'category': product_category,
+                'icon': 'images/products/others/Solid Rivet1.webp',
+                'items': [],
+            }
+            data.setdefault('products', []).insert(0, target_category)
+        target_category.setdefault('items', []).insert(0, {
+            'slug': category_slug,
+            'title': title,
+            'summary': summary,
+            'icon': f'../../images/{og_image}' if og_image else '../../images/logo.jpg',
+        })
+        return data
+
+    update_pages_json(json_path, mutator)
+
+
+def verify_product_outputs(lang, products_dir, html_path, json_path, slug):
+    expected_slug = 'products/' + slug
+    safe_products_dir = os.path.abspath(products_dir)
+    safe_html_path = os.path.abspath(html_path)
+    if os.path.commonpath([safe_products_dir, safe_html_path]) != safe_products_dir:
+        return f'{lang}: html path escaped products dir'
+    if os.path.dirname(safe_html_path) != safe_products_dir:
+        return f'{lang}: html not under /pags/{lang}/products/'
+    if not os.path.exists(safe_html_path):
+        return f'{lang}: html file not written'
+    if not safe_html_path.endswith(os.sep + slug + '.html'):
+        return f'{lang}: html filename mismatch'
+    try:
+        pages = read_pages_data(json_path)
+    except Exception as exc:
+        return f'{lang}: pages JSON read failed: {exc}'
+    found = False
+    for category in pages.get('products', []):
+        for item in category.get('items', []):
+            if item.get('slug') == expected_slug:
+                found = True
+                break
+        if found:
             break
-    if target_category is None:
-        target_category = {
-            'category': product_category,
-            'icon': 'images/products/others/Solid Rivet1.webp',
-            'items': [],
-        }
-        data.setdefault('products', []).insert(0, target_category)
-    target_category.setdefault('items', []).insert(0, {
-        'slug': category_slug,
-        'title': title,
-        'summary': summary,
-        'icon': f'../../images/{og_image}' if og_image else '../../images/logo.jpg',
-    })
-    with open(json_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+    if not found:
+        return f'{lang}: pages_{lang}.json missing slug {expected_slug}'
+    return ''
 
 def rebuild_static_product_lists():
     render_script = os.path.join(BASE_DIR, 'render_list_pages.py')
@@ -955,6 +989,15 @@ created = []
 translated = []
 
 auto_translate_enabled = truthy(auto_translate)
+force_translate_non_en_enabled = truthy(force_translate_non_en)
+translated_langs_present = truthy(translated_langs_present_raw)
+translated_langs = []
+if translated_langs_raw:
+  for part in re.split(r'[\s,]+', translated_langs_raw):
+    lang_code = str(part or '').strip().lower()
+    if lang_code in LANGS and lang_code != 'en' and lang_code not in translated_langs:
+      translated_langs.append(lang_code)
+translated_langs_set = set(translated_langs)
 translation_cache = {}
 en_source_fields = {
   'title': en_title,
@@ -966,7 +1009,11 @@ en_source_fields = {
   'body': en_body,
 }
 
-for lang in LANGS:
+target_langs = list(LANGS)
+if translated_langs_present:
+  target_langs = ['en'] + [l for l in LANGS if l in translated_langs_set]
+
+for lang in target_langs:
   title_input = g(f'{lang}_title')
   subtitle_input = g(f'{lang}_subtitle')
   summary_input = g(f'{lang}_summary')
@@ -974,16 +1021,21 @@ for lang in LANGS:
   kw_input = g(f'{lang}_keywords')
   bc_input = g(f'{lang}_bc_label')
   body_input = g(f'{lang}_body')
+  has_manual_localized_input = any([title_input, subtitle_input, summary_input, meta_input, kw_input, bc_input, body_input])
 
   translated_fields = translation_cache.get(lang, {})
+  translated_priority = auto_translate_enabled and lang != 'en'
+  allow_manual_non_en = (not translated_priority) or (not force_translate_non_en_enabled)
+  if translated_priority and not translated_fields and not has_manual_localized_input:
+    continue
 
-  title = title_input or translated_fields.get('title') or en_title
-  subtitle = subtitle_input or translated_fields.get('subtitle') or en_subtitle
-  summary = summary_input or translated_fields.get('summary') or en_summary
-  meta_desc = meta_input or translated_fields.get('meta_desc') or summary
-  keywords = kw_input or translated_fields.get('keywords') or en_kw
-  bc_label = bc_input or translated_fields.get('bc_label') or title
-  body = body_input or translated_fields.get('body') or en_body
+  title = (translated_fields.get('title') or (title_input if allow_manual_non_en else '') or en_title) if translated_priority else (title_input or translated_fields.get('title') or en_title)
+  subtitle = (translated_fields.get('subtitle') or (subtitle_input if allow_manual_non_en else '') or en_subtitle) if translated_priority else (subtitle_input or translated_fields.get('subtitle') or en_subtitle)
+  summary = (translated_fields.get('summary') or (summary_input if allow_manual_non_en else '') or en_summary) if translated_priority else (summary_input or translated_fields.get('summary') or en_summary)
+  meta_desc = (translated_fields.get('meta_desc') or (meta_input if allow_manual_non_en else '') or summary) if translated_priority else (meta_input or translated_fields.get('meta_desc') or summary)
+  keywords = (translated_fields.get('keywords') or (kw_input if allow_manual_non_en else '') or en_kw) if translated_priority else (kw_input or translated_fields.get('keywords') or en_kw)
+  bc_label = (translated_fields.get('bc_label') or (bc_input if allow_manual_non_en else '') or title) if translated_priority else (bc_input or translated_fields.get('bc_label') or title)
+  body = (translated_fields.get('body') or (body_input if allow_manual_non_en else '') or en_body) if translated_priority else (body_input or translated_fields.get('body') or en_body)
 
   products_dir = os.path.join(BASE_DIR, 'pags', lang, 'products')
   html_path = os.path.join(products_dir, slug + '.html')
@@ -1000,7 +1052,19 @@ for lang in LANGS:
     with open(html_path, 'w', encoding='utf-8') as f:
       f.write(html)
     update_json(json_path, slug, title, summary, og_image, product_category)
+    verify_error = verify_product_outputs(
+      lang,
+      products_dir,
+      html_path,
+      json_path,
+      slug
+    )
+    if verify_error:
+      errors.append(verify_error)
+      continue
     created.append(lang)
+  except JsonStoreError as e:
+    errors.append(f'{lang}: pages JSON update failed: {str(e)}')
   except Exception as e:
     errors.append(f'{lang}: {str(e)}')
 

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发布落地页 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7ff;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #2563eb;
+      --primary-strong: #1d4ed8;
+      --ok: #16a34a;
+      --err: #dc2626;
+      --radius: 16px;
+      --shadow: 0 14px 44px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    .admin-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-header .container {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .title-box { display: grid; gap: 4px; }
+    .title-box h1 { font-size: 1.1rem; }
+    .title-box p { color: var(--muted); font-size: 0.9rem; }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a, .nav-links button {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .nav-links a.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .nav-links a:hover, .nav-links button:hover { background: #eff6ff; }
+    .nav-links a.primary:hover { background: var(--primary-strong); }
+
+    .container-main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 22px 120px;
+      display: grid;
+      gap: 18px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .card h2 {
+      font-size: 1.03rem;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .field { margin-bottom: 12px; }
+    label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 11px;
+      font-size: 0.94rem;
+      background: #fff;
+      color: var(--text);
+      font-family: inherit;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    #en_body { min-height: 280px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9rem; line-height: 1.55; }
+    .hint { color: var(--muted); font-size: 0.84rem; margin-top: 4px; }
+    .input-action-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-mini {
+      border: 1px solid var(--line);
+      background: #eef2ff;
+      color: #1e40af;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-mini:hover { background: #dbeafe; }
+
+    .library-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: rgba(15, 23, 42, 0.55);
+    }
+    .library-modal.show { display: flex; }
+    .library-dialog {
+      width: min(1100px, 100%);
+      max-height: 88vh;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+    }
+    .library-head {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .library-head h3 { font-size: 1rem; }
+    .library-tools {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .library-tools input {
+      flex: 1;
+      min-width: 180px;
+    }
+    .library-selected {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 8px;
+      background: #f8fafc;
+    }
+    .library-selected-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .library-selected-path {
+      flex: 1;
+      min-width: 260px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      color: #334155;
+      background: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .library-summary {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .library-pager {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+    }
+    .pager-btn {
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #1f2937;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .pager-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .pager-text {
+      color: var(--muted);
+      font-size: 0.8rem;
+      min-width: 84px;
+      text-align: center;
+    }
+    .library-grid {
+      padding: 14px 16px 18px;
+      overflow: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .library-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      display: grid;
+      transition: all .18s ease;
+    }
+    .library-item.active {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+    }
+    .library-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f8fafc;
+      cursor: pointer;
+    }
+    .library-item-body {
+      padding: 8px;
+      display: grid;
+      gap: 6px;
+    }
+    .library-item-path {
+      font-size: 0.76rem;
+      color: var(--muted);
+      word-break: break-all;
+      line-height: 1.35;
+      min-height: 42px;
+    }
+    .library-item-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .library-item-actions button {
+      flex: 1;
+      min-width: 72px;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-hero { background: #dbeafe; color: #1e40af; }
+    .btn-insert { background: #dcfce7; color: #166534; }
+    .btn-select { background: #e0e7ff; color: #3730a3; }
+    .state-msg {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 10px 2px;
+    }
+    .preview-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      background: rgba(2, 6, 23, 0.65);
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .preview-dialog {
+      width: min(1200px, 100%);
+      height: min(90vh, 100%);
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.28);
+    }
+    .preview-head {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .preview-head h3 { font-size: 0.96rem; }
+    .preview-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #fff;
+    }
+
+    .submit-bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.96);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      z-index: 120;
+    }
+    .submit-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-strong); }
+    .btn-secondary { background: #eef2ff; color: #1e40af; }
+    .status {
+      min-height: 22px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .status.ok { color: var(--ok); }
+    .status.err { color: var(--err); }
+
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="admin-unified.css?v=20260424">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="container">
+      <div class="title-box">
+        <h1>发布落地页</h1>
+        <p>基于英文内容，一键生成多语言落地页（DeepSeek 全文翻译）</p>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">🏠 后台首页</a>
+        <a href="article-new.html">✍️ 发布文章</a>
+        <a href="product-new.html">🛠️ 发布产品</a>
+        <a href="landing-new.html" class="primary">🚀 发布落地页</a>
+        <a href="landing-management.html">📄 落地页管理</a>
+        <a href="users-view.html">👥 用户数据</a>
+        <button id="logoutBtn">退出登录</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container-main">
+    <section class="card">
+      <h2>基础配置</h2>
+      <div class="grid-2">
+        <div class="field">
+          <label for="slug">Slug（必填）</label>
+          <input id="slug" type="text" placeholder="例如: fastener-quote-2026">
+          <div class="hint">最终路径：`/pags/{lang}/landing/{slug}.html`</div>
+        </div>
+        <div class="field">
+          <label for="date">日期</label>
+          <input id="date" type="date">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="hero_image">主图（相对 images/）</label>
+          <div class="input-action-row">
+            <input id="hero_image" type="text" placeholder="banner-hero.webp 或 abouts/Quality Control2.webp">
+            <button type="button" class="btn-mini" id="openImageLibraryHeroBtn">从后台图片库选择</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="whatsapp_url">WhatsApp 链接</label>
+          <input id="whatsapp_url" type="text" placeholder="https://wa.me/8615175432812?text=...">
+        </div>
+      </div>
+      <div class="hint" style="margin-top:-2px;margin-bottom:10px">
+        已默认启用 Google 追踪：新落地页会自动采集并提交 `utm_*`、`gclid/gbraid/wbraid`、`fbclid`，同时记录来源页面与 referrer。
+      </div>
+      <div class="field">
+        <label for="extra_head">自定义 Head 片段（可选）</label>
+        <textarea id="extra_head" placeholder="<meta name=&quot;google-site-verification&quot; content=&quot;...&quot;>"></textarea>
+      </div>
+      <div class="field">
+        <label><input id="auto_translate" type="checkbox" checked> 使用 DeepSeek 自动翻译其余 8 个语言（推荐）</label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>英文内容（翻译源）</h2>
+      <div class="grid-2">
+        <div class="field">
+          <label for="en_title">EN 标题（必填）</label>
+          <input id="en_title" type="text" placeholder="Industrial Fastener Quote in 24 Hours">
+        </div>
+        <div class="field">
+          <label for="en_subtitle">EN 副标题</label>
+          <input id="en_subtitle" type="text" placeholder="Factory-direct bolts, nuts, washers and custom parts">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="en_summary">EN 摘要（必填）</label>
+          <input id="en_summary" type="text" placeholder="Submit your specs and get a quote within 24 business hours.">
+        </div>
+        <div class="field">
+          <label for="en_meta_desc">EN Meta Description</label>
+          <input id="en_meta_desc" type="text" placeholder="Fastener supplier for industrial orders. 24-hour response.">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="en_keywords">EN 关键词（逗号分隔）</label>
+          <input id="en_keywords" type="text" placeholder="fastener supplier, hex bolts, flange bolts, custom fasteners">
+        </div>
+        <div class="field">
+          <label for="en_bc_label">EN 模块标题（bc_label）</label>
+          <input id="en_bc_label" type="text" placeholder="Why Choose WT Fasteners">
+        </div>
+      </div>
+      <div class="field">
+        <label for="en_body">EN 正文 HTML（必填，全文章翻译源）</label>
+        <div class="input-action-row" style="margin-bottom:6px">
+          <button type="button" class="btn-mini" id="openImageLibraryBodyBtn">从后台图片库插入正文图片</button>
+          <input id="body_image_path" type="text" placeholder="正文图片路径，如 products/bolts/Hex Bolt0_sm.webp" style="min-width:300px;flex:1">
+          <button type="button" class="btn-mini" id="insertBodyImagePathBtn">按路径插入图片块</button>
+          <a href="image-manager.html" class="btn-mini" style="text-decoration:none;display:inline-flex;align-items:center">去图片管理上传新图</a>
+        </div>
+        <textarea id="en_body" placeholder="<h3>What We Offer</h3>&#10;<p>...</p>&#10;<ul><li>...</li></ul>"></textarea>
+        <div class="hint">支持 HTML。图片建议使用 `lp-image-block` 样式块，点击“按路径插入图片块”会自动附带可复用 CSS。</div>
+      </div>
+    </section>
+  </main>
+
+  <div class="submit-bar">
+    <div class="submit-inner">
+      <button class="btn btn-primary" id="submitBtn">发布落地页</button>
+      <button class="btn btn-secondary" id="fillDemoBtn" type="button">填充示例</button>
+      <button class="btn btn-secondary" id="previewBtn" type="button">预览</button>
+      <span class="status" id="statusMsg"></span>
+    </div>
+  </div>
+
+  <div class="library-modal" id="imageLibraryModal">
+    <div class="library-dialog">
+      <div class="library-head">
+        <h3>后台图片库</h3>
+        <button type="button" class="btn-mini" id="closeImageLibraryBtn">关闭</button>
+      </div>
+      <div class="library-tools">
+        <input type="text" id="librarySearchInput" placeholder="搜索路径或文件名，例如 products / banner / bolts">
+        <span class="library-summary" id="librarySummary">共 0 张</span>
+        <div class="library-pager">
+          <button type="button" class="pager-btn" id="libraryPrevBtn">上一页</button>
+          <span class="pager-text" id="libraryPageText">1 / 1</span>
+          <button type="button" class="pager-btn" id="libraryNextBtn">下一页</button>
+        </div>
+        <button type="button" class="btn-mini" id="libraryRefreshBtn">刷新</button>
+      </div>
+      <div class="library-selected">
+        <div class="library-selected-row">
+          <input id="librarySelectedPath" class="library-selected-path" type="text" readonly placeholder="请先在下方选择一张图片">
+        </div>
+        <div class="library-selected-row">
+          <button type="button" class="btn-mini" id="applySelectedHeroBtn">将选中图设为主图</button>
+          <button type="button" class="btn-mini" id="insertSelectedBodyBtn">将选中图插入正文</button>
+        </div>
+      </div>
+      <div class="library-grid" id="libraryGrid">
+        <div class="state-msg">加载中...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-overlay" id="previewOverlay">
+    <div class="preview-dialog">
+      <div class="preview-head">
+        <h3>落地页预览</h3>
+        <button type="button" class="btn-mini" id="closePreviewBtn">关闭</button>
+      </div>
+      <iframe class="preview-frame" id="previewFrame"></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var auth = localStorage.getItem('userAdminAuth');
+      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
+        localStorage.removeItem('userAdminAuth');
+        window.location.href = 'login.html';
+      }
+    })();
+
+    function logout() {
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+    }
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+
+    document.getElementById('date').value = new Date().toISOString().slice(0, 10);
+    var libraryMode = 'hero';
+    var imageLibraryCache = [];
+    var libraryPageSize = 20;
+    var libraryCurrentPage = 1;
+    var libraryFiltered = [];
+    var librarySelectedPath = '';
+
+    function escHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function normalizeImagePath(path) {
+      var s = String(path || '').trim();
+      if (!s) return '';
+      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
+      s = s.replace(/^\/?images\//i, '');
+      s = s.replace(/^\/+/, '');
+      return s;
+    }
+
+    function openImageLibrary(mode) {
+      libraryMode = mode || 'hero';
+      document.getElementById('imageLibraryModal').classList.add('show');
+      loadImageLibrary();
+    }
+
+    function closeImageLibrary() {
+      document.getElementById('imageLibraryModal').classList.remove('show');
+    }
+
+    function ensureBodyImageCss() {
+      var cssSnippet = '<style>\n' +
+        '.lp-image-block { margin: 24px auto; max-width: 920px; }\n' +
+        '.lp-image-block img { display:block; width:100%; height:auto; border-radius:14px; border:1px solid rgba(148,163,184,.42); box-shadow:0 14px 32px rgba(15,23,42,.14); background:#fff; }\n' +
+        '.lp-image-block figcaption { margin-top:10px; color:#334155; font-size:13px; line-height:1.5; padding:8px 10px; border-radius:10px; background:rgba(241,245,249,.75); }\n' +
+        '</style>';
+      var extraHeadEl = document.getElementById('extra_head');
+      var current = String(extraHeadEl.value || '');
+      if (current.indexOf('.lp-image-block') !== -1) return;
+      extraHeadEl.value = (current ? (current.replace(/\s*$/, '') + '\n\n') : '') + cssSnippet;
+    }
+
+    function insertBodyImageHtml(path) {
+      var rel = normalizeImagePath(path);
+      if (!rel) return;
+      ensureBodyImageCss();
+      var html = '<figure class="lp-image-block">\n  <img src="../../../images/' + rel + '" alt="" loading="lazy">\n  <figcaption>Image: /images/' + rel + '</figcaption>\n</figure>\n';
+      var bodyEl = document.getElementById('en_body');
+      var current = bodyEl.value || '';
+      bodyEl.value = current ? (current.replace(/\s*$/, '') + '\n\n' + html) : html;
+      bodyEl.focus();
+    }
+
+    function insertBodyImageFromPathInput() {
+      var path = document.getElementById('body_image_path').value.trim();
+      if (!path) {
+        alert('请先输入图片路径，例如 products/bolts/Hex Bolt0_sm.webp');
+        return;
+      }
+      insertBodyImageHtml(path);
+    }
+
+    function applyLibraryImage(path) {
+      var rel = normalizeImagePath(path);
+      if (!rel) return;
+      if (libraryMode === 'hero') {
+        document.getElementById('hero_image').value = rel;
+      } else {
+        insertBodyImageHtml(rel);
+      }
+      closeImageLibrary();
+    }
+
+    function selectLibraryImage(path) {
+      librarySelectedPath = normalizeImagePath(path);
+      document.getElementById('librarySelectedPath').value = librarySelectedPath ? ('/images/' + librarySelectedPath) : '';
+      document.querySelectorAll('.library-item').forEach(function(el) {
+        var p = el.getAttribute('data-path') || '';
+        el.classList.toggle('active', normalizeImagePath(p) === librarySelectedPath);
+      });
+    }
+
+    function applySelectedImage(targetMode) {
+      if (!librarySelectedPath) {
+        alert('请先在图片库中选择一张图片');
+        return;
+      }
+      libraryMode = targetMode || 'body';
+      applyLibraryImage(librarySelectedPath);
+    }
+
+    function renderImageLibrary() {
+      var grid = document.getElementById('libraryGrid');
+      var kw = (document.getElementById('librarySearchInput').value || '').trim().toLowerCase();
+      var list = imageLibraryCache.filter(function(item) {
+        var path = String(item.path || '').toLowerCase();
+        var filename = String(item.filename || '').toLowerCase();
+        return !kw || path.indexOf(kw) !== -1 || filename.indexOf(kw) !== -1;
+      });
+      libraryFiltered = list;
+      var total = list.length;
+      var totalPages = Math.max(1, Math.ceil(total / libraryPageSize));
+      if (libraryCurrentPage > totalPages) libraryCurrentPage = totalPages;
+      if (libraryCurrentPage < 1) libraryCurrentPage = 1;
+      var start = (libraryCurrentPage - 1) * libraryPageSize;
+      var pageItems = list.slice(start, start + libraryPageSize);
+
+      document.getElementById('librarySummary').textContent = '共 ' + total + ' 张，每页 20 张';
+      document.getElementById('libraryPageText').textContent = libraryCurrentPage + ' / ' + totalPages;
+      document.getElementById('libraryPrevBtn').disabled = libraryCurrentPage <= 1;
+      document.getElementById('libraryNextBtn').disabled = libraryCurrentPage >= totalPages;
+
+      if (!pageItems.length) {
+        grid.innerHTML = '<div class="state-msg">没有匹配的图片</div>';
+        return;
+      }
+      grid.innerHTML = pageItems.map(function(item) {
+        var rel = normalizeImagePath(item.path || '');
+        return '' +
+          '<div class="library-item" data-path="' + escHtml(rel) + '">' +
+            '<img src="' + escHtml(item.url || '') + '" alt="' + escHtml(item.filename || '') + '" loading="lazy">' +
+            '<div class="library-item-body">' +
+              '<div class="library-item-path">' + escHtml('/images/' + (item.path || '')) + '</div>' +
+              '<div class="library-item-actions">' +
+                '<button type="button" class="btn-select" data-path="' + escHtml(rel) + '">选择</button>' +
+                '<button type="button" class="btn-hero" data-path="' + escHtml(rel) + '">设为主图</button>' +
+                '<button type="button" class="btn-insert" data-path="' + escHtml(rel) + '">插入正文</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+      }).join('');
+
+      grid.querySelectorAll('.library-item img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          var card = img.closest('.library-item');
+          selectLibraryImage(card ? card.getAttribute('data-path') : '');
+        });
+      });
+      grid.querySelectorAll('.btn-select').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          selectLibraryImage(btn.getAttribute('data-path') || '');
+        });
+      });
+      grid.querySelectorAll('button[data-path]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var p = btn.getAttribute('data-path') || '';
+          if (btn.classList.contains('btn-select')) return;
+          if (btn.classList.contains('btn-hero')) {
+            libraryMode = 'hero';
+          } else {
+            libraryMode = 'body';
+          }
+          applyLibraryImage(p);
+        });
+      });
+    }
+
+    function loadImageLibrary() {
+      var grid = document.getElementById('libraryGrid');
+      grid.innerHTML = '<div class="state-msg">加载中...</div>';
+      document.getElementById('librarySummary').textContent = '读取中...';
+      librarySelectedPath = '';
+      document.getElementById('librarySelectedPath').value = '';
+      fetch('/cgi-bin/image-library.cgi?_=' + Date.now())
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (!data.success) throw new Error(data.error || '读取失败');
+          imageLibraryCache = Array.isArray(data.images) ? data.images : [];
+          libraryCurrentPage = 1;
+          renderImageLibrary();
+        })
+        .catch(function(err) {
+          var hint = (String(err.message || '').toLowerCase().indexOf('unauthorized') !== -1)
+            ? '未登录或会话已过期，请重新登录后台后再试。'
+            : '';
+          grid.innerHTML = '<div class="state-msg">加载失败：' + escHtml(err.message) + (hint ? ('<br>' + escHtml(hint)) : '') + '</div>';
+          document.getElementById('librarySummary').textContent = '加载失败';
+        });
+    }
+
+    document.getElementById('openImageLibraryHeroBtn').addEventListener('click', function() { openImageLibrary('hero'); });
+    document.getElementById('openImageLibraryBodyBtn').addEventListener('click', function() { openImageLibrary('body'); });
+    document.getElementById('closeImageLibraryBtn').addEventListener('click', closeImageLibrary);
+    document.getElementById('libraryRefreshBtn').addEventListener('click', loadImageLibrary);
+    document.getElementById('librarySearchInput').addEventListener('input', function() {
+      libraryCurrentPage = 1;
+      renderImageLibrary();
+    });
+    document.getElementById('libraryPrevBtn').addEventListener('click', function() {
+      if (libraryCurrentPage <= 1) return;
+      libraryCurrentPage -= 1;
+      renderImageLibrary();
+    });
+    document.getElementById('libraryNextBtn').addEventListener('click', function() {
+      var totalPages = Math.max(1, Math.ceil(libraryFiltered.length / libraryPageSize));
+      if (libraryCurrentPage >= totalPages) return;
+      libraryCurrentPage += 1;
+      renderImageLibrary();
+    });
+    document.getElementById('applySelectedHeroBtn').addEventListener('click', function() {
+      applySelectedImage('hero');
+    });
+    document.getElementById('insertSelectedBodyBtn').addEventListener('click', function() {
+      applySelectedImage('body');
+    });
+    document.getElementById('insertBodyImagePathBtn').addEventListener('click', insertBodyImageFromPathInput);
+    document.getElementById('imageLibraryModal').addEventListener('click', function(e) {
+      if (e.target === this) closeImageLibrary();
+    });
+
+    function startTranslationPolling(slug, statusEl) {
+      var maxPoll = 120;
+      var count = 0;
+      var timer = setInterval(function () {
+        count++;
+        if (count > maxPoll) {
+          clearInterval(timer);
+          statusEl.className = 'status err';
+          statusEl.textContent = '翻译轮询超时，请稍后手动检查。';
+          return;
+        }
+        fetch('/cgi-bin/translation-status.cgi?slug=' + encodeURIComponent(slug))
+          .then(function (r) { return r.json(); })
+          .then(function (s) {
+            var done = Array.isArray(s.completed) ? s.completed.length : 0;
+            var total = s.total || 8;
+            var failed = s.failed ? Object.keys(s.failed).length : 0;
+            if (s.status === 'done') {
+              clearInterval(timer);
+              statusEl.className = 'status ok';
+              statusEl.textContent = '✅ 翻译完成：' + done + '/' + total + ' 个语言。';
+            } else if (s.status === 'partial_error') {
+              clearInterval(timer);
+              statusEl.className = 'status err';
+              var failedLangs = s.failed ? Object.keys(s.failed).join(', ') : '';
+              statusEl.textContent = '⚠️ 翻译部分完成：成功 ' + done + '/' + total + '，失败 ' + failed
+                + (failedLangs ? '（' + failedLangs + '）' : '') + '。';
+            } else {
+              statusEl.className = 'status';
+              statusEl.textContent = '⏳ 翻译进行中：' + done + '/' + total;
+            }
+          })
+          .catch(function () { /* ignore transient polling errors */ });
+      }, 5000);
+    }
+
+    document.getElementById('fillDemoBtn').addEventListener('click', function () {
+      ensureBodyImageCss();
+      document.getElementById('slug').value = 'fastener-quote-landing';
+      document.getElementById('hero_image').value = 'banner-hero.webp';
+      document.getElementById('whatsapp_url').value = 'https://wa.me/8615175432812?text=Hi%2C%20I%20need%20a%20quotation%20for%20fasteners.';
+      document.getElementById('en_title').value = 'Fastener Quote in 24 Hours';
+      document.getElementById('en_subtitle').value = 'Factory-direct supply for bolts, nuts, washers and custom drawings';
+      document.getElementById('en_summary').value = 'Send your specs, grade, coating and quantity. We reply with pricing and lead-time within 24 business hours.';
+      document.getElementById('en_meta_desc').value = 'Industrial fastener supplier for OEM/wholesale orders. DIN/ISO/ASTM support, custom drawing production, 24-hour quotation response.';
+      document.getElementById('en_keywords').value = 'fastener supplier, DIN bolts, stainless steel screws, custom fasteners, wholesale fasteners';
+      document.getElementById('en_bc_label').value = 'Why Choose WT Fasteners';
+      document.getElementById('body_image_path').value = 'products/bolts/Hex Bolt0_sm.webp';
+      document.getElementById('en_body').value = [
+        '<h3>What We Can Supply</h3>',
+        '<p>We provide bolts, nuts, washers, anchors, rivets and custom fasteners for industrial buyers and distributors.</p>',
+        '<ul>',
+        '<li>Standards: DIN / ISO / ASTM / GB</li>',
+        '<li>Materials: Carbon Steel, Stainless 304/316, Alloy Steel</li>',
+        '<li>Surface: Zinc Plated, HDG, Black Oxide, Dacromet</li>',
+        '<li>OEM/ODM based on drawings and samples</li>',
+        '</ul>',
+        '<h3>Core Advantages</h3>',
+        '<ul>',
+        '<li>Factory-direct pricing with stable quality control</li>',
+        '<li>Flexible MOQ for trial and mixed-size orders</li>',
+        '<li>Fast sample confirmation and mass production follow-up</li>',
+        '<li>Export-ready packaging and shipping support</li>',
+        '</ul>',
+        '<h3>Typical Buyer Needs We Handle</h3>',
+        '<p>Project procurement, urgent replenishment, and long-term framework supply with stable quality and clear lead-time plans.</p>',
+        '<h3>How To Get A Fast Quote</h3>',
+        '<ol>',
+        '<li>Send product standard / drawing / photo</li>',
+        '<li>Confirm quantity, packaging, destination port</li>',
+        '<li>Receive price, lead-time and shipment proposal</li>',
+        '</ol>',
+        '<p><strong>Tip:</strong> If your order is urgent, contact us on WhatsApp for faster response.</p>',
+        '<h3>Product Images</h3>',
+        '<figure class="lp-image-block"><img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy"><figcaption>Hex bolts - standard and custom sizes</figcaption></figure>',
+        '<figure class="lp-image-block"><img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy"><figcaption>Flange bolts - serrated and non-serrated</figcaption></figure>',
+        '<figure class="lp-image-block"><img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>High strength bolts - grade 8.8 / 10.9 / 12.9</figcaption></figure>'
+      ].join('\n');
+    });
+
+    function buildPreviewHtml() {
+      var title = document.getElementById('en_title').value.trim() || 'Landing Page Preview';
+      var subtitle = document.getElementById('en_subtitle').value.trim();
+      var summary = document.getElementById('en_summary').value.trim();
+      var bcLabel = document.getElementById('en_bc_label').value.trim() || title;
+      var body = document.getElementById('en_body').value.trim().replace(/\\n/g, '\n');
+      var hero = document.getElementById('hero_image').value.trim();
+      var wa = document.getElementById('whatsapp_url').value.trim() || 'https://wa.me/8615175432812';
+      var heroUrl = hero ? ('/images/' + hero.replace(/^\/?images\//i, '')) : '/images/banner-hero.webp';
+      return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+        '<title>' + escHtml(title) + '</title>' +
+        '<style>' +
+        'body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#071427 0%,#081a33 100%);color:#e8f0ff;padding-bottom:96px}' +
+        '.wrap{max-width:1100px;margin:0 auto;padding:18px}' +
+        '.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px}' +
+        '.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.45);color:#98f0be;font-size:.8rem;font-weight:700;margin-bottom:10px}' +
+        '.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:stretch}' +
+        '.hero img{width:100%;height:100%;min-height:220px;object-fit:cover;border-radius:10px}' +
+        'h1{margin:0 0 8px;font-size:2rem;line-height:1.15}' +
+        '.muted{color:#b8c6de}.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}' +
+        '.btn{display:inline-block;padding:10px 12px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700}' +
+        '.wa{background:#22c55e}.quote{background:#2563eb}' +
+        '.section-title{margin:0 0 10px;font-size:1.2rem}' +
+        '.article :where(p,li){color:#c3d0e6;line-height:1.7}' +
+        '.article h3{margin:16px 0 8px;color:#f2f7ff}' +
+        '.lp-image-block{margin:24px auto;max-width:920px}' +
+        '.lp-image-block img{display:block;max-width:100%;width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(2,6,23,.35)}' +
+        '.lp-image-block figcaption{margin-top:10px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.08);color:#d5e2f8;font-size:13px;line-height:1.5}' +
+        '.article img{max-width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.2)}' +
+        '.form{background:#fff;color:#111827;border-radius:14px;padding:16px;margin-top:16px}' +
+        '.form input,.form textarea{width:100%;margin:6px 0 10px;padding:9px 10px;border:1px solid #e5e7eb;border-radius:8px}' +
+        '.submit{background:#2563eb;color:#fff;border:none;padding:10px 12px;border-radius:8px;font-weight:700}' +
+        '.fixed-wa{position:fixed;left:0;right:0;bottom:10px;z-index:99}' +
+        '.fixed-wa-inner{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}' +
+        '.fixed-wa-box{border:1px solid rgba(34,197,94,.55);background:rgba(7,20,39,.92);padding:10px 12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%}' +
+        '.fixed-wa-box b{font-size:.9rem}' +
+        '.fixed-wa-box a{background:#22c55e;color:#fff;text-decoration:none;border-radius:8px;padding:9px 12px;font-weight:800}' +
+        '@media(max-width:860px){.hero{grid-template-columns:1fr}.fixed-wa-box{flex-direction:column;align-items:stretch}.fixed-wa-box a{text-align:center}}' +
+        '</style>' +
+        '</head><body><main class="wrap">' +
+        '<section class="hero card"><article><span class="badge">Industrial fastener quotation page</span><h1>' + escHtml(title) + '</h1>' +
+        (subtitle ? '<p class="muted">' + escHtml(subtitle) + '</p>' : '') +
+        (summary ? '<p class="muted">' + escHtml(summary) + '</p>' : '') +
+        '<div class="cta"><a class="btn wa" href="' + escHtml(wa) + '" target="_blank" rel="noopener">WhatsApp Now</a><a class="btn quote" href="#lead-form">Get Quote in 24h</a></div></article>' +
+        '<aside><img src="' + escHtml(heroUrl) + '" alt="' + escHtml(title) + '"></aside></section>' +
+        '<section class="card" style="margin-top:14px"><h2 class="section-title">' + escHtml(bcLabel) + '</h2><article class="article">' + (body || '<p class="muted">No body content</p>') + '</article></section>' +
+        '<section class="form" id="lead-form"><h3>Tell us your requirements</h3><p style="color:#4b5563">' + escHtml(summary || 'Submit your request and we will get back shortly.') + '</p><input placeholder="Name"><input placeholder="Email"><input placeholder="Company"><input placeholder="Phone / WhatsApp"><textarea placeholder="Please describe specs, quantity and lead-time request"></textarea><button class="submit">Submit Request</button></section>' +
+        '</main><div class="fixed-wa"><div class="fixed-wa-inner"><div class="fixed-wa-box"><b>Urgent order? Start WhatsApp now</b><a href="' + escHtml(wa) + '" target="_blank" rel="noopener">WhatsApp Now</a></div></div></div></body></html>';
+    }
+
+    function openPreview() {
+      var iframe = document.getElementById('previewFrame');
+      iframe.srcdoc = buildPreviewHtml();
+      document.getElementById('previewOverlay').style.display = 'flex';
+    }
+
+    function closePreview() {
+      document.getElementById('previewOverlay').style.display = 'none';
+    }
+
+    document.getElementById('previewBtn').addEventListener('click', openPreview);
+    document.getElementById('closePreviewBtn').addEventListener('click', closePreview);
+    document.getElementById('previewOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closePreview();
+    });
+
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      var slug = document.getElementById('slug').value.trim();
+      var enTitle = document.getElementById('en_title').value.trim();
+      var enSummary = document.getElementById('en_summary').value.trim();
+      var enBody = document.getElementById('en_body').value.trim();
+      var statusEl = document.getElementById('statusMsg');
+      var btn = this;
+
+      if (!slug) { statusEl.className = 'status err'; statusEl.textContent = '请填写 slug'; return; }
+      if (!enTitle) { statusEl.className = 'status err'; statusEl.textContent = '请填写英文标题'; return; }
+      if (!enSummary) { statusEl.className = 'status err'; statusEl.textContent = '请填写英文摘要'; return; }
+      if (!enBody) { statusEl.className = 'status err'; statusEl.textContent = '请填写英文正文'; return; }
+
+      btn.disabled = true;
+      statusEl.className = 'status';
+      statusEl.textContent = '正在发布落地页...';
+
+      var params = new URLSearchParams();
+      [
+        'slug','date','hero_image','whatsapp_url','extra_head',
+        'en_title','en_subtitle','en_summary','en_meta_desc','en_keywords','en_bc_label','en_body'
+      ].forEach(function (id) {
+        params.append(id, document.getElementById(id).value);
+      });
+      params.append('auto_translate', document.getElementById('auto_translate').checked ? '1' : '0');
+
+      fetch('/cgi-bin/landing-save.cgi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+      .then(function (res) {
+        var status = res.status;
+        return res.text().then(function (txt) {
+          try { return JSON.parse(txt); }
+          catch (e) { throw new Error('HTTP ' + status + '，返回异常：' + txt.slice(0, 260)); }
+        });
+      })
+      .then(function (data) {
+        btn.disabled = false;
+        if (!data.success) {
+          statusEl.className = 'status err';
+          statusEl.textContent = '❌ ' + (data.error || (data.errors && data.errors.join('; ')) || '发布失败');
+          return;
+        }
+        if (data.translating) {
+          statusEl.className = 'status';
+          statusEl.textContent = '✅ 英文页已发布，正在使用 DeepSeek 翻译其余语言...';
+          setTimeout(function () { window.open(data.url, '_blank'); }, 700);
+          startTranslationPolling(data.slug, statusEl);
+        } else {
+          statusEl.className = 'status ok';
+          statusEl.textContent = '✅ 落地页发布成功，共生成 ' + (data.created ? data.created.length : 0) + ' 个语言。';
+          setTimeout(function () { window.open(data.url, '_blank'); }, 700);
+        }
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        statusEl.className = 'status err';
+        statusEl.textContent = '❌ ' + err.message;
+      });
+    });
+  </script>
+  <script src="admin-nav.js?v=20260424" defer></script>
+</body>
+</html>

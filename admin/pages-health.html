@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面索引体检 - 管理后台</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #2563eb;
+      --success: #16a34a;
+      --warn: #d97706;
+      --error: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Inter", "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 24px; }
+    .head {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .title { font-size: 1.2rem; font-weight: 800; }
+    .desc { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    button, .btn-link {
+      border: 1px solid var(--line); background: #fff; color: var(--text); border-radius: 10px;
+      padding: 10px 14px; cursor: pointer; font-weight: 700; text-decoration: none; font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .btn-danger { background: var(--error); border-color: var(--error); color: #fff; }
+    .grid { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+    .kpi .k { color: var(--muted); font-size: 0.85rem; }
+    .kpi .v { margin-top: 6px; font-size: 1.4rem; font-weight: 800; }
+    .panel { margin-top: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .panel-head { padding: 12px 14px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid #f0f2f7; padding: 10px 12px; text-align: left; font-size: 0.88rem; vertical-align: top; }
+    th { background: #fafbfe; font-size: 0.8rem; color: #4b5563; }
+    tr:last-child td { border-bottom: none; }
+    .tag { display: inline-block; border-radius: 999px; padding: 2px 8px; font-size: 0.78rem; font-weight: 700; }
+    .ok { background: #dcfce7; color: var(--success); }
+    .warn { background: #fef3c7; color: var(--warn); }
+    .error { background: #fee2e2; color: var(--error); }
+    .issues { color: #b45309; }
+    .small { color: var(--muted); font-size: 0.82rem; }
+    .log { white-space: pre-wrap; font-size: 0.84rem; line-height: 1.45; color: #374151; margin: 0; padding: 12px 14px; background: #fbfdff; border-top: 1px solid var(--line); }
+    .busy-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17,24,39,0.4);
+      padding: 14px;
+    }
+    .busy-overlay.show { display: flex; }
+    .busy-card {
+      min-width: 280px;
+      max-width: 480px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      padding: 16px 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .busy-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+    .busy-spinner {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #dbeafe;
+      border-top-color: var(--primary);
+      animation: spin 0.8s linear infinite;
+    }
+    .busy-tip {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <link rel="stylesheet" href="admin-unified.css?v=20260424">
+</head>
+<body>
+  <main class="wrap">
+    <section class="head">
+      <div>
+        <div class="title">`pages_xx.json` 体检与修复</div>
+        <div class="desc">检查 JSON 可读性、结构完整性、翻译疑似未翻项（标题与英文相同）。</div>
+      </div>
+      <div class="actions">
+        <a class="btn-link" href="index.html">返回后台首页</a>
+        <button id="checkBtn" class="btn-primary">开始体检</button>
+        <button id="repairBtn" class="btn-danger">一键修复</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="kpi"><div class="k">文件总数</div><div class="v" id="kTotal">-</div></div>
+      <div class="kpi"><div class="k">正常</div><div class="v" id="kOk">-</div></div>
+      <div class="kpi"><div class="k">警告</div><div class="v" id="kWarn">-</div></div>
+      <div class="kpi"><div class="k">错误</div><div class="v" id="kError">-</div></div>
+      <div class="kpi"><div class="k">疑似未翻标题数</div><div class="v" id="kTr">-</div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">按语言文件查看</div>
+      <table>
+        <thead>
+          <tr>
+            <th>语言</th>
+            <th>状态</th>
+            <th>新闻</th>
+            <th>产品</th>
+            <th>疑似未翻</th>
+            <th>问题</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <pre id="log" class="log">等待执行…</pre>
+    </section>
+  </main>
+  <div id="busyOverlay" class="busy-overlay" aria-live="polite" aria-busy="true">
+    <div class="busy-card">
+      <div class="busy-row"><span class="busy-spinner"></span><span id="busyText">正在处理中...</span></div>
+      <div class="busy-tip">请稍候，完成后会自动显示结果。</div>
+    </div>
+  </div>
+
+  <script>
+    function checkAuth() {
+      const auth = localStorage.getItem('userAdminAuth');
+      if (!auth || Date.now() > parseInt(auth, 10)) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      return true;
+    }
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function statusTag(s) {
+      if (s === 'ok') return '<span class="tag ok">OK</span>';
+      if (s === 'warn') return '<span class="tag warn">WARN</span>';
+      return '<span class="tag error">ERROR</span>';
+    }
+    function setSummary(summary) {
+      document.getElementById('kTotal').textContent = summary.total ?? '-';
+      document.getElementById('kOk').textContent = summary.ok ?? '-';
+      document.getElementById('kWarn').textContent = summary.warn ?? '-';
+      document.getElementById('kError').textContent = summary.error ?? '-';
+      document.getElementById('kTr').textContent = summary.translation_suspected ?? '-';
+    }
+    function renderRows(items) {
+      const rows = document.getElementById('rows');
+      rows.innerHTML = items.map(function(x) {
+        const trCount = (x.translation_same_news_titles || 0) + (x.translation_same_product_titles || 0);
+        const issues = (x.issues || []).length ? x.issues.map(esc).join('<br>') : '<span class="small">-</span>';
+        return '<tr>'
+          + '<td><strong>' + esc(x.lang) + '</strong><div class="small">' + esc(x.has_backup ? '有备份' : '无备份') + '</div></td>'
+          + '<td>' + statusTag(x.status) + '</td>'
+          + '<td>' + esc(x.news_count) + '</td>'
+          + '<td>' + esc(x.product_count) + '</td>'
+          + '<td>' + esc(trCount) + '</td>'
+          + '<td class="issues">' + issues + '</td>'
+          + '</tr>';
+      }).join('');
+    }
+    function setBusy(on, message) {
+      document.getElementById('checkBtn').disabled = on;
+      document.getElementById('repairBtn').disabled = on;
+      document.getElementById('checkBtn').textContent = on ? '执行中...' : '开始体检';
+      const overlay = document.getElementById('busyOverlay');
+      const text = document.getElementById('busyText');
+      if (on) {
+        text.textContent = message || '正在处理中...';
+        overlay.classList.add('show');
+      } else {
+        overlay.classList.remove('show');
+      }
+    }
+    async function run(action) {
+      if (!checkAuth()) return;
+      setBusy(true, action === 'repair' ? '正在修复 pages_xx.json，请勿关闭页面...' : '正在体检 pages_xx.json...');
+      const log = document.getElementById('log');
+      try {
+        const opts = action === 'repair'
+          ? { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: 'action=repair' }
+          : { method: 'GET' };
+        const resp = await fetch('../cgi-bin/pages-health.cgi?_=' + Date.now(), opts);
+        const data = await resp.json();
+        if (!data.success) throw new Error(data.error || '未知错误');
+        setSummary(data.summary || {});
+        renderRows(data.items || []);
+        const repaired = (data.repairs || []).filter(function(x){ return x.repaired; });
+        log.textContent = action === 'repair'
+          ? ('修复完成：' + repaired.length + ' 个文件已处理。\n' + JSON.stringify(data.repairs || [], null, 2))
+          : ('体检完成：\n' + JSON.stringify(data.summary || {}, null, 2));
+      } catch (e) {
+        log.textContent = '执行失败：' + (e && e.message ? e.message : e);
+      } finally {
+        setBusy(false);
+      }
+    }
+    document.getElementById('checkBtn').addEventListener('click', function(){ run('check'); });
+    document.getElementById('repairBtn').addEventListener('click', function(){
+      if (!confirm('将执行一键修复（可能覆盖损坏文件结构），继续吗？')) return;
+      run('repair');
+    });
+    run('check');
+  </script>
+  <script src="admin-nav.js?v=20260424" defer></script>
+</body>
+</html>

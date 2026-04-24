@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import os, sys, json, re
 from urllib.parse import parse_qs
+from json_store import update_pages_json, JsonStoreError
+from admin_auth import is_request_authenticated
 
 sys.stdout.write("Content-Type: application/json; charset=utf-8\r\n\r\n")
 sys.stdout.flush()
@@ -10,6 +12,10 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+
+if not is_request_authenticated():
+    respond({'success': False, 'error': 'unauthorized'})
 
 try:
     cl  = int(os.environ.get('CONTENT_LENGTH', 0) or 0)
@@ -79,14 +85,19 @@ for news_slug in slugs:
         json_path = os.path.join(base_dir, 'pags', lang, f'pages_{lang}.json')
         if os.path.exists(json_path):
             try:
-                with open(json_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                before = len(data.get('news', []))
-                data['news'] = [n for n in data.get('news', []) if n.get('slug') != news_slug]
-                if len(data['news']) < before:
-                    with open(json_path, 'w', encoding='utf-8') as f:
-                        json.dump(data, f, ensure_ascii=False, indent=4)
+                removed = {'changed': False}
+
+                def mutator(data):
+                    before = len(data.get('news', []))
+                    data['news'] = [n for n in data.get('news', []) if n.get('slug') != news_slug]
+                    removed['changed'] = len(data['news']) < before
+                    return data
+
+                update_pages_json(json_path, mutator)
+                if removed['changed']:
                     slug_deleted = True
+            except JsonStoreError as e:
+                errors.append(f'{lang}/pages_{lang}.json 更新失败: {e}')
             except Exception as e:
                 errors.append(f'{lang}/pages_{lang}.json 更新失败: {e}')
 

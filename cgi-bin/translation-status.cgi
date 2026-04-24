@@ -15,6 +15,7 @@ import json
 import re
 
 from urllib.parse import parse_qs
+from admin_auth import is_request_authenticated
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR   = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
@@ -27,6 +28,10 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+
+if not is_request_authenticated():
+    respond({'success': False, 'error': 'unauthorized'})
 
 
 qs   = parse_qs(os.environ.get('QUERY_STRING', ''))

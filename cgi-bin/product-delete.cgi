@@ -6,6 +6,8 @@ import subprocess
 import re
 import sys
 from urllib.parse import parse_qs
+from json_store import update_pages_json, JsonStoreError
+from admin_auth import is_request_authenticated
 
 sys.stdout.write("Content-Type: application/json; charset=utf-8\r\n\r\n")
 sys.stdout.flush()
@@ -15,6 +17,10 @@ def respond(obj):
     sys.stdout.write(json.dumps(obj, ensure_ascii=False))
     sys.stdout.flush()
     sys.exit(0)
+
+
+if not is_request_authenticated():
+    respond({'success': False, 'error': 'unauthorized'})
 
 
 try:
@@ -63,37 +69,33 @@ def delete_from_json(json_path, full_slug):
     if not os.path.exists(json_path):
         return False
 
+    changed = {'value': False}
     try:
-        with open(json_path, 'r', encoding='utf-8') as fh:
-            data = json.load(fh)
-    except Exception as exc:
-        errors.append(f'{os.path.basename(json_path)} 读取失败: {exc}')
+        def mutator(data):
+            new_categories = []
+            local_changed = False
+            for category in data.get('products', []):
+                original_items = list(category.get('items', []))
+                kept_items = [item for item in original_items if item.get('slug') != full_slug]
+                if len(kept_items) != len(original_items):
+                    local_changed = True
+                if kept_items:
+                    category['items'] = kept_items
+                    new_categories.append(category)
+                elif original_items:
+                    local_changed = True
+            data['products'] = new_categories
+            changed['value'] = local_changed
+            return data
+
+        update_pages_json(json_path, mutator)
+    except JsonStoreError as exc:
+        errors.append(f'{os.path.basename(json_path)} 更新失败: {exc}')
         return False
-
-    changed = False
-    new_categories = []
-    for category in data.get('products', []):
-        original_items = list(category.get('items', []))
-        kept_items = [item for item in original_items if item.get('slug') != full_slug]
-        if len(kept_items) != len(original_items):
-            changed = True
-        if kept_items:
-            category['items'] = kept_items
-            new_categories.append(category)
-        elif original_items:
-            changed = True
-
-    if not changed:
-        return False
-
-    data['products'] = new_categories
-    try:
-        with open(json_path, 'w', encoding='utf-8') as fh:
-            json.dump(data, fh, ensure_ascii=False, indent=4)
     except Exception as exc:
         errors.append(f'{os.path.basename(json_path)} 写入失败: {exc}')
         return False
-    return True
+    return changed['value']
 
 
 for requested_slug in requested_slugs:

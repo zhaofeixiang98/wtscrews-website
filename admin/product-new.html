@@ -284,6 +284,35 @@
       color: var(--gray-400);
       margin-top: 4px;
     }
+    .quick-publish-box {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px dashed #c7d2fe;
+      border-radius: 12px;
+      background: #eef2ff;
+    }
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .btn-quick {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #fff;
+      background: #1d4ed8;
+    }
+    .btn-quick.secondary {
+      background: #334155;
+    }
+    .btn-quick:hover {
+      opacity: 0.92;
+    }
 
     /* ── Language tabs ── */
     .lang-tabs {
@@ -1197,6 +1226,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="admin-unified.css?v=20260424">
 </head>
 
 <body>
@@ -1268,13 +1298,27 @@
               <input type="checkbox" id="auto_translate" checked style="width:auto;margin:0">
               <span>自动翻译空白字段到 8 个语言版本</span>
             </label>
-            <div class="hint">默认开启。英文内容必填，其他语言留空时会在发布时自动翻译；手动填写的字段优先，不会被覆盖。</div>
+            <div class="hint" id="autoTranslateHint">默认开启。只需要填写英文，发布时会自动翻译其余语言并忽略非英文预填内容。</div>
+            <div id="manualOverrideWrap" style="margin-top:10px;display:flex;align-items:center;gap:10px">
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.86rem;font-weight:600;color:var(--gray-700);margin:0">
+                <input type="checkbox" id="manual_override_translate" style="width:auto;margin:0">
+                <span>高级模式：手动填写非英文并覆盖自动翻译</span>
+              </label>
+            </div>
+          </div>
+          <div class="quick-publish-box">
+            <div style="font-size:0.86rem;font-weight:700;color:#1e3a8a">快速发布（推荐）</div>
+            <div class="quick-actions">
+              <button type="button" class="btn-quick" id="fillDemoQuickBtn">填充示例（法兰螺栓）</button>
+              <button type="button" class="btn-quick secondary" id="toggleAdvancedBtn">展开高级配置</button>
+            </div>
+            <div class="hint">先点“填充示例”，再改标题、摘要、封面图就可以快速发布。高级区块默认折叠，按需展开。</div>
           </div>
           <input type="hidden" id="og_image">
           <div class="cover-current" id="coverCurrent">当前封面图：未选择</div>
         </div>
 
-        <div class="card">
+        <div class="card" id="advancedConfigCard" style="display:none">
           <h2>正式产品页整体配置</h2>
           <div class="hint" style="margin-bottom:20px">主图、图片说明、规格参数、应用场景、评价、关联产品等都在这里统一编辑，生成页和预览会一起使用。</div>
           <div class="form-row">
@@ -1704,6 +1748,7 @@
   <!-- ── Submit bar ── -->
   <div class="submit-bar">
     <button type="button" class="btn-submit" id="submitBtn">发布产品详情页（所有语言）</button>
+    <button type="button" class="btn-preview" id="fillDemoBarBtn">填充示例</button>
     <button type="button" class="btn-preview" id="previewBtn">👁 预览</button>
     <button type="button" class="btn-preview" id="checkTranslateBtn">检测翻译配置</button>
     <span class="status-msg" id="statusMsg"></span>
@@ -1823,6 +1868,7 @@
     document.getElementById('slug').addEventListener('input', function () { this._manual = true; });
 
     var MODULE_LANGS = ['en', 'zh', 'de', 'es', 'fr', 'ar', 'id', 'ja', 'ko'];
+    var NON_EN_LANGS = MODULE_LANGS.filter(function (lang) { return lang !== 'en'; });
     var currentLang = 'en';
     var modulesByLang = {};
     var activeModuleIndexByLang = {};
@@ -1830,6 +1876,12 @@
     var moduleEditor = document.getElementById('moduleEditor');
     var modulePreview = document.getElementById('modulePreview');
     var modulePreviewBox = document.getElementById('modulePreviewBox');
+    var autoTranslateCheckbox = document.getElementById('auto_translate');
+    var autoTranslateHint = document.getElementById('autoTranslateHint');
+    var manualOverrideWrap = document.getElementById('manualOverrideWrap');
+    var manualOverrideCheckbox = document.getElementById('manual_override_translate');
+    var advancedConfigCard = document.getElementById('advancedConfigCard');
+    var toggleAdvancedBtn = document.getElementById('toggleAdvancedBtn');
 
     MODULE_LANGS.forEach(function (lang) {
       modulesByLang[lang] = [];
@@ -2209,7 +2261,60 @@
         placeModuleEditor(this.dataset.lang);
       });
     });
+
+    function setNonEnglishInputsDisabled(disabled) {
+      NON_EN_LANGS.forEach(function (lang) {
+        document.querySelectorAll('[id^="' + lang + '_"]').forEach(function (el) {
+          if (!el) return;
+          el.disabled = disabled;
+        });
+      });
+    }
+
+    function updateTranslationModeUI() {
+      var autoTranslate = autoTranslateCheckbox.checked;
+      var manualOverride = autoTranslate && manualOverrideCheckbox.checked;
+      document.querySelectorAll('.lang-tab').forEach(function (tab) {
+        var isNonEn = tab.dataset.lang !== 'en';
+        tab.style.display = (autoTranslate && isNonEn && !manualOverride) ? 'none' : '';
+      });
+
+      if (autoTranslate && !manualOverride && currentLang !== 'en') {
+        document.querySelectorAll('.lang-tab').forEach(function (t) { t.classList.remove('active'); });
+        document.querySelectorAll('.lang-panel').forEach(function (p) { p.classList.remove('active'); });
+        var enTab = document.querySelector('.lang-tab[data-lang="en"]');
+        if (enTab) enTab.classList.add('active');
+        var enPanel = document.getElementById('panel-en');
+        if (enPanel) enPanel.classList.add('active');
+        placeModuleEditor('en');
+      }
+
+      setNonEnglishInputsDisabled(autoTranslate && !manualOverride);
+      manualOverrideWrap.style.display = autoTranslate ? 'flex' : 'none';
+      if (autoTranslateHint) {
+        autoTranslateHint.textContent = autoTranslate
+          ? (manualOverride
+            ? '高级模式：你可以手动填写非英文字段，提交时会按你填写的内容覆盖自动翻译。'
+            : '简化模式：只需要填写英文，发布时自动翻译其余语言，并忽略非英文预填字段。')
+          : '手动模式：可逐语言编辑并提交所有语言字段，不自动覆盖已有内容。';
+      }
+    }
+
+    function setAdvancedConfigVisible(visible) {
+      if (!advancedConfigCard || !toggleAdvancedBtn) return;
+      advancedConfigCard.style.display = visible ? '' : 'none';
+      toggleAdvancedBtn.textContent = visible ? '收起高级配置' : '展开高级配置';
+    }
+
+    autoTranslateCheckbox.addEventListener('change', updateTranslationModeUI);
+    manualOverrideCheckbox.addEventListener('change', updateTranslationModeUI);
+    toggleAdvancedBtn.addEventListener('click', function () {
+      var isVisible = advancedConfigCard && advancedConfigCard.style.display !== 'none';
+      setAdvancedConfigVisible(!isVisible);
+    });
     placeModuleEditor('en');
+    setAdvancedConfigVisible(false);
+    updateTranslationModeUI();
 
     document.getElementById('moduleAddBtn').addEventListener('click', function () {
       var type = document.getElementById('moduleTypeSelect').value;
@@ -2234,9 +2339,9 @@
       updatePreview();
     });
 
-    document.getElementById('moduleLoadFlangeTemplate').addEventListener('click', function () {
-      if (!confirm('确定载入法兰螺栓模板吗？这会覆盖当前语言的正文内容和部分整体配置。')) return;
-      
+    function applyFlangeTemplate(askConfirm, showAlert) {
+      if (askConfirm && !confirm('确定载入法兰螺栓模板吗？这会覆盖当前语言的正文内容和部分整体配置。')) return;
+
       // 1. Set main info
       document.getElementById('en_title').value = 'Flange Bolts';
       document.getElementById('en_summary').value = 'Our flange bolts feature an integrated circular washer under the head, distributing load evenly and preventing loosening under vibration. The serrated version creates a locking action against the mating surface. Available in both serrated (vibration-resistant) and non-serrated configurations. Manufactured to DIN 6921 / ISO 1665 standards with consistent dimensional accuracy.';
@@ -2313,7 +2418,21 @@
       renderModuleEditor();
       syncBodyTextarea('en');
       updatePreview();
-      alert('法兰螺栓模板载入完成（英文版）。');
+      if (showAlert) {
+        alert('法兰螺栓模板载入完成（英文版）。');
+      }
+    }
+
+    document.getElementById('moduleLoadFlangeTemplate').addEventListener('click', function () {
+      applyFlangeTemplate(true, true);
+    });
+    document.getElementById('fillDemoQuickBtn').addEventListener('click', function () {
+      applyFlangeTemplate(false, true);
+      setAdvancedConfigVisible(false);
+    });
+    document.getElementById('fillDemoBarBtn').addEventListener('click', function () {
+      applyFlangeTemplate(false, true);
+      setAdvancedConfigVisible(false);
     });
 
     var DEFAULT_APPLICATIONS_DATA = [
@@ -2714,9 +2833,9 @@
       return '<!DOCTYPE html><html><head>' +
         '<meta charset="UTF-8">' +
         '<meta name="viewport" content="width=device-width,initial-scale=1">' +
-        '<link rel="stylesheet" href="../../css/base.css?v=' + Date.now() + '">' +
-        '<link rel="stylesheet" href="../../css/common.css?v=' + Date.now() + '">' +
-        '<link rel="stylesheet" href="../../css/product-detail.css?v=' + Date.now() + '">' +
+        '<link rel="stylesheet" href="/css/base.css?v=' + Date.now() + '">' +
+        '<link rel="stylesheet" href="/css/common.css?v=' + Date.now() + '">' +
+        '<link rel="stylesheet" href="/css/product-detail.css?v=' + Date.now() + '">' +
         '<link rel="preconnect" href="https://fonts.googleapis.com">' +
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
         '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">' +
@@ -2881,6 +3000,7 @@
       var body = document.getElementById('en_body').value.trim();
       var summary = document.getElementById('en_summary').value.trim();
       var autoTranslate = document.getElementById('auto_translate').checked;
+      var manualOverride = autoTranslate && manualOverrideCheckbox.checked;
       var statusEl = document.getElementById('statusMsg');
       var btn = this;
 
@@ -2912,7 +3032,10 @@
       params.append('cta_title', document.getElementById('cta_title').value.trim());
       params.append('cta_desc', document.getElementById('cta_desc').value.trim());
       params.append('cta_button_text', document.getElementById('cta_button_text').value.trim());
-      langs.forEach(function (lang) {
+      if (autoTranslate && !manualOverride) {
+        params.append('force_translate_non_en', '1');
+      }
+      (autoTranslate && !manualOverride ? ['en'] : langs).forEach(function (lang) {
         fields.forEach(function (field) {
           var el = document.getElementById(lang + '_' + field);
           if (el) params.append(lang + '_' + field, el.value);
@@ -2959,6 +3082,7 @@
         });
     });
   </script>
+  <script src="admin-nav.js?v=20260424" defer></script>
 </body>
 
 </html>

@@ -149,6 +149,7 @@
       .hero { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="admin-unified.css?v=20260424">
 </head>
 <body>
   <header class="admin-header">
@@ -165,6 +166,9 @@
         <a href="article-new.html">✍️ 发布文章</a>
         <a href="article-list.html">📝 文章列表</a>
         <a href="product-new.html">🛠️ 发布产品</a>
+        <a href="landing-new.html">🚀 发布落地页</a>
+        <a href="landing-management.html">📄 落地页管理</a>
+        <a href="pages-health.html">🧪 索引体检</a>
         <a href="product-management.html">🛍️ 产品管理</a>
         <a href="image-manager.html">🖼️ 图片管理</a>
         <a href="users-view.html">👥 用户数据</a>
@@ -181,6 +185,8 @@
         <div class="hero-actions">
           <a class="primary" href="article-list.html">进入文章管理</a>
           <a class="secondary" href="product-management.html">进入产品管理</a>
+          <a class="secondary" href="landing-new.html">发布落地页</a>
+          <a class="secondary" href="landing-management.html">管理落地页</a>
           <a class="secondary" href="article-new.html">发布新内容</a>
         </div>
       </div>
@@ -242,6 +248,24 @@
         <p>浏览当前产品分类与条目，快速进入新产品发布流程。</p>
         <div class="card-footer"><span class="stat" id="cardProducts">-</span><span class="link">进入 →</span></div>
       </a>
+      <a class="dashboard-card" href="landing-new.html">
+        <div class="icon article">🚀</div>
+        <h3>落地页发布</h3>
+        <p>发布广告落地页，支持 DeepSeek 全文翻译并自动生成多语言版本。</p>
+        <div class="card-footer"><span class="stat">Landing</span><span class="link">进入 →</span></div>
+      </a>
+      <a class="dashboard-card" href="landing-management.html">
+        <div class="icon image">📄</div>
+        <h3>落地页管理</h3>
+        <p>查看已发布落地页，支持搜索、按语言预览及删除。</p>
+        <div class="card-footer"><span class="stat">Manage</span><span class="link">进入 →</span></div>
+      </a>
+      <a class="dashboard-card" href="pages-health.html">
+        <div class="icon message">🧪</div>
+        <h3>索引体检</h3>
+        <p>一键检查并修复 `pages_xx.json`，定位结构异常与疑似未翻译标题问题。</p>
+        <div class="card-footer"><span class="stat">Check/Fix</span><span class="link">进入 →</span></div>
+      </a>
     </section>
   </main>
 
@@ -297,5 +321,6 @@
     }
     loadSummary();
   </script>
+  <script src="admin-nav.js?v=20260424" defer></script>
 </body>
 </html>
