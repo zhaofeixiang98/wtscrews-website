@@ -498,7 +498,8 @@ def values_for_lang(lang):
     }
 
 if auto_translate:
-    # First save EN quickly, then async translate others via existing worker.
+    # Save all languages immediately (non-EN uses current/manual content fallback),
+    # then async translate non-EN languages in background to ensure all URLs exist.
     try:
         html = build_html(
             'en', slug,
@@ -510,6 +511,20 @@ if auto_translate:
         created.append('en')
     except Exception as exc:
         respond({'success': False, 'error': f'en: {exc}'})
+
+    for lang in [l for l in LANGS if l != 'en']:
+        try:
+            data = values_for_lang(lang)
+            html = build_html(
+                lang, slug,
+                data['title'], data['subtitle'], data['summary'],
+                data['meta_desc'], data['keywords'], data['bc_label'],
+                data['body'], hero_image, whatsapp_url, extra_head
+            )
+            save_one(lang, slug, html)
+            created.append(lang)
+        except Exception as exc:
+            errors.append(f'{lang}: {exc}')
 
     translating = True
     fork_error = None

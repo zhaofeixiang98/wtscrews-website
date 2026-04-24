@@ -66,6 +66,7 @@ for raw_target in requested_targets:
 
     filename = slug + '.html'
     removed_anything = False
+    matched_anything = False
 
     for lang in LANGS:
         if kind == 'folder':
@@ -73,15 +74,23 @@ for raw_target in requested_targets:
         else:
             path = os.path.join(BASE_DIR, 'pags', lang, filename)
         if os.path.exists(path):
+            matched_anything = True
             try:
                 os.remove(path)
                 removed_anything = True
             except Exception as exc:
-                errors.append(f'{lang}/{filename} 删除失败: {exc}')
+                if isinstance(exc, PermissionError):
+                    errors.append(
+                        f'{lang}/{filename} 删除失败: 权限不足 ({exc}). '
+                        f'请在服务器执行: chown -R www-data:www-data {os.path.join(BASE_DIR, "pags", lang)} '
+                        f'并确保目录可写 chmod -R u+rwX,go+rX {os.path.join(BASE_DIR, "pags", lang)}'
+                    )
+                else:
+                    errors.append(f'{lang}/{filename} 删除失败: {exc}')
 
     if removed_anything:
         deleted.append(f'{kind}:{slug}')
-    else:
+    elif not matched_anything:
         errors.append(f'未找到可删除文件: {kind}:{slug}')
 
 respond({
