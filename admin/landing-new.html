@@ -842,6 +842,7 @@
         'body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top left,rgba(14,165,233,.12),transparent 26%),radial-gradient(circle at 85% 10%,rgba(249,115,22,.12),transparent 24%),linear-gradient(180deg,#fbfcfd 0%,#f4f7fb 48%,#eef3f8 100%);color:#0f172a;padding-bottom:108px}' +
         'body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(148,163,184,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.09) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(180deg,rgba(255,255,255,.8),transparent 78%)}' +
         '.wrap{max-width:1180px;margin:0 auto;padding:20px;position:relative;z-index:1}' +
+        '.topbar{padding-top:4px;display:flex;justify-content:flex-end}.lang-switch{display:flex;justify-content:flex-end}.lang-picker{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.24);background:rgba(255,255,255,.84);box-shadow:0 10px 22px rgba(148,163,184,.12)}.lang-picker-label{color:#0f766e;font-size:.82rem;font-weight:800}.lang-select{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:#334155;font-size:.82rem;font-weight:700;padding-right:18px;outline:none;cursor:pointer;min-width:108px}' +
         '.card{background:rgba(255,255,255,.88);border:1px solid rgba(148,163,184,.22);border-radius:22px;padding:24px;box-shadow:0 28px 60px rgba(148,163,184,.18);backdrop-filter:blur(10px)}' +
         '.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.22);color:#0369a1;font-size:.8rem;font-weight:700;margin-bottom:10px}' +
         '.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:stretch}' +
@@ -874,6 +875,7 @@
         '@media(max-width:860px){.hero,.trust-strip,.biz-grid{grid-template-columns:1fr}h1{max-width:none;font-size:2.1rem}.hero img{min-height:240px}.fixed-wa-box{flex-direction:column;align-items:stretch}.fixed-wa-box a{text-align:center}}' +
         '</style>' +
         '</head><body><main class="wrap">' +
+        '<div class="topbar"><nav class="lang-switch"><div class="lang-picker"><span class="lang-picker-label">English</span><select class="lang-select"><option selected>English</option><option>中文</option><option>Español</option><option>Français</option><option>Deutsch</option><option>العربية</option></select></div></nav></div>' +
         '<section class="hero card"><article><span class="badge">Industrial fastener quotation page</span><h1>' + escHtml(title) + '</h1>' +
         (subtitle ? '<p class="muted">' + escHtml(subtitle) + '</p>' : '') +
         (summary ? '<p class="muted">' + escHtml(summary) + '</p>' : '') +

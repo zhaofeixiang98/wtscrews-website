@@ -60,6 +60,34 @@ def build_keyword_chips(keywords):
     return ''.join(f'<span class="chip">{he(item)}</span>' for item in parts)
 
 
+def build_language_switch(lang, slug):
+    labels = {
+        'en': 'English',
+        'ar': 'العربية',
+        'de': 'Deutsch',
+        'es': 'Español',
+        'fr': 'Français',
+        'id': 'Indonesia',
+        'ja': '日本語',
+        'ko': '한국어',
+        'zh': '中文',
+    }
+    options = []
+    for code in LANGS:
+        selected = ' selected' if code == lang else ''
+        options.append(
+            f'<option value="/pags/{code}/landing/{slug}.html"{selected}>{he(labels.get(code, code.upper()))}</option>'
+        )
+    current_label = he(labels.get(lang, lang.upper()))
+    return (
+        f'<div class="lang-picker">'
+        f'<span class="lang-picker-label">{current_label}</span>'
+        f'<select class="lang-select" aria-label="Language switcher" onchange="if(this.value) window.location.href=this.value">'
+        + ''.join(options) +
+        '</select></div>'
+    )
+
+
 def safe_chmod(path, mode):
     try:
         os.chmod(path, mode)
@@ -96,6 +124,7 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
     image_src = '../../../images/' + hero_image if hero_image else '../../../images/banner-hero.webp'
     head_extra = ('\n' + extra_head + '\n') if extra_head else ''
     keyword_chips = build_keyword_chips(keywords)
+    language_switch = build_language_switch(lang, slug)
     trust_cards = ''.join([
         f'<article class="stat-card"><span>{he(c["strength_1_k"])}</span><strong>{he(c["strength_1_v"])}</strong></article>',
         f'<article class="stat-card"><span>{he(c["strength_2_k"])}</span><strong>{he(c["strength_2_v"])}</strong></article>',
@@ -171,6 +200,11 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
       mask-image: linear-gradient(180deg, rgba(255,255,255,.8), transparent 78%);
     }}
     .wrap {{ max-width: 1180px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }}
+    .topbar {{ padding-top: 20px; display: flex; justify-content: flex-end; }}
+    .lang-switch {{ display: flex; justify-content: flex-end; }}
+    .lang-picker {{ display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(148,163,184,.24); background: rgba(255,255,255,.84); box-shadow: 0 10px 22px rgba(148,163,184,.12); }}
+    .lang-picker-label {{ color: #0f766e; font-size: .82rem; font-weight: 800; }}
+    .lang-select {{ appearance: none; -webkit-appearance: none; border: 0; background: transparent; color: #334155; font-size: .82rem; font-weight: 700; padding-right: 18px; outline: none; cursor: pointer; min-width: 108px; }}
     .hero {{ padding: 34px 0 22px; }}
     .hero-grid {{ display: grid; grid-template-columns: 1.08fr .92fr; gap: 22px; align-items: stretch; }}
     .hero-copy, .hero-media, .section, .form-box {{
@@ -325,6 +359,11 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
 </head>
 <body>
   <main class="wrap">
+    <div class="topbar">
+      <nav class="lang-switch" aria-label="Language switcher">
+        {language_switch}
+      </nav>
+    </div>
     <section class="hero">
       <div class="hero-grid">
         <article class="hero-copy">
