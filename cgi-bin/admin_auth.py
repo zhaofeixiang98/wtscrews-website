@@ -10,7 +10,7 @@ from http import cookies
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
-SESSIONS_PATH = os.path.join(BASE_DIR, '.admin-sessions.json')
+SESSIONS_PATH = '/tmp/.admin-sessions.json'
 COOKIE_NAME = 'WT_ADMIN_SESSION'
 DEFAULT_MAX_AGE = 24 * 60 * 60
 
@@ -34,7 +34,7 @@ def _load_sessions():
 
 def _atomic_write_sessions(data):
     os.makedirs(os.path.dirname(SESSIONS_PATH) or '.', exist_ok=True)
-    fd, tmp = tempfile.mkstemp(prefix='._admin_sessions_', suffix='.tmp', dir=os.path.dirname(SESSIONS_PATH) or '.')
+    fd, tmp = tempfile.mkstemp(prefix='._admin_sessions_', suffix='.tmp', dir='/tmp/')
     try:
         with os.fdopen(fd, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
