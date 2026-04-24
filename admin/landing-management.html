@@ -79,13 +79,55 @@
     .btn { border: none; border-radius: 10px; padding: 9px 12px; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
     .btn-preview { background: #dbeafe; color: #1e40af; }
     .btn-open { background: #e0f2fe; color: #0369a1; }
+    .btn-translate { background: #ede9fe; color: #6d28d9; }
+    .btn-status { background: #ecfeff; color: #0f766e; }
     .btn-delete { background: #dc2626; color: #fff; }
     .btn:disabled { opacity: 0.55; cursor: not-allowed; }
     .empty-state { background: var(--surface); border-radius: 22px; padding: 40px; box-shadow: var(--shadow); text-align: center; color: var(--muted); }
+    .dialog-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.48); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 200; }
+    .dialog { width: min(760px, 100%); max-height: 85vh; overflow: auto; background: #fff; border-radius: 24px; box-shadow: 0 24px 80px rgba(15, 23, 42, 0.25); border: 1px solid #e5e7eb; }
+    .dialog-head { padding: 22px 24px 16px; border-bottom: 1px solid #eef2f7; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .dialog-title { font-size: 1.1rem; font-weight: 800; }
+    .dialog-sub { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+    .dialog-close { border: 0; background: #f3f4f6; color: #111827; width: 38px; height: 38px; border-radius: 12px; cursor: pointer; font-size: 1.1rem; font-weight: 700; }
+    .dialog-body { padding: 22px 24px 24px; display: grid; gap: 16px; }
+    .status-hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .status-card { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 18px; padding: 16px; }
+    .status-card .k { color: var(--muted); font-size: 0.84rem; margin-bottom: 8px; }
+    .status-card .v { font-size: 1.2rem; font-weight: 800; }
+    .status-detail-grid { display: grid; gap: 10px; }
+    .status-lang { display: grid; gap: 10px; border: 1px solid #e5e7eb; border-radius: 18px; padding: 14px 16px; background: #fff; }
+    .status-lang-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .status-pill { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; border: 1px solid transparent; }
+    .status-pill.done { background: #dcfce7; color: #166534; border-color: #86efac; }
+    .status-pill.fail { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+    .status-pill.run { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+    .status-pill.wait { background: #f3f4f6; color: #4b5563; border-color: #e5e7eb; }
+    .status-error { color: #991b1b; font-size: 0.88rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+    .dialog-actions { display: flex; gap: 10px; justify-content: flex-end; }
+    .toast-wrap { position: fixed; right: 24px; bottom: 24px; z-index: 260; display: grid; gap: 10px; }
+    .toast {
+      min-width: 280px;
+      max-width: 420px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.18);
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      color: #111827;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .toast.success { border-color: #86efac; background: #f0fdf4; }
+    .toast.error { border-color: #fecaca; background: #fef2f2; }
     @media (max-width: 860px) {
       .tool-bar { flex-direction: column; align-items: stretch; }
       .landing-item { grid-template-columns: 1fr; }
       .actions { justify-content: flex-start; }
+      .dialog-mask { padding: 12px; }
+      .dialog-head, .dialog-body { padding-left: 16px; padding-right: 16px; }
+      .toast-wrap { left: 12px; right: 12px; bottom: 12px; }
+      .toast { min-width: 0; max-width: none; width: 100%; }
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
@@ -146,9 +188,36 @@
     </section>
   </main>
 
+  <div class="dialog-mask" id="statusDialog">
+    <div class="dialog">
+      <div class="dialog-head">
+        <div>
+          <div class="dialog-title" id="dialogTitle">翻译进度</div>
+          <div class="dialog-sub" id="dialogSub">正在读取状态...</div>
+        </div>
+        <button type="button" class="dialog-close" id="closeStatusDialog">×</button>
+      </div>
+      <div class="dialog-body">
+        <div class="status-hero" id="statusHero"></div>
+        <div class="status-detail-grid" id="statusDetail"></div>
+        <div class="dialog-actions">
+          <button type="button" class="btn btn-status" id="refreshStatusBtn">刷新状态</button>
+          <button type="button" class="btn btn-translate" id="retranslateFromDialogBtn">重新翻译全部语言</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast-wrap" id="toastWrap"></div>
+
   <script>
     let allLandings = [];
     let deletingSlug = '';
+    let translatingSlug = '';
+    let statusDialogSlug = '';
+    let statusPollTimer = null;
+    let lastStatusValue = '';
+    const LANG_ORDER = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
+    const LANG_LABELS = { en: 'EN', ar: 'AR', de: 'DE', es: 'ES', fr: 'FR', id: 'ID', ja: 'JA', ko: 'KO', zh: 'ZH' };
 
     function logout(e) {
       if (e) e.preventDefault();
@@ -185,6 +254,23 @@
       document.querySelectorAll('.btn-delete').forEach(function(btn) {
         btn.disabled = disabled;
       });
+    }
+
+    function setTranslateButtonsDisabled(disabled) {
+      document.querySelectorAll('.btn-translate').forEach(function(btn) {
+        btn.disabled = disabled;
+      });
+    }
+
+    function showToast(message, type) {
+      const wrap = document.getElementById('toastWrap');
+      const node = document.createElement('div');
+      node.className = 'toast' + (type ? ' ' + type : '');
+      node.textContent = message || '';
+      wrap.appendChild(node);
+      setTimeout(function() {
+        node.remove();
+      }, 4200);
     }
 
     function choosePreviewUrl(item) {
@@ -259,6 +345,8 @@
           '<div class="actions">' +
             '<button type="button" class="btn btn-preview" data-action="preview" data-id="' + escHtml(item.id || '') + '">预览</button>' +
             '<button type="button" class="btn btn-open" data-action="open-en" data-id="' + escHtml(item.id || '') + '">打开 EN</button>' +
+            '<button type="button" class="btn btn-translate" data-action="retranslate" data-id="' + escHtml(item.id || '') + '">重新翻译</button>' +
+            '<button type="button" class="btn btn-status" data-action="status" data-id="' + escHtml(item.id || '') + '">查看进度</button>' +
             '<button type="button" class="btn btn-delete" data-action="delete" data-id="' + escHtml(item.id || '') + '">删除</button>' +
           '</div>' +
         '</div>';
@@ -266,6 +354,7 @@
       container.innerHTML = html;
 
       setDeleteButtonsDisabled(Boolean(deletingSlug));
+      setTranslateButtonsDisabled(Boolean(translatingSlug));
       container.querySelectorAll('button[data-action]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           const action = this.dataset.action;
@@ -277,6 +366,10 @@
             if (url) window.open(url, '_blank');
           } else if (action === 'open-en') {
             if (item.urls && item.urls.en) window.open(item.urls.en, '_blank');
+          } else if (action === 'retranslate') {
+            handleRetranslate(item);
+          } else if (action === 'status') {
+            openStatusDialog(item);
           } else if (action === 'delete') {
             handleDeleteLanding(item);
           }
@@ -317,11 +410,155 @@
       }
     }
 
+    async function handleRetranslate(item) {
+      if (!checkAuth()) return;
+      if (!item || !item.slug || translatingSlug) return;
+      const ok = window.confirm('确认重新翻译落地页 “' + item.slug + '” 吗？\n\n将使用当前英文页重新生成其它语言内容。');
+      if (!ok) return;
+
+      translatingSlug = item.slug;
+      setTranslateButtonsDisabled(true);
+      setActionStatus('正在提交重翻译任务：' + item.slug + ' ...');
+
+      try {
+        const params = new URLSearchParams();
+        params.append('slug', item.slug);
+        const resp = await fetch('../cgi-bin/landing-retranslate.cgi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data.success) {
+          throw new Error(data.error || '启动重翻译失败');
+        }
+        setActionStatus('已开始重翻译：' + item.slug, 'success');
+        openStatusDialog(item);
+      } catch (err) {
+        setActionStatus('重翻译失败：' + err.message, 'error');
+        alert('重翻译失败：' + err.message);
+      } finally {
+        translatingSlug = '';
+        setTranslateButtonsDisabled(false);
+      }
+    }
+
+    function closeStatusDialog() {
+      document.getElementById('statusDialog').style.display = 'none';
+      statusDialogSlug = '';
+      lastStatusValue = '';
+      if (statusPollTimer) {
+        clearTimeout(statusPollTimer);
+        statusPollTimer = null;
+      }
+    }
+
+    function openStatusDialog(item) {
+      if (!item || !item.slug) return;
+      statusDialogSlug = item.slug;
+      document.getElementById('dialogTitle').textContent = '翻译进度 · ' + item.slug;
+      document.getElementById('dialogSub').textContent = '正在读取当前翻译状态...';
+      document.getElementById('statusHero').innerHTML = '';
+      document.getElementById('statusDetail').innerHTML = '<div class="empty-state" style="padding:22px">读取中...</div>';
+      document.getElementById('statusDialog').style.display = 'flex';
+      lastStatusValue = '';
+      refreshStatusDialog();
+    }
+
+    function renderStatusDialog(slug, data) {
+      const done = Array.isArray(data.completed) ? data.completed : [];
+      const failed = data.failed && typeof data.failed === 'object' ? data.failed : {};
+      const total = Number(data.total || 8);
+      const failedKeys = Object.keys(failed);
+      const status = data.status || 'not_found';
+      const running = status === 'starting' || status === 'running';
+      const hero = document.getElementById('statusHero');
+      const detail = document.getElementById('statusDetail');
+      let statusText = '未找到翻译任务';
+      if (status === 'done') statusText = '翻译已完成';
+      else if (status === 'partial_error') statusText = '部分语言翻译失败';
+      else if (status === 'starting') statusText = '翻译任务启动中';
+      else if (status === 'running') statusText = '翻译进行中';
+      document.getElementById('dialogSub').textContent = statusText + ' · slug: ' + slug;
+
+      hero.innerHTML =
+        '<div class="status-card"><div class="k">当前状态</div><div class="v">' + escHtml(statusText) + '</div></div>' +
+        '<div class="status-card"><div class="k">已完成</div><div class="v">' + done.length + ' / ' + total + '</div></div>' +
+        '<div class="status-card"><div class="k">失败语言</div><div class="v">' + failedKeys.length + '</div></div>';
+
+      detail.innerHTML = LANG_ORDER.map(function(lang) {
+        if (lang === 'en') {
+          return '<div class="status-lang"><div class="status-lang-head"><strong>EN</strong><span class="status-pill done">源语言</span></div></div>';
+        }
+        let pillClass = 'wait';
+        let pillText = '等待中';
+        let errorText = '';
+        if (done.includes(lang)) {
+          pillClass = 'done';
+          pillText = '已完成';
+        } else if (failed[lang]) {
+          pillClass = 'fail';
+          pillText = '失败';
+          errorText = '<div class="status-error">' + escHtml(failed[lang]) + '</div>';
+        } else if (running) {
+          pillClass = 'run';
+          pillText = '翻译中';
+        }
+        return '<div class="status-lang">' +
+          '<div class="status-lang-head"><strong>' + escHtml(LANG_LABELS[lang] || lang.toUpperCase()) + '</strong><span class="status-pill ' + pillClass + '">' + pillText + '</span></div>' +
+          errorText +
+        '</div>';
+      }).join('');
+
+      if (lastStatusValue && lastStatusValue !== status) {
+        if (status === 'done') {
+          setActionStatus('翻译完成：' + slug, 'success');
+          showToast('翻译完成：' + slug + '，列表已自动刷新。', 'success');
+        } else if (status === 'partial_error') {
+          const failedList = failedKeys.length ? (' 失败语言：' + failedKeys.join(', ')) : '';
+          setActionStatus('翻译部分完成：' + slug + failedList, 'error');
+          showToast('翻译部分完成：' + slug + '。' + failedList, 'error');
+        }
+      }
+      lastStatusValue = status;
+
+      if (running) {
+        if (statusPollTimer) clearTimeout(statusPollTimer);
+        statusPollTimer = setTimeout(refreshStatusDialog, 2500);
+      } else if (statusPollTimer) {
+        clearTimeout(statusPollTimer);
+        statusPollTimer = null;
+        loadLandings();
+      }
+    }
+
+    async function refreshStatusDialog() {
+      if (!statusDialogSlug) return;
+      try {
+        const resp = await fetch('../cgi-bin/translation-status.cgi?slug=' + encodeURIComponent(statusDialogSlug) + '&_=' + Date.now());
+        const data = await resp.json();
+        renderStatusDialog(statusDialogSlug, data || {});
+      } catch (err) {
+        document.getElementById('dialogSub').textContent = '读取状态失败';
+        document.getElementById('statusDetail').innerHTML = '<div class="empty-state" style="padding:22px">状态读取失败：' + escHtml(err.message) + '</div>';
+      }
+    }
+
     document.getElementById('addLandingBtn').addEventListener('click', function() {
       window.location.href = 'landing-new.html';
     });
     document.getElementById('searchInput').addEventListener('input', renderLandings);
     document.getElementById('previewLang').addEventListener('change', renderLandings);
+    document.getElementById('closeStatusDialog').addEventListener('click', closeStatusDialog);
+    document.getElementById('statusDialog').addEventListener('click', function(e) {
+      if (e.target === this) closeStatusDialog();
+    });
+    document.getElementById('refreshStatusBtn').addEventListener('click', refreshStatusDialog);
+    document.getElementById('retranslateFromDialogBtn').addEventListener('click', function() {
+      if (!statusDialogSlug) return;
+      const item = allLandings.find(function(x) { return x.slug === statusDialogSlug; });
+      if (item) handleRetranslate(item);
+    });
 
     loadLandings();
   </script>

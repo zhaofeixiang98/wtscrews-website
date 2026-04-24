@@ -839,42 +839,53 @@
       return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
         '<title>' + escHtml(title) + '</title>' +
         '<style>' +
-        'body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#071427 0%,#081a33 100%);color:#e8f0ff;padding-bottom:96px}' +
-        '.wrap{max-width:1100px;margin:0 auto;padding:18px}' +
-        '.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px}' +
-        '.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.45);color:#98f0be;font-size:.8rem;font-weight:700;margin-bottom:10px}' +
-        '.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:stretch}' +
-        '.hero img{width:100%;height:100%;min-height:220px;object-fit:cover;border-radius:10px}' +
-        'h1{margin:0 0 8px;font-size:2rem;line-height:1.15}' +
-        '.muted{color:#b8c6de}.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}' +
-        '.btn{display:inline-block;padding:10px 12px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700}' +
-        '.wa{background:#22c55e}.quote{background:#2563eb}' +
-        '.section-title{margin:0 0 10px;font-size:1.2rem}' +
-        '.article :where(p,li){color:#c3d0e6;line-height:1.7}' +
-        '.article h3{margin:16px 0 8px;color:#f2f7ff}' +
-        '.lp-image-block{margin:28px auto;max-width:1040px;padding:10px;border-radius:18px;border:1px solid rgba(148,163,184,.28);background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(203,213,225,.10));box-shadow:0 20px 44px rgba(2,6,23,.35)}' +
-        '.lp-image-block img{display:block;max-width:100%;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.24);box-shadow:0 14px 34px rgba(2,6,23,.45)}' +
-        '.lp-image-block figcaption{margin-top:10px;padding:9px 12px;border-radius:10px;border:1px dashed rgba(148,163,184,.45);background:rgba(15,23,42,.50);color:#e2e8f0;font-size:13px;line-height:1.6}' +
-        '.article img{max-width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.2)}' +
-        '.form{background:#fff;color:#111827;border-radius:14px;padding:16px;margin-top:16px}' +
+        'body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top left,rgba(14,165,233,.12),transparent 26%),radial-gradient(circle at 85% 10%,rgba(249,115,22,.12),transparent 24%),linear-gradient(180deg,#fbfcfd 0%,#f4f7fb 48%,#eef3f8 100%);color:#0f172a;padding-bottom:108px}' +
+        'body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(148,163,184,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.09) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(180deg,rgba(255,255,255,.8),transparent 78%)}' +
+        '.wrap{max-width:1180px;margin:0 auto;padding:20px;position:relative;z-index:1}' +
+        '.card{background:rgba(255,255,255,.88);border:1px solid rgba(148,163,184,.22);border-radius:22px;padding:24px;box-shadow:0 28px 60px rgba(148,163,184,.18);backdrop-filter:blur(10px)}' +
+        '.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.22);color:#0369a1;font-size:.8rem;font-weight:700;margin-bottom:10px}' +
+        '.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:stretch}' +
+        '.hero article{position:relative;overflow:hidden}.hero article:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-80px;top:-80px;background:radial-gradient(circle,rgba(14,165,233,.14),transparent 68%)}' +
+        '.hero img{width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:16px;box-shadow:0 20px 42px rgba(148,163,184,.18)}' +
+        'h1{margin:0 0 10px;font-size:2.5rem;line-height:1.05;max-width:12ch}' +
+        '.muted{color:#526072}.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}' +
+        '.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.chip{display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.24);background:rgba(255,255,255,.72);color:#334155;font-size:.8rem;font-weight:700}' +
+        '.trust-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}.stat-card{background:rgba(255,255,255,.78);border:1px solid rgba(148,163,184,.22);border-radius:18px;padding:16px;box-shadow:0 16px 36px rgba(148,163,184,.12)}.stat-card span{display:block;color:#64748b;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.stat-card strong{display:block;font-size:1rem;line-height:1.4;color:#0f172a}' +
+        '.btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;color:#fff;font-weight:800;box-shadow:0 14px 28px rgba(0,0,0,.18)}' +
+        '.wa{background:linear-gradient(135deg,#22c55e,#16a34a)}.quote{background:linear-gradient(135deg,#fb923c,#ea580c)}' +
+        '.section-title{margin:0 0 12px;font-size:1.35rem}' +
+        '.article :where(p,li){color:#526072;line-height:1.75}.article ul,.article ol{padding-inline-start:20px}' +
+        '.article h3{margin:18px 0 10px;color:#0f172a}' +
+        '.biz-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:18px}.biz-box{background:rgba(255,255,255,.84);border:1px solid rgba(148,163,184,.22);border-radius:22px;padding:24px;box-shadow:0 20px 42px rgba(148,163,184,.14)}.biz-box h3{margin:0 0 12px;font-size:1.18rem;color:#0f172a}.biz-box ul,.biz-box ol{padding-inline-start:20px;color:#526072;display:grid;gap:10px}' +
+        '.faq-section{margin-top:18px;background:rgba(255,255,255,.88);border:1px solid rgba(148,163,184,.22);border-radius:22px;padding:28px;box-shadow:0 20px 42px rgba(148,163,184,.14)}.faq-section h2{margin:0 0 14px;font-size:1.36rem;color:#0f172a}.faq-list{display:grid;gap:12px}.faq-item{padding:16px 18px;border-radius:16px;border:1px solid rgba(148,163,184,.18);background:rgba(248,250,252,.86)}.faq-item h3{margin:0 0 8px;font-size:1rem;color:#0f172a}.faq-item p{color:#526072;line-height:1.7}' +
+        '.lp-image-block{margin:28px auto;max-width:1040px;padding:10px;border-radius:18px;border:1px solid rgba(148,163,184,.24);background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(241,245,249,.88));box-shadow:0 20px 44px rgba(148,163,184,.14)}' +
+        '.lp-image-block img{display:block;max-width:100%;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid rgba(148,163,184,.18);box-shadow:0 14px 34px rgba(148,163,184,.18)}' +
+        '.lp-image-block figcaption{margin-top:10px;padding:9px 12px;border-radius:10px;border:1px dashed rgba(148,163,184,.38);background:rgba(248,250,252,.88);color:#475569;font-size:13px;line-height:1.6}' +
+        '.article img{max-width:100%;border-radius:10px;border:1px solid rgba(148,163,184,.18);box-shadow:0 18px 40px rgba(148,163,184,.16)}' +
+        '.form{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(248,250,252,.98));color:#111827;border-radius:18px;padding:20px;margin-top:18px;box-shadow:0 20px 40px rgba(148,163,184,.16)}' +
         '.form input,.form textarea{width:100%;margin:6px 0 10px;padding:9px 10px;border:1px solid #e5e7eb;border-radius:8px}' +
-        '.submit{background:#2563eb;color:#fff;border:none;padding:10px 12px;border-radius:8px;font-weight:700}' +
+        '.submit{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:11px 12px;border-radius:10px;font-weight:800}' +
         '.fixed-wa{position:fixed;left:0;right:0;bottom:10px;z-index:99}' +
-        '.fixed-wa-inner{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}' +
-        '.fixed-wa-box{border:1px solid rgba(34,197,94,.55);background:rgba(7,20,39,.92);padding:10px 12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%}' +
+        '.fixed-wa-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}' +
+        '.fixed-wa-box{border:1px solid rgba(148,163,184,.24);background:rgba(255,255,255,.94);padding:12px 14px;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;box-shadow:0 20px 42px rgba(148,163,184,.18)}' +
         '.fixed-wa-box b{font-size:.9rem}' +
+        '.fixed-wa-box span{display:block;color:#526072;font-size:.8rem;margin-top:2px}' +
         '.fixed-wa-box a{background:#22c55e;color:#fff;text-decoration:none;border-radius:8px;padding:9px 12px;font-weight:800}' +
-        '@media(max-width:860px){.hero{grid-template-columns:1fr}.fixed-wa-box{flex-direction:column;align-items:stretch}.fixed-wa-box a{text-align:center}}' +
+        '@media(max-width:860px){.hero,.trust-strip,.biz-grid{grid-template-columns:1fr}h1{max-width:none;font-size:2.1rem}.hero img{min-height:240px}.fixed-wa-box{flex-direction:column;align-items:stretch}.fixed-wa-box a{text-align:center}}' +
         '</style>' +
         '</head><body><main class="wrap">' +
         '<section class="hero card"><article><span class="badge">Industrial fastener quotation page</span><h1>' + escHtml(title) + '</h1>' +
         (subtitle ? '<p class="muted">' + escHtml(subtitle) + '</p>' : '') +
         (summary ? '<p class="muted">' + escHtml(summary) + '</p>' : '') +
+        '<div class="chip-row"><span class="chip">DIN / ISO</span><span class="chip">OEM / ODM</span><span class="chip">Fast Quote</span><span class="chip">Export Supply</span></div>' +
         '<div class="cta"><a class="btn wa" href="' + escHtml(wa) + '" target="_blank" rel="noopener">WhatsApp Now</a><a class="btn quote" href="#lead-form">Get Quote in 24h</a></div></article>' +
         '<aside><img src="' + escHtml(heroUrl) + '" alt="' + escHtml(title) + '"></aside></section>' +
+        '<section class="trust-strip"><article class="stat-card"><span>Response</span><strong>24h quote support</strong></article><article class="stat-card"><span>Production</span><strong>OEM / ODM available</strong></article><article class="stat-card"><span>Standards</span><strong>DIN / ISO / custom drawing</strong></article><article class="stat-card"><span>Delivery</span><strong>Export packing & shipment support</strong></article></section>' +
         '<section class="card" style="margin-top:14px"><h2 class="section-title">' + escHtml(bcLabel) + '</h2><article class="article">' + (body || '<p class="muted">No body content</p>') + '</article></section>' +
+        '<section class="biz-grid"><article class="biz-box"><h3>Why buyers work with WT Fasteners</h3><ul><li>Fast quotation based on drawing, standard or sample</li><li>Stable quality control for repeat international orders</li><li>Flexible support for custom dimensions and finishes</li></ul></article><article class="biz-box"><h3>Simple sourcing process</h3><ol><li>Send drawing, size, standard or sample reference</li><li>Confirm material, finish, quantity and delivery target</li><li>Receive quotation, lead time and packing plan</li></ol></article></section>' +
+        '<section class="faq-section"><h2>Frequently asked questions</h2><div class="faq-list"><article class="faq-item"><h3>Can you quote from drawing or sample?</h3><p>Yes. You can send drawing, standard code, size list or sample reference for evaluation.</p></article><article class="faq-item"><h3>Do you support custom material and surface finish?</h3><p>Yes. Material, hardness, coating and packaging can be discussed based on your order requirement.</p></article><article class="faq-item"><h3>How fast can you respond?</h3><p>For standard inquiries, we usually respond with quotation direction within 24 hours.</p></article></div></section>' +
         '<section class="form" id="lead-form"><h3>Tell us your requirements</h3><p style="color:#4b5563">' + escHtml(summary || 'Submit your request and we will get back shortly.') + '</p><input placeholder="Name"><input placeholder="Email"><input placeholder="Company"><input placeholder="Phone / WhatsApp"><textarea placeholder="Please describe specs, quantity and lead-time request"></textarea><button class="submit">Submit Request</button></section>' +
-        '</main><div class="fixed-wa"><div class="fixed-wa-inner"><div class="fixed-wa-box"><b>Urgent order? Start WhatsApp now</b><a href="' + escHtml(wa) + '" target="_blank" rel="noopener">WhatsApp Now</a></div></div></div></body></html>';
+        '</main><div class="fixed-wa"><div class="fixed-wa-inner"><div class="fixed-wa-box"><div><b>Urgent order? Start WhatsApp now</b><span>Confirm spec and lead-time faster.</span></div><a href="' + escHtml(wa) + '" target="_blank" rel="noopener">WhatsApp Now</a></div></div></div></body></html>';
     }
 
     function openPreview() {
@@ -940,7 +951,7 @@
         }
         if (data.translating) {
           statusEl.className = 'status';
-          statusEl.textContent = '✅ 多语言页面已生成，正在使用 DeepSeek 优化翻译内容...';
+          statusEl.textContent = '✅ 英文页已发布，正在使用 DeepSeek 全文翻译其余语言...';
           setTimeout(function () { window.open(data.url, '_blank'); }, 700);
           startTranslationPolling(data.slug, statusEl);
         } else {

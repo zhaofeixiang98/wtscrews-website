@@ -47,6 +47,19 @@ def he(text):
     )
 
 
+def build_keyword_chips(keywords):
+    parts = []
+    for raw in str(keywords or '').split(','):
+        item = raw.strip()
+        if item and item not in parts:
+            parts.append(item)
+        if len(parts) >= 4:
+            break
+    if not parts:
+        return ''
+    return ''.join(f'<span class="chip">{he(item)}</span>' for item in parts)
+
+
 def safe_chmod(path, mode):
     try:
         os.chmod(path, mode)
@@ -64,15 +77,15 @@ def make_hreflang(slug):
 
 
 LC = {
-    'en': {'html_lang': 'en', 'cta_quote': 'Get Quote in 24h', 'cta_chat': 'WhatsApp Now', 'form_title': 'Tell us your requirements', 'form_btn': 'Submit Request', 'privacy': 'Privacy Policy', 'lead_notice': 'Industrial fastener quotation page'},
-    'zh': {'html_lang': 'zh-CN', 'cta_quote': '24小时内获取报价', 'cta_chat': 'WhatsApp 立即沟通', 'form_title': '提交您的需求', 'form_btn': '提交需求', 'privacy': '隐私政策', 'lead_notice': '工业紧固件报价页面'},
-    'de': {'html_lang': 'de', 'cta_quote': 'Angebot in 24h', 'cta_chat': 'WhatsApp jetzt', 'form_title': 'Senden Sie Ihre Anforderungen', 'form_btn': 'Anfrage senden', 'privacy': 'Datenschutz', 'lead_notice': 'Landingpage für industrielle Verbindungselemente'},
-    'es': {'html_lang': 'es', 'cta_quote': 'Cotización en 24h', 'cta_chat': 'WhatsApp ahora', 'form_title': 'Envíe sus requisitos', 'form_btn': 'Enviar solicitud', 'privacy': 'Política de privacidad', 'lead_notice': 'Página de cotización para tornillería industrial'},
-    'fr': {'html_lang': 'fr', 'cta_quote': 'Devis en 24h', 'cta_chat': 'WhatsApp maintenant', 'form_title': 'Envoyez vos besoins', 'form_btn': 'Envoyer la demande', 'privacy': 'Politique de confidentialité', 'lead_notice': 'Page de devis pour fixations industrielles'},
-    'ar': {'html_lang': 'ar', 'cta_quote': 'احصل على عرض خلال 24 ساعة', 'cta_chat': 'تواصل واتساب الآن', 'form_title': 'أرسل متطلباتك', 'form_btn': 'إرسال الطلب', 'privacy': 'سياسة الخصوصية', 'lead_notice': 'صفحة هبوط لطلبات المثبتات الصناعية'},
-    'id': {'html_lang': 'id', 'cta_quote': 'Dapatkan penawaran 24 jam', 'cta_chat': 'WhatsApp sekarang', 'form_title': 'Kirim kebutuhan Anda', 'form_btn': 'Kirim permintaan', 'privacy': 'Kebijakan privasi', 'lead_notice': 'Halaman penawaran fastener industri'},
-    'ja': {'html_lang': 'ja', 'cta_quote': '24時間以内に見積回答', 'cta_chat': 'WhatsApp で相談', 'form_title': 'ご要望を送信', 'form_btn': '送信する', 'privacy': 'プライバシーポリシー', 'lead_notice': '工業用ファスナー見積ページ'},
-    'ko': {'html_lang': 'ko', 'cta_quote': '24시간 내 견적 회신', 'cta_chat': 'WhatsApp 바로 문의', 'form_title': '요구사항을 보내주세요', 'form_btn': '문의 제출', 'privacy': '개인정보처리방침', 'lead_notice': '산업용 패스너 견적 랜딩페이지'},
+    'en': {'html_lang': 'en', 'cta_quote': 'Get Quote in 24h', 'cta_chat': 'WhatsApp Now', 'form_title': 'Tell us your requirements', 'form_btn': 'Submit Request', 'privacy': 'Privacy Policy', 'lead_notice': 'Industrial fastener quotation page', 'name_ph': 'Name *', 'email_ph': 'Email *', 'company_ph': 'Company', 'phone_ph': 'Phone / WhatsApp', 'message_ph': 'Please describe specs, quantity and lead-time request *', 'sticky_note': 'Urgent order or restocking need?', 'sticky_hint': 'WhatsApp is usually the fastest way to confirm specs and lead-time.', 'trust_title': 'Supply capability at a glance', 'strength_1_k': 'Response', 'strength_1_v': '24h quote support', 'strength_2_k': 'Production', 'strength_2_v': 'OEM / ODM available', 'strength_3_k': 'Standards', 'strength_3_v': 'DIN / ISO / custom drawing', 'strength_4_k': 'Delivery', 'strength_4_v': 'Export packing & shipment support', 'why_title': 'Why buyers work with WT Fasteners', 'why_1': 'Fast quotation based on drawing, standard or sample', 'why_2': 'Stable quality control for repeat international orders', 'why_3': 'Flexible support for custom dimensions and finishes', 'process_title': 'Simple sourcing process', 'process_1': 'Send drawing, size, standard or sample reference', 'process_2': 'Confirm material, finish, quantity and delivery target', 'process_3': 'Receive quotation, lead time and packing plan', 'faq_title': 'Frequently asked questions', 'faq_q1': 'Can you quote from drawing or sample?', 'faq_a1': 'Yes. You can send drawing, standard code, size list or sample reference for evaluation.', 'faq_q2': 'Do you support custom material and surface finish?', 'faq_a2': 'Yes. Material, hardness, coating and packaging can be discussed based on your order requirement.', 'faq_q3': 'How fast can you respond?', 'faq_a3': 'For standard inquiries, we usually respond with quotation direction within 24 hours.'},
+    'zh': {'html_lang': 'zh-CN', 'cta_quote': '24小时内获取报价', 'cta_chat': 'WhatsApp 立即沟通', 'form_title': '提交您的需求', 'form_btn': '提交需求', 'privacy': '隐私政策', 'lead_notice': '工业紧固件报价页面', 'name_ph': '姓名 *', 'email_ph': '邮箱 *', 'company_ph': '公司名称', 'phone_ph': '电话 / WhatsApp', 'message_ph': '请填写规格、数量、交期要求 *', 'sticky_note': '急单或补货需求？', 'sticky_hint': '建议直接通过 WhatsApp 沟通，确认规格和交期更快。', 'trust_title': '供应能力一目了然', 'strength_1_k': '响应速度', 'strength_1_v': '24小时内报价支持', 'strength_2_k': '生产能力', 'strength_2_v': '支持 OEM / ODM', 'strength_3_k': '执行标准', 'strength_3_v': 'DIN / ISO / 来图定制', 'strength_4_k': '交付支持', 'strength_4_v': '支持出口包装与出货', 'why_title': '为什么采购商选择 WT Fasteners', 'why_1': '可根据图纸、标准或样品快速报价', 'why_2': '适合稳定复购的国际订单质量控制', 'why_3': '支持非标尺寸与表面处理定制', 'process_title': '采购流程简单清晰', 'process_1': '发送图纸、尺寸、标准或样品信息', 'process_2': '确认材质、表面处理、数量和交期', 'process_3': '获取报价、交期和包装方案', 'faq_title': '常见问题', 'faq_q1': '可以根据图纸或样品报价吗？', 'faq_a1': '可以。您可发送图纸、标准编号、尺寸清单或样品参考供我们评估。', 'faq_q2': '支持定制材质和表面处理吗？', 'faq_a2': '支持。材质、硬度、电镀和包装都可以根据订单需求沟通确认。', 'faq_q3': '一般多久回复？', 'faq_a3': '标准询盘通常可在 24 小时内给出初步报价方向。'},
+    'de': {'html_lang': 'de', 'cta_quote': 'Angebot in 24h', 'cta_chat': 'WhatsApp jetzt', 'form_title': 'Senden Sie Ihre Anforderungen', 'form_btn': 'Anfrage senden', 'privacy': 'Datenschutz', 'lead_notice': 'Landingpage für industrielle Verbindungselemente', 'name_ph': 'Name *', 'email_ph': 'E-Mail *', 'company_ph': 'Unternehmen', 'phone_ph': 'Telefon / WhatsApp', 'message_ph': 'Bitte Spezifikation, Menge und Lieferzeit angeben *', 'sticky_note': 'Dringende Bestellung oder Nachschub?', 'sticky_hint': 'Per WhatsApp lassen sich Spezifikation und Lieferzeit meist am schnellsten abstimmen.', 'trust_title': 'Lieferkompetenz auf einen Blick', 'strength_1_k': 'Reaktion', 'strength_1_v': 'Angebotsunterstützung in 24 Std.', 'strength_2_k': 'Produktion', 'strength_2_v': 'OEM / ODM verfügbar', 'strength_3_k': 'Normen', 'strength_3_v': 'DIN / ISO / Zeichnung nach Maß', 'strength_4_k': 'Lieferung', 'strength_4_v': 'Exportverpackung und Versandunterstützung', 'why_title': 'Warum Einkäufer mit WT Fasteners arbeiten', 'why_1': 'Schnelles Angebot auf Basis von Zeichnung, Norm oder Muster', 'why_2': 'Stabile Qualitätskontrolle für wiederkehrende Exportaufträge', 'why_3': 'Flexible Unterstützung für Sondermaße und Oberflächen', 'process_title': 'Einfacher Beschaffungsprozess', 'process_1': 'Zeichnung, Größe, Norm oder Muster senden', 'process_2': 'Material, Oberfläche, Menge und Lieferziel bestätigen', 'process_3': 'Angebot, Lieferzeit und Verpackungsplan erhalten'},
+    'es': {'html_lang': 'es', 'cta_quote': 'Cotización en 24h', 'cta_chat': 'WhatsApp ahora', 'form_title': 'Envíe sus requisitos', 'form_btn': 'Enviar solicitud', 'privacy': 'Política de privacidad', 'lead_notice': 'Página de cotización para tornillería industrial', 'name_ph': 'Nombre *', 'email_ph': 'Correo electrónico *', 'company_ph': 'Empresa', 'phone_ph': 'Teléfono / WhatsApp', 'message_ph': 'Describa especificaciones, cantidad y plazo de entrega *', 'sticky_note': '¿Pedido urgente o reabastecimiento?', 'sticky_hint': 'WhatsApp suele ser la forma más rápida de confirmar especificaciones y plazo.', 'trust_title': 'Capacidad de suministro de un vistazo', 'strength_1_k': 'Respuesta', 'strength_1_v': 'Soporte de cotización en 24 h', 'strength_2_k': 'Producción', 'strength_2_v': 'OEM / ODM disponible', 'strength_3_k': 'Normas', 'strength_3_v': 'DIN / ISO / plano personalizado', 'strength_4_k': 'Entrega', 'strength_4_v': 'Soporte de empaque y envío de exportación', 'why_title': 'Por qué los compradores trabajan con WT Fasteners', 'why_1': 'Cotización rápida según plano, norma o muestra', 'why_2': 'Control de calidad estable para pedidos internacionales repetidos', 'why_3': 'Soporte flexible para medidas y acabados personalizados', 'process_title': 'Proceso de compra simple', 'process_1': 'Envíe plano, medida, norma o referencia de muestra', 'process_2': 'Confirme material, acabado, cantidad y objetivo de entrega', 'process_3': 'Reciba cotización, plazo de entrega y plan de embalaje'},
+    'fr': {'html_lang': 'fr', 'cta_quote': 'Devis en 24h', 'cta_chat': 'WhatsApp maintenant', 'form_title': 'Envoyez vos besoins', 'form_btn': 'Envoyer la demande', 'privacy': 'Politique de confidentialité', 'lead_notice': 'Page de devis pour fixations industrielles', 'name_ph': 'Nom *', 'email_ph': 'E-mail *', 'company_ph': 'Entreprise', 'phone_ph': 'Téléphone / WhatsApp', 'message_ph': 'Merci de préciser spécifications, quantité et délai *', 'sticky_note': 'Commande urgente ou réassort ?', 'sticky_hint': 'WhatsApp est souvent le moyen le plus rapide pour confirmer les spécifications et le délai.', 'trust_title': 'Capacité d’approvisionnement en un coup d’œil', 'strength_1_k': 'Réponse', 'strength_1_v': 'Support devis sous 24 h', 'strength_2_k': 'Production', 'strength_2_v': 'OEM / ODM disponible', 'strength_3_k': 'Normes', 'strength_3_v': 'DIN / ISO / plan sur mesure', 'strength_4_k': 'Livraison', 'strength_4_v': 'Support emballage export et expédition', 'why_title': 'Pourquoi les acheteurs choisissent WT Fasteners', 'why_1': 'Devis rapide à partir d’un plan, d’une norme ou d’un échantillon', 'why_2': 'Contrôle qualité stable pour les commandes export récurrentes', 'why_3': 'Support flexible pour dimensions et finitions personnalisées', 'process_title': 'Processus d’achat simple', 'process_1': 'Envoyez plan, dimension, norme ou référence échantillon', 'process_2': 'Confirmez matière, finition, quantité et délai cible', 'process_3': 'Recevez devis, délai et plan d’emballage'},
+    'ar': {'html_lang': 'ar', 'cta_quote': 'احصل على عرض خلال 24 ساعة', 'cta_chat': 'تواصل واتساب الآن', 'form_title': 'أرسل متطلباتك', 'form_btn': 'إرسال الطلب', 'privacy': 'سياسة الخصوصية', 'lead_notice': 'صفحة هبوط لطلبات المثبتات الصناعية', 'name_ph': 'الاسم *', 'email_ph': 'البريد الإلكتروني *', 'company_ph': 'اسم الشركة', 'phone_ph': 'الهاتف / واتساب', 'message_ph': 'يرجى كتابة المواصفات والكمية وموعد التسليم *', 'sticky_note': 'طلب عاجل أو إعادة توريد؟', 'sticky_hint': 'غالبا يكون واتساب أسرع طريقة لتأكيد المواصفات ومدة التسليم.', 'trust_title': 'قدرة التوريد باختصار', 'strength_1_k': 'الاستجابة', 'strength_1_v': 'دعم عرض السعر خلال 24 ساعة', 'strength_2_k': 'الإنتاج', 'strength_2_v': 'يتوفر OEM / ODM', 'strength_3_k': 'المعايير', 'strength_3_v': 'DIN / ISO / تصنيع حسب الرسم', 'strength_4_k': 'التسليم', 'strength_4_v': 'دعم التعبئة والشحن للتصدير', 'why_title': 'لماذا يعمل المشترون مع WT Fasteners', 'why_1': 'عرض سعر سريع بناء على الرسم أو المعيار أو العينة', 'why_2': 'رقابة جودة مستقرة للطلبات الدولية المتكررة', 'why_3': 'دعم مرن للأبعاد والطلاءات المخصصة', 'process_title': 'خطوات شراء بسيطة', 'process_1': 'أرسل الرسم أو المقاس أو المعيار أو مرجع العينة', 'process_2': 'أكد المادة والمعالجة والكمية وموعد التسليم', 'process_3': 'استلم عرض السعر ومدة التوريد وخطة التعبئة'},
+    'id': {'html_lang': 'id', 'cta_quote': 'Dapatkan penawaran 24 jam', 'cta_chat': 'WhatsApp sekarang', 'form_title': 'Kirim kebutuhan Anda', 'form_btn': 'Kirim permintaan', 'privacy': 'Kebijakan privasi', 'lead_notice': 'Halaman penawaran fastener industri', 'name_ph': 'Nama *', 'email_ph': 'Email *', 'company_ph': 'Perusahaan', 'phone_ph': 'Telepon / WhatsApp', 'message_ph': 'Jelaskan spesifikasi, jumlah, dan kebutuhan lead time *', 'sticky_note': 'Butuh pesanan cepat atau restock?', 'sticky_hint': 'WhatsApp biasanya cara tercepat untuk konfirmasi spesifikasi dan lead time.', 'trust_title': 'Kemampuan suplai sekilas', 'strength_1_k': 'Respons', 'strength_1_v': 'Dukungan penawaran 24 jam', 'strength_2_k': 'Produksi', 'strength_2_v': 'OEM / ODM tersedia', 'strength_3_k': 'Standar', 'strength_3_v': 'DIN / ISO / sesuai gambar', 'strength_4_k': 'Pengiriman', 'strength_4_v': 'Dukungan packing ekspor & pengiriman', 'why_title': 'Mengapa pembeli memilih WT Fasteners', 'why_1': 'Penawaran cepat berdasarkan gambar, standar, atau sampel', 'why_2': 'Kontrol kualitas stabil untuk pesanan ekspor berulang', 'why_3': 'Dukungan fleksibel untuk ukuran dan finishing khusus', 'process_title': 'Proses pembelian sederhana', 'process_1': 'Kirim gambar, ukuran, standar, atau referensi sampel', 'process_2': 'Konfirmasi material, finishing, jumlah, dan target pengiriman', 'process_3': 'Terima penawaran, lead time, dan rencana packing'},
+    'ja': {'html_lang': 'ja', 'cta_quote': '24時間以内に見積回答', 'cta_chat': 'WhatsApp で相談', 'form_title': 'ご要望を送信', 'form_btn': '送信する', 'privacy': 'プライバシーポリシー', 'lead_notice': '工業用ファスナー見積ページ', 'name_ph': 'お名前 *', 'email_ph': 'メールアドレス *', 'company_ph': '会社名', 'phone_ph': '電話 / WhatsApp', 'message_ph': '仕様・数量・希望納期をご記入ください *', 'sticky_note': '至急案件や補充のご相談ですか？', 'sticky_hint': '仕様や納期確認は WhatsApp が最も早いことが多いです。', 'trust_title': '供給対応力をひと目で', 'strength_1_k': '対応', 'strength_1_v': '24時間以内の見積対応', 'strength_2_k': '生産', 'strength_2_v': 'OEM / ODM 対応', 'strength_3_k': '規格', 'strength_3_v': 'DIN / ISO / 図面対応', 'strength_4_k': '出荷', 'strength_4_v': '輸出梱包と出荷サポート', 'why_title': 'WT Fasteners が選ばれる理由', 'why_1': '図面・規格・サンプルに基づく迅速な見積', 'why_2': '継続的な海外注文に向けた安定した品質管理', 'why_3': '特注寸法や表面処理にも柔軟対応', 'process_title': 'シンプルな調達フロー', 'process_1': '図面、サイズ、規格、またはサンプル情報を送信', 'process_2': '材質、表面処理、数量、納期目標を確認', 'process_3': '見積、納期、梱包案を受領'},
+    'ko': {'html_lang': 'ko', 'cta_quote': '24시간 내 견적 회신', 'cta_chat': 'WhatsApp 바로 문의', 'form_title': '요구사항을 보내주세요', 'form_btn': '문의 제출', 'privacy': '개인정보처리방침', 'lead_notice': '산업용 패스너 견적 랜딩페이지', 'name_ph': '이름 *', 'email_ph': '이메일 *', 'company_ph': '회사명', 'phone_ph': '전화 / WhatsApp', 'message_ph': '사양, 수량, 납기 요청을 입력해 주세요 *', 'sticky_note': '긴급 주문이나 재보충이 필요하신가요?', 'sticky_hint': '사양과 납기 확인은 WhatsApp 이 가장 빠른 경우가 많습니다.', 'trust_title': '공급 역량 한눈에 보기', 'strength_1_k': '응답', 'strength_1_v': '24시간 견적 지원', 'strength_2_k': '생산', 'strength_2_v': 'OEM / ODM 가능', 'strength_3_k': '규격', 'strength_3_v': 'DIN / ISO / 도면 맞춤', 'strength_4_k': '납품', 'strength_4_v': '수출 포장 및 선적 지원', 'why_title': 'WT Fasteners를 선택하는 이유', 'why_1': '도면, 규격 또는 샘플 기준의 빠른 견적', 'why_2': '반복 해외 주문에 적합한 안정적 품질관리', 'why_3': '비표준 치수와 표면처리도 유연하게 지원', 'process_title': '간단한 구매 프로세스', 'process_1': '도면, 치수, 규격 또는 샘플 정보를 전달', 'process_2': '재질, 표면처리, 수량 및 납기 목표 확인', 'process_3': '견적, 납기 및 포장 계획 수령'},
 }
 
 
@@ -82,6 +95,28 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
     dir_attr = ' dir="rtl"' if lang == 'ar' else ''
     image_src = '../../../images/' + hero_image if hero_image else '../../../images/banner-hero.webp'
     head_extra = ('\n' + extra_head + '\n') if extra_head else ''
+    keyword_chips = build_keyword_chips(keywords)
+    trust_cards = ''.join([
+        f'<article class="stat-card"><span>{he(c["strength_1_k"])}</span><strong>{he(c["strength_1_v"])}</strong></article>',
+        f'<article class="stat-card"><span>{he(c["strength_2_k"])}</span><strong>{he(c["strength_2_v"])}</strong></article>',
+        f'<article class="stat-card"><span>{he(c["strength_3_k"])}</span><strong>{he(c["strength_3_v"])}</strong></article>',
+        f'<article class="stat-card"><span>{he(c["strength_4_k"])}</span><strong>{he(c["strength_4_v"])}</strong></article>',
+    ])
+    why_cards = ''.join([
+        f'<li>{he(c["why_1"])}</li>',
+        f'<li>{he(c["why_2"])}</li>',
+        f'<li>{he(c["why_3"])}</li>',
+    ])
+    process_steps = ''.join([
+        f'<li>{he(c["process_1"])}</li>',
+        f'<li>{he(c["process_2"])}</li>',
+        f'<li>{he(c["process_3"])}</li>',
+    ])
+    faq_items = ''.join([
+        f'<article class="faq-item"><h3>{he(c.get("faq_q1", ""))}</h3><p>{he(c.get("faq_a1", ""))}</p></article>',
+        f'<article class="faq-item"><h3>{he(c.get("faq_q2", ""))}</h3><p>{he(c.get("faq_a2", ""))}</p></article>',
+        f'<article class="faq-item"><h3>{he(c.get("faq_q3", ""))}</h3><p>{he(c.get("faq_a3", ""))}</p></article>',
+    ])
 
     return f'''<!DOCTYPE html>
 <html lang="{html_lang}"{dir_attr}>
@@ -102,127 +137,189 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
   <meta property="og:image" content="https://wtscrews.com/images/{he(hero_image) if hero_image else 'banner-hero.png'}">{head_extra}
   <style>
     :root {{
-      --bg: #071427;
-      --panel: #10223f;
-      --line: rgba(255,255,255,.16);
-      --text: #e8f0ff;
-      --muted: #b8c6de;
+      --bg: #f6f7f4;
+      --panel: rgba(255, 255, 255, 0.88);
+      --panel-strong: rgba(248, 250, 252, 0.96);
+      --line: rgba(148, 163, 184, 0.22);
+      --text: #0f172a;
+      --muted: #526072;
       --cta: #22c55e;
-      --cta2: #2563eb;
-      --radius: 16px;
+      --cta2: #f97316;
+      --accent: #0ea5e9;
+      --accent-soft: rgba(14, 165, 233, 0.1);
+      --radius: 18px;
+      --shadow: 0 28px 60px rgba(148, 163, 184, 0.18);
     }}
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{
       font-family: "Inter","PingFang SC","Noto Sans SC",sans-serif;
-      background: linear-gradient(180deg,#071427 0%,#081a33 100%);
+      background:
+        radial-gradient(circle at top left, rgba(14,165,233,.12), transparent 26%),
+        radial-gradient(circle at 85% 10%, rgba(249,115,22,.12), transparent 24%),
+        linear-gradient(180deg,#fbfcfd 0%,#f4f7fb 48%,#eef3f8 100%);
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 88px;
+      padding-bottom: 108px;
     }}
-    .wrap {{ max-width: 1100px; margin: 0 auto; padding: 0 18px; }}
-    .hero {{ padding: 28px 0 34px; }}
-    .hero-grid {{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }}
+    body::before {{
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(148,163,184,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.09) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(180deg, rgba(255,255,255,.8), transparent 78%);
+    }}
+    .wrap {{ max-width: 1180px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }}
+    .hero {{ padding: 34px 0 22px; }}
+    .hero-grid {{ display: grid; grid-template-columns: 1.08fr .92fr; gap: 22px; align-items: stretch; }}
     .hero-copy, .hero-media, .section, .form-box {{
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: 0 16px 42px rgba(0,0,0,.28);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }}
-    .hero-copy {{ padding: 24px; }}
+    .hero-copy {{ padding: 28px; position: relative; overflow: hidden; }}
+    .hero-copy::after {{
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      right: -80px;
+      top: -80px;
+      background: radial-gradient(circle, rgba(14,165,233,.14), transparent 68%);
+      pointer-events: none;
+    }}
     .hero-copy .badge {{
       display: inline-block;
-      padding: 6px 11px;
+      padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(34,197,94,.52);
-      background: rgba(34,197,94,.16);
-      color: #8af0b1;
+      border: 1px solid rgba(14,165,233,.22);
+      background: var(--accent-soft);
+      color: #0369a1;
       font-size: .82rem;
       font-weight: 700;
       margin-bottom: 12px;
     }}
-    h1 {{ font-size: clamp(1.7rem, 4vw, 2.7rem); line-height: 1.15; margin-bottom: 10px; }}
-    .subtitle {{ color: var(--muted); margin-bottom: 10px; }}
-    .summary {{ color: var(--muted); margin-bottom: 16px; }}
+    h1 {{ font-size: clamp(2rem, 4.4vw, 3.35rem); line-height: 1.05; margin-bottom: 12px; max-width: 12ch; }}
+    .subtitle {{ color: #1e293b; margin-bottom: 10px; font-size: 1.02rem; }}
+    .summary {{ color: var(--muted); margin-bottom: 18px; font-size: 1rem; max-width: 60ch; }}
+    .chip-row {{ display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 18px; }}
+    .chip {{
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.24);
+      background: rgba(255,255,255,.72);
+      color: #334155;
+      font-size: .8rem;
+      font-weight: 700;
+    }}
     .cta {{ display: flex; gap: 10px; flex-wrap: wrap; }}
     .btn {{
       display: inline-flex;
       justify-content: center;
       align-items: center;
       border: 0;
-      border-radius: 11px;
+      border-radius: 12px;
       text-decoration: none;
       color: #fff;
-      font-weight: 700;
-      padding: 11px 16px;
+      font-weight: 800;
+      padding: 12px 18px;
+      box-shadow: 0 14px 28px rgba(0,0,0,.18);
     }}
-    .btn.chat {{ background: var(--cta); }}
-    .btn.quote {{ background: var(--cta2); }}
-    .hero-media {{ padding: 12px; }}
-    .hero-media img {{ width: 100%; height: 100%; min-height: 260px; object-fit: cover; border-radius: 12px; }}
-    .section {{ margin-top: 18px; padding: 24px; }}
-    .section h2 {{ margin-bottom: 12px; font-size: 1.35rem; }}
-    .article-body :where(p,li) {{ color: var(--muted); margin-bottom: 10px; }}
-    .article-body :where(h2,h3,h4) {{ margin: 16px 0 10px; }}
-    .article-body img {{ max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }}
-    .form-box {{ margin-top: 18px; padding: 20px; }}
-    .form-box h3 {{ margin-bottom: 8px; }}
-    .form-box p {{ color: var(--muted); margin-bottom: 10px; }}
+    .btn.chat {{ background: linear-gradient(135deg, #22c55e, #16a34a); }}
+    .btn.quote {{ background: linear-gradient(135deg, #fb923c, #ea580c); }}
+    .hero-media {{ padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); }}
+    .hero-media img {{ width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }}
+    .trust-strip {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }}
+    .stat-card {{ background: rgba(255,255,255,.78); border: 1px solid rgba(148,163,184,.22); border-radius: 18px; padding: 16px; box-shadow: 0 16px 36px rgba(148,163,184,.12); }}
+    .stat-card span {{ display: block; color: #64748b; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }}
+    .stat-card strong {{ display: block; font-size: 1rem; line-height: 1.4; color: #0f172a; }}
+    .section {{ margin-top: 18px; padding: 28px; }}
+    .section h2 {{ margin-bottom: 14px; font-size: 1.5rem; }}
+    .article-body :where(p,li) {{ color: var(--muted); margin-bottom: 12px; font-size: 1rem; }}
+    .article-body :where(h2,h3,h4) {{ margin: 20px 0 12px; color: #0f172a; }}
+    .article-body ul, .article-body ol {{ padding-inline-start: 20px; }}
+    .article-body img {{ max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(148,163,184,.16); }}
+    .biz-grid {{ display: grid; grid-template-columns: 1.05fr .95fr; gap: 18px; margin-top: 18px; }}
+    .biz-box {{ background: rgba(255,255,255,.84); border: 1px solid rgba(148,163,184,.22); border-radius: 22px; padding: 24px; box-shadow: 0 20px 42px rgba(148,163,184,.14); }}
+    .biz-box h3 {{ margin-bottom: 12px; font-size: 1.18rem; color: #0f172a; }}
+    .biz-box ul, .biz-box ol {{ padding-inline-start: 20px; color: #526072; display: grid; gap: 10px; }}
+    .faq-section {{ margin-top: 18px; background: rgba(255,255,255,.88); border: 1px solid rgba(148,163,184,.22); border-radius: 22px; padding: 28px; box-shadow: 0 20px 42px rgba(148,163,184,.14); }}
+    .faq-section h2 {{ margin-bottom: 14px; font-size: 1.36rem; color: #0f172a; }}
+    .faq-list {{ display: grid; gap: 12px; }}
+    .faq-item {{ padding: 16px 18px; border-radius: 16px; border: 1px solid rgba(148,163,184,.18); background: rgba(248,250,252,.86); }}
+    .faq-item h3 {{ margin-bottom: 8px; font-size: 1rem; color: #0f172a; }}
+    .faq-item p {{ color: #526072; line-height: 1.7; }}
+    .form-box {{ margin-top: 18px; padding: 24px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,247,252,.95)); color: #0f172a; }}
+    .form-box h3 {{ margin-bottom: 8px; font-size: 1.34rem; color: #0f172a; }}
+    .form-box p {{ color: #475569; margin-bottom: 12px; }}
     .row {{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }}
     input, textarea {{
       width: 100%;
-      border: 1px solid rgba(255,255,255,.24);
-      border-radius: 10px;
-      padding: 10px 11px;
-      background: rgba(255,255,255,.06);
-      color: var(--text);
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 11px 12px;
+      background: #fff;
+      color: #0f172a;
       font-size: .95rem;
     }}
     textarea {{ min-height: 110px; resize: vertical; }}
     .field {{ margin-bottom: 10px; }}
     .submit-btn {{
       width: 100%;
-      background: var(--cta);
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: #fff;
       border: 0;
-      border-radius: 10px;
-      padding: 12px 14px;
+      border-radius: 12px;
+      padding: 13px 14px;
       font-weight: 800;
       cursor: pointer;
+      box-shadow: 0 14px 28px rgba(37,99,235,.18);
     }}
     .fixed-wa {{
       position: fixed;
       left: 0; right: 0; bottom: 12px;
       margin: 0 auto;
-      max-width: 1100px;
-      padding: 0 18px;
+      max-width: 1180px;
+      padding: 0 20px;
       z-index: 90;
     }}
     .fixed-wa-inner {{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(34,197,94,.52);
-      background: rgba(7,20,39,.9);
-      border-radius: 14px;
-      padding: 10px 12px;
-      backdrop-filter: blur(6px);
+      gap: 14px;
+      border: 1px solid rgba(148,163,184,.24);
+      background: rgba(255,255,255,.94);
+      border-radius: 16px;
+      padding: 12px 14px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 42px rgba(148,163,184,.18);
     }}
-    .fixed-wa b {{ font-size: .92rem; }}
+    .sticky-copy {{ display: grid; gap: 2px; }}
+    .fixed-wa b {{ font-size: .96rem; }}
+    .sticky-copy span {{ color: var(--muted); font-size: .82rem; }}
     .fixed-wa a {{
       text-decoration: none;
       color: #fff;
-      background: var(--cta);
-      border-radius: 9px;
-      padding: 10px 13px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 10px;
+      padding: 11px 14px;
       font-weight: 800;
     }}
-    .foot {{ color: var(--muted); font-size: .84rem; margin: 20px 0 14px; }}
+    .foot {{ color: var(--muted); font-size: .84rem; margin: 20px 0 14px; text-align: center; }}
     @media (max-width: 860px) {{
-      .hero-grid, .row {{ grid-template-columns: 1fr; }}
+      .hero-grid, .row, .biz-grid, .trust-strip {{ grid-template-columns: 1fr; }}
+      h1 {{ max-width: none; }}
+      .hero-media img {{ min-height: 260px; }}
       .fixed-wa-inner {{ flex-direction: column; align-items: stretch; }}
       .fixed-wa a {{ text-align: center; }}
-      body {{ padding-bottom: 130px; }}
+      body {{ padding-bottom: 148px; }}
     }}
   </style>
 </head>
@@ -235,6 +332,7 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
           <h1>{he(title)}</h1>
           <p class="subtitle">{he(subtitle)}</p>
           <p class="summary">{he(summary)}</p>
+          <div class="chip-row">{keyword_chips}</div>
           <div class="cta">
             <a class="btn chat" href="{he(whatsapp_url)}" target="_blank" rel="noopener">{he(c['cta_chat'])}</a>
             <a class="btn quote" href="#lead-form">{he(c['cta_quote'])}</a>
@@ -244,6 +342,9 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
           <img src="{he(image_src)}" alt="{he(title)}" loading="eager" fetchpriority="high">
         </aside>
       </div>
+      <div class="trust-strip" aria-label="{he(c['trust_title'])}">
+        {trust_cards}
+      </div>
     </section>
 
     <section class="section">
@@ -251,6 +352,22 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
       <article class="article-body">
 {body}
       </article>
+    </section>
+
+    <section class="biz-grid">
+      <article class="biz-box">
+        <h3>{he(c['why_title'])}</h3>
+        <ul>{why_cards}</ul>
+      </article>
+      <article class="biz-box">
+        <h3>{he(c['process_title'])}</h3>
+        <ol>{process_steps}</ol>
+      </article>
+    </section>
+
+    <section class="faq-section">
+      <h2>{he(c.get('faq_title', 'Frequently asked questions'))}</h2>
+      <div class="faq-list">{faq_items}</div>
     </section>
 
     <section class="form-box" id="lead-form">
@@ -273,14 +390,14 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
         <input type="hidden" name="page_title" value="">
         <input type="hidden" name="referrer" value="">
         <div class="row">
-          <div class="field"><input type="text" name="name" placeholder="Name *" required></div>
-          <div class="field"><input type="email" name="email" placeholder="Email *" required></div>
+          <div class="field"><input type="text" name="name" placeholder="{he(c['name_ph'])}" required></div>
+          <div class="field"><input type="email" name="email" placeholder="{he(c['email_ph'])}" required></div>
         </div>
         <div class="row">
-          <div class="field"><input type="text" name="company" placeholder="Company"></div>
-          <div class="field"><input type="tel" name="phone" placeholder="Phone / WhatsApp"></div>
+          <div class="field"><input type="text" name="company" placeholder="{he(c['company_ph'])}"></div>
+          <div class="field"><input type="tel" name="phone" placeholder="{he(c['phone_ph'])}"></div>
         </div>
-        <div class="field"><textarea name="message" placeholder="Please describe specs, quantity and lead-time request *" required></textarea></div>
+        <div class="field"><textarea name="message" placeholder="{he(c['message_ph'])}" required></textarea></div>
         <button class="submit-btn" type="submit">{he(c['form_btn'])}</button>
       </form>
     </section>
@@ -290,7 +407,10 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
 
   <div class="fixed-wa">
     <div class="fixed-wa-inner">
-      <b>{he(c['cta_quote'])}</b>
+      <div class="sticky-copy">
+        <b>{he(c['sticky_note'])}</b>
+        <span>{he(c['sticky_hint'])}</span>
+      </div>
       <a href="{he(whatsapp_url)}" target="_blank" rel="noopener">{he(c['cta_chat'])}</a>
     </div>
   </div>
@@ -510,6 +630,7 @@ source_fields = {
 
 errors = []
 created = []
+prepared_lang_payloads = []
 
 def values_for_lang(lang):
     return {
@@ -522,45 +643,57 @@ def values_for_lang(lang):
         'body': g(form, f'{lang}_body') or source_fields['body'],
     }
 
-if auto_translate:
-    # Save all languages immediately (non-EN uses current/manual content fallback),
-    # then async translate non-EN languages in background to ensure all URLs exist.
+target_langs = list(LANGS)
+if translated_langs_present:
+    target_langs = ['en'] + [l for l in LANGS if l in translated_langs_set]
+
+for lang in target_langs:
+    title_input = g(form, f'{lang}_title')
+    subtitle_input = g(form, f'{lang}_subtitle')
+    summary_input = g(form, f'{lang}_summary')
+    meta_input = g(form, f'{lang}_meta_desc')
+    kw_input = g(form, f'{lang}_keywords')
+    bc_input = g(form, f'{lang}_bc_label')
+    body_input = g(form, f'{lang}_body')
+    has_manual_localized_input = any([title_input, subtitle_input, summary_input, meta_input, kw_input, bc_input, body_input])
+
+    # Match article/product flow: untouched non-EN pages wait for DeepSeek.
+    if auto_translate and lang != 'en' and not has_manual_localized_input:
+        continue
+
+    data = {
+        'lang': lang,
+        'title': title_input or source_fields['title'],
+        'subtitle': subtitle_input or source_fields['subtitle'],
+        'summary': summary_input or source_fields['summary'],
+        'meta_desc': meta_input or source_fields['meta_desc'],
+        'keywords': kw_input or source_fields['keywords'],
+        'bc_label': bc_input or source_fields['bc_label'],
+        'body': body_input or source_fields['body'],
+    }
+    prepared_lang_payloads.append(data)
+
+for payload in prepared_lang_payloads:
     try:
         html = build_html(
-            'en', slug,
-            source_fields['title'], source_fields['subtitle'], source_fields['summary'],
-            source_fields['meta_desc'], source_fields['keywords'], source_fields['bc_label'],
-            source_fields['body'], hero_image, whatsapp_url, extra_head
+            payload['lang'], slug,
+            payload['title'], payload['subtitle'], payload['summary'],
+            payload['meta_desc'], payload['keywords'], payload['bc_label'],
+            payload['body'], hero_image, whatsapp_url, extra_head
         )
-        html_path = save_one('en', slug, html)
-        verify_error = verify_landing_output('en', slug, html_path)
+        html_path = save_one(payload['lang'], slug, html)
+        verify_error = verify_landing_output(payload['lang'], slug, html_path)
         if verify_error:
             errors.append(verify_error)
-        else:
-            created.append('en')
+            continue
+        created.append(payload['lang'])
     except Exception as exc:
-        respond({'success': False, 'error': f'en: {exc}'})
+        errors.append(f"{payload['lang']}: {exc}")
 
-    for lang in [l for l in LANGS if l != 'en']:
-        try:
-            data = values_for_lang(lang)
-            html = build_html(
-                lang, slug,
-                data['title'], data['subtitle'], data['summary'],
-                data['meta_desc'], data['keywords'], data['bc_label'],
-                data['body'], hero_image, whatsapp_url, extra_head
-            )
-            html_path = save_one(lang, slug, html)
-            verify_error = verify_landing_output(lang, slug, html_path)
-            if verify_error:
-                errors.append(verify_error)
-                continue
-            created.append(lang)
-        except Exception as exc:
-            errors.append(f'{lang}: {exc}')
-
+fork_error = None
+translating = False
+if auto_translate:
     translating = True
-    fork_error = None
     try:
         jobs_dir = os.path.join(BASE_DIR, '.translate-jobs')
         os.makedirs(jobs_dir, exist_ok=True)
@@ -586,7 +719,6 @@ if auto_translate:
             'base_dir': BASE_DIR,
             'article_save_path': os.path.abspath(__file__),
             'status_path': status_path,
-            # below fields are passed by translate-worker to this script on second pass
             'extra_params': {
                 'whatsapp_url': whatsapp_url,
                 'hero_image': hero_image,
@@ -607,28 +739,6 @@ if auto_translate:
     except Exception as exc:
         translating = False
         fork_error = str(exc)
-else:
-    translating = False
-    target_langs = list(LANGS)
-    if translated_langs_present:
-        target_langs = ['en'] + [l for l in LANGS if l in translated_langs_set]
-    for lang in target_langs:
-        try:
-            data = values_for_lang(lang)
-            html = build_html(
-                lang, slug,
-                data['title'], data['subtitle'], data['summary'],
-                data['meta_desc'], data['keywords'], data['bc_label'],
-                data['body'], hero_image, whatsapp_url, extra_head
-            )
-            html_path = save_one(lang, slug, html)
-            verify_error = verify_landing_output(lang, slug, html_path)
-            if verify_error:
-                errors.append(verify_error)
-                continue
-            created.append(lang)
-        except Exception as exc:
-            errors.append(f'{lang}: {exc}')
 
 # When worker calls this script with translated fields (auto_translate=0),
 # save all languages with provided values.
