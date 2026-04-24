@@ -25,10 +25,12 @@
   <meta property="og:url" content="https://wtscrews.com/pags/es/landing/fastener-quote-landing.html">
   <meta property="og:image" content="https://wtscrews.com/images/banner-hero.webp">
 <style>
+.lp-image-row { display:flex; gap:16px; align-items:stretch; margin: 28px auto; }
+.lp-image-row .lp-image-block { margin: 0; flex:1 1 0; max-width: none; }
 .lp-image-block { margin: 28px auto; max-width: 1040px; padding: 10px; border-radius: 18px; border: 1px solid rgba(148,163,184,.30); background: linear-gradient(160deg, rgba(255,255,255,.90), rgba(241,245,249,.78)); box-shadow: 0 20px 44px rgba(15,23,42,.20); }
 .lp-image-block img { display:block; width:100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid rgba(148,163,184,.34); box-shadow: 0 14px 34px rgba(15,23,42,.18); background:#fff; }
 .lp-image-block figcaption { margin-top: 10px; color:#1f2937; font-size: 13px; line-height:1.6; padding: 9px 12px; border-radius: 10px; border: 1px dashed rgba(148,163,184,.42); background: rgba(255,255,255,.82); }
-@media (max-width: 860px) { .lp-image-block { margin: 20px auto; padding: 8px; border-radius: 14px; } .lp-image-block figcaption { font-size: 12px; } }
+@media (max-width: 860px) { .lp-image-row { display:block; margin: 20px auto; } .lp-image-row .lp-image-block { margin: 20px auto; } .lp-image-block { margin: 20px auto; padding: 8px; border-radius: 14px; } .lp-image-block figcaption { font-size: 12px; } }
 </style>
 
   <style>
@@ -136,6 +138,8 @@
     .btn.quote { background: linear-gradient(135deg, #fb923c, #ea580c); }
     .hero-media { padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); }
     .hero-media img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }
+    .lp-image-row { display: flex; gap: 16px; align-items: stretch; margin: 28px auto; }
+    .lp-image-row .lp-image-block { margin: 0; flex: 1 1 0; max-width: none; }
     .trust-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
     .stat-card { background: rgba(255,255,255,.78); border: 1px solid rgba(148,163,184,.22); border-radius: 18px; padding: 16px; box-shadow: 0 16px 36px rgba(148,163,184,.12); }
     .stat-card span { display: block; color: #64748b; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
@@ -216,6 +220,8 @@
     .foot { color: var(--muted); font-size: .84rem; margin: 20px 0 14px; text-align: center; }
     @media (max-width: 860px) {
       .hero-grid, .row, .biz-grid, .trust-strip { grid-template-columns: 1fr; }
+      .lp-image-row { display: block; margin: 20px auto; }
+      .lp-image-row .lp-image-block { margin: 20px auto; }
       h1 { max-width: none; }
       .hero-media img { min-height: 260px; }
       .fixed-wa-inner { flex-direction: column; align-items: stretch; }
@@ -261,7 +267,7 @@
 <ul>
 <li>Estándares: DIN / ISO / ASTM / GB</li>
 <li>Materiales: Acero al carbono, acero inoxidable 304/316, acero aleado</li>
-<li>Superficie: galvanizado, galvanizado en caliente, óxido negro, Dacromet</li>
+<li>Superficie: Galvanizado, galvanizado en caliente, óxido negro, Dacromet</li>
 <li>OEM/ODM basado en dibujos y muestras</li>
 </ul>
 <h3>Ventajas principales</h3>
@@ -280,10 +286,12 @@
 <li>Recibir precio, plazo de entrega y propuesta de envío</li>
 </ol>
 <p><strong>Consejo:</strong> Si su pedido es urgente, contáctenos por WhatsApp para una respuesta más rápida.</p>
-<h3>Imágenes del producto</h3>
+<h3>Imágenes de productos</h3>
+<div class="lp-image-row">
 <figure class="lp-image-block"><img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy"><figcaption>Pernos hexagonales - tamaños estándar y personalizados</figcaption></figure>
 <figure class="lp-image-block"><img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy"><figcaption>Pernos de brida - dentados y no dentados</figcaption></figure>
 <figure class="lp-image-block"><img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>Pernos de alta resistencia - grado 8.8 / 10.9 / 12.9</figcaption></figure>
+</div>
       </article>
     </section>
 
