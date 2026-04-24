@@ -221,7 +221,9 @@ ul{list-style:none}
                 <textarea id="message" name="message" placeholder="요구사항, 수량, 사양 등을 알려주세요..." required></textarea>
                 <p class="form-error"></p>
               </section>
-              <button type="submit" class="btn btn-primary" id="contactSubmit">메시지 보내기</button>
+              <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="form_time" id="form_time" value="">
+            <button type="submit" class="btn btn-primary" id="contactSubmit">메시지 보내기</button>
             </fieldset>
           </form>
         </section>

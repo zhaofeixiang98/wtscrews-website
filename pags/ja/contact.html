@@ -243,7 +243,9 @@ ul{list-style:none}
                 <textarea id="message" name="message" placeholder="必要な製品、数量、仕様などをお知らせください..." required></textarea>
                 <p class="form-error"></p>
               </section>
-              <button type="submit" class="btn btn-primary" id="contactSubmit">メッセージを送信</button>
+              <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="form_time" id="form_time" value="">
+            <button type="submit" class="btn btn-primary" id="contactSubmit">メッセージを送信</button>
             </fieldset>
           </form>
         </section>

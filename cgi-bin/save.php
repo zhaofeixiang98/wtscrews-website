@@ -9,9 +9,15 @@ $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
 $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
+// Honeypot field - if filled, it's a bot
+$honeypot = isset($_POST['website']) ? trim($_POST['website']) : '';
+
+// Time check - form must be loaded at least 3 seconds before submission
+$form_loaded = isset($_POST['form_time']) ? intval($_POST['form_time']) : 0;
+$time_diff = time() - $form_loaded;
+
 // Get language from form or referer, default to en
 $lang = isset($_POST['lang']) ? trim($_POST['lang']) : 'en';
-// Validate language code
 $allowed_langs = ['en', 'zh', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko'];
 if (!in_array($lang, $allowed_langs)) {
     $lang = 'en';
@@ -20,11 +26,32 @@ if (!in_array($lang, $allowed_langs)) {
 // Get client IP
 $client_ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 
-// 尝试多个可能的目录
+// Block if honeypot is filled OR submission too fast (< 3 seconds)
+if (!empty($honeypot) || $time_diff < 3) {
+    // Redirect to success anyway to not reveal we're blocking
+    $success_url = '/pags/' . $lang . '/success.html';
+    header('Location: ' . $success_url);
+    exit;
+}
+
+// Validate required fields
+if (empty($name) || empty($email) || empty($message)) {
+    // Missing required fields - redirect back with error
+    header('Location: /pags/' . $lang . '/contact.html?error=1');
+    exit;
+}
+
+// Validate email format
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    header('Location: /pags/' . $lang . '/contact.html?error=2');
+    exit;
+}
+
+// Try multiple possible directories
 $possibleDirs = [
-    '/var/www/users/',           // 云服务器
-    '/var/www/html/users/',      // 备用云服务器路径
-    __DIR__ . '/../users/',      // 本地开发 (相对于 cgi-bin)
+    '/var/www/users/',
+    '/var/www/html/users/',
+    __DIR__ . '/../users/',
 ];
 
 $save_dir = null;
@@ -35,10 +62,9 @@ foreach ($possibleDirs as $dir) {
     }
 }
 
-// 如果所有目录都不存在，使用本地目录
 if (!$save_dir) {
     $save_dir = __DIR__ . '/../users/';
-    if (!is_dir($save_dir)) { 
+    if (!is_dir($save_dir)) {
         mkdir($save_dir, 0755, true);
     }
 }
