@@ -47,6 +47,13 @@ def he(text):
     )
 
 
+def safe_chmod(path, mode):
+    try:
+        os.chmod(path, mode)
+    except Exception:
+        pass
+
+
 def make_hreflang(slug):
     mapping = {'en': 'en', 'ar': 'ar', 'de': 'de', 'es': 'es', 'fr': 'fr', 'id': 'id', 'ja': 'ja', 'ko': 'ko', 'zh': 'zh-CN'}
     lines = []
@@ -428,9 +435,27 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
 def save_one(lang, slug, content):
     out_dir = os.path.join(BASE_DIR, 'pags', lang, 'landing')
     os.makedirs(out_dir, exist_ok=True)
+    safe_chmod(out_dir, 0o755)
     out_file = os.path.join(out_dir, slug + '.html')
     with open(out_file, 'w', encoding='utf-8') as f:
         f.write(content)
+    safe_chmod(out_file, 0o644)
+    return out_file
+
+
+def verify_landing_output(lang, slug, html_path):
+    expected_dir = os.path.join(BASE_DIR, 'pags', lang, 'landing')
+    safe_expected_dir = os.path.abspath(expected_dir)
+    safe_html_path = os.path.abspath(html_path)
+    if os.path.commonpath([safe_expected_dir, safe_html_path]) != safe_expected_dir:
+        return f'{lang}: html path escaped landing dir'
+    if os.path.dirname(safe_html_path) != safe_expected_dir:
+        return f'{lang}: html not under /pags/{lang}/landing/'
+    if not os.path.exists(safe_html_path):
+        return f'{lang}: html file not written'
+    if not safe_html_path.endswith(os.sep + slug + '.html'):
+        return f'{lang}: html filename mismatch'
+    return ''
 
 
 try:
@@ -507,8 +532,12 @@ if auto_translate:
             source_fields['meta_desc'], source_fields['keywords'], source_fields['bc_label'],
             source_fields['body'], hero_image, whatsapp_url, extra_head
         )
-        save_one('en', slug, html)
-        created.append('en')
+        html_path = save_one('en', slug, html)
+        verify_error = verify_landing_output('en', slug, html_path)
+        if verify_error:
+            errors.append(verify_error)
+        else:
+            created.append('en')
     except Exception as exc:
         respond({'success': False, 'error': f'en: {exc}'})
 
@@ -521,7 +550,11 @@ if auto_translate:
                 data['meta_desc'], data['keywords'], data['bc_label'],
                 data['body'], hero_image, whatsapp_url, extra_head
             )
-            save_one(lang, slug, html)
+            html_path = save_one(lang, slug, html)
+            verify_error = verify_landing_output(lang, slug, html_path)
+            if verify_error:
+                errors.append(verify_error)
+                continue
             created.append(lang)
         except Exception as exc:
             errors.append(f'{lang}: {exc}')
@@ -588,7 +621,11 @@ else:
                 data['meta_desc'], data['keywords'], data['bc_label'],
                 data['body'], hero_image, whatsapp_url, extra_head
             )
-            save_one(lang, slug, html)
+            html_path = save_one(lang, slug, html)
+            verify_error = verify_landing_output(lang, slug, html_path)
+            if verify_error:
+                errors.append(verify_error)
+                continue
             created.append(lang)
         except Exception as exc:
             errors.append(f'{lang}: {exc}')

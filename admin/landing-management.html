@@ -57,6 +57,24 @@
     .landing-item .title { font-size: 1rem; font-weight: 700; }
     .landing-item .slug { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
     .landing-item .meta { color: var(--muted); font-size: 0.86rem; margin-top: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .lang-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .lang-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .lang-chip.ok { background: #dcfce7; border-color: #86efac; color: #166534; }
+    .lang-chip.miss { background: #fee2e2; border-color: #fecaca; color: #991b1b; }
+    .lang-summary { margin-top: 10px; font-size: 0.84rem; color: var(--muted); }
     .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
     .btn { border: none; border-radius: 10px; padding: 9px 12px; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
     .btn-preview { background: #dbeafe; color: #1e40af; }
@@ -214,15 +232,29 @@
       filtered.forEach(function(item) {
         const updatedAt = item.updated_at ? new Date(item.updated_at).toLocaleString() : '-';
         const typeLabel = item.kind === 'root' ? '根目录落地页' : 'landing 子目录';
+        const langs = Array.isArray(item.langs) ? item.langs : [];
+        const missingLangs = Array.isArray(item.missing_langs) ? item.missing_langs : [];
+        const langLabels = item.lang_labels || {};
+        const allLangs = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
+        const langChips = allLangs.map(function(lang) {
+          const ok = langs.includes(lang);
+          const label = escHtml(langLabels[lang] || lang.toUpperCase());
+          return '<span class="lang-chip ' + (ok ? 'ok' : 'miss') + '">' + label + '</span>';
+        }).join('');
+        const summaryLine = item.complete
+          ? '9/9 语言已生成'
+          : ('已生成 ' + langs.length + '/9，缺少：' + escHtml(missingLangs.join(', ')));
         html += '<div class="landing-item">' +
           '<div>' +
             '<div class="title">' + escHtml(item.title || item.slug) + '</div>' +
             '<div class="slug">slug: ' + escHtml(item.slug) + '</div>' +
             '<div class="meta">' +
               '<span>类型: ' + escHtml(typeLabel) + '</span>' +
-              '<span>语言: ' + escHtml((item.langs || []).join(', ')) + '</span>' +
+              '<span>语言: ' + escHtml(langs.join(', ')) + '</span>' +
               '<span>更新: ' + escHtml(updatedAt) + '</span>' +
             '</div>' +
+            '<div class="lang-row">' + langChips + '</div>' +
+            '<div class="lang-summary">' + summaryLine + '</div>' +
           '</div>' +
           '<div class="actions">' +
             '<button type="button" class="btn btn-preview" data-action="preview" data-id="' + escHtml(item.id || '') + '">预览</button>' +

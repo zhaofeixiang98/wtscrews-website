@@ -182,6 +182,20 @@
       <p>임시 요약</p>
       <form action="/cgi-bin/save.php" method="post" id="contactForm">
         <input type="hidden" name="lang" value="ko">
+        <input type="hidden" name="utm_source" value="">
+        <input type="hidden" name="utm_medium" value="">
+        <input type="hidden" name="utm_campaign" value="">
+        <input type="hidden" name="utm_content" value="">
+        <input type="hidden" name="utm_term" value="">
+        <input type="hidden" name="utm_id" value="">
+        <input type="hidden" name="gclid" value="">
+        <input type="hidden" name="gbraid" value="">
+        <input type="hidden" name="wbraid" value="">
+        <input type="hidden" name="fbclid" value="">
+        <input type="hidden" name="landing_page" value="">
+        <input type="hidden" name="page_path" value="">
+        <input type="hidden" name="page_title" value="">
+        <input type="hidden" name="referrer" value="">
         <div class="row">
           <div class="field"><input type="text" name="name" placeholder="Name *" required></div>
           <div class="field"><input type="email" name="email" placeholder="Email *" required></div>
@@ -204,5 +218,138 @@
       <a href="https://wa.me/8615175432812?text=Hi%2C%20I%20need%20a%20quotation%20for%20fasteners." target="_blank" rel="noopener">WhatsApp 바로 문의</a>
     </div>
   </div>
+  <script>
+    (function () {
+      var TRACKING_KEYS = [
+        'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
+        'gclid', 'gbraid', 'wbraid', 'fbclid'
+      ];
+      var STORAGE_KEY = 'wt_lp_tracking_v1';
+
+      function safeTrim(v) {
+        return String(v || '').trim();
+      }
+
+      function parseTrackingFromQuery() {
+        var params = new URLSearchParams(window.location.search || '');
+        var data = {};
+        TRACKING_KEYS.forEach(function (key) {
+          var val = safeTrim(params.get(key));
+          if (val) data[key] = val;
+        });
+        return data;
+      }
+
+      function readTrackingStore() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return {};
+          var obj = JSON.parse(raw);
+          return obj && typeof obj === 'object' ? obj : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function saveTrackingStore(obj) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(obj || {}));
+        } catch (e) {
+          // ignore storage issues
+        }
+      }
+
+      function mergeTrackingData() {
+        var fromQuery = parseTrackingFromQuery();
+        var fromStore = readTrackingStore();
+        var merged = {};
+        TRACKING_KEYS.forEach(function (key) {
+          merged[key] = safeTrim(fromQuery[key] || fromStore[key] || '');
+        });
+        saveTrackingStore(merged);
+        return merged;
+      }
+
+      function setHidden(name, value) {
+        var fields = document.querySelectorAll('input[type="hidden"][name="' + name + '"]');
+        fields.forEach(function (field) {
+          field.value = safeTrim(value);
+        });
+      }
+
+      function fillTrackingHiddenFields(data) {
+        TRACKING_KEYS.forEach(function (key) {
+          setHidden(key, data[key] || '');
+        });
+        setHidden('landing_page', window.location.href || '');
+        setHidden('page_path', window.location.pathname || '');
+        setHidden('page_title', document.title || '');
+        setHidden('referrer', document.referrer || '');
+      }
+
+      function trackEvent(eventName, label) {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, {
+            event_category: 'lead',
+            event_label: label || '',
+            transport_type: 'beacon'
+          });
+          return;
+        }
+        if (Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({
+            event: eventName,
+            event_category: 'lead',
+            event_label: label || ''
+          });
+        }
+      }
+
+      function buildWhatsAppText(baseText, data) {
+        var lines = [];
+        var base = safeTrim(baseText);
+        if (base) lines.push(base);
+        if (data.utm_term) lines.push('Google keyword: ' + data.utm_term);
+        if (data.utm_campaign) lines.push('Campaign: ' + data.utm_campaign);
+        if (data.utm_content) lines.push('Ad group/creative: ' + data.utm_content);
+        if (data.gclid) lines.push('GCLID: ' + data.gclid);
+        if (!lines.length) lines.push('Hello, I am interested in your products.');
+        return lines.join('\n');
+      }
+
+      function upgradeWhatsAppLinks(data) {
+        var waLinks = document.querySelectorAll('a[href*="wa.me/"]');
+        waLinks.forEach(function (link) {
+          try {
+            var url = new URL(link.getAttribute('href') || '', window.location.origin);
+            if (!/wa\.me$/i.test(url.hostname)) return;
+            var originalText = safeTrim(url.searchParams.get('text'));
+            var trackedText = buildWhatsAppText(originalText, data);
+            url.searchParams.set('text', trackedText);
+            link.setAttribute('href', url.toString());
+          } catch (e) {
+            // skip invalid links
+          }
+
+          link.addEventListener('click', function () {
+            var href = link.getAttribute('href') || 'wa_link';
+            trackEvent('whatsapp_click', href);
+          });
+        });
+      }
+
+      var trackingData = mergeTrackingData();
+      fillTrackingHiddenFields(trackingData);
+      upgradeWhatsAppLinks(trackingData);
+
+      var form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', function () {
+          fillTrackingHiddenFields(trackingData);
+          trackEvent('landing_form_submit', window.location.pathname || 'landing_form');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -13,6 +13,17 @@ sys.stdout.flush()
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
 LANGS = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh']
+LANG_LABELS = {
+    'en': 'EN',
+    'ar': 'AR',
+    'de': 'DE',
+    'es': 'ES',
+    'fr': 'FR',
+    'id': 'ID',
+    'ja': 'JA',
+    'ko': 'KO',
+    'zh': 'ZH',
+}
 TITLE_RE = re.compile(r'<title>(.*?)</title>', re.IGNORECASE | re.DOTALL)
 SLUG_RE = re.compile(r'^[a-z0-9][a-z0-9\-]*$')
 
@@ -84,6 +95,9 @@ for name in sorted(folder_names):
         'slug': slug,
         'title': title or slug,
         'langs': available_langs,
+        'missing_langs': [lang for lang in LANGS if lang not in available_langs],
+        'lang_labels': {lang: LANG_LABELS.get(lang, lang.upper()) for lang in LANGS},
+        'complete': len(available_langs) == len(LANGS),
         'urls': lang_paths,
         'preview_url': lang_paths.get('zh') or lang_paths.get('en') or next(iter(lang_paths.values())),
         'updated_at': datetime.fromtimestamp(latest_mtime).isoformat() if latest_mtime else '',
@@ -125,6 +139,9 @@ for name in sorted(root_names):
         'slug': slug,
         'title': title or slug,
         'langs': available_langs,
+        'missing_langs': [lang for lang in LANGS if lang not in available_langs],
+        'lang_labels': {lang: LANG_LABELS.get(lang, lang.upper()) for lang in LANGS},
+        'complete': len(available_langs) == len(LANGS),
         'urls': lang_paths,
         'preview_url': lang_paths.get('zh') or lang_paths.get('en') or next(iter(lang_paths.values())),
         'updated_at': datetime.fromtimestamp(latest_mtime).isoformat() if latest_mtime else '',
