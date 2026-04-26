@@ -1,6 +1,43 @@
 <?php
 // WT Fasteners Contact Form Handler
 
+function get_client_ip_details() {
+    $candidates = [
+        'HTTP_CF_CONNECTING_IP' => 'cf-connecting-ip',
+        'HTTP_X_REAL_IP' => 'x-real-ip',
+        'HTTP_X_FORWARDED_FOR' => 'x-forwarded-for',
+        'REMOTE_ADDR' => 'remote-addr',
+    ];
+
+    foreach ($candidates as $serverKey => $label) {
+        $raw = isset($_SERVER[$serverKey]) ? trim((string)$_SERVER[$serverKey]) : '';
+        if ($raw === '') {
+            continue;
+        }
+        $parts = ($serverKey === 'HTTP_X_FORWARDED_FOR')
+            ? preg_split('/\s*,\s*/', $raw)
+            : [$raw];
+        foreach ($parts as $part) {
+            $ip = trim((string)$part);
+            if ($ip !== '' && filter_var($ip, FILTER_VALIDATE_IP)) {
+                return [
+                    'ip' => $ip,
+                    'ip_source' => $label,
+                    'ip_raw' => $raw,
+                    'ip_raw_remote_addr' => (string)($_SERVER['REMOTE_ADDR'] ?? ''),
+                ];
+            }
+        }
+    }
+
+    return [
+        'ip' => '127.0.0.1',
+        'ip_source' => 'fallback',
+        'ip_raw' => '',
+        'ip_raw_remote_addr' => (string)($_SERVER['REMOTE_ADDR'] ?? ''),
+    ];
+}
+
 // Get form data
 $name = isset($_POST['name']) ? trim($_POST['name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
@@ -24,7 +61,8 @@ if (!in_array($lang, $allowed_langs)) {
 }
 
 // Get client IP
-$client_ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+$ipInfo = get_client_ip_details();
+$client_ip = $ipInfo['ip'];
 
 // Block if honeypot is filled OR submission too fast (< 3 seconds)
 if (!empty($honeypot) || $time_diff < 3) {
@@ -85,6 +123,9 @@ $record = [
     'subject' => $subject,
     'message' => $message,
     'ip' => $client_ip,
+    'ip_source' => $ipInfo['ip_source'],
+    'ip_raw' => $ipInfo['ip_raw'],
+    'ip_raw_remote_addr' => $ipInfo['ip_raw_remote_addr'],
     'lang' => $lang,
     'time' => date('c')
 ];

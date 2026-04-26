@@ -1,73 +1,137 @@
 <?php
-/**
- * 用户数据代理API
- * 读取用户数据目录中的JSON文件
- * 支持本地开发和云服务器环境
- */
-
-// 设置响应头为 JSON
 header('Content-Type: application/json; charset=utf-8');
-
-// 允许跨域
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// 尝试多个可能的目录
-$possibleDirs = [
-    '/var/www/users/',           // 云服务器
-    '/var/www/html/users/',      // 备用云服务器路径
-    __DIR__ . '/../users/',      // 本地开发 (相对于 cgi-bin)
-    '../users/'                  // 相对路径
-];
-
-$dataDir = null;
-foreach ($possibleDirs as $dir) {
-    if (is_dir($dir)) {
-        $dataDir = $dir;
-        break;
-    }
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+    http_response_code(204);
+    exit;
 }
 
-// 如果所有目录都不存在，创建本地目录用于开发测试
-if (!$dataDir) {
-    $dataDir = __DIR__ . '/../users/';
-    if (!is_dir($dataDir)) {
-        mkdir($dataDir, 0755, true);
-    }
+function respond($obj, $status = 200) {
+    http_response_code($status);
+    echo json_encode($obj, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
 }
 
-// 获取所有 JSON 文件
-$files = glob($dataDir . '*.json');
-
-$users = [];
-
-foreach ($files as $file) {
-    // 跳过 .last_submits.json 等系统文件
-    if (strpos(basename($file), '.') === 0) {
-        continue;
-    }
-    
-    $content = file_get_contents($file);
-    $data = json_decode($content, true);
-    
-    if ($data) {
-        // 过滤掉空提交（email为空、noemail或name为空）
-        $email = isset($data['email']) ? trim($data['email']) : '';
-        $name = isset($data['name']) ? trim($data['name']) : '';
-        
-        if (empty($email) || $email === 'noemail' || $email === '未填写' || empty($name)) {
-            continue; // 跳过空提交
+function get_data_dir() {
+    $possibleDirs = [
+        '/var/www/users/',
+        '/var/www/html/users/',
+        __DIR__ . '/../users/',
+        '../users/'
+    ];
+    foreach ($possibleDirs as $dir) {
+        if (is_dir($dir)) {
+            return rtrim($dir, '/') . '/';
         }
-        
-        $data['filename'] = basename($file);
+    }
+    $fallback = __DIR__ . '/../users/';
+    if (!is_dir($fallback) && !@mkdir($fallback, 0755, true)) {
+        respond(['success' => false, 'error' => '用户数据目录不可用'], 500);
+    }
+    return rtrim($fallback, '/') . '/';
+}
+
+function list_users($dataDir) {
+    $files = glob($dataDir . '*.json') ?: [];
+    $users = [];
+    foreach ($files as $file) {
+        $base = basename($file);
+        if ($base === '.last_submits.json' || strpos($base, '.') === 0) {
+            continue;
+        }
+        $content = @file_get_contents($file);
+        if ($content === false) {
+            continue;
+        }
+        $data = json_decode($content, true);
+        if (!is_array($data)) {
+            continue;
+        }
+        $email = trim((string)($data['email'] ?? ''));
+        $name = trim((string)($data['name'] ?? ''));
+        if ($email === '' || $email === 'noemail' || $email === '未填写' || $name === '') {
+            continue;
+        }
+        $data['filename'] = $base;
         $users[] = $data;
     }
+    usort($users, function($a, $b) {
+        return strtotime((string)($b['time'] ?? '')) <=> strtotime((string)($a['time'] ?? ''));
+    });
+    return $users;
 }
 
-// 按时间排序（最新的在前）
-usort($users, function($a, $b) {
-    return strtotime($b['time']) - strtotime($a['time']);
-});
+function normalize_filename($name) {
+    $name = trim((string)$name);
+    if ($name === '') {
+        return '';
+    }
+    $base = basename($name);
+    if (!preg_match('/^[a-zA-Z0-9._@+\-]+\.json$/', $base)) {
+        return '';
+    }
+    return $base;
+}
 
-echo json_encode($users, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+$dataDir = get_data_dir();
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+if ($method === 'GET') {
+    respond(list_users($dataDir));
+}
+
+if ($method !== 'POST') {
+    respond(['success' => false, 'error' => 'method not allowed'], 405);
+}
+
+$action = trim((string)($_POST['action'] ?? ''));
+if ($action !== 'delete') {
+    respond(['success' => false, 'error' => 'unsupported action'], 400);
+}
+
+$targets = [];
+$single = normalize_filename($_POST['filename'] ?? '');
+if ($single !== '') {
+    $targets[] = $single;
+}
+$manyRaw = trim((string)($_POST['filenames'] ?? ''));
+if ($manyRaw !== '') {
+    foreach (explode(',', $manyRaw) as $part) {
+        $normalized = normalize_filename($part);
+        if ($normalized !== '' && !in_array($normalized, $targets, true)) {
+            $targets[] = $normalized;
+        }
+    }
+}
+
+if (!$targets) {
+    respond(['success' => false, 'error' => '未指定要删除的记录'], 400);
+}
+
+$deleted = [];
+$errors = [];
+foreach ($targets as $filename) {
+    $fullPath = $dataDir . $filename;
+    if (!file_exists($fullPath)) {
+        $errors[] = $filename . ' 不存在';
+        continue;
+    }
+    if (!is_file($fullPath)) {
+        $errors[] = $filename . ' 不是有效文件';
+        continue;
+    }
+    if (!@unlink($fullPath)) {
+        $errors[] = $filename . ' 删除失败';
+        continue;
+    }
+    $deleted[] = $filename;
+}
+
+respond([
+    'success' => count($deleted) > 0,
+    'deleted' => $deleted,
+    'errors' => $errors,
+], count($deleted) > 0 ? 200 : 500);
