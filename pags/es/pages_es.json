@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "Pernos de Rueda",
+                    "summary": "Nuestros pernos de rueda están diseñados para fijar de forma segura llantas de aleación o acero al cubo del vehículo, con un asiento mecanizado de precisión (disponible en cono de 60°, asiento esférico o asiento plano) para garantizar un centrado y una fuerza de sujeción adecuados. La construcción de acero endurecido y el recubrimiento resistente a la corrosión proporcionan durabilidad a largo plazo y una retención de par confiable en condiciones de conducción dinámicas. Fabricados según estándares DIN / ISO con precisión dimensional consistente y clasificaciones de resistencia grado 10.9 o 12.9.",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "Pernos",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "Otros sujetadores",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "Pernos de Rueda / Pernos de Llanta",
-                    "summary": "Nuestros pernos de rueda cuentan con un diseño de asiento cónico o esférico para garantizar un centrado preciso y un apriete seguro de la rueda al buje. La geometría optimizada de la rosca y la construcción en acero templado proporcionan una alta resistencia a la tracción, resistiendo el aflojamiento bajo condiciones dinámicas de conducción como el viraje, el frenado y la vibración. Disponibles en varios tipos de asiento (cónico, radial o plano) para adaptarse a las especificaciones de ruedas OE. Fabricados según normas ISO o DIN con precisión dimensional constante y acabados superficiales resistentes a la corrosión (por ejemplo, recubrimiento de zinc en escamas).",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "Pernos con brida",
-                    "summary": "Nuestros pernos con brida cuentan con una arandela circular integrada bajo la cabeza, distribuyen la carga uniformemente y evitan el aflojamiento por vibración. La versión dentada crea una acción de bloqueo contra la superficie de contacto. Disponibles en configuraciones dentadas (resistentes a la vibración) y no dentadas. Fabricados según DIN 6921 / ISO 1665 con precisión dimensional constante.",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Remaches ciegos",

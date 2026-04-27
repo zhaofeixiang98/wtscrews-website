@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "Baut Roda",
+                    "summary": "Baut roda kami dirancang untuk mengencangkan velg alloy atau baja ke hub kendaraan dengan aman, dilengkapi dudukan hasil mesin presisi (tersedia dalam bentuk kerucut 60°, dudukan bola, atau dudukan datar) untuk memastikan pemusatan dan gaya jepit yang tepat. Konstruksi baja yang dikeraskan dan lapisan tahan korosi memberikan daya tahan jangka panjang serta retensi torsi yang andal dalam kondisi berkendara dinamis. Diproduksi sesuai standar DIN / ISO dengan akurasi dimensi yang konsisten dan peringkat kekuatan grade 10.9 atau 12.9.",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "Baut",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "Fastener Lainnya",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "Baut Roda / Baut Pengikat Roda",
-                    "summary": "Baut roda kami menampilkan desain dudukan tirus atau bulat untuk memastikan pemusatan yang tepat dan penjepitan aman roda ke hub. Geometri ulir yang dioptimalkan dan konstruksi baja yang dikeraskan memberikan kekuatan tarik tinggi, menahan pengenduran dalam kondisi berkendara dinamis seperti menikung, pengereman, dan getaran. Tersedia dalam berbagai tipe dudukan (kerucut, radius, atau datar) untuk mencocokkan spesifikasi roda OE. Diproduksi sesuai standar ISO atau DIN dengan akurasi dimensi yang konsisten dan lapisan permukaan tahan korosi (misalnya, pelapisan serpihan seng).",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "Baut Flange",
-                    "summary": "Baut flange kami memiliki washer melingkar terintegrasi di bawah kepala, mendistribusikan beban secara merata dan mencegah kelonggaran akibat getaran. Versi bergerigi menciptakan aksi penguncian terhadap permukaan pasangan. Tersedia dalam konfigurasi bergerigi (tahan getaran) dan tidak bergerigi. Diproduksi sesuai standar DIN 6921 / ISO 1665 dengan akurasi dimensi yang konsisten.",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blind Rivet",

@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "Boulons de roue",
+                    "summary": "Nos boulons de roue sont conçus pour fixer solidement les jantes en alliage ou en acier au moyeu du véhicule, avec un siège usiné avec précision (disponible en cône 60°, siège sphérique ou siège plat) pour garantir un centrage et une force de serrage appropriés. La construction en acier trempé et le revêtement anticorrosion assurent une durabilité à long terme et un maintien fiable du couple dans des conditions de conduite dynamiques. Fabriqués selon les normes DIN/ISO avec une précision dimensionnelle constante et des classes de résistance 10.9 ou 12.9.",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "Boulons",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "Autres fixations",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "Boulons de roue / Boulons de jante",
-                    "summary": "Nos boulons de roue présentent une conception à siège conique ou sphérique pour assurer un centrage précis et un serrage sécurisé de la roue sur le moyeu. La géométrie de filetage optimisée et la construction en acier trempé offrent une haute résistance à la traction, résistant au desserrage dans des conditions de conduite dynamiques telles que les virages, le freinage et les vibrations. Disponibles en différents types de sièges (cône, rayon ou plat) pour correspondre aux spécifications des roues d'origine. Fabriqués selon les normes ISO ou DIN avec une précision dimensionnelle constante et des finitions de surface résistantes à la corrosion (par exemple, revêtement en flocons de zinc).",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "Boulons à embase",
-                    "summary": "Nos boulons à embase comportent une rondelle circulaire intégrée sous la tête, répartissant uniformément la charge et empêchant le desserrage sous vibration. La version crantée crée une action de verrouillage contre la surface d’appui. Disponibles en configurations crantées (résistantes aux vibrations) et non crantées. Fabriqués selon DIN 6921 / ISO 1665 avec une précision dimensionnelle constante.",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Rivets aveugles",

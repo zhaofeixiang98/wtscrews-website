@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "휠 볼트",
+                    "summary": "당사의 휠 볼트는 합금 또는 스틸 휠을 차량 허브에 안전하게 고정하도록 설계되었으며, 정밀 가공된 시트(60° 콘 시트, 볼 시트 또는 플랫 시트 제공)를 통해 적절한 센터링과 클램핑력을 보장합니다. 경화 강철 구조와 내식성 코팅은 동적 주행 조건에서 장기적인 내구성과 신뢰할 수 있는 토크 유지를 제공합니다. DIN/ISO 표준에 따라 제조되어 일관된 치수 정확도와 10.9 또는 12.9 강도 등급을 갖추고 있습니다.",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "볼트",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "기타 패스너",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "휠 볼트 / 러그 볼트",
-                    "summary": "당사의 휠 볼트는 테이퍼 또는 구형 시트 설계를 특징으로 하여 휠을 허브에 정확하게 중심을 맞추고 안전하게 고정합니다. 최적화된 나사산 형상과 경화 강철 구조는 높은 인장 강도를 제공하여 코너링, 제동 및 진동과 같은 동적 주행 조건에서 풀림을 방지합니다. OE 휠 사양에 맞는 다양한 시트 유형(원뿔형, 반경형 또는 평면형)으로 제공됩니다. 일관된 치수 정밀도와 내식성 표면 처리(예: 아연 플레이크 코팅)를 갖춘 ISO 또는 DIN 표준에 따라 제조됩니다.",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "플랜지 볼트",
-                    "summary": "당사의 플랜지 볼트는 머리 아래에 일체형 원형 와셔를 갖추어 하중을 고르게 분산하고 진동에 의한 풀림을 방지합니다. 톱니형 버전은 접촉면에 잠금 작용을 제공합니다. 톱니형(내진동) 및 비톱니형 구성이 모두 제공됩니다. DIN 6921 / ISO 1665 표준에 따라 일관된 치수 정확도로 제조됩니다.",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "블라인드 리벳",

@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "轮毂螺栓",
+                    "summary": "我们的轮毂螺栓专为将合金或钢制轮毂牢固固定到车辆轮毂上而设计，采用精密加工的座面（可选60°锥形座、球座或平座），确保正确对中和夹紧力。硬化钢结构与耐腐蚀涂层提供了长期耐用性，并在动态驾驶条件下保持可靠的扭矩保持力。按照DIN/ISO标准制造，尺寸精度一致，强度等级为10.9或12.9。",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "螺栓",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "其他紧固件",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "车轮螺栓 / 轮毂螺栓",
-                    "summary": "我们的车轮螺栓采用锥形或球形座面设计，确保车轮与轮毂精确对中并牢固夹紧。优化的螺纹几何形状和淬火钢结构提供了高抗拉强度，可在转弯、制动和振动等动态驾驶条件下抵抗松动。提供多种座面类型（锥形、球形或平面）以匹配原厂车轮规格。按照ISO或DIN标准制造，具有一致的尺寸精度和耐腐蚀表面处理（例如锌片涂层）。",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "法兰螺栓",
-                    "summary": "我们的法兰螺栓在头部下方集成圆形垫面，可均匀分散载荷，并防止振动下松动。带齿版本可与接触面形成锁紧作用。可提供带齿（抗振）和不带齿两种配置。按照 DIN 6921 / ISO 1665 标准制造，尺寸精度稳定一致。",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "抽芯铆钉",

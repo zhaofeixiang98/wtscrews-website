@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "ホイールボルト",
+                    "summary": "当社のホイールボルトは、アルミホイールまたはスチールホイールを車両ハブに確実に固定するよう設計されており、精密加工されたシート（60°コーン、ボールシート、フラットシートから選択可能）により、適切な芯出しとクランプ力を確保します。焼入れ鋼構造と耐食性コーティングにより、動的走行条件下での長期的な耐久性と信頼性の高いトルク保持を実現。DIN / ISO規格に準拠し、一貫した寸法精度とグレード10.9または12.9の強度定格を備えています。",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "ボルト",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "その他ファスナー",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "ホイールボルト / ラグボルト",
-                    "summary": "当社のホイールボルトは、テーパー座または球面座の設計を採用し、ホイールのハブへの正確なセンタリングと確実な締め付けを保証します。最適化されたねじ形状と焼入れ鋼構造により高い引張強度を提供し、コーナリング、ブレーキング、振動などの動的な走行条件下での緩みを防止します。コーン、ラジアス、フラットなど、様々な座形状を用意し、OEホイール仕様に対応可能です。ISOまたはDIN規格に準拠して製造され、寸法精度が一貫しており、亜鉛フレークコーティングなどの耐食性表面仕上げを施しています。",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "フランジボルト",
-                    "summary": "当社のフランジボルトは、頭部下に一体型の円形座面を備え、荷重を均等に分散し、振動による緩みを防ぎます。セレーション付きタイプは相手面に対してロック作用を生み出します。セレーション付き（耐振動）およびセレーションなしの構成を用意。DIN 6921 / ISO 1665 規格に基づき、安定した寸法精度で製造されています。",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "ブラインドリベット",

@@ -73,6 +73,18 @@
     ],
     "products": [
         {
+            "category": "Bolts",
+            "icon": "images/products/others/Solid Rivet1.webp",
+            "items": [
+                {
+                    "slug": "products/wheel-bolt",
+                    "title": "Radschrauben",
+                    "summary": "Unsere Radschrauben sind darauf ausgelegt, Leichtmetall- oder Stahlfelgen sicher an der Radnabe zu befestigen. Sie verfügen über einen präzisionsbearbeiteten Sitz (erhältlich als 60°-Kegel, Kugelbund oder Flachsitz), der eine korrekte Zentrierung und Klemmkraft gewährleistet. Die gehärtete Stahlkonstruktion und die korrosionsbeständige Beschichtung sorgen für langfristige Haltbarkeit und zuverlässigen Drehmomenterhalt unter dynamischen Fahrbedingungen. Hergestellt nach DIN-/ISO-Normen mit gleichbleibender Maßgenauigkeit und Festigkeitsklassen 10.9 oder 12.9.",
+                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
+                }
+            ]
+        },
+        {
             "category": "Schrauben und Bolzen",
             "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
             "items": [
@@ -268,18 +280,6 @@
             "category": "Weitere Verbindungselemente",
             "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
             "items": [
-                {
-                    "slug": "products/2026-04-23",
-                    "title": "Radschrauben / Radbolzen",
-                    "summary": "Unsere Radschrauben verfügen über ein konisches oder kugelförmiges Sitzdesign, um eine präzise Zentrierung und sichere Klemmung des Rades an der Nabe zu gewährleisten. Die optimierte Gewindegeometrie und die gehärtete Stahlkonstruktion bieten hohe Zugfestigkeit und widerstehen dem Lösen unter dynamischen Fahrbedingungen wie Kurvenfahrten, Bremsen und Vibrationen. Verfügbar in verschiedenen Sitztypen (Kegel, Radius oder flach), um den OE-Radspezifikationen zu entsprechen. Hergestellt nach ISO- oder DIN-Normen mit konsistenter Maßgenauigkeit und korrosionsbeständigen Oberflächenbeschichtungen (z. B. Zinkflockenbeschichtung).",
-                    "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                },
-                {
-                    "slug": "products/flange-bolt-1",
-                    "title": "Flanschschrauben",
-                    "summary": "Unsere Flanschschrauben verfügen über eine integrierte runde Scheibe unter dem Kopf, die die Last gleichmäßig verteilt und ein Lösen durch Vibration verhindert. Die geriffelte Ausführung erzeugt eine Verriegelungswirkung auf der Gegenfläche. Erhältlich in geriffelter (vibrationsbeständiger) und glatter Ausführung. Hergestellt nach DIN 6921 / ISO 1665 mit gleichbleibender Maßgenauigkeit.",
-                    "icon": "../../images/news/flange-bolt.png"
-                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blindnieten",
