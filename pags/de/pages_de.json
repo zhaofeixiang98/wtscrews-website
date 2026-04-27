@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "Schrauben und Bolzen",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "Radschrauben",
                     "summary": "Unsere Radschrauben sind darauf ausgelegt, Leichtmetall- oder Stahlfelgen sicher an der Radnabe zu befestigen. Sie verfügen über einen präzisionsbearbeiteten Sitz (erhältlich als 60°-Kegel, Kugelbund oder Flachsitz), der eine korrekte Zentrierung und Klemmkraft gewährleistet. Die gehärtete Stahlkonstruktion und die korrosionsbeständige Beschichtung sorgen für langfristige Haltbarkeit und zuverlässigen Drehmomenterhalt unter dynamischen Fahrbedingungen. Hergestellt nach DIN-/ISO-Normen mit gleichbleibender Maßgenauigkeit und Festigkeitsklassen 10.9 oder 12.9.",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "Schrauben und Bolzen",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Ankerbolzen",

@@ -82,6 +82,68 @@ LANG_LABELS = {
   'zh': 'Simplified Chinese',
 }
 
+CATEGORY_LABELS = {
+  'bolts': {
+    'en': 'Bolts', 'zh': '螺栓', 'de': 'Schrauben und Bolzen', 'es': 'Pernos',
+    'fr': 'Boulons', 'ar': 'البراغي', 'id': 'Baut', 'ja': 'ボルト', 'ko': '볼트',
+  },
+  'nuts': {
+    'en': 'Nuts', 'zh': '螺母', 'de': 'Muttern', 'es': 'Tuercas',
+    'fr': 'Écrous', 'ar': 'الصواميل', 'id': 'Mur', 'ja': 'ナット', 'ko': '너트',
+  },
+  'washers': {
+    'en': 'Washers', 'zh': '垫圈', 'de': 'Unterlegscheiben', 'es': 'Arandelas',
+    'fr': 'Rondelles', 'ar': 'الغسالات', 'id': 'Washer', 'ja': 'ワッシャー', 'ko': '와셔',
+  },
+  'screws': {
+    'en': 'Screws', 'zh': '螺钉', 'de': 'Schrauben', 'es': 'Tornillos',
+    'fr': 'Vis', 'ar': 'المسامير', 'id': 'Sekrup', 'ja': 'ねじ', 'ko': '나사',
+  },
+  'studs': {
+    'en': 'Studs & Threaded Rods', 'zh': '螺柱与全牙丝杆', 'de': 'Stiftschrauben und Gewindestangen',
+    'es': 'Espárragos y varillas roscadas', 'fr': 'Goujons et tiges filetées',
+    'ar': 'المسامير القلاوظ والقضبان الملولبة', 'id': 'Stud & Batang Berulir',
+    'ja': 'スタッド・全ねじロッド', 'ko': '스터드 및 전산봉',
+  },
+  'pins': {
+    'en': 'Pins', 'zh': '销类', 'de': 'Stifte', 'es': 'Pasadores',
+    'fr': 'Goupilles', 'ar': 'الدبابيس', 'id': 'Pin', 'ja': 'ピン', 'ko': '핀',
+  },
+  'anchors': {
+    'en': 'Anchors & Fastening', 'zh': '锚固件与紧固件', 'de': 'Anker und Befestigung',
+    'es': 'Anclajes y fijación', 'fr': 'Ancrages et fixation', 'ar': 'المراسي والتثبيت',
+    'id': 'Angkur & Pengikat', 'ja': 'アンカー・締結', 'ko': '앵커 및 체결',
+  },
+  'other': {
+    'en': 'Other Fasteners', 'zh': '其他紧固件', 'de': 'Weitere Verbindungselemente',
+    'es': 'Otros sujetadores', 'fr': 'Autres fixations', 'ar': 'مثبتات أخرى',
+    'id': 'Fastener Lainnya', 'ja': 'その他ファスナー', 'ko': '기타 패스너',
+  },
+}
+
+CATEGORY_ALIASES = {
+  'bolts': 'bolts',
+  'bolt': 'bolts',
+  'nuts': 'nuts',
+  'nut': 'nuts',
+  'washers': 'washers',
+  'washer': 'washers',
+  'screws': 'screws',
+  'screw': 'screws',
+  'studs': 'studs',
+  'studs threaded rods': 'studs',
+  'studs and threaded rods': 'studs',
+  'threaded rods': 'studs',
+  'pins': 'pins',
+  'pin': 'pins',
+  'anchors fastening': 'anchors',
+  'anchors and fastening': 'anchors',
+  'anchors': 'anchors',
+  'anchor': 'anchors',
+  'other fasteners': 'other',
+  'others': 'other',
+}
+
 MON_EN = ['','January','February','March','April','May','June','July','August','September','October','November','December']
 MON_ZH = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
 MON_DE = ['','Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
@@ -215,6 +277,16 @@ LC = {
 
 def truthy(value):
   return str(value or '').strip().lower() in {'1', 'true', 'yes', 'on'}
+
+def product_category_key(value):
+  normalized = re.sub(r'[^a-z0-9]+', ' ', str(value or '').lower().replace('&', ' and ')).strip()
+  return CATEGORY_ALIASES.get(normalized, '')
+
+def product_category_label(lang, value):
+  key = product_category_key(value)
+  if not key:
+    return str(value or '').strip() or CATEGORY_LABELS['other'].get(lang, CATEGORY_LABELS['other']['en'])
+  return CATEGORY_LABELS[key].get(lang, CATEGORY_LABELS[key]['en'])
 
 def load_translation_env_files():
   global _translation_env_loaded
@@ -926,21 +998,26 @@ ul{{list-style:none}}
 </body>
 </html>'''
 
-def update_json(json_path, slug, title, summary, og_image='', product_category='Other Fasteners'):
+def update_json(json_path, slug, title, summary, og_image='', product_category='Other Fasteners', lang='en'):
     category_slug = 'products/' + slug
+    localized_category = product_category_label(lang, product_category)
+    category_key = product_category_key(product_category)
 
     def mutator(data):
         for category in data.get('products', []):
             category['items'] = [item for item in category.get('items', []) if item.get('slug') != category_slug]
         target_category = None
         for category in data.get('products', []):
-            if category.get('category') == product_category:
+            existing_name = str(category.get('category') or '').strip()
+            existing_key = product_category_key(existing_name)
+            if existing_name == localized_category or (category_key and existing_key == category_key):
                 target_category = category
+                category['category'] = localized_category
                 break
         if target_category is None:
             target_category = {
-                'category': product_category,
-                'icon': 'images/products/others/Solid Rivet1.webp',
+                'category': localized_category,
+                'icon': '../../images/products/others/Solid Rivet1.webp',
                 'items': [],
             }
             data.setdefault('products', []).insert(0, target_category)
@@ -1090,13 +1167,13 @@ for lang in target_langs:
     os.makedirs(products_dir, exist_ok=True)
     html = build_html(
       lang, slug, date, title, subtitle, summary, meta_desc, keywords, bc_label, body, LANGS,
-      og_image, product_category, extra_head,
+      og_image, product_category_label(lang, product_category), extra_head,
       applications_data_lang, materials_data_lang, size_chart_data_lang, reviews_data_lang, related_products_data_lang,
       cta_title_lang, cta_desc_lang, cta_button_text_lang
     )
     with open(html_path, 'w', encoding='utf-8') as f:
       f.write(html)
-    update_json(json_path, slug, title, summary, og_image, product_category)
+    update_json(json_path, slug, title, summary, og_image, product_category, lang)
     verify_error = verify_product_outputs(
       lang,
       products_dir,

@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "螺栓",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "轮毂螺栓",
                     "summary": "我们的轮毂螺栓专为将合金或钢制轮毂牢固固定到车辆轮毂上而设计，采用精密加工的座面（可选60°锥形座、球座或平座），确保正确对中和夹紧力。硬化钢结构与耐腐蚀涂层提供了长期耐用性，并在动态驾驶条件下保持可靠的扭矩保持力。按照DIN/ISO标准制造，尺寸精度一致，强度等级为10.9或12.9。",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "螺栓",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "地脚螺栓",

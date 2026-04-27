@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "Baut",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "Baut Roda",
                     "summary": "Baut roda kami dirancang untuk mengencangkan velg alloy atau baja ke hub kendaraan dengan aman, dilengkapi dudukan hasil mesin presisi (tersedia dalam bentuk kerucut 60°, dudukan bola, atau dudukan datar) untuk memastikan pemusatan dan gaya jepit yang tepat. Konstruksi baja yang dikeraskan dan lapisan tahan korosi memberikan daya tahan jangka panjang serta retensi torsi yang andal dalam kondisi berkendara dinamis. Diproduksi sesuai standar DIN / ISO dengan akurasi dimensi yang konsisten dan peringkat kekuatan grade 10.9 atau 12.9.",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "Baut",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Baut Angkur",

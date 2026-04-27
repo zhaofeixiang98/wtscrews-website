@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "Boulons",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "Boulons de roue",
                     "summary": "Nos boulons de roue sont conçus pour fixer solidement les jantes en alliage ou en acier au moyeu du véhicule, avec un siège usiné avec précision (disponible en cône 60°, siège sphérique ou siège plat) pour garantir un centrage et une force de serrage appropriés. La construction en acier trempé et le revêtement anticorrosion assurent une durabilité à long terme et un maintien fiable du couple dans des conditions de conduite dynamiques. Fabriqués selon les normes DIN/ISO avec une précision dimensionnelle constante et des classes de résistance 10.9 ou 12.9.",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "Boulons",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Boulons d’ancrage",

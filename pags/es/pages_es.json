@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "Pernos",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "Pernos de Rueda",
                     "summary": "Nuestros pernos de rueda están diseñados para fijar de forma segura llantas de aleación o acero al cubo del vehículo, con un asiento mecanizado de precisión (disponible en cono de 60°, asiento esférico o asiento plano) para garantizar un centrado y una fuerza de sujeción adecuados. La construcción de acero endurecido y el recubrimiento resistente a la corrosión proporcionan durabilidad a largo plazo y una retención de par confiable en condiciones de conducción dinámicas. Fabricados según estándares DIN / ISO con precisión dimensional consistente y clasificaciones de resistencia grado 10.9 o 12.9.",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "Pernos",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Pernos de anclaje",

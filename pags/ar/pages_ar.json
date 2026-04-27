@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "البراغي",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "مسامير العجلات",
                     "summary": "تم تصميم مسامير العجلات لدينا لتثبيت العجلات المصنوعة من السبائك أو الفولاذ بشكل آمن على محور المركبة، وتتميز بمقعد مصنوع بدقة (متوفر بمخروط 60 درجة، أو مقعد كروي، أو مقعد مسطح) لضمان التوسيط المناسب وقوة التثبيت. يوفر البناء الفولاذي المقوى والطلاء المقاوم للتآكل متانة طويلة الأمد واحتفاظًا موثوقًا بعزم الدوران في ظروف القيادة الديناميكية. مصنعة وفقًا لمعايير DIN / ISO بدقة أبعاد ثابتة وتصنيفات قوة 10.9 أو 12.9.",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "البراغي",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "مسامير التثبيت",

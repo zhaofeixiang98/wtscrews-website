@@ -73,21 +73,15 @@
     ],
     "products": [
         {
-            "category": "Bolts",
-            "icon": "../../images/products/others/Solid Rivet1.webp",
+            "category": "볼트",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
                     "title": "휠 볼트",
                     "summary": "당사의 휠 볼트는 합금 또는 스틸 휠을 차량 허브에 안전하게 고정하도록 설계되었으며, 정밀 가공된 시트(60° 콘 시트, 볼 시트 또는 플랫 시트 제공)를 통해 적절한 센터링과 클램핑력을 보장합니다. 경화 강철 구조와 내식성 코팅은 동적 주행 조건에서 장기적인 내구성과 신뢰할 수 있는 토크 유지를 제공합니다. DIN/ISO 표준에 따라 제조되어 일관된 치수 정확도와 10.9 또는 12.9 강도 등급을 갖추고 있습니다.",
                     "icon": "../../images/news/83349eecbb81f5aa40c5e899d726ed71.png"
-                }
-            ]
-        },
-        {
-            "category": "볼트",
-            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
-            "items": [
+                },
                 {
                     "slug": "products/anchor-bolts",
                     "title": "앵커 볼트",
