@@ -75,7 +75,7 @@
     .lang-picker-label { color: #0f766e; font-size: .82rem; font-weight: 800; }
     .lang-select { appearance: none; -webkit-appearance: none; border: 0; background: transparent; color: #334155; font-size: .82rem; font-weight: 700; padding-right: 18px; outline: none; cursor: pointer; min-width: 108px; }
     .hero { padding: 34px 0 22px; }
-    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 22px; align-items: stretch; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr); gap: 22px; align-items: start; }
     .hero-copy, .hero-media, .section, .form-box {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -83,7 +83,7 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
-    .hero-copy { padding: 28px; position: relative; overflow: hidden; }
+    .hero-copy { padding: 28px; position: relative; overflow: hidden; align-self: start; }
     .hero-copy::after {
       content: "";
       position: absolute;
@@ -136,8 +136,8 @@
     }
     .btn.chat { background: linear-gradient(135deg, #22c55e, #16a34a); }
     .btn.quote { background: linear-gradient(135deg, #fb923c, #ea580c); }
-    .hero-media { padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); }
-    .hero-media img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }
+    .hero-media { padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); align-self: start; overflow: hidden; }
+    .hero-media img { display: block; width: 100%; height: clamp(320px, 34vw, 440px); min-height: 0; object-fit: cover; object-position: center; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }
     .lp-image-row { display: flex; gap: 16px; align-items: stretch; margin: 28px auto; }
     .lp-image-row .lp-image-block { margin: 0; flex: 1 1 0; max-width: none; }
     .trust-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
@@ -223,7 +223,7 @@
       .lp-image-row { display: block; margin: 20px auto; }
       .lp-image-row .lp-image-block { margin: 20px auto; }
       h1 { max-width: none; }
-      .hero-media img { min-height: 260px; }
+      .hero-media img { height: clamp(240px, 56vw, 320px); min-height: 0; }
       .fixed-wa-inner { flex-direction: column; align-items: stretch; }
       .fixed-wa a { text-align: center; }
       body { padding-bottom: 148px; }

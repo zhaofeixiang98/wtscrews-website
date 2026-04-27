@@ -48,6 +48,10 @@
     .warn { background: #fef3c7; color: var(--warn); }
     .error { background: #fee2e2; color: var(--error); }
     .issues { color: #b45309; }
+    .issue-line { margin: 0 0 4px; }
+    .repairable { color: #1d4ed8; font-weight: 700; }
+    .example-list { margin-top: 6px; color: #4b5563; }
+    .example-list span { display: inline-block; margin: 2px 6px 2px 0; padding: 2px 7px; border-radius: 999px; background: #f3f4f6; }
     .small { color: var(--muted); font-size: 0.82rem; }
     .log { white-space: pre-wrap; font-size: 0.84rem; line-height: 1.45; color: #374151; margin: 0; padding: 12px 14px; background: #fbfdff; border-top: 1px solid var(--line); }
     .busy-overlay {
@@ -147,13 +151,26 @@
   </div>
 
   <script>
-    function checkAuth() {
+    async function ensureAuth() {
       const auth = localStorage.getItem('userAdminAuth');
-      if (!auth || Date.now() > parseInt(auth, 10)) {
-        window.location.href = 'login.html';
-        return false;
+      if (auth && Date.now() <= parseInt(auth, 10)) {
+        return true;
       }
-      return true;
+      try {
+        const resp = await fetch('../cgi-bin/admin-auth.cgi?action=status&_=' + Date.now(), {
+          credentials: 'include'
+        });
+        const data = await resp.json();
+        if (data && data.success && data.authenticated) {
+          localStorage.setItem('userAdminAuth', String(Date.now() + 24 * 60 * 60 * 1000));
+          return true;
+        }
+      } catch (e) {
+        // If the cookie check fails, fall through to the login page.
+      }
+      localStorage.removeItem('userAdminAuth');
+      window.location.href = 'login.html';
+      return false;
     }
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -170,18 +187,39 @@
       document.getElementById('kError').textContent = summary.error ?? '-';
       document.getElementById('kTr').textContent = summary.translation_suspected ?? '-';
     }
+    function examplesBlock(label, examples) {
+      if (!examples || !examples.length) return '';
+      return '<div class="example-list"><strong>' + esc(label) + '</strong> '
+        + examples.map(function(item) {
+          return '<span>' + esc(item.slug) + ': ' + esc(item.title) + '</span>';
+        }).join('')
+        + '</div>';
+    }
+    function issueHtml(x) {
+      const parts = [];
+      if (x.repairable && (x.repair_reasons || []).length) {
+        parts.push('<div class="issue-line repairable">可自动修复：' + x.repair_reasons.map(esc).join('、') + '</div>');
+      }
+      if ((x.issues || []).length) {
+        parts.push((x.issues || []).map(function(issue) {
+          return '<div class="issue-line">' + esc(issue) + '</div>';
+        }).join(''));
+      }
+      parts.push(examplesBlock('新闻示例：', x.same_news_examples || []));
+      parts.push(examplesBlock('产品示例：', x.same_product_examples || []));
+      return parts.filter(Boolean).join('') || '<span class="small">-</span>';
+    }
     function renderRows(items) {
       const rows = document.getElementById('rows');
       rows.innerHTML = items.map(function(x) {
         const trCount = (x.translation_same_news_titles || 0) + (x.translation_same_product_titles || 0);
-        const issues = (x.issues || []).length ? x.issues.map(esc).join('<br>') : '<span class="small">-</span>';
         return '<tr>'
           + '<td><strong>' + esc(x.lang) + '</strong><div class="small">' + esc(x.has_backup ? '有备份' : '无备份') + '</div></td>'
           + '<td>' + statusTag(x.status) + '</td>'
           + '<td>' + esc(x.news_count) + '</td>'
           + '<td>' + esc(x.product_count) + '</td>'
           + '<td>' + esc(trCount) + '</td>'
-          + '<td class="issues">' + issues + '</td>'
+          + '<td class="issues">' + issueHtml(x) + '</td>'
           + '</tr>';
       }).join('');
     }
@@ -199,21 +237,28 @@
       }
     }
     async function run(action) {
-      if (!checkAuth()) return;
+      if (!(await ensureAuth())) return;
       setBusy(true, action === 'repair' ? '正在修复 pages_xx.json，请勿关闭页面...' : '正在体检 pages_xx.json...');
       const log = document.getElementById('log');
       try {
         const opts = action === 'repair'
-          ? { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: 'action=repair' }
-          : { method: 'GET' };
+          ? { method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: 'action=repair' }
+          : { method: 'GET', credentials: 'include' };
         const resp = await fetch('../cgi-bin/pages-health.cgi?_=' + Date.now(), opts);
         const data = await resp.json();
         if (!data.success) throw new Error(data.error || '未知错误');
         setSummary(data.summary || {});
         renderRows(data.items || []);
         const repaired = (data.repairs || []).filter(function(x){ return x.repaired; });
+        const failed = (data.repairs || []).filter(function(x){ return !x.repaired && x.error; });
+        const renderLine = data.render_error
+          ? '\n列表页重建失败：' + data.render_error
+          : (repaired.length ? '\n产品/文章列表页已重新生成。' : '');
         log.textContent = action === 'repair'
-          ? ('修复完成：' + repaired.length + ' 个文件已处理。\n' + JSON.stringify(data.repairs || [], null, 2))
+          ? ('修复完成：实际修复 ' + repaired.length + ' 个文件；疑似未翻译只做提示，不会自动改内容。'
+              + (failed.length ? '\n失败：' + failed.length + ' 个文件，请看详情。' : '')
+              + renderLine
+              + '\n' + JSON.stringify(data.repairs || [], null, 2))
           : ('体检完成：\n' + JSON.stringify(data.summary || {}, null, 2));
       } catch (e) {
         log.textContent = '执行失败：' + (e && e.message ? e.message : e);
