@@ -47,7 +47,7 @@
             "title": "EU, 중국산 패스너에 대한 반덤핑 조사 개시",
             "date": "2007-11-09",
             "summary": "비워 두기 — 요약을 사용합니다",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "캔톤페어에서 이우 엑스포까지: 패스너 산업, 4월 ‘듀얼 코어’ 무역 붐을 맞이하다",
             "date": "2026-04-15",
             "summary": "발췌문을 사용하려면 비워 두기",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "볼트",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "앵커 볼트",
                     "summary": "콘크리트 및 조적 적용을 위한 확장 앵커, 웨지 앵커, 화학 앵커 볼트. 사이즈 M6–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "플랜지 볼트",
                     "summary": "DIN 6921 / ISO 1665에 따른 톱니형 또는 비톱니형 와셔면 플랜지 볼트. 사이즈 M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "육각 볼트",
                     "summary": "DIN 931/933 및 ISO 4014/4017 표준에 따라 제조된 전체 나사 및 부분 나사 육각 볼트. 등급 4.8~12.9, 사이즈 M4–M64.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "고강도 볼트",
                     "summary": "8.8, 10.9, 12.9 등급의 고강도 구조용 볼트. ASTM A325, A490, DIN 6914 준수.",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "T 볼트",
                     "summary": "T 슬롯 프로파일 및 구조 적용을 위한 T형 볼트. 사이즈 M4–M12.",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "너트",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "플랜지 너트",
                     "summary": "DIN 6923에 따른 톱니형 플랜지 너트, 일체형 와셔면 포함. 사이즈 M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "육각 너트",
                     "summary": "DIN 934 / ISO 4032에 따른 표준 육각 너트. 사이즈 M4–M64, 등급 4, 6, 8, 10.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "나일록 너트",
                     "summary": "DIN 985 / ISO 10511에 따른 나일론 인서트 잠금 너트. 사이즈 M3–M36.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "용접 너트",
                     "summary": "자동 용접용 프로젝션 용접 너트. 사각형 및 육각형 타입.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "윙 너트",
                     "summary": "빠른 조립과 분해를 위한 수동 조작식 윙 너트.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "와셔",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "평와셔",
                     "summary": "DIN 125 / ISO 7089에 따른 표준 평와셔. 사이즈 M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "록 와셔",
                     "summary": "DIN 127 / ISO 7092에 따른 스플릿 록 와셔. 사이즈 M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "스프링 와셔",
                     "summary": "동적 하중 적용을 위한 원추형 스프링 와셔(벨빌). DIN 2093.",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "사각 와셔",
                     "summary": "구조용 적용을 위한 사각 평와셔. DIN 436.",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "나사",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "드라이월 나사",
                     "summary": "금속 스터드용 미세 나사산 및 목재 프레임용 굵은 나사산을 갖춘 전문 드라이월 나사. 흑색 인산염 마감.",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "머신 스크류",
                     "summary": "팬 헤드, 육각 헤드, 접시머리 머신 스크류. 사이즈 M1.6–M20.",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "셀프 드릴링 스크류",
                     "summary": "금속 적용을 위한 드릴 포인트가 있는 셀프 드릴링 스크류(Tek 스크류).",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "목재 나사",
                     "summary": "다양한 사이즈와 재질의 고품질 목재 나사. 목공, 가구 조립, 일반 건축에 적합합니다.",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "스터드 및 전산봉",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "양끝나사 스터드",
                     "summary": "DIN 938/939 및 ISO 표준에 따라 제조된 양끝나사 스터드(스터드 볼트). 양쪽 끝은 나사산, 중앙부는 무나사 구간입니다.",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "전산봉",
                     "summary": "DIN 975/976 및 ISO 표준에 따라 제조된 고품질 전산봉(all-thread). 다양한 재질과 등급으로 제공됩니다.",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "핀",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "코터 핀",
                     "summary": "DIN 94 및 ISO 1234 표준에 따라 제조된 고품질 코터 핀(분할 핀). 너트, 볼트 및 기타 패스너 고정에 사용됩니다.",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "다월 핀",
                     "summary": "DIN 7 및 ISO 2339 표준에 따라 제조된 고품질 다월 핀(평행 핀). 정밀 정렬 및 위치 결정에 사용됩니다.",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "앵커 및 체결",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "드롭인 앵커",
                     "summary": "콘크리트 적용을 위한 내부 나사산이 있는 고품질 드롭인 앵커. 아연도금 탄소강 및 스테인리스강 옵션 제공.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "확장 볼트",
                     "summary": "콘크리트 및 조적 적용을 위한 중하중 확장 볼트(슬리브 앵커). 아연도금 탄소강 구조.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "웨지 앵커",
                     "summary": "콘크리트 및 조적 적용을 위한 중하중 웨지 앵커. 아연도금 탄소강 및 스테인리스강 옵션 제공.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "기타 패스너",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "블라인드 리벳",
                     "summary": "한쪽 면 설치용 고품질 블라인드 리벳(팝 리벳). 알루미늄, 강철, 스테인리스강 및 다양한 헤드 스타일로 제공됩니다.",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "서클립",
                     "summary": "축과 보어 고정을 위한 고품질 서클립(리테이닝 링). 내측 및 외측 타입 제공.",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "패스너 키트",
                     "summary": "산업, 자동차, 유지보수 적용을 위한 종합 패스너 assortment 및 키트.",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "반중공 리벳",
                     "summary": "부분 중공 샹크를 가진 고품질 반중공 리벳. 솔리드 리벳보다 가볍고 세팅이 쉽습니다.",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "솔리드 리벳",
                     "summary": "알루미늄, 강철, 스테인리스강 소재의 고품질 솔리드 리벳. 구조용 및 일반용을 위한 다양한 헤드 스타일 제공.",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "U 볼트",
                     "summary": "파이프 및 튜브 장착용 고품질 U 볼트. DIN 표준에 따라 제조되며 강철 및 스테인리스강 옵션 제공.",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

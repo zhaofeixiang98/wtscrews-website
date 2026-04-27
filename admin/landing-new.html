@@ -550,8 +550,9 @@
     function normalizeImagePath(path) {
       var s = String(path || '').trim();
       if (!s) return '';
-      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
-      s = s.replace(/^\/?images\//i, '');
+	      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
+	      s = s.replace(/^(?:\.\.\/)+images\//i, '');
+	      s = s.replace(/^\/?images\//i, '');
       s = s.replace(/^\/+/, '');
       return s;
     }
@@ -585,7 +586,7 @@
       var rel = normalizeImagePath(path);
       if (!rel) return;
       ensureBodyImageCss();
-      var html = '<figure class="lp-image-block">\n  <img src="../../../images/' + rel + '" alt="" loading="lazy">\n  <figcaption>Image: /images/' + rel + '</figcaption>\n</figure>\n';
+	      var html = '<figure class="lp-image-block">\n  <img src="../../images/' + rel + '" alt="" loading="lazy">\n  <figcaption>Image: ../../images/' + rel + '</figcaption>\n</figure>\n';
       var bodyEl = document.getElementById('en_body');
       var current = bodyEl.value || '';
       bodyEl.value = current ? (current.replace(/\s*$/, '') + '\n\n' + html) : html;
@@ -614,7 +615,7 @@
 
     function selectLibraryImage(path) {
       librarySelectedPath = normalizeImagePath(path);
-      document.getElementById('librarySelectedPath').value = librarySelectedPath ? ('/images/' + librarySelectedPath) : '';
+	      document.getElementById('librarySelectedPath').value = librarySelectedPath ? ('../../images/' + librarySelectedPath) : '';
       document.querySelectorAll('.library-item').forEach(function(el) {
         var p = el.getAttribute('data-path') || '';
         el.classList.toggle('active', normalizeImagePath(p) === librarySelectedPath);
@@ -661,7 +662,7 @@
           '<div class="library-item" data-path="' + escHtml(rel) + '">' +
             '<img src="' + escHtml(item.url || '') + '" alt="' + escHtml(item.filename || '') + '" loading="lazy">' +
             '<div class="library-item-body">' +
-              '<div class="library-item-path">' + escHtml('/images/' + (item.path || '')) + '</div>' +
+	              '<div class="library-item-path">' + escHtml(item.admin_path || ('../../images/' + (item.path || ''))) + '</div>' +
               '<div class="library-item-actions">' +
                 '<button type="button" class="btn-select" data-path="' + escHtml(rel) + '">选择</button>' +
                 '<button type="button" class="btn-hero" data-path="' + escHtml(rel) + '">设为主图</button>' +
@@ -824,9 +825,9 @@
         '<p><strong>Tip:</strong> If your order is urgent, contact us on WhatsApp for faster response.</p>',
         '<h3>Product Images</h3>',
         '<div class="lp-image-row">',
-        '<figure class="lp-image-block"><img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy"><figcaption>Hex bolts - standard and custom sizes</figcaption></figure>',
-        '<figure class="lp-image-block"><img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy"><figcaption>Flange bolts - serrated and non-serrated</figcaption></figure>',
-        '<figure class="lp-image-block"><img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>High strength bolts - grade 8.8 / 10.9 / 12.9</figcaption></figure>',
+	        '<figure class="lp-image-block"><img src="../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy"><figcaption>Hex bolts - standard and custom sizes</figcaption></figure>',
+	        '<figure class="lp-image-block"><img src="../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy"><figcaption>Flange bolts - serrated and non-serrated</figcaption></figure>',
+	        '<figure class="lp-image-block"><img src="../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>High strength bolts - grade 8.8 / 10.9 / 12.9</figcaption></figure>',
         '</div>'
       ].join('\n');
     });

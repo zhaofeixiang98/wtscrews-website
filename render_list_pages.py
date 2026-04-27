@@ -70,7 +70,19 @@ def escape(value: str) -> str:
     return html.escape(value or "", quote=True)
 
 
+def normalize_image_src(src: str) -> str:
+    raw = (src or "").strip()
+    if not raw:
+        return ""
+    path = re.sub(r"^\s*https?://[^/]+/images/", "", raw, flags=re.I)
+    path = re.sub(r"^(?:\.\./)+images/", "", path, flags=re.I)
+    path = re.sub(r"^/?images/", "", path, flags=re.I)
+    path = path.lstrip("/")
+    return f"../../images/{path}" if path else raw
+
+
 def resolve_list_image(src: str) -> str:
+    src = normalize_image_src(src)
     path = (ROOT.parent / src.replace("../../", "")).resolve()
     if src.endswith(".webp"):
         small_path = path.with_name(path.stem + "_sm.webp")

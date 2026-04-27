@@ -81,6 +81,13 @@ try:
     with open(os.path.join(upload_dir, final_name), 'wb') as f:
         f.write(file_field['data'])
 
-    respond({'success': True, 'filename': final_name, 'path': 'news/' + final_name})
+    rel_path = 'news/' + final_name
+    respond({
+        'success': True,
+        'filename': final_name,
+        'path': rel_path,
+        'admin_path': '../../images/' + rel_path,
+        'url': '/images/' + rel_path,
+    })
 except Exception as e:
     respond({'success': False, 'error': '保存失败: ' + str(e)})

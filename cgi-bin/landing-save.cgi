@@ -104,6 +104,30 @@ def make_hreflang(slug):
     return '\n'.join(lines)
 
 
+def normalize_image_path(path):
+    p = str(path or '').strip()
+    p = re.sub(r'^\s*https?://[^/]+/images/', '', p, flags=re.I)
+    p = re.sub(r'^(?:\.\./)+images/', '', p, flags=re.I)
+    p = re.sub(r'^/?images/', '', p, flags=re.I)
+    return p.lstrip('/')
+
+
+def normalize_body_image_refs(body):
+    def repl(match):
+        quote = match.group(1)
+        raw = match.group(2) + match.group(3)
+        rel = normalize_image_path(raw)
+        if not rel:
+            return match.group(0)
+        return f'src={quote}../../../images/{rel}{quote}'
+    return re.sub(
+        r'src=(["\'])(https?://[^"\']+/images/|(?:\.\./)+images/|/?images/)([^"\']*)\1',
+        repl,
+        body or '',
+        flags=re.I,
+    )
+
+
 LC = {
     'en': {'html_lang': 'en', 'cta_quote': 'Get Quote in 24h', 'cta_chat': 'WhatsApp Now', 'form_title': 'Tell us your requirements', 'form_btn': 'Submit Request', 'privacy': 'Privacy Policy', 'lead_notice': 'Industrial fastener quotation page', 'name_ph': 'Name *', 'email_ph': 'Email *', 'company_ph': 'Company', 'phone_ph': 'Phone / WhatsApp', 'message_ph': 'Please describe specs, quantity and lead-time request *', 'sticky_note': 'Urgent order or restocking need?', 'sticky_hint': 'WhatsApp is usually the fastest way to confirm specs and lead-time.', 'trust_title': 'Supply capability at a glance', 'strength_1_k': 'Response', 'strength_1_v': '24h quote support', 'strength_2_k': 'Production', 'strength_2_v': 'OEM / ODM available', 'strength_3_k': 'Standards', 'strength_3_v': 'DIN / ISO / custom drawing', 'strength_4_k': 'Delivery', 'strength_4_v': 'Export packing & shipment support', 'why_title': 'Why buyers work with WT Fasteners', 'why_1': 'Fast quotation based on drawing, standard or sample', 'why_2': 'Stable quality control for repeat international orders', 'why_3': 'Flexible support for custom dimensions and finishes', 'process_title': 'Simple sourcing process', 'process_1': 'Send drawing, size, standard or sample reference', 'process_2': 'Confirm material, finish, quantity and delivery target', 'process_3': 'Receive quotation, lead time and packing plan', 'faq_title': 'Frequently asked questions', 'faq_q1': 'Can you quote from drawing or sample?', 'faq_a1': 'Yes. You can send drawing, standard code, size list or sample reference for evaluation.', 'faq_q2': 'Do you support custom material and surface finish?', 'faq_a2': 'Yes. Material, hardness, coating and packaging can be discussed based on your order requirement.', 'faq_q3': 'How fast can you respond?', 'faq_a3': 'For standard inquiries, we usually respond with quotation direction within 24 hours.'},
     'zh': {'html_lang': 'zh-CN', 'cta_quote': '24小时内获取报价', 'cta_chat': 'WhatsApp 立即沟通', 'form_title': '提交您的需求', 'form_btn': '提交需求', 'privacy': '隐私政策', 'lead_notice': '工业紧固件报价页面', 'name_ph': '姓名 *', 'email_ph': '邮箱 *', 'company_ph': '公司名称', 'phone_ph': '电话 / WhatsApp', 'message_ph': '请填写规格、数量、交期要求 *', 'sticky_note': '急单或补货需求？', 'sticky_hint': '建议直接通过 WhatsApp 沟通，确认规格和交期更快。', 'trust_title': '供应能力一目了然', 'strength_1_k': '响应速度', 'strength_1_v': '24小时内报价支持', 'strength_2_k': '生产能力', 'strength_2_v': '支持 OEM / ODM', 'strength_3_k': '执行标准', 'strength_3_v': 'DIN / ISO / 来图定制', 'strength_4_k': '交付支持', 'strength_4_v': '支持出口包装与出货', 'why_title': '为什么采购商选择 WT Fasteners', 'why_1': '可根据图纸、标准或样品快速报价', 'why_2': '适合稳定复购的国际订单质量控制', 'why_3': '支持非标尺寸与表面处理定制', 'process_title': '采购流程简单清晰', 'process_1': '发送图纸、尺寸、标准或样品信息', 'process_2': '确认材质、表面处理、数量和交期', 'process_3': '获取报价、交期和包装方案', 'faq_title': '常见问题', 'faq_q1': '可以根据图纸或样品报价吗？', 'faq_a1': '可以。您可发送图纸、标准编号、尺寸清单或样品参考供我们评估。', 'faq_q2': '支持定制材质和表面处理吗？', 'faq_a2': '支持。材质、硬度、电镀和包装都可以根据订单需求沟通确认。', 'faq_q3': '一般多久回复？', 'faq_a3': '标准询盘通常可在 24 小时内给出初步报价方向。'},
@@ -119,9 +143,12 @@ LC = {
 
 def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_label, body, hero_image, whatsapp_url, extra_head):
     c = LC.get(lang, LC['en'])
+    fallback_c = LC['en']
     html_lang = c['html_lang']
     dir_attr = ' dir="rtl"' if lang == 'ar' else ''
-    image_src = '../../../images/' + hero_image if hero_image else '../../../images/banner-hero.webp'
+    hero_image_rel = normalize_image_path(hero_image)
+    image_src = '../../../images/' + hero_image_rel if hero_image_rel else '../../../images/banner-hero.webp'
+    body = normalize_body_image_refs(body)
     head_extra = ('\n' + extra_head + '\n') if extra_head else ''
     keyword_chips = build_keyword_chips(keywords)
     language_switch = build_language_switch(lang, slug)
@@ -142,9 +169,9 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
         f'<li>{he(c["process_3"])}</li>',
     ])
     faq_items = ''.join([
-        f'<article class="faq-item"><h3>{he(c.get("faq_q1", ""))}</h3><p>{he(c.get("faq_a1", ""))}</p></article>',
-        f'<article class="faq-item"><h3>{he(c.get("faq_q2", ""))}</h3><p>{he(c.get("faq_a2", ""))}</p></article>',
-        f'<article class="faq-item"><h3>{he(c.get("faq_q3", ""))}</h3><p>{he(c.get("faq_a3", ""))}</p></article>',
+        f'<article class="faq-item"><h3>{he(c.get("faq_q1") or fallback_c["faq_q1"])}</h3><p>{he(c.get("faq_a1") or fallback_c["faq_a1"])}</p></article>',
+        f'<article class="faq-item"><h3>{he(c.get("faq_q2") or fallback_c["faq_q2"])}</h3><p>{he(c.get("faq_a2") or fallback_c["faq_a2"])}</p></article>',
+        f'<article class="faq-item"><h3>{he(c.get("faq_q3") or fallback_c["faq_q3"])}</h3><p>{he(c.get("faq_a3") or fallback_c["faq_a3"])}</p></article>',
     ])
 
     return f'''<!DOCTYPE html>
@@ -163,7 +190,7 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
   <meta property="og:description" content="{he(summary)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wtscrews.com/pags/{lang}/landing/{slug}.html">
-  <meta property="og:image" content="https://wtscrews.com/images/{he(hero_image) if hero_image else 'banner-hero.png'}">{head_extra}
+  <meta property="og:image" content="https://wtscrews.com/images/{he(hero_image_rel) if hero_image_rel else 'banner-hero.png'}">{head_extra}
   <style>
     :root {{
       --bg: #f6f7f4;
@@ -409,7 +436,7 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
     </section>
 
     <section class="faq-section">
-      <h2>{he(c.get('faq_title', 'Frequently asked questions'))}</h2>
+      <h2>{he(c.get('faq_title') or fallback_c['faq_title'])}</h2>
       <div class="faq-list">{faq_items}</div>
     </section>
 
@@ -735,7 +762,7 @@ for payload in prepared_lang_payloads:
 
 fork_error = None
 translating = False
-if auto_translate:
+if auto_translate and created:
     translating = True
     try:
         jobs_dir = os.path.join(BASE_DIR, '.translate-jobs')

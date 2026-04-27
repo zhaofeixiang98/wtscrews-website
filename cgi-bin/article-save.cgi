@@ -159,6 +159,12 @@ def resolve_image_rel_path(src):
     path = re.sub(r'^/?images/', '', path, flags=re.I)
     return path.lstrip('/')
 
+def detail_image_src(src):
+    rel = resolve_image_rel_path(src)
+    if not rel:
+        return str(src or '').strip()
+    return '../../../images/' + rel
+
 def get_image_dimensions(rel_path):
     rel = str(rel_path or '').strip()
     if not rel:
@@ -200,7 +206,11 @@ def enrich_body_images(body):
         if not src:
             return match.group(0)
 
-        dims = get_image_dimensions(resolve_image_rel_path(src))
+        rel_src = resolve_image_rel_path(src)
+        if rel_src:
+            set_attr(attrs, 'src', '../../../images/' + rel_src, overwrite=True)
+
+        dims = get_image_dimensions(rel_src)
         prioritize = not state['seen']
         state['seen'] = True
 
@@ -250,7 +260,7 @@ en_meta     = g('en_meta_desc') or en_summary
 en_kw       = g('en_keywords')
 en_bc       = g('en_bc_label') or en_title
 en_body     = g('en_body')
-og_image        = g('og_image')          # relative to /images/, e.g. abouts/factory1.jpg
+og_image        = resolve_image_rel_path(g('og_image'))  # relative to /images/, e.g. abouts/factory1.jpg
 article_section = g('article_section') or 'Industry News'
 extra_head      = g('extra_head')
 auto_translate  = g('auto_translate', '0')
@@ -953,6 +963,26 @@ def verify_article_outputs(lang, news_dir, html_path, json_path, slug):
         return f'{lang}: pages_{lang}.json missing slug {expected_slug}'
     return ''
 
+
+def rebuild_static_lists():
+    render_script = os.path.join(BASE_DIR, 'render_list_pages.py')
+    if not os.path.exists(render_script):
+        return 'render_list_pages.py not found'
+    try:
+        result = subprocess.run(
+            [sys.executable, render_script],
+            cwd=BASE_DIR,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+    except Exception as exc:
+        return f'render list pages failed: {exc}'
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or '').strip()
+        return f'render list pages failed: {detail or "unknown error"}'
+    return ''
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 errors  = []
 created = []
@@ -1071,7 +1101,7 @@ for payload in prepared_lang_payloads:
     errors.append(f'{lang}: {str(e)}')
 
 fork_error = None
-if auto_translate_enabled:
+if auto_translate_enabled and created:
     try:
         jobs_dir    = os.path.join(BASE_DIR, '.translate-jobs')
         os.makedirs(jobs_dir, exist_ok=True)
@@ -1103,10 +1133,12 @@ if auto_translate_enabled:
     except Exception as _fork_exc:
         fork_error = str(_fork_exc)
         auto_translate_enabled = False   # 回退：不报告 translating=True
+elif auto_translate_enabled and not created:
+    auto_translate_enabled = False
 
-
-# Regenerate static news/products HTML
-subprocess.run(['python3', os.path.join(BASE_DIR, 'render_list_pages.py')], capture_output=True)
+render_error = ''
+if created:
+    render_error = rebuild_static_lists()
 
 respond({
     'success': len(created) > 0,
@@ -1114,6 +1146,6 @@ respond({
     'created': created,
     'translated': translated,
     'translating': auto_translate_enabled,
-    'errors': errors + ([f'translate fork failed: {fork_error}'] if fork_error else []),
+    'errors': errors + ([render_error] if render_error else []) + ([f'translate fork failed: {fork_error}'] if fork_error else []),
     'url': f'/pags/en/news/{slug}.html',
 })

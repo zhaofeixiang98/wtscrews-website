@@ -47,7 +47,7 @@
             "title": "Uni Eropa Memulai Investigasi Anti-Dumping terhadap Fastener China",
             "date": "2007-11-09",
             "summary": "kosongkan – akan menggunakan ringkasan",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "Dari Canton Fair ke Yiwu Expo: Industri Fastener Menyambut Ledakan Perdagangan “Dua Inti” pada April",
             "date": "2026-04-15",
             "summary": "Kosongkan untuk menggunakan kutipan",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "Baut",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Baut Angkur",
                     "summary": "Angkur ekspansi, angkur wedge, dan baut angkur kimia untuk aplikasi beton dan pasangan bata. Ukuran M6–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "Baut Flange",
                     "summary": "Baut flange dengan permukaan washer bergerigi atau tidak bergerigi sesuai DIN 6921 / ISO 1665. Ukuran M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "Baut Hex",
                     "summary": "Baut hex ulir penuh dan sebagian yang diproduksi sesuai standar DIN 931/933 dan ISO 4014/4017. Grade 4.8 hingga 12.9, ukuran M4–M64.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "Baut Kekuatan Tinggi",
                     "summary": "Baut struktural berkekuatan tinggi grade 8.8, 10.9, 12.9. Sesuai ASTM A325, A490, DIN 6914.",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "Baut T",
                     "summary": "Baut berbentuk T untuk profil slot T dan aplikasi struktural. Ukuran M4–M12.",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "Mur",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "Mur Flange",
                     "summary": "Mur flange bergerigi sesuai DIN 6923 dengan permukaan washer terintegrasi. Ukuran M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "Mur Hex",
                     "summary": "Mur hex standar sesuai DIN 934 / ISO 4032. Ukuran M4–M64, grade 4, 6, 8, 10.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "Mur Nyloc",
                     "summary": "Mur pengunci sisipan nylon sesuai DIN 985 / ISO 10511. Ukuran M3–M36.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "Mur Las",
                     "summary": "Mur las proyeksi untuk pengelasan otomatis. Tipe persegi dan heksagonal.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "Mur Kupu-kupu",
                     "summary": "Mur kupu-kupu yang dioperasikan dengan tangan untuk perakitan dan pembongkaran cepat.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "Washer",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "Washer Datar",
                     "summary": "Washer datar standar sesuai DIN 125 / ISO 7089. Ukuran M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "Washer Pengunci",
                     "summary": "Washer pengunci split sesuai DIN 127 / ISO 7092. Ukuran M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "Washer Pegas",
                     "summary": "Washer pegas kerucut (Belleville) untuk aplikasi beban dinamis. DIN 2093.",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "Washer Persegi",
                     "summary": "Washer datar persegi untuk aplikasi struktural. DIN 436.",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "Sekrup",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "Sekrup Drywall",
                     "summary": "Sekrup drywall profesional dengan ulir halus untuk stud logam dan ulir kasar untuk rangka kayu. Finishing fosfat hitam.",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "Sekrup Mesin",
                     "summary": "Sekrup mesin kepala pan, kepala hex, dan countersunk. Ukuran M1.6–M20.",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "Sekrup Self Drilling",
                     "summary": "Sekrup self drilling (Tek screws) dengan ujung bor untuk aplikasi logam.",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "Sekrup Kayu",
                     "summary": "Sekrup kayu berkualitas tinggi dalam berbagai ukuran dan material. Cocok untuk pengerjaan kayu, perakitan furnitur, dan konstruksi umum.",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "Stud & Batang Berulir",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "Stud Dua Ujung",
                     "summary": "Stud dua ujung (stud bolts) diproduksi sesuai DIN 938/939 dan standar ISO. Kedua ujung berulir dengan bagian tengah tanpa ulir.",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "Batang Berulir",
                     "summary": "Batang berulir berkualitas tinggi (all-thread) diproduksi sesuai DIN 975/976 dan standar ISO. Tersedia dalam berbagai material dan grade.",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "Pin",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "Cotter Pin",
                     "summary": "Cotter pin (split pin) berkualitas tinggi diproduksi sesuai DIN 94 dan ISO 1234. Digunakan untuk mengamankan mur, baut, dan fastener lainnya.",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "Dowel Pin",
                     "summary": "Dowel pin (parallel pin) berkualitas tinggi diproduksi sesuai DIN 7 dan ISO 2339. Digunakan untuk penyelarasan dan penempatan presisi.",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "Angkur & Pengikat",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "Drop-in Anchor",
                     "summary": "Drop-in anchor berkualitas tinggi dengan ulir internal untuk aplikasi beton. Pilihan baja karbon berlapis seng dan stainless steel.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "Baut Ekspansi",
                     "summary": "Baut ekspansi tugas berat (sleeve anchor) untuk aplikasi beton dan pasangan bata. Konstruksi baja karbon berlapis seng.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "Wedge Anchor",
                     "summary": "Wedge anchor tugas berat untuk aplikasi beton dan pasangan bata. Pilihan baja karbon berlapis seng dan stainless steel.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "Fastener Lainnya",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blind Rivet",
                     "summary": "Blind rivet (pop rivet) berkualitas tinggi untuk pemasangan satu sisi. Tersedia dalam aluminium, baja, dan stainless steel dengan berbagai gaya kepala.",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "Circlip",
                     "summary": "Circlip (retaining ring) berkualitas tinggi untuk penahan poros dan lubang. Tipe internal dan eksternal tersedia.",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "Kit Fastener",
                     "summary": "Assortment dan kit fastener lengkap untuk aplikasi industri, otomotif, dan perawatan.",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "Rivet Semi-Tubular",
                     "summary": "Rivet semi-tubular berkualitas tinggi dengan batang sebagian berongga. Lebih ringan dan lebih mudah dipasang dibanding rivet solid.",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "Rivet Solid",
                     "summary": "Rivet solid berkualitas tinggi dalam aluminium, baja, dan stainless steel. Berbagai gaya kepala untuk aplikasi struktural dan umum.",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "Baut U",
                     "summary": "Baut U berkualitas tinggi untuk pemasangan pipa dan tube. Diproduksi sesuai standar DIN dengan pilihan baja dan stainless steel.",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

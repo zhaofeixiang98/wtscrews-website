@@ -47,7 +47,7 @@
             "title": "La UE inicia una investigación antidumping sobre sujetadores chinos",
             "date": "2007-11-09",
             "summary": "dejar en blanco: se usará el resumen",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "De la Feria de Cantón a la Expo de Yiwu: la industria de los sujetadores abraza un auge comercial de «doble núcleo» en abril",
             "date": "2026-04-15",
             "summary": "Dejar en blanco para usar el extracto",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "Pernos",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Pernos de anclaje",
                     "summary": "Anclajes de expansión, anclajes de cuña y pernos de anclaje químico para aplicaciones en hormigón y mampostería. Tamaños M6–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "Pernos con brida",
                     "summary": "Pernos con brida con cara de arandela dentada o no dentada según DIN 6921 / ISO 1665. Tamaños M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "Pernos hexagonales",
                     "summary": "Pernos hexagonales de rosca completa y parcial fabricados según DIN 931/933 e ISO 4014/4017. Grados 4.8 a 12.9, tamaños M4–M64.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "Pernos de alta resistencia",
                     "summary": "Pernos estructurales de alta resistencia en grados 8.8, 10.9 y 12.9. Cumplen ASTM A325, A490 y DIN 6914.",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "Pernos en T",
                     "summary": "Pernos en forma de T para perfiles con ranura en T y aplicaciones estructurales. Tamaños M4–M12.",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "Tuercas",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "Tuercas con brida",
                     "summary": "Tuercas con brida dentada según DIN 6923 con cara de arandela integrada. Tamaños M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "Tuercas hexagonales",
                     "summary": "Tuercas hexagonales estándar según DIN 934 / ISO 4032. Tamaños M4–M64, grados 4, 6, 8, 10.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "Tuercas Nyloc",
                     "summary": "Tuercas de bloqueo con inserto de nylon según DIN 985 / ISO 10511. Tamaños M3–M36.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "Tuercas soldables",
                     "summary": "Tuercas de soldadura por proyección para soldadura automatizada. Tipos cuadrados y hexagonales.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "Tuercas de mariposa",
                     "summary": "Tuercas de mariposa de operación manual para montaje y desmontaje rápidos.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "Arandelas",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "Arandelas planas",
                     "summary": "Arandelas planas estándar según DIN 125 / ISO 7089. Tamaños M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "Arandelas de bloqueo",
                     "summary": "Arandelas partidas de bloqueo según DIN 127 / ISO 7092. Tamaños M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "Arandelas de resorte",
                     "summary": "Arandelas de resorte cónicas (Belleville) para aplicaciones de carga dinámica. DIN 2093.",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "Arandelas cuadradas",
                     "summary": "Arandelas planas cuadradas para aplicaciones estructurales. DIN 436.",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "Tornillos",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "Tornillos para drywall",
                     "summary": "Tornillos profesionales para drywall con rosca fina para montantes metálicos y rosca gruesa para estructuras de madera. Acabado fosfatado negro.",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "Tornillos de máquina",
                     "summary": "Tornillos de máquina de cabeza pan, cabeza hexagonal y avellanada. Tamaños M1.6–M20.",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "Tornillos autoperforantes",
                     "summary": "Tornillos autoperforantes (Tek) con punta de taladro para aplicaciones metálicas.",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "Tornillos para madera",
                     "summary": "Tornillos para madera de alta calidad en varios tamaños y materiales. Adecuados para carpintería, montaje de muebles y construcción general.",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "Espárragos y varillas roscadas",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "Espárragos de doble extremo",
                     "summary": "Espárragos de doble extremo fabricados según DIN 938/939 y normas ISO. Ambos extremos roscados con sección central sin rosca.",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "Varillas roscadas",
                     "summary": "Varillas roscadas de alta calidad fabricadas según DIN 975/976 y normas ISO. Disponibles en varios materiales y grados.",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "Pasadores",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "Pasadores de chaveta",
                     "summary": "Pasadores de chaveta de alta calidad fabricados según DIN 94 e ISO 1234. Usados para asegurar tuercas, pernos y otros sujetadores.",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "Pasadores cilíndricos",
                     "summary": "Pasadores cilíndricos de alta calidad fabricados según DIN 7 e ISO 2339. Usados para alineación y posicionamiento precisos.",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "Anclajes y fijación",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "Anclajes drop-in",
                     "summary": "Anclajes drop-in de alta calidad con rosca interna para aplicaciones en hormigón. Opciones de acero al carbono galvanizado y acero inoxidable.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "Pernos de expansión",
                     "summary": "Pernos de expansión de servicio pesado (anclajes de camisa) para hormigón y mampostería. Construcción de acero al carbono galvanizado.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "Anclajes de cuña",
                     "summary": "Anclajes de cuña de servicio pesado para hormigón y mampostería. Opciones de acero al carbono galvanizado y acero inoxidable.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "Otros sujetadores",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "Remaches ciegos",
                     "summary": "Remaches ciegos de alta calidad para instalación por un solo lado. Disponibles en aluminio, acero y acero inoxidable con varios estilos de cabeza.",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "Circlips",
                     "summary": "Circlips de alta calidad (anillos de retención) para retención en ejes y alojamientos. Tipos internos y externos disponibles.",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "Kits de sujetadores",
                     "summary": "Surtidos y kits completos de sujetadores para aplicaciones industriales, automotrices y de mantenimiento.",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "Remaches semitubulares",
                     "summary": "Remaches semitubulares de alta calidad con vástago parcialmente hueco. Más ligeros y fáciles de colocar que los remaches sólidos.",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "Remaches sólidos",
                     "summary": "Remaches sólidos de alta calidad en aluminio, acero y acero inoxidable. Múltiples estilos de cabeza para aplicaciones estructurales y generales.",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "Pernos en U",
                     "summary": "Pernos en U de alta calidad para montaje de tuberías y tubos. Fabricados según normas DIN con opciones en acero y acero inoxidable.",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

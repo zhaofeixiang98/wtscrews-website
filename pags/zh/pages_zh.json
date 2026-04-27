@@ -47,7 +47,7 @@
             "title": "欧盟对中国紧固件发起反倾销调查",
             "date": "2007-11-09",
             "summary": "留空——将使用摘要",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "从广交会到义乌展：紧固件行业迎来“四月双核心”贸易热潮",
             "date": "2026-04-15",
             "summary": "留空以使用摘录",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "螺栓",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "地脚螺栓",
                     "summary": "用于混凝土和砌体应用的膨胀锚栓、楔形锚栓和化学锚栓。规格 M6–M24。",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "法兰螺栓",
                     "summary": "带齿或不带齿垫面的法兰螺栓，符合 DIN 6921 / ISO 1665 标准。规格 M5–M24。",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "六角螺栓",
                     "summary": "全螺纹和半螺纹六角螺栓，按照 DIN 931/933 和 ISO 4014/4017 标准制造。强度等级 4.8 至 12.9，规格 M4–M64。",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "高强度螺栓",
                     "summary": "8.8、10.9、12.9级高强度结构螺栓，符合 ASTM A325、A490、DIN 6914 标准。",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "T型螺栓",
                     "summary": "用于T型槽型材和结构应用的T型螺栓。规格 M4–M12。",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "螺母",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "法兰螺母",
                     "summary": "带齿法兰螺母，符合 DIN 6923 标准，带一体式垫面。规格 M5–M24。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "六角螺母",
                     "summary": "标准六角螺母，符合 DIN 934 / ISO 4032 标准。规格 M4–M64，等级 4、6、8、10。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "尼龙锁紧螺母",
                     "summary": "尼龙嵌件锁紧螺母，符合 DIN 985 / ISO 10511 标准。规格 M3–M36。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "焊接螺母",
                     "summary": "用于自动化焊接的凸焊螺母。可提供方形和六角形类型。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "蝶形螺母",
                     "summary": "手动操作的蝶形螺母，便于快速装配和拆卸。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "垫圈",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "平垫圈",
                     "summary": "标准平垫圈，符合 DIN 125 / ISO 7089 标准。规格 M2–M64。",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "锁紧垫圈",
                     "summary": "开口弹簧锁紧垫圈，符合 DIN 127 / ISO 7092 标准。规格 M2–M64。",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "弹簧垫圈",
                     "summary": "用于动态载荷应用的锥形弹簧垫圈（碟形弹簧）。符合 DIN 2093 标准。",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "方垫圈",
                     "summary": "用于结构应用的方形平垫圈。符合 DIN 436 标准。",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "螺钉",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "干墙螺钉",
                     "summary": "专业干墙螺钉，细牙适用于金属龙骨，粗牙适用于木结构框架。黑色磷化表面处理。",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "机螺钉",
                     "summary": "盘头、六角头和沉头机螺钉。规格 M1.6–M20。",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "自钻螺钉",
                     "summary": "带钻尾的自钻螺钉（Tek 螺钉），适用于金属应用。",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "木螺钉",
                     "summary": "高品质木螺钉，提供多种规格和材料，适用于木工、家具装配和一般建筑用途。",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "螺柱与全牙丝杆",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "双头螺柱",
                     "summary": "双头螺柱（stud bolts），按照 DIN 938/939 和 ISO 标准制造。两端带螺纹，中间为无螺纹杆身。",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "全牙丝杆",
                     "summary": "高品质全牙丝杆，按照 DIN 975/976 和 ISO 标准制造。可提供多种材料和强度等级。",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "销类",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "开口销",
                     "summary": "高品质开口销，按照 DIN 94 和 ISO 1234 标准制造，用于固定螺母、螺栓及其他紧固件。",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "定位销",
                     "summary": "高品质定位销（圆柱销），按照 DIN 7 和 ISO 2339 标准制造，用于精确对准和定位。",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "锚固件与紧固件",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "内迫壁虎",
                     "summary": "高品质内迫壁虎，带内螺纹，适用于混凝土应用。可提供镀锌碳钢和不锈钢选项。",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "膨胀螺栓",
                     "summary": "重型膨胀螺栓（套管锚栓），适用于混凝土和砌体应用。采用镀锌碳钢结构。",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "楔形锚栓",
                     "summary": "重型楔形锚栓，适用于混凝土和砌体应用。可提供镀锌碳钢和不锈钢选项。",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "其他紧固件",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "抽芯铆钉",
                     "summary": "高品质抽芯铆钉（拉铆钉），适用于单侧安装。可提供铝、钢和不锈钢材质，以及多种头型。",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "卡簧",
                     "summary": "高品质卡簧（挡圈），用于轴和孔的固定。可提供内卡簧和外卡簧类型。",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "紧固件套装",
                     "summary": "综合性紧固件分类套装，适用于工业、汽车和维修应用。",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "半空心铆钉",
                     "summary": "高品质半空心铆钉，带部分空心杆身。相比实心铆钉重量更轻，也更容易铆接成型。",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "实心铆钉",
                     "summary": "高品质实心铆钉，可提供铝、钢和不锈钢材质。多种头型适用于结构和通用应用。",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "U型螺栓",
                     "summary": "高品质U型螺栓，用于管道和管件固定。按照 DIN 标准制造，可提供钢和不锈钢选项。",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

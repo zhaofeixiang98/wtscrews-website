@@ -47,7 +47,7 @@
             "title": "L’UE lance une enquête antidumping sur les fixations chinoises",
             "date": "2007-11-09",
             "summary": "laisser vide — le résumé sera utilisé",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "De la Foire de Canton à l’Expo de Yiwu : l’industrie des fixations connaît un boom commercial « à double cœur » en avril",
             "date": "2026-04-15",
             "summary": "Laisser vide pour utiliser l’extrait",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "Boulons",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Boulons d’ancrage",
                     "summary": "Chevilles à expansion, ancrages à coin et boulons d’ancrage chimiques pour applications dans le béton et la maçonnerie. Tailles M6–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "Boulons à embase",
                     "summary": "Boulons à embase avec face de rondelle crantée ou non crantée selon DIN 6921 / ISO 1665. Tailles M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "Boulons hexagonaux",
                     "summary": "Boulons hexagonaux à filetage total ou partiel fabriqués selon DIN 931/933 et ISO 4014/4017. Classes 4.8 à 12.9, tailles M4–M64.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "Boulons haute résistance",
                     "summary": "Boulons structurels haute résistance en classes 8.8, 10.9, 12.9. Conformes ASTM A325, A490, DIN 6914.",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "Boulons en T",
                     "summary": "Boulons en forme de T pour profilés à rainure en T et applications structurelles. Tailles M4–M12.",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "Écrous",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "Écrous à embase",
                     "summary": "Écrous à embase crantée selon DIN 6923 avec face de rondelle intégrée. Tailles M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "Écrous hexagonaux",
                     "summary": "Écrous hexagonaux standard selon DIN 934 / ISO 4032. Tailles M4–M64, classes 4, 6, 8, 10.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "Écrous Nyloc",
                     "summary": "Écrous frein à insert nylon selon DIN 985 / ISO 10511. Tailles M3–M36.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "Écrous à souder",
                     "summary": "Écrous à souder par projection pour soudage automatisé. Types carrés et hexagonaux.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "Écrous papillon",
                     "summary": "Écrous papillon à commande manuelle pour montage et démontage rapides.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "Rondelles",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "Rondelles plates",
                     "summary": "Rondelles plates standard selon DIN 125 / ISO 7089. Tailles M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "Rondelles frein",
                     "summary": "Rondelles frein fendues selon DIN 127 / ISO 7092. Tailles M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "Rondelles ressort",
                     "summary": "Rondelles ressort coniques (Belleville) pour applications à charge dynamique. DIN 2093.",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "Rondelles carrées",
                     "summary": "Rondelles plates carrées pour applications structurelles. DIN 436.",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "Vis",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "Vis pour plaques de plâtre",
                     "summary": "Vis professionnelles pour plaques de plâtre avec filetage fin pour montants métalliques et filetage gros pour ossatures bois. Finition phosphate noir.",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "Vis mécaniques",
                     "summary": "Vis mécaniques à tête cylindrique bombée, tête hexagonale et tête fraisée. Tailles M1.6–M20.",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "Vis autoperceuses",
                     "summary": "Vis autoperceuses (Tek) avec pointe foret pour applications métalliques.",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "Vis à bois",
                     "summary": "Vis à bois de haute qualité en diverses tailles et matières. Adaptées au travail du bois, à l’assemblage de meubles et à la construction générale.",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "Goujons et tiges filetées",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "Goujons double extrémité",
                     "summary": "Goujons double extrémité fabriqués selon DIN 938/939 et normes ISO. Deux extrémités filetées avec section centrale non filetée.",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "Tiges filetées",
                     "summary": "Tiges filetées de haute qualité fabriquées selon DIN 975/976 et normes ISO. Disponibles en diverses matières et classes.",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "Goupilles",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "Goupilles fendues",
                     "summary": "Goupilles fendues de haute qualité fabriquées selon DIN 94 et ISO 1234. Utilisées pour sécuriser écrous, boulons et autres fixations.",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "Goupilles cylindriques",
                     "summary": "Goupilles cylindriques de haute qualité fabriquées selon DIN 7 et ISO 2339. Utilisées pour l’alignement et le positionnement précis.",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "Ancrages et fixation",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "Chevilles à frapper",
                     "summary": "Chevilles à frapper de haute qualité avec filetage interne pour applications béton. Options en acier carbone zingué et acier inoxydable.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "Boulons d’expansion",
                     "summary": "Boulons d’expansion lourds (chevilles à douille) pour applications béton et maçonnerie. Construction en acier carbone zingué.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "Ancrages à coin",
                     "summary": "Ancrages à coin lourds pour applications béton et maçonnerie. Options en acier carbone zingué et acier inoxydable.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "Autres fixations",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "Rivets aveugles",
                     "summary": "Rivets aveugles de haute qualité pour installation d’un seul côté. Disponibles en aluminium, acier et acier inoxydable avec divers styles de tête.",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "Circlips",
                     "summary": "Circlips de haute qualité pour retenue sur arbre et alésage. Types internes et externes disponibles.",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "Kits de fixations",
                     "summary": "Assortiments et kits complets de fixations pour applications industrielles, automobiles et de maintenance.",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "Rivets semi-tubulaires",
                     "summary": "Rivets semi-tubulaires de haute qualité avec tige partiellement creuse. Plus légers et plus faciles à poser que les rivets pleins.",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "Rivets pleins",
                     "summary": "Rivets pleins de haute qualité en aluminium, acier et acier inoxydable. Plusieurs styles de tête pour applications structurelles et générales.",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "Étriers en U",
                     "summary": "Étriers en U de haute qualité pour la fixation de tuyaux et tubes. Fabriqués selon les normes DIN avec options en acier et acier inoxydable.",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

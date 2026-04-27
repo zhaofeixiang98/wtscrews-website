@@ -1777,16 +1777,17 @@
 
     var currentImagePathRaw = '';
 
-    function setCurrentImage(path, displayName, noteText) {
-      var safePath = String(path || '').trim();
-      currentImagePathRaw = safePath;
-      document.getElementById('og_image').value = safePath ? encodeImagePath(safePath) : '';
-      if (document.getElementById('coverImagePathDisplay')) {
-        document.getElementById('coverImagePathDisplay').value = safePath ? '/images/' + safePath : '';
-      }
-      document.getElementById('coverCurrent').textContent = safePath
-        ? '当前封面图：/images/' + safePath
-        : '当前封面图：未选择';
+	    function setCurrentImage(path, displayName, noteText) {
+	      var safePath = String(path || '').trim();
+	      var adminPath = safePath ? '../../images/' + safePath : '';
+	      currentImagePathRaw = safePath;
+	      document.getElementById('og_image').value = safePath ? encodeImagePath(safePath) : '';
+	      if (document.getElementById('coverImagePathDisplay')) {
+	        document.getElementById('coverImagePathDisplay').value = adminPath;
+	      }
+	      document.getElementById('coverCurrent').textContent = safePath
+	        ? '当前封面图：' + adminPath
+	        : '当前封面图：未选择';
 
       if (!safePath) {
         document.getElementById('uploadPreviewRow').classList.remove('show');
@@ -1794,14 +1795,14 @@
       }
 
       document.getElementById('uploadedName').textContent = displayName || safePath.split('/').pop();
-      document.getElementById('uploadedPath').textContent = '/images/' + safePath;
+	      document.getElementById('uploadedPath').textContent = adminPath;
       document.getElementById('uploadThumb').src = '/images/' + encodeImagePath(safePath);
       document.getElementById('currentImageNote').textContent = noteText || '✓ 已设为封面';
       document.getElementById('uploadPreviewRow').classList.add('show');
     }
 
-    function buildFigureHtml(imagePath, altText, captionText) {
-      var src = '../../../images/' + encodeImagePath(imagePath);
+	    function buildFigureHtml(imagePath, altText, captionText) {
+	      var src = '../../images/' + encodeImagePath(imagePath);
       var alt = escHtml(String(typeof altText === 'string' ? altText : document.getElementById('imgAlt').value).trim());
       var caption = escHtml(String(typeof captionText === 'string' ? captionText : document.getElementById('imgCaption').value).trim());
       return '<figure class="article-figure">\n  <img src="' + src + '" alt="' + alt + '" loading="lazy">\n' +
@@ -1957,8 +1958,9 @@
     function normalizeImagePath(path) {
       var s = String(path || '').trim();
       if (!s) return '';
-      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
-      s = s.replace(/^\/?images\//i, '');
+	      s = s.replace(/^\s*https?:\/\/[^/]+\/images\//i, '');
+	      s = s.replace(/^(?:\.\.\/)+images\//i, '');
+	      s = s.replace(/^\/?images\//i, '');
       s = s.replace(/^\/+/, '');
       return s;
     }
@@ -2430,7 +2432,7 @@
           '<img class="library-thumb" src="' + item.url + '" alt="' + escHtml(item.filename) + '" loading="lazy">' +
           '<div class="library-meta">' +
           '<div class="library-name">' + escHtml(item.filename) + '</div>' +
-          '<div class="library-path">/images/' + escHtml(item.path) + '</div>' +
+	          '<div class="library-path">' + escHtml(item.admin_path || ('../../images/' + item.path)) + '</div>' +
           '<div class="library-meta-row">' +
           '<span class="library-badge">' + escHtml(item.section) + '</span>' +
           '<span class="library-size">' + fmtSize(item.size) + '</span>' +
@@ -2450,7 +2452,7 @@
       document.querySelectorAll('.btn-cover').forEach(function (btn) {
         btn.addEventListener('click', function () {
           setCurrentImage(this.dataset.path, this.dataset.name, '✓ 已设为封面（来源于 /images 资源库）');
-          document.getElementById('libraryActionMsg').textContent = '已选择封面：/images/' + this.dataset.path;
+	          document.getElementById('libraryActionMsg').textContent = '已选择封面：../../images/' + this.dataset.path;
         });
       });
 
@@ -2471,7 +2473,7 @@
               caption: String(document.getElementById('imgCaption').value || '').trim()
             });
           }
-          document.getElementById('libraryActionMsg').textContent = '已添加图片模块：/images/' + path;
+	          document.getElementById('libraryActionMsg').textContent = '已添加图片模块：../../images/' + path;
         });
       });
     }
@@ -2564,7 +2566,7 @@
             document.getElementById('uploadZoneText').innerHTML =
               '<strong>点击选择图片</strong> 或拖拽到此处<br><span style="font-size:0.78rem">jpg / png / webp / gif / svg</span>';
             loadImageLibrary();
-            document.getElementById('libraryActionMsg').textContent = '已上传并设为封面：/images/' + data.path;
+	            document.getElementById('libraryActionMsg').textContent = '已上传并设为封面：' + (data.admin_path || ('../../images/' + data.path));
           } else {
             statusEl.textContent = '❌ ' + data.error;
           }
@@ -2606,8 +2608,9 @@
       var date = document.getElementById('date').value;
       var extraHead = document.getElementById('extra_head').value.trim();
 
-      // Fix relative image paths for preview
-      body = body.replace(/src="\.\.\/\.\.\/\.\.\/images\//g, 'src="/images/');
+	      // Fix relative image paths for preview
+	      body = body.replace(/src="\.\.\/\.\.\/\.\.\/images\//g, 'src="/images/');
+	      body = body.replace(/src="\.\.\/\.\.\/images\//g, 'src="/images/');
 
       return '<!DOCTYPE html><html><head>' +
         '<meta charset="UTF-8">' +

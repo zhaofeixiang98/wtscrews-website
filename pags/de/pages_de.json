@@ -47,7 +47,7 @@
             "title": "EU leitet Antidumpinguntersuchung gegen chinesische Verbindungselemente ein",
             "date": "2007-11-09",
             "summary": "Leer lassen – Zusammenfassung wird verwendet",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "Von der Canton Fair zur Yiwu Expo: Die Verbindungselemente-Branche erlebt im April einen „Dual-Core“-Handelsboom",
             "date": "2026-04-15",
             "summary": "Leer lassen, um den Auszug zu verwenden",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "Schrauben und Bolzen",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "Ankerbolzen",
                     "summary": "Spreizanker, Keilanker und chemische Ankerbolzen für Beton- und Mauerwerksanwendungen. Größen M6–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "Flanschschrauben",
                     "summary": "Flanschschrauben mit geriffelter oder glatter Auflagefläche nach DIN 6921 / ISO 1665. Größen M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "Sechskantschrauben",
                     "summary": "Voll- und Teilgewinde-Sechskantschrauben nach DIN 931/933 und ISO 4014/4017. Festigkeitsklassen 4.8 bis 12.9, Größen M4–M64.",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "Hochfeste Schrauben",
                     "summary": "Hochfeste strukturelle Schrauben in den Klassen 8.8, 10.9, 12.9. Konform mit ASTM A325, A490, DIN 6914.",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "T-Schrauben",
                     "summary": "T-förmige Schrauben für T-Nut-Profile und strukturelle Anwendungen. Größen M4–M12.",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "Muttern",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "Flanschmuttern",
                     "summary": "Geriffelte Flanschmuttern nach DIN 6923 mit integrierter Auflagefläche. Größen M5–M24.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "Sechskantmuttern",
                     "summary": "Standard-Sechskantmuttern nach DIN 934 / ISO 4032. Größen M4–M64, Klassen 4, 6, 8, 10.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "Nyloc-Muttern",
                     "summary": "Nylon-Einsatz-Sicherungsmuttern nach DIN 985 / ISO 10511. Größen M3–M36.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "Schweißmuttern",
                     "summary": "Buckelschweißmuttern für automatisiertes Schweißen. Quadratische und sechseckige Typen.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "Flügelmuttern",
                     "summary": "Handbetätigte Flügelmuttern für schnelle Montage und Demontage.",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "Unterlegscheiben",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "Flache Unterlegscheiben",
                     "summary": "Standard-Unterlegscheiben nach DIN 125 / ISO 7089. Größen M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "Sicherungsscheiben",
                     "summary": "Geteilte Federsicherungsscheiben nach DIN 127 / ISO 7092. Größen M2–M64.",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "Federscheiben",
                     "summary": "Konische Federscheiben (Belleville) für dynamische Lastanwendungen. DIN 2093.",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "Vierkantscheiben",
                     "summary": "Quadratische flache Unterlegscheiben für strukturelle Anwendungen. DIN 436.",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "Schrauben",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "Trockenbauschrauben",
                     "summary": "Professionelle Trockenbauschrauben mit Feingewinde für Metallständer und Grobgewinde für Holzrahmen. Schwarz phosphatierte Oberfläche.",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "Maschinenschrauben",
                     "summary": "Maschinenschrauben mit Linsenkopf, Sechskantkopf und Senkkopf. Größen M1.6–M20.",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "Selbstbohrende Schrauben",
                     "summary": "Selbstbohrende Schrauben (Tek-Schrauben) mit Bohrspitze für Metallanwendungen.",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "Holzschrauben",
                     "summary": "Hochwertige Holzschrauben in verschiedenen Größen und Materialien. Geeignet für Holzarbeiten, Möbelmontage und allgemeine Bauanwendungen.",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "Stiftschrauben und Gewindestangen",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "Doppelend-Gewindebolzen",
                     "summary": "Doppelend-Gewindebolzen (Stud Bolts) nach DIN 938/939 und ISO-Normen. Beide Enden mit Gewinde und ungewindeter Mittelteil.",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "Gewindestangen",
                     "summary": "Hochwertige Gewindestangen (All-Thread) nach DIN 975/976 und ISO-Normen. Erhältlich in verschiedenen Materialien und Festigkeitsklassen.",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "Stifte",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "Splinte",
                     "summary": "Hochwertige Splinte nach DIN 94 und ISO 1234. Zum Sichern von Muttern, Schrauben und anderen Verbindungselementen.",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "Zylinderstifte",
                     "summary": "Hochwertige Zylinderstifte (Parallelstifte) nach DIN 7 und ISO 2339. Für präzise Ausrichtung und Positionierung.",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "Anker und Befestigung",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "Einschlaganker",
                     "summary": "Hochwertige Einschlaganker mit Innengewinde für Betonanwendungen. Optionen aus verzinktem Kohlenstoffstahl und Edelstahl.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "Spreizbolzen",
                     "summary": "Schwere Spreizbolzen (Hülsenanker) für Beton- und Mauerwerksanwendungen. Konstruktion aus verzinktem Kohlenstoffstahl.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "Keilanker",
                     "summary": "Schwere Keilanker für Beton- und Mauerwerksanwendungen. Optionen aus verzinktem Kohlenstoffstahl und Edelstahl.",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "Weitere Verbindungselemente",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blindnieten",
                     "summary": "Hochwertige Blindnieten (Popnieten) für einseitige Montage. Erhältlich in Aluminium, Stahl und Edelstahl mit verschiedenen Kopfformen.",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "Sicherungsringe",
                     "summary": "Hochwertige Sicherungsringe für Wellen- und Bohrungsfixierung. Interne und externe Typen verfügbar.",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "Verbindungselemente-Sets",
                     "summary": "Umfassende Sortimente und Sets von Verbindungselementen für Industrie-, Automobil- und Wartungsanwendungen.",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "Halbhohlnieten",
                     "summary": "Hochwertige Halbhohlnieten mit teilweise hohlem Schaft. Leichter und einfacher zu setzen als Vollnieten.",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "Vollnieten",
                     "summary": "Hochwertige Vollnieten aus Aluminium, Stahl und Edelstahl. Mehrere Kopfformen für strukturelle und allgemeine Anwendungen.",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "U-Bolzen",
                     "summary": "Hochwertige U-Bolzen zur Rohr- und Schlauchbefestigung. Nach DIN-Normen hergestellt, mit Optionen aus Stahl und Edelstahl.",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

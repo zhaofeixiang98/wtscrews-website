@@ -46,6 +46,7 @@ try:
             images.append({
                 'filename': filename,
                 'path': rel_path,
+                'admin_path': '../../images/' + rel_path,
                 'section': section,
                 'size': os.path.getsize(full_path),
                 'url': '/images/' + quote(rel_path, safe='/'),

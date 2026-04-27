@@ -64,11 +64,29 @@ if (!in_array($lang, $allowed_langs)) {
 $ipInfo = get_client_ip_details();
 $client_ip = $ipInfo['ip'];
 
-// Block if honeypot is filled OR submission too fast (< 3 seconds)
-if (!empty($honeypot) || $time_diff < 3) {
-    // Redirect to success anyway to not reveal we're blocking
+// Preserve landing page / ad tracking fields submitted by generated pages.
+$tracking_keys = [
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
+    'gclid', 'gbraid', 'wbraid', 'fbclid',
+    'landing_page', 'page_path', 'page_title', 'referrer',
+];
+$tracking = [];
+foreach ($tracking_keys as $key) {
+    $tracking[$key] = isset($_POST[$key]) ? trim((string)$_POST[$key]) : '';
+}
+
+// Honeypot bots get a silent success so they do not learn the filter.
+if (!empty($honeypot)) {
     $success_url = '/pags/' . $lang . '/success.html';
     header('Location: ' . $success_url);
+    exit;
+}
+
+// Do not show a success page for a real submission that was not saved.
+if ($form_loaded > 0 && $time_diff < 3) {
+    http_response_code(429);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Please wait a moment before submitting the form again.';
     exit;
 }
 
@@ -94,7 +112,7 @@ $possibleDirs = [
 
 $save_dir = null;
 foreach ($possibleDirs as $dir) {
-    if (is_dir($dir) || @mkdir($dir, 0755, true)) {
+    if ((is_dir($dir) || @mkdir($dir, 0755, true)) && is_writable($dir)) {
         $save_dir = $dir;
         break;
     }
@@ -103,7 +121,13 @@ foreach ($possibleDirs as $dir) {
 if (!$save_dir) {
     $save_dir = __DIR__ . '/../users/';
     if (!is_dir($save_dir)) {
-        mkdir($save_dir, 0755, true);
+        @mkdir($save_dir, 0755, true);
+    }
+    if (!is_writable($save_dir)) {
+        http_response_code(500);
+        header('Content-Type: text/plain; charset=utf-8');
+        echo 'Submission could not be saved. Please contact us by WhatsApp or email.';
+        exit;
     }
 }
 
@@ -126,12 +150,19 @@ $record = [
     'ip_source' => $ipInfo['ip_source'],
     'ip_raw' => $ipInfo['ip_raw'],
     'ip_raw_remote_addr' => $ipInfo['ip_raw_remote_addr'],
+    'tracking' => $tracking,
     'lang' => $lang,
     'time' => date('c')
 ];
 
 // Save to file
-file_put_contents($filename, json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+$saved = file_put_contents($filename, json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
+if ($saved === false) {
+    http_response_code(500);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Submission could not be saved. Please contact us by WhatsApp or email.';
+    exit;
+}
 
 // Redirect to language-specific success page
 $success_url = '/pags/' . $lang . '/success.html';

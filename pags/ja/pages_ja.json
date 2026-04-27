@@ -47,7 +47,7 @@
             "title": "EU、中国製ファスナーに対する反ダンピング調査を開始",
             "date": "2007-11-09",
             "summary": "空白のまま — 要約を使用します",
-            "icon": "https://wtscrews.com/images/news/WTO.png"
+            "icon": "../../images/news/WTO.png"
         },
         {
             "slug": "news/2026-04-14-us-tariff-fastener",
@@ -61,7 +61,7 @@
             "title": "広州交易会から義烏博覧会へ：ファスナー業界が4月に「デュアルコア」貿易ブームを迎える",
             "date": "2026-04-15",
             "summary": "抜粋を使用するため空白のまま",
-            "icon": "https://wtscrews.com/images/news/The-139th-Canton-Fair-1.png"
+            "icon": "../../images/news/The-139th-Canton-Fair-1.png"
         },
         {
             "slug": "news/industry-outlook-2026",
@@ -74,7 +74,7 @@
     "products": [
         {
             "category": "Bolts",
-            "icon": "images/products/others/Solid Rivet1.webp",
+            "icon": "../../images/products/others/Solid Rivet1.webp",
             "items": [
                 {
                     "slug": "products/wheel-bolt",
@@ -86,235 +86,235 @@
         },
         {
             "category": "ボルト",
-            "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp",
+            "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
                     "slug": "products/anchor-bolts",
                     "title": "アンカーボルト",
                     "summary": "コンクリートおよび石積み用途向けの拡張アンカー、ウェッジアンカー、ケミカルアンカーボルト。サイズ M6–M24。",
-                    "icon": "https://wtscrews.com/images/products/bolts/Anchor Bolt1.webp"
+                    "icon": "../../images/products/bolts/Anchor Bolt1.webp"
                 },
                 {
                     "slug": "products/flange-bolts",
                     "title": "フランジボルト",
                     "summary": "DIN 6921 / ISO 1665 に準拠した、セレーション付きまたはセレーションなし座面のフランジボルト。サイズ M5–M24。",
-                    "icon": "https://wtscrews.com/images/products/bolts/Flange Bolt1.webp"
+                    "icon": "../../images/products/bolts/Flange Bolt1.webp"
                 },
                 {
                     "slug": "products/hex-bolts",
                     "title": "六角ボルト",
                     "summary": "DIN 931/933 および ISO 4014/4017 規格に基づき製造された全ねじ・半ねじ六角ボルト。強度区分 4.8〜12.9、サイズ M4–M64。",
-                    "icon": "https://wtscrews.com/images/products/bolts/Hex Bolt0.webp"
+                    "icon": "../../images/products/bolts/Hex Bolt0.webp"
                 },
                 {
                     "slug": "products/high-strength-bolts",
                     "title": "高強度ボルト",
                     "summary": "強度区分 8.8、10.9、12.9 の高強度構造用ボルト。ASTM A325、A490、DIN 6914 に準拠。",
-                    "icon": "https://wtscrews.com/images/products/bolts/High Strength Bolt1.webp"
+                    "icon": "../../images/products/bolts/High Strength Bolt1.webp"
                 },
                 {
                     "slug": "products/t-bolts",
                     "title": "Tボルト",
                     "summary": "Tスロットプロファイルおよび構造用途向けのT形ボルト。サイズ M4–M12。",
-                    "icon": "https://wtscrews.com/images/products/bolts/T Bolt4.webp"
+                    "icon": "../../images/products/bolts/T Bolt4.webp"
                 }
             ]
         },
         {
             "category": "ナット",
-            "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp",
+            "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
                 {
                     "slug": "products/flange-nuts",
                     "title": "フランジナット",
                     "summary": "DIN 6923 に準拠した一体座面付きセレーションフランジナット。サイズ M5–M24。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Flange Nut.webp"
+                    "icon": "../../images/products/nuts/Flange Nut.webp"
                 },
                 {
                     "slug": "products/hex-nuts",
                     "title": "六角ナット",
                     "summary": "DIN 934 / ISO 4032 に準拠した標準六角ナット。サイズ M4–M64、等級 4、6、8、10。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Hex Nut1.webp"
+                    "icon": "../../images/products/nuts/Hex Nut1.webp"
                 },
                 {
                     "slug": "products/nyloc-nuts",
                     "title": "ナイロンロックナット",
                     "summary": "DIN 985 / ISO 10511 に準拠したナイロンインサートロックナット。サイズ M3–M36。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Nyloc Nut3.webp"
+                    "icon": "../../images/products/nuts/Nyloc Nut3.webp"
                 },
                 {
                     "slug": "products/weld-nuts",
                     "title": "溶接ナット",
                     "summary": "自動溶接用のプロジェクション溶接ナット。角形および六角形タイプ。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Weld Nut 5.webp"
+                    "icon": "../../images/products/nuts/Weld Nut 5.webp"
                 },
                 {
                     "slug": "products/wing-nuts",
                     "title": "蝶ナット",
                     "summary": "迅速な組立・分解に適した手締め式蝶ナット。",
-                    "icon": "https://wtscrews.com/images/products/nuts/Wing Nut7.webp"
+                    "icon": "../../images/products/nuts/Wing Nut7.webp"
                 }
             ]
         },
         {
             "category": "ワッシャー",
-            "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp",
+            "icon": "../../images/products/washers/Flat Washer4.webp",
             "items": [
                 {
                     "slug": "products/flat-washers",
                     "title": "平ワッシャー",
                     "summary": "DIN 125 / ISO 7089 に準拠した標準平ワッシャー。サイズ M2–M64。",
-                    "icon": "https://wtscrews.com/images/products/washers/Flat Washer4.webp"
+                    "icon": "../../images/products/washers/Flat Washer4.webp"
                 },
                 {
                     "slug": "products/lock-washers",
                     "title": "ロックワッシャー",
                     "summary": "DIN 127 / ISO 7092 に準拠したスプリットロックワッシャー。サイズ M2–M64。",
-                    "icon": "https://wtscrews.com/images/products/washers/Lock Washer2.webp"
+                    "icon": "../../images/products/washers/Lock Washer2.webp"
                 },
                 {
                     "slug": "products/spring-washers",
                     "title": "スプリングワッシャー",
                     "summary": "動荷重用途向けの円錐ばね座金（ベルビルワッシャー）。DIN 2093。",
-                    "icon": "https://wtscrews.com/images/products/washers/Spring Washer4.webp"
+                    "icon": "../../images/products/washers/Spring Washer4.webp"
                 },
                 {
                     "slug": "products/square-washers",
                     "title": "角ワッシャー",
                     "summary": "構造用途向けの角形平ワッシャー。DIN 436。",
-                    "icon": "https://wtscrews.com/images/products/washers/Square Washer1.webp"
+                    "icon": "../../images/products/washers/Square Washer1.webp"
                 }
             ]
         },
         {
             "category": "ねじ",
-            "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp",
+            "icon": "../../images/products/screws/Drywall Screw1.webp",
             "items": [
                 {
                     "slug": "products/drywall-screws",
                     "title": "ドライウォールねじ",
                     "summary": "金属スタッド用の細目ねじ、木製フレーム用の粗目ねじを備えたプロ用ドライウォールねじ。黒リン酸塩処理。",
-                    "icon": "https://wtscrews.com/images/products/screws/Drywall Screw1.webp"
+                    "icon": "../../images/products/screws/Drywall Screw1.webp"
                 },
                 {
                     "slug": "products/machine-screws",
                     "title": "小ねじ",
                     "summary": "なべ頭、六角頭、皿頭の小ねじ。サイズ M1.6–M20。",
-                    "icon": "https://wtscrews.com/images/products/screws/Machine Screw2.webp"
+                    "icon": "../../images/products/screws/Machine Screw2.webp"
                 },
                 {
                     "slug": "products/self-drilling-screws",
                     "title": "セルフドリリングねじ",
                     "summary": "金属用途向けのドリルポイント付きセルフドリリングねじ（Tekねじ）。",
-                    "icon": "https://wtscrews.com/images/products/screws/Self Drilling Screw3.webp"
+                    "icon": "../../images/products/screws/Self Drilling Screw3.webp"
                 },
                 {
                     "slug": "products/wood-screws",
                     "title": "木ねじ",
                     "summary": "各種サイズ・材料の高品質木ねじ。木工、家具組立、一般建築に適しています。",
-                    "icon": "https://wtscrews.com/images/products/screws/Wood Screw3.webp"
+                    "icon": "../../images/products/screws/Wood Screw3.webp"
                 }
             ]
         },
         {
             "category": "スタッド・全ねじロッド",
-            "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp",
+            "icon": "../../images/products/studs/Double End Stud1.webp",
             "items": [
                 {
                     "slug": "products/double-end-studs",
                     "title": "両ねじスタッド",
                     "summary": "DIN 938/939 および ISO 規格に基づき製造された両ねじスタッド（スタッドボルト）。両端にねじがあり、中央部は無ねじ。",
-                    "icon": "https://wtscrews.com/images/products/studs/Double End Stud1.webp"
+                    "icon": "../../images/products/studs/Double End Stud1.webp"
                 },
                 {
                     "slug": "products/threaded-rods",
                     "title": "全ねじロッド",
                     "summary": "DIN 975/976 および ISO 規格に基づき製造された高品質全ねじロッド。各種材料・強度等級で提供可能。",
-                    "icon": "https://wtscrews.com/images/products/studs/Threaded Rod6.webp"
+                    "icon": "../../images/products/studs/Threaded Rod6.webp"
                 }
             ]
         },
         {
             "category": "ピン",
-            "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp",
+            "icon": "../../images/products/pins/Cotter Pin3.webp",
             "items": [
                 {
                     "slug": "products/cotter-pins",
                     "title": "割ピン",
                     "summary": "DIN 94 および ISO 1234 に基づき製造された高品質割ピン。ナット、ボルト、その他ファスナーの固定に使用。",
-                    "icon": "https://wtscrews.com/images/products/pins/Cotter Pin3.webp"
+                    "icon": "../../images/products/pins/Cotter Pin3.webp"
                 },
                 {
                     "slug": "products/dowel-pins",
                     "title": "ダウエルピン",
                     "summary": "DIN 7 および ISO 2339 に基づき製造された高品質ダウエルピン（平行ピン）。精密な位置合わせと位置決めに使用。",
-                    "icon": "https://wtscrews.com/images/products/pins/Dowel Pin3.webp"
+                    "icon": "../../images/products/pins/Dowel Pin3.webp"
                 }
             ]
         },
         {
             "category": "アンカー・締結",
-            "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp",
+            "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp",
             "items": [
                 {
                     "slug": "products/drop-in-anchors",
                     "title": "ドロップインアンカー",
                     "summary": "コンクリート用途向けの内ねじ付き高品質ドロップインアンカー。亜鉛めっき炭素鋼およびステンレス鋼の選択肢あり。",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Drop-in Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Drop-in Anchor1.webp"
                 },
                 {
                     "slug": "products/expansion-bolts",
                     "title": "拡張ボルト",
                     "summary": "コンクリートおよび石積み用途向けの重荷重用拡張ボルト（スリーブアンカー）。亜鉛めっき炭素鋼製。",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
+                    "icon": "../../images/products/anchors-fastening/Sipery Expansion Bolts1.webp"
                 },
                 {
                     "slug": "products/wedge-anchors",
                     "title": "ウェッジアンカー",
                     "summary": "コンクリートおよび石積み用途向けの重荷重用ウェッジアンカー。亜鉛めっき炭素鋼およびステンレス鋼の選択肢あり。",
-                    "icon": "https://wtscrews.com/images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
+                    "icon": "../../images/products/anchors-fastening/Zinc‑Plated Wedge Anchor1.webp"
                 }
             ]
         },
         {
             "category": "その他ファスナー",
-            "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp",
+            "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
                 {
                     "slug": "products/blind-rivets",
                     "title": "ブラインドリベット",
                     "summary": "片側施工用の高品質ブラインドリベット（ポップリベット）。アルミ、鋼、ステンレス鋼を各種頭部形状で提供。",
-                    "icon": "https://wtscrews.com/images/products/others/Blind Rivet1.webp"
+                    "icon": "../../images/products/others/Blind Rivet1.webp"
                 },
                 {
                     "slug": "products/circlips",
                     "title": "サークリップ",
                     "summary": "軸および穴の保持用高品質サークリップ（止め輪）。内用・外用タイプあり。",
-                    "icon": "https://wtscrews.com/images/products/others/External Circlip2.webp"
+                    "icon": "../../images/products/others/External Circlip2.webp"
                 },
                 {
                     "slug": "products/fastener-kits",
                     "title": "ファスナーキット",
                     "summary": "産業、自動車、メンテナンス用途向けの総合ファスナーアソートおよびキット。",
-                    "icon": "https://wtscrews.com/images/products/others/Fastener Kits4.webp"
+                    "icon": "../../images/products/others/Fastener Kits4.webp"
                 },
                 {
                     "slug": "products/semi-tubular-rivets",
                     "title": "半中空リベット",
                     "summary": "部分中空シャンクを備えた高品質半中空リベット。中実リベットより軽量で、かしめが容易です。",
-                    "icon": "https://wtscrews.com/images/products/others/Semi-tubular Rivet1.webp"
+                    "icon": "../../images/products/others/Semi-tubular Rivet1.webp"
                 },
                 {
                     "slug": "products/solid-rivets",
                     "title": "中実リベット",
                     "summary": "アルミ、鋼、ステンレス鋼製の高品質中実リベット。構造用途および一般用途向けに複数の頭部形状を用意。",
-                    "icon": "https://wtscrews.com/images/products/others/Solid Rivet1.webp"
+                    "icon": "../../images/products/others/Solid Rivet1.webp"
                 },
                 {
                     "slug": "products/u-bolts",
                     "title": "Uボルト",
                     "summary": "配管およびチューブ固定用の高品質Uボルト。DIN規格に基づき製造され、鋼およびステンレス鋼の選択肢があります。",
-                    "icon": "https://wtscrews.com/images/products/others/U Bolt1.webp"
+                    "icon": "../../images/products/others/U Bolt1.webp"
                 }
             ]
         }

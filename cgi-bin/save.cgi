@@ -8,7 +8,7 @@ os.environ['PYTHONWARNINGS'] = 'ignore'
 
 # Print headers immediately
 print("Content-Type: text/html")
-print("Location: wtscrews.com/pags/success.html")
+print("Location: /pags/en/success.html")
 print()
 
 # Parse form data

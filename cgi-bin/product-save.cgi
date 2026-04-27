@@ -436,8 +436,24 @@ def split_structured_lines(raw, default=''):
 def normalize_image_path(path):
     p = (path or '').strip()
     p = re.sub(r'^\s*https?://[^/]+/images/', '', p, flags=re.I)
+    p = re.sub(r'^(?:\.\./)+images/', '', p, flags=re.I)
     p = re.sub(r'^/?images/', '', p, flags=re.I)
     return p.lstrip('/')
+
+og_image = normalize_image_path(og_image)
+
+def normalize_body_image_refs(body):
+    def repl(match):
+        quote = match.group(1)
+        raw = match.group(2)
+        rel = normalize_image_path(raw)
+        if not rel:
+            return match.group(0)
+        return f'src={quote}../../../images/{rel}{quote}'
+    return re.sub(r'src=(["\'])(https?://[^"\']+/images/|(?:\.\./)+images/|/?images/)([^"\']*)\1',
+                  lambda m: f'src={m.group(1)}../../../images/{normalize_image_path(m.group(2) + m.group(3))}{m.group(1)}',
+                  body or '',
+                  flags=re.I)
 
 def get_image_dimensions(image_path):
     rel = normalize_image_path(image_path)
@@ -637,6 +653,7 @@ def build_html(lang, slug, date_str, title, subtitle, summary, meta_desc, keywor
     size_chart_html = render_size_chart_html(size_chart_data)
     reviews_html = render_reviews_html(reviews_data)
     related_html = render_related_html(related_products_data)
+    body = normalize_body_image_refs(body)
     cta_title_text = cta_title or 'Need a Custom Product?'
     cta_desc_text = cta_desc or 'We can manufacture products to your exact specifications — just send us the details.'
     cta_button_text_value = cta_button_text or 'Contact Our Team'
@@ -1101,7 +1118,7 @@ if created:
     render_error = rebuild_static_product_lists()
 
 fork_error = None
-if auto_translate_enabled:
+if auto_translate_enabled and created:
     try:
         jobs_dir = os.path.join(BASE_DIR, '.translate-jobs')
         os.makedirs(jobs_dir, exist_ok=True)
@@ -1146,10 +1163,8 @@ if auto_translate_enabled:
     except Exception as _fork_exc:
         fork_error = str(_fork_exc)
         auto_translate_enabled = False
-
-
-# Regenerate static HTML
-subprocess.run(['python3', os.path.join(BASE_DIR, 'render_list_pages.py')], capture_output=True)
+elif auto_translate_enabled and not created:
+    auto_translate_enabled = False
 
 respond({
     'success': len(created) > 0,
