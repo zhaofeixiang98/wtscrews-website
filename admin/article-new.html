@@ -43,6 +43,10 @@
       min-height: 100vh;
     }
 
+    body.preview-open {
+      overflow: hidden;
+    }
+
     /* ── Top bar ── */
     .topbar {
       background: var(--blue-900);
@@ -1147,7 +1151,13 @@
       flex-direction: column;
     }
 
+    .preview-overlay[hidden] {
+      display: none !important;
+    }
+
     .preview-topbar {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1203,6 +1213,7 @@
 
     .preview-frame {
       flex: 1;
+      min-height: 0;
       border: none;
       width: 100%;
       background: var(--white);
@@ -1719,7 +1730,7 @@
   </div>
 
   <!-- ── Preview overlay ── -->
-  <div id="previewOverlay" class="preview-overlay" style="display:none">
+  <div id="previewOverlay" class="preview-overlay" style="display:none" hidden aria-hidden="true">
     <div class="preview-topbar">
       <span>预览文章</span>
       <div class="preview-lang-row">
@@ -1734,7 +1745,7 @@
           <option value="ja">日本語</option>
           <option value="ko">한국어</option>
         </select>
-        <button class="preview-close-btn" id="previewClose">✕ 关闭预览</button>
+        <button type="button" class="preview-close-btn" id="previewClose">✕ 关闭预览</button>
       </div>
     </div>
     <iframe id="previewFrame" class="preview-frame"></iframe>
@@ -2633,24 +2644,51 @@
         '</main></body></html>';
     }
 
-    document.getElementById('previewBtn').addEventListener('click', function () {
+    var previewOverlay = document.getElementById('previewOverlay');
+    var previewFrame = document.getElementById('previewFrame');
+    var previewLangSel = document.getElementById('previewLangSel');
+
+    function openPreview() {
+      var lang = previewLangSel.value;
+      previewFrame.removeAttribute('src');
+      previewFrame.srcdoc = buildPreview(lang);
+      previewOverlay.hidden = false;
+      previewOverlay.setAttribute('aria-hidden', 'false');
+      previewOverlay.style.display = 'flex';
+      document.body.classList.add('preview-open');
+    }
+
+    function closePreview() {
+      previewOverlay.style.display = 'none';
+      previewOverlay.hidden = true;
+      previewOverlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('preview-open');
+      previewFrame.removeAttribute('srcdoc');
+      previewFrame.src = 'about:blank';
+    }
+
+    document.getElementById('previewBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      openPreview();
+    });
+
+    previewLangSel.addEventListener('change', function () {
+      if (previewOverlay.hidden || previewOverlay.style.display === 'none') return;
       var lang = document.getElementById('previewLangSel').value;
-      document.getElementById('previewFrame').srcdoc = buildPreview(lang);
-      document.getElementById('previewOverlay').style.display = 'flex';
+      previewFrame.srcdoc = buildPreview(lang);
     });
 
-    document.getElementById('previewLangSel').addEventListener('change', function () {
-      document.getElementById('previewFrame').srcdoc = buildPreview(this.value);
-    });
-
-    document.getElementById('previewClose').addEventListener('click', function () {
-      document.getElementById('previewOverlay').style.display = 'none';
+    document.getElementById('previewClose').addEventListener('click', function (e) {
+      e.preventDefault();
+      closePreview();
     });
 
     // Close preview with Escape key
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      document.getElementById('previewOverlay').style.display = 'none';
+      if (!previewOverlay.hidden) {
+        closePreview();
+      }
       if (document.getElementById('imageLibraryModal').style.display !== 'none') {
         closeImageLibrary();
       }
