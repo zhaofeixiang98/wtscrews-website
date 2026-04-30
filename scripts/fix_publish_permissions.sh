@@ -47,10 +47,10 @@ for lang in "${LANGS[@]}"; do
 done
 
 # CGI scripts must remain executable after Git sync.
+# Helper .py files are invoked by Python/imported, so keep their Git file mode unchanged.
 if [[ -d cgi-bin ]]; then
   chown -R www-data:"$WEB_GROUP" cgi-bin 2>/dev/null || chown -R :"$WEB_GROUP" cgi-bin
   find cgi-bin -type f -name '*.cgi' -exec chmod 755 {} +
-  find cgi-bin -type f -name '*.py' -exec chmod 755 {} +
 fi
 
 # Verify the actual Apache user can write all publisher targets.
