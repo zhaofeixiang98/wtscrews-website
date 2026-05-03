@@ -131,6 +131,7 @@
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 <body>
   <header class="admin-header">
@@ -221,20 +222,12 @@
 
     function logout(e) {
       if (e) e.preventDefault();
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
+      WTAdminAuth.logout();
     }
     var logoutBtn = document.getElementById('logoutBtn') || document.querySelector('.logout-btn');
     if (logoutBtn) logoutBtn.addEventListener('click', logout);
 
-    function checkAuth() {
-      const auth = localStorage.getItem('userAdminAuth');
-      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
-        window.location.href = 'login.html';
-        return false;
-      }
-      return true;
-    }
+    async function checkAuth() { return await WTAdminAuth.ensure(); }
 
     function escHtml(str) {
       return String(str || '')
@@ -280,7 +273,7 @@
     }
 
     async function loadLandings() {
-      if (!checkAuth()) return;
+      if (!(await checkAuth())) return;
       const container = document.getElementById('landingContainer');
       container.innerHTML = '<div class="empty-state">加载中...</div>';
       try {
@@ -378,7 +371,7 @@
     }
 
     async function handleDeleteLanding(item) {
-      if (!checkAuth()) return;
+      if (!(await checkAuth())) return;
       if (!item || !item.slug || deletingSlug) return;
       const ok = window.confirm('确认删除落地页 “' + item.slug + '” 吗？\n\n将删除所有语言版本。');
       if (!ok) return;
@@ -411,7 +404,7 @@
     }
 
     async function handleRetranslate(item) {
-      if (!checkAuth()) return;
+      if (!(await checkAuth())) return;
       if (!item || !item.slug || translatingSlug) return;
       const ok = window.confirm('确认重新翻译落地页 “' + item.slug + '” 吗？\n\n将使用当前英文页重新生成其它语言内容。');
       if (!ok) return;

@@ -102,6 +102,7 @@
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 <body>
   <main class="wrap">
@@ -152,25 +153,7 @@
 
   <script>
     async function ensureAuth() {
-      const auth = localStorage.getItem('userAdminAuth');
-      if (auth && Date.now() <= parseInt(auth, 10)) {
-        return true;
-      }
-      try {
-        const resp = await fetch('../cgi-bin/admin-auth.cgi?action=status&_=' + Date.now(), {
-          credentials: 'include'
-        });
-        const data = await resp.json();
-        if (data && data.success && data.authenticated) {
-          localStorage.setItem('userAdminAuth', String(Date.now() + 24 * 60 * 60 * 1000));
-          return true;
-        }
-      } catch (e) {
-        // If the cookie check fails, fall through to the login page.
-      }
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
-      return false;
+      return await WTAdminAuth.ensure();
     }
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

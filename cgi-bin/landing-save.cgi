@@ -6,7 +6,7 @@ import re
 import json
 import subprocess
 from datetime import datetime
-from urllib.parse import parse_qs
+from urllib.parse import parse_qs, unquote
 from admin_auth import is_request_authenticated
 
 sys.stdout.write("Content-Type: application/json; charset=utf-8\r\n\r\n")
@@ -645,7 +645,43 @@ def verify_landing_output(lang, slug, html_path):
         return f'{lang}: html file not written'
     if not safe_html_path.endswith(os.sep + slug + '.html'):
         return f'{lang}: html filename mismatch'
+    missing_images = find_missing_local_images(safe_html_path)
+    if missing_images:
+        return f'{lang}: missing image files: ' + ', '.join(missing_images[:5])
     return ''
+
+
+def find_missing_local_images(html_path):
+    try:
+        with open(html_path, 'r', encoding='utf-8') as f:
+            html = f.read()
+    except Exception:
+        return []
+    missing = []
+    for match in re.finditer(r'<img\b[^>]*\bsrc=["\']([^"\']+)["\']', html, flags=re.I):
+        src = str(match.group(1) or '').strip()
+        if not src or src.startswith('data:'):
+            continue
+        clean = unquote(src.split('?', 1)[0].split('#', 1)[0])
+        if clean.startswith(('http://', 'https://')):
+            m = re.search(r'https?://[^/]+/images/(.+)$', clean, flags=re.I)
+            if not m:
+                continue
+            target = os.path.join(BASE_DIR, 'images', m.group(1))
+        elif clean.startswith('/'):
+            target = os.path.join(BASE_DIR, clean.lstrip('/'))
+        else:
+            target = os.path.abspath(os.path.join(os.path.dirname(html_path), clean))
+        try:
+            if os.path.commonpath([BASE_DIR, target]) != BASE_DIR:
+                missing.append(src)
+                continue
+        except Exception:
+            missing.append(src)
+            continue
+        if not os.path.exists(target):
+            missing.append(src)
+    return missing
 
 
 try:

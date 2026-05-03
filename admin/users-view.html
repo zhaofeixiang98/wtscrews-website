@@ -402,6 +402,7 @@
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 <body>
   <!-- Auth Error -->
@@ -511,20 +512,15 @@
     }
 
     // 检查登录状态
-    function checkAuth() {
-      const authExpiry = localStorage.getItem('userAdminAuth');
-      if (!authExpiry || new Date().getTime() > parseInt(authExpiry, 10)) {
-        localStorage.removeItem('userAdminAuth');
-        document.getElementById('authError').classList.add('show');
-        return false;
-      }
-      return true;
+    async function checkAuth() {
+      var ok = await WTAdminAuth.ensure({ redirect: false });
+      document.getElementById('authError').classList.toggle('show', !ok);
+      return ok;
     }
 
     // 退出登录
     function logout() {
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
+      WTAdminAuth.logout();
     }
 
     function setDeleteButtonState(isDisabled) {
@@ -606,13 +602,13 @@
 
     // 加载用户数据
     async function loadUsers() {
-      if (!checkAuth()) return;
+      if (!(await checkAuth())) return;
 
       const tbody = document.getElementById('usersTableBody');
       tbody.innerHTML = '<tr><td colspan="7" class="no-data"><p>加载中...</p></td></tr>';
 
       try {
-        const response = await fetch('../cgi-bin/api-users.php', { cache: 'no-store' });
+        const response = await fetch('../cgi-bin/api-users.php', { cache: 'no-store', credentials: 'include' });
         if (!response.ok) throw new Error('HTTP ' + response.status);
 
         const users = await response.json();
@@ -674,7 +670,7 @@
     }
 
     async function deleteUser(filename, userName) {
-      if (!checkAuth()) return;
+      if (!(await checkAuth())) return;
       filename = String(filename || '').trim();
       if (!filename || deletingFilename) return;
 
@@ -691,6 +687,7 @@
         const res = await fetch('../cgi-bin/api-users.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          credentials: 'include',
           body: params.toString()
         });
         const data = await res.json();
@@ -708,7 +705,7 @@
     }
 
     async function deleteSelectedUsers() {
-      if (!checkAuth()) return;
+      if (!(await checkAuth())) return;
       if (deletingFilename || selectedFilenames.size === 0) return;
 
       var filenames = Array.from(selectedFilenames);
@@ -725,6 +722,7 @@
         const res = await fetch('../cgi-bin/api-users.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          credentials: 'include',
           body: params.toString()
         });
         const data = await res.json();

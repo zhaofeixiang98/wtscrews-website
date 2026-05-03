@@ -25,16 +25,27 @@
   }
 
   function setLegacyAuthStamp() {
+    if (window.WTAdminAuth && WTAdminAuth.setLegacyAuthStamp) {
+      WTAdminAuth.setLegacyAuthStamp();
+      return;
+    }
     var expiry = new Date().getTime() + 24 * 60 * 60 * 1000;
     localStorage.setItem('userAdminAuth', String(expiry));
   }
 
   function redirectToLogin() {
+    if (window.WTAdminAuth && WTAdminAuth.redirectToLogin) {
+      WTAdminAuth.redirectToLogin();
+      return;
+    }
     localStorage.removeItem('userAdminAuth');
     window.location.href = 'login.html';
   }
 
   async function ensureServerSession() {
+    if (window.WTAdminAuth && WTAdminAuth.ensure) {
+      return await WTAdminAuth.ensure({ redirect: false });
+    }
     if (window.location.protocol === 'file:') {
       var auth = localStorage.getItem('userAdminAuth');
       var ok = !!auth && Date.now() <= parseInt(auth, 10);
@@ -97,6 +108,10 @@
     logout.className = 'global-admin-logout';
     logout.textContent = '退出登录';
     logout.addEventListener('click', function () {
+      if (window.WTAdminAuth && WTAdminAuth.logout) {
+        WTAdminAuth.logout();
+        return;
+      }
       if (window.location.protocol === 'file:') {
         localStorage.removeItem('userAdminAuth');
         window.location.href = 'login.html';

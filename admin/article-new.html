@@ -1268,6 +1268,7 @@
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 
 <body>
@@ -1357,9 +1358,9 @@
           <div class="form-group">
             <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
               <input type="checkbox" id="auto_translate" checked style="width:auto;margin:0">
-              <span>自动翻译空白字段到 8 个语言版本</span>
+              <span>使用 DeepSeek 自动翻译其余 8 个语言版本</span>
             </label>
-            <div class="hint">默认开启。英文内容必填，其他语言留空时会在发布时自动翻译；手动填写的字段优先，不会被覆盖。</div>
+            <div class="hint" id="autoTranslateHint">默认开启。只需要填写英文，发布时会先保存英文版，再由后台全文翻译其他语言，避免非英文预填内容误覆盖。</div>
           </div>
           <div class="quick-publish-box">
             <div style="font-size:0.86rem;font-weight:700;color:#1e3a8a">快速发布（推荐）</div>
@@ -1754,17 +1755,10 @@
 
   <script>
     // ── Auth ──────────────────────────────────────────────────────────────────
-    (function () {
-      var auth = localStorage.getItem('userAdminAuth');
-      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
-        localStorage.removeItem('userAdminAuth');
-        window.location.href = 'login.html';
-      }
-    })();
+    WTAdminAuth.ensure();
     document.getElementById('logoutBtn').addEventListener('click', function (e) {
       e.preventDefault();
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
+      WTAdminAuth.logout();
     });
 
     function escHtml(str) {
@@ -1844,6 +1838,9 @@
     var moduleEditor = document.getElementById('moduleEditor');
     var modulePreview = document.getElementById('modulePreview');
     var modulePreviewBox = document.getElementById('modulePreviewBox');
+    var autoTranslateCheckbox = document.getElementById('auto_translate');
+    var autoTranslateHint = document.getElementById('autoTranslateHint');
+    var NON_EN_LANGS = MODULE_LANGS.filter(function (lang) { return lang !== 'en'; });
 
     MODULE_LANGS.forEach(function (lang) {
       modulesByLang[lang] = [];
@@ -2323,6 +2320,7 @@
 
     document.querySelectorAll('.lang-tab').forEach(function (tab) {
       tab.addEventListener('click', function () {
+        if (this.style.display === 'none') return;
         document.querySelectorAll('.lang-tab').forEach(function (t) { t.classList.remove('active'); });
         document.querySelectorAll('.lang-panel').forEach(function (p) { p.classList.remove('active'); });
         this.classList.add('active');
@@ -2332,6 +2330,40 @@
     });
     initBodyModeSwitches();
     placeModuleEditor('en');
+
+    function setNonEnglishInputsDisabled(disabled) {
+      NON_EN_LANGS.forEach(function (lang) {
+        document.querySelectorAll('[id^="' + lang + '_"]').forEach(function (el) {
+          el.disabled = disabled;
+        });
+      });
+    }
+
+    function updateTranslationModeUI() {
+      var autoTranslate = autoTranslateCheckbox.checked;
+      document.querySelectorAll('.lang-tab').forEach(function (tab) {
+        var isNonEn = tab.dataset.lang !== 'en';
+        tab.style.display = (autoTranslate && isNonEn) ? 'none' : '';
+      });
+      if (autoTranslate && currentLang !== 'en') {
+        document.querySelectorAll('.lang-tab').forEach(function (t) { t.classList.remove('active'); });
+        document.querySelectorAll('.lang-panel').forEach(function (p) { p.classList.remove('active'); });
+        var enTab = document.querySelector('.lang-tab[data-lang="en"]');
+        var enPanel = document.getElementById('panel-en');
+        if (enTab) enTab.classList.add('active');
+        if (enPanel) enPanel.classList.add('active');
+        placeModuleEditor('en');
+      }
+      setNonEnglishInputsDisabled(autoTranslate);
+      if (autoTranslateHint) {
+        autoTranslateHint.textContent = autoTranslate
+          ? '简化模式：只填写英文，发布后后台使用 DeepSeek 全文翻译其他语言，并忽略非英文预填字段。'
+          : '手动模式：可逐语言编辑并提交所有语言字段，不自动覆盖已有内容。';
+      }
+    }
+
+    autoTranslateCheckbox.addEventListener('change', updateTranslationModeUI);
+    updateTranslationModeUI();
 
     document.getElementById('moduleAddBtn').addEventListener('click', function () {
       addModuleToCurrentLang(createModule(document.getElementById('moduleTypeSelect').value));
@@ -2786,7 +2818,7 @@
       btn.disabled = true;
       statusEl.className = 'status-msg loading';
       statusEl.textContent = autoTranslate
-        ? '正在自动翻译并生成文章（9 个语言）...'
+        ? '正在发布英文版，随后后台自动翻译其余 8 个语言...'
         : '正在生成文章（9 个语言）...';
 
       var langs = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
@@ -2798,7 +2830,7 @@
       params.append('article_section', document.getElementById('article_section').value.trim());
       params.append('extra_head', document.getElementById('extra_head').value);
       params.append('auto_translate', autoTranslate ? '1' : '0');
-      langs.forEach(function (lang) {
+      (autoTranslate ? ['en'] : langs).forEach(function (lang) {
         fields.forEach(function (field) {
           var el = document.getElementById(lang + '_' + field);
           if (!el) return;
@@ -2827,7 +2859,7 @@
           if (data.success) {
             if (data.translating) {
               statusEl.className = 'status-msg loading';
-              statusEl.textContent = '✅ 文章已发布（英文版）。后台正在翻译其余 ' + (data.created.length - 1) + ' 个语言版本，请稍候…';
+              statusEl.textContent = '✅ 文章已发布（英文版）。后台正在翻译其余 ' + Math.max(0, langs.length - data.created.length) + ' 个语言版本，请稍候…';
               setTimeout(function () { window.open(data.url, '_blank'); }, 800);
               startTranslationPolling(data.slug, statusEl);
             } else {

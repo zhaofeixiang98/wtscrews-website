@@ -150,6 +150,7 @@
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 <body>
   <header class="admin-header">
@@ -271,21 +272,12 @@
 
   <script>
     function logout() {
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
+      WTAdminAuth.logout();
     }
     document.getElementById('logoutBtn').addEventListener('click', logout);
     function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-    function checkAuth() {
-      const auth = localStorage.getItem('userAdminAuth');
-      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
-        window.location.href = 'login.html';
-        return false;
-      }
-      return true;
-    }
     async function loadSummary() {
-      if (!checkAuth()) return;
+      if (!(await WTAdminAuth.ensure())) return;
       try {
         const pagesResp = await fetch('../pags/en/pages_en.json?_=' + Date.now());
         const pagesData = await pagesResp.json();

@@ -54,6 +54,10 @@
       min-height: 100vh;
     }
 
+    body.preview-open {
+      overflow: hidden;
+    }
+
     /* ── Top bar ── */
     .admin-header {
       background: rgba(255, 255, 255, 0.78);
@@ -1112,6 +1116,10 @@
       box-shadow: none;
     }
 
+    .preview-overlay[hidden] {
+      display: none !important;
+    }
+
     .preview-topbar {
       position: sticky;
       top: 0;
@@ -1171,6 +1179,7 @@
 
     .preview-frame {
       flex: 1;
+      min-height: 0;
       border: none;
       width: 100%;
       background: var(--white);
@@ -1227,6 +1236,7 @@
     }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 
 <body>
@@ -1755,7 +1765,7 @@
   </div>
 
   <!-- ── Preview overlay ── -->
-  <div id="previewOverlay" class="preview-overlay" style="display:none">
+  <div id="previewOverlay" class="preview-overlay" style="display:none" hidden aria-hidden="true">
     <div class="preview-topbar">
       <span>预览产品页</span>
       <div class="preview-lang-row">
@@ -1770,7 +1780,7 @@
           <option value="ja">日本語</option>
           <option value="ko">한국어</option>
         </select>
-        <button class="preview-close-btn" id="previewClose">✕ 关闭预览</button>
+        <button type="button" class="preview-close-btn" id="previewClose">✕ 关闭预览</button>
       </div>
     </div>
     <iframe id="previewFrame" class="preview-frame"></iframe>
@@ -1778,17 +1788,10 @@
 
   <script>
     // ── Auth ──────────────────────────────────────────────────────────────────
-    (function () {
-      var auth = localStorage.getItem('userAdminAuth');
-      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
-        localStorage.removeItem('userAdminAuth');
-        window.location.href = 'login.html';
-      }
-    })();
+    WTAdminAuth.ensure();
     function logout(e) {
       if (e) e.preventDefault();
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
+      WTAdminAuth.logout();
     }
 
     var logoutBtn = document.getElementById('logoutBtn') || document.querySelector('.logout-btn');
@@ -2898,26 +2901,52 @@
         '</body></html>';
     }
 
-    document.getElementById('previewBtn').addEventListener('click', function () {
+    var previewOverlay = document.getElementById('previewOverlay');
+    var previewFrame = document.getElementById('previewFrame');
+    var previewLangSel = document.getElementById('previewLangSel');
+
+    function openPreview() {
       syncAllBodyTextareas();
-      var lang = document.getElementById('previewLangSel').value;
-      document.getElementById('previewFrame').srcdoc = buildPreview(lang);
-      document.getElementById('previewOverlay').style.display = 'flex';
+      var lang = previewLangSel.value;
+      previewFrame.removeAttribute('src');
+      previewFrame.srcdoc = buildPreview(lang);
+      previewOverlay.hidden = false;
+      previewOverlay.setAttribute('aria-hidden', 'false');
+      previewOverlay.style.display = 'flex';
+      document.body.classList.add('preview-open');
+    }
+
+    function closePreview() {
+      previewOverlay.style.display = 'none';
+      previewOverlay.hidden = true;
+      previewOverlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('preview-open');
+      previewFrame.removeAttribute('srcdoc');
+      previewFrame.src = 'about:blank';
+    }
+
+    document.getElementById('previewBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      openPreview();
     });
 
-    document.getElementById('previewLangSel').addEventListener('change', function () {
+    previewLangSel.addEventListener('change', function () {
+      if (previewOverlay.hidden || previewOverlay.style.display === 'none') return;
       syncAllBodyTextareas();
-      document.getElementById('previewFrame').srcdoc = buildPreview(this.value);
+      previewFrame.srcdoc = buildPreview(this.value);
     });
 
-    document.getElementById('previewClose').addEventListener('click', function () {
-      document.getElementById('previewOverlay').style.display = 'none';
+    document.getElementById('previewClose').addEventListener('click', function (e) {
+      e.preventDefault();
+      closePreview();
     });
 
     // Close preview with Escape key
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      document.getElementById('previewOverlay').style.display = 'none';
+      if (!previewOverlay.hidden) {
+        closePreview();
+      }
       if (document.getElementById('imageLibraryModal').style.display !== 'none') {
         closeImageLibrary();
       }
@@ -3015,7 +3044,7 @@
       btn.disabled = true;
       statusEl.className = 'status-msg loading';
       statusEl.textContent = autoTranslate
-        ? '正在自动翻译并生成产品详情页（9 个语言）...'
+        ? '正在发布英文版，随后后台自动翻译其余 8 个语言...'
         : '正在生成产品详情页（9 个语言）...';
 
       var langs = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
@@ -3062,7 +3091,7 @@
           if (data.success) {
             if (data.translating) {
               statusEl.className = 'status-msg loading';
-              statusEl.textContent = '✅ 产品页已发布（英文版）。后台正在翻译其余 ' + (data.created.length - 1) + ' 个语言版本，请稍候…';
+              statusEl.textContent = '✅ 产品页已发布（英文版）。后台正在翻译其余 ' + Math.max(0, langs.length - data.created.length) + ' 个语言版本，请稍候…';
               setTimeout(function () { window.open(data.url, '_blank'); }, 800);
               startTranslationPolling(data.slug, statusEl);
             } else {

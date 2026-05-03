@@ -21,6 +21,7 @@ sys.stdout.flush()
 
 # ── Config ────────────────────────────────────────────────────────────────────
 API_KEY      = "wt2026-api-key"          # <-- change this to a secure value
+API_KEY      = os.environ.get('WT_CONTENT_API_KEY', API_KEY)
 SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR     = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
 NEWS_IMG_DIR = os.path.join(BASE_DIR, 'images', 'news')
@@ -295,18 +296,20 @@ elif action == 'create_article':
                 params[key] = str(body[key])
 
     params_str = urlencode(params)
+    params_bytes = params_str.encode('utf-8')
     save_script = os.path.join(SCRIPT_DIR, 'article-save.cgi')
 
     try:
         result = subprocess.run(
             [sys.executable, save_script],
-            input=params_str.encode('utf-8'),
+            input=params_bytes,
             capture_output=True, timeout=30,
             env={
                 **os.environ,
                 'REQUEST_METHOD':  'POST',
                 'CONTENT_TYPE':    'application/x-www-form-urlencoded',
-                'CONTENT_LENGTH':  str(len(params_str)),
+                'CONTENT_LENGTH':  str(len(params_bytes)),
+                'WT_ADMIN_BYPASS': '1',
             }
         )
         raw_out = result.stdout.decode('utf-8', errors='replace')

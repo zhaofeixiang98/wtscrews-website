@@ -243,6 +243,7 @@
     .modal-sm { max-width: 420px; }
   </style>
   <link rel="stylesheet" href="admin-unified.css?v=20260424">
+  <script src="admin-auth-helper.js?v=20260503"></script>
 </head>
 <body>
 
@@ -351,17 +352,10 @@
 
   <script>
     // ── Auth ──────────────────────────────────────────────────────────────────
-    (function() {
-      var auth = localStorage.getItem('userAdminAuth');
-      if (!auth || new Date().getTime() > parseInt(auth, 10)) {
-        localStorage.removeItem('userAdminAuth');
-        window.location.href = 'login.html';
-      }
-    })();
+    WTAdminAuth.ensure();
     document.getElementById('logoutBtn').addEventListener('click', function(e) {
       e.preventDefault();
-      localStorage.removeItem('userAdminAuth');
-      window.location.href = 'login.html';
+      WTAdminAuth.logout();
     });
 
     function escHtml(str) {
