@@ -1,2 +1,6 @@
 .translation-env
-.env.translation.DS_Store
+.env.translation
+.DS_Store
+logs/
+__pycache__/
+*.pyc
