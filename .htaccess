@@ -8,6 +8,8 @@
 #   /index.html                  -> https://wtscrews.com/pags/en/index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
+# Redirect root domain to English homepage
+RewriteRule ^$ /pags/en/index.html [R=301,L]
   RewriteCond %{HTTP_HOST} ^(www\.)?wtscrews\.com$ [NC]
   RewriteCond %{REQUEST_URI} ^/?(index\.html)?$ [NC]
   RewriteRule ^ https://wtscrews.com/pags/en/index.html [R=301,L]
