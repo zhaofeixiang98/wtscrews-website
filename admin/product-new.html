@@ -2905,15 +2905,70 @@
     var previewFrame = document.getElementById('previewFrame');
     var previewLangSel = document.getElementById('previewLangSel');
 
-    function openPreview() {
+    function collectProductParams(options) {
+      options = options || {};
       syncAllBodyTextareas();
-      var lang = previewLangSel.value;
-      previewFrame.removeAttribute('src');
-      previewFrame.srcdoc = buildPreview(lang);
+      var autoTranslateEl = document.getElementById('auto_translate');
+      var autoTranslate = autoTranslateEl ? autoTranslateEl.checked : false;
+      var manualOverride = autoTranslate && manualOverrideCheckbox && manualOverrideCheckbox.checked;
+      var langs = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
+      var fields = ['title', 'subtitle', 'summary', 'meta_desc', 'keywords', 'bc_label', 'body'];
+      var params = new URLSearchParams();
+      params.append('slug', document.getElementById('slug').value.trim() || 'preview-product');
+      params.append('date', document.getElementById('date').value);
+      params.append('og_image', document.getElementById('og_image').value.trim());
+      params.append('auto_translate', autoTranslate ? '1' : '0');
+      params.append('product_category', document.getElementById('product_category').value.trim());
+      params.append('extra_head', document.getElementById('extra_head').value);
+      params.append('applications_data', document.getElementById('applications_data').value);
+      params.append('materials_data', document.getElementById('materials_data').value);
+      params.append('size_chart_data', document.getElementById('size_chart_data').value);
+      params.append('reviews_data', document.getElementById('reviews_data').value);
+      params.append('related_products_data', document.getElementById('related_products_data').value);
+      params.append('cta_title', document.getElementById('cta_title').value.trim());
+      params.append('cta_desc', document.getElementById('cta_desc').value.trim());
+      params.append('cta_button_text', document.getElementById('cta_button_text').value.trim());
+      if (autoTranslate && !manualOverride) params.append('force_translate_non_en', '1');
+      (options.onlyEnglish || (autoTranslate && !manualOverride) ? ['en'] : langs).forEach(function (lang) {
+        fields.forEach(function (field) {
+          var el = document.getElementById(lang + '_' + field);
+          if (el) params.append(lang + '_' + field, el.value);
+        });
+      });
+      if (options.preview) {
+        params.append('preview', '1');
+        params.append('preview_lang', options.previewLang || 'en');
+      }
+      return params;
+    }
+
+    function showPreviewOverlay() {
       previewOverlay.hidden = false;
       previewOverlay.setAttribute('aria-hidden', 'false');
       previewOverlay.style.display = 'flex';
       document.body.classList.add('preview-open');
+    }
+
+    function openPreview() {
+      var lang = previewLangSel.value;
+      previewFrame.removeAttribute('src');
+      previewFrame.srcdoc = '<!doctype html><html><body style="font-family:Arial,sans-serif;padding:24px">正在生成真实模板预览...</body></html>';
+      showPreviewOverlay();
+      var params = collectProductParams({ preview: true, previewLang: lang });
+      fetch('/cgi-bin/product-save.cgi?_=' + Date.now(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data || !data.success || !data.html) throw new Error((data && data.error) || '预览生成失败');
+          previewFrame.srcdoc = data.html;
+        })
+        .catch(function (err) {
+          // Fallback keeps the preview usable if the server-side preview fails.
+          previewFrame.srcdoc = buildPreview(lang) + '<!-- server preview failed: ' + String(err).replace(/-->/g, '--&gt;') + ' -->';
+        });
     }
 
     function closePreview() {
@@ -3047,32 +3102,7 @@
         ? '正在发布英文版，随后后台自动翻译其余 8 个语言...'
         : '正在生成产品详情页（9 个语言）...';
 
-      var langs = ['en', 'ar', 'de', 'es', 'fr', 'id', 'ja', 'ko', 'zh'];
-      var fields = ['title', 'subtitle', 'summary', 'meta_desc', 'keywords', 'bc_label', 'body'];
-      var params = new URLSearchParams();
-      params.append('slug', slug);
-      params.append('date', date);
-      params.append('og_image', document.getElementById('og_image').value.trim());
-      params.append('auto_translate', autoTranslate ? '1' : '0');
-      params.append('product_category', document.getElementById('product_category').value.trim());
-      params.append('extra_head', document.getElementById('extra_head').value);
-      params.append('applications_data', document.getElementById('applications_data').value);
-      params.append('materials_data', document.getElementById('materials_data').value);
-      params.append('size_chart_data', document.getElementById('size_chart_data').value);
-      params.append('reviews_data', document.getElementById('reviews_data').value);
-      params.append('related_products_data', document.getElementById('related_products_data').value);
-      params.append('cta_title', document.getElementById('cta_title').value.trim());
-      params.append('cta_desc', document.getElementById('cta_desc').value.trim());
-      params.append('cta_button_text', document.getElementById('cta_button_text').value.trim());
-      if (autoTranslate && !manualOverride) {
-        params.append('force_translate_non_en', '1');
-      }
-      (autoTranslate && !manualOverride ? ['en'] : langs).forEach(function (lang) {
-        fields.forEach(function (field) {
-          var el = document.getElementById(lang + '_' + field);
-          if (el) params.append(lang + '_' + field, el.value);
-        });
-      });
+      var params = collectProductParams({ onlyEnglish: autoTranslate && !manualOverride });
 
       fetch('/cgi-bin/product-save.cgi', {
         method: 'POST',

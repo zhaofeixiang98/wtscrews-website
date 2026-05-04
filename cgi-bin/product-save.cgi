@@ -63,6 +63,8 @@ cta_title = g('cta_title')
 cta_desc = g('cta_desc')
 cta_button_text = g('cta_button_text')
 translated_product_extras_json_raw = g('translated_product_extras_json', '')
+preview_mode = False
+preview_lang = 'en'
 
 if not slug:    respond({'success': False, 'error': 'Slug 不能为空'})
 if not en_title: respond({'success': False, 'error': '英文标题为必填项'})
@@ -1157,6 +1159,33 @@ source_extra_fields = {
   'cta_desc': cta_desc,
   'cta_button_text': cta_button_text,
 }
+
+preview_mode = truthy(g('preview', '0'))
+preview_lang = g('preview_lang', 'en') or 'en'
+if preview_lang not in LANGS:
+  preview_lang = 'en'
+if preview_mode:
+  lang = preview_lang
+  title = g(f'{lang}_title') or en_title
+  subtitle = g(f'{lang}_subtitle') or en_subtitle
+  summary = g(f'{lang}_summary') or en_summary
+  meta_desc = g(f'{lang}_meta_desc') or summary
+  keywords = g(f'{lang}_keywords') or en_kw
+  bc_label = g(f'{lang}_bc_label') or title
+  body = g(f'{lang}_body') or en_body
+  try:
+    preview_html = build_html(
+      lang, slug or 'preview-product', date, title, subtitle, summary, meta_desc, keywords, bc_label, body, LANGS,
+      og_image, product_category_label(lang, product_category), extra_head,
+      applications_data, materials_data, size_chart_data, reviews_data, related_products_data,
+      cta_title, cta_desc, cta_button_text
+    )
+    # Product pages are saved under /pags/{lang}/products/, where ../../../ resolves to site root.
+    # In iframe srcdoc there is no file path, so convert generated relative asset links to absolute site-root links.
+    preview_html = preview_html.replace('../../../', '/')
+    respond({'success': True, 'html': preview_html})
+  except Exception as exc:
+    respond({'success': False, 'error': 'preview build failed: ' + str(exc)})
 
 target_langs = list(LANGS)
 if translated_langs_present:
