@@ -4,13 +4,15 @@
 每天早上2点自动执行
 """
 import os
+from pathlib import Path
 from datetime import datetime
 from xml.etree import ElementTree as ET
 from xml.dom import minidom
 
-BASE_URL = "https://wtscrews.com/pags"
-PAGS_DIR = "/Users/frank/wtscrews/222/pags"
-OUTPUT_FILE = "/Users/frank/wtscrews/222/sitemap.xml"
+BASE_URL = os.environ.get("BASE_URL", "https://wtscrews.com/pags")
+ROOT_DIR = Path(__file__).resolve().parents[1]
+PAGS_DIR = os.environ.get("PAGS_DIR", str(ROOT_DIR / "pags"))
+OUTPUT_FILE = os.environ.get("OUTPUT_FILE", str(ROOT_DIR / "sitemap.xml"))
 
 # 语言列表
 LANGUAGES = ['en', 'zh', 'ja', 'ko', 'fr', 'de', 'es', 'ar', 'id']
