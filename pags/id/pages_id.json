@@ -77,6 +77,12 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/wheel-bolts-assembly",
+                    "title": "Perakitan Baut Roda",
+                    "summary": "Perakitan baut roda adalah komponen pengikat kritis yang digunakan untuk mengamankan roda ke hub kendaraan. Dirancang untuk kinerja beban tinggi, baut ini memastikan keselamatan dan stabilitas dalam kondisi berkendara dinamis. Diproduksi dengan pemesinan presisi dan material berkualitas tinggi, baut roda kami memberikan kekuatan tarik, ketahanan aus, dan masa pakai yang lama. Desain perakitan (baut + mur + ring) meningkatkan efisiensi pemasangan dan keandalan pengikatan. Cocok untuk berbagai aplikasi otomotif, termasuk mobil penumpang, kendaraan komersial, dan truk tugas berat.",
+                    "icon": "../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png"
+                },
+                {
                     "slug": "products/wheel-bolt",
                     "title": "Baut Roda",
                     "summary": "Baut roda kami dirancang untuk mengencangkan velg alloy atau baja ke hub kendaraan dengan aman, dilengkapi dudukan hasil mesin presisi (tersedia dalam bentuk kerucut 60°, dudukan bola, atau dudukan datar) untuk memastikan pemusatan dan gaya jepit yang tepat. Konstruksi baja yang dikeraskan dan lapisan tahan korosi memberikan daya tahan jangka panjang serta retensi torsi yang andal dalam kondisi berkendara dinamis. Diproduksi sesuai standar DIN / ISO dengan akurasi dimensi yang konsisten dan peringkat kekuatan grade 10.9 atau 12.9.",

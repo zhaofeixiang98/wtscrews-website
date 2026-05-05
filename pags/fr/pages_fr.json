@@ -77,6 +77,12 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/wheel-bolts-assembly",
+                    "title": "Assemblage de boulons de roue",
+                    "summary": "Les assemblages de boulons de roue sont des composants de fixation essentiels utilisés pour sécuriser les roues sur les moyeux de véhicules. Conçus pour une performance de charge élevée, ces boulons assurent la sécurité et la stabilité dans des conditions de conduite dynamiques. Fabriqués avec une usinage de précision et des matériaux de haute qualité, nos boulons de roue offrent une excellente résistance à la traction, à l'usure et une longue durée de vie. La conception de l'assemblage (boulon + écrou + rondelles) améliore l'efficacité d'installation et la fiabilité de la fixation. Convient à une large gamme d'applications automobiles, y compris les voitures particulières, les véhicules utilitaires et les camions lourds.",
+                    "icon": "../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png"
+                },
+                {
                     "slug": "products/wheel-bolt",
                     "title": "Boulons de roue",
                     "summary": "Nos boulons de roue sont conçus pour fixer solidement les jantes en alliage ou en acier au moyeu du véhicule, avec un siège usiné avec précision (disponible en cône 60°, siège sphérique ou siège plat) pour garantir un centrage et une force de serrage appropriés. La construction en acier trempé et le revêtement anticorrosion assurent une durabilité à long terme et un maintien fiable du couple dans des conditions de conduite dynamiques. Fabriqués selon les normes DIN/ISO avec une précision dimensionnelle constante et des classes de résistance 10.9 ou 12.9.",

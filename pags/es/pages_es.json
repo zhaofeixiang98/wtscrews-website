@@ -77,6 +77,12 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/wheel-bolts-assembly",
+                    "title": "Conjunto de Pernos de Rueda",
+                    "summary": "Los conjuntos de pernos de rueda son componentes de fijación críticos utilizados para asegurar las ruedas a los cubos del vehículo. Diseñados para un alto rendimiento de carga, estos pernos garantizan seguridad y estabilidad en condiciones de conducción dinámicas. Fabricados con mecanizado de precisión y materiales de alta calidad, nuestros pernos de rueda ofrecen excelente resistencia a la tracción, resistencia al desgaste y larga vida útil. El diseño del conjunto (perno + tuerca + arandelas) mejora la eficiencia de instalación y la fiabilidad de fijación. Adecuado para una amplia gama de aplicaciones automotrices, incluidos automóviles de pasajeros, vehículos comerciales y camiones pesados.",
+                    "icon": "../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png"
+                },
+                {
                     "slug": "products/wheel-bolt",
                     "title": "Pernos de Rueda",
                     "summary": "Nuestros pernos de rueda están diseñados para fijar de forma segura llantas de aleación o acero al cubo del vehículo, con un asiento mecanizado de precisión (disponible en cono de 60°, asiento esférico o asiento plano) para garantizar un centrado y una fuerza de sujeción adecuados. La construcción de acero endurecido y el recubrimiento resistente a la corrosión proporcionan durabilidad a largo plazo y una retención de par confiable en condiciones de conducción dinámicas. Fabricados según estándares DIN / ISO con precisión dimensional consistente y clasificaciones de resistencia grado 10.9 o 12.9.",

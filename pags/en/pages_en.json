@@ -77,6 +77,12 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/wheel-bolts-assembly",
+                    "title": "Wheel Bolts Assembly",
+                    "summary": "Wheel bolt assemblies are critical fastening components used to secure wheels to vehicle hubs. Designed for high load-bearing performance, these bolts ensure safety and stability under dynamic driving conditions.  Manufactured with precision machining and high-quality materials, our wheel bolts provide excellent tensile strength, wear resistance, and long service life. The assembly design (bolt + nut + washers) improves installation efficiency and fastening reliability.  Suitable for a wide range of automotive applications, including passenger cars, commercial vehicles, and heavy-duty trucks",
+                    "icon": "../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png"
+                },
+                {
                     "slug": "products/wheel-bolt",
                     "title": "Wheel Bolts",
                     "summary": "Our wheel bolts are designed to securely fasten alloy or steel wheels to the vehicle hub, featuring a precision-machined seat (available in 60° cone, ball seat, or flat seat) to ensure proper centering and clamping force. The hardened steel construction and corrosion-resistant coating provide long-term durability and reliable torque retention under dynamic driving conditions.Manufactured to DIN / ISO standards with consistent dimensional accuracy and grade 10.9 or 12.9 strength ratings.",

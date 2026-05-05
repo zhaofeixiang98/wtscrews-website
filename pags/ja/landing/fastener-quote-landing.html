@@ -15,22 +15,174 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>24時間以内のファスナー見積もり | WT Fasteners</title>
   <meta name="description" content="OEM/卸売注文向け産業用ファスナーサプライヤー。DIN/ISO/ASTM対応、カスタム図面製作、24時間見積もり対応。">
-  <meta name="keywords" content="ファスナーサプライヤー, DINボルト, ステンレスねじ, カスタムファスナー, 卸売ファスナー">
+  <meta name="keywords" content="ファスナーサプライヤー, DINボルト, ステンレス鋼ネジ, カスタムファスナー, 卸売ファスナー">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://wtscrews.com/pags/ja/landing/fastener-quote-landing.html">
   <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
   <meta property="og:title" content="24時間以内のファスナー見積もり | WT Fasteners">
-  <meta property="og:description" content="仕様、グレード、表面処理、数量をお送りください。24営業時間以内に価格とリードタイムをご返答いたします。">
+  <meta property="og:description" content="仕様、グレード、コーティング、数量をお送りください。24営業時間以内に価格とリードタイムをご返信いたします。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://wtscrews.com/pags/ja/landing/fastener-quote-landing.html">
   <meta property="og:image" content="https://wtscrews.com/images/banner-hero.webp">
 <style>
-.lp-image-row { display:flex; gap:16px; align-items:stretch; margin: 28px auto; }
-.lp-image-row .lp-image-block { margin: 0; flex:1 1 0; max-width: none; }
-.lp-image-block { margin: 28px auto; max-width: 1040px; padding: 10px; border-radius: 18px; border: 1px solid rgba(148,163,184,.30); background: linear-gradient(160deg, rgba(255,255,255,.90), rgba(241,245,249,.78)); box-shadow: 0 20px 44px rgba(15,23,42,.20); }
-.lp-image-block img { display:block; width:100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid rgba(148,163,184,.34); box-shadow: 0 14px 34px rgba(15,23,42,.18); background:#fff; }
-.lp-image-block figcaption { margin-top: 10px; color:#1f2937; font-size: 13px; line-height:1.6; padding: 9px 12px; border-radius: 10px; border: 1px dashed rgba(148,163,184,.42); background: rgba(255,255,255,.82); }
-@media (max-width: 860px) { .lp-image-row { display:block; margin: 20px auto; } .lp-image-row .lp-image-block { margin: 20px auto; } .lp-image-block { margin: 20px auto; padding: 8px; border-radius: 14px; } .lp-image-block figcaption { font-size: 12px; } }
+.lp-section {
+  max-width: 1120px;
+  margin: 42px auto;
+  padding: 0 16px;
+  font-family: Arial, sans-serif;
+  color: #111827;
+}
+
+.lp-card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(148,163,184,.35);
+  border-radius: 22px;
+  padding: 28px;
+  margin-bottom: 26px;
+  box-shadow: 0 18px 45px rgba(15,23,42,.10);
+}
+
+.lp-card h3 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  color: #0f172a;
+  letter-spacing: -.3px;
+}
+
+.lp-card p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #374151;
+}
+
+.lp-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+}
+
+.lp-list li {
+  background: #ffffff;
+  border: 1px solid rgba(203,213,225,.8);
+  border-radius: 14px;
+  padding: 13px 15px;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.lp-list li::before {
+  content: "✓";
+  color: #0f766e;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.lp-steps {
+  counter-reset: step;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.lp-steps li {
+  counter-increment: step;
+  background: #ffffff;
+  border: 1px solid rgba(203,213,225,.9);
+  border-radius: 14px;
+  padding: 14px 16px 14px 52px;
+  position: relative;
+  color: #1f2937;
+  font-size: 15px;
+}
+
+.lp-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 14px;
+  top: 11px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.lp-tip {
+  margin-top: 18px;
+  padding: 15px 18px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #ecfeff, #f0fdf4);
+  border: 1px solid rgba(20,184,166,.35);
+  color: #134e4a;
+  font-size: 15px;
+}
+
+.lp-image-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.lp-image-block {
+  margin: 0;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 10px;
+  border: 1px solid rgba(203,213,225,.9);
+  box-shadow: 0 16px 34px rgba(15,23,42,.12);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.lp-image-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(15,23,42,.18);
+}
+
+.lp-image-block img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  border-radius: 13px;
+  background: #f8fafc;
+  border: 1px solid rgba(226,232,240,.9);
+}
+
+.lp-image-block figcaption {
+  margin-top: 10px;
+  padding: 10px 8px 4px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .lp-card {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .lp-list,
+  .lp-image-row {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-card h3 {
+    font-size: 21px;
+  }
+}
 </style>
 
   <style>
@@ -75,7 +227,7 @@
     .lang-picker-label { color: #0f766e; font-size: .82rem; font-weight: 800; }
     .lang-select { appearance: none; -webkit-appearance: none; border: 0; background: transparent; color: #334155; font-size: .82rem; font-weight: 700; padding-right: 18px; outline: none; cursor: pointer; min-width: 108px; }
     .hero { padding: 34px 0 22px; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr); gap: 22px; align-items: start; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 22px; align-items: stretch; }
     .hero-copy, .hero-media, .section, .form-box {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -83,7 +235,7 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
-    .hero-copy { padding: 28px; position: relative; overflow: hidden; align-self: start; }
+    .hero-copy { padding: 28px; position: relative; overflow: hidden; }
     .hero-copy::after {
       content: "";
       position: absolute;
@@ -136,8 +288,8 @@
     }
     .btn.chat { background: linear-gradient(135deg, #22c55e, #16a34a); }
     .btn.quote { background: linear-gradient(135deg, #fb923c, #ea580c); }
-    .hero-media { padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); align-self: start; overflow: hidden; }
-    .hero-media img { display: block; width: 100%; height: clamp(320px, 34vw, 440px); min-height: 0; object-fit: cover; object-position: center; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }
+    .hero-media { padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(241,245,249,.94)); }
+    .hero-media img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 42px rgba(148,163,184,.18); }
     .lp-image-row { display: flex; gap: 16px; align-items: stretch; margin: 28px auto; }
     .lp-image-row .lp-image-block { margin: 0; flex: 1 1 0; max-width: none; }
     .trust-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
@@ -223,7 +375,7 @@
       .lp-image-row { display: block; margin: 20px auto; }
       .lp-image-row .lp-image-block { margin: 20px auto; }
       h1 { max-width: none; }
-      .hero-media img { height: clamp(240px, 56vw, 320px); min-height: 0; }
+      .hero-media img { min-height: 260px; }
       .fixed-wa-inner { flex-direction: column; align-items: stretch; }
       .fixed-wa a { text-align: center; }
       body { padding-bottom: 148px; }
@@ -242,9 +394,9 @@
         <article class="hero-copy">
           <span class="badge">工業用ファスナー見積ページ</span>
           <h1>24時間以内のファスナー見積もり</h1>
-          <p class="subtitle">ボルト、ナット、ワッシャー、カスタム図面の工場直販</p>
-          <p class="summary">仕様、グレード、表面処理、数量をお送りください。24営業時間以内に価格とリードタイムをご返答いたします。</p>
-          <div class="chip-row"><span class="chip">ファスナーサプライヤー</span><span class="chip">DINボルト</span><span class="chip">ステンレスねじ</span><span class="chip">カスタムファスナー</span></div>
+          <p class="subtitle">ボルト、ナット、ワッシャー、カスタム図面の工場直送</p>
+          <p class="summary">仕様、グレード、コーティング、数量をお送りください。24営業時間以内に価格とリードタイムをご返信いたします。</p>
+          <div class="chip-row"><span class="chip">ファスナーサプライヤー</span><span class="chip">DINボルト</span><span class="chip">ステンレス鋼ネジ</span><span class="chip">カスタムファスナー</span></div>
           <div class="cta">
             <a class="btn chat" href="https://wa.me/8615175432812?text=Hi%2C%20I%20need%20a%20quotation%20for%20fasteners." target="_blank" rel="noopener">WhatsApp で相談</a>
             <a class="btn quote" href="#lead-form">24時間以内に見積回答</a>
@@ -262,36 +414,94 @@
     <section class="section">
       <h2>WT Fastenersを選ぶ理由</h2>
       <article class="article-body">
-<h3>供給可能な製品</h3>
-<p>ボルト、ナット、ワッシャー、アンカー、リベット、および産業用バイヤーや販売代理店向けのカスタムファスナーを提供しています。</p>
-<ul>
-<li>規格: DIN / ISO / ASTM / GB</li>
-<li>材質: 炭素鋼、ステンレス304/316、合金鋼</li>
-<li>表面処理: 亜鉛めっき、溶融亜鉛めっき、黒染め、ダクロメット</li>
-<li>図面やサンプルに基づくOEM/ODM</li>
-</ul>
-<h3>主な強み</h3>
-<ul>
-<li>安定した品質管理による工場直販価格</li>
-<li>試作や混載注文に対応する柔軟な最小注文数量</li>
-<li>迅速なサンプル確認と量産フォローアップ</li>
-<li>輸出対応の梱包と出荷サポート</li>
-</ul>
-<h3>対応可能な一般的なバイヤーニーズ</h3>
-<p>プロジェクト調達、緊急補充、安定した品質と明確なリードタイム計画に基づく長期枠組み供給。</p>
-<h3>迅速な見積もりを取得する方法</h3>
-<ol>
-<li>製品規格/図面/写真をお送りください</li>
-<li>数量、梱包、仕向け港を確認</li>
-<li>価格、リードタイム、出荷提案を受け取る</li>
-</ol>
-<p><strong>ヒント:</strong> ご注文が急ぎの場合は、WhatsAppでお問い合わせいただくとより迅速に対応いたします。</p>
-<h3>製品画像</h3>
-<div class="lp-image-row">
-<figure class="lp-image-block"><img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy"><figcaption>六角ボルト - 標準サイズおよびカスタムサイズ</figcaption></figure>
-<figure class="lp-image-block"><img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy"><figcaption>フランジボルト - セレート付きおよびセレートなし</figcaption></figure>
-<figure class="lp-image-block"><img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy"><figcaption>高強度ボルト - グレード8.8 / 10.9 / 12.9</figcaption></figure>
+<section class="lp-section">
+<div class="lp-card">
+  <h3>スリーブアンカー（スルーボルトアンカー）</h3>
+  <p>
+    当社のスリーブアンカーは、コンクリート、レンガ、石材用途において強力で信頼性の高い固定を実現するよう設計されています。建設、設置、構造固定プロジェクトに最適です。
+  </p>
+
+  <ul class="lp-list">
+    <li>材質：炭素鋼 / ステンレス鋼</li>
+    <li>グレード：4.8 / 5.8 / 8.8</li>
+    <li>表面処理：亜鉛メッキ / HDG / 黄亜鉛</li>
+    <li>サイズ：M6 – M16（カスタムサイズ対応可能）</li>
+  </ul>
 </div>
+  <div class="lp-card">
+    <h3>供給可能な製品</h3>
+    <p>
+      ボルト、ナット、ワッシャー、アンカー、リベット、カスタムファスナーを、販売代理店、卸売業者、建設プロジェクト、産業バイヤー向けに供給しています。
+    </p>
+
+    <ul class="lp-list">
+      <li>規格：DIN / ISO / ASTM / GB</li>
+      <li>材質：炭素鋼、ステンレス鋼304/316、合金鋼</li>
+      <li>表面処理：亜鉛メッキ、HDG、黒色酸化処理、ダクロメット</li>
+      <li>図面、サンプル、プロジェクト要件に基づくOEM/ODM</li>
+    </ul>
+  </div>
+<div class="lp-card">
+  <h3>用途</h3>
+  <ul class="lp-list">
+    <li>鉄骨構造の設置</li>
+    <li>手すりとガードレールの固定</li>
+    <li>機械・設備のアンカー固定</li>
+    <li>ファサードおよびカーテンウォールの設置</li>
+  </ul>
+</div>
+  <div class="lp-card">
+    <h3>主な強み</h3>
+    <ul class="lp-list">
+      <li>工場直送価格と安定した品質管理</li>
+      <li>試用注文や混合サイズ注文に対応する柔軟な最小注文数量</li>
+      <li>迅速なサンプル確認と生産フォローアップ</li>
+      <li>輸出対応の梱包と出荷サポート</li>
+    </ul>
+  </div>
+
+  <div class="lp-card">
+    <h3>対応する一般的なバイヤーニーズ</h3>
+    <p>
+      プロジェクト調達、緊急補充、長期枠組み供給をサポートします。当社チームは、仕様確認、品質管理、梱包手配、出荷前の明確なリードタイム計画を支援します。
+    </p>
+  </div>
+
+  <div class="lp-card">
+    <h3>迅速な見積もりを得る方法</h3>
+    <ol class="lp-steps">
+      <li>製品規格、図面、写真、またはサンプルの詳細を送信</li>
+      <li>数量、材質、表面処理、梱包、仕向け港を確認</li>
+      <li>価格、リードタイム、出荷提案を受け取る</li>
+    </ol>
+
+    <div class="lp-tip">
+      <strong>ヒント：</strong> ご注文が急ぎの場合は、WhatsAppでお問い合わせいただくと迅速に対応いたします。
+    </div>
+  </div>
+
+  <div class="lp-card">
+    <h3>製品画像</h3>
+
+    <div class="lp-image-row">
+      <figure class="lp-image-block">
+        <img src="../../../images/products/bolts/Hex Bolt0_sm.webp" alt="Hex bolts" loading="lazy">
+        <figcaption>六角ボルト — 標準およびカスタムサイズ</figcaption>
+      </figure>
+
+      <figure class="lp-image-block">
+        <img src="../../../images/products/bolts/Flange Bolt1_sm.webp" alt="Flange bolts" loading="lazy">
+        <figcaption>フランジボルト — セレーション付きおよびなしのオプション</figcaption>
+      </figure>
+
+      <figure class="lp-image-block">
+        <img src="../../../images/products/bolts/High Strength Bolt1_sm.webp" alt="High strength bolts" loading="lazy">
+        <figcaption>高強度ボルト — グレード8.8 / 10.9 / 12.9</figcaption>
+      </figure>
+    </div>
+  </div>
+
+</section>
       </article>
     </section>
 
@@ -308,13 +518,13 @@
 
     <section class="faq-section">
       <h2>Frequently asked questions</h2>
-      <div class="faq-list"><article class="faq-item"><h3></h3><p></p></article><article class="faq-item"><h3></h3><p></p></article><article class="faq-item"><h3></h3><p></p></article></div>
+      <div class="faq-list"><article class="faq-item"><h3>Can you quote from drawing or sample?</h3><p>Yes. You can send drawing, standard code, size list or sample reference for evaluation.</p></article><article class="faq-item"><h3>Do you support custom material and surface finish?</h3><p>Yes. Material, hardness, coating and packaging can be discussed based on your order requirement.</p></article><article class="faq-item"><h3>How fast can you respond?</h3><p>For standard inquiries, we usually respond with quotation direction within 24 hours.</p></article></div>
     </section>
 
     <section class="form-box" id="lead-form">
       <h3>ご要望を送信</h3>
-      <p>仕様、グレード、表面処理、数量をお送りください。24営業時間以内に価格とリードタイムをご返答いたします。</p>
-      <form action="/cgi-bin/save.php" method="post" id="contactForm">
+      <p>仕様、グレード、コーティング、数量をお送りください。24営業時間以内に価格とリードタイムをご返信いたします。</p>
+      <form action="/cgi-bin/save.php" method="post" id="contactForm" enctype="multipart/form-data">
         <input type="hidden" name="lang" value="ja">
         <input type="hidden" name="utm_source" value="">
         <input type="hidden" name="utm_medium" value="">
@@ -339,6 +549,12 @@
           <div class="field"><input type="tel" name="phone" placeholder="電話 / WhatsApp"></div>
         </div>
         <div class="field"><textarea name="message" placeholder="仕様・数量・希望納期をご記入ください *" required></textarea></div>
+        <div class="field upload-field">
+          <label for="attachments" style="display:block;margin:0 0 6px;color:#526072;font-weight:700;font-size:.9rem;">Upload drawings, photos or documents (optional)</label>
+          <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+          <input type="file" id="attachments" name="attachments[]" multiple>
+          <small style="display:block;margin-top:6px;color:#64748b;line-height:1.5;">You can upload PDF, Word, Excel, images, ZIP/RAR, CAD drawings and other common files. Max 10MB per file, up to 5 files.</small>
+        </div>
         <button class="submit-btn" type="submit">送信する</button>
       </form>
     </section>

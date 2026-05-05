@@ -77,6 +77,12 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/wheel-bolts-assembly",
+                    "title": "Radschrauben-Baugruppe",
+                    "summary": "Radschrauben-Baugruppen sind kritische Befestigungskomponenten zur Sicherung von Rädern an Fahrzeugnarben. Entwickelt für hohe Tragfähigkeit, gewährleisten diese Schrauben Sicherheit und Stabilität unter dynamischen Fahrbedingungen. Hergestellt mit Präzisionsbearbeitung und hochwertigen Materialien bieten unsere Radschrauben hervorragende Zugfestigkeit, Verschleißfestigkeit und lange Lebensdauer. Das Baugruppendesign (Schraube + Mutter + Unterlegscheiben) verbessert die Montageeffizienz und Befestigungszuverlässigkeit. Geeignet für eine breite Palette von Automobilanwendungen, einschließlich Personenkraftwagen, Nutzfahrzeuge und schwere Lastkraftwagen.",
+                    "icon": "../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png"
+                },
+                {
                     "slug": "products/wheel-bolt",
                     "title": "Radschrauben",
                     "summary": "Unsere Radschrauben sind darauf ausgelegt, Leichtmetall- oder Stahlfelgen sicher an der Radnabe zu befestigen. Sie verfügen über einen präzisionsbearbeiteten Sitz (erhältlich als 60°-Kegel, Kugelbund oder Flachsitz), der eine korrekte Zentrierung und Klemmkraft gewährleistet. Die gehärtete Stahlkonstruktion und die korrosionsbeständige Beschichtung sorgen für langfristige Haltbarkeit und zuverlässigen Drehmomenterhalt unter dynamischen Fahrbedingungen. Hergestellt nach DIN-/ISO-Normen mit gleichbleibender Maßgenauigkeit und Festigkeitsklassen 10.9 oder 12.9.",
