@@ -443,7 +443,7 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
     <section class="form-box" id="lead-form">
       <h3>{he(c['form_title'])}</h3>
       <p>{he(summary)}</p>
-      <form action="/cgi-bin/save.php" method="post" id="contactForm">
+      <form action="/cgi-bin/save.php" method="post" id="contactForm" enctype="multipart/form-data">
         <input type="hidden" name="lang" value="{lang}">
         <input type="hidden" name="utm_source" value="">
         <input type="hidden" name="utm_medium" value="">
@@ -468,6 +468,12 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
           <div class="field"><input type="tel" name="phone" placeholder="{he(c['phone_ph'])}"></div>
         </div>
         <div class="field"><textarea name="message" placeholder="{he(c['message_ph'])}" required></textarea></div>
+        <div class="field upload-field">
+          <label for="attachments" style="display:block;margin:0 0 6px;color:#526072;font-weight:700;font-size:.9rem;">Upload drawings, photos or documents (optional)</label>
+          <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+          <input type="file" id="attachments" name="attachments[]" multiple>
+          <small style="display:block;margin-top:6px;color:#64748b;line-height:1.5;">You can upload PDF, Word, Excel, images, ZIP/RAR, CAD drawings and other common files. Max 10MB per file, up to 5 files.</small>
+        </div>
         <button class="submit-btn" type="submit">{he(c['form_btn'])}</button>
       </form>
     </section>
