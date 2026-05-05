@@ -1298,10 +1298,19 @@
             <div class="hint">下拉单选。若不选择，系统默认使用 "Other Fasteners"。</div>
           </div>
           <div class="form-group">
-            <label for="extra_head">额外 Head HTML / JSON<span class="optional">可选</span></label>
+            <label for="extra_head">头部 Style / Head HTML / JSON<span class="optional">可选</span></label>
             <textarea id="extra_head"
-              placeholder="<script type=&quot;application/ld+json&quot;>{...}</script>&#10;<meta name=&quot;google-site-verification&quot; content=&quot;...&quot;>"></textarea>
-            <div class="hint">会原样插入每个生成产品页的 head 末尾。可放 JSON-LD、meta、script、验证标签等。</div>
+              placeholder="<style>&#10;.product-detail-custom { padding: 32px; background: #f8fafc; }&#10;</style>&#10;<script type=&quot;application/ld+json&quot;>{...}</script>&#10;<meta name=&quot;google-site-verification&quot; content=&quot;...&quot;>"></textarea>
+            <div class="hint">会原样插入每个生成产品页的 head 末尾。可放 &lt;style&gt;、JSON-LD、meta、script、验证标签等；发布和预览都会使用。</div>
+          </div>
+          <div class="form-group" id="customProductHtmlCard">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+              <input type="checkbox" id="use_custom_product_html" style="width:auto;margin:0">
+              <span>使用自定义产品 HTML 生成正文</span>
+            </label>
+            <div class="hint">开启后，英文产品正文会直接使用下面输入的 HTML，适合像发布落地页一样粘贴整段自定义结构；上面的 Head Style 会一起生成到产品页。</div>
+            <textarea id="custom_product_html" style="min-height:260px;margin-top:12px" placeholder="<section class=&quot;product-detail-custom&quot;>&#10;  <h3>Custom Product Section</h3>&#10;  <p>Paste your product HTML here...</p>&#10;  <ul><li>DIN / ISO standard</li><li>Custom size support</li></ul>&#10;</section>"></textarea>
+            <div class="hint">注意：这里填写的是产品详情页正文 HTML，会插入到产品图片和摘要下方；如需 CSS，请写到上面的“头部 Style / Head HTML”。</div>
           </div>
           <div class="form-group">
             <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
@@ -1999,9 +2008,23 @@
       return out.join('\n\n').trim() + (out.length ? '\n' : '');
     }
 
+    function isCustomProductHtmlMode() {
+      var cb = document.getElementById('use_custom_product_html');
+      return !!(cb && cb.checked);
+    }
+
+    function getCustomProductHtml() {
+      var ta = document.getElementById('custom_product_html');
+      return ta ? ta.value : '';
+    }
+
     function syncBodyTextarea(lang) {
       var ta = document.getElementById(lang + '_body');
       if (!ta) return;
+      if (lang === 'en' && isCustomProductHtmlMode()) {
+        ta.value = getCustomProductHtml();
+        return;
+      }
       ta.value = compileModulesToHtml(modulesByLang[lang]);
     }
 
@@ -2426,6 +2449,21 @@
       if (showAlert) {
         alert('法兰螺栓模板载入完成（英文版）。');
       }
+    }
+
+    var useCustomProductHtmlEl = document.getElementById('use_custom_product_html');
+    var customProductHtmlEl = document.getElementById('custom_product_html');
+    if (useCustomProductHtmlEl) {
+      useCustomProductHtmlEl.addEventListener('change', function () {
+        syncBodyTextarea('en');
+        if (modulePreviewBox && modulePreview.style.display !== 'none') updatePreview();
+      });
+    }
+    if (customProductHtmlEl) {
+      customProductHtmlEl.addEventListener('input', function () {
+        if (!isCustomProductHtmlMode()) return;
+        syncBodyTextarea('en');
+      });
     }
 
     document.getElementById('moduleLoadFlangeTemplate').addEventListener('click', function () {
