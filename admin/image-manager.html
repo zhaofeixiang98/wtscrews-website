@@ -48,17 +48,24 @@
     .btn-primary { padding: 13px 18px; border-radius: 14px; border: none; background: var(--primary); color: white; font-weight: 700; cursor: pointer; transition: background 0.2s; }
     .btn-primary:hover { background: #1d4ed8; }
     .status-line { color: var(--muted); font-size: 0.95rem; }
-    .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
-    .image-card { background: var(--surface); border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
-    .image-card.used { border-color: #d1fae5; }
-    .image-card .thumb { width: 100%; aspect-ratio: 1.25; object-fit: cover; background: #f8fafc; }
-    .image-card .meta { padding: 14px 14px 18px; display: grid; gap: 8px; }
-    .image-card .meta strong { font-size: 0.95rem; display: block; color: var(--text); }
+    .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; align-items: stretch; }
+    .image-card { background: linear-gradient(180deg, #ffffff, #f8fafc); border-radius: 22px; border: 1px solid #e2e8f0; box-shadow: 0 18px 48px rgba(15, 23, 42, 0.09); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .image-card:hover { transform: translateY(-3px); box-shadow: 0 24px 60px rgba(15, 23, 42, 0.13); border-color: #bfdbfe; }
+    .image-card.used { border-color: #bbf7d0; }
+    .image-card .thumb-wrap { position: relative; background: #eef2f7; padding: 10px; }
+    .image-card .thumb { width: 100%; aspect-ratio: 1.32; object-fit: contain; background: linear-gradient(135deg,#f8fafc,#eef2f7); border-radius: 16px; border: 1px solid rgba(148,163,184,.22); }
+    .image-card .meta { padding: 15px 15px 18px; display: grid; gap: 10px; }
+    .image-card .meta strong { font-size: 0.95rem; display: block; color: var(--text); word-break: break-all; line-height: 1.35; }
     .image-card .meta span { font-size: 0.85rem; color: var(--muted); }
-    .image-card .badge { display: inline-flex; padding: 6px 10px; font-size: 0.78rem; font-weight: 700; border-radius: 999px; background: #eef2ff; color: #2563eb; }
-    .image-card .actions { display: grid; gap: 10px; margin-top: 10px; }
-    .image-card button { width: 100%; border: none; border-radius: 12px; padding: 10px 12px; font-weight: 600; cursor: pointer; }
-    .btn-delete { background: #eef2f7; color: #b91c1c; }
+    .image-card .badge { display: inline-flex; padding: 6px 10px; font-size: 0.78rem; font-weight: 800; border-radius: 999px; background: #eef2ff; color: #2563eb; white-space: nowrap; }
+    .image-card.used .badge { background: #dcfce7; color: #15803d; }
+    .image-card .full-url { display: block; width: 100%; padding: 9px 10px; border-radius: 12px; border: 1px solid #dbeafe; background: #eff6ff; color: #1d4ed8; font-size: 0.78rem; line-height: 1.45; word-break: break-all; user-select: all; cursor: copy; }
+    .image-card .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 2px; align-items: center; }
+    .image-card .select-label { display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 12px; padding: 10px 12px; background: #f8fafc; border: 1px solid #e2e8f0; font-weight: 700; cursor: pointer; }
+    .image-card button { width: 100%; border: none; border-radius: 12px; padding: 10px 12px; font-weight: 700; cursor: pointer; }
+    .btn-copy { background: #2563eb; color: #fff; }
+    .btn-copy:hover { background: #1d4ed8; }
+    .btn-delete { background: #fff1f2; color: #b91c1c; border: 1px solid #fecdd3 !important; }
     .btn-delete:hover { background: #fee2e2; }
     .btn-select { background: #f8fafc; color: var(--text); }
     .image-meta-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
@@ -172,16 +179,63 @@
       }
       imageGrid.innerHTML = filtered.map(function(item) {
         const usedClass = item.used ? ' used' : '';
+        const fullUrl = window.location.origin + '/images/news/' + item.filename;
         return '<div class="image-card' + usedClass + '">' +
-          '<img class="thumb" src="../images/news/' + escHtml(item.filename) + '" alt="' + escHtml(item.filename) + '">' +
+          '<div class="thumb-wrap"><img class="thumb" src="../images/news/' + escHtml(item.filename) + '" alt="' + escHtml(item.filename) + '" loading="lazy"></div>' +
           '<div class="meta"><strong>' + escHtml(item.filename) + '</strong>' +
-          '<div class="image-meta-row"><span>' + escHtml((item.size || 0) + ' bytes') + '</span><span class="badge">' + (item.used ? '已使用' : '未使用') + '</span></div>' +
-          '<div class="actions"><label><input type="checkbox" class="img-cb" data-filename="' + escHtml(item.filename) + '"> 选择</label>' +
-          '<button class="btn-delete" data-filename="' + escHtml(item.filename) + '">删除</button></div></div></div>';
+          '<div class="image-meta-row"><span>' + escHtml(formatBytes(item.size || 0)) + '</span><span class="badge">' + (item.used ? '已使用' : '未使用') + '</span></div>' +
+          '<code class="full-url" title="点击复制完整路径" data-url="' + escHtml(fullUrl) + '">' + escHtml(fullUrl) + '</code>' +
+          '<div class="actions"><label class="select-label"><input type="checkbox" class="img-cb" data-filename="' + escHtml(item.filename) + '"> 选择</label>' +
+          '<button class="btn-copy" data-url="' + escHtml(fullUrl) + '">复制路径</button>' +
+          '<button class="btn-delete" data-filename="' + escHtml(item.filename) + '" style="grid-column:1 / -1">删除</button></div></div></div>';
       }).join('');
       document.querySelectorAll('.img-cb').forEach(function(cb) { cb.addEventListener('change', updateDeleteState); });
       document.querySelectorAll('.btn-delete').forEach(function(btn) { btn.addEventListener('click', handleSingleDelete); });
+      document.querySelectorAll('.btn-copy').forEach(function(btn) { btn.addEventListener('click', handleCopyUrl); });
+      document.querySelectorAll('.full-url').forEach(function(el) { el.addEventListener('click', handleCopyUrl); });
       updateDeleteState();
+    }
+
+    function formatBytes(bytes) {
+      bytes = Number(bytes || 0);
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1).replace(/\.0$/, '') + ' KB';
+      return (bytes / 1024 / 1024).toFixed(2).replace(/\.00$/, '') + ' MB';
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    async function handleCopyUrl(event) {
+      const target = event.currentTarget;
+      const url = target.dataset.url || target.textContent || '';
+      if (!url) return;
+      try {
+        await copyText(url.trim());
+        const oldText = target.textContent;
+        if (target.tagName === 'BUTTON') {
+          target.textContent = '已复制 ✓';
+          setTimeout(function(){ target.textContent = '复制路径'; }, 1200);
+        } else {
+          target.textContent = '已复制：' + url.trim();
+          setTimeout(function(){ target.textContent = oldText; }, 1200);
+        }
+      } catch (err) {
+        alert('复制失败，请手动选中路径复制');
+      }
     }
 
     function updateDeleteState() {
