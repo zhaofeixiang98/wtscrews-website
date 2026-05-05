@@ -2987,8 +2987,7 @@
 
     previewLangSel.addEventListener('change', function () {
       if (previewOverlay.hidden || previewOverlay.style.display === 'none') return;
-      syncAllBodyTextareas();
-      previewFrame.srcdoc = buildPreview(this.value);
+      openPreview();
     });
 
     document.getElementById('previewClose').addEventListener('click', function (e) {

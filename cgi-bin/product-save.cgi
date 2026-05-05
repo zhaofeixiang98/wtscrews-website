@@ -1180,9 +1180,19 @@ if preview_mode:
       applications_data, materials_data, size_chart_data, reviews_data, related_products_data,
       cta_title, cta_desc, cta_button_text
     )
-    # Product pages are saved under /pags/{lang}/products/, where ../../../ resolves to site root.
-    # In iframe srcdoc there is no file path, so convert generated relative asset links to absolute site-root links.
-    preview_html = preview_html.replace('../../../', '/')
+    # iframe srcdoc has no real product-page URL. Add a base href so relative
+    # paths resolve exactly like /pags/{lang}/products/{slug}.html, then
+    # bust local CSS cache so preview reflects recent CSS/template edits.
+    preview_base = f'https://wtscrews.com/pags/{lang}/products/'
+    preview_html = preview_html.replace('<head>', f'<head>\n  <base href="{preview_base}">', 1)
+    preview_v = str(int(datetime.now().timestamp()))
+    def _preview_css_bust(match):
+      prefix, href, suffix = match.groups()
+      if href.startswith('../../../css/') or href.startswith('/css/') or href.startswith('css/'):
+        sep = '&' if '?' in href else '?'
+        href = href + sep + 'preview_v=' + preview_v
+      return prefix + href + suffix
+    preview_html = re.sub(r'(<link\s+rel="stylesheet"\s+href=")([^"]+)(")', _preview_css_bust, preview_html)
     respond({'success': True, 'html': preview_html})
   except Exception as exc:
     respond({'success': False, 'error': 'preview build failed: ' + str(exc)})
