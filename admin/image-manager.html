@@ -151,26 +151,35 @@
     let images = [];
 
     async function loadImages() {
-      if (!(await checkAuth())) return;
       imageGrid.innerHTML = '<div class="empty-state">加载中...</div>';
       try {
-        const resp = await fetch('../cgi-bin/image-manager.cgi?action=list&_=' + Date.now());
-        if (!resp.ok) throw new Error('读取图片列表失败');
-        const data = await resp.json();
-        images = data.images || [];
-        document.getElementById('totalImages').textContent = data.total || 0;
+        const authed = await checkAuth();
+        if (!authed) {
+          imageGrid.innerHTML = '<div class="empty-state">登录状态已失效，请重新登录后台。</div>';
+          return;
+        }
+        const resp = await fetch('../cgi-bin/image-manager.cgi?action=list&_=' + Date.now(), { credentials: 'include' });
+        const text = await resp.text();
+        if (!resp.ok) throw new Error('读取图片列表失败 HTTP ' + resp.status + '：' + text.slice(0, 160));
+        let data;
+        try { data = JSON.parse(text); }
+        catch (e) { throw new Error('图片接口返回异常：' + text.slice(0, 180)); }
+        if (!data || !data.success) throw new Error((data && data.error) || '图片接口返回失败');
+        images = Array.isArray(data.images) ? data.images : [];
+        document.getElementById('totalImages').textContent = data.total || images.length || 0;
         document.getElementById('unusedImages').textContent = data.unused_count || 0;
         renderImages();
       } catch (err) {
         imageGrid.innerHTML = '<div class="empty-state">加载失败：' + escHtml(err.message) + '</div>';
+        deleteBtn.disabled = true;
       }
     }
 
     function renderImages() {
       const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
       const filtered = images.filter(function(item) {
-        const filename = item.filename.toLowerCase();
-        return !keyword || filename.includes(keyword);
+        const filename = String((item && item.filename) || '').toLowerCase();
+        return filename && (!keyword || filename.includes(keyword));
       });
       if (!filtered.length) {
         imageGrid.innerHTML = '<div class="empty-state">没有匹配图片。</div>';
@@ -178,16 +187,18 @@
         return;
       }
       imageGrid.innerHTML = filtered.map(function(item) {
+        const filename = String(item.filename || '');
+        const encodedFilename = filename.split('/').map(encodeURIComponent).join('/');
         const usedClass = item.used ? ' used' : '';
-        const fullUrl = window.location.origin + '/images/news/' + item.filename;
+        const fullUrl = window.location.origin + '/images/news/' + encodedFilename;
         return '<div class="image-card' + usedClass + '">' +
-          '<div class="thumb-wrap"><img class="thumb" src="../images/news/' + escHtml(item.filename) + '" alt="' + escHtml(item.filename) + '" loading="lazy"></div>' +
-          '<div class="meta"><strong>' + escHtml(item.filename) + '</strong>' +
+          '<div class="thumb-wrap"><img class="thumb" src="../images/news/' + escHtml(encodedFilename) + '" alt="' + escHtml(filename) + '" loading="lazy"></div>' +
+          '<div class="meta"><strong>' + escHtml(filename) + '</strong>' +
           '<div class="image-meta-row"><span>' + escHtml(formatBytes(item.size || 0)) + '</span><span class="badge">' + (item.used ? '已使用' : '未使用') + '</span></div>' +
           '<code class="full-url" title="点击复制完整路径" data-url="' + escHtml(fullUrl) + '">' + escHtml(fullUrl) + '</code>' +
-          '<div class="actions"><label class="select-label"><input type="checkbox" class="img-cb" data-filename="' + escHtml(item.filename) + '"> 选择</label>' +
+          '<div class="actions"><label class="select-label"><input type="checkbox" class="img-cb" data-filename="' + escHtml(filename) + '"> 选择</label>' +
           '<button class="btn-copy" data-url="' + escHtml(fullUrl) + '">复制路径</button>' +
-          '<button class="btn-delete" data-filename="' + escHtml(item.filename) + '" style="grid-column:1 / -1">删除</button></div></div></div>';
+          '<button class="btn-delete" data-filename="' + escHtml(filename) + '" style="grid-column:1 / -1">删除</button></div></div></div>';
       }).join('');
       document.querySelectorAll('.img-cb').forEach(function(cb) { cb.addEventListener('change', updateDeleteState); });
       document.querySelectorAll('.btn-delete').forEach(function(btn) { btn.addEventListener('click', handleSingleDelete); });
