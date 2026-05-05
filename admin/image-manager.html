@@ -139,12 +139,37 @@
     </section>
   </main>
   <script data-cfasync="false">
-    function logout() { WTAdminAuth.logout(); }
+    function fallbackRedirectToLogin() {
+      if (!/login\.html$/i.test(window.location.pathname || '')) window.location.href = 'login.html';
+    }
+    function logout() {
+      if (window.WTAdminAuth && typeof WTAdminAuth.logout === 'function') {
+        WTAdminAuth.logout();
+        return;
+      }
+      fetch('../cgi-bin/admin-auth.cgi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        credentials: 'include',
+        body: 'action=logout'
+      }).finally(fallbackRedirectToLogin);
+    }
     var logoutBtn = document.getElementById('logoutBtn') || document.querySelector('.logout-btn');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', logout);
     }
-    async function checkAuth() { return await WTAdminAuth.ensure(); }
+    async function checkAuth() {
+      if (window.WTAdminAuth && typeof WTAdminAuth.ensure === 'function') {
+        return await WTAdminAuth.ensure();
+      }
+      try {
+        var resp = await fetch('../cgi-bin/admin-auth.cgi?action=status&_=' + Date.now(), { credentials: 'include' });
+        var data = await resp.json();
+        if (resp.ok && data && data.success && data.authenticated) return true;
+      } catch (err) {}
+      fallbackRedirectToLogin();
+      return false;
+    }
     function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
     const imageGrid = document.getElementById('imageGrid');
     const deleteBtn = document.getElementById('deleteSelectedBtn');
