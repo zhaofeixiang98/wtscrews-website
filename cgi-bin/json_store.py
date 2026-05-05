@@ -82,6 +82,10 @@ def atomic_write_json(json_path, data):
             except Exception:
                 pass
         os.replace(tmp_path, json_path)
+        try:
+            os.chmod(json_path, 0o664)
+        except Exception:
+            pass
     finally:
         try:
             if os.path.exists(tmp_path):
@@ -94,6 +98,10 @@ def update_pages_json(json_path, mutator):
     lock_path = json_path + '.lock'
     os.makedirs(os.path.dirname(lock_path) or '.', exist_ok=True)
     with open(lock_path, 'a+', encoding='utf-8') as lock_file:
+        try:
+            os.chmod(lock_path, 0o664)
+        except Exception:
+            pass
         fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
         current = read_pages_data(json_path)
         working = copy.deepcopy(current)
