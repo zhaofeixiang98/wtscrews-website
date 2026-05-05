@@ -892,15 +892,50 @@
         '</main><div class="fixed-wa"><div class="fixed-wa-inner"><div class="fixed-wa-box"><div><b>Urgent order? Start WhatsApp now</b><span>Confirm spec and lead-time faster.</span></div><a href="' + escHtml(wa) + '" target="_blank" rel="noopener">WhatsApp Now</a></div></div></div></body></html>';
     }
 
-    function openPreview() {
-      var iframe = document.getElementById('previewFrame');
-      iframe.removeAttribute('src');
-      iframe.srcdoc = buildPreviewHtml();
+    function collectLandingParams(options) {
+      options = options || {};
+      var params = new URLSearchParams();
+      [
+        'slug','date','hero_image','whatsapp_url','extra_head',
+        'en_title','en_subtitle','en_summary','en_meta_desc','en_keywords','en_bc_label','en_body'
+      ].forEach(function (id) {
+        params.append(id, document.getElementById(id).value);
+      });
+      params.append('auto_translate', document.getElementById('auto_translate').checked ? '1' : '0');
+      if (options.preview) {
+        params.append('preview', '1');
+        params.append('preview_lang', options.previewLang || 'en');
+      }
+      return params;
+    }
+
+    function showPreviewOverlay() {
       var overlay = document.getElementById('previewOverlay');
       overlay.hidden = false;
       overlay.setAttribute('aria-hidden', 'false');
       overlay.style.display = 'flex';
       document.body.classList.add('preview-open');
+    }
+
+    function openPreview() {
+      var iframe = document.getElementById('previewFrame');
+      iframe.removeAttribute('src');
+      iframe.srcdoc = '<!doctype html><html><body style="font-family:Arial,sans-serif;padding:24px">正在生成真实落地页模板预览...</body></html>';
+      showPreviewOverlay();
+      var params = collectLandingParams({ preview: true, previewLang: 'en' });
+      fetch('/cgi-bin/landing-save.cgi?_=' + Date.now(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data || !data.success || !data.html) throw new Error((data && data.error) || '预览生成失败');
+        iframe.srcdoc = data.html;
+      })
+      .catch(function (err) {
+        iframe.srcdoc = buildPreviewHtml() + '<!-- server preview failed: ' + String(err).replace(/-->/g, '--&gt;') + ' -->';
+      });
     }
 
     function closePreview() {
@@ -937,14 +972,7 @@
       statusEl.className = 'status';
       statusEl.textContent = '正在发布落地页...';
 
-      var params = new URLSearchParams();
-      [
-        'slug','date','hero_image','whatsapp_url','extra_head',
-        'en_title','en_subtitle','en_summary','en_meta_desc','en_keywords','en_bc_label','en_body'
-      ].forEach(function (id) {
-        params.append(id, document.getElementById(id).value);
-      });
-      params.append('auto_translate', document.getElementById('auto_translate').checked ? '1' : '0');
+      var params = collectLandingParams();
 
       fetch('/cgi-bin/landing-save.cgi', {
         method: 'POST',

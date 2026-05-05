@@ -749,6 +749,27 @@ def values_for_lang(lang):
         'body': g(form, f'{lang}_body') or source_fields['body'],
     }
 
+preview_mode = truthy(g(form, 'preview', '0'))
+preview_lang = g(form, 'preview_lang', 'en') or 'en'
+if preview_lang not in LANGS:
+    preview_lang = 'en'
+if preview_mode:
+    try:
+        data = values_for_lang(preview_lang)
+        preview_html = build_html(
+            preview_lang, slug,
+            data['title'], data['subtitle'], data['summary'],
+            data['meta_desc'], data['keywords'], data['bc_label'],
+            data['body'], hero_image, whatsapp_url, extra_head
+        )
+        # iframe srcdoc has no actual landing-page path. A base href makes
+        # ../../../images/... and language links resolve like the real page.
+        preview_base = f'https://wtscrews.com/pags/{preview_lang}/landing/'
+        preview_html = preview_html.replace('<head>', f'<head>\n  <base href="{preview_base}">', 1)
+        respond({'success': True, 'html': preview_html})
+    except Exception as exc:
+        respond({'success': False, 'error': 'preview build failed: ' + str(exc)})
+
 target_langs = list(LANGS)
 if translated_langs_present:
     target_langs = ['en'] + [l for l in LANGS if l in translated_langs_set]
