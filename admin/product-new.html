@@ -3158,7 +3158,7 @@
           if (data.success) {
             if (data.translating) {
               statusEl.className = 'status-msg loading';
-              statusEl.textContent = '✅ 产品页已发布（英文版）。后台正在翻译其余 ' + Math.max(0, langs.length - data.created.length) + ' 个语言版本，请稍候…';
+              statusEl.textContent = '✅ 产品页已发布（英文版）。后台正在翻译其余 ' + Math.max(0, MODULE_LANGS.length - data.created.length) + ' 个语言版本，请稍候…';
               setTimeout(function () { window.open(data.url, '_blank'); }, 800);
               startTranslationPolling(data.slug, statusEl);
             } else {
