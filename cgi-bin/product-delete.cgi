@@ -53,13 +53,28 @@ errors = []
 
 def normalize_slug(raw_slug):
     raw_slug = (raw_slug or '').strip()
-    if '/' in raw_slug:
-        prefix, suffix = raw_slug.split('/', 1)
-        if prefix != 'products':
+    raw_slug = raw_slug.split('?', 1)[0].split('#', 1)[0].strip()
+    raw_slug = raw_slug.replace('\\', '/')
+    raw_slug = re.sub(r'^https?://[^/]+/', '', raw_slug, flags=re.I)
+    raw_slug = raw_slug.lstrip('/')
+
+    # Accept direct filenames, product slugs, full product paths, and URLs:
+    # 111 / 111.html / products/111 / products/111.html / pags/en/products/111.html
+    parts = [part for part in raw_slug.split('/') if part]
+    if 'products' in parts:
+        idx = len(parts) - 1 - parts[::-1].index('products')
+        if idx + 1 >= len(parts):
             return None, None
-        file_slug = suffix
+        file_slug = parts[idx + 1]
+    elif parts:
+        file_slug = parts[-1]
     else:
-        file_slug = raw_slug
+        return None, None
+
+    if file_slug.lower().endswith('.html'):
+        file_slug = file_slug[:-5]
+    file_slug = file_slug.strip().lower()
+
     if not re.match(r'^[a-z0-9][a-z0-9\-]*$', file_slug):
         return None, None
     return file_slug, 'products/' + file_slug
