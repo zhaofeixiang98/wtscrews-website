@@ -212,13 +212,9 @@
       });
       container.innerHTML = html || '<div class="empty-state">没有匹配的产品。</div>';
       setDeleteButtonsDisabled(Boolean(deletingSlug));
-      document.querySelectorAll('.btn-delete').forEach(function(btn) {
-        btn.addEventListener('click', handleDeleteProduct);
-      });
     }
 
     async function handleDeleteProduct(event) {
-      if (!(await checkAuth())) return;
       const btn = event.currentTarget;
       const slug = String(btn.dataset.slug || '').trim();
       const title = btn.dataset.title || slug.replace(/^products\//, '');
@@ -266,6 +262,12 @@
 
     document.getElementById('searchInput').addEventListener('input', function() {
       renderCategories(currentCategories);
+    });
+    document.getElementById('categoriesContainer').addEventListener('click', function(event) {
+      const btn = event.target.closest('.btn-delete');
+      if (!btn) return;
+      event.preventDefault();
+      handleDeleteProduct({ currentTarget: btn });
     });
     loadProducts();
   </script>
