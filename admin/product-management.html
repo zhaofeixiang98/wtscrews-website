@@ -121,9 +121,16 @@
     let currentCategories = [];
     let deletingSlug = '';
 
+    function fallbackRedirectToLogin() {
+      if (!/login\.html$/i.test(window.location.pathname || '')) window.location.href = 'login.html';
+    }
     function logout(e) {
       if (e) e.preventDefault();
-      WTAdminAuth.logout();
+      if (window.WTAdminAuth && typeof WTAdminAuth.logout === 'function') {
+        WTAdminAuth.logout();
+        return;
+      }
+      fetch('../cgi-bin/admin-auth.cgi?action=logout', { credentials: 'include' }).finally(fallbackRedirectToLogin);
     }
     var logoutBtn = document.getElementById('logoutBtn') || document.querySelector('.logout-btn');
     if (logoutBtn) {
@@ -133,7 +140,18 @@
       window.location.href = 'product-new.html';
     });
 
-    async function checkAuth() { return await WTAdminAuth.ensure(); }
+    async function checkAuth() {
+      if (window.WTAdminAuth && typeof WTAdminAuth.ensure === 'function') {
+        return await WTAdminAuth.ensure();
+      }
+      try {
+        const resp = await fetch('../cgi-bin/admin-auth.cgi?action=status&_=' + Date.now(), { credentials: 'include' });
+        const data = await resp.json();
+        if (data && data.success && data.authenticated) return true;
+      } catch (err) {}
+      fallbackRedirectToLogin();
+      return false;
+    }
     function escHtml(str) { return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
     function setActionStatus(message, type) {
       const status = document.getElementById('actionStatus');
@@ -217,10 +235,21 @@
         params.append('slugs', slug);
         const resp = await fetch('../cgi-bin/product-delete.cgi', {
           method: 'POST',
+          credentials: 'include',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: params.toString()
         });
-        const data = await resp.json();
+        const text = await resp.text();
+        let data = {};
+        try {
+          data = JSON.parse(text);
+        } catch (parseErr) {
+          throw new Error('删除接口返回异常：' + text.slice(0, 160));
+        }
+        if (data.error === 'unauthorized') {
+          fallbackRedirectToLogin();
+          throw new Error('登录已失效，请重新登录后台');
+        }
         if (!resp.ok || !data.success) {
           throw new Error((data.errors || [data.error]).filter(Boolean).join('；') || '删除失败');
         }

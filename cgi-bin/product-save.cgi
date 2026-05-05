@@ -123,6 +123,139 @@ CATEGORY_LABELS = {
   },
 }
 
+
+PRODUCT_UI_LABELS = {
+  'en': {
+    'request_quote': 'Request a Quote',
+    'applications': 'Applications',
+    'materials': 'Materials & Grades',
+    'size_chart': 'Size Chart',
+    'customer_reviews': 'Customer Reviews',
+    'related_products': 'Related Products',
+    'size': 'Size',
+    'thread': 'Thread',
+    'length_range': 'Length Range',
+    'pull_out_strength': 'Pull-out Strength',
+    'shear_strength': 'Shear Strength',
+    'embedment': 'Embedment',
+  },
+  'zh': {
+    'request_quote': '获取报价',
+    'applications': '应用场景',
+    'materials': '材料与等级',
+    'size_chart': '尺寸表',
+    'customer_reviews': '客户评价',
+    'related_products': '相关产品',
+    'size': '规格',
+    'thread': '螺纹',
+    'length_range': '长度范围',
+    'pull_out_strength': '抗拔强度',
+    'shear_strength': '剪切强度',
+    'embedment': '埋入深度',
+  },
+  'de': {
+    'request_quote': 'Angebot anfordern',
+    'applications': 'Anwendungen',
+    'materials': 'Materialien & Güten',
+    'size_chart': 'Größentabelle',
+    'customer_reviews': 'Kundenbewertungen',
+    'related_products': 'Ähnliche Produkte',
+    'size': 'Größe',
+    'thread': 'Gewinde',
+    'length_range': 'Längenbereich',
+    'pull_out_strength': 'Auszugsfestigkeit',
+    'shear_strength': 'Scherfestigkeit',
+    'embedment': 'Verankerungstiefe',
+  },
+  'es': {
+    'request_quote': 'Solicitar cotización',
+    'applications': 'Aplicaciones',
+    'materials': 'Materiales y grados',
+    'size_chart': 'Tabla de tamaños',
+    'customer_reviews': 'Reseñas de clientes',
+    'related_products': 'Productos relacionados',
+    'size': 'Tamaño',
+    'thread': 'Rosca',
+    'length_range': 'Rango de longitud',
+    'pull_out_strength': 'Resistencia a extracción',
+    'shear_strength': 'Resistencia al corte',
+    'embedment': 'Profundidad de anclaje',
+  },
+  'fr': {
+    'request_quote': 'Demander un devis',
+    'applications': 'Applications',
+    'materials': 'Matériaux et classes',
+    'size_chart': 'Tableau des tailles',
+    'customer_reviews': 'Avis clients',
+    'related_products': 'Produits associés',
+    'size': 'Taille',
+    'thread': 'Filetage',
+    'length_range': 'Plage de longueur',
+    'pull_out_strength': "Résistance à l'arrachement",
+    'shear_strength': 'Résistance au cisaillement',
+    'embedment': "Profondeur d'ancrage",
+  },
+  'ar': {
+    'request_quote': 'اطلب عرض سعر',
+    'applications': 'التطبيقات',
+    'materials': 'المواد والدرجات',
+    'size_chart': 'جدول المقاسات',
+    'customer_reviews': 'آراء العملاء',
+    'related_products': 'منتجات ذات صلة',
+    'size': 'المقاس',
+    'thread': 'القلاوظ',
+    'length_range': 'نطاق الطول',
+    'pull_out_strength': 'قوة السحب',
+    'shear_strength': 'قوة القص',
+    'embedment': 'عمق التثبيت',
+  },
+  'id': {
+    'request_quote': 'Minta Penawaran',
+    'applications': 'Aplikasi',
+    'materials': 'Material & Grade',
+    'size_chart': 'Tabel Ukuran',
+    'customer_reviews': 'Ulasan Pelanggan',
+    'related_products': 'Produk Terkait',
+    'size': 'Ukuran',
+    'thread': 'Ulir',
+    'length_range': 'Rentang Panjang',
+    'pull_out_strength': 'Kekuatan Tarik Keluar',
+    'shear_strength': 'Kekuatan Geser',
+    'embedment': 'Kedalaman Tanam',
+  },
+  'ja': {
+    'request_quote': '見積もりを依頼',
+    'applications': '用途',
+    'materials': '材料と等級',
+    'size_chart': 'サイズ表',
+    'customer_reviews': 'お客様のレビュー',
+    'related_products': '関連製品',
+    'size': 'サイズ',
+    'thread': 'ねじ',
+    'length_range': '長さ範囲',
+    'pull_out_strength': '引抜強度',
+    'shear_strength': 'せん断強度',
+    'embedment': '埋め込み深さ',
+  },
+  'ko': {
+    'request_quote': '견적 요청',
+    'applications': '적용 분야',
+    'materials': '소재 및 등급',
+    'size_chart': '사이즈 차트',
+    'customer_reviews': '고객 리뷰',
+    'related_products': '관련 제품',
+    'size': '규격',
+    'thread': '나사산',
+    'length_range': '길이 범위',
+    'pull_out_strength': '인발 강도',
+    'shear_strength': '전단 강도',
+    'embedment': '매입 깊이',
+  },
+}
+
+def product_ui_label(lang, key):
+  return PRODUCT_UI_LABELS.get(lang, PRODUCT_UI_LABELS['en']).get(key, PRODUCT_UI_LABELS['en'].get(key, key))
+
 CATEGORY_ALIASES = {
   'bolts': 'bolts',
   'bolt': 'bolts',
@@ -711,6 +844,7 @@ def render_related_html(raw):
 
 def build_html(lang, slug, date_str, title, subtitle, summary, meta_desc, keywords, bc_label, body, all_langs, og_image='', product_category='Other Fasteners', extra_head='', applications_data='', materials_data='', size_chart_data='', reviews_data='', related_products_data='', cta_title='', cta_desc='', cta_button_text=''):
     c = LC[lang]
+    ui = PRODUCT_UI_LABELS.get(lang, PRODUCT_UI_LABELS['en'])
     hl = c['html_lang']
     dir_attr = ' dir="rtl"' if c['rtl'] else ''
     n = c['nav']
@@ -870,7 +1004,7 @@ ul{{list-style:none}}
           <h2>{title}</h2>
           <p>{summary}</p>
           {body_html}
-          <a href="../contact.html" class="btn btn-primary">Request a Quote</a>
+          <a href="../contact.html" class="btn btn-primary">{he(ui['request_quote'])}</a>
         </section>
       </article>
     </section>
@@ -879,7 +1013,7 @@ ul{{list-style:none}}
     <section class="section">
       <article class="container">
         <section class="applications-section">
-          <h3>Applications</h3>
+          <h3>{he(ui['applications'])}</h3>
           <section class="applications-grid">
 {applications_html}
           </section>
@@ -891,7 +1025,7 @@ ul{{list-style:none}}
     <section class="section">
       <article class="container">
         <section class="materials-section">
-          <h3>Materials & Grades</h3>
+          <h3>{he(ui['materials'])}</h3>
           <section class="materials-grid">
 {materials_html}
           </section>
@@ -903,17 +1037,17 @@ ul{{list-style:none}}
     <section class="section">
       <article class="container">
         <section class="size-chart-section">
-          <h3>Size Chart</h3>
+          <h3>{he(ui['size_chart'])}</h3>
           <div class="size-chart">
             <table>
               <thead>
                 <tr>
-                  <th>Size</th>
-                  <th>Thread</th>
-                  <th>Length Range</th>
-                  <th>Pull-out Strength</th>
-                  <th>Shear Strength</th>
-                  <th>Embedment</th>
+                  <th>{he(ui['size'])}</th>
+                  <th>{he(ui['thread'])}</th>
+                  <th>{he(ui['length_range'])}</th>
+                  <th>{he(ui['pull_out_strength'])}</th>
+                  <th>{he(ui['shear_strength'])}</th>
+                  <th>{he(ui['embedment'])}</th>
                 </tr>
               </thead>
               <tbody>
@@ -929,7 +1063,7 @@ ul{{list-style:none}}
     <section class="section">
       <article class="container">
         <section class="customer-reviews">
-          <h3>Customer Reviews</h3>
+          <h3>{he(ui['customer_reviews'])}</h3>
           <section class="reviews-grid">
 {reviews_html}
           </section>
@@ -942,7 +1076,7 @@ ul{{list-style:none}}
     <section class="section">
       <article class="container">
         <div class="related-products">
-          <h3>Related Products</h3>
+          <h3>{he(ui['related_products'])}</h3>
           <div class="related-grid">
 {related_html}
           </div>
