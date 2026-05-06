@@ -26,8 +26,6 @@ MAIN_PAGES = {
     'about.html': {'priority': '0.6', 'changefreq': 'monthly'},
     'contact.html': {'priority': '0.7', 'changefreq': 'monthly'},
     'privacy-policy.html': {'priority': '0.4', 'changefreq': 'monthly'},
-    'success.html': {'priority': '0.5', 'changefreq': 'monthly'},
-    '404.html': {'priority': '0.1', 'changefreq': 'yearly'},
 }
 
 def get_lastmod(file_path):
