@@ -623,6 +623,7 @@ def build_html(lang, slug, title, subtitle, summary, meta_desc, keywords, bc_lab
       }}
     }})();
   </script>
+  <script src="/js/lead-form-upload.js" defer></script>
 </body>
 </html>
 '''
