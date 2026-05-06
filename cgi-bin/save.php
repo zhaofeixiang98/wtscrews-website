@@ -7,6 +7,30 @@ const MAX_ATTACHMENT_TOTAL_BYTES = 31457280; // 30MB total per submission
 const BLOCKED_ATTACHMENT_EXTENSIONS = [
     'php', 'phtml', 'phar', 'cgi', 'pl', 'py', 'sh', 'bash', 'zsh', 'exe', 'dll', 'bat', 'cmd', 'com', 'scr', 'js', 'mjs', 'html', 'htm', 'shtml', 'svg'
 ];
+const ALLOWED_ATTACHMENT_EXTENSIONS = [
+    'pdf', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'txt',
+    'jpg', 'jpeg', 'png', 'gif', 'webp',
+    'zip', 'rar', '7z',
+    'dwg', 'dxf', 'step', 'stp', 'igs', 'iges', 'stl', 'sldprt', 'sldasm'
+];
+
+function wants_json_response() {
+    $accept = strtolower((string)($_SERVER['HTTP_ACCEPT'] ?? ''));
+    $requested = strtolower((string)($_SERVER['HTTP_X_REQUESTED_WITH'] ?? ''));
+    return strpos($accept, 'application/json') !== false || $requested === 'xmlhttprequest';
+}
+
+function fail_request($message, $status = 400) {
+    http_response_code($status);
+    if (wants_json_response()) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['success' => false, 'message' => $message], JSON_UNESCAPED_UNICODE);
+    } else {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo $message;
+    }
+    exit;
+}
 
 function normalize_uploaded_files($field) {
     if (!isset($_FILES[$field])) {
@@ -32,10 +56,30 @@ function normalize_uploaded_files($field) {
 }
 
 function fail_upload($message, $status = 400) {
-    http_response_code($status);
-    header('Content-Type: text/plain; charset=utf-8');
-    echo $message;
-    exit;
+    fail_request($message, $status);
+}
+
+function has_dangerous_double_extension($filename) {
+    $parts = array_map('strtolower', explode('.', $filename));
+    array_pop($parts);
+    foreach ($parts as $part) {
+        if (in_array($part, BLOCKED_ATTACHMENT_EXTENSIONS, true)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function file_starts_with_dangerous_content($tmp_name) {
+    $head = @file_get_contents($tmp_name, false, null, 0, 2048);
+    if ($head === false) {
+        return false;
+    }
+    $lower = strtolower($head);
+    return strpos($lower, '<?php') !== false
+        || strpos($lower, '<script') !== false
+        || strpos($lower, '#!/bin/') !== false
+        || strpos($lower, '#!/usr/bin/') !== false;
 }
 
 function save_uploaded_attachments($save_dir, $safe_time, $safe_email) {
@@ -81,8 +125,11 @@ function save_uploaded_attachments($save_dir, $safe_time, $safe_email) {
 
         $original = basename((string)($file['name'] ?? 'attachment'));
         $ext = strtolower(pathinfo($original, PATHINFO_EXTENSION));
-        if ($ext === '' || in_array($ext, BLOCKED_ATTACHMENT_EXTENSIONS, true)) {
-            fail_upload('This file type is not allowed. Please upload drawings, documents, images, ZIP/RAR, or CAD files.', 400);
+        if ($ext === '' || in_array($ext, BLOCKED_ATTACHMENT_EXTENSIONS, true) || !in_array($ext, ALLOWED_ATTACHMENT_EXTENSIONS, true) || has_dangerous_double_extension($original)) {
+            fail_upload('This file type is not allowed. Please upload common documents, images, ZIP/RAR/7Z archives, or CAD drawing files.', 400);
+        }
+        if (file_starts_with_dangerous_content($file['tmp_name'])) {
+            fail_upload('This file looks unsafe and was not uploaded. Please upload a normal document, image, archive, or CAD file.', 400);
         }
 
         $base = pathinfo($original, PATHINFO_FILENAME);
@@ -232,10 +279,7 @@ if (!$save_dir) {
         @mkdir($save_dir, 0755, true);
     }
     if (!is_writable($save_dir)) {
-        http_response_code(500);
-        header('Content-Type: text/plain; charset=utf-8');
-        echo 'Submission could not be saved. Please contact us by WhatsApp or email.';
-        exit;
+        fail_request('Submission could not be saved. Please contact us by WhatsApp or email.', 500);
     }
 }
 
@@ -269,13 +313,15 @@ $record = [
 // Save to file
 $saved = file_put_contents($filename, json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
 if ($saved === false) {
-    http_response_code(500);
-    header('Content-Type: text/plain; charset=utf-8');
-    echo 'Submission could not be saved. Please contact us by WhatsApp or email.';
-    exit;
+    fail_request('Submission could not be saved. Please contact us by WhatsApp or email.', 500);
 }
 
 // Redirect to language-specific success page
 $success_url = '/pags/' . $lang . '/success.html';
-header('Location: ' . $success_url);
+if (wants_json_response()) {
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['success' => true, 'redirect' => $success_url], JSON_UNESCAPED_UNICODE);
+} else {
+    header('Location: ' . $success_url);
+}
 exit;
