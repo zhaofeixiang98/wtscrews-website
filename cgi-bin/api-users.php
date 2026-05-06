@@ -111,6 +111,15 @@ function list_users($dataDirs) {
             if ($email === '' || $email === 'noemail' || $email === '未填写' || $name === '') {
                 continue;
             }
+            $publicAttachments = [];
+            foreach (($data['attachments'] ?? []) as $attachment) {
+                $public = attachment_public_data($attachment, $base);
+                if ($public !== null) {
+                    $publicAttachments[] = $public;
+                }
+            }
+            $data['attachments'] = $publicAttachments;
+            $data['attachment_count'] = count($publicAttachments);
             $data['filename'] = $base;
             $users[] = $data;
         }
@@ -143,6 +152,98 @@ function normalize_filename($name) {
     return $base;
 }
 
+function normalize_attachment_name($name) {
+    $name = trim((string)$name);
+    if ($name === '') {
+        return '';
+    }
+    $base = basename($name);
+    if (!preg_match('/^[a-zA-Z0-9._+\-]+$/', $base)) {
+        return '';
+    }
+    return $base;
+}
+
+function attachment_public_data($attachment, $recordFilename) {
+    if (!is_array($attachment)) {
+        return null;
+    }
+    $stored = normalize_attachment_name($attachment['stored_name'] ?? '');
+    if ($stored === '') {
+        return null;
+    }
+    return [
+        'original_name' => (string)($attachment['original_name'] ?? $stored),
+        'stored_name' => $stored,
+        'size' => intval($attachment['size'] ?? 0),
+        'mime_type' => (string)($attachment['mime_type'] ?? ''),
+        'download_url' => '/cgi-bin/api-users.php?action=attachment&record=' . rawurlencode($recordFilename) . '&file=' . rawurlencode($stored),
+    ];
+}
+
+function safe_attachment_path($dataDirs, $storedName) {
+    $storedName = normalize_attachment_name($storedName);
+    if ($storedName === '') {
+        return '';
+    }
+    foreach ($dataDirs as $dataDir) {
+        $candidate = $dataDir . 'attachments/' . $storedName;
+        if (!is_file($candidate)) {
+            continue;
+        }
+        $real = realpath($candidate);
+        $base = realpath($dataDir . 'attachments');
+        if ($real !== false && $base !== false && strpos($real, rtrim($base, '/') . '/') === 0) {
+            return $real;
+        }
+    }
+    return '';
+}
+
+function download_attachment($dataDirs) {
+    $record = normalize_filename($_GET['record'] ?? '');
+    $stored = normalize_attachment_name($_GET['file'] ?? '');
+    if ($record === '' || $stored === '') {
+        respond(['success' => false, 'error' => '参数无效'], 400);
+    }
+    $recordPath = find_user_file($dataDirs, $record);
+    if ($recordPath === '') {
+        respond(['success' => false, 'error' => '记录不存在'], 404);
+    }
+    $data = json_decode((string)@file_get_contents($recordPath), true);
+    if (!is_array($data)) {
+        respond(['success' => false, 'error' => '记录格式错误'], 500);
+    }
+    $matched = null;
+    foreach (($data['attachments'] ?? []) as $attachment) {
+        if (is_array($attachment) && normalize_attachment_name($attachment['stored_name'] ?? '') === $stored) {
+            $matched = $attachment;
+            break;
+        }
+    }
+    if (!$matched) {
+        respond(['success' => false, 'error' => '附件不属于该记录'], 404);
+    }
+    $path = safe_attachment_path($dataDirs, $stored);
+    if ($path === '') {
+        respond(['success' => false, 'error' => '附件文件不存在'], 404);
+    }
+    $downloadName = basename((string)($matched['original_name'] ?? $stored));
+    if ($downloadName === '') {
+        $downloadName = $stored;
+    }
+    $mime = (string)($matched['mime_type'] ?? '');
+    if ($mime === '') {
+        $mime = 'application/octet-stream';
+    }
+    header('Content-Type: ' . $mime);
+    header('Content-Length: ' . filesize($path));
+    header("Content-Disposition: attachment; filename*=UTF-8''" . rawurlencode($downloadName));
+    header('X-Content-Type-Options: nosniff');
+    readfile($path);
+    exit;
+}
+
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 require_admin_auth();
@@ -150,6 +251,10 @@ require_admin_auth();
 $dataDirs = get_data_dirs();
 
 if ($method === 'GET') {
+    $action = trim((string)($_GET['action'] ?? ''));
+    if ($action === 'attachment') {
+        download_attachment($dataDirs);
+    }
     respond(list_users($dataDirs));
 }
 
