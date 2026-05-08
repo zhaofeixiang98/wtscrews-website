@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "Construction Fastener Demand Continues to Rise in 2026",
+            "date": "2026-05-06",
+            "summary": "Demand for structural bolts, anchor bolts and high strength fasteners continues to grow worldwide as infrastructure and industrial projects expand in 2026.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "Global Fastener Market Trends Q3 2026",
+            "date": "2026-05-06",
+            "summary": "Global demand for high strength bolts and construction fasteners continues to grow in Q3 2026, driven by infrastructure projects and industrial expansion in the Middle East and Asia.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "Thailand International Architecture & Building Materials Expo: A New Launchpad for Fastener Going Global",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "Bolts",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "Sleeve Anchors",
+                    "summary": "Our sleeve anchors provide strong holding power in solid concrete, brick, and block materials. The expandable sleeve ensures secure fastening, ideal for heavy-load applications such as vehicle repair equipment, structural supports, and railings.",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "Wheel Bolts Assembly",

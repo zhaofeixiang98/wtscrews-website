@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "Nachfrage nach Bauverbindungselementen steigt 2026 weiter an",
+            "date": "2026-05-06",
+            "summary": "Die Nachfrage nach Strukturschrauben, Ankerschrauben und hochfesten Verbindungselementen wächst weltweit weiter, da Infrastruktur- und Industrieanlagen im Jahr 2026 expandieren.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "Globaler Verbindungselementmarkt Trends Q3 2026",
+            "date": "2026-05-06",
+            "summary": "Die globale Nachfrage nach hochfesten Schrauben und Bauverbindungselementen wächst im Q3 2026 weiter, angetrieben durch Infrastrukturprojekte und industrielle Expansion im Nahen Osten und Asien.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "Thailand Internationale Architektur- und Baustoffmesse: Eine neue Startrampe für die globale Expansion von Verbindungselementen",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "Schrauben und Bolzen",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "Hülsenanker",
+                    "summary": "Unsere Hülsenanker bieten eine hohe Haltekraft in massivem Beton, Ziegel und Blockmaterialien. Die expandierbare Hülse gewährleistet eine sichere Befestigung, ideal für Schwerlastanwendungen wie Fahrzeugreparaturausrüstung, strukturelle Stützen und Geländer.",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "Radschrauben-Baugruppe",

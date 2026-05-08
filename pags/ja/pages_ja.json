@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "2026年も建設用ファスナーの需要が拡大を続ける",
+            "date": "2026-05-06",
+            "summary": "2026年、インフラや産業プロジェクトの拡大に伴い、構造用ボルト、アンカーボルト、高強度ファスナーの需要が世界的に成長を続けています。",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "2026年第3四半期 世界ファスナー市場動向",
+            "date": "2026-05-06",
+            "summary": "2026年第3四半期、中東やアジアのインフラプロジェクトや産業拡大に牽引され、高強度ボルトや建設用ファスナーへの世界的な需要が引き続き成長しています。",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "タイ国際建築・建材展示会：ファスナーのグローバル展開に向けた新たな発射台",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "ボルト",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "スリーブアンカー",
+                    "summary": "当社のスリーブアンカーは、固体コンクリート、レンガ、ブロック材に強力な保持力を提供します。拡張スリーブにより確実な固定が可能で、車両修理設備、構造支持、手すりなどの高荷重用途に最適です。",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "ホイールボルトアセンブリ",

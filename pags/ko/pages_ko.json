@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "2026년 건설 패스너 수요 지속 증가",
+            "date": "2026-05-06",
+            "summary": "2026년 인프라 및 산업 프로젝트 확장에 따라 구조용 볼트, 앵커 볼트 및 고강도 패스너에 대한 수요가 전 세계적으로 지속 성장하고 있습니다.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "2026년 3분기 글로벌 패스너 시장 동향",
+            "date": "2026-05-06",
+            "summary": "2026년 3분기, 중동 및 아시아의 인프라 프로젝트와 산업 확장에 힘입어 고강도 볼트 및 건설용 패스너에 대한 글로벌 수요가 지속적으로 증가하고 있습니다.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "태국 국제 건축·건축자재 박람회: 패스너의 글로벌 진출을 위한 새로운 발판",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "볼트",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "슬리브 앵커",
+                    "summary": "당사의 슬리브 앵커는 단단한 콘크리트, 벽돌 및 블록 재료에서 강력한 고정력을 제공합니다. 확장형 슬리브는 차량 수리 장비, 구조물 지지대 및 난간과 같은 중하중 응용 분야에 이상적인 안전한 체결을 보장합니다.",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "휠 볼트 어셈블리",

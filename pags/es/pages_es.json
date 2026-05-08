@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "La Demanda de Elementos de Fijación para Construcción Continúa en Aumento en 2026",
+            "date": "2026-05-06",
+            "summary": "La demanda de pernos estructurales, pernos de anclaje y elementos de fijación de alta resistencia continúa creciendo a nivel mundial a medida que los proyectos de infraestructura e industriales se expanden en 2026.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "Tendencias del Mercado Global de Sujetadores T3 2026",
+            "date": "2026-05-06",
+            "summary": "La demanda global de pernos de alta resistencia y sujetadores para construcción continúa creciendo en el T3 2026, impulsada por proyectos de infraestructura y expansión industrial en Medio Oriente y Asia.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "Exposición Internacional de Arquitectura y Materiales de Construcción de Tailandia: una nueva plataforma para la expansión global de los sujetadores",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "Pernos",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "Anclajes de Manguito",
+                    "summary": "Nuestros anclajes de manguito proporcionan una fuerte capacidad de sujeción en concreto sólido, ladrillo y bloques. El manguito expansible asegura una fijación segura, ideal para aplicaciones de carga pesada como equipos de reparación de vehículos, soportes estructurales y barandillas.",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "Conjunto de Pernos de Rueda",

@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "2026年建筑紧固件需求持续增长",
+            "date": "2026-05-06",
+            "summary": "随着2026年基础设施和工业项目的扩展，全球对结构螺栓、锚栓和高强度紧固件的需求持续增长。",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "2026年第三季度全球紧固件市场趋势",
+            "date": "2026-05-06",
+            "summary": "受中东和亚洲基础设施项目及工业扩张推动，2026年第三季度高强度螺栓和建筑紧固件的全球需求持续增长。",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "泰国国际建筑与建材展：紧固件走向全球的新跳板",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "螺栓",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "套筒锚栓",
+                    "summary": "我们的套筒锚栓在实心混凝土、砖和砌块材料中提供强大的握持力。可膨胀套筒确保紧固牢固，适用于车辆维修设备、结构支撑和栏杆等重载应用。",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "车轮螺栓组件",

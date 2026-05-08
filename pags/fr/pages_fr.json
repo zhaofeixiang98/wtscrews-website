@@ -1,6 +1,20 @@
 {
     "news": [
         {
+            "slug": "news/construction-fastener-demand-2026",
+            "title": "La demande de fixations de construction continue d'augmenter en 2026",
+            "date": "2026-05-06",
+            "summary": "La demande de boulons de structure, de boulons d'ancrage et de fixations à haute résistance continue de croître dans le monde entier à mesure que les projets d'infrastructure et industriels s'étendent en 2026.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png"
+        },
+        {
+            "slug": "news/fastener-market-trends-q3-2026",
+            "title": "Tendances du Marché Mondial de la Fixation T3 2026",
+            "date": "2026-05-06",
+            "summary": "La demande mondiale de boulons à haute résistance et de fixations de construction continue de croître au T3 2026, portée par les projets d'infrastructure et l'expansion industrielle au Moyen-Orient et en Asie.",
+            "icon": "../../images/news/ChatGPT-Image-2026-5-6-14_55_24.png"
+        },
+        {
             "slug": "news/20260423-thailand-architect",
             "title": "Salon international thaïlandais de l’architecture et des matériaux de construction : un nouveau tremplin pour l’internationalisation des fixations",
             "date": "2026-04-23",
@@ -76,6 +90,12 @@
             "category": "Boulons",
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
+                {
+                    "slug": "products/sleeve-anchors",
+                    "title": "Chevilles à manchon",
+                    "summary": "Nos chevilles à manchon offrent une forte capacité de maintien dans le béton massif, la brique et les matériaux en blocs. Le manchon expansible assure une fixation sécurisée, idéale pour les applications à charge lourde telles que les équipements de réparation de véhicules, les supports structurels et les garde-corps.",
+                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                },
                 {
                     "slug": "products/wheel-bolts-assembly",
                     "title": "Assemblage de boulons de roue",
