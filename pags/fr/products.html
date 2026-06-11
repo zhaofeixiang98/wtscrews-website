@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn " data-category="Boulons">Bolts</button>
+        <button class="filter-btn " data-category="Écrous">Nuts</button>
+        <button class="filter-btn " data-category="Rondelles">Washers</button>
+        <button class="filter-btn " data-category="Vis">Screws</button>
+        <button class="filter-btn " data-category="Goujons et tiges filetées">Studs</button>
+        <button class="filter-btn " data-category="Goupilles">Pins</button>
+        <button class="filter-btn " data-category="Ancrages et fixation">Anchors</button>
+        <button class="filter-btn " data-category="Autres fixations">Other</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="productSearch" placeholder="Rechercher des produits..." data-no-results="Aucun produit trouvé." autocomplete="off" aria-label="Rechercher des produits...">
+        <input type="search" id="productSearch" placeholder="Search products..." data-no-results="Aucun produit trouvé." autocomplete="off" aria-label="Rechercher des produits...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">Boulons</h2>
-          <section class="cards-grid">
-            <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="Chevilles à manchon" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+          <div class="category-section" data-category="Boulons"><h2 class="section-title category-heading">Boulons</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="Vis à tête fraisée à six pans creux" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
-                <h3>Chevilles à manchon</h3>
-                <p>Nos chevilles à manchon offrent une forte capacité de maintien dans le béton massif, la brique et les matériaux en blocs. Le manchon expansible assure une fixation sécurisée, idéale pour les applications à charge lourde telles que les équipements de réparation de véhicules, les supports structurels et les garde-corps.</p>
+                <h3>Vis à tête fraisée à six pans creux</h3>
+                <p>Nos vis à tête fraisée à six pans creux présentent une tête plate conique qui affleure ou se trouve en dessous de la surface de montage, idéales pour les applications nécessitant une finition propre ou des profils sans obstacle. Entraînées par une clé hexagonale (clé Allen) pour un couple élevé dans les espaces confinés. Disponibles en configurations de filetage complet et partiel. Fabriquées selon les normes DIN 7991 / ISO 10642 avec une précision dimensionnelle constante.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/sleeve-anchors.html" class="card">
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="ancrages à manchon" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>ancrages à manchon</h3>
+                <p>Nos ancrages à manchon offrent une fixation fiable dans les substrats en béton, brique et maçonnerie où une résistance élevée à l&#x27;arrachement et au cisaillement est requise. Le manchon d&#x27;expansion se déforme vers l&#x27;extérieur lors du serrage, saisissant fermement le matériau de base depuis l&#x27;intérieur du trou percé. Disponible en configuration tête hexagonale à collerette avec placage zinc jaune pour la résistance à la corrosion. Convient aux applications structurelles intérieures et extérieures. Fabriqué selon des tolérances dimensionnelles constantes pour une performance d&#x27;installation fiable.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="boulons à tête ronde" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>boulons à tête ronde</h3>
+                <p>Nos boulons à tête ronde présentent une tête bombée lisse et un collet carré qui s&#x27;incruste dans le matériau lors de l&#x27;installation, empêchant la rotation sans nécessiter de clé du côté du boulon. Idéal pour les assemblages bois-bois, bois-métal et les connexions structurelles générales. Disponibles en configurations filetage complet et partiel. Fabriqués selon les normes DIN 603 / ASME B18.5 avec une précision dimensionnelle constante.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="Boulons d&#x27;ancrage chimiques" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Boulons d&#x27;ancrage chimiques</h3>
+                <p>Nos boulons d&#x27;ancrage chimiques offrent une capacité de charge supérieure et une stabilité à long terme pour les installations en béton et structurelles. Conçus pour les applications de fixation lourdes, ils offrent une excellente résistance aux vibrations, à la corrosion et aux contraintes environnementales. Adaptés à la construction, aux structures en acier, aux garde-corps, aux fondations de machines et aux projets d&#x27;infrastructure.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="Ancrages à expansion 4 pièces (Lézard mural à quatre pièces)" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Ancrages à expansion 4 pièces (Lézard mural à quatre pièces)</h3>
+                <p>Nos ancrages à expansion 4 pièces comportent quatre ailes d&#x27;expansion indépendantes qui s&#x27;ouvrent uniformément contre la paroi en béton, offrant une capacité de maintien supérieure par rapport aux boulons d&#x27;expansion standard. Idéaux pour l&#x27;installation de rails d&#x27;ascenseur, le montage de machines lourdes et l&#x27;ancrage structurel. Fabriqués selon des normes de haute qualité avec une précision dimensionnelle constante.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="Boulons à œil" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Boulons à œil</h3>
+                <p>Nos boulons à œil présentent un anneau circulaire (œil) à une extrémité, conçus pour le levage vertical et les charges angulaires. Fabriqués en acier allié à haute résistance et testés à 100 % par magnascopie pour détecter les fissures. Disponibles en versions standard (DIN 580, pour levage vertical) et à épaulement (pour charges angulaires). Chaque boulon est évalué en charge avec un facteur de sécurité minimum de 5:1.</p>
                 <span class="card-link">Voir les details -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="Assemblage de boulons de roue" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="Assemblage de boulons de roue" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>Assemblage de boulons de roue</h3>
                 <p>Les assemblages de boulons de roue sont des composants de fixation essentiels utilisés pour sécuriser les roues sur les moyeux de véhicules. Conçus pour une performance de charge élevée, ces boulons assurent la sécurité et la stabilité dans des conditions de conduite dynamiques. Fabriqués avec une usinage de précision et des matériaux de haute qualité, nos boulons de roue offrent une excellente résistance à la traction, à l&#x27;usure et une longue durée de vie. La conception de l&#x27;assemblage (boulon + écrou + rondelles) améliore l&#x27;efficacité d&#x27;installation et la fiabilité de la fixation. Convient à une large gamme d&#x27;applications automobiles, y compris les voitures particulières, les véhicules utilitaires et les camions lourds.</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Écrous</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Écrous"><h2 class="section-title category-heading">Écrous</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="écrous-cisaillables" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>écrous-cisaillables</h3>
+                <p>Nos écrous cisaillables (également appelés écrous à rupture ou écrous inviolables) offrent une fixation permanente et résistante aux tentatives d&#x27;effraction pour les infrastructures publiques, les équipements extérieurs et les applications critiques en matière de sécurité. La base hexagonale d&#x27;entraînement se cisaille automatiquement une fois le couple de serrage atteint, ne laissant qu&#x27;une tête conique lisse qui ne peut être saisie par les outils standard. Fabriqués en acier inoxydable 304/316 et en acier au carbone zingué pour une résistance fiable à la corrosion en environnements intérieurs et extérieurs.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="écrous en T" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>écrous en T</h3>
+                <p>Nos écrous en T sont conçus pour coulisser dans les rainures en T standard des tables de machines, des profilés en aluminium extrudé et des gabarits de soudage, offrant des points de serrage sécurisés et repositionnables. Le corps en forme de T se verrouille fermement lorsqu&#x27;il est tourné à 90°, éliminant ainsi le besoin de chargement par l&#x27;extrémité. Disponibles en acier au carbone, acier inoxydable 304/316 et finition oxyde noir. Fabriqués selon les normes DIN 508 avec des tolérances dimensionnelles précises pour une compatibilité constante avec les rainures.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="Écrous de Raccord" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Écrous de Raccord</h3>
+                <p>Nos écrous de raccord (également appelés écrous de rallonge ou écrous connecteurs) sont conçus pour assembler deux tiges filetées ou boulons bout à bout, permettant d&#x27;étendre la portée ou d&#x27;ajuster la longueur dans les assemblages structurels et mécaniques. Le filetage interne sur toute la longueur assure un engagement maximal et une répartition optimale de la charge. Disponibles en configurations standard et haute résistance. Fabriqués selon les normes DIN 6334 avec une précision dimensionnelle constante.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="Écrous à sertir" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Écrous à sertir</h3>
+                <p>Nos écrous à sertir (également appelés écrous aveugles ou nutserts) fournissent des filetages internes solides et fiables dans les tôles minces, tubes et sections creuses où seul un accès unilatéral est disponible. Le corps moleté empêche la rotation après installation. Disponibles en types ouverts et fermés, avec tête plate ou fraisée. Fabriqués selon les normes DIN 16903 avec des tolérances dimensionnelles précises.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="Écrous à embase" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Rondelles</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Rondelles"><h2 class="section-title category-heading">Rondelles</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="Rondelles plates" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Vis</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Vis"><h2 class="section-title category-heading">Vis</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="Vis pour plaques de plâtre" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Goujons et tiges filetées</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Goujons et tiges filetées"><h2 class="section-title category-heading">Goujons et tiges filetées</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="Goujons double extrémité" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Goupilles</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Goupilles"><h2 class="section-title category-heading">Goupilles</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="Goupilles fendues" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Ancrages et fixation</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Ancrages et fixation"><h2 class="section-title category-heading">Ancrages et fixation</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="Chevilles à frapper" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Autres fixations</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Autres fixations"><h2 class="section-title category-heading">Autres fixations</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="Rivets à tête ronde" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Rivets à tête ronde</h3>
+                <p>Nos rivets à tête ronde présentent un profil de tête bombé distinctif qui offre une grande surface d&#x27;appui et une résistance au cisaillement élevée, ce qui les rend idéaux pour la fixation permanente dans les assemblages structurels, automobiles et industriels. Installés en déformant l&#x27;extrémité de la queue pour serrer les matériaux ensemble. Disponibles dans une large gamme de matériaux et de tailles. Fabriqués selon les normes DIN 660 / ISO 1051 avec une précision dimensionnelle constante.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="Supports de Montage Solaires" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Supports de Montage Solaires</h3>
+                <p>Notre système de supports de montage solaires est conçu pour les installations photovoltaïques sur toit et au sol. Fabriqué en alliage d&#x27;aluminium haute résistance et en acier galvanisé, il garantit une excellente résistance à la corrosion, une stabilité face aux charges de vent et une durabilité à long terme. Adapté aux projets solaires résidentiels, commerciaux et à grande échelle.</p>
+                <span class="card-link">Voir les details -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="Rivets aveugles" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; Prev</button>
+          <span class="page-info" id="pageInfo">1 / 1</span>
+          <button class="pagination-btn" id="nextPage">Next &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">No products found</div>
+
         </section>
       </article>
     </section>
@@ -547,5 +707,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

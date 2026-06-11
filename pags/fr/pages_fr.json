@@ -1,6 +1,55 @@
 {
     "news": [
         {
+            "slug": "news/us-steel-fastener-tariff-2026",
+            "title": "Révision des tarifs douaniers Section 232 aux États-Unis en 2026 : Ce que tout exportateur de fixations doit savoir",
+            "date": "2026-06-09",
+            "summary": "Le 2 avril 2026, l'administration Trump a signé un décret réorganisant le système tarifaire de la Section 232 pour l'acier, l'aluminium, le cuivre et leurs produits dérivés. Le changement le plus significatif : les droits de douane s'appliquent désormais à la valeur douanière totale des marchandises importées — et non plus seulement à la teneur en métal. Pour les exportateurs de fixations ciblant le marché américain, il s'agit d'un changement fondamental dans la structure des coûts. Cet article détaille ce qui a changé, ce que cela signifie en pratique et comment les exportateurs peuvent réagir.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png"
+        },
+        {
+            "slug": "news/high-strength-fastener-demand-growth-2026",
+            "title": "La demande d'attaches à haute résistance explose : qu'est-ce qui motive la croissance annuelle de 12,3 % ?",
+            "date": "2026-06-06",
+            "summary": "Le marché mondial des attaches à haute résistance (grade 8.8 et supérieur) connaît une expansion à un taux de croissance annuel composé de 12,3 %, porté par la demande croissante des véhicules à énergie nouvelle, des structures photovoltaïques, des équipements éoliens et des machines de précision. Alors que les attaches traditionnelles en acier au carbone peinent à répondre aux exigences de performance de plus en plus strictes, les fabricants sont poussés vers de nouveaux matériaux, des tolérances plus serrées et une couverture d'application élargie. Cet article examine les forces clés derrière ce boom et ce qu'il signifie pour les acheteurs et les fournisseurs.",
+            "icon": "../../images/favicon.png"
+        },
+        {
+            "slug": "news/frankfurt-fastener-show-2026-cbam",
+            "title": "Salon de la Fixation de Francfort 2026 : La Première Grande Exposition Après l'Entrée en Vigueur de la Taxe Carbone de l'UE",
+            "date": "2026-06-05",
+            "summary": "Le Salon International de la Fixation de Francfort 2026 sera la première grande exposition de fixation après l'entrée en vigueur de la phase de collecte du Mécanisme d'Ajustement Carbone aux Frontières (MACF) de l'UE en janvier 2026. Avec les coûts de conformité carbone impactant directement les produits en acier et en aluminium, exposants et acheteurs naviguent dans un nouveau paysage commercial. Cet article explore ce à quoi s'attendre du salon et ce que le MACF signifie pour les exportateurs de fixation ciblant les marchés européens.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png"
+        },
+        {
+            "slug": "news/photovoltaic-industry-news-2026-q2",
+            "title": "Mise à jour de l'industrie photovoltaïque mondiale 2026 : forte expansion soutenue par les politiques, la demande énergétique et l'innovation technologique",
+            "date": "2026-06-01",
+            "summary": "L'industrie photovoltaïque poursuit sa rapide expansion mondiale en 2026, soutenue par des installations record, des politiques de transition énergétique et une forte demande des secteurs des infrastructures et de l'industrie.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png"
+        },
+        {
+            "slug": "news/southeast-asia-middle-east-fastener-demand-2026",
+            "title": "La demande de fixations continue de croître en Asie du Sud-Est et au Moyen-Orient",
+            "date": "2026-05-28",
+            "summary": "La demande de fixations industrielles augmente rapidement en Asie du Sud-Est et au Moyen-Orient en raison des projets d'infrastructure, de l'expansion manufacturière et des investissements énergétiques.",
+            "icon": "../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-may-2026",
+            "title": "Tendances du Marché Mondial de la Fixation et Mise à Jour de l'Industrie – Mai 2026",
+            "date": "2026-05-25",
+            "summary": "L'industrie mondiale de la fixation continue de croître en 2026, portée par les projets d'infrastructure, la demande en énergies renouvelables et l'expansion des marchés de la construction en Asie du Sud-Est et au Moyen-Orient.",
+            "icon": "../../images/abouts/offoce1.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-q2-2026",
+            "title": "Mise à jour du marché mondial de la fixation T2 2026 : Demande croissante en Asie du Sud-Est et dans les projets d'énergie renouvelable",
+            "date": "2026-05-15",
+            "summary": "La demande mondiale de fixations industrielles continue de croître au T2 2026, en particulier en Asie du Sud-Est, dans les énergies renouvelables et les secteurs de la construction.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines6.webp"
+        },
+        {
             "slug": "news/construction-fastener-demand-2026",
             "title": "La demande de fixations de construction continue d'augmenter en 2026",
             "date": "2026-05-06",
@@ -91,10 +140,40 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/countersunk-socket-head-bolts",
+                    "title": "Vis à tête fraisée à six pans creux",
+                    "summary": "Nos vis à tête fraisée à six pans creux présentent une tête plate conique qui affleure ou se trouve en dessous de la surface de montage, idéales pour les applications nécessitant une finition propre ou des profils sans obstacle. Entraînées par une clé hexagonale (clé Allen) pour un couple élevé dans les espaces confinés. Disponibles en configurations de filetage complet et partiel. Fabriquées selon les normes DIN 7991 / ISO 10642 avec une précision dimensionnelle constante.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png"
+                },
+                {
                     "slug": "products/sleeve-anchors",
-                    "title": "Chevilles à manchon",
-                    "summary": "Nos chevilles à manchon offrent une forte capacité de maintien dans le béton massif, la brique et les matériaux en blocs. Le manchon expansible assure une fixation sécurisée, idéale pour les applications à charge lourde telles que les équipements de réparation de véhicules, les supports structurels et les garde-corps.",
-                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                    "title": "ancrages à manchon",
+                    "summary": "Nos ancrages à manchon offrent une fixation fiable dans les substrats en béton, brique et maçonnerie où une résistance élevée à l'arrachement et au cisaillement est requise. Le manchon d'expansion se déforme vers l'extérieur lors du serrage, saisissant fermement le matériau de base depuis l'intérieur du trou percé. Disponible en configuration tête hexagonale à collerette avec placage zinc jaune pour la résistance à la corrosion. Convient aux applications structurelles intérieures et extérieures. Fabriqué selon des tolérances dimensionnelles constantes pour une performance d'installation fiable.",
+                    "icon": "../../images/news/168b271313c4f4346388feed2f2e4e47.png"
+                },
+                {
+                    "slug": "products/carriage-bolts",
+                    "title": "boulons à tête ronde",
+                    "summary": "Nos boulons à tête ronde présentent une tête bombée lisse et un collet carré qui s'incruste dans le matériau lors de l'installation, empêchant la rotation sans nécessiter de clé du côté du boulon. Idéal pour les assemblages bois-bois, bois-métal et les connexions structurelles générales. Disponibles en configurations filetage complet et partiel. Fabriqués selon les normes DIN 603 / ASME B18.5 avec une précision dimensionnelle constante.",
+                    "icon": "../../images/news/887d132a138c5394fc649f8932049c36.png"
+                },
+                {
+                    "slug": "products/chemical-anchor-bolts",
+                    "title": "Boulons d'ancrage chimiques",
+                    "summary": "Nos boulons d'ancrage chimiques offrent une capacité de charge supérieure et une stabilité à long terme pour les installations en béton et structurelles. Conçus pour les applications de fixation lourdes, ils offrent une excellente résistance aux vibrations, à la corrosion et aux contraintes environnementales. Adaptés à la construction, aux structures en acier, aux garde-corps, aux fondations de machines et aux projets d'infrastructure.",
+                    "icon": "../../images/news/08421783-ddae-4068-858a-933103a06fa2.png"
+                },
+                {
+                    "slug": "products/four-piece-expansion-anchor",
+                    "title": "Ancrages à expansion 4 pièces (Lézard mural à quatre pièces)",
+                    "summary": "Nos ancrages à expansion 4 pièces comportent quatre ailes d'expansion indépendantes qui s'ouvrent uniformément contre la paroi en béton, offrant une capacité de maintien supérieure par rapport aux boulons d'expansion standard. Idéaux pour l'installation de rails d'ascenseur, le montage de machines lourdes et l'ancrage structurel. Fabriqués selon des normes de haute qualité avec une précision dimensionnelle constante.",
+                    "icon": "../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png"
+                },
+                {
+                    "slug": "products/eye-bolts",
+                    "title": "Boulons à œil",
+                    "summary": "Nos boulons à œil présentent un anneau circulaire (œil) à une extrémité, conçus pour le levage vertical et les charges angulaires. Fabriqués en acier allié à haute résistance et testés à 100 % par magnascopie pour détecter les fissures. Disponibles en versions standard (DIN 580, pour levage vertical) et à épaulement (pour charges angulaires). Chaque boulon est évalué en charge avec un facteur de sécurité minimum de 5:1.",
+                    "icon": "../../images/news/bc952db1252205da38a0b53f567c19e9.png"
                 },
                 {
                     "slug": "products/wheel-bolts-assembly",
@@ -144,6 +223,30 @@
             "category": "Écrous",
             "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
+                {
+                    "slug": "products/shear-nuts",
+                    "title": "écrous-cisaillables",
+                    "summary": "Nos écrous cisaillables (également appelés écrous à rupture ou écrous inviolables) offrent une fixation permanente et résistante aux tentatives d'effraction pour les infrastructures publiques, les équipements extérieurs et les applications critiques en matière de sécurité. La base hexagonale d'entraînement se cisaille automatiquement une fois le couple de serrage atteint, ne laissant qu'une tête conique lisse qui ne peut être saisie par les outils standard. Fabriqués en acier inoxydable 304/316 et en acier au carbone zingué pour une résistance fiable à la corrosion en environnements intérieurs et extérieurs.",
+                    "icon": "../../images/news/73b9fd744fd35079b711219ec3cfe555.png"
+                },
+                {
+                    "slug": "products/t-slot-nuts",
+                    "title": "écrous en T",
+                    "summary": "Nos écrous en T sont conçus pour coulisser dans les rainures en T standard des tables de machines, des profilés en aluminium extrudé et des gabarits de soudage, offrant des points de serrage sécurisés et repositionnables. Le corps en forme de T se verrouille fermement lorsqu'il est tourné à 90°, éliminant ainsi le besoin de chargement par l'extrémité. Disponibles en acier au carbone, acier inoxydable 304/316 et finition oxyde noir. Fabriqués selon les normes DIN 508 avec des tolérances dimensionnelles précises pour une compatibilité constante avec les rainures.",
+                    "icon": "../../images/news/c4ba24a45b08d18449266cc838027370.png"
+                },
+                {
+                    "slug": "products/coupling-nuts",
+                    "title": "Écrous de Raccord",
+                    "summary": "Nos écrous de raccord (également appelés écrous de rallonge ou écrous connecteurs) sont conçus pour assembler deux tiges filetées ou boulons bout à bout, permettant d'étendre la portée ou d'ajuster la longueur dans les assemblages structurels et mécaniques. Le filetage interne sur toute la longueur assure un engagement maximal et une répartition optimale de la charge. Disponibles en configurations standard et haute résistance. Fabriqués selon les normes DIN 6334 avec une précision dimensionnelle constante.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png"
+                },
+                {
+                    "slug": "products/rivet-nuts",
+                    "title": "Écrous à sertir",
+                    "summary": "Nos écrous à sertir (également appelés écrous aveugles ou nutserts) fournissent des filetages internes solides et fiables dans les tôles minces, tubes et sections creuses où seul un accès unilatéral est disponible. Le corps moleté empêche la rotation après installation. Disponibles en types ouverts et fermés, avec tête plate ou fraisée. Fabriqués selon les normes DIN 16903 avec des tolérances dimensionnelles précises.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png"
+                },
                 {
                     "slug": "products/flange-nuts",
                     "title": "Écrous à embase",
@@ -300,6 +403,18 @@
             "category": "Autres fixations",
             "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
+                {
+                    "slug": "products/round-head-rivets",
+                    "title": "Rivets à tête ronde",
+                    "summary": "Nos rivets à tête ronde présentent un profil de tête bombé distinctif qui offre une grande surface d'appui et une résistance au cisaillement élevée, ce qui les rend idéaux pour la fixation permanente dans les assemblages structurels, automobiles et industriels. Installés en déformant l'extrémité de la queue pour serrer les matériaux ensemble. Disponibles dans une large gamme de matériaux et de tailles. Fabriqués selon les normes DIN 660 / ISO 1051 avec une précision dimensionnelle constante.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png"
+                },
+                {
+                    "slug": "products/solar-mounting-bracket",
+                    "title": "Supports de Montage Solaires",
+                    "summary": "Notre système de supports de montage solaires est conçu pour les installations photovoltaïques sur toit et au sol. Fabriqué en alliage d'aluminium haute résistance et en acier galvanisé, il garantit une excellente résistance à la corrosion, une stabilité face aux charges de vent et une durabilité à long terme. Adapté aux projets solaires résidentiels, commerciaux et à grande échelle.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png"
+                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Rivets aveugles",

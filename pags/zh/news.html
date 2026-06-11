@@ -57,6 +57,58 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/news.css?v=20260427">
 
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
 </head>
 <body>
 
@@ -96,8 +148,71 @@ ul{list-style:none}
       <article class="container">
         <h2 class="sr-only">最新文章</h2>
         <section class="cards-grid" id="newsContainer">
+          <a href="news/us-steel-fastener-tariff-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png" alt="美国232条款关税改革2026：每个紧固件出口商必须了解的事项" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-09">2026-06-09</time>
+              <h3>美国232条款关税改革2026：每个紧固件出口商必须了解的事项</h3>
+              <p>2026年4月2日，特朗普政府签署行政命令，重组针对钢铁、铝、铜及其衍生品的232条款关税体系。最显著的变化：关税现在适用于进口商品的完整海关价值——而不仅仅是金属含量。对于瞄准美国市场的紧固件出口商来说，这是成本结构的根本性转变。本文解析了变化内容、实际影响以及出口商如何应对。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/high-strength-fastener-demand-growth-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/favicon.png" alt="高强度紧固件需求激增：12.3%的年增长率背后是什么？" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-06">2026-06-06</time>
+              <h3>高强度紧固件需求激增：12.3%的年增长率背后是什么？</h3>
+              <p>全球高强度紧固件市场（8.8级及以上产品）正以12.3%的复合年增长率扩张，这得益于新能源汽车、光伏结构、风电设备及精密机械的旺盛需求。随着传统碳钢紧固件难以满足日益严苛的性能要求，制造商被迫转向新材料、更严格的公差和更广泛的应用覆盖。本文探讨了这一繁荣背后的关键驱动力及其对买家和供应商的意义。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/frankfurt-fastener-show-2026-cbam.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png" alt="2026法兰克福紧固件展：欧盟碳税生效后的首个大型展会" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-05">2026-06-05</time>
+              <h3>2026法兰克福紧固件展：欧盟碳税生效后的首个大型展会</h3>
+              <p>2026年法兰克福国际紧固件贸易展将是欧盟碳边境调节机制（CBAM）于2026年1月正式进入征收阶段后举办的首个大型紧固件展会。随着碳合规成本直接影响钢铁和铝产品，参展商和买家都在应对新的贸易格局。本文探讨了展会的看点以及CBAM对瞄准欧洲市场的紧固件出口商意味着什么。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/photovoltaic-industry-news-2026-q2.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png" alt="2026年全球光伏行业更新：政策支持、能源需求和技术创新推动强劲扩张" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-01">2026-06-01</time>
+              <h3>2026年全球光伏行业更新：政策支持、能源需求和技术创新推动强劲扩张</h3>
+              <p>2026年，光伏行业在全球范围内持续快速扩张，得益于创纪录的装机量、能源转型政策以及基础设施和工业领域的强劲需求。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/southeast-asia-middle-east-fastener-demand-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png" alt="东南亚和中东地区紧固件需求持续增长" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-28">2026-05-28</time>
+              <h3>东南亚和中东地区紧固件需求持续增长</h3>
+              <p>由于基础设施项目、制造业扩张和能源投资，东南亚和中东地区的工业紧固件需求正在迅速增长。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-may-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/offoce1.png" alt="全球紧固件市场趋势与行业动态——2026年5月" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-25">2026-05-25</time>
+              <h3>全球紧固件市场趋势与行业动态——2026年5月</h3>
+              <p>2026年，全球紧固件行业持续增长，受基础设施项目、可再生能源需求以及东南亚和中东地区建筑市场扩张的推动。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-q2-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/Precision%20CNC%20machining%20lines6.webp" alt="2026年第二季度全球紧固件市场更新：东南亚与可再生能源项目需求增长" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-15">2026-05-15</time>
+              <h3>2026年第二季度全球紧固件市场更新：东南亚与可再生能源项目需求增长</h3>
+              <p>2026年第二季度，全球工业紧固件需求持续增长，尤其在东南亚、可再生能源和建筑行业。</p>
+              <span class="card-link">阅读全文 -&gt;</span>
+            </section>
+          </a>
           <a href="news/construction-fastener-demand-2026.html" class="card">
-            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="2026年建筑紧固件需求持续增长" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="2026年建筑紧固件需求持续增长" width="440" height="220" loading="lazy" decoding="async"></figure>
             <section class="card-body">
               <time class="card-meta" datetime="2026-05-06">2026-05-06</time>
               <h3>2026年建筑紧固件需求持续增长</h3>
@@ -204,7 +319,35 @@ ul{list-style:none}
               <span class="card-link">阅读全文 -&gt;</span>
             </section>
           </a>
-        </section>
+        
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; 上一页</button>
+          <span class="page-info" id="newsPageInfo">第 1 页，共 1 页</span>
+          <button class="news-pagination-btn" id="newsNextPage">下一页 &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">未找到相关新闻</div>
+
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; 上一页</button>
+          <span class="page-info" id="newsPageInfo">第 1 页，共 1 页</span>
+          <button class="news-pagination-btn" id="newsNextPage">下一页 &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">未找到相关新闻</div>
+
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; 上一页</button>
+          <span class="page-info" id="newsPageInfo">第 1 页，共 1 页</span>
+          <button class="news-pagination-btn" id="newsNextPage">下一页 &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">未找到相关新闻</div>
+
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; 上一页</button>
+          <span class="page-info" id="newsPageInfo">第 1 页，共 1 页</span>
+          <button class="news-pagination-btn" id="newsNextPage">下一页 &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">未找到相关新闻</div>
+</section>
       </article>
     </section>
   </main>
@@ -287,5 +430,353 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='第 PAGE 页，共 TOTAL 页'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='第 PAGE 页，共 TOTAL 页'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='第 PAGE 页，共 TOTAL 页'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='第 PAGE 页，共 TOTAL 页'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

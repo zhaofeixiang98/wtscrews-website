@@ -1,6 +1,55 @@
 {
     "news": [
         {
+            "slug": "news/us-steel-fastener-tariff-2026",
+            "title": "Revisión del Arancel Sección 232 de EE. UU. 2026: Lo que Todo Exportador de Sujetadores Debe Saber",
+            "date": "2026-06-09",
+            "summary": "El 2 de abril de 2026, la administración Trump firmó una orden ejecutiva que reestructura el sistema de aranceles de la Sección 232 para el acero, aluminio, cobre y sus productos derivados. El cambio más significativo: los aranceles ahora se aplican al valor aduanero completo de los bienes importados, no solo al contenido metálico. Para los exportadores de sujetadores que apuntan al mercado estadounidense, esto es un cambio fundamental en la estructura de costos. Este artículo desglosa qué cambió, qué significa en la práctica y cómo pueden responder los exportadores.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png"
+        },
+        {
+            "slug": "news/high-strength-fastener-demand-growth-2026",
+            "title": "La Demanda de Sujetadores de Alta Resistencia se Dispara: ¿Qué Impulsa el Crecimiento Anual del 12,3%?",
+            "date": "2026-06-06",
+            "summary": "El mercado global de sujetadores de alta resistencia se expande a una tasa de crecimiento anual compuesta del 12,3% para productos de grado 8.8 y superiores, impulsado por la creciente demanda de vehículos de nueva energía, estructuras fotovoltaicas, equipos de energía eólica y maquinaria de precisión. A medida que los sujetadores tradicionales de acero al carbono luchan por cumplir con requisitos de rendimiento cada vez más exigentes, los fabricantes se ven presionados hacia nuevos materiales, tolerancias más estrictas y una cobertura de aplicaciones ampliada. Este artículo examina las fuerzas clave detrás del auge y lo que significa para compradores y proveedores.",
+            "icon": "../../images/favicon.png"
+        },
+        {
+            "slug": "news/frankfurt-fastener-show-2026-cbam",
+            "title": "Feria de Frankfurt 2026: La Primera Gran Exposición Tras la Entrada en Vigor del Impuesto al Carbono de la UE",
+            "date": "2026-06-05",
+            "summary": "La Feria Internacional de Elementos de Fijación de Frankfurt 2026 será la primera gran exposición del sector tras la entrada en vigor de la fase de recaudación del Mecanismo de Ajuste en Frontera por Carbono (CBAM) de la UE en enero de 2026. Con los costos de cumplimiento de carbono impactando directamente en productos de acero y aluminio, expositores y compradores navegan por un nuevo panorama comercial. Este artículo explora qué esperar de la feria y qué significa el CBAM para los exportadores de elementos de fijación que apuntan a mercados europeos.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png"
+        },
+        {
+            "slug": "news/photovoltaic-industry-news-2026-q2",
+            "title": "Actualización de la Industria Fotovoltaica Global 2026: Fuerte Expresión Impulsada por Apoyo Político, Demanda Energética e Innovación Tecnológica",
+            "date": "2026-06-01",
+            "summary": "La industria fotovoltaica continúa su rápida expansión global en 2026, respaldada por instalaciones récord, políticas de transición energética y una fuerte demanda de los sectores de infraestructura e industrial.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png"
+        },
+        {
+            "slug": "news/southeast-asia-middle-east-fastener-demand-2026",
+            "title": "La demanda de sujetadores continúa creciendo en el Sudeste Asiático y Oriente Medio",
+            "date": "2026-05-28",
+            "summary": "La demanda de sujetadores industriales está aumentando rápidamente en el Sudeste Asiático y Oriente Medio debido a proyectos de infraestructura, expansión manufacturera e inversiones energéticas.",
+            "icon": "../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-may-2026",
+            "title": "Tendencias del Mercado Global de Sujetadores y Actualización de la Industria – Mayo 2026",
+            "date": "2026-05-25",
+            "summary": "La industria global de sujetadores continúa creciendo en 2026, impulsada por proyectos de infraestructura, demanda de energía renovable y mercados de construcción en expansión en el Sudeste Asiático y Medio Oriente.",
+            "icon": "../../images/abouts/offoce1.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-q2-2026",
+            "title": "Actualización del Mercado Global de Sujetadores Q2 2026: Creciente Demanda del Sudeste Asiático y Proyectos de Energía Renovable",
+            "date": "2026-05-15",
+            "summary": "La demanda global de sujetadores industriales continúa creciendo en el segundo trimestre de 2026, especialmente en el Sudeste Asiático, la energía renovable y la industria de la construcción.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines6.webp"
+        },
+        {
             "slug": "news/construction-fastener-demand-2026",
             "title": "La Demanda de Elementos de Fijación para Construcción Continúa en Aumento en 2026",
             "date": "2026-05-06",
@@ -91,10 +140,40 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/countersunk-socket-head-bolts",
+                    "title": "Tornillos de Cabeza Avellanada con Hexágono Interior",
+                    "summary": "Nuestros tornillos de cabeza avellanada con hexágono interior presentan una cabeza plana y cónica que queda al ras o por debajo de la superficie de acoplamiento, ideales para aplicaciones que requieren un acabado limpio o perfiles sin obstrucciones. Se accionan con una llave hexagonal (Allen) para alto par en espacios reducidos. Disponibles en configuraciones de rosca completa y parcial. Fabricados según las normas DIN 7991 / ISO 10642 con precisión dimensional consistente.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png"
+                },
+                {
                     "slug": "products/sleeve-anchors",
-                    "title": "Anclajes de Manguito",
-                    "summary": "Nuestros anclajes de manguito proporcionan una fuerte capacidad de sujeción en concreto sólido, ladrillo y bloques. El manguito expansible asegura una fijación segura, ideal para aplicaciones de carga pesada como equipos de reparación de vehículos, soportes estructurales y barandillas.",
-                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                    "title": "anclajes de camisa",
+                    "summary": "Nuestros anclajes de camisa proporcionan una fijación fiable en sustratos de hormigón, ladrillo y mampostería donde se requiere una alta resistencia al arrancamiento y al corte. La camisa de expansión se deforma hacia afuera al apretar, agarrando firmemente el material base desde el interior del agujero perforado. Disponible en configuración de cabeza hexagonal con brida y galvanizado amarillo para resistencia a la corrosión. Adecuado para aplicaciones estructurales tanto interiores como exteriores. Fabricado con tolerancias dimensionales consistentes para un rendimiento de instalación fiable.",
+                    "icon": "../../images/news/168b271313c4f4346388feed2f2e4e47.png"
+                },
+                {
+                    "slug": "products/carriage-bolts",
+                    "title": "pernos de carrocería",
+                    "summary": "Nuestros pernos de carrocería cuentan con una cabeza abombada lisa y un cuello cuadrado debajo que se incrusta en el material durante la instalación, evitando la rotación sin necesidad de una llave en el lado del perno. Ideales para conexiones madera-madera, madera-metal y conexiones estructurales generales. Disponibles en configuraciones de rosca completa y parcial. Fabricados según las normas DIN 603 / ASME B18.5 con precisión dimensional consistente.",
+                    "icon": "../../images/news/887d132a138c5394fc649f8932049c36.png"
+                },
+                {
+                    "slug": "products/chemical-anchor-bolts",
+                    "title": "Pernos de Anclaje Químico",
+                    "summary": "Nuestros pernos de anclaje químico proporcionan una capacidad de carga superior y estabilidad a largo plazo para instalaciones en hormigón y estructuras. Diseñados para aplicaciones de fijación de alta resistencia, ofrecen una excelente resistencia a la vibración, la corrosión y el estrés ambiental. Adecuados para construcción, estructuras de acero, barandillas, cimentaciones de maquinaria y proyectos de infraestructura.",
+                    "icon": "../../images/news/08421783-ddae-4068-858a-933103a06fa2.png"
+                },
+                {
+                    "slug": "products/four-piece-expansion-anchor",
+                    "title": "Anclajes de Expansión de 4 Piezas (Lagarto de Pared de Cuatro Piezas)",
+                    "summary": "Nuestros anclajes de expansión de 4 piezas cuentan con cuatro hojas de expansión independientes que se abren uniformemente contra la pared de hormigón, proporcionando una capacidad de sujeción superior en comparación con los pernos de expansión estándar. Ideales para la instalación de rieles de ascensor, montaje de maquinaria pesada y anclaje estructural. Fabricados según estándares de alta calidad con precisión dimensional consistente.",
+                    "icon": "../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png"
+                },
+                {
+                    "slug": "products/eye-bolts",
+                    "title": "Pernos de Ojo",
+                    "summary": "Nuestros pernos de ojo cuentan con un anillo circular (ojo) en un extremo, diseñados para elevación vertical y cargas angulares. Fabricados en acero aleado de alta resistencia y probados al 100% con magnaflux para detectar grietas. Disponibles en diseños estándar (DIN 580, para elevación vertical) y con hombro (para cargas angulares). Cada perno tiene una capacidad de carga con un factor de seguridad mínimo de 5:1.",
+                    "icon": "../../images/news/bc952db1252205da38a0b53f567c19e9.png"
                 },
                 {
                     "slug": "products/wheel-bolts-assembly",
@@ -144,6 +223,30 @@
             "category": "Tuercas",
             "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
+                {
+                    "slug": "products/shear-nuts",
+                    "title": "tuercas de cizallamiento",
+                    "summary": "Nuestras tuercas de cizallamiento (también conocidas como tuercas de ruptura o tuercas a prueba de manipulaciones) proporcionan una fijación permanente y resistente a manipulaciones para infraestructura pública, equipos exteriores y aplicaciones críticas de seguridad. La base hexagonal de accionamiento se corta automáticamente una vez que se alcanza el par de instalación, dejando solo una cabeza cónica lisa que no puede ser agarrada por herramientas estándar. Fabricadas en acero inoxidable 304/316 y acero al carbono galvanizado para una resistencia a la corrosión fiable en entornos interiores y exteriores.",
+                    "icon": "../../images/news/73b9fd744fd35079b711219ec3cfe555.png"
+                },
+                {
+                    "slug": "products/t-slot-nuts",
+                    "title": "tuercas para ranura en T",
+                    "summary": "Nuestras tuercas para ranura en T están diseñadas para deslizarse en rieles de ranura en T estándar en mesas de máquinas, perfiles de extrusión de aluminio y accesorios de soldadura, proporcionando puntos de sujeción seguros y reposicionables. El cuerpo en forma de T se bloquea firmemente al girarlo 90°, eliminando la necesidad de carga por los extremos. Disponibles en acero al carbono, acero inoxidable 304/316 y acabado óxido negro. Fabricadas según los estándares DIN 508 con tolerancias dimensionales precisas para una compatibilidad consistente con la ranura.",
+                    "icon": "../../images/news/c4ba24a45b08d18449266cc838027370.png"
+                },
+                {
+                    "slug": "products/coupling-nuts",
+                    "title": "Tuercas de Acoplamiento",
+                    "summary": "Nuestras tuercas de acoplamiento (también conocidas como tuercas de extensión o tuercas conectoras) están diseñadas para unir dos varillas roscadas o pernos extremo a extremo, extendiendo el alcance o ajustando la longitud en ensamblajes estructurales y mecánicos. La rosca interna de longitud completa asegura el máximo acoplamiento y distribución de carga. Disponibles en configuraciones estándar y de servicio pesado. Fabricadas según los estándares DIN 6334 con precisión dimensional consistente.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png"
+                },
+                {
+                    "slug": "products/rivet-nuts",
+                    "title": "Tuercas remachables",
+                    "summary": "Nuestras tuercas remachables (también conocidas como tuercas ciegas o nutserts) proporcionan roscas internas fuertes y confiables en láminas delgadas, tubos y secciones huecas donde solo se tiene acceso por un lado. El cuerpo moleteado evita el giro después de la instalación. Disponibles en tipos de extremo abierto y cerrado, con cabeza plana y avellanada. Fabricadas según los estándares DIN 16903 con tolerancias dimensionales precisas.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png"
+                },
                 {
                     "slug": "products/flange-nuts",
                     "title": "Tuercas con brida",
@@ -300,6 +403,18 @@
             "category": "Otros sujetadores",
             "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
+                {
+                    "slug": "products/round-head-rivets",
+                    "title": "Remaches de Cabeza Redonda",
+                    "summary": "Nuestros remaches de cabeza redonda presentan un perfil de cabeza abombada distintivo que proporciona una gran superficie de apoyo y alta resistencia al corte, lo que los hace ideales para la fijación permanente en ensamblajes estructurales, automotrices e industriales. Se instalan deformando el extremo de la cola para sujetar los materiales entre sí. Disponibles en una amplia gama de materiales y tamaños. Fabricados según las normas DIN 660 / ISO 1051 con precisión dimensional consistente.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png"
+                },
+                {
+                    "slug": "products/solar-mounting-bracket",
+                    "title": "Soportes de Montaje Solar",
+                    "summary": "Nuestro sistema de soportes de montaje solar está diseñado para instalaciones fotovoltaicas en tejados y suelo. Fabricado en aleación de aluminio de alta resistencia y acero galvanizado, garantiza una excelente resistencia a la corrosión, estabilidad frente a cargas de viento y durabilidad a largo plazo. Adecuado para proyectos solares residenciales, comerciales y de gran escala.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png"
+                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Remaches ciegos",

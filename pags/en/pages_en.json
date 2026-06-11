@@ -1,6 +1,55 @@
 {
     "news": [
         {
+            "slug": "news/us-steel-fastener-tariff-2026",
+            "title": "U.S. Section 232 Tariff Overhaul 2026: What Every Fastener Exporter Needs to Know",
+            "date": "2026-06-09",
+            "summary": "On April 2, 2026, the Trump administration signed an executive order restructuring the Section 232 tariff system for steel, aluminum, copper, and their derivative products. The most significant change: tariffs now apply to the full customs value of imported goods — not just the metal content. For fastener exporters targeting the U.S. market, this is a fundamental shift in cost structure. This article breaks down what changed, what it means in practice, and how exporters can respond.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png"
+        },
+        {
+            "slug": "news/high-strength-fastener-demand-growth-2026",
+            "title": "High-Strength Fastener Demand Surges: What's Driving the 12.3% Annual Growth?",
+            "date": "2026-06-06",
+            "summary": "he global market for high-strength fasteners is expanding at a compound annual growth rate of 12.3% for Grade 8.8 and above products, driven by surging demand from new energy vehicles, photovoltaic structures, wind power equipment, and precision machinery. As traditional carbon steel fasteners struggle to meet increasingly demanding performance requirements, manufacturers are being pushed toward new materials, tighter tolerances, and expanded application coverage. This article examines the key forces behind the boom and what it means for buyers and suppliers alike.",
+            "icon": "../../images/favicon.png"
+        },
+        {
+            "slug": "news/frankfurt-fastener-show-2026-cbam",
+            "title": "Frankfurt Fastener Show 2026: The First Major Exhibition After EU Carbon Tax Takes Effect",
+            "date": "2026-06-05",
+            "summary": "The 2026 Frankfurt International Fastener Trade Show is set to be the first major fastener exhibition held after the EU Carbon Border Adjustment Mechanism (CBAM) officially entered its collection phase in January 2026. With carbon compliance costs now directly impacting steel and aluminum products, exhibitors and buyers alike are navigating a new trade landscape. This article explores what to expect from the show and what CBAM means for fastener exporters targeting European markets.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png"
+        },
+        {
+            "slug": "news/photovoltaic-industry-news-2026-q2",
+            "title": "Global Photovoltaic Industry Update 2026: Strong Expansion Driven by Policy Support, Energy Demand, and Technology Innovation",
+            "date": "2026-06-01",
+            "summary": "The photovoltaic industry continues rapid global expansion in 2026, supported by record installations, energy transition policies, and strong demand from infrastructure and industrial sectors.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png"
+        },
+        {
+            "slug": "news/southeast-asia-middle-east-fastener-demand-2026",
+            "title": "Demand for fasteners continues to grow in Southeast Asia and the Middle East",
+            "date": "2026-05-28",
+            "summary": "Demand for industrial fasteners is rapidly increasing across Southeast Asia and the Middle East due to infrastructure projects, manufacturing expansion, and energy investments.",
+            "icon": "../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-may-2026",
+            "title": "Global Fastener Market Trends and Industry Update – May 2026",
+            "date": "2026-05-25",
+            "summary": "The global fastener industry continues to grow in 2026, driven by infrastructure projects, renewable energy demand, and expanding construction markets across Southeast Asia and the Middle East.",
+            "icon": "../../images/abouts/offoce1.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-q2-2026",
+            "title": "Global Fastener Market Update Q2 2026: Rising Demand from Southeast Asia and Renewable Energy Projects",
+            "date": "2026-05-15",
+            "summary": "Global demand for industrial fasteners continues to grow in Q2 2026, especially in Southeast Asia, renewable energy, and construction industries.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines6.webp"
+        },
+        {
             "slug": "news/construction-fastener-demand-2026",
             "title": "Construction Fastener Demand Continues to Rise in 2026",
             "date": "2026-05-06",
@@ -91,10 +140,40 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/countersunk-socket-head-bolts",
+                    "title": "Countersunk Socket Head Cap Screws",
+                    "summary": "Our countersunk socket head cap screws feature a flat, conical head that sits flush with or below the mating surface, ideal for applications requiring a clean finish or unobstructed profiles. Driven by a hex key (Allen wrench) for high torque in confined spaces. Available in full and partial thread configurations. Manufactured to DIN 7991 / ISO 10642 standards with consistent dimensional accuracy.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png"
+                },
+                {
                     "slug": "products/sleeve-anchors",
-                    "title": "Sleeve Anchors",
-                    "summary": "Our sleeve anchors provide strong holding power in solid concrete, brick, and block materials. The expandable sleeve ensures secure fastening, ideal for heavy-load applications such as vehicle repair equipment, structural supports, and railings.",
-                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                    "title": "sleeve-anchors",
+                    "summary": "Our sleeve anchors provide reliable fastening in concrete, brick, and masonry substrates where strong pull-out and shear resistance are required. The expansion sleeve deforms outward upon tightening, gripping the base material firmly from within the drilled hole. Available in flange hex head configuration with yellow zinc plating for corrosion resistance. Suitable for both indoor and outdoor structural applications. Manufactured to consistent dimensional tolerances for reliable installation performance.",
+                    "icon": "../../images/news/168b271313c4f4346388feed2f2e4e47.png"
+                },
+                {
+                    "slug": "products/carriage-bolts",
+                    "title": "carriage-bolts",
+                    "summary": "Our carriage bolts feature a smooth domed head and a square neck beneath that bites into the material upon installation, preventing rotation without the need for a wrench on the bolt side. Ideal for wood-to-wood, wood-to-metal, and general structural connections. Available in full-thread and partial-thread configurations. Manufactured to DIN 603 / ASME B18.5 standards with consistent dimensional accuracy.",
+                    "icon": "../../images/news/887d132a138c5394fc649f8932049c36.png"
+                },
+                {
+                    "slug": "products/chemical-anchor-bolts",
+                    "title": "Chemical Anchor Bolts",
+                    "summary": "Our chemical anchor bolts provide superior load capacity and long-term stability for concrete and structural installations. Designed for heavy-duty fastening applications, they offer excellent resistance to vibration, corrosion, and environmental stress. Suitable for construction, steel structures, railings, machinery foundations, and infrastructure projects.",
+                    "icon": "../../images/news/08421783-ddae-4068-858a-933103a06fa2.png"
+                },
+                {
+                    "slug": "products/four-piece-expansion-anchor",
+                    "title": "4-Piece Expansion Anchors (Four-Piece Wall Lizard)",
+                    "summary": "Our 4-piece expansion anchors feature four independent expansion leaves that open evenly against the concrete wall, providing superior holding power compared to standard expansion bolts. Ideal for elevator rail installation, heavy machinery mounting, and structural anchoring. Manufactured to high-quality standards with consistent dimensional accuracy.",
+                    "icon": "../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png"
+                },
+                {
+                    "slug": "products/eye-bolts",
+                    "title": "Eye Bolts",
+                    "summary": "Our eye bolts feature a circular ring (eye) at one end, designed for vertical lifting and angular loads. Manufactured from high-strength alloy steel and 100% magnaflux tested for cracks. Available in both standard (DIN 580, for vertical lifting) and shoulder pattern (for angular loads) designs. Each bolt is load-rated with a minimum safety factor of 5:1.",
+                    "icon": "../../images/news/bc952db1252205da38a0b53f567c19e9.png"
                 },
                 {
                     "slug": "products/wheel-bolts-assembly",
@@ -144,6 +223,30 @@
             "category": "Nuts",
             "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
+                {
+                    "slug": "products/shear-nuts",
+                    "title": "shear-nuts",
+                    "summary": "Our shear nuts (also known as break-away nuts or tamper-proof nuts) provide permanent, tamper-resistant fastening for public infrastructure, outdoor equipment, and security-critical applications. The hexagonal driving base shears off automatically once the installation torque is reached, leaving only a smooth conical head that cannot be gripped by standard tools. Manufactured in stainless steel 304/316 and zinc plated carbon steel for reliable corrosion resistance in indoor and outdoor environments.",
+                    "icon": "../../images/news/73b9fd744fd35079b711219ec3cfe555.png"
+                },
+                {
+                    "slug": "products/t-slot-nuts",
+                    "title": "t-slot-nuts",
+                    "summary": "Our T-slot nuts are designed to slide into standard T-slot tracks on machine tables, aluminum extrusion profiles, and welding fixtures, providing secure and repositionable clamping points. The T-shaped body locks firmly when rotated 90°, eliminating the need for end-loading. Available in carbon steel, stainless steel 304/316, and black oxide finish. Manufactured to DIN 508 standards with precise dimensional tolerances for consistent slot compatibility.",
+                    "icon": "../../images/news/c4ba24a45b08d18449266cc838027370.png"
+                },
+                {
+                    "slug": "products/coupling-nuts",
+                    "title": "Coupling Nuts",
+                    "summary": "Our coupling nuts (also known as extension nuts or connector nuts) are designed to join two threaded rods or bolts end-to-end, extending reach or adjusting length in structural and mechanical assemblies. The full-length internal thread ensures maximum engagement and load distribution. Available in standard and heavy-duty configurations. Manufactured to DIN 6334 standards with consistent dimensional accuracy.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png"
+                },
+                {
+                    "slug": "products/rivet-nuts",
+                    "title": "Rivet Nuts",
+                    "summary": "Our rivet nuts (also known as blind rivet nuts or nutserts) provide strong, reliable internal threads in thin sheets, tubes, and hollow sections where only one-side access is available. The knurled body prevents rotation after installation. Available in open-end and closed-end types, flat head and countersunk head styles. Manufactured to DIN 16903 standards with precise dimensional tolerances.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png"
+                },
                 {
                     "slug": "products/flange-nuts",
                     "title": "Flange Nuts",
@@ -300,6 +403,18 @@
             "category": "Other Fasteners",
             "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
+                {
+                    "slug": "products/round-head-rivets",
+                    "title": "Round Head Rivets",
+                    "summary": "Our round head rivets feature a distinctive domed head profile that provides a large bearing surface and high shear strength, making them ideal for permanent fastening in structural, automotive, and industrial assemblies. Installed by deforming the tail end to clamp materials together. Available in a wide range of materials and sizes. Manufactured to DIN 660 / ISO 1051 standards with consistent dimensional accuracy.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png"
+                },
+                {
+                    "slug": "products/solar-mounting-bracket",
+                    "title": "Solar Mounting Brackets",
+                    "summary": "Our solar mounting bracket system is designed for rooftop and ground photovoltaic installations. Made from high-strength aluminum alloy and galvanized steel, it ensures excellent corrosion resistance, wind load stability, and long-term durability. Suitable for residential, commercial, and utility-scale solar projects.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png"
+                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blind Rivets",

@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn " data-category="ボルト">Bolts</button>
+        <button class="filter-btn " data-category="ナット">Nuts</button>
+        <button class="filter-btn " data-category="ワッシャー">Washers</button>
+        <button class="filter-btn " data-category="ねじ">Screws</button>
+        <button class="filter-btn " data-category="スタッド・全ねじロッド">Studs</button>
+        <button class="filter-btn " data-category="ピン">Pins</button>
+        <button class="filter-btn " data-category="アンカー・締結">Anchors</button>
+        <button class="filter-btn " data-category="その他ファスナー">Other</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="productSearch" placeholder="製品を検索..." data-no-results="製品が見つかりません。" autocomplete="off" aria-label="製品を検索...">
+        <input type="search" id="productSearch" placeholder="Search products..." data-no-results="製品が見つかりません。" autocomplete="off" aria-label="製品を検索...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">ボルト</h2>
-          <section class="cards-grid">
+          <div class="category-section" data-category="ボルト"><h2 class="section-title category-heading">ボルト</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="皿穴付き六角穴付きボルト" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>皿穴付き六角穴付きボルト</h3>
+                <p>当社の皿穴付き六角穴付きボルトは、平坦な円錐形状の頭部が相手面と同一面またはそれ以下に収まり、クリーンな仕上げや障害物のないプロファイルが求められる用途に最適です。六角レンチ（アレンレンチ）で駆動し、狭いスペースでも高トルクを実現。全ねじ・半ねじの両方をご用意。DIN 7991 / ISO 10642規格に準拠し、安定した寸法精度を誇ります。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
             <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="スリーブアンカー" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="スリーブアンカー" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
                 <h3>スリーブアンカー</h3>
-                <p>当社のスリーブアンカーは、固体コンクリート、レンガ、ブロック材に強力な保持力を提供します。拡張スリーブにより確実な固定が可能で、車両修理設備、構造支持、手すりなどの高荷重用途に最適です。</p>
+                <p>当社のスリーブアンカーは、高い引き抜き強度とせん断強度が求められるコンクリート、レンガ、石材の下地に確実な固定を提供します。締め付けると拡張スリーブが外側に変形し、穿孔された穴の内部で下地材をしっかりとグリップします。耐食性のための黄亜鉛メッキを施したフランジ六角頭形状で提供されます。屋内および屋外の構造用途の両方に適しています。一貫した取り付け性能のために、厳格な寸法公差で製造されています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="キャリッジボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>キャリッジボルト</h3>
+                <p>当社のキャリッジボルトは滑らかなドーム型頭部とその下に角形ネックを備え、取り付け時に材料に食い込むことで、ボルト側にレンチを必要とせずに回転を防止します。木材同士、木材と金属、および一般的な構造接続に最適です。全ねじおよび部分ねじ構成で利用可能。DIN 603 / ASME B18.5規格に準拠し、一貫した寸法精度で製造されています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="ケミカルアンカーボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ケミカルアンカーボルト</h3>
+                <p>当社のケミカルアンカーボルトは、コンクリートおよび構造物設置において優れた耐荷重性と長期的な安定性を提供します。重荷重締結用途向けに設計されており、振動、腐食、環境ストレスに対する優れた耐性を備えています。建設、鉄骨構造、手すり、機械基礎、インフラプロジェクトに適しています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="4ピース拡張アンカー（四つ割り壁トカゲ）" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>4ピース拡張アンカー（四つ割り壁トカゲ）</h3>
+                <p>当社の4ピース拡張アンカーは、4つの独立した拡張リーフがコンクリート壁に均等に広がり、標準的な拡張ボルトよりも優れた保持力を発揮します。エレベーターレールの設置、重量機械の据付、構造用アンカーに最適です。高品質基準で製造され、一貫した寸法精度を備えています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="アイボルト" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>アイボルト</h3>
+                <p>当社のアイボルトは、一端に円形リング（アイ）を備え、垂直吊り上げおよび角度荷重向けに設計されています。高強度合金鋼から製造され、100%マグナフラックス検査で亀裂を確認。標準タイプ（DIN 580、垂直吊り上げ用）とショルダータイプ（角度荷重用）の両方の設計が利用可能です。各ボルトは最小安全率5:1で荷重定格されています。</p>
                 <span class="card-link">詳細を見る -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="ホイールボルトアセンブリ" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="ホイールボルトアセンブリ" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>ホイールボルトアセンブリ</h3>
                 <p>ホイールボルトアセンブリは、ホイールを車両ハブに固定するための重要な締結部品です。高い耐荷重性能を備え、動的走行条件下での安全性と安定性を確保します。精密加工と高品質素材により製造された当社のホイールボルトは、優れた引張強度、耐摩耗性、長寿命を提供します。アセンブリ設計（ボルト＋ナット＋ワッシャー）により、取り付け効率と締結信頼性が向上します。乗用車、商用車、大型トラックなど、幅広い自動車用途に適しています。</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">ナット</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="ナット"><h2 class="section-title category-heading">ナット</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="シアーナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>シアーナット</h3>
+                <p>当社のシアーナット（ブレークアウェイナット、改ざん防止ナットとも呼ばれます）は、公共インフラ、屋外機器、セキュリティ重視の用途向けに、恒久的で改ざんに強い固定を提供します。六角形の駆動ベースは、設定トルクに達すると自動的にせん断し、標準工具では掴めない滑らかな円錐形の頭部だけが残ります。ステンレス鋼304/316および亜鉛メッキ炭素鋼で製造され、屋内および屋外環境で信頼性の高い耐食性を発揮します。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="Tスロットナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Tスロットナット</h3>
+                <p>当社のTスロットナットは、工作機械テーブル、アルミ押出プロファイル、溶接治具の標準Tスロットトラックにスライドして挿入できるよう設計されており、確実で再配置可能なクランプポイントを提供します。T字型の本体は90°回転させることでしっかりとロックされ、端部からの装着が不要です。炭素鋼、ステンレス鋼304/316、黒色酸化皮膜仕上げから選択可能。DIN 508規格に準拠し、一貫したスロット互換性のための精密な寸法公差で製造されています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="カップリングナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>カップリングナット</h3>
+                <p>当社のカップリングナット（エクステンションナット、コネクターナットとも呼ばれます）は、2本のねじ棒やボルトを端から端に接続し、構造用・機械用アセンブリにおいてリーチを延長したり長さを調整するために設計されています。全長にわたる内部ねじにより、最大限の噛み合いと荷重分散を実現します。標準および高強度タイプをご用意。DIN 6334規格に準拠し、一貫した寸法精度で製造されています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="リベットナット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>リベットナット</h3>
+                <p>当社のリベットナット（ブラインドリベットナットまたはナットサートとも呼ばれます）は、片面からのアクセスのみ可能な薄板、チューブ、中空部材に強力で信頼性の高い雌ねじを提供します。ローレット加工されたボディは、取り付け後の回転を防止します。オープンエンドタイプとクローズドエンドタイプ、さらにはフラットヘッドと皿頭スタイルをご用意しています。DIN 16903規格に準拠し、精密な寸法公差で製造されています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="フランジナット" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">ワッシャー</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="ワッシャー"><h2 class="section-title category-heading">ワッシャー</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="平ワッシャー" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">ねじ</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="ねじ"><h2 class="section-title category-heading">ねじ</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="ドライウォールねじ" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">スタッド・全ねじロッド</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="スタッド・全ねじロッド"><h2 class="section-title category-heading">スタッド・全ねじロッド</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="両ねじスタッド" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">ピン</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="ピン"><h2 class="section-title category-heading">ピン</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="割ピン" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">アンカー・締結</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="アンカー・締結"><h2 class="section-title category-heading">アンカー・締結</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="ドロップインアンカー" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">その他ファスナー</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="その他ファスナー"><h2 class="section-title category-heading">その他ファスナー</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="丸頭リベット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>丸頭リベット</h3>
+                <p>当社の丸頭リベットは、特徴的なドーム型の頭部形状により、大きなベアリング面と高いせん断強度を備え、構造用、自動車用、産業用アセンブリにおける永久締結に最適です。テールエンドを変形させて材料をクランプすることで取り付けられます。幅広い材料とサイズでご利用いただけます。DIN 660 / ISO 1051規格に準拠し、一貫した寸法精度で製造されています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="ソーラーマウントブラケット" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>ソーラーマウントブラケット</h3>
+                <p>当社のソーラーマウントブラケットシステムは、屋上および地上の太陽光発電設備向けに設計されています。高強度アルミニウム合金と亜鉛メッキ鋼で製造され、優れた耐食性、風荷重安定性、長期的な耐久性を保証します。住宅用、商業用、大規模太陽光発電プロジェクトに適しています。</p>
+                <span class="card-link">詳細を見る -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="ブラインドリベット" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; Prev</button>
+          <span class="page-info" id="pageInfo">1 / 1</span>
+          <button class="pagination-btn" id="nextPage">Next &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">No products found</div>
+
         </section>
       </article>
     </section>
@@ -548,5 +708,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

@@ -57,6 +57,32 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/news.css?v=20260427">
 
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
 </head>
 <body>
 
@@ -96,8 +122,71 @@ ul{list-style:none}
       <article class="container">
         <h2 class="sr-only">Derniers articles</h2>
         <section class="cards-grid" id="newsContainer">
+          <a href="news/us-steel-fastener-tariff-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png" alt="Révision des tarifs douaniers Section 232 aux États-Unis en 2026 : Ce que tout exportateur de fixations doit savoir" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-09">2026-06-09</time>
+              <h3>Révision des tarifs douaniers Section 232 aux États-Unis en 2026 : Ce que tout exportateur de fixations doit savoir</h3>
+              <p>Le 2 avril 2026, l&#x27;administration Trump a signé un décret réorganisant le système tarifaire de la Section 232 pour l&#x27;acier, l&#x27;aluminium, le cuivre et leurs produits dérivés. Le changement le plus significatif : les droits de douane s&#x27;appliquent désormais à la valeur douanière totale des marchandises importées — et non plus seulement à la teneur en métal. Pour les exportateurs de fixations ciblant le marché américain, il s&#x27;agit d&#x27;un changement fondamental dans la structure des coûts. Cet article détaille ce qui a changé, ce que cela signifie en pratique et comment les exportateurs peuvent réagir.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/high-strength-fastener-demand-growth-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/favicon.png" alt="La demande d&#x27;attaches à haute résistance explose : qu&#x27;est-ce qui motive la croissance annuelle de 12,3 % ?" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-06">2026-06-06</time>
+              <h3>La demande d&#x27;attaches à haute résistance explose : qu&#x27;est-ce qui motive la croissance annuelle de 12,3 % ?</h3>
+              <p>Le marché mondial des attaches à haute résistance (grade 8.8 et supérieur) connaît une expansion à un taux de croissance annuel composé de 12,3 %, porté par la demande croissante des véhicules à énergie nouvelle, des structures photovoltaïques, des équipements éoliens et des machines de précision. Alors que les attaches traditionnelles en acier au carbone peinent à répondre aux exigences de performance de plus en plus strictes, les fabricants sont poussés vers de nouveaux matériaux, des tolérances plus serrées et une couverture d&#x27;application élargie. Cet article examine les forces clés derrière ce boom et ce qu&#x27;il signifie pour les acheteurs et les fournisseurs.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/frankfurt-fastener-show-2026-cbam.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png" alt="Salon de la Fixation de Francfort 2026 : La Première Grande Exposition Après l&#x27;Entrée en Vigueur de la Taxe Carbone de l&#x27;UE" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-05">2026-06-05</time>
+              <h3>Salon de la Fixation de Francfort 2026 : La Première Grande Exposition Après l&#x27;Entrée en Vigueur de la Taxe Carbone de l&#x27;UE</h3>
+              <p>Le Salon International de la Fixation de Francfort 2026 sera la première grande exposition de fixation après l&#x27;entrée en vigueur de la phase de collecte du Mécanisme d&#x27;Ajustement Carbone aux Frontières (MACF) de l&#x27;UE en janvier 2026. Avec les coûts de conformité carbone impactant directement les produits en acier et en aluminium, exposants et acheteurs naviguent dans un nouveau paysage commercial. Cet article explore ce à quoi s&#x27;attendre du salon et ce que le MACF signifie pour les exportateurs de fixation ciblant les marchés européens.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/photovoltaic-industry-news-2026-q2.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png" alt="Mise à jour de l&#x27;industrie photovoltaïque mondiale 2026 : forte expansion soutenue par les politiques, la demande énergétique et l&#x27;innovation technologique" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-01">2026-06-01</time>
+              <h3>Mise à jour de l&#x27;industrie photovoltaïque mondiale 2026 : forte expansion soutenue par les politiques, la demande énergétique et l&#x27;innovation technologique</h3>
+              <p>L&#x27;industrie photovoltaïque poursuit sa rapide expansion mondiale en 2026, soutenue par des installations record, des politiques de transition énergétique et une forte demande des secteurs des infrastructures et de l&#x27;industrie.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/southeast-asia-middle-east-fastener-demand-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png" alt="La demande de fixations continue de croître en Asie du Sud-Est et au Moyen-Orient" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-28">2026-05-28</time>
+              <h3>La demande de fixations continue de croître en Asie du Sud-Est et au Moyen-Orient</h3>
+              <p>La demande de fixations industrielles augmente rapidement en Asie du Sud-Est et au Moyen-Orient en raison des projets d&#x27;infrastructure, de l&#x27;expansion manufacturière et des investissements énergétiques.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-may-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/offoce1.png" alt="Tendances du Marché Mondial de la Fixation et Mise à Jour de l&#x27;Industrie – Mai 2026" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-25">2026-05-25</time>
+              <h3>Tendances du Marché Mondial de la Fixation et Mise à Jour de l&#x27;Industrie – Mai 2026</h3>
+              <p>L&#x27;industrie mondiale de la fixation continue de croître en 2026, portée par les projets d&#x27;infrastructure, la demande en énergies renouvelables et l&#x27;expansion des marchés de la construction en Asie du Sud-Est et au Moyen-Orient.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-q2-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/Precision%20CNC%20machining%20lines6.webp" alt="Mise à jour du marché mondial de la fixation T2 2026 : Demande croissante en Asie du Sud-Est et dans les projets d&#x27;énergie renouvelable" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-15">2026-05-15</time>
+              <h3>Mise à jour du marché mondial de la fixation T2 2026 : Demande croissante en Asie du Sud-Est et dans les projets d&#x27;énergie renouvelable</h3>
+              <p>La demande mondiale de fixations industrielles continue de croître au T2 2026, en particulier en Asie du Sud-Est, dans les énergies renouvelables et les secteurs de la construction.</p>
+              <span class="card-link">Lire la suite -&gt;</span>
+            </section>
+          </a>
           <a href="news/construction-fastener-demand-2026.html" class="card">
-            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="La demande de fixations de construction continue d&#x27;augmenter en 2026" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="La demande de fixations de construction continue d&#x27;augmenter en 2026" width="440" height="220" loading="lazy" decoding="async"></figure>
             <section class="card-body">
               <time class="card-meta" datetime="2026-05-06">2026-05-06</time>
               <h3>La demande de fixations de construction continue d&#x27;augmenter en 2026</h3>
@@ -204,7 +293,21 @@ ul{list-style:none}
               <span class="card-link">Lire la suite -&gt;</span>
             </section>
           </a>
-        </section>
+        
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; Préc</button>
+          <span class="page-info" id="newsPageInfo">Page 1 sur 1</span>
+          <button class="news-pagination-btn" id="newsNextPage">Suiv &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">Aucune actualité trouvée</div>
+
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; Préc</button>
+          <span class="page-info" id="newsPageInfo">Page 1 sur 1</span>
+          <button class="news-pagination-btn" id="newsNextPage">Suiv &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">Aucune actualité trouvée</div>
+</section>
       </article>
     </section>
   </main>
@@ -286,5 +389,179 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='Page PAGE sur TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='Page PAGE sur TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

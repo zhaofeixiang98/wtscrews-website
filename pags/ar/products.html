@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn " data-category="البراغي">Bolts</button>
+        <button class="filter-btn " data-category="الصواميل">Nuts</button>
+        <button class="filter-btn " data-category="الغسالات">Washers</button>
+        <button class="filter-btn " data-category="المسامير">Screws</button>
+        <button class="filter-btn " data-category="المسامير القلاوظ والقضبان الملولبة">Studs</button>
+        <button class="filter-btn " data-category="الدبابيس">Pins</button>
+        <button class="filter-btn " data-category="المراسي والتثبيت">Anchors</button>
+        <button class="filter-btn " data-category="مثبتات أخرى">Other</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="productSearch" placeholder="البحث عن المنتجات..." data-no-results="لم يتم العثور على منتجات." autocomplete="off" aria-label="البحث عن المنتجات...">
+        <input type="search" id="productSearch" placeholder="Search products..." data-no-results="لم يتم العثور على منتجات." autocomplete="off" aria-label="البحث عن المنتجات...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">البراغي</h2>
-          <section class="cards-grid">
+          <div class="category-section" data-category="البراغي"><h2 class="section-title category-heading">البراغي</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="براغي رأس غاطسة سداسية الشكل" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>براغي رأس غاطسة سداسية الشكل</h3>
+                <p>تتميز براغي رأس غاطسة سداسية الشكل لدينا برأس مخروطي مسطح يجلس متساوياً مع أو أسفل سطح التزاوج، مثالية للتطبيقات التي تتطلب تشطيباً نظيفاً أو مقاطع غير معوقة. يتم تشغيلها بواسطة مفتاح سداسي (مفتاح ألين) لعزم دوران عالٍ في المساحات الضيقة. متوفرة بتكوينات خيط كامل وجزئي. مصنعة وفقاً لمعايير DIN 7991 / ISO 10642 بدقة أبعاد متسقة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
             <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="مراسي الأكمام" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="مراسي الأكمام" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
                 <h3>مراسي الأكمام</h3>
-                <p>توفر مراسي الأكمام لدينا قوة تثبيت عالية في الخرسانة الصلبة والطوب والمواد الكتلية. يضمن الغلاف القابل للتمدد تثبيتًا آمنًا، مثاليًا للتطبيقات ذات الأحمال الثقيلة مثل معدات إصلاح المركبات والدعامات الهيكلية والدرابزين.</p>
+                <p>توفر مراسي الأكمام لدينا تثبيتًا موثوقًا في الخرسانة والطوب والركائز البنائية حيث تكون مقاومة السحب والقص القوية مطلوبة. يتشوه الغلاف التمددي إلى الخارج عند الشد، ممسكًا بمادة القاعدة بقوة من داخل الفتحة المحفورة. متوفرة بتكوين رأس سداسي مع شفة وطلاء زنك أصفر لمقاومة التآكل. مناسبة للتطبيقات الهيكلية الداخلية والخارجية. مصنعة بتفاوتات أبعاد متسقة لأداء تثبيت موثوق.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="مسامير النقل" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>مسامير النقل</h3>
+                <p>تتميز مسامير النقل لدينا برأس مقبب أملس وعنق مربع أسفله يثبت في المادة عند التركيب، مما يمنع الدوران دون الحاجة إلى مفتاح ربط على جانب المسمار. مثالية للتوصيلات الخشب-بالخشب، والخشب-بالمعدن، والتوصيلات الهيكلية العامة. متوفرة بتكوينات خيط كامل وخيط جزئي. مصنعة وفقًا لمعايير DIN 603 / ASME B18.5 بدقة أبعاد ثابتة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="مسامير التثبيت الكيميائية" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>مسامير التثبيت الكيميائية</h3>
+                <p>توفر مسامير التثبيت الكيميائية لدينا قدرة تحمل فائقة واستقرارًا طويل الأمد للتركيبات الخرسانية والهيكلية. مصممة لتطبيقات التثبيت الثقيلة، وتتميز بمقاومة ممتازة للاهتزاز والتآكل والإجهاد البيئي. مناسبة للبناء، الهياكل الفولاذية، الدرابزين، أساسات الآلات، ومشاريع البنية التحتية.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="مثبتات تمدد رباعية القطع (سحلية حائط رباعية القطع)" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>مثبتات تمدد رباعية القطع (سحلية حائط رباعية القطع)</h3>
+                <p>تتميز مثبتات التمدد رباعية القطع لدينا بأربعة أوراق تمدد مستقلة تتفتح بشكل متساوٍ على جدار الخرسانة، مما يوفر قوة إمساك فائقة مقارنة بمسامير التمدد القياسية. مثالية لتركيب قضبان المصاعد، وتركيب الآلات الثقيلة، والتثبيت الهيكلي. مصنعة وفق معايير عالية الجودة مع دقة أبعاد ثابتة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="مسامير العين" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>مسامير العين</h3>
+                <p>تتميز مسامير العين لدينا بحلقة دائرية (عين) في أحد طرفيها، مصممة للرفع العمودي والأحمال الزاوية. مصنوعة من سبائك فولاذية عالية القوة وتم اختبارها بنسبة 100% للكشف عن الشقوق. متوفرة بتصميمين: القياسي (DIN 580، للرفع العمودي) وتصميم الكتف (للأحمال الزاوية). كل مسمار مُصنف للحمل مع عامل أمان أدنى 5:1.</p>
                 <span class="card-link">عرض التفاصيل -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="تجميع براغي العجلات" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="تجميع براغي العجلات" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>تجميع براغي العجلات</h3>
                 <p>تجميعات براغي العجلات هي مكونات تثبيت حيوية تُستخدم لتأمين العجلات إلى محاور المركبات. مصممة لأداء تحميل عالي، تضمن هذه البراغي السلامة والاستقرار تحت ظروف القيادة الديناميكية. مصنعة بدقة عالية وبمواد عالية الجودة، توفر براغي العجلات لدينا قوة شد ممتازة، مقاومة للتآكل، وعمر خدمة طويل. تصميم التجميع (برغي + صامولة + حلقات) يحسن كفاءة التركيب وموثوقية التثبيت. مناسبة لمجموعة واسعة من تطبيقات السيارات، بما في ذلك سيارات الركاب، المركبات التجارية، والشاحنات الثقيلة.</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">الصواميل</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="الصواميل"><h2 class="section-title category-heading">الصواميل</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="صواميل القص" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>صواميل القص</h3>
+                <p>توفر صواميل القص لدينا (المعروفة أيضًا باسم صواميل الكسر أو صواميل مقاومة العبث) تثبيتًا دائمًا ومقاومًا للعبث للبنية التحتية العامة والمعدات الخارجية والتطبيقات الحرجة أمنيًا. تنفصل القاعدة السداسية للقيادة تلقائيًا بمجرد الوصول إلى عزم التثبيت، تاركة رأسًا مخروطيًا أملس لا يمكن الإمساك به بواسطة الأدوات القياسية. مصنوعة من الفولاذ المقاوم للصدأ 304/316 والفولاذ الكربوني المطلي بالزنك لمقاومة تآكل موثوقة في البيئات الداخلية والخارجية.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="صواميل الفتحة T" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>صواميل الفتحة T</h3>
+                <p>تم تصميم صواميل الفتحة T الخاصة بنا للانزلاق في مسارات الفتحة T القياسية على طاولات الماكينات، وملفات الألمنيوم المبثوقة، وتركيبات اللحام، مما يوفر نقاط تثبيت آمنة وقابلة لإعادة التموضع. يتم تثبيت الجسم على شكل T بإحكام عند تدويره بزاوية 90 درجة، مما يلغي الحاجة إلى التحميل من النهاية. متوفرة في الفولاذ الكربوني، والفولاذ المقاوم للصدأ 304/316، وطلاء أكسيد أسود. مصنعة وفقًا لمعايير DIN 508 مع تفاوتات أبعاد دقيقة لتوافق ثابت مع الفتحات.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="صواميل التوصيل" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>صواميل التوصيل</h3>
+                <p>صواميل التوصيل الخاصة بنا (المعروفة أيضًا باسم صواميل التمديد أو صواميل الموصل) مصممة لربط قضيبين ملولبين أو براغي من طرف إلى طرف، مما يزيد من المدى أو يضبط الطول في التجميعات الهيكلية والميكانيكية. يضمن الخيط الداخلي بطول كامل أقصى قدر من الاشتباك وتوزيع الحمل. متوفرة في تكوينات قياسية وثقيلة. مصنعة وفقًا لمعايير DIN 6334 بدقة أبعاد ثابتة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="صواميل البرشام" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>صواميل البرشام</h3>
+                <p>توفر صواميل البرشام لدينا (المعروفة أيضًا باسم صواميل البرشام العمياء أو nutserts) خيوطًا داخلية قوية وموثوقة في الصفائح الرقيقة والأنابيب والمقاطع المجوفة حيث يتوفر الوصول من جانب واحد فقط. يمنع الجسم المحزز الدوران بعد التركيب. متوفرة في أنواع مفتوحة النهاية ومغلقة النهاية، ورأس مسطح ورأس غاطس. مصنعة وفقًا لمعايير DIN 16903 مع تفاوتات أبعاد دقيقة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="صواميل فلنجة" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">الغسالات</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="الغسالات"><h2 class="section-title category-heading">الغسالات</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="غسالات مسطحة" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">المسامير</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="المسامير"><h2 class="section-title category-heading">المسامير</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="مسامير الجبس" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">المسامير القلاوظ والقضبان الملولبة</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="المسامير القلاوظ والقضبان الملولبة"><h2 class="section-title category-heading">المسامير القلاوظ والقضبان الملولبة</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="مسامير مزدوجة النهاية" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">الدبابيس</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="الدبابيس"><h2 class="section-title category-heading">الدبابيس</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="دبابيس مشقوقة" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">المراسي والتثبيت</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="المراسي والتثبيت"><h2 class="section-title category-heading">المراسي والتثبيت</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="مراسي إسقاطية" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">مثبتات أخرى</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="مثبتات أخرى"><h2 class="section-title category-heading">مثبتات أخرى</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="براشيم ذات رأس مستدير" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>براشيم ذات رأس مستدير</h3>
+                <p>تتميز براشيمنا ذات الرأس المستدير بشكل رأس مقبب مميز يوفر سطح تحمل كبير وقوة قص عالية، مما يجعلها مثالية للتثبيت الدائم في التجميعات الهيكلية والسيارات والصناعية. يتم تركيبها عن طريق تشويه الطرف الخلفي لتثبيت المواد معًا. متوفرة في مجموعة واسعة من المواد والأحجام. مصنعة وفقًا لمعايير DIN 660 / ISO 1051 بدقة أبعاد متسقة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="أقواس تثبيت الألواح الشمسية" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>أقواس تثبيت الألواح الشمسية</h3>
+                <p>نظام أقواس تثبيت الألواح الشمسية لدينا مصمم لتركيبات الطاقة الشمسية الكهروضوئية على الأسطح والأرضيات. مصنوع من سبائك الألومنيوم عالية القوة والفولاذ المجلفن، مما يضمن مقاومة ممتازة للتآكل، واستقرار أحمال الرياح، ومتانة طويلة الأمد. مناسب لمشاريع الطاقة الشمسية السكنية والتجارية والمرافق العامة.</p>
+                <span class="card-link">عرض التفاصيل -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="برشام أعمى" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; Prev</button>
+          <span class="page-info" id="pageInfo">1 / 1</span>
+          <button class="pagination-btn" id="nextPage">Next &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">No products found</div>
+
         </section>
       </article>
     </section>
@@ -548,5 +708,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

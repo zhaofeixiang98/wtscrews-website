@@ -1,6 +1,55 @@
 {
     "news": [
         {
+            "slug": "news/us-steel-fastener-tariff-2026",
+            "title": "Perombakan Tarif Section 232 AS 2026: Yang Perlu Diketahui Setiap Eksportir Pengencang",
+            "date": "2026-06-09",
+            "summary": "Pada 2 April 2026, pemerintahan Trump menandatangani perintah eksekutif yang merestrukturisasi sistem tarif Section 232 untuk baja, aluminium, tembaga, dan produk turunannya. Perubahan paling signifikan: tarif sekarang berlaku untuk nilai pabean penuh barang impor — bukan hanya kandungan logam. Bagi eksportir pengencang yang menargetkan pasar AS, ini adalah perubahan mendasar dalam struktur biaya. Artikel ini menguraikan apa yang berubah, apa artinya dalam praktik, dan bagaimana eksportir dapat merespons.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png"
+        },
+        {
+            "slug": "news/high-strength-fastener-demand-growth-2026",
+            "title": "Permintaan Pengikat Kekuatan Tinggi Melonjak: Apa yang Mendorong Pertumbuhan Tahunan 12,3%?",
+            "date": "2026-06-06",
+            "summary": "Pasar global untuk pengikat kekuatan tinggi berkembang pada tingkat pertumbuhan tahunan gabungan sebesar 12,3% untuk produk Grade 8.8 ke atas, didorong oleh permintaan yang melonjak dari kendaraan energi baru, struktur fotovoltaik, peralatan tenaga angin, dan mesin presisi. Karena pengikat baja karbon tradisional kesulitan memenuhi persyaratan kinerja yang semakin ketat, produsen didorong menuju material baru, toleransi yang lebih ketat, dan cakupan aplikasi yang diperluas. Artikel ini mengkaji kekuatan utama di balik ledakan ini dan apa artinya bagi pembeli dan pemasok.",
+            "icon": "../../images/favicon.png"
+        },
+        {
+            "slug": "news/frankfurt-fastener-show-2026-cbam",
+            "title": "Pameran Pengikat Frankfurt 2026: Pameran Besar Pertama Setelah Pajak Karbon Uni Eropa Mulai Berlaku",
+            "date": "2026-06-05",
+            "summary": "Pameran Perdagangan Pengikat Internasional Frankfurt 2026 akan menjadi pameran pengikat besar pertama yang diadakan setelah Mekanisme Penyesuaian Batas Karbon Uni Eropa (CBAM) resmi memasuki fase pengumpulan pada Januari 2026. Dengan biaya kepatuhan karbon yang kini berdampak langsung pada produk baja dan aluminium, baik peserta pameran maupun pembeli harus menavigasi lanskap perdagangan baru. Artikel ini membahas apa yang diharapkan dari pameran tersebut dan apa arti CBAM bagi eksportir pengikat yang menargetkan pasar Eropa.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png"
+        },
+        {
+            "slug": "news/photovoltaic-industry-news-2026-q2",
+            "title": "Pembaruan Industri Fotovoltaik Global 2026: Ekspansi Kuat Didorong oleh Dukungan Kebijakan, Permintaan Energi, dan Inovasi Teknologi",
+            "date": "2026-06-01",
+            "summary": "Industri fotovoltaik terus mengalami ekspansi global yang pesat pada tahun 2026, didukung oleh instalasi rekor, kebijakan transisi energi, dan permintaan kuat dari sektor infrastruktur dan industri.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png"
+        },
+        {
+            "slug": "news/southeast-asia-middle-east-fastener-demand-2026",
+            "title": "Permintaan Pengencang Terus Tumbuh di Asia Tenggara dan Timur Tengah",
+            "date": "2026-05-28",
+            "summary": "Permintaan akan pengencang industri meningkat pesat di seluruh Asia Tenggara dan Timur Tengah karena proyek infrastruktur, perluasan manufaktur, dan investasi energi.",
+            "icon": "../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-may-2026",
+            "title": "Tren Pasar Pengencang Global dan Pembaruan Industri – Mei 2026",
+            "date": "2026-05-25",
+            "summary": "Industri pengencang global terus tumbuh pada tahun 2026, didorong oleh proyek infrastruktur, permintaan energi terbarukan, dan perluasan pasar konstruksi di Asia Tenggara dan Timur Tengah.",
+            "icon": "../../images/abouts/offoce1.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-q2-2026",
+            "title": "Pembaruan Pasar Pengencang Global Q2 2026: Meningkatnya Permintaan dari Asia Tenggara dan Proyek Energi Terbarukan",
+            "date": "2026-05-15",
+            "summary": "Permintaan global untuk pengencang industri terus tumbuh pada Q2 2026, terutama di Asia Tenggara, energi terbarukan, dan industri konstruksi.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines6.webp"
+        },
+        {
             "slug": "news/construction-fastener-demand-2026",
             "title": "Permintaan Pengencang Konstruksi Terus Meningkat pada 2026",
             "date": "2026-05-06",
@@ -91,10 +140,40 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/countersunk-socket-head-bolts",
+                    "title": "Sekrup Kepala Soket Countersunk",
+                    "summary": "Sekrup kepala soket countersunk kami memiliki kepala kerucut datar yang rata dengan atau di bawah permukaan pasangan, ideal untuk aplikasi yang membutuhkan hasil akhir bersih atau profil tanpa hambatan. Digerakkan dengan kunci hex (kunci Allen) untuk torsi tinggi di ruang terbatas. Tersedia dalam konfigurasi ulir penuh dan sebagian. Diproduksi sesuai standar DIN 7991 / ISO 10642 dengan akurasi dimensi yang konsisten.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png"
+                },
+                {
                     "slug": "products/sleeve-anchors",
-                    "title": "Angkur Lengan",
-                    "summary": "Angkur lengan kami memberikan daya tahan yang kuat pada beton padat, bata, dan material blok. Lengan yang dapat mengembang memastikan pengikatan yang aman, ideal untuk aplikasi beban berat seperti peralatan perbaikan kendaraan, penyangga struktural, dan pagar.",
-                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                    "title": "sleeve-anchors",
+                    "summary": "Jangkar selongsong kami memberikan pengikatan yang andal pada substrat beton, bata, dan batu bata di mana ketahanan tarik dan geser yang kuat diperlukan. Selongsong ekspansi berubah bentuk ke luar saat dikencangkan, mencengkeram material dasar dengan kuat dari dalam lubang yang dibor. Tersedia dalam konfigurasi kepala segi enam flensa dengan lapisan seng kuning untuk ketahanan korosi. Cocok untuk aplikasi struktural dalam dan luar ruangan. Diproduksi dengan toleransi dimensi yang konsisten untuk kinerja pemasangan yang andal.",
+                    "icon": "../../images/news/168b271313c4f4346388feed2f2e4e47.png"
+                },
+                {
+                    "slug": "products/carriage-bolts",
+                    "title": "baut-pengangkut",
+                    "summary": "Baut pengangkut kami memiliki kepala kubah halus dan leher persegi di bawahnya yang mencengkeram material saat pemasangan, mencegah rotasi tanpa perlu kunci pas pada sisi baut. Ideal untuk sambungan kayu-ke-kayu, kayu-ke-logam, dan sambungan struktural umum. Tersedia dalam konfigurasi ulir penuh dan ulir sebagian. Diproduksi sesuai standar DIN 603 / ASME B18.5 dengan akurasi dimensi yang konsisten.",
+                    "icon": "../../images/news/887d132a138c5394fc649f8932049c36.png"
+                },
+                {
+                    "slug": "products/chemical-anchor-bolts",
+                    "title": "Baut Jangkar Kimia",
+                    "summary": "Baut jangkar kimia kami memberikan kapasitas beban unggul dan stabilitas jangka panjang untuk instalasi beton dan struktural. Dirancang untuk aplikasi pengencangan tugas berat, baut ini menawarkan ketahanan yang sangat baik terhadap getaran, korosi, dan tekanan lingkungan. Cocok untuk konstruksi, struktur baja, pagar, pondasi mesin, dan proyek infrastruktur.",
+                    "icon": "../../images/news/08421783-ddae-4068-858a-933103a06fa2.png"
+                },
+                {
+                    "slug": "products/four-piece-expansion-anchor",
+                    "title": "Angkur Ekspansi 4-Piece (Kadal Dinding Empat Bagian)",
+                    "summary": "Angkur ekspansi 4-piece kami memiliki empat daun ekspansi independen yang membuka secara merata ke dinding beton, memberikan daya tahan unggul dibandingkan baut ekspansi standar. Ideal untuk pemasangan rel elevator, pemasangan mesin berat, dan penahan struktural. Diproduksi dengan standar kualitas tinggi dan akurasi dimensi yang konsisten.",
+                    "icon": "../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png"
+                },
+                {
+                    "slug": "products/eye-bolts",
+                    "title": "Baut Mata",
+                    "summary": "Baut mata kami memiliki cincin bundar (mata) di salah satu ujungnya, dirancang untuk pengangkatan vertikal dan beban sudut. Diproduksi dari baja paduan berkekuatan tinggi dan 100% diuji magnaflux untuk retakan. Tersedia dalam desain standar (DIN 580, untuk pengangkatan vertikal) dan desain bahu (untuk beban sudut). Setiap baut memiliki peringkat beban dengan faktor keamanan minimum 5:1.",
+                    "icon": "../../images/news/bc952db1252205da38a0b53f567c19e9.png"
                 },
                 {
                     "slug": "products/wheel-bolts-assembly",
@@ -144,6 +223,30 @@
             "category": "Mur",
             "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
+                {
+                    "slug": "products/shear-nuts",
+                    "title": "shear-nuts",
+                    "summary": "Mur geser kami (juga dikenal sebagai mur putus atau mur anti-rusak) menyediakan pengikatan permanen dan tahan terhadap kerusakan untuk infrastruktur publik, peralatan luar ruangan, dan aplikasi keamanan kritis. Basis penggerak heksagonal terpotong secara otomatis setelah torsi pemasangan tercapai, hanya menyisakan kepala kerucut halus yang tidak dapat digenggam oleh alat standar. Diproduksi dalam stainless steel 304/316 dan baja karbon berlapis seng untuk ketahanan korosi yang andal di lingkungan dalam dan luar ruangan.",
+                    "icon": "../../images/news/73b9fd744fd35079b711219ec3cfe555.png"
+                },
+                {
+                    "slug": "products/t-slot-nuts",
+                    "title": "mur-slot-t",
+                    "summary": "Mur T-slot kami dirancang untuk meluncur ke dalam jalur T-slot standar pada meja mesin, profil ekstrusi aluminium, dan perlengkapan las, menyediakan titik penjepitan yang aman dan dapat diposisikan ulang. Badan berbentuk T terkunci dengan kuat saat diputar 90°, menghilangkan kebutuhan pemuatan ujung. Tersedia dalam baja karbon, baja tahan karat 304/316, dan lapisan oksida hitam. Diproduksi sesuai standar DIN 508 dengan toleransi dimensi yang presisi untuk kompatibilitas slot yang konsisten.",
+                    "icon": "../../images/news/c4ba24a45b08d18449266cc838027370.png"
+                },
+                {
+                    "slug": "products/coupling-nuts",
+                    "title": "Mur Kopling",
+                    "summary": "Mur kopling kami (juga dikenal sebagai mur ekstensi atau mur konektor) dirancang untuk menyambung dua batang berulir atau baut secara ujung-ke-ujung, memperpanjang jangkauan atau menyesuaikan panjang dalam rakitan struktural dan mekanis. Ulir internal penuh memastikan keterlibatan maksimum dan distribusi beban. Tersedia dalam konfigurasi standar dan tugas berat. Diproduksi sesuai standar DIN 6334 dengan akurasi dimensi yang konsisten.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png"
+                },
+                {
+                    "slug": "products/rivet-nuts",
+                    "title": "Rivet Nuts",
+                    "summary": "Rivet nuts kami (juga dikenal sebagai blind rivet nuts atau nutserts) menyediakan ulir internal yang kuat dan andal pada lembaran tipis, tabung, dan bagian berongga yang hanya dapat diakses dari satu sisi. Badan bergerigi mencegah rotasi setelah pemasangan. Tersedia dalam tipe ujung terbuka dan ujung tertutup, gaya kepala datar dan kepala countersunk. Diproduksi sesuai standar DIN 16903 dengan toleransi dimensi yang presisi.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png"
+                },
                 {
                     "slug": "products/flange-nuts",
                     "title": "Mur Flange",
@@ -300,6 +403,18 @@
             "category": "Fastener Lainnya",
             "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
+                {
+                    "slug": "products/round-head-rivets",
+                    "title": "Paku Keling Kepala Bulat",
+                    "summary": "Paku keling kepala bulat kami memiliki profil kepala kubah yang khas, memberikan permukaan bantalan yang besar dan kekuatan geser tinggi, menjadikannya ideal untuk pengikatan permanen dalam perakitan struktural, otomotif, dan industri. Dipasang dengan cara mendeformasi ujung ekor untuk menjepit material bersama. Tersedia dalam berbagai bahan dan ukuran. Diproduksi sesuai standar DIN 660 / ISO 1051 dengan akurasi dimensi yang konsisten.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png"
+                },
+                {
+                    "slug": "products/solar-mounting-bracket",
+                    "title": "Braket Pemasangan Surya",
+                    "summary": "Sistem braket pemasangan surya kami dirancang untuk instalasi fotovoltaik atap dan tanah. Terbuat dari paduan aluminium berkekuatan tinggi dan baja galvanis, sistem ini memastikan ketahanan korosi yang sangat baik, stabilitas beban angin, dan daya tahan jangka panjang. Cocok untuk proyek surya perumahan, komersial, dan skala utilitas.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png"
+                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blind Rivet",

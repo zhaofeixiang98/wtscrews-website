@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">全部产品</button>
+        <button class="filter-btn" data-category="螺栓">螺栓</button>
+        <button class="filter-btn" data-category="螺母">螺母</button>
+        <button class="filter-btn" data-category="垫圈">垫圈</button>
+        <button class="filter-btn" data-category="螺钉">螺钉</button>
+        <button class="filter-btn" data-category="螺柱与全牙丝杆">螺柱与丝杆</button>
+        <button class="filter-btn" data-category="销类">销类</button>
+        <button class="filter-btn" data-category="锚固件与紧固件">锚固件</button>
+        <button class="filter-btn" data-category="其他紧固件">其他</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" id="productSearch" placeholder="搜索产品..." data-no-results="未找到相关产品。" autocomplete="off" aria-label="搜索产品...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">螺栓</h2>
-          <section class="cards-grid">
+          <div class="category-section" data-category="螺栓"><h2 class="section-title category-heading">螺栓</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="沉头内六角螺钉" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>沉头内六角螺钉</h3>
+                <p>我们的沉头内六角螺钉采用平锥形头部，可齐平或低于配合表面，适用于需要清洁外观或无障碍轮廓的应用。使用内六角扳手驱动，可在狭小空间内提供高扭矩。提供全螺纹和部分螺纹配置。按照DIN 7991 / ISO 10642标准制造，尺寸精度一致。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
             <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="套筒锚栓" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="套筒锚栓" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
                 <h3>套筒锚栓</h3>
-                <p>我们的套筒锚栓在实心混凝土、砖和砌块材料中提供强大的握持力。可膨胀套筒确保紧固牢固，适用于车辆维修设备、结构支撑和栏杆等重载应用。</p>
+                <p>我们的套筒锚栓可在混凝土、砖块和砖石基材中提供可靠的紧固，适用于需要高抗拉和抗剪强度的场合。拧紧时，膨胀套筒向外变形，从钻孔内部牢固地抓住基材。提供带法兰六角头的配置，表面黄色锌镀层以防腐蚀。适用于室内外结构应用。制造时保持一致的尺寸公差，确保安装性能可靠。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="马车螺栓" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>马车螺栓</h3>
+                <p>我们的马车螺栓采用光滑圆顶头和下方方颈设计，安装时方颈嵌入材料中，防止旋转，无需在螺栓侧使用扳手。适用于木-木、木-金属以及一般结构连接。提供全螺纹和部分螺纹配置。按照DIN 603 / ASME B18.5标准制造，尺寸精度一致。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="化学锚栓" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>化学锚栓</h3>
+                <p>我们的化学锚栓为混凝土和结构安装提供卓越的承载能力和长期稳定性。专为重载紧固应用设计，具有出色的抗振动、耐腐蚀和抗环境应力性能。适用于建筑、钢结构、栏杆、机械基础及基础设施项目。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="4片式膨胀锚栓（四片式墙蜥蜴）" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>4片式膨胀锚栓（四片式墙蜥蜴）</h3>
+                <p>我们的4片式膨胀锚栓具有四个独立的膨胀片，可均匀地抵住混凝土壁张开，相比标准膨胀螺栓提供更卓越的握持力。适用于电梯导轨安装、重型机械固定和结构锚固。按照高质量标准制造，尺寸精度一致。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="吊环螺栓" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>吊环螺栓</h3>
+                <p>我们的吊环螺栓一端设有圆形环（吊环），专为垂直起吊和角向载荷设计。采用高强度合金钢制造，100%磁粉探伤检测裂纹。提供标准型（DIN 580，用于垂直起吊）和带肩型（用于角向载荷）两种设计。每个螺栓均标有额定载荷，最小安全系数为5:1。</p>
                 <span class="card-link">查看详情 -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="车轮螺栓组件" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="车轮螺栓组件" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>车轮螺栓组件</h3>
                 <p>车轮螺栓组件是用于将车轮固定到车辆轮毂上的关键紧固部件。这些螺栓专为高承载性能而设计，确保在动态驾驶条件下的安全性和稳定性。我们的车轮螺栓采用精密加工和优质材料制造，具有出色的抗拉强度、耐磨性和长使用寿命。组件设计（螺栓+螺母+垫圈）提高了安装效率和紧固可靠性。适用于广泛的汽车应用，包括乘用车、商用车和重型卡车。</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">螺母</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="螺母"><h2 class="section-title category-heading">螺母</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="剪切螺母" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>剪切螺母</h3>
+                <p>我们的剪切螺母（也称为断裂螺母或防篡改螺母）为公共基础设施、户外设备和安全关键应用提供永久性、防篡改的紧固。一旦达到安装扭矩，六角驱动底座会自动剪断，留下一个光滑的锥形头部，标准工具无法夹持。采用不锈钢304/316和镀锌碳钢制造，在室内和室外环境中具有可靠的耐腐蚀性。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="T型槽螺母" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>T型槽螺母</h3>
+                <p>我们的T型槽螺母设计用于滑入机床工作台、铝型材挤压件和焊接夹具的标准T型槽轨道中，提供可重新定位的牢固夹紧点。T形主体旋转90°后即可锁定，无需端部装载。提供碳钢、不锈钢304/316和发黑处理。按照DIN 508标准制造，具有精确的尺寸公差，确保与各种槽型兼容。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="连接螺母" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>连接螺母</h3>
+                <p>我们的连接螺母（也称为延长螺母或连接器螺母）用于将两根螺纹杆或螺栓端对端连接，以延长长度或调整结构及机械组件中的长度。全长度内螺纹确保最大啮合和载荷分布。提供标准型和重型配置。按照DIN 6334标准制造，尺寸精度一致。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="铆螺母" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>铆螺母</h3>
+                <p>我们的铆螺母（也称为盲铆螺母或螺母套）可在仅有一侧可操作的薄板、管材和中空型材中提供牢固可靠的内部螺纹。滚花体在安装后可防止旋转。提供开口型和闭口型、平头和沉头样式。按照DIN 16903标准制造，尺寸公差精确。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="法兰螺母" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">垫圈</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="垫圈"><h2 class="section-title category-heading">垫圈</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="平垫圈" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">螺钉</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="螺钉"><h2 class="section-title category-heading">螺钉</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="干墙螺钉" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">螺柱与全牙丝杆</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="螺柱与全牙丝杆"><h2 class="section-title category-heading">螺柱与全牙丝杆</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="双头螺柱" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">销类</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="销类"><h2 class="section-title category-heading">销类</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="开口销" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">锚固件与紧固件</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="锚固件与紧固件"><h2 class="section-title category-heading">锚固件与紧固件</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="内迫壁虎" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">其他紧固件</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="其他紧固件"><h2 class="section-title category-heading">其他紧固件</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="半圆头铆钉" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>半圆头铆钉</h3>
+                <p>我们的半圆头铆钉具有独特的圆顶头型，提供较大的承压面和高剪切强度，非常适合在结构、汽车和工业装配中实现永久紧固。通过使尾端变形来夹紧材料。提供多种材料和尺寸。按照DIN 660 / ISO 1051标准制造，尺寸精度一致。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="太阳能安装支架" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>太阳能安装支架</h3>
+                <p>我们的太阳能安装支架系统专为屋顶和地面光伏安装设计。采用高强度铝合金和镀锌钢制造，确保优异的耐腐蚀性、抗风荷载稳定性和长期耐用性。适用于住宅、商业和公用事业规模的太阳能项目。</p>
+                <span class="card-link">查看详情 -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="抽芯铆钉" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; 上一页</button>
+          <span class="page-info" id="pageInfo">第 1 页，共 1 页</span>
+          <button class="pagination-btn" id="nextPage">下一页 &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">未找到相关产品</div>
+
         </section>
       </article>
     </section>
@@ -548,5 +708,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='第 '+currentPage+' 页，共 '+totalPages+' 页';
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

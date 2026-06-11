@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn " data-category="Pernos">Bolts</button>
+        <button class="filter-btn " data-category="Tuercas">Nuts</button>
+        <button class="filter-btn " data-category="Arandelas">Washers</button>
+        <button class="filter-btn " data-category="Tornillos">Screws</button>
+        <button class="filter-btn " data-category="Espárragos y varillas roscadas">Studs</button>
+        <button class="filter-btn " data-category="Pasadores">Pins</button>
+        <button class="filter-btn " data-category="Anclajes y fijación">Anchors</button>
+        <button class="filter-btn " data-category="Otros sujetadores">Other</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="productSearch" placeholder="Buscar productos..." data-no-results="No se encontraron productos." autocomplete="off" aria-label="Buscar productos...">
+        <input type="search" id="productSearch" placeholder="Search products..." data-no-results="No se encontraron productos." autocomplete="off" aria-label="Buscar productos...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">Pernos</h2>
-          <section class="cards-grid">
-            <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="Anclajes de Manguito" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+          <div class="category-section" data-category="Pernos"><h2 class="section-title category-heading">Pernos</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="Tornillos de Cabeza Avellanada con Hexágono Interior" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
-                <h3>Anclajes de Manguito</h3>
-                <p>Nuestros anclajes de manguito proporcionan una fuerte capacidad de sujeción en concreto sólido, ladrillo y bloques. El manguito expansible asegura una fijación segura, ideal para aplicaciones de carga pesada como equipos de reparación de vehículos, soportes estructurales y barandillas.</p>
+                <h3>Tornillos de Cabeza Avellanada con Hexágono Interior</h3>
+                <p>Nuestros tornillos de cabeza avellanada con hexágono interior presentan una cabeza plana y cónica que queda al ras o por debajo de la superficie de acoplamiento, ideales para aplicaciones que requieren un acabado limpio o perfiles sin obstrucciones. Se accionan con una llave hexagonal (Allen) para alto par en espacios reducidos. Disponibles en configuraciones de rosca completa y parcial. Fabricados según las normas DIN 7991 / ISO 10642 con precisión dimensional consistente.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/sleeve-anchors.html" class="card">
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="anclajes de camisa" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>anclajes de camisa</h3>
+                <p>Nuestros anclajes de camisa proporcionan una fijación fiable en sustratos de hormigón, ladrillo y mampostería donde se requiere una alta resistencia al arrancamiento y al corte. La camisa de expansión se deforma hacia afuera al apretar, agarrando firmemente el material base desde el interior del agujero perforado. Disponible en configuración de cabeza hexagonal con brida y galvanizado amarillo para resistencia a la corrosión. Adecuado para aplicaciones estructurales tanto interiores como exteriores. Fabricado con tolerancias dimensionales consistentes para un rendimiento de instalación fiable.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="pernos de carrocería" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>pernos de carrocería</h3>
+                <p>Nuestros pernos de carrocería cuentan con una cabeza abombada lisa y un cuello cuadrado debajo que se incrusta en el material durante la instalación, evitando la rotación sin necesidad de una llave en el lado del perno. Ideales para conexiones madera-madera, madera-metal y conexiones estructurales generales. Disponibles en configuraciones de rosca completa y parcial. Fabricados según las normas DIN 603 / ASME B18.5 con precisión dimensional consistente.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="Pernos de Anclaje Químico" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Pernos de Anclaje Químico</h3>
+                <p>Nuestros pernos de anclaje químico proporcionan una capacidad de carga superior y estabilidad a largo plazo para instalaciones en hormigón y estructuras. Diseñados para aplicaciones de fijación de alta resistencia, ofrecen una excelente resistencia a la vibración, la corrosión y el estrés ambiental. Adecuados para construcción, estructuras de acero, barandillas, cimentaciones de maquinaria y proyectos de infraestructura.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="Anclajes de Expansión de 4 Piezas (Lagarto de Pared de Cuatro Piezas)" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Anclajes de Expansión de 4 Piezas (Lagarto de Pared de Cuatro Piezas)</h3>
+                <p>Nuestros anclajes de expansión de 4 piezas cuentan con cuatro hojas de expansión independientes que se abren uniformemente contra la pared de hormigón, proporcionando una capacidad de sujeción superior en comparación con los pernos de expansión estándar. Ideales para la instalación de rieles de ascensor, montaje de maquinaria pesada y anclaje estructural. Fabricados según estándares de alta calidad con precisión dimensional consistente.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="Pernos de Ojo" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Pernos de Ojo</h3>
+                <p>Nuestros pernos de ojo cuentan con un anillo circular (ojo) en un extremo, diseñados para elevación vertical y cargas angulares. Fabricados en acero aleado de alta resistencia y probados al 100% con magnaflux para detectar grietas. Disponibles en diseños estándar (DIN 580, para elevación vertical) y con hombro (para cargas angulares). Cada perno tiene una capacidad de carga con un factor de seguridad mínimo de 5:1.</p>
                 <span class="card-link">Ver detalles -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="Conjunto de Pernos de Rueda" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="Conjunto de Pernos de Rueda" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>Conjunto de Pernos de Rueda</h3>
                 <p>Los conjuntos de pernos de rueda son componentes de fijación críticos utilizados para asegurar las ruedas a los cubos del vehículo. Diseñados para un alto rendimiento de carga, estos pernos garantizan seguridad y estabilidad en condiciones de conducción dinámicas. Fabricados con mecanizado de precisión y materiales de alta calidad, nuestros pernos de rueda ofrecen excelente resistencia a la tracción, resistencia al desgaste y larga vida útil. El diseño del conjunto (perno + tuerca + arandelas) mejora la eficiencia de instalación y la fiabilidad de fijación. Adecuado para una amplia gama de aplicaciones automotrices, incluidos automóviles de pasajeros, vehículos comerciales y camiones pesados.</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Tuercas</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Tuercas"><h2 class="section-title category-heading">Tuercas</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="tuercas de cizallamiento" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>tuercas de cizallamiento</h3>
+                <p>Nuestras tuercas de cizallamiento (también conocidas como tuercas de ruptura o tuercas a prueba de manipulaciones) proporcionan una fijación permanente y resistente a manipulaciones para infraestructura pública, equipos exteriores y aplicaciones críticas de seguridad. La base hexagonal de accionamiento se corta automáticamente una vez que se alcanza el par de instalación, dejando solo una cabeza cónica lisa que no puede ser agarrada por herramientas estándar. Fabricadas en acero inoxidable 304/316 y acero al carbono galvanizado para una resistencia a la corrosión fiable en entornos interiores y exteriores.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="tuercas para ranura en T" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>tuercas para ranura en T</h3>
+                <p>Nuestras tuercas para ranura en T están diseñadas para deslizarse en rieles de ranura en T estándar en mesas de máquinas, perfiles de extrusión de aluminio y accesorios de soldadura, proporcionando puntos de sujeción seguros y reposicionables. El cuerpo en forma de T se bloquea firmemente al girarlo 90°, eliminando la necesidad de carga por los extremos. Disponibles en acero al carbono, acero inoxidable 304/316 y acabado óxido negro. Fabricadas según los estándares DIN 508 con tolerancias dimensionales precisas para una compatibilidad consistente con la ranura.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="Tuercas de Acoplamiento" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Tuercas de Acoplamiento</h3>
+                <p>Nuestras tuercas de acoplamiento (también conocidas como tuercas de extensión o tuercas conectoras) están diseñadas para unir dos varillas roscadas o pernos extremo a extremo, extendiendo el alcance o ajustando la longitud en ensamblajes estructurales y mecánicos. La rosca interna de longitud completa asegura el máximo acoplamiento y distribución de carga. Disponibles en configuraciones estándar y de servicio pesado. Fabricadas según los estándares DIN 6334 con precisión dimensional consistente.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="Tuercas remachables" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Tuercas remachables</h3>
+                <p>Nuestras tuercas remachables (también conocidas como tuercas ciegas o nutserts) proporcionan roscas internas fuertes y confiables en láminas delgadas, tubos y secciones huecas donde solo se tiene acceso por un lado. El cuerpo moleteado evita el giro después de la instalación. Disponibles en tipos de extremo abierto y cerrado, con cabeza plana y avellanada. Fabricadas según los estándares DIN 16903 con tolerancias dimensionales precisas.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="Tuercas con brida" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Arandelas</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Arandelas"><h2 class="section-title category-heading">Arandelas</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="Arandelas planas" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Tornillos</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Tornillos"><h2 class="section-title category-heading">Tornillos</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="Tornillos para drywall" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Espárragos y varillas roscadas</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Espárragos y varillas roscadas"><h2 class="section-title category-heading">Espárragos y varillas roscadas</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="Espárragos de doble extremo" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Pasadores</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Pasadores"><h2 class="section-title category-heading">Pasadores</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="Pasadores de chaveta" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Anclajes y fijación</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Anclajes y fijación"><h2 class="section-title category-heading">Anclajes y fijación</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="Anclajes drop-in" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Otros sujetadores</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Otros sujetadores"><h2 class="section-title category-heading">Otros sujetadores</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="Remaches de Cabeza Redonda" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Remaches de Cabeza Redonda</h3>
+                <p>Nuestros remaches de cabeza redonda presentan un perfil de cabeza abombada distintivo que proporciona una gran superficie de apoyo y alta resistencia al corte, lo que los hace ideales para la fijación permanente en ensamblajes estructurales, automotrices e industriales. Se instalan deformando el extremo de la cola para sujetar los materiales entre sí. Disponibles en una amplia gama de materiales y tamaños. Fabricados según las normas DIN 660 / ISO 1051 con precisión dimensional consistente.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="Soportes de Montaje Solar" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Soportes de Montaje Solar</h3>
+                <p>Nuestro sistema de soportes de montaje solar está diseñado para instalaciones fotovoltaicas en tejados y suelo. Fabricado en aleación de aluminio de alta resistencia y acero galvanizado, garantiza una excelente resistencia a la corrosión, estabilidad frente a cargas de viento y durabilidad a largo plazo. Adecuado para proyectos solares residenciales, comerciales y de gran escala.</p>
+                <span class="card-link">Ver detalles -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="Remaches ciegos" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; Prev</button>
+          <span class="page-info" id="pageInfo">1 / 1</span>
+          <button class="pagination-btn" id="nextPage">Next &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">No products found</div>
+
         </section>
       </article>
     </section>
@@ -548,5 +708,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

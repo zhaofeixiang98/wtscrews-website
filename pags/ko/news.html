@@ -57,6 +57,32 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/news.css?v=20260427">
 
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
 </head>
 <body>
 
@@ -96,8 +122,71 @@ ul{list-style:none}
       <article class="container">
         <h2 class="sr-only">최신 기사</h2>
         <section class="cards-grid" id="newsContainer">
+          <a href="news/us-steel-fastener-tariff-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png" alt="2026년 미국 관세 232조 개편: 모든 패스너 수출업자가 알아야 할 사항" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-09">2026-06-09</time>
+              <h3>2026년 미국 관세 232조 개편: 모든 패스너 수출업자가 알아야 할 사항</h3>
+              <p>2026년 4월 2일, 트럼프 행정부는 철강, 알루미늄, 구리 및 그 파생 제품에 대한 232조 관세 시스템을 재구성하는 행정 명령에 서명했습니다. 가장 중요한 변화: 관세가 이제 수입품의 전체 관세 가치에 적용되며, 금속 함량에만 적용되지 않습니다. 미국 시장을 목표로 하는 패스너 수출업자에게 이는 비용 구조의 근본적인 변화입니다. 이 기사는 무엇이 변경되었는지, 실제로 무엇을 의미하는지, 그리고 수출업자가 어떻게 대응할 수 있는지 분석합니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/high-strength-fastener-demand-growth-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/favicon.png" alt="고강도 체결구 수요 급증: 연간 12.3% 성장을 이끄는 요인은?" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-06">2026-06-06</time>
+              <h3>고강도 체결구 수요 급증: 연간 12.3% 성장을 이끄는 요인은?</h3>
+              <p>고강도 체결구(등급 8.8 이상)의 글로벌 시장은 신에너지 차량, 태양광 구조물, 풍력 발전 장비 및 정밀 기계의 수요 급증에 힘입어 연평균 12.3% 성장하고 있습니다. 기존 탄소강 체결구가 점점 더 까다로운 성능 요구 사항을 충족하는 데 어려움을 겪으면서, 제조업체들은 신소재, 더 엄격한 공차 및 확장된 적용 범위로 나아가고 있습니다. 이 기사는 호황 뒤에 숨은 주요 동력과 구매자 및 공급업체 모두에게 의미하는 바를 살펴봅니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/frankfurt-fastener-show-2026-cbam.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png" alt="프랑크푸르트 패스너 쇼 2026: EU 탄소세 시행 후 첫 주요 전시회" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-05">2026-06-05</time>
+              <h3>프랑크푸르트 패스너 쇼 2026: EU 탄소세 시행 후 첫 주요 전시회</h3>
+              <p>2026년 프랑크푸르트 국제 패스너 무역 박람회는 EU 탄소국경조정메커니즘(CBAM)이 2026년 1월 공식적으로 징수 단계에 들어간 후 열리는 첫 번째 주요 패스너 전시회가 될 예정입니다. 탄소 규제 비용이 철강 및 알루미늄 제품에 직접적인 영향을 미치면서, 전시업체와 구매자 모두 새로운 무역 환경을 탐색하고 있습니다. 이 기사에서는 전시회에서 기대할 점과 CBAM이 유럽 시장을 목표로 하는 패스너 수출업체에 무엇을 의미하는지 살펴봅니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/photovoltaic-industry-news-2026-q2.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png" alt="2026년 글로벌 태양광 산업 업데이트: 정책 지원, 에너지 수요 및 기술 혁신에 힘입은 강력한 확장" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-01">2026-06-01</time>
+              <h3>2026년 글로벌 태양광 산업 업데이트: 정책 지원, 에너지 수요 및 기술 혁신에 힘입은 강력한 확장</h3>
+              <p>태양광 산업은 2026년에도 기록적인 설치량, 에너지 전환 정책, 인프라 및 산업 부문의 강력한 수요에 힘입어 글로벌 확장을 지속하고 있습니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/southeast-asia-middle-east-fastener-demand-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png" alt="동남아시아 및 중동에서 체결구 수요 지속 증가" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-28">2026-05-28</time>
+              <h3>동남아시아 및 중동에서 체결구 수요 지속 증가</h3>
+              <p>동남아시아와 중동 지역에서 인프라 프로젝트, 제조업 확장, 에너지 투자로 인해 산업용 체결구 수요가 급격히 증가하고 있습니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-may-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/offoce1.png" alt="글로벌 패스너 시장 동향 및 산업 업데이트 – 2026년 5월" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-25">2026-05-25</time>
+              <h3>글로벌 패스너 시장 동향 및 산업 업데이트 – 2026년 5월</h3>
+              <p>2026년 글로벌 패스너 산업은 인프라 프로젝트, 재생 에너지 수요, 동남아시아 및 중동의 건설 시장 확대에 힘입어 지속적으로 성장하고 있습니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-q2-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/Precision%20CNC%20machining%20lines6.webp" alt="2026년 2분기 글로벌 패스너 시장 업데이트: 동남아시아 및 재생 에너지 프로젝트 수요 증가" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-15">2026-05-15</time>
+              <h3>2026년 2분기 글로벌 패스너 시장 업데이트: 동남아시아 및 재생 에너지 프로젝트 수요 증가</h3>
+              <p>2026년 2분기 글로벌 산업용 패스너 수요가 지속적으로 성장하고 있으며, 특히 동남아시아, 재생 에너지 및 건설 산업에서 두드러집니다.</p>
+              <span class="card-link">더 읽기 -&gt;</span>
+            </section>
+          </a>
           <a href="news/construction-fastener-demand-2026.html" class="card">
-            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="2026년 건설 패스너 수요 지속 증가" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="2026년 건설 패스너 수요 지속 증가" width="440" height="220" loading="lazy" decoding="async"></figure>
             <section class="card-body">
               <time class="card-meta" datetime="2026-05-06">2026-05-06</time>
               <h3>2026년 건설 패스너 수요 지속 증가</h3>
@@ -204,7 +293,21 @@ ul{list-style:none}
               <span class="card-link">더 읽기 -&gt;</span>
             </section>
           </a>
-        </section>
+        
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; 이전</button>
+          <span class="page-info" id="newsPageInfo">1 / 1</span>
+          <button class="news-pagination-btn" id="newsNextPage">다음 &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">뉴스를 찾을 수 없습니다</div>
+
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; 이전</button>
+          <span class="page-info" id="newsPageInfo">1 / 1</span>
+          <button class="news-pagination-btn" id="newsNextPage">다음 &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">뉴스를 찾을 수 없습니다</div>
+</section>
       </article>
     </section>
   </main>
@@ -287,5 +390,179 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

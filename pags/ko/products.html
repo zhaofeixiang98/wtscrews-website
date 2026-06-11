@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn " data-category="볼트">Bolts</button>
+        <button class="filter-btn " data-category="너트">Nuts</button>
+        <button class="filter-btn " data-category="와셔">Washers</button>
+        <button class="filter-btn " data-category="나사">Screws</button>
+        <button class="filter-btn " data-category="스터드 및 전산봉">Studs</button>
+        <button class="filter-btn " data-category="핀">Pins</button>
+        <button class="filter-btn " data-category="앵커 및 체결">Anchors</button>
+        <button class="filter-btn " data-category="기타 패스너">Other</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="productSearch" placeholder="제품 검색..." data-no-results="제품을 찾을 수 없습니다." autocomplete="off" aria-label="제품 검색...">
+        <input type="search" id="productSearch" placeholder="Search products..." data-no-results="제품을 찾을 수 없습니다." autocomplete="off" aria-label="제품 검색...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">볼트</h2>
-          <section class="cards-grid">
+          <div class="category-section" data-category="볼트"><h2 class="section-title category-heading">볼트</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="카운터싱크 소켓 헤드 캡 나사" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>카운터싱크 소켓 헤드 캡 나사</h3>
+                <p>당사의 카운터싱크 소켓 헤드 캡 나사는 평평한 원추형 헤드가 결합 표면과 동일하거나 그 아래에 위치하여 깔끔한 마감이나 방해받지 않는 프로파일이 필요한 애플리케이션에 이상적입니다. 육각 키(앨런 렌치)로 구동되어 좁은 공간에서도 높은 토크를 제공합니다. 전체 및 부분 나사산 구성으로 제공됩니다. DIN 7991 / ISO 10642 표준에 따라 일관된 치수 정밀도로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
             <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="슬리브 앵커" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="슬리브 앵커" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
                 <h3>슬리브 앵커</h3>
-                <p>당사의 슬리브 앵커는 단단한 콘크리트, 벽돌 및 블록 재료에서 강력한 고정력을 제공합니다. 확장형 슬리브는 차량 수리 장비, 구조물 지지대 및 난간과 같은 중하중 응용 분야에 이상적인 안전한 체결을 보장합니다.</p>
+                <p>당사의 슬리브 앵커는 강력한 인발 및 전단 저항이 요구되는 콘크리트, 벽돌 및 석재 기재에 신뢰할 수 있는 고정을 제공합니다. 조임 시 확장 슬리브가 바깥쪽으로 변형되어 드릴 구멍 내부에서 기재를 단단히 잡아줍니다. 내식성을 위해 황색 아연 도금 처리된 플랜지 육각 헤드 구성으로 제공됩니다. 실내 및 실외 구조적 용도에 적합합니다. 일관된 설치 성능을 위해 엄격한 치수 공차로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="carriage-bolts" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>carriage-bolts</h3>
+                <p>당사의 캐리지 볼트는 부드러운 돔형 헤드와 그 아래 사각 목이 특징으로, 설치 시 재료에 박혀 볼트 측에 렌치 없이도 회전을 방지합니다. 목재-목재, 목재-금속 및 일반 구조 연결에 이상적입니다. 전체 나사 및 부분 나사 구성으로 제공됩니다. DIN 603 / ASME B18.5 표준에 따라 일관된 치수 정밀도로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="화학 앵커 볼트" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>화학 앵커 볼트</h3>
+                <p>당사의 화학 앵커 볼트는 콘크리트 및 구조물 설치에 뛰어난 하중 용량과 장기적인 안정성을 제공합니다. 중부하 체결 용도로 설계되어 진동, 부식 및 환경 응력에 대한 우수한 내성을 제공합니다. 건설, 철골 구조물, 난간, 기계 기초 및 인프라 프로젝트에 적합합니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="4피스 확장 앵커 (4피스 월 리자드)" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>4피스 확장 앵커 (4피스 월 리자드)</h3>
+                <p>당사의 4피스 확장 앵커는 콘크리트 벽면에 균일하게 펼쳐지는 4개의 독립적인 확장 리프를 갖추고 있어 표준 확장 볼트보다 뛰어난 고정력을 제공합니다. 엘리베이터 레일 설치, 중장비 장착 및 구조물 앵커링에 이상적입니다. 일관된 치수 정확도로 고품질 표준에 따라 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="아이 볼트" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>아이 볼트</h3>
+                <p>당사의 아이 볼트는 한쪽 끝에 원형 링(아이)이 있어 수직 리프팅 및 각도 하중에 적합합니다. 고강도 합금강으로 제조되었으며 100% 마그나플럭스 검사로 균열을 확인합니다. 수직 리프팅용 표준형(DIN 580)과 각도 하중용 숄더형으로 제공됩니다. 각 볼트는 최소 5:1의 안전 계수로 하중 등급이 지정됩니다.</p>
                 <span class="card-link">자세히 보기 -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="휠 볼트 어셈블리" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="휠 볼트 어셈블리" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>휠 볼트 어셈블리</h3>
                 <p>휠 볼트 어셈블리는 차량 허브에 휠을 고정하는 중요한 체결 부품입니다. 높은 하중 지지 성능을 위해 설계된 이 볼트는 동적 주행 조건에서 안전성과 안정성을 보장합니다. 정밀 가공과 고품질 소재로 제조된 당사의 휠 볼트는 우수한 인장 강도, 내마모성 및 긴 서비스 수명을 제공합니다. 어셈블리 설계(볼트 + 너트 + 와셔)는 설치 효율성과 체결 신뢰성을 향상시킵니다. 승용차, 상용차 및 대형 트럭을 포함한 다양한 자동차 응용 분야에 적합합니다.</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">너트</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="너트"><h2 class="section-title category-heading">너트</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="전단 너트" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>전단 너트</h3>
+                <p>당사의 전단 너트(브레이크어웨이 너트 또는 변조 방지 너트라고도 함)는 공공 인프라, 야외 장비 및 보안이 중요한 애플리케이션에 영구적이고 변조 방지 체결을 제공합니다. 육각형 구동 베이스는 설치 토크에 도달하면 자동으로 전단되어 표준 도구로 잡을 수 없는 매끄러운 원뿔형 헤드만 남깁니다. 실내 및 실외 환경에서 안정적인 내식성을 위해 스테인리스 스틸 304/316 및 아연 도금 탄소강으로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="T-슬롯 너트" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>T-슬롯 너트</h3>
+                <p>당사의 T-슬롯 너트는 공작 기계 테이블, 알루미늄 압출 프로파일 및 용접 지그의 표준 T-슬롯 트랙에 슬라이딩되어 안전하고 재배치 가능한 클램핑 지점을 제공합니다. T자형 본체는 90° 회전 시 단단히 고정되어 엔드 로딩이 필요 없습니다. 탄소강, 스테인리스강 304/316 및 블랙 옥사이드 마감으로 제공됩니다. DIN 508 표준에 따라 제조되었으며 일관된 슬롯 호환성을 위한 정밀 치수 공차를 갖추고 있습니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="커플링 너트" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>커플링 너트</h3>
+                <p>당사의 커플링 너트(연장 너트 또는 커넥터 너트라고도 함)는 두 개의 나사산 로드 또는 볼트를 끝에서 끝으로 연결하여 구조 및 기계 어셈블리에서 도달 범위를 확장하거나 길이를 조정하도록 설계되었습니다. 전체 길이 내부 나사산은 최대 맞물림과 하중 분산을 보장합니다. 표준 및 중부하 구성으로 제공됩니다. DIN 6334 표준에 따라 일관된 치수 정확도로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="리벳 너트" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>리벳 너트</h3>
+                <p>당사의 리벳 너트(블라인드 리벳 너트 또는 너트서트라고도 함)는 한쪽 면만 접근 가능한 얇은 판재, 튜브 및 중공 단면에 강력하고 신뢰할 수 있는 내부 나사산을 제공합니다. 널링 처리된 몸체는 설치 후 회전을 방지합니다. 개방형 및 폐쇄형, 평머리 및 접시머리 스타일로 제공됩니다. DIN 16903 표준에 따라 정밀한 치수 공차로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="플랜지 너트" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">와셔</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="와셔"><h2 class="section-title category-heading">와셔</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="평와셔" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">나사</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="나사"><h2 class="section-title category-heading">나사</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="드라이월 나사" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">스터드 및 전산봉</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="스터드 및 전산봉"><h2 class="section-title category-heading">스터드 및 전산봉</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="양끝나사 스터드" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">핀</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="핀"><h2 class="section-title category-heading">핀</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="코터 핀" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">앵커 및 체결</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="앵커 및 체결"><h2 class="section-title category-heading">앵커 및 체결</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="드롭인 앵커" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">기타 패스너</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="기타 패스너"><h2 class="section-title category-heading">기타 패스너</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="둥근 머리 리벳" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>둥근 머리 리벳</h3>
+                <p>당사의 둥근 머리 리벳은 독특한 돔형 헤드 프로파일을 특징으로 하여 넓은 베어링 표면과 높은 전단 강도를 제공하므로 구조, 자동차 및 산업 조립 분야의 영구 체결에 이상적입니다. 테일 끝을 변형시켜 재료를 함께 고정하는 방식으로 설치됩니다. 다양한 재질과 크기로 제공됩니다. DIN 660 / ISO 1051 표준에 따라 일관된 치수 정밀도로 제조됩니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="태양광 장착 브래킷" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>태양광 장착 브래킷</h3>
+                <p>당사의 태양광 장착 브래킷 시스템은 지붕 및 지상 태양광 발전 설치를 위해 설계되었습니다. 고강도 알루미늄 합금과 아연 도금 강철로 제작되어 우수한 내식성, 풍하중 안정성 및 장기 내구성을 보장합니다. 주거용, 상업용 및 대규모 태양광 프로젝트에 적합합니다.</p>
+                <span class="card-link">자세히 보기 -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="블라인드 리벳" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; Prev</button>
+          <span class="page-info" id="pageInfo">1 / 1</span>
+          <button class="pagination-btn" id="nextPage">Next &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">No products found</div>
+
         </section>
       </article>
     </section>
@@ -548,5 +708,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

@@ -57,6 +57,32 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/news.css?v=20260427">
 
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
+  <style>
+    .news-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .news-filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .news-filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .news-filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .news-pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .news-pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .news-pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .news-pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .news-pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .news-no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+  </style>
 </head>
 <body>
 
@@ -96,8 +122,71 @@ ul{list-style:none}
       <article class="container">
         <h2 class="sr-only">احدث المقالات</h2>
         <section class="cards-grid" id="newsContainer">
+          <a href="news/us-steel-fastener-tariff-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png" alt="إصلاح التعريفة الجمركية بموجب القسم 232 الأمريكي 2026: ما يحتاج كل مُصدر للمثبتات إلى معرفته" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-09">2026-06-09</time>
+              <h3>إصلاح التعريفة الجمركية بموجب القسم 232 الأمريكي 2026: ما يحتاج كل مُصدر للمثبتات إلى معرفته</h3>
+              <p>في 2 أبريل 2026، وقعت إدارة ترامب أمرًا تنفيذيًا يعيد هيكلة نظام التعريفة الجمركية بموجب القسم 232 للصلب والألمنيوم والنحاس ومنتجاتها المشتقة. التغيير الأكثر أهمية: تُطبق التعريفات الآن على القيمة الجمركية الكاملة للسلع المستوردة - وليس فقط محتوى المعدن. بالنسبة لمُصدري المثبتات الذين يستهدفون السوق الأمريكية، هذا تحول جوهري في هيكل التكلفة. تحلل هذه المقالة ما تغير، وما يعنيه عمليًا، وكيف يمكن للمُصدرين الاستجابة.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/high-strength-fastener-demand-growth-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/favicon.png" alt="ارتفاع الطلب على السحابات عالية القوة: ما الذي يدفع النمو السنوي بنسبة 12.3%؟" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-06">2026-06-06</time>
+              <h3>ارتفاع الطلب على السحابات عالية القوة: ما الذي يدفع النمو السنوي بنسبة 12.3%؟</h3>
+              <p>يتوسع السوق العالمي للسحابات عالية القوة بمعدل نمو سنوي مركب يبلغ 12.3% للمنتجات من الدرجة 8.8 وما فوق، مدفوعًا بالطلب المتزايد من مركبات الطاقة الجديدة، والهياكل الكهروضوئية، ومعدات طاقة الرياح، والآلات الدقيقة. ومع صعوبة تلبية السحابات الفولاذية الكربونية التقليدية لمتطلبات الأداء المتزايدة، يتم دفع المصنعين نحو مواد جديدة، وتفاوتات أكثر صرامة، وتغطية تطبيقات موسعة. تبحث هذه المقالة في القوى الرئيسية وراء هذا الازدهار وما يعنيه للمشترين والموردين على حد سواء.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/frankfurt-fastener-show-2026-cbam.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png" alt="معرض فرانكفورت للمثبتات 2026: أول معرض رئيسي بعد تطبيق ضريبة الكربون الأوروبية" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-05">2026-06-05</time>
+              <h3>معرض فرانكفورت للمثبتات 2026: أول معرض رئيسي بعد تطبيق ضريبة الكربون الأوروبية</h3>
+              <p>من المقرر أن يكون معرض فرانكفورت الدولي للمثبتات 2026 أول معرض رئيسي للمثبتات يُعقد بعد دخول آلية تعديل حدود الكربون الأوروبية (CBAM) مرحلة تحصيل الرسوم رسميًا في يناير 2026. مع تأثير تكاليف الامتثال للكربون بشكل مباشر على منتجات الصلب والألومنيوم، يتنقل العارضون والمشترون على حد سواء في مشهد تجاري جديد. تستكشف هذه المقالة ما يمكن توقعه من المعرض وما يعنيه CBAM لمصدري المثبتات الذين يستهدفون الأسواق الأوروبية.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/photovoltaic-industry-news-2026-q2.html" class="card">
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png" alt="تحديث صناعة الطاقة الشمسية العالمية 2026: توسع قوي بدعم من السياسات والطلب على الطاقة والابتكار التكنولوجي" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-06-01">2026-06-01</time>
+              <h3>تحديث صناعة الطاقة الشمسية العالمية 2026: توسع قوي بدعم من السياسات والطلب على الطاقة والابتكار التكنولوجي</h3>
+              <p>تواصل صناعة الطاقة الشمسية توسعها العالمي السريع في عام 2026، مدعومة بتركيبات قياسية وسياسات تحول الطاقة وطلب قوي من قطاعي البنية التحتية والصناعة.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/southeast-asia-middle-east-fastener-demand-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png" alt="استمرار الطلب على أدوات التثبيت في جنوب شرق آسيا والشرق الأوسط" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-28">2026-05-28</time>
+              <h3>استمرار الطلب على أدوات التثبيت في جنوب شرق آسيا والشرق الأوسط</h3>
+              <p>يتزايد الطلب على أدوات التثبيت الصناعية بسرعة في جميع أنحاء جنوب شرق آسيا والشرق الأوسط بسبب مشاريع البنية التحتية، وتوسع التصنيع، واستثمارات الطاقة.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-may-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/offoce1.png" alt="اتجاهات سوق المثبتات العالمية وتحديث الصناعة – مايو 2026" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-25">2026-05-25</time>
+              <h3>اتجاهات سوق المثبتات العالمية وتحديث الصناعة – مايو 2026</h3>
+              <p>تواصل صناعة المثبتات العالمية نموها في 2026، مدفوعة بمشاريع البنية التحتية، الطلب على الطاقة المتجددة، وأسواق البناء المتوسعة في جنوب شرق آسيا والشرق الأوسط.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
+          <a href="news/global-fastener-market-update-q2-2026.html" class="card">
+            <figure class="card-image"><img src="../../images/abouts/Precision%20CNC%20machining%20lines6.webp" alt="تحديث سوق المثبتات العالمي للربع الثاني من عام 2026: ارتفاع الطلب من جنوب شرق آسيا ومشاريع الطاقة المتجددة" width="440" height="220" loading="lazy" decoding="async"></figure>
+            <section class="card-body">
+              <time class="card-meta" datetime="2026-05-15">2026-05-15</time>
+              <h3>تحديث سوق المثبتات العالمي للربع الثاني من عام 2026: ارتفاع الطلب من جنوب شرق آسيا ومشاريع الطاقة المتجددة</h3>
+              <p>يستمر الطلب العالمي على المثبتات الصناعية في النمو في الربع الثاني من عام 2026، خاصة في جنوب شرق آسيا والطاقة المتجددة وصناعات البناء.</p>
+              <span class="card-link">اقرا المزيد -&gt;</span>
+            </section>
+          </a>
           <a href="news/construction-fastener-demand-2026.html" class="card">
-            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="استمرار ارتفاع الطلب على أدوات التثبيت الإنشائية في عام 2026" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+            <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-5-6-15_15_59.png" alt="استمرار ارتفاع الطلب على أدوات التثبيت الإنشائية في عام 2026" width="440" height="220" loading="lazy" decoding="async"></figure>
             <section class="card-body">
               <time class="card-meta" datetime="2026-05-06">2026-05-06</time>
               <h3>استمرار ارتفاع الطلب على أدوات التثبيت الإنشائية في عام 2026</h3>
@@ -204,7 +293,21 @@ ul{list-style:none}
               <span class="card-link">اقرا المزيد -&gt;</span>
             </section>
           </a>
-        </section>
+        
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; السابق</button>
+          <span class="page-info" id="newsPageInfo">صفحة 1 من 1</span>
+          <button class="news-pagination-btn" id="newsNextPage">التالي &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">لم يتم العثور على أخبار</div>
+
+        <div class="news-pagination" id="newsPagination">
+          <button class="news-pagination-btn" id="newsPrevPage" disabled>&laquo; السابق</button>
+          <span class="page-info" id="newsPageInfo">صفحة 1 من 1</span>
+          <button class="news-pagination-btn" id="newsNextPage">التالي &raquo;</button>
+        </div>
+        <div class="news-no-results" id="newsNoResults" style="display:none;">لم يتم العثور على أخبار</div>
+</section>
       </article>
     </section>
   </main>
@@ -287,5 +390,179 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='صفحة PAGE من TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=6,currentPage=1,currentYear='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.news-filter-btn');
+    var searchInput=document.getElementById('productSearch') || document.getElementById('newsSearch');
+    var pagination=document.getElementById('newsPagination');
+    var prevBtn=document.getElementById('newsPrevPage');
+    var nextBtn=document.getElementById('newsNextPage');
+    var pageInfo=document.getElementById('newsPageInfo');
+    var noResults=document.getElementById('newsNoResults');
+    var newsContainer=document.getElementById('newsContainer');
+    var allCards=newsContainer ? newsContainer.querySelectorAll('.card') : [];
+
+    function getFilteredCards(){
+      var result=[];
+      for(var i=0;i<allCards.length;i++){
+        var card=allCards[i];
+        var timeEl=card.querySelector('time');
+        var year='all';
+        if(timeEl){
+          var datetime=timeEl.getAttribute('datetime') || '';
+          year=datetime.substring(0,4);
+        }
+        var txt=card.textContent.toLowerCase();
+        var matchYear=currentYear==='all'||currentYear===year||(currentYear==='Earlier' && year<'2025')||(currentYear==='all' && (year==='2026'||year==='2025'));
+        if(currentYear==='2026')matchYear=year==='2026';
+        if(currentYear==='2025')matchYear=year==='2025';
+        if(currentYear==='Earlier')matchYear=year<'2025';
+        if(currentYear==='all')matchYear=true;
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchYear&&matchSearch)result.push(card);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      for(var i=0;i<allCards.length;i++){allCards[i].style.display='none';}
+      for(var i=start;i<end&&i<filtered.length;i++){filtered[i].style.display='';}
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='صفحة PAGE من TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentYear=this.dataset.year;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    if(searchInput){
+      var st;
+      searchInput.addEventListener('input',function(){
+        clearTimeout(st);
+        st=setTimeout(function(){
+          currentSearch=searchInput.value.trim();
+          currentPage=1;
+          updatePagination();
+        },300);
+      });
+    }
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();if(newsContainer)window.scrollTo({top:newsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

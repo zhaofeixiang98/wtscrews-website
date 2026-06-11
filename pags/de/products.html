@@ -57,6 +57,21 @@ ul{list-style:none}
   <link rel="stylesheet" href="../../css/common.css?v=20260427">
   <link rel="stylesheet" href="../../css/products.css">
 
+  <style>
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .filter-btn{padding:8px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#374151;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+    .filter-btn:hover{border-color:#2563eb;color:#2563eb}
+    .filter-btn.active{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin:40px 0 20px;padding-top:24px;border-top:1px solid #e5e7eb}
+    .pagination button{min-width:40px;height:40px;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#374151;font-size:14px;cursor:pointer;transition:all .2s}
+    .pagination button:hover:not(:disabled){border-color:#2563eb;color:#2563eb}
+    .pagination button.active-page{background:#2563eb;border-color:#2563eb;color:#fff}
+    .pagination button:disabled{opacity:.5;cursor:not-allowed}
+    .pagination .page-info{padding:0 16px;font-size:14px;color:#6b7280}
+    .no-results{text-align:center;padding:60px 20px;color:#6b7280;font-size:16px}
+    .category-section{display:block}
+    .category-section.hidden{display:none}
+  </style>
 </head>
 <body>
 
@@ -155,23 +170,112 @@ ul{list-style:none}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn " data-category="Schrauben und Bolzen">Bolts</button>
+        <button class="filter-btn " data-category="Muttern">Nuts</button>
+        <button class="filter-btn " data-category="Unterlegscheiben">Washers</button>
+        <button class="filter-btn " data-category="Schrauben">Screws</button>
+        <button class="filter-btn " data-category="Stiftschrauben und Gewindestangen">Studs</button>
+        <button class="filter-btn " data-category="Stifte">Pins</button>
+        <button class="filter-btn " data-category="Anker und Befestigung">Anchors</button>
+        <button class="filter-btn " data-category="Weitere Verbindungselemente">Other</button>
+      </div>
+
       <div class="product-search-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="productSearch" placeholder="Produkte suchen..." data-no-results="Keine Produkte gefunden." autocomplete="off" aria-label="Produkte suchen...">
+        <input type="search" id="productSearch" placeholder="Search products..." data-no-results="Keine Produkte gefunden." autocomplete="off" aria-label="Produkte suchen...">
       </div>
         <section id="productsContainer">
-          <h2 class="section-title category-heading">Schrauben und Bolzen</h2>
-          <section class="cards-grid">
+          <div class="category-section" data-category="Schrauben und Bolzen"><h2 class="section-title category-heading">Schrauben und Bolzen</h2><section class="cards-grid">
+            <a href="products/countersunk-socket-head-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png" alt="Senkkopf-Innensechskantschrauben" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <section class="card-body">
+                <h3>Senkkopf-Innensechskantschrauben</h3>
+                <p>Unsere Senkkopf-Innensechskantschrauben haben einen flachen, konischen Kopf, der bündig mit oder unter der Oberfläche abschließt – ideal für Anwendungen, die eine saubere Optik oder ungehinderte Profile erfordern. Angetrieben mit einem Innensechskantschlüssel (Inbusschlüssel) für hohes Drehmoment auf engem Raum. Erhältlich in voll- und teilgewinde Ausführungen. Hergestellt nach DIN 7991 / ISO 10642 mit gleichbleibender Maßgenauigkeit.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
             <a href="products/sleeve-anchors.html" class="card">
-              <figure class="card-image"><img src="../../images/news/04d264a77eb0d663a403adc6f2bfd675.png" alt="Hülsenanker" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/168b271313c4f4346388feed2f2e4e47.png" alt="Hülsenanker" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
               <section class="card-body">
                 <h3>Hülsenanker</h3>
-                <p>Unsere Hülsenanker bieten eine hohe Haltekraft in massivem Beton, Ziegel und Blockmaterialien. Die expandierbare Hülse gewährleistet eine sichere Befestigung, ideal für Schwerlastanwendungen wie Fahrzeugreparaturausrüstung, strukturelle Stützen und Geländer.</p>
+                <p>Unsere Hülsenanker bieten zuverlässige Befestigung in Beton, Ziegel und Mauerwerk, wo hohe Auszug- und Scherfestigkeit erforderlich ist. Die Spreizhülse verformt sich beim Anziehen nach außen und verkrallt sich fest im Bohrloch. Erhältlich in Flansch-Sechskant-Ausführung mit gelber Verzinkung für Korrosionsbeständigkeit. Geeignet für Innen- und Außenanwendungen im Bauwesen. Hergestellt mit gleichbleibenden Maßtoleranzen für zuverlässige Montageleistung.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/carriage-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/887d132a138c5394fc649f8932049c36.png" alt="carriage-bolts" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>carriage-bolts</h3>
+                <p>Unsere Karosserieschrauben haben einen glatten, gewölbten Kopf und einen Vierkanthals darunter, der beim Einbau in das Material greift und ein Verdrehen verhindert, ohne dass auf der Schraubenseite ein Schraubenschlüssel erforderlich ist. Ideal für Holz-Holz-, Holz-Metall- und allgemeine Strukturverbindungen. Erhältlich in Voll- und Teilgewindeausführung. Hergestellt nach DIN 603 / ASME B18.5 mit gleichbleibender Maßgenauigkeit.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/chemical-anchor-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/08421783-ddae-4068-858a-933103a06fa2.png" alt="Chemische Ankerbolzen" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Chemische Ankerbolzen</h3>
+                <p>Unsere chemischen Ankerbolzen bieten eine überragende Tragfähigkeit und langfristige Stabilität für Beton- und Strukturinstallationen. Konzipiert für schwere Befestigungsanwendungen, bieten sie hervorragenden Widerstand gegen Vibrationen, Korrosion und Umwelteinflüsse. Geeignet für Bauwesen, Stahlkonstruktionen, Geländer, Maschinenfundamente und Infrastrukturprojekte.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/four-piece-expansion-anchor.html" class="card">
+              <figure class="card-image"><img src="../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png" alt="4-teilige Spreizdübel (Vierteilige Wandeidechse)" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>4-teilige Spreizdübel (Vierteilige Wandeidechse)</h3>
+                <p>Unsere 4-teiligen Spreizdübel verfügen über vier unabhängige Spreizlamellen, die sich gleichmäßig gegen die Betonwand ausbreiten und im Vergleich zu Standard-Spreizbolzen eine überlegene Haltekraft bieten. Ideal für die Montage von Aufzugsschienen, die Befestigung schwerer Maschinen und strukturelle Verankerungen. Hergestellt nach hohen Qualitätsstandards mit gleichbleibender Maßgenauigkeit.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/eye-bolts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/bc952db1252205da38a0b53f567c19e9.png" alt="Augschrauben" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Augschrauben</h3>
+                <p>Unsere Augschrauben verfügen über einen kreisförmigen Ring (Auge) an einem Ende, ausgelegt für vertikales Heben und Winkellasten. Hergestellt aus hochfestem legiertem Stahl und 100 % magnetpulvergeprüft auf Risse. Erhältlich sowohl in Standardausführung (DIN 580, für vertikales Heben) als auch mit Schulter (für Winkellasten). Jede Schraube ist lastbewertet mit einem Mindestsicherheitsfaktor von 5:1.</p>
                 <span class="card-link">Details ansehen -&gt;</span>
               </section>
             </a>
             <a href="products/wheel-bolts-assembly.html" class="card">
-              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="Radschrauben-Baugruppe" width="440" height="220" loading="eager" decoding="async" fetchpriority="high"></figure>
+              <figure class="card-image"><img src="../../images/news/b34a3bec8dcafa83f3afb63aaf441315.png" alt="Radschrauben-Baugruppe" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
                 <h3>Radschrauben-Baugruppe</h3>
                 <p>Radschrauben-Baugruppen sind kritische Befestigungskomponenten zur Sicherung von Rädern an Fahrzeugnarben. Entwickelt für hohe Tragfähigkeit, gewährleisten diese Schrauben Sicherheit und Stabilität unter dynamischen Fahrbedingungen. Hergestellt mit Präzisionsbearbeitung und hochwertigen Materialien bieten unsere Radschrauben hervorragende Zugfestigkeit, Verschleißfestigkeit und lange Lebensdauer. Das Baugruppendesign (Schraube + Mutter + Unterlegscheiben) verbessert die Montageeffizienz und Befestigungszuverlässigkeit. Geeignet für eine breite Palette von Automobilanwendungen, einschließlich Personenkraftwagen, Nutzfahrzeuge und schwere Lastkraftwagen.</p>
@@ -227,8 +331,40 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Muttern</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Muttern"><h2 class="section-title category-heading">Muttern</h2><section class="cards-grid">
+            <a href="products/shear-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/73b9fd744fd35079b711219ec3cfe555.png" alt="Schermuttern" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Schermuttern</h3>
+                <p>Unsere Schermuttern (auch als Abreißmuttern oder manipulationssichere Muttern bekannt) bieten eine dauerhafte, manipulationssichere Befestigung für öffentliche Infrastruktur, Außengeräte und sicherheitskritische Anwendungen. Der sechseckige Antriebssockel schert automatisch ab, sobald das Installationsdrehmoment erreicht ist, und hinterlässt nur einen glatten konischen Kopf, der mit Standardwerkzeugen nicht gegriffen werden kann. Hergestellt aus Edelstahl 304/316 und verzinktem Kohlenstoffstahl für zuverlässige Korrosionsbeständigkeit in Innen- und Außenbereichen.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/t-slot-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/c4ba24a45b08d18449266cc838027370.png" alt="T-Nutensteine" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>T-Nutensteine</h3>
+                <p>Unsere T-Nutensteine sind für das Einschieben in standardmäßige T-Nutenbahnen von Maschinentischen, Aluminium-Strangpressprofilen und Schweißvorrichtungen konzipiert und bieten sichere und repositionierbare Klemmstellen. Der T-förmige Körper verriegelt fest, wenn er um 90° gedreht wird, wodurch die Endbeladung entfällt. Erhältlich in Kohlenstoffstahl, Edelstahl 304/316 und mit Schwarzoxidbeschichtung. Hergestellt nach DIN 508 mit präzisen Maßtoleranzen für eine gleichbleibende Nutkompatibilität.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/coupling-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png" alt="Kupplungsmuttern" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Kupplungsmuttern</h3>
+                <p>Unsere Kupplungsmuttern (auch Verlängerungsmuttern oder Verbindungsmuttern genannt) dienen dazu, zwei Gewindestangen oder Schrauben axial zu verbinden, um die Reichweite zu verlängern oder die Länge in strukturellen und mechanischen Baugruppen anzupassen. Das durchgehende Innengewinde gewährleistet maximalen Eingriff und optimale Lastverteilung. Erhältlich in Standard- und Schwerlastausführung. Hergestellt nach DIN 6334 mit gleichbleibender Maßgenauigkeit.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/rivet-nuts.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png" alt="Rivetschrauben" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Rivetschrauben</h3>
+                <p>Unsere Rivetschrauben (auch als Blindnietmuttern oder Nutserts bekannt) bieten starke, zuverlässige Innengewinde in dünnen Blechen, Rohren und Hohlprofilen, bei denen nur einseitiger Zugang möglich ist. Der gerändelte Körper verhindert ein Verdrehen nach der Montage. Erhältlich in offener und geschlossener Ausführung, mit Flachkopf und Senkkopf. Hergestellt nach DIN 16903 mit präzisen Maßtoleranzen.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
             <a href="products/flange-nuts.html" class="card">
               <figure class="card-image"><img src="../../images/products/nuts/Flange Nut_sm.webp" alt="Flanschmuttern" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -270,8 +406,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Unterlegscheiben</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Unterlegscheiben"><h2 class="section-title category-heading">Unterlegscheiben</h2><section class="cards-grid">
             <a href="products/flat-washers.html" class="card">
               <figure class="card-image"><img src="../../images/products/washers/Flat Washer4_sm.webp" alt="Flache Unterlegscheiben" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -305,8 +441,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Schrauben</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Schrauben"><h2 class="section-title category-heading">Schrauben</h2><section class="cards-grid">
             <a href="products/drywall-screws.html" class="card">
               <figure class="card-image"><img src="../../images/products/screws/Drywall Screw1_sm.webp" alt="Trockenbauschrauben" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -340,8 +476,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Stiftschrauben und Gewindestangen</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Stiftschrauben und Gewindestangen"><h2 class="section-title category-heading">Stiftschrauben und Gewindestangen</h2><section class="cards-grid">
             <a href="products/double-end-studs.html" class="card">
               <figure class="card-image"><img src="../../images/products/studs/Double End Stud1_sm.webp" alt="Doppelend-Gewindebolzen" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -359,8 +495,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Stifte</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Stifte"><h2 class="section-title category-heading">Stifte</h2><section class="cards-grid">
             <a href="products/cotter-pins.html" class="card">
               <figure class="card-image"><img src="../../images/products/pins/Cotter Pin3_sm.webp" alt="Splinte" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -378,8 +514,8 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Anker und Befestigung</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Anker und Befestigung"><h2 class="section-title category-heading">Anker und Befestigung</h2><section class="cards-grid">
             <a href="products/drop-in-anchors.html" class="card">
               <figure class="card-image"><img src="../../images/products/anchors-fastening/Drop-in Anchor1_sm.webp" alt="Einschlaganker" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -405,8 +541,24 @@ ul{list-style:none}
               </section>
             </a>
           </section>
-          <h2 class="section-title category-heading">Weitere Verbindungselemente</h2>
-          <section class="cards-grid">
+        </div>
+          <div class="category-section" data-category="Weitere Verbindungselemente"><h2 class="section-title category-heading">Weitere Verbindungselemente</h2><section class="cards-grid">
+            <a href="products/round-head-rivets.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png" alt="Halbrundnieten" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Halbrundnieten</h3>
+                <p>Unsere Halbrundnieten zeichnen sich durch ein markantes gewölbtes Kopfprofil aus, das eine große Auflagefläche und hohe Scherfestigkeit bietet. Sie sind ideal für dauerhafte Verbindungen in strukturellen, automobilen und industriellen Baugruppen. Die Montage erfolgt durch Verformen des Schaftendes, um die Materialien zusammenzuspannen. Erhältlich in einer breiten Palette von Materialien und Größen. Hergestellt nach DIN 660 / ISO 1051 mit gleichbleibender Maßgenauigkeit.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
+            <a href="products/solar-mounting-bracket.html" class="card">
+              <figure class="card-image"><img src="../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png" alt="Solarmontagehalterungen" width="440" height="220" loading="lazy" decoding="async"></figure>
+              <section class="card-body">
+                <h3>Solarmontagehalterungen</h3>
+                <p>Unser Solarmontagehaltersystem ist für Dach- und Boden-Photovoltaikanlagen konzipiert. Hergestellt aus hochfestem Aluminium und feuerverzinktem Stahl, bietet es hervorragende Korrosionsbeständigkeit, Windlaststabilität und langfristige Haltbarkeit. Geeignet für private, gewerbliche und großflächige Solarprojekte.</p>
+                <span class="card-link">Details ansehen -&gt;</span>
+              </section>
+            </a>
             <a href="products/blind-rivets.html" class="card">
               <figure class="card-image"><img src="../../images/products/others/Blind Rivet1_sm.webp" alt="Blindnieten" width="440" height="220" loading="lazy" decoding="async"></figure>
               <section class="card-body">
@@ -456,6 +608,14 @@ ul{list-style:none}
               </section>
             </a>
           </section>
+        </div>
+        <div class="pagination" id="pagination">
+          <button class="pagination-btn" id="prevPage" disabled>&laquo; Prev</button>
+          <span class="page-info" id="pageInfo">1 / 1</span>
+          <button class="pagination-btn" id="nextPage">Next &raquo;</button>
+        </div>
+        <div class="no-results" id="noResults" style="display:none;">No products found</div>
+
         </section>
       </article>
     </section>
@@ -548,5 +708,112 @@ ul{list-style:none}
   <script src="../../js/main.js" defer></script>
   <script src="../../js/chat-dock.js" defer></script>
   
+
+  <script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var ITEMS_PER_PAGE=12,currentPage=1,currentCategory='all',currentSearch='';
+    var filterBtns=document.querySelectorAll('.filter-btn');
+    var searchInput=document.getElementById('productSearch');
+    var pagination=document.getElementById('pagination');
+    var prevBtn=document.getElementById('prevPage');
+    var nextBtn=document.getElementById('nextPage');
+    var pageInfo=document.getElementById('pageInfo');
+    var noResults=document.getElementById('noResults');
+    var productsContainer=document.getElementById('productsContainer');
+    var categorySections=productsContainer.querySelectorAll('.category-section');
+
+    function getAllCards(){
+      var cards=[];
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var cardEls=sec.querySelectorAll('.card');
+        for(var j=0;j<cardEls.length;j++){cards.push({element:cardEls[j],category:cat});}
+      }
+      return cards;
+    }
+
+    function getFilteredCards(){
+      var all=getAllCards();
+      var result=[];
+      for(var i=0;i<all.length;i++){
+        var c=all[i];
+        var matchCat=currentCategory==='all'||c.category===currentCategory;
+        var txt=c.element.textContent.toLowerCase();
+        var matchSearch=currentSearch===''||txt.indexOf(currentSearch.toLowerCase())>-1;
+        if(matchCat&&matchSearch)result.push(c);
+      }
+      return result;
+    }
+
+    function updatePagination(){
+      var filtered=getFilteredCards();
+      var total=filtered.length;
+      var totalPages=Math.max(1,Math.ceil(total/ITEMS_PER_PAGE));
+      if(currentPage>totalPages)currentPage=totalPages;
+      var start=(currentPage-1)*ITEMS_PER_PAGE;
+      var end=start+ITEMS_PER_PAGE;
+      
+      var all=getAllCards();
+      for(var i=0;i<all.length;i++)all[i].element.style.display='none';
+      for(var i=start;i<end&&i<filtered.length;i++)filtered[i].element.style.display='';
+      
+      for(var i=0;i<categorySections.length;i++){
+        var sec=categorySections[i];
+        var cat=sec.dataset.category;
+        var visible=sec.querySelectorAll('.card:not([style*="display: none"])');
+        var heading=sec.querySelector('h2');
+        if(currentCategory!=='all'&&cat!==currentCategory){
+          sec.classList.add('hidden');
+          sec.style.display='none';
+        }else{
+          sec.classList.remove('hidden');
+          sec.style.display='';
+          if(visible.length===0){
+            if(heading)heading.style.display='none';
+          }else{
+            if(heading)heading.style.display='';
+          }
+        }
+      }
+      
+      prevBtn.disabled=currentPage<=1;
+      nextBtn.disabled=currentPage>=totalPages;
+      pageInfo.textContent='PAGE / TOTAL'.replace('PAGE',currentPage).replace('TOTAL',totalPages);
+      pagination.style.display=total>ITEMS_PER_PAGE?'flex':'none';
+      noResults.style.display=total===0?'block':'none';
+    }
+
+    for(var i=0;i<filterBtns.length;i++){
+      filterBtns[i].addEventListener('click',function(){
+        for(var j=0;j<filterBtns.length;j++)filterBtns[j].classList.remove('active');
+        this.classList.add('active');
+        currentCategory=this.dataset.category;
+        currentPage=1;
+        updatePagination();
+      });
+    }
+
+    var st;
+    searchInput.addEventListener('input',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        currentSearch=searchInput.value.trim();
+        currentPage=1;
+        updatePagination();
+      },300);
+    });
+
+    prevBtn.addEventListener('click',function(){
+      if(currentPage>1){currentPage--;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+    nextBtn.addEventListener('click',function(){
+      var tp=Math.ceil(getFilteredCards().length/ITEMS_PER_PAGE);
+      if(currentPage<tp){currentPage++;updatePagination();window.scrollTo({top:productsContainer.offsetTop-100,behavior:'smooth'});}
+    });
+
+    updatePagination();
+  });
+  </script>
 </body>
 </html>

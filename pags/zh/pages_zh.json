@@ -1,6 +1,55 @@
 {
     "news": [
         {
+            "slug": "news/us-steel-fastener-tariff-2026",
+            "title": "美国232条款关税改革2026：每个紧固件出口商必须了解的事项",
+            "date": "2026-06-09",
+            "summary": "2026年4月2日，特朗普政府签署行政命令，重组针对钢铁、铝、铜及其衍生品的232条款关税体系。最显著的变化：关税现在适用于进口商品的完整海关价值——而不仅仅是金属含量。对于瞄准美国市场的紧固件出口商来说，这是成本结构的根本性转变。本文解析了变化内容、实际影响以及出口商如何应对。",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png"
+        },
+        {
+            "slug": "news/high-strength-fastener-demand-growth-2026",
+            "title": "高强度紧固件需求激增：12.3%的年增长率背后是什么？",
+            "date": "2026-06-06",
+            "summary": "全球高强度紧固件市场（8.8级及以上产品）正以12.3%的复合年增长率扩张，这得益于新能源汽车、光伏结构、风电设备及精密机械的旺盛需求。随着传统碳钢紧固件难以满足日益严苛的性能要求，制造商被迫转向新材料、更严格的公差和更广泛的应用覆盖。本文探讨了这一繁荣背后的关键驱动力及其对买家和供应商的意义。",
+            "icon": "../../images/favicon.png"
+        },
+        {
+            "slug": "news/frankfurt-fastener-show-2026-cbam",
+            "title": "2026法兰克福紧固件展：欧盟碳税生效后的首个大型展会",
+            "date": "2026-06-05",
+            "summary": "2026年法兰克福国际紧固件贸易展将是欧盟碳边境调节机制（CBAM）于2026年1月正式进入征收阶段后举办的首个大型紧固件展会。随着碳合规成本直接影响钢铁和铝产品，参展商和买家都在应对新的贸易格局。本文探讨了展会的看点以及CBAM对瞄准欧洲市场的紧固件出口商意味着什么。",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png"
+        },
+        {
+            "slug": "news/photovoltaic-industry-news-2026-q2",
+            "title": "2026年全球光伏行业更新：政策支持、能源需求和技术创新推动强劲扩张",
+            "date": "2026-06-01",
+            "summary": "2026年，光伏行业在全球范围内持续快速扩张，得益于创纪录的装机量、能源转型政策以及基础设施和工业领域的强劲需求。",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png"
+        },
+        {
+            "slug": "news/southeast-asia-middle-east-fastener-demand-2026",
+            "title": "东南亚和中东地区紧固件需求持续增长",
+            "date": "2026-05-28",
+            "summary": "由于基础设施项目、制造业扩张和能源投资，东南亚和中东地区的工业紧固件需求正在迅速增长。",
+            "icon": "../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-may-2026",
+            "title": "全球紧固件市场趋势与行业动态——2026年5月",
+            "date": "2026-05-25",
+            "summary": "2026年，全球紧固件行业持续增长，受基础设施项目、可再生能源需求以及东南亚和中东地区建筑市场扩张的推动。",
+            "icon": "../../images/abouts/offoce1.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-q2-2026",
+            "title": "2026年第二季度全球紧固件市场更新：东南亚与可再生能源项目需求增长",
+            "date": "2026-05-15",
+            "summary": "2026年第二季度，全球工业紧固件需求持续增长，尤其在东南亚、可再生能源和建筑行业。",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines6.webp"
+        },
+        {
             "slug": "news/construction-fastener-demand-2026",
             "title": "2026年建筑紧固件需求持续增长",
             "date": "2026-05-06",
@@ -91,10 +140,40 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/countersunk-socket-head-bolts",
+                    "title": "沉头内六角螺钉",
+                    "summary": "我们的沉头内六角螺钉采用平锥形头部，可齐平或低于配合表面，适用于需要清洁外观或无障碍轮廓的应用。使用内六角扳手驱动，可在狭小空间内提供高扭矩。提供全螺纹和部分螺纹配置。按照DIN 7991 / ISO 10642标准制造，尺寸精度一致。",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png"
+                },
+                {
                     "slug": "products/sleeve-anchors",
                     "title": "套筒锚栓",
-                    "summary": "我们的套筒锚栓在实心混凝土、砖和砌块材料中提供强大的握持力。可膨胀套筒确保紧固牢固，适用于车辆维修设备、结构支撑和栏杆等重载应用。",
-                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                    "summary": "我们的套筒锚栓可在混凝土、砖块和砖石基材中提供可靠的紧固，适用于需要高抗拉和抗剪强度的场合。拧紧时，膨胀套筒向外变形，从钻孔内部牢固地抓住基材。提供带法兰六角头的配置，表面黄色锌镀层以防腐蚀。适用于室内外结构应用。制造时保持一致的尺寸公差，确保安装性能可靠。",
+                    "icon": "../../images/news/168b271313c4f4346388feed2f2e4e47.png"
+                },
+                {
+                    "slug": "products/carriage-bolts",
+                    "title": "马车螺栓",
+                    "summary": "我们的马车螺栓采用光滑圆顶头和下方方颈设计，安装时方颈嵌入材料中，防止旋转，无需在螺栓侧使用扳手。适用于木-木、木-金属以及一般结构连接。提供全螺纹和部分螺纹配置。按照DIN 603 / ASME B18.5标准制造，尺寸精度一致。",
+                    "icon": "../../images/news/887d132a138c5394fc649f8932049c36.png"
+                },
+                {
+                    "slug": "products/chemical-anchor-bolts",
+                    "title": "化学锚栓",
+                    "summary": "我们的化学锚栓为混凝土和结构安装提供卓越的承载能力和长期稳定性。专为重载紧固应用设计，具有出色的抗振动、耐腐蚀和抗环境应力性能。适用于建筑、钢结构、栏杆、机械基础及基础设施项目。",
+                    "icon": "../../images/news/08421783-ddae-4068-858a-933103a06fa2.png"
+                },
+                {
+                    "slug": "products/four-piece-expansion-anchor",
+                    "title": "4片式膨胀锚栓（四片式墙蜥蜴）",
+                    "summary": "我们的4片式膨胀锚栓具有四个独立的膨胀片，可均匀地抵住混凝土壁张开，相比标准膨胀螺栓提供更卓越的握持力。适用于电梯导轨安装、重型机械固定和结构锚固。按照高质量标准制造，尺寸精度一致。",
+                    "icon": "../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png"
+                },
+                {
+                    "slug": "products/eye-bolts",
+                    "title": "吊环螺栓",
+                    "summary": "我们的吊环螺栓一端设有圆形环（吊环），专为垂直起吊和角向载荷设计。采用高强度合金钢制造，100%磁粉探伤检测裂纹。提供标准型（DIN 580，用于垂直起吊）和带肩型（用于角向载荷）两种设计。每个螺栓均标有额定载荷，最小安全系数为5:1。",
+                    "icon": "../../images/news/bc952db1252205da38a0b53f567c19e9.png"
                 },
                 {
                     "slug": "products/wheel-bolts-assembly",
@@ -144,6 +223,30 @@
             "category": "螺母",
             "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
+                {
+                    "slug": "products/shear-nuts",
+                    "title": "剪切螺母",
+                    "summary": "我们的剪切螺母（也称为断裂螺母或防篡改螺母）为公共基础设施、户外设备和安全关键应用提供永久性、防篡改的紧固。一旦达到安装扭矩，六角驱动底座会自动剪断，留下一个光滑的锥形头部，标准工具无法夹持。采用不锈钢304/316和镀锌碳钢制造，在室内和室外环境中具有可靠的耐腐蚀性。",
+                    "icon": "../../images/news/73b9fd744fd35079b711219ec3cfe555.png"
+                },
+                {
+                    "slug": "products/t-slot-nuts",
+                    "title": "T型槽螺母",
+                    "summary": "我们的T型槽螺母设计用于滑入机床工作台、铝型材挤压件和焊接夹具的标准T型槽轨道中，提供可重新定位的牢固夹紧点。T形主体旋转90°后即可锁定，无需端部装载。提供碳钢、不锈钢304/316和发黑处理。按照DIN 508标准制造，具有精确的尺寸公差，确保与各种槽型兼容。",
+                    "icon": "../../images/news/c4ba24a45b08d18449266cc838027370.png"
+                },
+                {
+                    "slug": "products/coupling-nuts",
+                    "title": "连接螺母",
+                    "summary": "我们的连接螺母（也称为延长螺母或连接器螺母）用于将两根螺纹杆或螺栓端对端连接，以延长长度或调整结构及机械组件中的长度。全长度内螺纹确保最大啮合和载荷分布。提供标准型和重型配置。按照DIN 6334标准制造，尺寸精度一致。",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png"
+                },
+                {
+                    "slug": "products/rivet-nuts",
+                    "title": "铆螺母",
+                    "summary": "我们的铆螺母（也称为盲铆螺母或螺母套）可在仅有一侧可操作的薄板、管材和中空型材中提供牢固可靠的内部螺纹。滚花体在安装后可防止旋转。提供开口型和闭口型、平头和沉头样式。按照DIN 16903标准制造，尺寸公差精确。",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png"
+                },
                 {
                     "slug": "products/flange-nuts",
                     "title": "法兰螺母",
@@ -300,6 +403,18 @@
             "category": "其他紧固件",
             "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
+                {
+                    "slug": "products/round-head-rivets",
+                    "title": "半圆头铆钉",
+                    "summary": "我们的半圆头铆钉具有独特的圆顶头型，提供较大的承压面和高剪切强度，非常适合在结构、汽车和工业装配中实现永久紧固。通过使尾端变形来夹紧材料。提供多种材料和尺寸。按照DIN 660 / ISO 1051标准制造，尺寸精度一致。",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png"
+                },
+                {
+                    "slug": "products/solar-mounting-bracket",
+                    "title": "太阳能安装支架",
+                    "summary": "我们的太阳能安装支架系统专为屋顶和地面光伏安装设计。采用高强度铝合金和镀锌钢制造，确保优异的耐腐蚀性、抗风荷载稳定性和长期耐用性。适用于住宅、商业和公用事业规模的太阳能项目。",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png"
+                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "抽芯铆钉",

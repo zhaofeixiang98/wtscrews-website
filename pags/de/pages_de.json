@@ -1,6 +1,55 @@
 {
     "news": [
         {
+            "slug": "news/us-steel-fastener-tariff-2026",
+            "title": "US-Section-232-Zollreform 2026: Was jeder Verbindungselement-Exporteur wissen muss",
+            "date": "2026-06-09",
+            "summary": "Am 2. April 2026 unterzeichnete die Trump-Administration eine Executive Order zur Umstrukturierung des Section-232-Zollsystems für Stahl, Aluminium, Kupfer und deren Folgeprodukte. Die bedeutendste Änderung: Zölle werden nun auf den vollen Zollwert der importierten Waren erhoben – nicht nur auf den Metallanteil. Für Verbindungselement-Exporteure, die den US-Markt anvisieren, bedeutet dies eine grundlegende Verschiebung der Kostenstruktur. Dieser Artikel erläutert, was sich geändert hat, was das in der Praxis bedeutet und wie Exporteure reagieren können.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-9-16_48_57.png"
+        },
+        {
+            "slug": "news/high-strength-fastener-demand-growth-2026",
+            "title": "Nachfrage nach hochfesten Verbindungselementen steigt: Was treibt das jährliche Wachstum von 12,3 %?",
+            "date": "2026-06-06",
+            "summary": "Der globale Markt für hochfeste Verbindungselemente wächst mit einer durchschnittlichen jährlichen Wachstumsrate von 12,3 % für Produkte der Güteklasse 8.8 und höher, angetrieben durch die steigende Nachfrage aus den Bereichen neue Energiefahrzeuge, Photovoltaik-Strukturen, Windkraftanlagen und Präzisionsmaschinen. Da herkömmliche Kohlenstoffstahl-Verbindungselemente den zunehmend anspruchsvollen Leistungsanforderungen nicht mehr gerecht werden, werden die Hersteller zu neuen Materialien, engeren Toleranzen und einer erweiterten Anwendungsabdeckung gedrängt. Dieser Artikel untersucht die wichtigsten Kräfte hinter dem Boom und was er für Käufer und Lieferanten bedeutet.",
+            "icon": "../../images/favicon.png"
+        },
+        {
+            "slug": "news/frankfurt-fastener-show-2026-cbam",
+            "title": "Frankfurt Fastener Show 2026: Die erste große Messe nach Inkrafttreten der EU-CO2-Grenzsteuer",
+            "date": "2026-06-05",
+            "summary": "Die Frankfurter Internationale Fachmesse für Verbindungselemente 2026 wird die erste große Messe für Verbindungselemente sein, die nach der offiziellen Einführung der Erhebungsphase des EU-CO2-Grenzausgleichsmechanismus (CBAM) im Januar 2026 stattfindet. Da die Kosten für die CO2-Compliance nun direkt Stahl- und Aluminiumprodukte betreffen, navigieren Aussteller und Käufer gleichermaßen durch eine neue Handelslandschaft. Dieser Artikel untersucht, was von der Messe zu erwarten ist und was CBAM für Exporteure von Verbindungselementen bedeutet, die den europäischen Markt anvisieren.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-5-17_12_30.png"
+        },
+        {
+            "slug": "news/photovoltaic-industry-news-2026-q2",
+            "title": "Globaler Photovoltaik-Industrie-Update 2026: Starke Expansion durch politische Unterstützung, Energienachfrage und technologische Innovation",
+            "date": "2026-06-01",
+            "summary": "Die Photovoltaikindustrie setzt 2026 ihre rasche globale Expansion fort, unterstützt durch Rekordinstallationen, Energiewendepolitiken und starke Nachfrage aus Infrastruktur- und Industriesektoren.",
+            "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_43_43.png"
+        },
+        {
+            "slug": "news/southeast-asia-middle-east-fastener-demand-2026",
+            "title": "Nachfrage nach Verbindungselementen in Südostasien und im Nahen Osten wächst weiter",
+            "date": "2026-05-28",
+            "summary": "Die Nachfrage nach industriellen Verbindungselementen steigt in Südostasien und im Nahen Osten aufgrund von Infrastrukturprojekten, Produktionsausweitung und Energieinvestitionen rapide an.",
+            "icon": "../../images/news/e4a1f121-9e10-4662-a2f5-87f170a9ca56.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-may-2026",
+            "title": "Globale Verbindungselemente-Markttrends und Branchenupdate – Mai 2026",
+            "date": "2026-05-25",
+            "summary": "Die globale Verbindungselemente-Industrie wächst 2026 weiter, angetrieben durch Infrastrukturprojekte, Nachfrage aus dem Bereich erneuerbare Energien und expandierende Baumärkte in Südostasien und dem Nahen Osten.",
+            "icon": "../../images/abouts/offoce1.png"
+        },
+        {
+            "slug": "news/global-fastener-market-update-q2-2026",
+            "title": "Globaler Verbindungselementmarkt Update Q2 2026: Steigende Nachfrage aus Südostasien und Projekte für erneuerbare Energien",
+            "date": "2026-05-15",
+            "summary": "Die globale Nachfrage nach industriellen Verbindungselementen wächst im Q2 2026 weiter, insbesondere in Südostasien, erneuerbaren Energien und der Bauindustrie.",
+            "icon": "../../images/abouts/Precision%20CNC%20machining%20lines6.webp"
+        },
+        {
             "slug": "news/construction-fastener-demand-2026",
             "title": "Nachfrage nach Bauverbindungselementen steigt 2026 weiter an",
             "date": "2026-05-06",
@@ -91,10 +140,40 @@
             "icon": "../../images/products/bolts/Anchor Bolt1.webp",
             "items": [
                 {
+                    "slug": "products/countersunk-socket-head-bolts",
+                    "title": "Senkkopf-Innensechskantschrauben",
+                    "summary": "Unsere Senkkopf-Innensechskantschrauben haben einen flachen, konischen Kopf, der bündig mit oder unter der Oberfläche abschließt – ideal für Anwendungen, die eine saubere Optik oder ungehinderte Profile erfordern. Angetrieben mit einem Innensechskantschlüssel (Inbusschlüssel) für hohes Drehmoment auf engem Raum. Erhältlich in voll- und teilgewinde Ausführungen. Hergestellt nach DIN 7991 / ISO 10642 mit gleichbleibender Maßgenauigkeit.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-16_42_50.png"
+                },
+                {
                     "slug": "products/sleeve-anchors",
                     "title": "Hülsenanker",
-                    "summary": "Unsere Hülsenanker bieten eine hohe Haltekraft in massivem Beton, Ziegel und Blockmaterialien. Die expandierbare Hülse gewährleistet eine sichere Befestigung, ideal für Schwerlastanwendungen wie Fahrzeugreparaturausrüstung, strukturelle Stützen und Geländer.",
-                    "icon": "../../images/news/04d264a77eb0d663a403adc6f2bfd675.png"
+                    "summary": "Unsere Hülsenanker bieten zuverlässige Befestigung in Beton, Ziegel und Mauerwerk, wo hohe Auszug- und Scherfestigkeit erforderlich ist. Die Spreizhülse verformt sich beim Anziehen nach außen und verkrallt sich fest im Bohrloch. Erhältlich in Flansch-Sechskant-Ausführung mit gelber Verzinkung für Korrosionsbeständigkeit. Geeignet für Innen- und Außenanwendungen im Bauwesen. Hergestellt mit gleichbleibenden Maßtoleranzen für zuverlässige Montageleistung.",
+                    "icon": "../../images/news/168b271313c4f4346388feed2f2e4e47.png"
+                },
+                {
+                    "slug": "products/carriage-bolts",
+                    "title": "carriage-bolts",
+                    "summary": "Unsere Karosserieschrauben haben einen glatten, gewölbten Kopf und einen Vierkanthals darunter, der beim Einbau in das Material greift und ein Verdrehen verhindert, ohne dass auf der Schraubenseite ein Schraubenschlüssel erforderlich ist. Ideal für Holz-Holz-, Holz-Metall- und allgemeine Strukturverbindungen. Erhältlich in Voll- und Teilgewindeausführung. Hergestellt nach DIN 603 / ASME B18.5 mit gleichbleibender Maßgenauigkeit.",
+                    "icon": "../../images/news/887d132a138c5394fc649f8932049c36.png"
+                },
+                {
+                    "slug": "products/chemical-anchor-bolts",
+                    "title": "Chemische Ankerbolzen",
+                    "summary": "Unsere chemischen Ankerbolzen bieten eine überragende Tragfähigkeit und langfristige Stabilität für Beton- und Strukturinstallationen. Konzipiert für schwere Befestigungsanwendungen, bieten sie hervorragenden Widerstand gegen Vibrationen, Korrosion und Umwelteinflüsse. Geeignet für Bauwesen, Stahlkonstruktionen, Geländer, Maschinenfundamente und Infrastrukturprojekte.",
+                    "icon": "../../images/news/08421783-ddae-4068-858a-933103a06fa2.png"
+                },
+                {
+                    "slug": "products/four-piece-expansion-anchor",
+                    "title": "4-teilige Spreizdübel (Vierteilige Wandeidechse)",
+                    "summary": "Unsere 4-teiligen Spreizdübel verfügen über vier unabhängige Spreizlamellen, die sich gleichmäßig gegen die Betonwand ausbreiten und im Vergleich zu Standard-Spreizbolzen eine überlegene Haltekraft bieten. Ideal für die Montage von Aufzugsschienen, die Befestigung schwerer Maschinen und strukturelle Verankerungen. Hergestellt nach hohen Qualitätsstandards mit gleichbleibender Maßgenauigkeit.",
+                    "icon": "../../images/news/f36e4704d9f8d0e5c1833c024ea7cd71.png"
+                },
+                {
+                    "slug": "products/eye-bolts",
+                    "title": "Augschrauben",
+                    "summary": "Unsere Augschrauben verfügen über einen kreisförmigen Ring (Auge) an einem Ende, ausgelegt für vertikales Heben und Winkellasten. Hergestellt aus hochfestem legiertem Stahl und 100 % magnetpulvergeprüft auf Risse. Erhältlich sowohl in Standardausführung (DIN 580, für vertikales Heben) als auch mit Schulter (für Winkellasten). Jede Schraube ist lastbewertet mit einem Mindestsicherheitsfaktor von 5:1.",
+                    "icon": "../../images/news/bc952db1252205da38a0b53f567c19e9.png"
                 },
                 {
                     "slug": "products/wheel-bolts-assembly",
@@ -144,6 +223,30 @@
             "category": "Muttern",
             "icon": "../../images/products/nuts/Flange Nut.webp",
             "items": [
+                {
+                    "slug": "products/shear-nuts",
+                    "title": "Schermuttern",
+                    "summary": "Unsere Schermuttern (auch als Abreißmuttern oder manipulationssichere Muttern bekannt) bieten eine dauerhafte, manipulationssichere Befestigung für öffentliche Infrastruktur, Außengeräte und sicherheitskritische Anwendungen. Der sechseckige Antriebssockel schert automatisch ab, sobald das Installationsdrehmoment erreicht ist, und hinterlässt nur einen glatten konischen Kopf, der mit Standardwerkzeugen nicht gegriffen werden kann. Hergestellt aus Edelstahl 304/316 und verzinktem Kohlenstoffstahl für zuverlässige Korrosionsbeständigkeit in Innen- und Außenbereichen.",
+                    "icon": "../../images/news/73b9fd744fd35079b711219ec3cfe555.png"
+                },
+                {
+                    "slug": "products/t-slot-nuts",
+                    "title": "T-Nutensteine",
+                    "summary": "Unsere T-Nutensteine sind für das Einschieben in standardmäßige T-Nutenbahnen von Maschinentischen, Aluminium-Strangpressprofilen und Schweißvorrichtungen konzipiert und bieten sichere und repositionierbare Klemmstellen. Der T-förmige Körper verriegelt fest, wenn er um 90° gedreht wird, wodurch die Endbeladung entfällt. Erhältlich in Kohlenstoffstahl, Edelstahl 304/316 und mit Schwarzoxidbeschichtung. Hergestellt nach DIN 508 mit präzisen Maßtoleranzen für eine gleichbleibende Nutkompatibilität.",
+                    "icon": "../../images/news/c4ba24a45b08d18449266cc838027370.png"
+                },
+                {
+                    "slug": "products/coupling-nuts",
+                    "title": "Kupplungsmuttern",
+                    "summary": "Unsere Kupplungsmuttern (auch Verlängerungsmuttern oder Verbindungsmuttern genannt) dienen dazu, zwei Gewindestangen oder Schrauben axial zu verbinden, um die Reichweite zu verlängern oder die Länge in strukturellen und mechanischen Baugruppen anzupassen. Das durchgehende Innengewinde gewährleistet maximalen Eingriff und optimale Lastverteilung. Erhältlich in Standard- und Schwerlastausführung. Hergestellt nach DIN 6334 mit gleichbleibender Maßgenauigkeit.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_23_21.png"
+                },
+                {
+                    "slug": "products/rivet-nuts",
+                    "title": "Rivetschrauben",
+                    "summary": "Unsere Rivetschrauben (auch als Blindnietmuttern oder Nutserts bekannt) bieten starke, zuverlässige Innengewinde in dünnen Blechen, Rohren und Hohlprofilen, bei denen nur einseitiger Zugang möglich ist. Der gerändelte Körper verhindert ein Verdrehen nach der Montage. Erhältlich in offener und geschlossener Ausführung, mit Flachkopf und Senkkopf. Hergestellt nach DIN 16903 mit präzisen Maßtoleranzen.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-5-16_10_21.png"
+                },
                 {
                     "slug": "products/flange-nuts",
                     "title": "Flanschmuttern",
@@ -300,6 +403,18 @@
             "category": "Weitere Verbindungselemente",
             "icon": "../../images/products/others/Blind Rivet1.webp",
             "items": [
+                {
+                    "slug": "products/round-head-rivets",
+                    "title": "Halbrundnieten",
+                    "summary": "Unsere Halbrundnieten zeichnen sich durch ein markantes gewölbtes Kopfprofil aus, das eine große Auflagefläche und hohe Scherfestigkeit bietet. Sie sind ideal für dauerhafte Verbindungen in strukturellen, automobilen und industriellen Baugruppen. Die Montage erfolgt durch Verformen des Schaftendes, um die Materialien zusammenzuspannen. Erhältlich in einer breiten Palette von Materialien und Größen. Hergestellt nach DIN 660 / ISO 1051 mit gleichbleibender Maßgenauigkeit.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-10-17_05_25.png"
+                },
+                {
+                    "slug": "products/solar-mounting-bracket",
+                    "title": "Solarmontagehalterungen",
+                    "summary": "Unser Solarmontagehaltersystem ist für Dach- und Boden-Photovoltaikanlagen konzipiert. Hergestellt aus hochfestem Aluminium und feuerverzinktem Stahl, bietet es hervorragende Korrosionsbeständigkeit, Windlaststabilität und langfristige Haltbarkeit. Geeignet für private, gewerbliche und großflächige Solarprojekte.",
+                    "icon": "../../images/news/ChatGPT-Image-2026-6-1-15_14_46.png"
+                },
                 {
                     "slug": "products/blind-rivets",
                     "title": "Blindnieten",
